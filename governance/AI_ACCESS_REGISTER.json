@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "default_policy": "deny-until-approved",
+  "last_reviewed": "2026-09-04",
+  "approved_services": [],
+  "pending_reviews": [
+    {
+      "service_id": "TBD-COMPANY-APPROVED-AI",
+      "purpose": "确认公司允许使用的 AI 产品、租户、区域、保留和连接器范围",
+      "data_classes_requested": [],
+      "status": "not-started",
+      "owner": "TBD",
+      "approver": "TBD",
+      "expires_on": null
+    }
+  ]
+}

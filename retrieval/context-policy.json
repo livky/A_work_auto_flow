@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "max_focus_modules": 3,
+  "stages": {
+    "focus": {"limit": 6, "related_hops": 1, "optional_sources": 5, "excerpt_chars": 1800},
+    "investigate": {"limit": 14, "related_hops": 1, "optional_sources": 12, "excerpt_chars": 3600},
+    "wide": {"limit": 24, "related_hops": 2, "optional_sources": 22, "excerpt_chars": 6000}
+  },
+  "short_full_chars": {"core-code": 3500, "application-code": 1600, "run": 4500, "research": 3500, "knowledge": 4500, "project": 1600, "document": 3500},
+  "preferences": {"global": {"include": [], "full": [], "exclude": []}, "modules": {}}
+}

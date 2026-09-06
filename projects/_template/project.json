@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "project_id": "{{project_id}}",
+  "slug": "{{project_slug}}",
+  "title": "{{title}}",
+  "status": "active",
+  "lifecycle_stage": "envision",
+  "created_at": "{{date}}",
+  "updated_at": "{{date}}",
+  "owners": [],
+  "domain_tags": [],
+  "sensitivity": "restricted",
+  "objectives": [],
+  "non_goals": [],
+  "module_ids": [],
+  "dataset_ids": [],
+  "active_research_ids": [],
+  "active_plan": null,
+  "open_questions": [
+    "填写项目特有的安全边界、环境、标准命令和验收标准"
+  ]
+}

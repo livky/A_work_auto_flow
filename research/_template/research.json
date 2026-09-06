@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "research_id": "{{research_id}}",
+  "slug": "{{research_slug}}",
+  "title": "{{title}}",
+  "status": "active",
+  "created_at": "{{date}}",
+  "updated_at": "{{date}}",
+  "owners": [],
+  "sensitivity": "restricted",
+  "related_project_ids": [],
+  "related_module_ids": [],
+  "decision_to_support": "",
+  "target_date": null,
+  "open_evidence_gaps": []
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "include_directories": [
+    "core-algorithms",
+    "runs",
+    "projects",
+    "research",
+    "knowledge",
+    "tools",
+    "data/catalog",
+    "data/contracts",
+    "reports/sources"
+  ],
+  "max_files": 10000,
+  "max_file_bytes": 52428800,
+  "chunk_chars": 2400,
+  "candidate_limit": 100,
+  "context_chars": 60000,
+  "related_limit": 12,
+  "aliases": {},
+  "context_mode": "auto",
+  "vector_min_score": 0.2,
+  "format_context": {
+    ".pptx": "excerpt",
+    ".pdf": "excerpt",
+    ".png": "excerpt",
+    ".jpg": "excerpt",
+    ".jpeg": "excerpt",
+    ".xlsx": "excerpt",
+    ".csv": "excerpt",
+    ".bmp": "excerpt",
+    ".webp": "excerpt"
+  },
+  "excerpt_chars": 2400,
+  "ocr_enabled": true,
+  "max_visual_assets": 40,
+  "embedding": {
+    "provider": "fastembed-local",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "path": "services/qdrant/models/multilingual-minilm",
+    "manifest": "services/qdrant/model-manifest.json"
+  },
+  "vector_store": {
+    "provider": "qdrant-local",
+    "path": "services/qdrant/storage"
+  }
+}

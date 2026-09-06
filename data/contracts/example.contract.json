@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "contract_id": "CONTRACT-EXAMPLE-001",
+  "dataset_id": "DATA-EXAMPLE-001",
+  "contract_version": "0.1.0",
+  "compatibility": "breaking-until-approved",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "datetime",
+      "unit": null,
+      "required": true,
+      "meaning": "采样时间",
+      "constraints": {
+        "timezone": "Asia/Shanghai",
+        "monotonic": true
+      }
+    },
+    {
+      "name": "value",
+      "type": "float64",
+      "unit": "TBD",
+      "required": true,
+      "meaning": "示例测量值",
+      "constraints": {
+        "allow_nan": false,
+        "minimum": null,
+        "maximum": null
+      }
+    }
+  ],
+  "quality_rules": [
+    {
+      "rule_id": "Q-001",
+      "severity": "error",
+      "expression": "timestamp is monotonic",
+      "rationale": "时间倒序会破坏动态分析"
+    },
+    {
+      "rule_id": "Q-002",
+      "severity": "observe",
+      "expression": "report null_rate(value)",
+      "rationale": "先观察分布，再由工程要求设硬阈值"
+    }
+  ],
+  "sla": {
+    "freshness": null,
+    "delivery_frequency": null,
+    "retention": "由公司策略确定"
+  },
+  "change_approval": "TBD"
+}

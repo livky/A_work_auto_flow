@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "tools": [
+    {
+      "tool_id": "TOOL-WORKSPACE-001",
+      "name": "workspace-cli",
+      "status": "active",
+      "kind": "python-cli",
+      "entrypoint": "automation/scripts/workspace_cli.py",
+      "purpose": "创建公司文档定义的核心算法（测校项）/Run/研究与可选项目，混合检索和有界上下文、反馈评估、导航和结构校验",
+      "owners": [
+        "workspace-maintainer"
+      ],
+      "data_access": "configured-local-sources-read-only; derived-index-and-feedback-write",
+      "verify": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -v"
+    }
+  ]
+}

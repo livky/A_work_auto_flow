@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "workspace_id": "ai-rd-automation-hub",
+  "title": "AI 研发自动化工作中枢",
+  "language": "zh-CN",
+  "domain_scope": [
+    "engineering-rd",
+    "model-and-algorithm-design",
+    "large-scale-data-analysis",
+    "diagnosis-and-root-cause-analysis",
+    "technical-research",
+    "reporting-and-knowledge-management"
+  ],
+  "context_policy": {
+    "always_include": [
+      "AGENTS.md",
+      "context/START_HERE.md",
+      "context/NOW.md"
+    ],
+    "navigation_include": [
+      "ARCHITECTURE.md",
+      "context/SYSTEM_MAP.md",
+      "context/GLOSSARY.md",
+      "context/generated/workspace-index.md"
+    ],
+    "max_context_chars": 120000,
+    "max_single_file_chars": 30000,
+    "excluded_directories": [
+      ".git",
+      ".venv",
+      "archive",
+      "inbox",
+      "reports/generated"
+    ]
+  },
+  "data_policy": {
+    "raw_data_in_workspace": false,
+    "default_access_class": "restricted",
+    "allowed_small_sample_directory": "data/samples",
+    "data_reference_directory": "data/catalog",
+    "contract_directory": "data/contracts"
+  },
+  "required_paths": [
+    "AGENTS.md",
+    "ARCHITECTURE.md",
+    "context/START_HERE.md",
+    "context/NOW.md",
+    "governance/SECURITY_AND_DATA_BOUNDARIES.md",
+    "projects/AGENTS.md",
+    "research/AGENTS.md",
+    "data/AGENTS.md",
+    "tools/AGENTS.md",
+    "tools/registry.json",
+    "core-algorithms/AGENTS.md",
+    "runs/AGENTS.md"
+  ],
+  "metadata_filenames": {
+    "project": "project.json",
+    "research": "research.json",
+    "run": "run.json",
+    "tool": "tool.json",
+    "module": "module.json"
+  }
+}

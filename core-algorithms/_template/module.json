@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "module_id": "{{module_id}}",
+  "title": "{{title}}",
+  "slug": "{{module_slug}}",
+  "status": "draft",
+  "entity_kind": "core-algorithm",
+  "source_document": "{{source_document}}",
+  "source_document_version": "",
+  "source_document_section": "",
+  "source_reading_status": "registered-only",
+  "created_at": "{{date}}",
+  "aliases": [],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_tool_ids": [],
+  "project_ids": [],
+  "source_files": [],
+  "validation_run_ids": []
+}

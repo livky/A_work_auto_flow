@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "report_id": "REP-EXAMPLE-001",
+  "title": "示例报告清单",
+  "status": "example",
+  "sensitivity": "restricted",
+  "audience": "TBD",
+  "decision": "TBD",
+  "source_files": [],
+  "template": {
+    "id": "TBD",
+    "version": "TBD"
+  },
+  "evidence_run_ids": [],
+  "dataset_ids": [],
+  "citations": [],
+  "rendered_at": null,
+  "generated_files": [],
+  "qa": {
+    "structural": "not-run",
+    "visual": "not-run",
+    "reviewed_by": null,
+    "approved_by": null
+  }
+}

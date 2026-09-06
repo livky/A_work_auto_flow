@@ -1,0 +1,72 @@
+# Python cache and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor and operating-system state
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+.DS_Store
+
+# Secrets and machine-local settings
+.env
+.env.*
+!.env.example
+secrets/
+*.key
+*.pem
+*.pfx
+
+# Generated context and temporary execution state
+context/generated/context-pack.md
+context/generated/*.tmp
+retrieval/generated/
+# 查询/反馈可能含业务内容；本机保留，获批后再纳入适合的备份/版本管理。
+retrieval/queries/
+retrieval/feedback/
+retrieval/strategies/
+retrieval/sessions/
+retrieval/context-feedback/
+scratch/
+tmp/
+dist/
+*.log
+
+# Generated reports and large artifacts; keep their manifests instead
+reports/generated/**
+!reports/generated/.gitkeep
+artifacts/
+
+# Raw or bulky data must remain on approved external storage
+data/raw/
+data/interim/
+data/processed/
+data/samples/private/
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.mat
+*.tdms
+*.las
+*.bin
+*.zip
+*.7z
+
+# 可搬迁的本地运行时和模型；打离线包时需包含，通常不提交 Git。
+services/qdrant/runtime/
+services/qdrant/models/
+services/qdrant/storage/
+services/qdrant/wheelhouse/
+services/qdrant/downloads/
+
+# 本机安装回执与检查输出可能含绝对路径；公开仓库只保存安装脚本和依赖清单。
+services/qdrant/installation.json
+services/qdrant/test-results.txt
+services/qdrant/context-smoke.txt
+services/qdrant/context-cli-verification.json

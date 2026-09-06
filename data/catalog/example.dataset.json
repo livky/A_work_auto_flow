@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "dataset_id": "DATA-EXAMPLE-001",
+  "name": "示例数据资产（复制后改名，不要登记真实秘密）",
+  "status": "example",
+  "owners": [],
+  "sensitivity": "restricted",
+  "purpose": "展示最小数据卡字段",
+  "source": {
+    "type": "shared-filesystem",
+    "uri_alias": "company-share://approved-area/example",
+    "producer_module_ids": []
+  },
+  "version": "TBD",
+  "fingerprint": {
+    "algorithm": "manifest-sha256",
+    "value": "TBD",
+    "scope": "文件相对路径、大小和选定元数据；按项目确认"
+  },
+  "schema_ref": "data/contracts/example.contract.json",
+  "time_coverage": {
+    "start": null,
+    "end": null,
+    "timezone": "Asia/Shanghai",
+    "clock_reference": "TBD"
+  },
+  "sampling": {
+    "rate": null,
+    "rate_unit": "Hz",
+    "selection_notes": "TBD"
+  },
+  "calibration_version": "TBD",
+  "consumers": [],
+  "retention_class": "controlled-evidence",
+  "limitations": [],
+  "last_reviewed": "2026-09-04"
+}
