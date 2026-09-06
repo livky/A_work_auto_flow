@@ -1,6 +1,47 @@
-# Windows 压缩迁移
+# Windows 迁移与运行环境复用
 
-框架自带 Windows x64 Python 3.12、依赖、CPU 模型和 OCR。迁移完整包无需安装 Python、Docker 或重新下载模型。目标为 Windows 10/11 x64；其他 Windows 版本、ARM64 和不同 CPU 需以目标机自检结果为准。Codex 应用及账号、聊天、用户级插件和授权不在包中，需在目标机单独准备；仓库内 `.agents/skills` 随包保留。
+完整迁移包包含 Windows x64 Python 3.12、依赖、CPU 模型和 OCR，GitHub 源码版不包含这些运行环境。迁移完整包无需安装 Python、Docker 或重新下载模型。目标为 Windows 10/11 x64；其他 Windows 版本、ARM64 和不同 CPU 需以目标机自检结果为准。Codex 应用及账号、聊天、用户级插件和授权不在包中，需在目标机单独准备；仓库内 `.agents/skills` 随包保留。
+
+## 用旧完整副本补齐 GitHub 新版
+
+适用于另一台电脑已经保存旧的完整工作区，同时又下载或克隆了 GitHub 新版的情况。以 GitHub 新版文件夹为主，只从旧副本复制运行环境到相同的相对位置，不用旧文件夹整体覆盖新版脚本、规则和配置。
+
+1. 关闭两个目录中正在运行的检索、索引或其他写入程序。保留旧完整副本作为恢复来源。
+2. 按下表复制。runtime 和 models 必须整目录复制；如果目标已有不完整目录，先移到单独备份位置，再放入完整目录，避免新旧依赖混合。
+
+| 旧副本中的相对位置 | 是否需要 | 内容 |
+|---|---|---|
+| `services/qdrant/runtime/` | 必须 | Python、Qdrant client、OCR 和全部 Python 依赖 |
+| `services/qdrant/models/` | 必须 | 本地嵌入模型及相关文件 |
+| `services/qdrant/model-manifest.json` | 必须，与模型一起复制 | 与实际模型文件配套的校验清单 |
+| `services/qdrant/wheelhouse/` | 可选 | 离线重装依赖的安装包 |
+| `services/qdrant/downloads/` | 可选 | Python 安装缓存 |
+| `services/qdrant/checksums.json`、`services/qdrant/requirements.lock.txt` | 复制离线缓存时一起带上 | 对应缓存校验与依赖版本 |
+
+这些环境文件继续留在本机，不需要提交到 GitHub。不要复制旧的 `services/qdrant/storage/` 或 `retrieval/generated/`：它们是可重建索引，可能包含旧路径。若新版已经使用过，先把这两个目录移到单独备份位置，再重建；不要在程序运行时移动数据库。算法材料、Run 和外部来源登记属于业务内容，不随本次环境复制自动合并。
+
+3. 确认新版中至少存在以下文件；这里只列定位点，不能只复制这三个文件：
+
+```text
+services/qdrant/runtime/python.exe
+services/qdrant/models/multilingual-minilm/model_optimized.onnx
+services/qdrant/model-manifest.json
+```
+
+4. 在新版根目录打开 PowerShell，先自检：
+
+```powershell
+.\portable.cmd check
+```
+
+只有显示 `"status": "passed"` 后，才继续执行以下命令，重建导航和检索索引。直接调用自带 Python，无需修改 PowerShell 执行策略：
+
+```powershell
+.\services\qdrant\runtime\python.exe -X utf8 automation\scripts\workspace_cli.py refresh-index
+.\services\qdrant\runtime\python.exe -X utf8 automation\scripts\workspace_cli.py index-knowledge
+```
+
+当前使用 Qdrant 本地模式，不需要额外安装 Qdrant 服务、Docker，也不用启动服务器。环境复制与自检不需要下载模型；首次重建索引需要一些时间。旧环境能否兼容新版，以目标电脑自检为准：缺少 Python 表示 runtime 未完整复制；模型校验失败需恢复配套的 models 和 model-manifest.json；依赖导入或 DLL 错误应保留具体报错检查兼容性，不能视为迁移成功。
 
 ## 发出前
 

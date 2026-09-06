@@ -6,6 +6,8 @@
 
 ## 从这里开始
 
+已有旧的完整工作区副本：可以直接把其中的运行环境补到 GitHub 新版，通常无需重新下载。按 [复用旧副本运行环境](docs/WINDOWS_PORTABILITY.md#用旧完整副本补齐-github-新版) 复制目录、自检并重建索引。
+
 GitHub 仓库保存框架源码、规则、模板和测试，不包含本机 Python、模型、依赖缓存、查询历史或离线 ZIP。克隆源码后，先用已有 Python 和 pip 执行 `python services/qdrant/install.py --apply`，再用生成的 `services/qdrant/runtime/python.exe services/qdrant/download_model.py --apply` 下载公开模型；这些首次安装步骤需要联网。完成后运行 `portable.cmd check`，正常检索使用本地模型。完整离线迁移包与 GitHub 源码版的区别见 [迁移指南](docs/WINDOWS_PORTABILITY.md)。
 
 Windows 之间迁移：运行 `portable.cmd pack --apply` 生成包含 Python、模型和依赖的完整离线包；接收端解压后双击 `portable.cmd` 自检。操作与边界见 [Windows 迁移指南](docs/WINDOWS_PORTABILITY.md)。
