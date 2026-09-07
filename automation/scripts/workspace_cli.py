@@ -277,7 +277,7 @@ def create_module(root: Path, slug_value: str, title: str, dry_run: bool = False
         "{{title}}": title.strip() or slug, "{{date}}": now_utc().date().isoformat(),
         "{{source_document}}": source_document.strip(),
     }, dry_run=dry_run)
-    print(f"{'[dry-run] 将创建' if dry_run else '已创建'}核心算法（测校项）：{target}")
+    print(f"{'[dry-run] 将创建' if dry_run else '已创建'}核心算法：{target}")
     return target
 
 
@@ -580,7 +580,7 @@ def refresh_index(root: Path, dry_run: bool = False) -> tuple[Path, list[str]]:
         "",
         "> 本文件由 `workspace_cli.py refresh-index` 生成，只用于导航；对象附近的元数据和正式文档才是事实源。",
         "",
-        "## 核心算法（测校项）",
+        "## 核心算法",
         "",
         markdown_table(modules, root).rstrip(),
         "",
@@ -996,7 +996,7 @@ def build_parser() -> argparse.ArgumentParser:
     project_parser.add_argument("--dry-run", action="store_true")
 
     module_parser = subparsers.add_parser("new-core-algorithm", aliases=["new-module"],
-                                        help="创建公司文档定义的核心算法（测校项）；new-module 为兼容别名")
+                                        help="创建公司文档定义的核心算法；new-module 为兼容别名")
     module_parser.add_argument("slug")
     module_parser.add_argument("--title", required=True)
     module_parser.add_argument("--source-document", required=True, help="公司算法/模块文档的名称、编号或受控路径；只登记，不自动读取")

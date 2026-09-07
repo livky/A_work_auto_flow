@@ -1,0 +1,129 @@
+{
+  "status": "passed",
+  "regression": {
+    "command": "automation/python.ps1 -m unittest discover -s automation/tests -v",
+    "tests": 125,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 69.19,
+    "log_sha256": "61e26b6864c5fee7d072a40eac100ea3bc8e854906fdce19bb36394698dfd51f"
+  },
+  "integration": {
+    "bundle_sha256": "7810752e15ff40b88e04bae0eedae57f20355ca2da51febba7505a787361d3a4",
+    "platform": "win32",
+    "scope": "same physical Windows machine; isolated source and target directories; no system Python/Node lookup",
+    "checks": [
+      {
+        "name": "fresh-offline-install",
+        "returncode": 0,
+        "seconds": 153.062
+      },
+      {
+        "name": "offline-upgrade",
+        "returncode": 0,
+        "seconds": 161.797
+      },
+      {
+        "name": "receiver-repack",
+        "returncode": 0,
+        "seconds": 46.125
+      },
+      {
+        "name": "dependency-rollback",
+        "returncode": 0,
+        "seconds": 47.64
+      }
+    ],
+    "preserved": [
+      "knowledge/private-note.md",
+      "retrieval/config.json",
+      "retrieval/sources.json",
+      "AGENTS.md"
+    ],
+    "status": "passed"
+  },
+  "integration_program_versions": [
+    {
+      "path": "automation/setup.ps1",
+      "sha256": "1ab942f6f46d9ac45292d31da7a1d0b992a643d57072aeb1bc066ea469cad478"
+    },
+    {
+      "path": "automation/dependency-bundle.ps1",
+      "sha256": "c8959599c9b086a531ba093662d7e698ffbcb16fbc2dea54c3e751b882879ee6"
+    },
+    {
+      "path": "automation/python.ps1",
+      "sha256": "2f98c03ae185fe56372829b3dcd27f72ca5b55cd012b9bdbd1be8ffdfd0b6376"
+    },
+    {
+      "path": "automation/scripts/deployment.py",
+      "sha256": "39de4830804ce883be6040805080d8dc6d3db1811fee78302b77c376a55366e9"
+    },
+    {
+      "path": "automation/scripts/dependency_bundle.py",
+      "sha256": "328dfea1498327d684505eabfcb6ab5f288124daec8080daec3da895e30a5166"
+    },
+    {
+      "path": "automation/scripts/portable.py",
+      "sha256": "09c8b07881c28772a0d348f59c216dfe35e4842db73c5dedd2753571fcc538a4"
+    },
+    {
+      "path": "automation/scripts/qdrant_backend.py",
+      "sha256": "e5ab3c1a4e51843406c02dbcde2c5ea135be24e3a011e3ffc29b8b7e66467705"
+    },
+    {
+      "path": "automation/scripts/workspace_cli.py",
+      "sha256": "9bda1f6e4126b289f2831259287e7a04c862da43f7a59a7831bd911147cb6003"
+    },
+    {
+      "path": "automation/tests/test_dependency_bundle.py",
+      "sha256": "51bbe54ec36252edcfc328d922fb06029a0c932bcf734b6981eba9a9755d1870"
+    },
+    {
+      "path": "automation/tests/verify_dependency_release.py",
+      "sha256": "3ac920c25de7e4240aaae77f084624862f096ac7e0c3ecc8f2ac30578fd95947"
+    },
+    {
+      "path": "services/qdrant/requirements.lock.txt",
+      "sha256": "5bc0ebab661be8031755b4852953ae9dc054f451ab18def291f5eed078d3d1e4"
+    },
+    {
+      "path": "services/qdrant/model-manifest.json",
+      "sha256": "8bd7a882766c881dd29766c89e7bacfba32deb98308b5d69cee4b3e453c5476f"
+    }
+  ],
+  "component_checks": [
+    "Windows x64 CPython 3.12",
+    "47 exact locked versions and pip 26.2.1",
+    "384-dimensional finite CPU embedding",
+    "temporary Qdrant upsert/query",
+    "RapidOCR loaded and executed"
+  ],
+  "negative_cases": [
+    "corruption",
+    "unlisted files",
+    "traversal/Windows special paths",
+    "lock mismatch",
+    "stale package removal",
+    "interrupted switch automatic restoration",
+    "restore conflicts",
+    "no-download-cache repack",
+    "core preview ignores companion full bundle"
+  ],
+  "skill_validation": {
+    "passed": 4
+  },
+  "workspace_validation": {
+    "errors": 0,
+    "historical_link_warnings": 4
+  },
+  "initial_failure": {
+    "reason": "Nested bootstrap path exceeded a third-party DLL loader path limit",
+    "fix": "Content-addressed short user-temp bootstrap; all later full scenarios passed"
+  },
+  "limits": [
+    "Same physical Windows 11 machine; no second physical machine or real company workload acceptance",
+    "No GitHub upload or release publication",
+    "Custom models, GPU, ARM64, server Qdrant and frontend developer node_modules are not included"
+  ]
+}

@@ -1,6 +1,6 @@
-# 核心算法（测校项）
+# 核心算法
 
-只收录公司算法/模块文档定义的关键模型算法或测校项，具体准入与排除条件见 [目录规则](AGENTS.md)。每项保存于 core-algorithms/<slug>/，可被多个研究、Run 和工作任务引用。运行 `new-core-algorithm <slug> --title "名称" --source-document "公司文档名称或编号"` 创建；ID 不携带项目归属。来源只登记，不自动读取或标记已验证。
+只收录公司算法/模块文档定义的关键模型算法，具体准入与排除条件见 [目录规则](AGENTS.md)。每项保存于 core-algorithms/<slug>/，可被多个研究、Run 和工作任务引用。运行 `new-core-algorithm <slug> --title "名称" --source-document "公司文档名称或编号"` 创建；ID 不携带项目归属。来源只登记，不自动读取或标记已验证。
 
 new-module 保留为兼容命令，执行相同的文档来源检查。module.json、MOD-ID、--module 和 module_ids 等机器字段继续使用，但含义仅限核心算法。旧 modules 目录已迁移；外部旧路径引用需改为 core-algorithms 后重建索引，历史快照不重写。
 

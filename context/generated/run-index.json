@@ -146,5 +146,28 @@
     "path": "runs/run-20260907t071646z-ce49506865c4/run.json",
     "needs_revalidation": false,
     "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260907T094813Z-4EE938390289",
+    "project_id": null,
+    "title": "核心算法术语与 Windows 依赖分发实施验证",
+    "created_at": "2026-09-07T09:48:13Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "deployment",
+      "offline",
+      "release"
+    ],
+    "question": "去掉框架固定领域例名，提供本机依赖可分发包与 Windows 一键离线安装、升级和恢复。",
+    "conclusion": "本机隔离环境的离线分发、安装、升级、二次打包与恢复执行成功；保留业务数据和配置，候选与业务结论状态未改变。",
+    "parent_run_ids": [],
+    "path": "runs/run-20260907t094813z-4ee938390289/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
   }
 ]

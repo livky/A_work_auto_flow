@@ -33,7 +33,8 @@ def safe(root, relative):
 
 def framework_files(source):
     """允许替换的框架，不包含任何业务实例、运行时、来源登记或检索历史。"""
-    fixed = ['setup.cmd', 'workbench.cmd', 'portable.cmd', 'README.md', 'ARCHITECTURE.md', '.gitattributes']
+    fixed = ['setup.cmd', 'workbench.cmd', 'portable.cmd', 'README.md', 'ARCHITECTURE.md', '.gitattributes',
+             'services/qdrant/requirements.lock.txt', 'services/qdrant/README.md', 'core-algorithms/README.md']
     patterns = ['docs/templates/**/*', 'docs/design/*.md', 'docs/*.md',
                 'services/qdrant/*.py']
     names = set(fixed)
@@ -73,7 +74,8 @@ def seed_files(source):
     for pattern in ['retrieval/*.json', '*/AGENTS.md', 'context/*.md', 'governance/*.md',
                     '.agents/skills/*/SKILL.md', 'services/qdrant/*.json', 'services/qdrant/*.txt']:
         names.extend(p.relative_to(source).as_posix() for p in source.glob(pattern) if p.is_file())
-    return sorted(set(n for n in names if (source / n).is_file()))
+    return sorted(set(n for n in names if (source / n).is_file()
+                      and n != 'services/qdrant/dependency-distribution.json'))
 
 
 def plan(source, target):
@@ -84,7 +86,8 @@ def plan(source, target):
         raise ValueError('新旧工作区不能互相嵌套')
     if not (target / 'workspace.json').is_file():
         raise ValueError('--target 必须是已有工作区，首次安装在解压目录直接运行')
-    seeds = set(seed_files(source))
+    # 锁文件属于新版程序契约，不是用户配置；需要跟随框架并进入同一恢复回执。
+    seeds = set(seed_files(source)) - {'services/qdrant/requirements.lock.txt'}
     entries = []
     for name in sorted(set(framework_files(source)) | seeds):
         src, dst = safe(source, name), safe(target, name)
@@ -172,7 +175,9 @@ def rollback(backup, preview=False):
 
 
 def run(root, *args):
-    subprocess.run([sys.executable, str(root / 'automation/scripts/workspace_cli.py'), *args], cwd=root, check=True)
+    # 导入独立依赖包后必须使用目标运行时，不能继续使用引导目录的解释器。
+    runtime = root / 'services/qdrant/runtime/python.exe'
+    subprocess.run([str(runtime) if runtime.exists() else sys.executable, str(root / 'automation/scripts/workspace_cli.py'), *args], cwd=root, check=True)
 
 
 def environment_ready(root):
@@ -197,8 +202,21 @@ def main(argv=None):
     parser.add_argument('--unregister', action='store_true')
     parser.add_argument('--open', action='store_true')
     parser.add_argument('--rollback', type=Path)
+    parser.add_argument('--bundle-root', type=Path, help=argparse.SUPPRESS)
+    parser.add_argument('--rollback-dependencies', type=Path, help='恢复依赖组件；关闭目标工作区进程后从新版源码目录执行')
     args = parser.parse_args(argv)
     root = (args.target or ROOT).resolve()
+    import dependency_bundle
+    if args.rollback_dependencies:
+        print(json.dumps(dependency_bundle.restore(args.rollback_dependencies, args.preview), ensure_ascii=False)); return
+    if args.bundle_root:
+        args.bundle_root = args.bundle_root.resolve()
+        if args.profile != 'full':
+            raise ValueError('--bundle 用于 full 安装，不与 --profile core 混用')
+        print('正在核验配套依赖与模型，随后执行离线组件检查……', flush=True)
+        dependency_bundle.verify(args.bundle_root, ROOT)
+        if not args.preview:
+            subprocess.run([sys.executable, str(ROOT / 'automation/scripts/dependency_bundle.py'), 'check', '--root', str(args.bundle_root)], check=True)
     if args.rollback:
         print(json.dumps(rollback(args.rollback, args.preview), ensure_ascii=False)); return
     if args.unregister:
@@ -214,10 +232,16 @@ def main(argv=None):
     with evidence.locked(safe(root, '.local/setup.lock')):
         backup = apply_upgrade(ROOT, root, entries)
         print(json.dumps({'backup': str(backup) if backup else None}, ensure_ascii=False), flush=True)
+        if args.bundle_root:
+            print('正在暂存、备份并导入运行时和模型……', flush=True)
+        dependency_backup = dependency_bundle.install(args.bundle_root, root, ROOT) if args.bundle_root else None
+        print(json.dumps({'dependency_backup': str(dependency_backup) if dependency_backup else None}), flush=True)
         runtime = root / 'services/qdrant/runtime/python.exe'
         if args.profile == 'full':
-            # Install the locked dependency set even when a reusable runtime exists; installer is idempotent.
+            # 配套依赖包必须直接满足锁；不允许失败后偷偷下载其他版本。
             if not environment_ready(root):
+                if args.bundle_root:
+                    raise ValueError('依赖包导入后版本检查失败；请按依赖回执恢复')
                 install_args = [sys.executable, str(root / 'services/qdrant/install.py'), '--apply', '--lock', str(ROOT / 'services/qdrant/requirements.lock.txt')]
                 if args.offline:
                     install_args.append('--offline')

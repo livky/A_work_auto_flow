@@ -7,7 +7,7 @@
 | 算法问答、文档/代码核对与证据不足扩展（已安装） | `workspace-context/SKILL.md` |
 | 深入调研、论文、技术路线、仿真研究 | `research-loop/SKILL.md` |
 | 数据异常、指标漂移、跨核心算法诊断 | `analysis-diagnosis/SKILL.md` |
-| 理解、设计或修改公司文档定义的核心算法/测校项 | `core-algorithm-design/SKILL.md` |
+| 理解、设计或修改公司文档定义的核心算法 | `core-algorithm-design/SKILL.md` |
 | PPT、Word、PDF、周报和正式汇报 | `report-production/SKILL.md` |
 | 分批导入材料、关键词索引、算法/代码映射更新、整理与交接 | `context-maintenance/SKILL.md` |
 | 查看结论依据、复核和报告影响；只读监测变化、维护候选 | `evidence-inspection/SKILL.md` |

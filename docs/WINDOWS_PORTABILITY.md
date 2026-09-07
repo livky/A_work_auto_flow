@@ -1,5 +1,11 @@
 # Windows 迁移与运行环境复用
 
+## 分发方式选择
+
+公开分发给其他用户，使用 `setup.cmd --pack-dependencies --apply` 生成独立依赖包，与同版源码一起安装，见 [依赖包与 Release](DEPENDENCY_RELEASE.md)。该方式不包含业务记录。
+
+下文的 `portable.cmd pack` 是完整工作区快照，包含已有材料、Run 和检索历史，适合获批的私人备份或整机迁移，不能当作公共 Release 依赖附件。
+
 **GitHub 源码安装/旧工作区升级现在优先使用 `setup.cmd`**，无需按下文手工复制。首次安装：`setup.cmd --register --open`；升级：在新版解压目录执行 `setup.cmd --target "D:\研发\旧工作区" --register --open`。默认完整部署，旧业务数据和现有配置保留，框架变更先备份。详见 [一键部署手册](SETUP_WORKBENCH.md)。下文保留完整离线包及人工排查方法。
 
 

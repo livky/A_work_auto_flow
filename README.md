@@ -22,7 +22,7 @@
 .\setup.cmd --register --open
 ```
 
-默认安装便携 Python、依赖和本地模型，完成检查后打开工作台。首次完整安装需要联网；后续安装优先复用兼容的本地环境。仅使用证据查看、变化监测等基础功能时，可添加 `--profile core`。
+默认安装便携 Python、依赖和本地模型，完成检查后打开工作台。使用配套离线依赖包时，把 `dependencies-windows-x64.zip` 和同名 `.zip.sha256` 放在解压后的源码根目录，再执行上述命令；安装器自动校验、导入本地环境，无需联网或预装 Python。没有配套依赖包时，首次完整安装联网下载。仅使用证据查看、变化监测等基础功能时，可添加 `--profile core`；该模式跳过完整依赖包。
 
 ### 打开工作台
 
@@ -50,9 +50,21 @@ rdwork
 
 升级保留旧工作区中的业务数据、配置和记录，并备份被替换的框架文件。升级后继续使用旧工作区目录。添加 `--preview` 可查看计划。
 
+源码目录中的配套依赖 ZIP 同样用于升级；也可显式指定 `--bundle "D:\下载\dependencies-windows-x64.zip"`。依赖按新版锁文件校验，旧运行时和模型备份后再替换，最后自检并按旧工作区的材料来源重建索引。
+
 命令注册使用一个固定的用户 PATH 项，重复注册更新工作区地址。执行 `.\setup.cmd --unregister` 可撤销注册并保留数据。
 
 安装选项、保留范围和恢复方法见 [一键部署与工作台](docs/SETUP_WORKBENCH.md)；离线打包与迁移见 [Windows 离线迁移](docs/WINDOWS_PORTABILITY.md)。
+
+### 分发本机依赖
+
+在已安装完整环境的工作区执行：
+
+```powershell
+.\setup.cmd --pack-dependencies --apply
+```
+
+生成 `dist/dependencies-windows-x64.zip` 和校验文件，可作为 GitHub Release 附件。包含便携 Python、锁定的第三方包、Qdrant local、嵌入与 OCR 模型；按发行清单取文件，排除业务材料、数据库、查询历史与未登记本机文件。打包不下载依赖，也不自动上传。分发及恢复方法见 [依赖包与 Release](docs/DEPENDENCY_RELEASE.md)。
 
 ### 体验示例数据
 

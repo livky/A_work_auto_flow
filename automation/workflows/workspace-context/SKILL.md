@@ -10,7 +10,7 @@ description: 在当前研发工作区回答算法问题、核对文档与实现�
 适用于已有工作区材料的问答/排查，不用于普通闲聊或与该资料库无关的写作。从当前目录向上找到 workspace.json，读取根 AGENTS 和 context/START_HERE；用户要求优先。
 
 1. 根据问题确认目标核心算法；知道 MOD-ID 时传 --module，未确定时允许检索推断并检查 focus_modules，不把所有核心算法全文加载。
-   核心算法只指公司文档定义的关键模型算法/测校项；不能将检索命中的通用脚本功能当成核心算法对象。显式 context_role=core-code 需有算法文档—实现映射依据。
+   核心算法只指公司文档定义的关键模型算法；不能将检索命中的通用脚本功能当成核心算法对象。显式 context_role=core-code 需有算法文档—实现映射依据。
 2. 执行 `automation/workspace.ps1 retrieve-context "问题"`。读取 context_path **和** manifest_path。检查算法基线是否全文、候选的 role/reason/selection、Run 风险、版本和抽取警告。required_not_full 或 module_algorithm_missing 非空时不得声称已掌握完整算法依据。
 3. 比较命中算法说明与核心代码；代码差异可能是根因，不默认文档正确。长 Python 文件优先命中函数，其他代码片段缺定义/调用方时继续补充。Run brief 是字段摘录，不代表全部参数/日志已读。
 4. 用户说“加入/完整读/不看这份”时使用 --include / --full / --exclude，传已索引路径或 SRC-ID；不要据文件引用扩大读取授权。长期偏好仅在用户明确要求时更新 retrieval/context-policy.json 的 preferences，保留修改前后配置到 retrieval/strategies，不因一次有用就默认永久加入。

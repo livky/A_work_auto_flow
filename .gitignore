@@ -75,6 +75,7 @@ services/qdrant/downloads/
 
 # 本机安装回执与检查输出可能含绝对路径；公开仓库只保存安装脚本和依赖清单。
 services/qdrant/installation.json
+services/qdrant/dependency-distribution.json
 services/qdrant/test-results.txt
 services/qdrant/context-smoke.txt
 services/qdrant/context-cli-verification.json

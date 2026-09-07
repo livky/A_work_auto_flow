@@ -86,7 +86,7 @@ retrieval/sources.json 逐文件登记原位外部来源或补充元数据：
 
 path/related 以工作区根为基准，也接受绝对文件路径。related 只连接已索引来源，不授权读取新文件。可用 enabled=false 停止召回，原件和历史保留。context_mode 可设 full/excerpt；角色为 algorithm、core-code、application-code、run、research、knowledge、project、media、document。角色不确定时不伪装成确定判断；路径推断只是默认值。
 
-核心算法仅指公司文档定义的关键模型算法/测校项。普通代码默认 application-code；已关联算法的 core-algorithms/<slug>/code 内实现默认 core-code，apps、ui、tests、utils 等辅助目录仍按应用代码处理。算法卡 README 和 docs/algorithm 下的说明可作为算法基线，目录规则及辅助 README 不自动充当算法说明。原位文档/代码通过显式 context_role 指定角色，必须有文档—实现映射依据；module_ids 只表达关联，不将工具变成算法对象。preferences.modules、--module 和 MOD-ID 保留兼容名称，语义均为核心算法。
+核心算法仅指公司文档定义的关键模型算法。普通代码默认 application-code；已关联算法的 core-algorithms/<slug>/code 内实现默认 core-code，apps、ui、tests、utils 等辅助目录仍按应用代码处理。算法卡 README 和 docs/algorithm 下的说明可作为算法基线，目录规则及辅助 README 不自动充当算法说明。原位文档/代码通过显式 context_role 指定角色，必须有文档—实现映射依据；module_ids 只表达关联，不将工具变成算法对象。preferences.modules、--module 和 MOD-ID 保留兼容名称，语义均为核心算法。
 
 核心算法 aliases、Run keywords、来源 keywords 用于词项索引和限长嵌入前缀。AI 在整理任务中补业务关键词；CLI 自动分词不等于自动理解。文档/实现一致性由 AI/验证流程核对，consistency=mismatch 只提示候选优先复查，不自动撤回结论。
 

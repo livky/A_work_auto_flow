@@ -6,7 +6,7 @@
 
 ## 用户最少需要提供什么
 
-核心算法仅指公司算法/模块文档定义的关键模型算法或测校项，准入标准见 [核心算法规则](../core-algorithms/AGENTS.md)。接入前先确认文档定义的算法项及工程目标，不因脚本含函数、类、数值计算或被称为“模块”而建卡。未确定资格的材料留 inbox/research；普通辅助功能归 tools、automation 或 runs。
+核心算法仅指公司算法/模块文档定义的关键模型算法，准入标准见 [核心算法规则](../core-algorithms/AGENTS.md)。接入前先确认文档定义的算法项及工程目标，不因脚本含函数、类、数值计算或被称为“模块”而建卡。未确定资格的材料留 inbox/research；普通辅助功能归 tools、automation 或 runs。
 
 建卡使用 `new-core-algorithm <slug> --title "名称" --source-document "公司文档名称/编号或受控路径"`，补文档版本、章节、实际阅读状态及算法协同关系。source_document 仅是来源登记，未知版本留空；公司文档原名保留，不把“模块文档”擅自改写为另一份文件名。
 

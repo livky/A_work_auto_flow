@@ -4,6 +4,10 @@
 
 ## 当前实现
 
+- 2026-09-07 根 AGENTS.md 已固化框架、依赖、模型的迁移与发布标准，包含旧数据保留、备份恢复、模型兼容边界和离线验证。本轮发布目标为 [v0.1.0](https://github.com/livky/A_work_auto_flow/releases/tag/v0.1.0)，标签绑定当前分支配套提交，附件为独立依赖 ZIP 及校验文件；下方未发布表述是前次验证时的快照，实际发布状态以 Release 页面为准。
+
+- 2026-09-07 正式框架统一为“核心算法”，现行规则、模板、CLI、导航和 Skill 去掉固定领域例名，历史记录与明确测试示例保留。新增 setup --pack-dependencies 与 --bundle：本机已验证的 Python/锁定包/Qdrant local/模型按发行清单打包，支持无系统 Python/Node 的离线安装、保留业务升级、依赖恢复及接收端再次打包。完整 125 项回归通过；真实中文路径安装、升级、再次打包和恢复通过；证据 RUN-20260907T094813Z-4EE938390289，使用 docs/DEPENDENCY_RELEASE.md。本地依赖 ZIP 已生成，尚未发布 Release，未在第二台物理机或真实业务上验收。
+
 - 2026-09-07 按用户修正将材料分类下拉框改成紧凑多选勾选项；多个大类取并集，与搜索叠加，未选分类显示全部，已有材料勾选保持。前端 8 项测试与浏览器 3 项回归通过，预构建资源已更新。
 
 - 2026-09-07 已提交半成品基线 `47809c4`。随后修复关系页勾选未参与图范围计算的问题：多选按一/两跳关联联动图、局部聚类和导出；清空恢复全图，明确聚焦时退出多选。材料列表新增大类筛选，与标题/ID 搜索叠加；跨分类保留勾选，同名材料显示 ID 区分。新增勾选/排除单元测试及跨分类浏览器回归；8 项前端测试、3 项浏览器测试和 116 项 Python 回归通过。
@@ -19,7 +23,7 @@
 - 2026-09-07 已增加证据工作台：浏览器搜索/筛选、保存原因、来源预览、Run 输入/产物、复核历史、失效观察时间与报告依赖路径；不依赖向量/OCR。新增 evidence-monitor 单次只读监测，原子保存本机基线、事件和维护候选，重复不晋升。已安装 evidence-inspection 技能入口；定时频率尚待用户选择，未创建定时自动化。用法见 docs/EVIDENCE_VIEW_MONITOR.md。
 - 本批回归 86 项，79 通过、7 原有模型测试跳过；界面及只读 HTTP/中文路径迁移已验证。首次监测已建基线，相同内容的重复日志只提出比较候选。证据见 RUN-20260907T023756Z-035991E67BBA；完整模型环境及真实业务验收仍未完成。
 
-- “模块”已改为核心算法（测校项），目录 core-algorithms；仅收录公司算法/模块文档定义的关键模型算法。创建命令 new-core-algorithm 要求 --source-document，旧命令同样检查；MOD-ID 和 module.json 等兼容字段保留。普通脚本默认应用代码，不自动作为核心实现。变更证据见 docs/design/core-algorithms-rename-plan.md。
+- “模块”已改为核心算法，目录 core-algorithms；仅收录公司算法/模块文档定义的关键模型算法。创建命令 new-core-algorithm 要求 --source-document，旧命令同样检查；MOD-ID 和 module.json 等兼容字段保留。普通脚本默认应用代码，不自动作为核心实现。变更证据见 docs/design/core-algorithms-rename-plan.md。
 
 - Windows x64 迁移入口已补齐：`portable.cmd pack --apply` 创建完整离线 ZIP，解压后 `portable.cmd check` 自检；含中文/空格新路径迁移及索引重建通过，47 项回归通过。说明见 docs/WINDOWS_PORTABILITY.md，证据见 docs/design/windows-portability-plan.md；尚未跨物理电脑验证。
 

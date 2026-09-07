@@ -1,10 +1,10 @@
 # 工作区派生索引
 
-生成时间：2026-09-07T09:01:21Z
+生成时间：2026-09-07T10:40:22Z
 
 > 本文件由 `workspace_cli.py refresh-index` 生成，只用于导航；对象附近的元数据和正式文档才是事实源。
 
-## 核心算法（测校项）
+## 核心算法
 
 _暂无已登记对象。_
 
@@ -43,10 +43,11 @@ _暂无已登记对象。_
 
 ## Run（最近 20 项）
 
-共 6 项；使用 search-runs 按关键词检索源记录。
+共 7 项；使用 search-runs 按关键词检索源记录。
 
 | ID | 标题 | 状态 | 入口 |
 |---|---|---|---|
+| `RUN-20260907T094813Z-4EE938390289` | 核心算法术语与 Windows 依赖分发实施验证 | `succeeded / not-reviewed` | [runs/run-20260907t094813z-4ee938390289/run.json](../../runs/run-20260907t094813z-4ee938390289/run.json) |
 | `RUN-20260907T071646Z-CE49506865C4` | 模块化工作台与完整材料关系功能实施验证 | `succeeded / not-reviewed` | [runs/run-20260907t071646z-ce49506865c4/run.json](../../runs/run-20260907t071646z-ce49506865c4/run.json) |
 | `RUN-20260907T063633Z-159B86592CDD` | 材料关系图的工具调研与现有结构核对 | `succeeded / not-reviewed` | [runs/run-20260907t063633z-159b86592cdd/run.json](../../runs/run-20260907t063633z-159b86592cdd/run.json) |
 | `RUN-20260907T042941Z-D9E5F49FE803` | Windows 一键部署、统一工作台与隔离测试数据验证 | `succeeded / not-reviewed` | [runs/run-20260907t042941z-d9e5f49fe803/run.json](../../runs/run-20260907t042941z-d9e5f49fe803/run.json) |

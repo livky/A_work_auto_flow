@@ -9,7 +9,7 @@ description: 分批整理研发材料、关键词和核心算法入口，同步�
 
 ## 材料导入或算法变更
 
-先按 core-algorithms/AGENTS.md 核查对象资格：只将公司算法/模块文档定义的关键模型算法或测校项建为核心算法卡，登记 source_document、版本/章节和阅读状态。不从函数、类、软件模块或脚本目录自动建卡。普通功能归 tools/automation/runs，缺少公司文档依据的候选留 inbox/research；通过 module_ids 关联工具不改变工具类别。
+先按 core-algorithms/AGENTS.md 核查对象资格：只将公司算法/模块文档定义的关键模型算法建为核心算法卡，登记 source_document、版本/章节和阅读状态。不从函数、类、软件模块或脚本目录自动建卡。普通功能归 tools/automation/runs，缺少公司文档依据的候选留 inbox/research；通过 module_ids 关联工具不改变工具类别。
 
 读取工作区的 [材料与维护手册](../../../docs/EXISTING_MATERIALS.md) 中对应章节，照其中约定落盘，不把手册全文复制到卡片。
 

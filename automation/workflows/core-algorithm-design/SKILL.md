@@ -1,11 +1,11 @@
 ---
 name: core-algorithm-design
-description: 理解、设计或修改公司文档定义的核心模型算法或测校项，建立接口、公式、数据依赖、Verification、Validation、UQ 和失效模式证据；不用于通用脚本功能分类。
+description: 理解、设计或修改公司文档定义的核心模型算法，建立接口、公式、数据依赖、Verification、Validation、UQ 和失效模式证据；不用于通用脚本功能分类。
 ---
 
 # 核心算法设计工作流
 
-本工作流仅面向公司算法/模块文档定义的关键模型算法或测校项。先核对 core-algorithms/AGENTS.md 的准入条件，普通软件功能和辅助脚本按工具或流程维护；新算法研究尚无公司文档依据时先保存在 research，不直接建核心算法卡。
+本工作流仅面向公司算法/模块文档定义的关键模型算法。先核对 core-algorithms/AGENTS.md 的准入条件，普通软件功能和辅助脚本按工具或流程维护；新算法研究尚无公司文档依据时先保存在 research，不直接建核心算法卡。
 
 已有材料的阅读按根上下文策略：目标算法说明优先，其他证据按必要性加入；证据不足按 workspace-context 方法扩展，不一次加载全部历史。
 
