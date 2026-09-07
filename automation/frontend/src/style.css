@@ -6,6 +6,37 @@
   line-height: 1.6;
   font-synthesis: none;
 }
+.material-kind-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border: 0;
+  padding: 0;
+  margin: 12px 0;
+  min-width: 0;
+}
+.material-kind-options legend {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.material-kind-options .kind-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #cbd9d7;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.material-kind-options .kind-option.active {
+  background: #deeee9;
+  border-color: #43958b;
+}
+.material-kind-options .muted {
+  flex-basis: 100%;
+  font-size: 11px;
+}
 * {
   box-sizing: border-box;
 }

@@ -40,6 +40,44 @@ export function fixture(count = 6): MaterialGraph {
   };
 }
 describe("关系选择与候选", () => {
+  it("勾选单个或多个材料只展示其关联，清空后恢复全图", () => {
+    const graph = fixture(8);
+    const single = selectGraph(graph, "", 1, [], "radial", [], 0, ["N0"]);
+    expect(single.nodes.map((n) => n.id).sort()).toEqual(["N0", "N1"]);
+    const multiple = selectGraph(graph, "", 1, [], "radial", [], 0, [
+      "N0",
+      "N6",
+    ]);
+    expect(multiple.nodes.map((n) => n.id).sort()).toEqual([
+      "N0",
+      "N1",
+      "N5",
+      "N6",
+      "N7",
+    ]);
+    expect(multiple.selection.checked).toEqual(["N0", "N6"]);
+    expect(summary(single, "")).not.toContain("N6 |");
+    expect(selectGraph(graph, "", 1, [], "radial", []).nodes).toHaveLength(8);
+  });
+  it("勾选根节点遵守跳数、排除和关系类型，不回退为全部材料", () => {
+    const graph = fixture();
+    expect(
+      selectGraph(graph, "", 2, [], "radial", [], 0, ["N0"]).nodes,
+    ).toHaveLength(3);
+    expect(
+      selectGraph(graph, "", 2, ["N1"], "radial", [], 0, ["N0"]).nodes.map(
+        (n) => n.id,
+      ),
+    ).toEqual(["N0"]);
+    expect(
+      selectGraph(graph, "", 2, ["N0"], "radial", [], 0, ["N0"]).nodes,
+    ).toEqual([]);
+    expect(
+      selectGraph(graph, "", 2, [], "evidence", [], 0, ["N0"]).nodes.map(
+        (n) => n.id,
+      ),
+    ).toEqual(["N0"]);
+  });
   it("折叠和展开保留底层事实，多重归属不会复制原节点", () => {
     const graph = fixture();
     const before = JSON.stringify(graph);

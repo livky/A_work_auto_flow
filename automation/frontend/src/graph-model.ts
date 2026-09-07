@@ -23,6 +23,7 @@ export function selectGraph(
   mode: Mode,
   types: string[],
   offset = 0,
+  checked: string[] = [],
 ) {
   const blocked = new Set(excluded);
   const nodes = new Map(
@@ -36,7 +37,14 @@ export function selectGraph(
       (mode !== "evidence" || evidenceTypes.has(e.type)),
   );
   let ids = new Set(nodes.keys());
-  if (center && nodes.has(center)) {
+  // Checkbox selection supplies multiple roots. An empty/removed root set must
+  // not accidentally expand back to all materials when a selection was made.
+  const roots = checked.length
+    ? checked.filter((id) => nodes.has(id))
+    : center && nodes.has(center)
+      ? [center]
+      : [];
+  if (checked.length || roots.length) {
     const neighbors = new Map<string, Set<string>>();
     for (const e of edges) {
       if (!neighbors.has(e.source)) neighbors.set(e.source, new Set());
@@ -44,8 +52,8 @@ export function selectGraph(
       neighbors.get(e.source)!.add(e.target);
       neighbors.get(e.target)!.add(e.source);
     }
-    ids = new Set([center]);
-    let frontier = [center];
+    ids = new Set(roots);
+    let frontier = roots;
     for (let d = 0; d < hops; d++) {
       const next = new Set<string>();
       for (const id of frontier)
@@ -55,7 +63,9 @@ export function selectGraph(
     }
   }
   const order = [...ids].sort(
-    (a, b) => Number(b === center) - Number(a === center) || a.localeCompare(b),
+    (a, b) =>
+      Number(roots.includes(b)) - Number(roots.includes(a)) ||
+      a.localeCompare(b),
   );
   const visible = new Set(order.slice(offset, offset + 300));
   const shownEdges = edges.filter(
@@ -68,7 +78,7 @@ export function selectGraph(
     edges: shownEdges.slice(0, 1000),
     omitted_nodes: ids.size - visible.size,
     omitted_edges: Math.max(0, shownEdges.length - 1000),
-    selection: { center, hops, excluded, mode, types, offset },
+    selection: { center, checked, hops, excluded, mode, types, offset },
   };
 }
 export function topicGroups(graph: MaterialGraph) {

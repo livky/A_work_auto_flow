@@ -41,6 +41,7 @@ export function Relations({
   const [mode, setMode] = useState<Mode>("radial");
   const [hops, setHops] = useState(1);
   const [search, setSearch] = useState("");
+  const [materialKinds, setMaterialKinds] = useState<string[]>([]);
   const [query, setQuery] = useState("");
   const [excluded, setExcluded] = useState<string[]>([]);
   const [types, setTypes] = useState<string[]>([]);
@@ -140,9 +141,9 @@ export function Relations({
   const graph = useMemo(
     () =>
       base
-        ? selectGraph(base, center, hops, excluded, mode, types, offset)
+        ? selectGraph(base, center, hops, excluded, mode, types, offset, seeds)
         : null,
-    [base, center, hops, excluded, mode, types, offset],
+    [base, center, hops, excluded, mode, types, offset, seeds],
   );
   const topics = useMemo(
     () => (catalog ? topicGroups(catalog) : []),
@@ -170,13 +171,15 @@ export function Relations({
         .filter(
           (n) =>
             !excluded.includes(n.id) &&
+            (!materialKinds.length || materialKinds.includes(n.kind)) &&
             (!search ||
               (n.title + n.id).toLowerCase().includes(search.toLowerCase())),
         )
         .slice(0, 60),
-    [catalog, search, excluded],
+    [catalog, search, excluded, materialKinds],
   );
   function focus(id: string) {
+    setSeeds([]);
     setHistory((h) => [...h, center]);
     setCenter(id);
     setSelected(id);
@@ -184,6 +187,10 @@ export function Relations({
     setOffset(0);
   }
   function choose(id: string) {
+    // Return to the first page so a small checked subgraph is never hidden by
+    // the previous all-materials page offset. List filters preserve selection.
+    setOffset(0);
+    setCenter("");
     setSeeds((old) =>
       old.includes(id)
         ? old.filter((x) => x !== id)
@@ -362,6 +369,7 @@ export function Relations({
             </label>
             <button
               onClick={() => {
+                setSeeds([]);
                 setCenter(history.at(-1) || "");
                 setHistory((h) => h.slice(0, -1));
                 setOffset(0);
@@ -381,6 +389,34 @@ export function Relations({
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+              <fieldset className="material-kind-options">
+                <legend>材料分类（可多选）</legend>
+                {Object.entries(kindNames).map(([kind, name]) => (
+                  <label
+                    key={kind}
+                    className={
+                      materialKinds.includes(kind)
+                        ? "kind-option active"
+                        : "kind-option"
+                    }
+                  >
+                    <input
+                      type="checkbox"
+                      aria-label={`分类：${name}`}
+                      checked={materialKinds.includes(kind)}
+                      onChange={() =>
+                        setMaterialKinds((old) =>
+                          old.includes(kind)
+                            ? old.filter((value) => value !== kind)
+                            : [...old, kind],
+                        )
+                      }
+                    />
+                    <span>{name}</span>
+                  </label>
+                ))}
+                <span className="muted">未勾选时显示全部分类</span>
+              </fieldset>
               {mode === "groups" && (
                 <div className="topic-list">
                   {topics.map((t) => (
@@ -418,9 +454,23 @@ export function Relations({
               <p className="muted">
                 已选 {seeds.length}/50 · 最多列出 60 个搜索结果
               </p>
+              {seeds.length > 0 && (
+                <button
+                  onClick={() => {
+                    setSeeds([]);
+                    setOffset(0);
+                  }}
+                >
+                  清空勾选
+                </button>
+              )}
               <div className="scroll-list">
                 {matches.map((n) => (
-                  <div className="material-row" key={n.id}>
+                  <div
+                    className="material-row"
+                    key={n.id}
+                    data-material-id={n.id}
+                  >
                     <input
                       aria-label={`选择 ${n.title}`}
                       type="checkbox"
@@ -439,6 +489,7 @@ export function Relations({
                         {kindNames[n.kind] || n.kind}
                       </span>
                       <strong>{n.title}</strong>
+                      <small className="id">{n.id}</small>
                       {n.risks.length > 0 && (
                         <span className="risk">存在风险</span>
                       )}
@@ -484,6 +535,9 @@ export function Relations({
               />
               <div className="row spread">
                 <p className="muted">
+                  {seeds.length
+                    ? `勾选 ${seeds.length} 个材料及其${hops === 1 ? "一" : "两"}跳关联 · `
+                    : ""}
                   显示 {graph.nodes.length} 个节点 / {graph.edges.length} 条边 ·
                   当前范围另有 {graph.omitted_nodes} 个节点、
                   {graph.omitted_edges} 条边未显示
