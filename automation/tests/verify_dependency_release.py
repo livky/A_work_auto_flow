@@ -19,6 +19,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'automation/scripts'))
 import dependency_bundle as bundle
 import deployment
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import upgrade_fixture
 
 
 def main():
@@ -68,11 +70,13 @@ def main():
     private = target / 'knowledge/private-note.md'
     private.parent.mkdir(parents=True, exist_ok=True)
     private.write_text('# Synthetic private note\nDo not publish this fixture.\n', encoding='utf-8')
+    protected = upgrade_fixture.populate(target)
     before = {name: bundle.sha(target / name) for name in ['knowledge/private-note.md', 'retrieval/config.json', 'retrieval/sources.json', 'AGENTS.md']}
     # 新包应替换整个 runtime，不能保留旧环境未登记的模块；旧版本仍留在恢复目录。
     stale = target / 'services/qdrant/runtime/stale-package.py'
     stale.write_text('synthetic stale package', encoding='utf-8')
     execute('offline-upgrade', source, '--bundle', str(archive), '--target', str(target))
+    upgrade_fixture.assert_preserved(target, protected)
     if stale.exists():
         raise AssertionError('stale package remained live')
     for name, digest in before.items():
@@ -90,12 +94,15 @@ def main():
     receipt = next(p for p in (target / '.local/dependency-backups').glob('*/receipt.json')
                    if (p.parent / 'previous/services/qdrant/runtime/stale-package.py').exists())
     execute('dependency-rollback', source, '--bundle', str(archive), '--rollback-dependencies', str(receipt.parent))
+    upgrade_fixture.assert_preserved(target, protected)
     if not stale.exists():
         raise AssertionError('dependency rollback did not restore previous runtime')
     for name, digest in before.items():
         if bundle.sha(target / name) != digest:
             raise AssertionError('rollback changed business/config: ' + name)
     evidence['preserved'] = list(before)
+    evidence['expanded_workspace'] = {'protected_files': len(protected['files']), 'protected_directories': len(protected['directories']),
+                                      'all_fingerprints_preserved': True}
     evidence['status'] = 'passed'
     (base / 'verification.json').write_text(json.dumps(evidence, ensure_ascii=False, indent=2), encoding='utf-8')
     print(str(base / 'verification.json'))

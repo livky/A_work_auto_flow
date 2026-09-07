@@ -20,9 +20,9 @@
 
 ## 验证
 
-- 全套 46 项测试通过，详见 [测试日志](../../services/qdrant/test-results.txt)。包括算法基线、长函数、Run 摘录、用户排除/反转、预算缺口、模块缺失、跨模块扩展和停止、真实本地模型及 OCR 离线行为。
+- 当时记录全套 46 项测试通过。原测试日志路径为 `services/qdrant/test-results.txt`（相对工作区根目录），属于 Git 排除的本机产物，未随源码分发，当前副本无法据该附件复核。测试范围包括算法基线、长函数、Run 摘录、用户排除/反转、预算缺口、模块缺失、跨模块扩展和停止、真实本地模型及 OCR 离线行为。
 - 上下文清单/元数据后续收尾用 8 项定向回归和实际 CLI 检查复核，不用业务材料造反馈。
-- 隔离 CLI 从 retrieve-context 生成 focus 包，再 context-feedback 生成 investigate 包，继承 9000 字符预算及父 CTX；开启真实本地向量。凭证见 [CLI 检查](../../services/qdrant/context-cli-verification.json)。
+- 当时记录隔离 CLI 从 retrieve-context 生成 focus 包，再 context-feedback 生成 investigate 包，继承 9000 字符预算及父 CTX；开启真实本地向量。原凭证路径为 `services/qdrant/context-cli-verification.json`（相对工作区根目录），属于 Git 排除的本机产物，未随源码分发，当前副本无法据该附件复核。
 - 根目录真实“血缘”检索生成 CTX-270a2cae8f864fddbb4385ccc658a4b1，命中两份研究底稿，装载 3748 字符；没有伪造用户解决/未解决反馈。
 - 两个安装入口与四个修改的工作流通过官方 quick_validate。入口链接、JSON 和结构由 validate 检查。
 

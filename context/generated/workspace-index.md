@@ -1,6 +1,6 @@
 # 工作区派生索引
 
-生成时间：2026-09-07T10:40:22Z
+生成时间：2026-09-07T15:11:56Z
 
 > 本文件由 `workspace_cli.py refresh-index` 生成，只用于导航；对象附近的元数据和正式文档才是事实源。
 
@@ -43,10 +43,11 @@ _暂无已登记对象。_
 
 ## Run（最近 20 项）
 
-共 7 项；使用 search-runs 按关键词检索源记录。
+共 8 项；使用 search-runs 按关键词检索源记录。
 
 | ID | 标题 | 状态 | 入口 |
 |---|---|---|---|
+| `RUN-20260907T143437Z-96C331370A32` | 已有扩展目录的 Windows 升级回归验证 | `succeeded / not-reviewed` | [runs/run-20260907t143437z-96c331370a32/run.json](../../runs/run-20260907t143437z-96c331370a32/run.json) |
 | `RUN-20260907T094813Z-4EE938390289` | 核心算法术语与 Windows 依赖分发实施验证 | `succeeded / not-reviewed` | [runs/run-20260907t094813z-4ee938390289/run.json](../../runs/run-20260907t094813z-4ee938390289/run.json) |
 | `RUN-20260907T071646Z-CE49506865C4` | 模块化工作台与完整材料关系功能实施验证 | `succeeded / not-reviewed` | [runs/run-20260907t071646z-ce49506865c4/run.json](../../runs/run-20260907t071646z-ce49506865c4/run.json) |
 | `RUN-20260907T063633Z-159B86592CDD` | 材料关系图的工具调研与现有结构核对 | `succeeded / not-reviewed` | [runs/run-20260907t063633z-159b86592cdd/run.json](../../runs/run-20260907t063633z-159b86592cdd/run.json) |

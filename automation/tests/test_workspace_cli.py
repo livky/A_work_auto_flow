@@ -59,6 +59,32 @@ class WorkspaceCliTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             workspace_cli.slugify("纯中文标题")
 
+    def test_tool_registry_accepts_files_and_directories_but_rejects_missing_paths(self):
+        """复现旧工作区登记包/脚本目录时，升级 validate 误报入口不存在。"""
+        baseline_errors, _ = workspace_cli.validate_workspace(self.root)
+        entries = ['tools/packages/example_library', 'tools/scripts/example_tools', 'tools/scripts/example.py']
+        for name in entries[:2]:
+            (self.root / name).mkdir(parents=True)
+        (self.root / entries[2]).write_text('# Synthetic CLI\n', encoding='utf-8')
+        tools = [{'tool_id': f'TOOL-TEST-{i}', 'entrypoint': name} for i, name in enumerate(entries)]
+        registry = self.root / 'tools/registry.json'
+        registry.write_text(json.dumps({'schema_version': 1, 'tools': tools}), encoding='utf-8')
+        before = registry.read_bytes()
+        errors, _ = workspace_cli.validate_workspace(self.root)
+        # 共用 fixture 是最小工作区，保留其原有缺失项，只比较此次登记的增量。
+        self.assertEqual(errors, baseline_errors)
+        self.assertEqual(registry.read_bytes(), before)
+        # 对同一批真实路径制造缺失，确保修复没有把存在性校验整体跳过。
+        (self.root / entries[0]).rmdir()
+        (self.root / entries[2]).unlink()
+        errors, _ = workspace_cli.validate_workspace(self.root)
+        failures = [e for e in errors if '工具入口不存在' in e]
+        self.assertEqual(len(failures), 2)
+        self.assertTrue(any('TOOL-TEST-0' in e for e in failures))
+        self.assertTrue(any('TOOL-TEST-2' in e for e in failures))
+        self.assertFalse(any('TOOL-TEST-1' in e for e in failures))
+        self.assertTrue(all(str(self.root) in e for e in failures))
+
     def test_global_modules_runs_and_optional_projects(self):
         module = workspace_cli.create_module(self.root, "align", "对齐", source_document="公司测校项文档 TEST-ALIGN")
         self.assertEqual(module.parent, self.root / "core-algorithms")

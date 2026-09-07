@@ -29,6 +29,7 @@ import portable
 import retrieval
 import workbench
 import workspace_cli as cli
+import upgrade_fixture
 
 
 class DeploymentWorkbenchTests(unittest.TestCase):
@@ -249,6 +250,8 @@ class DeploymentWorkbenchTests(unittest.TestCase):
 
     @unittest.skipUnless(os.name == 'nt', 'Windows cmd/PowerShell integration')
     def test_windows_zip_upgrade_entry_and_rollback_preserve_data(self):
+        protected = upgrade_fixture.populate(self.root)
+        self.assertEqual(cli.validate_workspace(self.root)[0], [])
         # Build a small GitHub-like source tree and invoke the actual .cmd entry in PS 5.1.
         source = self.base / '源码 ZIP'
         source.mkdir()
@@ -259,10 +262,21 @@ class DeploymentWorkbenchTests(unittest.TestCase):
             shutil.copy2(ROOT / name, dst)
         keep = (self.root / 'runs/synthetic-base/run.json').read_bytes()
         env = dict(os.environ, CODEX_WORKSPACE_PYTHON=sys.executable)
+        preview = subprocess.run(['cmd.exe', '/d', '/c', 'setup.cmd', '--target', str(self.root), '--profile', 'core', '--preview'],
+                                 cwd=source, env=env, capture_output=True, text=True, timeout=60)
+        self.assertEqual(preview.returncode, 0, preview.stdout + preview.stderr)
+        upgrade_fixture.assert_preserved(self.root, protected)
         result = subprocess.run(['cmd.exe', '/d', '/c', 'setup.cmd', '--target', str(self.root), '--profile', 'core'],
                                 cwd=source, env=env, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual((self.root / 'runs/synthetic-base/run.json').read_bytes(), keep)
+        upgrade_fixture.assert_preserved(self.root, protected)
+        # 二次升级不能改变业务/登记或产生新的框架替换计划。
+        self.assertEqual(deploy.plan(source, self.root), [])
+        repeated = subprocess.run(['cmd.exe', '/d', '/c', 'setup.cmd', '--target', str(self.root), '--profile', 'core'],
+                                  cwd=source, env=env, capture_output=True, text=True, timeout=60)
+        self.assertEqual(repeated.returncode, 0, repeated.stdout + repeated.stderr)
+        upgrade_fixture.assert_preserved(self.root, protected)
         help_result = subprocess.run(['cmd.exe', '/d', '/c', 'workbench.cmd', '--help'], cwd=self.root, env=env,
                                      capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=20)
         self.assertEqual(help_result.returncode, 0, help_result.stderr)
@@ -297,6 +311,24 @@ class DeploymentWorkbenchTests(unittest.TestCase):
                                 cwd=source, env=env, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual((self.root / 'runs/synthetic-base/run.json').read_bytes(), keep)
+
+        upgrade_fixture.assert_preserved(self.root, protected)
+
+    def test_expanded_workspace_still_rejects_missing_tools_and_bad_business_metadata(self):
+        protected = upgrade_fixture.populate(self.root)
+        self.assertEqual(cli.validate_workspace(self.root)[0], [])
+        registry = self.root / 'tools/registry.json'
+        value = json.loads(registry.read_text(encoding='utf-8'))
+        value['tools'].append({'tool_id': 'TOOL-MISSING-SYNTHETIC', 'entrypoint': 'tools/packages/nonexistent'})
+        registry.write_text(json.dumps(value), encoding='utf-8')
+        bad = self.write(self.root, 'knowledge/用户扩展/deeper/invalid.json', '{not JSON')
+        errors, _ = cli.validate_workspace(self.root)
+        self.assertTrue(any('TOOL-MISSING-SYNTHETIC' in e for e in errors))
+        self.assertTrue(any('invalid.json' in e for e in errors))
+        self.assertFalse(any('broken.json' in e for e in errors))
+        # 负例也必须保留磁盘输入，不允许校验器通过删除坏登记/材料达到成功。
+        self.assertTrue(bad.is_file())
+        self.assertIn('TOOL-MISSING-SYNTHETIC', registry.read_text())
 
     def test_environment_missing_or_wrong_versions_is_not_reused(self):
         self.assertFalse(deploy.environment_ready(self.root))

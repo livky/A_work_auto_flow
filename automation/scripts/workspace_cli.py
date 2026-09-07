@@ -885,8 +885,13 @@ def validate_workspace(root: Path) -> tuple[list[str], list[str]]:
         registry = load_json(root / "tools" / "registry.json")
         for item in registry.get("tools", []):
             entrypoint = item.get("entrypoint")
-            if entrypoint and not (root / entrypoint).is_file():
-                errors.append(f"工具入口不存在：{item.get('tool_id')} -> {entrypoint}")
+            if entrypoint:
+                # 稳定工具既可以登记单文件 CLI，也可以登记包/脚本集合目录。
+                # 此处只验证登记路径存在，不执行工具，也不把目录存在当作
+                # Python 包可导入或业务功能已验证；执行能力由工具的 verify 检查。
+                entry_path = root / entrypoint
+                if not (entry_path.is_file() or entry_path.is_dir()):
+                    errors.append(f"工具入口不存在：{item.get('tool_id')} -> {entrypoint}（工作区：{root}）")
     except (OSError, json.JSONDecodeError, TypeError) as exc:
         errors.append(f"工具注册表无法校验：{exc}")
 

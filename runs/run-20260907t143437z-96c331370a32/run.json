@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260907T143437Z-96C331370A32",
+  "project_id": null,
+  "title": "已有扩展目录的 Windows 升级回归验证",
+  "keywords": [
+    "升级",
+    "回归测试",
+    "目录工具",
+    "数据保留",
+    "Windows",
+    "离线依赖"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "succeeded",
+  "created_at": "2026-09-07T14:34:37Z",
+  "started_at": null,
+  "ended_at": "2026-09-07T14:39:28.011914+00:00",
+  "owner": null,
+  "question": "防止目录工具入口误报，并验证已有大量用户子目录时升级和恢复保留数据。",
+  "hypotheses": [],
+  "inputs": [
+    {
+      "path": "automation/scripts/workspace_cli.py",
+      "sha256": "eede10ed4ceaa9f67f8e166a8ac76b279ff1bea61c2cfbdfd1043152a1215be8"
+    },
+    {
+      "path": "automation/scripts/deployment.py",
+      "sha256": "39de4830804ce883be6040805080d8dc6d3db1811fee78302b77c376a55366e9"
+    },
+    {
+      "path": "automation/tests/test_workspace_cli.py",
+      "sha256": "31bab29c8e789e08e3a15c9491d382c2aa967bbab1eef47c341e70fa4b26c660"
+    },
+    {
+      "path": "automation/tests/test_deployment_workbench.py",
+      "sha256": "7221ca242c8d613e8d744c03c095412930eebaf2cc70cd882e71cc5f7696af29"
+    },
+    {
+      "path": "automation/tests/upgrade_fixture.py",
+      "sha256": "bdc33a1dc47e64c3773185303511be561c1319f2414fb385aa444385116e1377"
+    },
+    {
+      "path": "automation/tests/verify_dependency_release.py",
+      "sha256": "f0534da34b2b80f7bbe2a4ec84c90bae6399133b1dfa840fd68964104b4d1e12"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "d583578061bc2974e1caa6e3fb728fe2d55089c68e48e2c5af5d3f44720be1f0"
+    },
+    {
+      "path": "docs/UPGRADE_TESTING.md",
+      "sha256": "6cf0da2c012ea2a8fcfcc0ca269cb2bdcb70dfc64762dd1bb40d802eabc7921a"
+    }
+  ],
+  "parameters": {
+    "synthetic_only": true,
+    "branches_per_business_area": 8,
+    "business_areas": 7
+  },
+  "code": {
+    "commit": "5b37830d4d72f6902f1069a85f2bf5ac91b1326c",
+    "dirty": true
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [
+    {"check": "full regression", "status": "passed", "total": 127, "skipped": 0},
+    {"check": "expanded workspace offline lifecycle and preservation", "status": "passed"}
+  ],
+  "metrics": {
+    "regression": {
+      "tests": 127,
+      "seconds": 44.136,
+      "status": "passed",
+      "skipped": 0
+    },
+    "deployment_test_module": {
+      "tests": 17,
+      "status": "passed"
+    },
+    "offline": {
+      "bundle_sha256": "7810752e15ff40b88e04bae0eedae57f20355ca2da51febba7505a787361d3a4",
+      "platform": "win32",
+      "scope": "same physical Windows machine; isolated source and target directories; no system Python/Node lookup",
+      "checks": [
+        {
+          "name": "fresh-offline-install",
+          "returncode": 0,
+          "seconds": 147.047
+        },
+        {
+          "name": "offline-upgrade",
+          "returncode": 0,
+          "seconds": 124.235
+        },
+        {
+          "name": "receiver-repack",
+          "returncode": 0,
+          "seconds": 33.906
+        },
+        {
+          "name": "dependency-rollback",
+          "returncode": 0,
+          "seconds": 30.343
+        }
+      ],
+      "preserved": [
+        "knowledge/private-note.md",
+        "retrieval/config.json",
+        "retrieval/sources.json",
+        "AGENTS.md"
+      ],
+      "expanded_workspace": {
+        "protected_files": 67,
+        "protected_directories": 119,
+        "all_fingerprints_preserved": true
+      },
+      "status": "passed"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "runs/run-20260907t143437z-96c331370a32/verification.json",
+      "sha256": "83a2846a8aa4e2b23e9de670b577fca2cf119a785aea2916415f5ccda47b3e80"
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "127 项回归通过；真实离线安装、扩展旧工作区升级、接收端再次打包和依赖恢复通过，受保护文件指纹和目录全部保留。",
+  "limitations": [
+    "同一台 Windows x64 物理机上的隔离合成目录；尚未在第二台物理机或用户真实旧工作区验收。",
+    "文件/目录存在性不证明工具可运行或业务模型有效。",
+    "当前修改尚未提交、推送或发布；v0.1.0 仍含原目录入口问题。"
+  ],
+  "parent_run_ids": [],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  }
+}

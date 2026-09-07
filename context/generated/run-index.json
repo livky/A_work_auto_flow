@@ -169,5 +169,31 @@
     "path": "runs/run-20260907t094813z-4ee938390289/run.json",
     "needs_revalidation": false,
     "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260907T143437Z-96C331370A32",
+    "project_id": null,
+    "title": "已有扩展目录的 Windows 升级回归验证",
+    "created_at": "2026-09-07T14:34:37Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "升级",
+      "回归测试",
+      "目录工具",
+      "数据保留",
+      "Windows",
+      "离线依赖"
+    ],
+    "question": "防止目录工具入口误报，并验证已有大量用户子目录时升级和恢复保留数据。",
+    "conclusion": "127 项回归通过；真实离线安装、扩展旧工作区升级、接收端再次打包和依赖恢复通过，受保护文件指纹和目录全部保留。",
+    "parent_run_ids": [],
+    "path": "runs/run-20260907t143437z-96c331370a32/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
   }
 ]

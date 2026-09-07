@@ -56,6 +56,12 @@ rdwork
 
 安装选项、保留范围和恢复方法见 [一键部署与工作台](docs/SETUP_WORKBENCH.md)；离线打包与迁移见 [Windows 离线迁移](docs/WINDOWS_PORTABILITY.md)。
 
+安装失败时先查看最早的具体校验错误，也可在目标工作区运行 `workbench.cmd validate` 单独排查，见 [升级错误排查](docs/SETUP_WORKBENCH.md#排查升级校验错误)。
+
+历史文档可能引用未随源码分发的本机日志；链接 warning 本身不会阻止安装，但需区分历史附件与业务材料缺失，见 [历史链接警告](docs/SETUP_WORKBENCH.md#历史文档的链接警告)。
+
+开发者修改校验或部署逻辑时，应运行包含用户新增子目录和自定义工具的升级回归，见 [升级测试约定](docs/UPGRADE_TESTING.md)。
+
 ### 分发本机依赖
 
 在已安装完整环境的工作区执行：

@@ -64,6 +64,22 @@ rdwork
 
 依赖包提供独立的一键恢复入口，见 [依赖恢复](DEPENDENCY_RELEASE.md#升级与恢复)。使用端不需要 wheelhouse；直接导入包内已经安装并验证过的文件。旧 `install.py --offline` 从 wheelhouse 重装的方式仍可使用。
 
+## 排查升级校验错误
+
+`validate` 失败会使 `portable.py check` 和安装器依次返回非零退出码；先看日志中最早的具体错误，而不是将每个 `returned non-zero exit status` 当作独立故障。
+
+在目标旧工作区运行 `workbench.cmd validate` 可单独查看结构错误。工具注册表 `tools/registry.json` 的 `entrypoint` 可以是单文件 CLI，也可以是包或脚本集合目录；相对路径以目标工作区根目录为基准。路径存在只说明结构有效，工具能否执行仍应按登记的 `verify` 检查。
+
+v0.1.0 的工具入口检查仅接受文件，会将已存在的目录误报为“工具入口不存在”。修复后的版本接受文件和目录，真正缺失时同时显示校验所用工作区。遇到该问题应更新校验脚本，再用原安装命令重试；不要删除工具登记、创建同名空文件或跳过完整校验。
+
+### 历史文档的链接警告
+
+`WARNING: 内部链接不存在` 表示 Markdown 引用的本地文件缺失。它本身不使 validate 或安装失败；是否成功仍看最终错误数、自检结果及退出码。不能仅凭出现 warning 判定数据迁移丢失。
+
+例如旧版 `docs/design/adaptive-context-review-2026-09-06.md` 引用了 `services/qdrant/test-results.txt`。该日志以及 `services/qdrant/context-cli-verification.json`、`tmp/core-algorithms-before.zip` 是 Git 明确排除的本机历史产物，源码包不携带这些附件。现行文档保留其原路径，明确标注附件不可用，不再提供失效下载链接；这不代表历史证据已恢复或重新复核。新版源码升级会更新这些框架文档。
+
+其他链接应逐项判断：路径写错则修正引用；业务材料确实缺失则按授权从原存储恢复或修复来源；无法取得的历史附件应保留来源和缺失说明。不要创建空日志、删除业务引用或全局忽略链接检查。新验证记录应将可分发的小型摘要及指纹保存在固定 Run，完整本机日志只作为明确标注的本地附件。
+
 ## 命令注册如何避免累积
 
 注册文件位于 `%LOCALAPPDATA%\AI-RD-Workspace\bin`。只添加**一个固定用户 PATH 项**，不改变系统 PATH、PowerShell profile 或永久执行策略。工作区地址写在 JSON 中，升级/换路径只更新地址；重复注册不追加路径。已有其他软件的同名命令或不属于本安装的目录会阻止覆盖。
