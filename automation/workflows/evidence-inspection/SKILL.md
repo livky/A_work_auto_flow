@@ -5,6 +5,10 @@ description: 在研发工作区查看结论的保存原因、依据、复核和�
 
 # 证据查看与只读监测
 
+材料关联问题可先运行 `workbench.cmd relations export --center "实际 ID" --hops 2 --format markdown`，使用 `--exclude` 保留用户排除项。投影缺失时可 `relations refresh`；过期提示应先核对版本。摘要用于定位缺口，不能代替原文。候选虚线、归属及聚类不等于正式支持，详细范围和 AI 回传格式见 [材料关系手册](../../../docs/MATERIAL_RELATIONS.md)。
+
+AI 候选通过 `relations import-candidate` 保存，先用 `--dry-run` 核对。必须引用实际源 ID、定位和生成时指纹，actor 使用 assistant-observation；不冒充用户确认。主题名称仅用于展示；重复引用及“已处理”不提升可信状态。
+
 在含 workspace.json 的当前工作区使用。先读 context/START_HERE.md、context/NOW.md；详细命令见 [查看与监测手册](../../../docs/EVIDENCE_VIEW_MONITOR.md)。
 
 - 用户要打开工作台：运行 `workbench.cmd`（已注册时可用 `rdwork`），从统一首页进入证据、监测和环境检查。用实际返回的本机 URL；已有本任务服务可复用。只需独立证据页时运行 `automation/workspace.ps1 evidence-view --serve`；静态文件使用 `evidence-view`。

@@ -29,6 +29,8 @@ class Controller:
         self.error = None
         self.capabilities = None
         self.interval = 60
+        from workbench_app.service import Service
+        self.app = Service(self.root, self)
 
     def status(self):
         with self.state_lock:
@@ -104,12 +106,22 @@ class Controller:
 
     def close(self):
         self.stop_event.set()
+        self.app.close()
         # Allow atomic state writes to finish; no new scan starts after this signal.
         if self.thread:
             self.thread.join(timeout=5)
 
 
 def serve(root, port=0, open_browser=True):
+    # 启动时一次性验证发布源码；不在五秒轮询中反复读取源码。
+    from workbench_app.web import asset_manifest
+    import hashlib
+    manifest = asset_manifest()
+    frontend = Path(__file__).resolve().parents[1] / 'frontend'
+    for name, fingerprint in manifest.get('sources', {}).items():
+        path = frontend / name
+        if path.resolve() != path or not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != fingerprint:
+            raise ValueError('前端源码和资源不匹配，请重新构建或安装完整版本：' + name)
     control = Controller(root)
     server, url = evidence_view.create_server(root, port, controller=control)
     print(json.dumps({'url': url, 'stop': 'Ctrl+C', 'monitor': '在工作台手动开启；关闭终端即停止'}, ensure_ascii=False), flush=True)

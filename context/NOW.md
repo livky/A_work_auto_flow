@@ -4,6 +4,11 @@
 
 ## 当前实现
 
+- 2026-09-07 已完成模块化工作台与材料关系：React/TypeScript 预构建界面、版本化 API、后台任务、辐射/聚合/证据链、按需关键词/本地语义/Louvain、桥接候选及 AI 摘要与 CLI。原始证据不因展示或候选改变；缓存、布局与候选位于排除发布的 `.local/workbench`。完整七步计划保留在 docs/design/workbench-relations-plan.md，操作 docs/MATERIAL_RELATIONS.md，开发 docs/WORKBENCH_DEVELOPMENT.md；验证证据 RUN-20260907T071646Z-CE49506865C4。Windows 中文路径无 Node 启动及离线完整环境复用通过；尚未在第二台物理机或真实公司问题上验收。
+
+- 2026-09-07 已完成材料关系可视化工具调研与现有关系盘点。建议工作台增加问题辐射、主题聚合、证据链及 AI 局部关系摘要；本批仅调研，未实现图功能或新的底层存储。见 [调研建议](../research/material-relationship-view/SYNTHESIS.md)，证据 RUN-20260907T063633Z-159B86592CDD；业务有效性和交互性能待验证。
+
+
 - 2026-09-07 已增加 setup.cmd 一键 Windows 完整/基础安装、--target 原位保留升级、SHA-256 备份恢复、--register/--unregister 幂等用户命令。已在本机注册 rdwork；工作台聚合证据、模块清单、监测启停与能力检查。合成数据位于 Git/离线包排除的 .local/test-workspace，正式记录保持独立。手册 docs/SETUP_WORKBENCH.md。
 - 本批最终完整验证 102 项全部通过，无跳过；实际在线部署及离线复用、真实嵌入/OCR、自包含 cmd 升级恢复和命令注册均已验证。证据 RUN-20260907T042941Z-D9E5F49FE803；尚无另一台物理机或业务有效性验收。跨会话调度未创建，工作台持续监测需手动开启。
 

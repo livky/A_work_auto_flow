@@ -1,0 +1,3 @@
+# Build/source hashes must survive GitHub ZIP and Windows autocrlf checkouts.
+automation/frontend/** text eol=lf
+automation/ui/workbench-assets/** text eol=lf

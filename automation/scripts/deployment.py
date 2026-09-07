@@ -33,14 +33,34 @@ def safe(root, relative):
 
 def framework_files(source):
     """允许替换的框架，不包含任何业务实例、运行时、来源登记或检索历史。"""
-    fixed = ['setup.cmd', 'workbench.cmd', 'portable.cmd', 'README.md', 'ARCHITECTURE.md']
-    patterns = ['automation/**/*.py', 'automation/**/*.ps1', 'automation/**/*.html',
-                'automation/**/*.md', 'docs/templates/**/*', 'docs/design/*.md', 'docs/*.md',
+    fixed = ['setup.cmd', 'workbench.cmd', 'portable.cmd', 'README.md', 'ARCHITECTURE.md', '.gitattributes']
+    patterns = ['docs/templates/**/*', 'docs/design/*.md', 'docs/*.md',
                 'services/qdrant/*.py']
     names = set(fixed)
+    # 在遍历时剪枝，避免每次升级遍历数万份前端依赖后再过滤。
+    for folder, dirs, files in os.walk(source / 'automation'):
+        dirs[:] = [d for d in dirs if d not in {'node_modules', '__pycache__', 'test-results', 'playwright-report'}]
+        names.update((Path(folder) / name).relative_to(source).as_posix() for name in files
+                     if Path(name).suffix in {'.py', '.ps1', '.html', '.md'})
     for pattern in patterns:
         names.update(p.relative_to(source).as_posix() for p in source.glob(pattern)
-                     if p.is_file() and '__pycache__' not in p.parts)
+                     if p.is_file() and not set(p.parts) & {'__pycache__', 'node_modules', 'test-results', 'playwright-report'})
+    # 前端源和资源按受控目录/清单分发，不将依赖缓存或本机数据带入升级。
+    for folder, dirs, files in os.walk(source / 'automation/frontend'):
+        dirs[:] = [d for d in dirs if d not in {'node_modules', 'test-results', 'playwright-report'}]
+        names.update((Path(folder) / name).relative_to(source).as_posix() for name in files)
+    manifest_path = source / 'automation/ui/workbench-assets/asset-manifest.json'
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+        for name, fingerprint in manifest.get('sources', {}).items():
+            if digest(safe(source, 'automation/frontend/' + name)) != fingerprint:
+                raise ValueError('前端源码与构建产物不匹配，请重新构建：' + name)
+        names.add('automation/ui/workbench-assets/asset-manifest.json')
+        for name, fingerprint in manifest['files'].items():
+            path = safe(source, 'automation/ui/workbench-assets/' + name)
+            if digest(path) != fingerprint:
+                raise ValueError('工作台发布资源缺失或指纹不同：' + name)
+            names.add(path.relative_to(source).as_posix())
     # Templates and baseline rules are only seeded when missing below.
     for base in ('projects', 'core-algorithms', 'research', 'runs', 'tools'):
         names.update(p.relative_to(source).as_posix() for p in (source / base / '_template').rglob('*') if p.is_file())

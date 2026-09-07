@@ -267,6 +267,31 @@ class DeploymentWorkbenchTests(unittest.TestCase):
                                      capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=20)
         self.assertEqual(help_result.returncode, 0, help_result.stderr)
         self.assertIn('workbench', help_result.stdout)
+        # Launch the copied Python application with Node absent from PATH. Read
+        # the real homepage and every shipped asset, including the Worker, before
+        # rollback. This exercises the new machine's paths rather than ROOT's UI.
+        script = "import sys,json,shutil; from pathlib import Path; sys.path.insert(0,str(Path(sys.argv[1])/'automation/scripts')); import workbench; print(json.dumps({'node':shutil.which('node')}),flush=True); workbench.serve(Path(sys.argv[1]),open_browser=False)"
+        child = subprocess.Popen([sys.executable, '-c', script, str(self.root)], cwd=self.root,
+                                 env=dict(env, PATH=''), stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                 text=True, encoding='utf-8', creationflags=subprocess.CREATE_NO_WINDOW)
+        try:
+            self.assertIsNone(json.loads(child.stdout.readline())['node'])
+            address = urlsplit(json.loads(child.stdout.readline())['url'])
+            manifest = json.loads((self.root / 'automation/ui/workbench-assets/asset-manifest.json').read_text())
+            for route in ['', *manifest['files']]:
+                connection = http.client.HTTPConnection(address.hostname, address.port, timeout=10)
+                connection.request('GET', address.path + ('' if route == 'index.html' else route))
+                response = connection.getresponse()
+                body = response.read()
+                connection.close()
+                # The public asset route serves JS/CSS/Worker; ancillary license
+                # files are distributed for inspection but not browser routes.
+                if route == '' or route == 'index.html' or route.startswith('assets/'):
+                    self.assertEqual(response.status, 200, route)
+                    self.assertTrue(body)
+        finally:
+            child.terminate()
+            child.communicate(timeout=10)
         receipt = next((self.root / '.local/upgrades').glob('*/receipt.json'))
         result = subprocess.run(['cmd.exe', '/d', '/c', 'setup.cmd', '--rollback', str(receipt.parent)],
                                 cwd=source, env=env, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60)
@@ -281,11 +306,14 @@ class DeploymentWorkbenchTests(unittest.TestCase):
 
     def test_module_inventory_is_limited_and_rejects_arbitrary_paths(self):
         control = workbench.Controller(self.root)
-        for i in range(60):
-            self.write(self.root, f'knowledge/patterns/demo-{i}.md', 'synthetic')
-        self.assertEqual(len(control.module('knowledge')['files']), 40)
-        with self.assertRaises(ValueError):
-            control.module('../')
+        try:
+            for i in range(60):
+                self.write(self.root, f'knowledge/patterns/demo-{i}.md', 'synthetic')
+            self.assertEqual(len(control.module('knowledge')['files']), 40)
+            with self.assertRaises(ValueError):
+                control.module('../')
+        finally:
+            control.close()
 
 
 if __name__ == '__main__':

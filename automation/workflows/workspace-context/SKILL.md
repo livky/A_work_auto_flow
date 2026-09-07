@@ -5,6 +5,8 @@ description: 在当前研发工作区回答算法问题、核对文档与实现�
 
 # 算法问答与证据扩展
 
+涉及跨材料关联时，可先用 `workbench.cmd relations export --center "实际 ID" --hops 2 --format markdown` 获取局部关系摘要。保持 `--exclude` 和读取预算；查看原始关系类型、方向、指纹及未读/超限项，再执行下述原文证据扩展。相似候选、聚类与连接数不构成验证依据。AI 关联建议需要源 ID、定位及指纹，经 `relations import-candidate` 保存到本机候选，不直接写入正式依赖。完整命令见 [材料关系手册](../../../docs/MATERIAL_RELATIONS.md)。
+
 适用于已有工作区材料的问答/排查，不用于普通闲聊或与该资料库无关的写作。从当前目录向上找到 workspace.json，读取根 AGENTS 和 context/START_HERE；用户要求优先。
 
 1. 根据问题确认目标核心算法；知道 MOD-ID 时传 --module，未确定时允许检索推断并检查 focus_modules，不把所有核心算法全文加载。

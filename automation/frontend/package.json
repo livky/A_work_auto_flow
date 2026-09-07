@@ -1,0 +1,38 @@
+{
+  "name": "rd-workbench",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run contracts && vite build --watch",
+    "contracts": "node scripts/contracts.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "format": "prettier --write src scripts *.json *.ts",
+    "format:check": "prettier --check src scripts *.json *.ts",
+    "build": "npm run contracts && npm run typecheck && vite build",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "cytoscape": "3.34.2",
+    "graphology": "0.26.0",
+    "graphology-communities-louvain": "2.0.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@types/cytoscape": "3.21.9",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@vitejs/plugin-react": "4.7.0",
+    "jsdom": "26.1.0",
+    "json-schema-to-typescript": "16.0.0",
+    "prettier": "3.9.6",
+    "typescript": "5.9.3",
+    "vite": "6.4.3",
+    "vitest": "3.2.7"
+  }
+}

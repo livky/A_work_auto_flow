@@ -1,0 +1,210 @@
+[
+  {
+    "path": ".gitattributes",
+    "sha256": "1de4bf69b2e33cf8e53abd9b3b42e354e30241a853501fedbe47724bfffc1a4b"
+  },
+  {
+    "path": "automation/frontend/contracts/graph.schema.json",
+    "sha256": "08c32c6c6fdbb47cc392769eebfeabcc06f14030d2784567ee6de6ed2eb74d80"
+  },
+  {
+    "path": "automation/frontend/e2e/workbench.spec.ts",
+    "sha256": "23813a68ce5818df46c4c02f232697aad1a9d4959fe1e32dbe7a80edd6aa5e9e"
+  },
+  {
+    "path": "automation/frontend/index.html",
+    "sha256": "bb0d4bc5d740755f3d97a338420a9a1bf26d0201c196b2fa0ecac0960c8e7258"
+  },
+  {
+    "path": "automation/frontend/package-lock.json",
+    "sha256": "f22a6ff44537d0799a1a527949132edebf1d1fa781d70b330200eed8d31d1f9d"
+  },
+  {
+    "path": "automation/frontend/package.json",
+    "sha256": "b40b8373357744a6a8ca8c2d35dec763e76bfda174a274b0809c8f92decfd0bc"
+  },
+  {
+    "path": "automation/frontend/playwright.config.ts",
+    "sha256": "b9f18f85932d491ecc88f447dfc8d12706420cd665b91fc9cffcb76a86ace9da"
+  },
+  {
+    "path": "automation/frontend/scripts/contracts.mjs",
+    "sha256": "0edc7ac758fec420906c0a9065566e03313f37345b477f8b5146c5ad12a6e81b"
+  },
+  {
+    "path": "automation/frontend/scripts/manifest.mjs",
+    "sha256": "c9eb24b9cd88bb89f8df9132c5b1bea258c9110dec5e2af575f27b9ad2754b1b"
+  },
+  {
+    "path": "automation/frontend/src/App.tsx",
+    "sha256": "25b7c51ed62b5bdb02c53ab730f3b98f634aee32cfd63f8de4970af1854ffc16"
+  },
+  {
+    "path": "automation/frontend/src/Evidence.tsx",
+    "sha256": "ae5c90d6a990159a422234fcaf264381885f0b492ac82353db0deab9b2d0e0e1"
+  },
+  {
+    "path": "automation/frontend/src/Relations.tsx",
+    "sha256": "880219583fe7a20370eb9f0634e59d00bf96bd99d007889d952f2369f0ff1b68"
+  },
+  {
+    "path": "automation/frontend/src/api.ts",
+    "sha256": "5f25858350650cc1e6690864009da0d8f92eaea52aef50c52066d07945b6fd60"
+  },
+  {
+    "path": "automation/frontend/src/cluster.ts",
+    "sha256": "a9ae5e5f334341d168fb075ad906e8938fd28de58805ccb5075886bc0f56a8eb"
+  },
+  {
+    "path": "automation/frontend/src/cluster.worker.ts",
+    "sha256": "e1fba201ef03d8b66e629c5dd3f6e56d8ecac9fafc80aa3ac4e7ce10038cf9c0"
+  },
+  {
+    "path": "automation/frontend/src/components.test.tsx",
+    "sha256": "a5f670bd2fe0a0d24c962e5967d88d0dfaa0255c11d350b068e01ea8a383ca39"
+  },
+  {
+    "path": "automation/frontend/src/components.tsx",
+    "sha256": "50a5335160b86e47facd083911c431dee36c461bc76f3b32168d66fcc86798c3"
+  },
+  {
+    "path": "automation/frontend/src/generated/contracts.ts",
+    "sha256": "6600966ca9bdc96ea92ad61b10afd21777ddda3278e417c1d7e6ed20e9e183cc"
+  },
+  {
+    "path": "automation/frontend/src/graph-model.test.ts",
+    "sha256": "f5b8160a5beba2ef47cccc9510c164706fbfae9d4910fae0d82e9bb9db06e66b"
+  },
+  {
+    "path": "automation/frontend/src/graph-model.ts",
+    "sha256": "597179f474aad704f0e744ccc72ff66a65a59f01084690e64db8fe1f4683ae5d"
+  },
+  {
+    "path": "automation/frontend/src/group-view.ts",
+    "sha256": "4edd915d37d951715cc1fc60bffbc76aaa369d38945dd9f5a8b6b5d6552a8dbc"
+  },
+  {
+    "path": "automation/frontend/src/main.tsx",
+    "sha256": "575c9833bc5993d6a7b8db0587b8ecc202809448fd71842c5a4331bec6ee7977"
+  },
+  {
+    "path": "automation/frontend/src/style.css",
+    "sha256": "c671e71cb4625aa41aef06a3d67e684cc105f5c2afab8563045f1d51380bf6a0"
+  },
+  {
+    "path": "automation/frontend/src/test-setup.ts",
+    "sha256": "9b328c4843431fa76d8de00008fc159e95f99a840211085ff3b8f25e53d14409"
+  },
+  {
+    "path": "automation/frontend/tsconfig.json",
+    "sha256": "9a23607a14cc691d7cbbf58972d93673b4010eb96d213019c9b18057dee8b0c4"
+  },
+  {
+    "path": "automation/frontend/vite.config.ts",
+    "sha256": "f4e03effb23b11be0ea13db59d1a26da887449292724c6dfeb43fa37d96c7eb0"
+  },
+  {
+    "path": "automation/scripts/deployment.py",
+    "sha256": "6bf837a45d96b07035ad15b1e65fb919c1cb70dcc178856624eb802c4dfc830b"
+  },
+  {
+    "path": "automation/scripts/evidence_view.py",
+    "sha256": "a4123fde0076f5f8a5e944e815ed3f1821d28fa47ff30ce65fcfdbc62c8990fe"
+  },
+  {
+    "path": "automation/scripts/local_test_data.py",
+    "sha256": "ae014cc0ede794f9b9d82e5661f74fd8c2c98fc6bd1adad8c90b26f99a8a8b20"
+  },
+  {
+    "path": "automation/scripts/portable.py",
+    "sha256": "09c8b07881c28772a0d348f59c216dfe35e4842db73c5dedd2753571fcc538a4"
+  },
+  {
+    "path": "automation/scripts/workbench.py",
+    "sha256": "82f796e5b0fddd51b763d0cca90453ddd2ecc165006e579e0701ff2d0bf97eff"
+  },
+  {
+    "path": "automation/scripts/workbench_app/__init__.py",
+    "sha256": "98485abb47ec85efe91e1918670dfed7d1d252b81d97b09aed09f2c0d7ba5261"
+  },
+  {
+    "path": "automation/scripts/workbench_app/analysis.py",
+    "sha256": "b90cc67fe014e8ade6f5f28ae37b7014da92bb80ef465a1ed87cb932ee2dff80"
+  },
+  {
+    "path": "automation/scripts/workbench_app/cli.py",
+    "sha256": "0753bb8eeef57b851e075c2aacb4e6d821ec7c78498e0e1a6d31e364f9d764ba"
+  },
+  {
+    "path": "automation/scripts/workbench_app/contracts.py",
+    "sha256": "6dcd54499cd52e1676da911ffaa85e0d87ccdd453a828a620d3fc57c6cbfad45"
+  },
+  {
+    "path": "automation/scripts/workbench_app/jobs.py",
+    "sha256": "b0fc0810ce3183f288feb88ce3dc7a46f9b255d21fd56da7b3317c515ffd6083"
+  },
+  {
+    "path": "automation/scripts/workbench_app/projection.py",
+    "sha256": "e58e5e0a3a315f33597efa70b78aebd2c9bff8ce6c0ce0fb41894e6d32e2eba6"
+  },
+  {
+    "path": "automation/scripts/workbench_app/service.py",
+    "sha256": "5abf612aac4d35904df31c560ca1c431aac245e2ce56972aca8c0d01537e7ce0"
+  },
+  {
+    "path": "automation/scripts/workbench_app/storage.py",
+    "sha256": "bbbd94d8dc9e74545e49aedf3858cb22586490767639dcf9d9b413e2a89137b9"
+  },
+  {
+    "path": "automation/scripts/workbench_app/web.py",
+    "sha256": "f708facbba9c57a923d78af6ee79b3587eb758c1dd14fde3dcfb635473c0ede1"
+  },
+  {
+    "path": "automation/scripts/workspace_cli.py",
+    "sha256": "abfe0903dc1a33cc5caaaaa08cdcd68589f9387229477f02c9e574ba3c4eaf1d"
+  },
+  {
+    "path": "automation/tests/serve_workbench_test.py",
+    "sha256": "6bb06a13f126a98aeef5536f4a431d3f802383c143bf4dd6384af2a9ef0b4bd2"
+  },
+  {
+    "path": "automation/tests/test_deployment_workbench.py",
+    "sha256": "c89881ffb1106a35be70ebecb626b3539b07794ef568426a4857cf9f95c4041e"
+  },
+  {
+    "path": "automation/tests/test_workbench_relations.py",
+    "sha256": "8a1916360a8c3e6a571d98546c8dc5d158cdd6562dd187a641dbca89652eb238"
+  },
+  {
+    "path": "automation/ui/workbench-assets/asset-manifest.json",
+    "sha256": "f9fe7ef96e97327fa4b72f6f2759bd8dacd660e80cb327744858e645ae3a1641"
+  },
+  {
+    "path": "automation/workflows/evidence-inspection/SKILL.md",
+    "sha256": "8c09e71f4ca057935f491ddbd70988baebafa533c050801939e25617c4304769"
+  },
+  {
+    "path": "automation/workflows/workspace-context/SKILL.md",
+    "sha256": "77b9cbbb8d999e00b4d26d77363e2eb18a810bffbd33e8b2847a9f48807a983b"
+  },
+  {
+    "path": "docs/MATERIAL_RELATIONS.md",
+    "sha256": "ad1ab8a0968bd6e95d627dd15fdfffcfa850c75327cbad4d8020ba5afe4f0be4"
+  },
+  {
+    "path": "docs/WORKBENCH_DEVELOPMENT.md",
+    "sha256": "124a0ac0327d556c17b1a8a22cbd0540880f0a26c90e991f070251001919fab4"
+  },
+  {
+    "path": "docs/design/workbench-relations-plan.md",
+    "sha256": "1229644fd646d7dcdcbbc2003f44e487488b57969a88bd6b0467093980428dd6"
+  },
+  {
+    "path": "services/qdrant/model-manifest.json",
+    "sha256": "8bd7a882766c881dd29766c89e7bacfba32deb98308b5d69cee4b3e453c5476f"
+  },
+  {
+    "path": "services/qdrant/requirements.lock.txt",
+    "sha256": "5bc0ebab661be8031755b4852953ae9dc054f451ab18def291f5eed078d3d1e4"
+  }
+]

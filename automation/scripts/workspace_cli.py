@@ -751,12 +751,29 @@ def build_context(
     return target
 
 
+def control_files(root: Path) -> Iterable[Path]:
+    """Prune local/third-party caches before walking: neither business schema
+    checks nor large-file warnings should inspect generated test workspaces."""
+    ignored = {'.git', '.local', '.venv', '__pycache__', 'tmp', 'dist',
+               'node_modules', 'test-results', 'playwright-report'}
+    runtime = {'services/qdrant/runtime', 'services/qdrant/models',
+               'services/qdrant/wheelhouse', 'services/qdrant/downloads'}
+    for folder, dirs, files in os.walk(root, followlinks=False):
+        base = Path(folder)
+        dirs[:] = [d for d in dirs if d not in ignored and (base / d).relative_to(root).as_posix() not in runtime
+                   and not (base / d).is_symlink() and not (base / d).is_junction()]
+        for name in files:
+            path = base / name
+            if not path.is_symlink():
+                yield path
+
+
 def iter_small_text_files(root: Path, max_bytes: int = 1_000_000) -> Iterable[Path]:
     """迭代小型文本，跳过缓存、Git 与明显生成/归档目录。"""
 
     excluded = {".git", ".local", ".venv", "__pycache__", "archive", "tmp", "dist", "reports/generated", "retrieval/generated",
                 "services/qdrant/runtime", "services/qdrant/models", "services/qdrant/wheelhouse", "services/qdrant/downloads"}
-    for path in root.rglob("*"):
+    for path in control_files(root):
         if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
             continue
         relative = path.relative_to(root)
@@ -799,7 +816,9 @@ def validate_workspace(root: Path) -> tuple[list[str], list[str]]:
         except (OSError, ValueError):
             pass  # 通用 JSON 校验在下方统一报告读取错误。
 
-    for path in root.rglob("*.json"):
+    for path in control_files(root):
+        if path.suffix.lower() != '.json':
+            continue
         # 根目录的迁移包与解压测试副本不是控制平面，不能重复审计其中的第三方文件。
         if path.relative_to(root).parts[0] in {"tmp", "dist"}:
             continue
@@ -849,7 +868,7 @@ def validate_workspace(root: Path) -> tuple[list[str], list[str]]:
                     warnings.append(f"内部链接不存在：{relative} -> {target}")
 
     # 大文件可能表示原始数据或生成产物误入控制平面。只警告，因为公司批准的模板也可能较大。
-    for path in root.rglob("*"):
+    for path in control_files(root):
         if path.relative_to(root).parts[0] in {"tmp", "dist"}:
             continue
         if not path.is_file() or ".git" in path.parts:
@@ -927,6 +946,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
     retrieval.add_commands(subparsers)
+    from workbench_app import cli as relations_cli
+    relations_cli.add_commands(subparsers)
 
     bench = subparsers.add_parser("workbench", help="一键打开研发工作台；证据、监测、模块与环境状态")
     bench.add_argument("--port", type=int, default=0)
@@ -1034,6 +1055,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         explicit_root = getattr(args, "root", None)
         root = find_workspace_root(explicit_root or Path.cwd())
+
+        if args.command == 'relations':
+            from workbench_app import cli as relations_cli
+            print(relations_cli.execute(root, args))
+            return 0
 
         if args.command == "test-data":
             import local_test_data

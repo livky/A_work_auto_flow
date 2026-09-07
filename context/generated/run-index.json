@@ -100,5 +100,51 @@
     "path": "runs/run-20260907t042941z-d9e5f49fe803/run.json",
     "needs_revalidation": false,
     "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260907T063633Z-159B86592CDD",
+    "project_id": null,
+    "title": "材料关系图的工具调研与现有结构核对",
+    "created_at": "2026-09-07T06:36:33Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "知识图谱",
+      "关联可视化",
+      "证据关系"
+    ],
+    "question": "笔记关系图、主题聚合与语义联系如何用于当前材料，并帮助 AI 分析实际问题？",
+    "conclusion": "建议新增工作台局部辐射、主题聚合和证据链视图，复用现有事实记录；候选相似关系单独展示，AI 使用带类型和来源的局部摘要。",
+    "parent_run_ids": [],
+    "path": "runs/run-20260907t063633z-159b86592cdd/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260907T071646Z-CE49506865C4",
+    "project_id": null,
+    "title": "模块化工作台与完整材料关系功能实施验证",
+    "created_at": "2026-09-07T07:16:46Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "工作台重构",
+      "材料关系",
+      "前端工程"
+    ],
+    "question": "在保持证据边界和 Windows 一命令迁移的条件下，完成可扩展工作台和全部材料关联功能。",
+    "conclusion": "七步计划的软件功能与本机验收完成；运行结果不构成真实公司研发结论的复核。",
+    "parent_run_ids": [],
+    "path": "runs/run-20260907t071646z-ce49506865c4/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
   }
 ]

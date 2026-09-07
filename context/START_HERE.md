@@ -21,6 +21,8 @@
 
 ## 检索提示
 
+- 跨材料关联可用工作台“材料关系”，或 `workbench.cmd relations export --center "实际 ID" --hops 2 --format markdown`。先按关系定位原文缺口，保持排除项与预算；相似与聚类不提升可信状态。见 [材料关系手册](../docs/MATERIAL_RELATIONS.md)。
+
 - 日常统一入口为 `workbench.cmd`（注册后 `rdwork`）；安装/升级使用 `setup.cmd`，合成测试用 `workbench.cmd workbench --demo`。见 [一键部署与工作台](../docs/SETUP_WORKBENCH.md)。
 
 - 记录、确认和纠错先看 [MEMORY.md](MEMORY.md)。简单任务不必创建完整项目或套工作流。

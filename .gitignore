@@ -1,5 +1,8 @@
 # Python cache and local environments
 .local/
+node_modules/
+playwright-report/
+test-results/
 __pycache__/
 *.py[cod]
 .venv/

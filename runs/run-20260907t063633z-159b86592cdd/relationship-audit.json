@@ -1,0 +1,70 @@
+{
+  "observed_at": "2026-09-07T06:38:10.196989+00:00",
+  "scope": "正式工作区含本次新建的研究和 planned Run；不含真实业务验收",
+  "workspace": {
+    "evidence_nodes": 7,
+    "claims": 0,
+    "typed_reference_counts": {},
+    "propagation_edges": 3,
+    "errors": [],
+    "existing_index": {
+      "documents": 63,
+      "undirected_neighbor_pairs": 277,
+      "module_group_sizes": {},
+      "note": "现有缓存快照；未刷新。邻接包含组内两两连接，不等于显式证据依赖。"
+    }
+  },
+  "synthetic": {
+    "evidence_nodes": 6,
+    "claims": 1,
+    "typed_reference_counts": {
+      "supports": 3,
+      "input": 1
+    },
+    "propagation_edges": 4,
+    "errors": [],
+    "existing_index": null
+  },
+  "inputs": [
+    {
+      "path": "automation/scripts/evidence.py",
+      "sha256": "c3307a6be1be22c9411ace8dae7b71c33d74e78cd1a07780cdad8053d6f9d94a"
+    },
+    {
+      "path": "automation/scripts/evidence_observer.py",
+      "sha256": "22e9f2c644b8567dc94497bf3bf0963caba563aed15b904476ab19b7bc987378"
+    },
+    {
+      "path": "automation/scripts/evidence_view.py",
+      "sha256": "57374440145b3654b99407728bc6a28634d4ccc5be8a4970d3d27aed71cefc99"
+    },
+    {
+      "path": "automation/scripts/retrieval.py",
+      "sha256": "b5577342879e6dedfdca1686ad6209e8917edfe83b0f08efd871fa7ef1a18465"
+    },
+    {
+      "path": "automation/scripts/context_engine.py",
+      "sha256": "9a50a6f5cf668444a272ad3196871692f997c45536ed3fb14247c29029c02e91"
+    },
+    {
+      "path": "automation/scripts/workbench.py",
+      "sha256": "cc3297dfdd788d714eb3ddf233ce83c39b3341ba3b77dd0570bff17ec6d31977"
+    },
+    {
+      "path": "automation/scripts/qdrant_backend.py",
+      "sha256": "e5ab3c1a4e51843406c02dbcde2c5ea135be24e3a011e3ffc29b8b7e66467705"
+    },
+    {
+      "path": "automation/ui/workbench.html",
+      "sha256": "19ab29634715444428a829cd9c1aebdfd463e6e535810ce8dc33028577c87629"
+    },
+    {
+      "path": "retrieval/config.json",
+      "sha256": "1a47aaa1c3e6fac690b3c52915ea490532a77771144f54b659460a2bd9cd111c"
+    },
+    {
+      "path": "retrieval/context-policy.json",
+      "sha256": "644a1d2d1eb7a3a712107c8868b73d61d3eb4458baa6a10effa81f6b6749bb28"
+    }
+  ]
+}

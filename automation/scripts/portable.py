@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 # 嵌入版 _pth 不自动加入脚本目录，显式定位同目录模块。
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 # 缓存含旧绝对路径，迁移后重建；查询、反馈、Run 等历史证据必须保留。
-OMIT = {".git", ".local", "__pycache__", "scratch", "tmp", "dist", ".venv", "venv"}
+OMIT = {".git", ".local", "__pycache__", "scratch", "tmp", "dist", ".venv", "venv", "node_modules", "test-results", "playwright-report"}
 OMIT_PATHS = {"retrieval/generated", "services/qdrant/storage"}
 
 

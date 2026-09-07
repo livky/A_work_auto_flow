@@ -4,7 +4,7 @@
 对象 ID/引用序号。网页中的材料全部作为文本呈现，不执行其 HTML/脚本。
 """
 import json
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import secrets
 from urllib.parse import parse_qs, urlsplit
@@ -93,20 +93,26 @@ def create_server(root, port=0, controller=None):
     # 十六进制路径保留 192 位随机性，并避免随机单词触发浏览器内容过滤。
     token = secrets.token_hex(24)
     prefix = "/" + token + "/"
+    # 新应用与旧只读快照共用同源保护，计算任务由独立应用服务排队。
+    from workbench_app import web as app_web
+    service = controller.app if controller is not None else None
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *_):
             pass  # URL 包含本机临时访问令牌，不写入访问日志。
 
         def respond(self, code, body, mime="application/json; charset=utf-8"):
-            encoded = body.encode("utf-8")
+            encoded = body if isinstance(body, bytes) else body.encode("utf-8")
             self.send_response(code)
             self.send_header("Content-Type", mime)
             self.send_header("Content-Length", str(len(encoded)))
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Referrer-Policy", "no-referrer")
-            self.send_header("Content-Security-Policy", "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'")
+            # Only the legacy standalone evidence document contains inline JS.
+            legacy = controller is None or urlsplit(self.path).path == prefix + 'evidence'
+            scripts = "'self' 'unsafe-inline'" if legacy else "'self'"
+            self.send_header("Content-Security-Policy", f"default-src 'none'; script-src {scripts}; style-src 'self' 'unsafe-inline'; worker-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'")
             self.end_headers()
             self.wfile.write(encoded)
 
@@ -119,9 +125,16 @@ def create_server(root, port=0, controller=None):
                 return
             try:
                 route = url.path[len(prefix):]
+                if service is not None and route.startswith('api/v1/'):
+                    self.respond(200, json.dumps(app_web.get(service, route[7:], url.query), ensure_ascii=False))
+                    return
+                if service is not None and route.startswith('assets/'):
+                    raw, mime = app_web.asset(route)
+                    self.respond(200, raw, mime)
+                    return
                 if controller is not None and route == "":
-                    import workbench
-                    self.respond(200, workbench.TEMPLATE.read_text(encoding="utf-8"), "text/html; charset=utf-8")
+                    raw, mime = app_web.asset('')
+                    self.respond(200, raw, 'text/html; charset=utf-8')
                     return
                 if controller is not None and route == "api/workbench":
                     self.respond(200, json.dumps(controller.status(), ensure_ascii=False))
@@ -162,14 +175,23 @@ def create_server(root, port=0, controller=None):
             # Exact Origin+Host and token path prevent cross-site form/fetch actions.
             if (self.headers.get("Host") != expected_host or
                 self.headers.get("Origin") != "http://" + expected_host or
-                route != prefix + "api/action"):
+                not (route == prefix + "api/action" or route.startswith(prefix + 'api/v1/'))):
                 self.respond(403, '{"error":"origin or route rejected"}')
                 return
             try:
                 length = int(self.headers.get("Content-Length", "0"))
-                if self.headers.get("Content-Type") != "application/json" or not 0 < length <= 256:
+                versioned = route.startswith(prefix + 'api/v1/')
+                # Large global Worker cluster membership lists remain local and
+                # bounded; ordinary actions retain their smaller request limit.
+                cap = 2_000_000 if route == prefix + 'api/v1/clusters' else (500_000 if versioned else 256)
+                if self.headers.get("Content-Type") != "application/json" or not 0 < length <= cap:
                     raise ValueError("只接受小型 JSON 动作")
                 payload = json.loads(self.rfile.read(length))
+                if versioned:
+                    name = route[len(prefix + 'api/v1/'):]
+                    value = app_web.post(service, name, payload)
+                    self.respond(202 if name == 'jobs' else 200, json.dumps(value, ensure_ascii=False))
+                    return
                 if not isinstance(payload, dict) or set(payload) != {"action"}:
                     raise ValueError("只能传入 action")
                 value = controller.action(payload['action'])
@@ -182,7 +204,7 @@ def create_server(root, port=0, controller=None):
 
         do_DELETE = do_PATCH = do_PUT
 
-    server = HTTPServer(("127.0.0.1", port), Handler)
+    server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     server.timeout = 1
     return server, f"http://127.0.0.1:{server.server_port}{prefix}"
 

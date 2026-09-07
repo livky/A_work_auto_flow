@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MaterialGraph", "type": "object",
+  "required": ["schema_version", "fingerprint", "generated_at", "nodes", "edges", "coverage", "errors"],
+  "properties": {
+    "schema_version": {"const": 1}, "fingerprint": {"type": "string"}, "generated_at": {"type": "string"},
+    "synthetic": {"type": "boolean"}, "omitted_nodes": {"type": "integer"}, "omitted_edges": {"type": "integer"},
+    "selection": {"type": "object"}, "coverage": {"type": "object"},
+    "errors": {"type": "array", "items": {"type": "string"}},
+    "nodes": {"type": "array", "items": {"$ref": "#/definitions/MaterialNode"}},
+    "edges": {"type": "array", "items": {"$ref": "#/definitions/MaterialEdge"}}
+  },
+  "definitions": {
+    "MaterialNode": {
+      "type": "object", "required": ["id", "title", "kind", "path", "fingerprint", "keywords", "review", "risks"],
+      "properties": {
+        "id": {"type": "string"}, "title": {"type": "string"}, "kind": {"type": "string"},
+        "path": {"type": "string"}, "fingerprint": {"type": "string"},
+        "keywords": {"type": "array", "items": {"type": "string"}},
+        "review": {"type": "object", "properties": {"status": {"type": "string"}, "reviewer": {"type": ["string", "null"]}}},
+        "risks": {"type": "array", "items": {"type": "string"}},
+        "execution_status": {"type": ["string", "null"]}, "scope": {"type": ["string", "null"]},
+        "locator": {"type": "string"}, "owner": {"type": ["string", "null"]},
+        "record_reason": {"type": "string"}, "statement": {"type": "string"}, "missing": {"type": "boolean"}
+      }
+    },
+    "MaterialEdge": {
+      "type": "object", "required": ["id", "source", "target", "type", "origin", "locator", "derived", "candidate", "original_source", "original_target", "display_source", "display_target"],
+      "properties": {
+        "id": {"type": "string"}, "source": {"type": "string"}, "target": {"type": "string"},
+        "type": {"type": "string"}, "origin": {"type": "string"}, "locator": {"type": "string"},
+        "derived": {"type": "boolean"}, "candidate": {"type": "boolean"},
+        "original_source": {"type": "string"}, "original_target": {"type": "string"},
+        "display_source": {"type": "string"}, "display_target": {"type": "string"},
+        "score": {"type": "number"}, "model_id": {"type": "string"}, "shared_keywords": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
