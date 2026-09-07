@@ -1,0 +1,7 @@
+{
+  "repeat_registration_unchanged": true,
+  "uninstall_preserved_other_path_entries": true,
+  "reinstall_restored_exact_path": true,
+  "registered_command_from_other_directory": true,
+  "registered": true
+}

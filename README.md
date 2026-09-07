@@ -6,11 +6,23 @@
 
 ## 从这里开始
 
-已有旧的完整工作区副本：可以直接把其中的运行环境补到 GitHub 新版，通常无需重新下载。按 [复用旧副本运行环境](docs/WINDOWS_PORTABILITY.md#用旧完整副本补齐-github-新版) 复制目录、自检并重建索引。
+Windows 下载 GitHub ZIP 并完整解压后，在根目录运行：
 
-GitHub 仓库保存框架源码、规则、模板和测试，不包含本机 Python、模型、依赖缓存、查询历史或离线 ZIP。克隆源码后，先用已有 Python 和 pip 执行 `python services/qdrant/install.py --apply`，再用生成的 `services/qdrant/runtime/python.exe services/qdrant/download_model.py --apply` 下载公开模型；这些首次安装步骤需要联网。完成后运行 `portable.cmd check`，正常检索使用本地模型。完整离线迁移包与 GitHub 源码版的区别见 [迁移指南](docs/WINDOWS_PORTABILITY.md)。
+```powershell
+.\setup.cmd --register --open
+```
 
-Windows 之间迁移：运行 `portable.cmd pack --apply` 生成包含 Python、模型和依赖的完整离线包；接收端解压后双击 `portable.cmd` 自检。操作与边界见 [Windows 迁移指南](docs/WINDOWS_PORTABILITY.md)。
+已有旧工作区时，从新版解压目录执行以下命令，更新旧目录中的框架并保留原数据、配置和记录：
+
+```powershell
+.\setup.cmd --target "D:\研发\旧工作区" --register --open
+```
+
+日常输入 `rdwork` 打开统一工作台（首次注册后重开终端）；也可直接运行 `workbench.cmd`。首页提供证据查看、模块文件清单、监测启停和环境检查。只需基础功能时加 `--profile core`，不用下载模型；完整安装首次需要联网，后续优先复用兼容的本地环境。
+
+升级自动备份被替换的框架文件，支持预览和冲突检查后恢复。全局入口只注册一个固定用户 PATH 项，重复安装不累积；`setup.cmd --unregister` 撤销入口，不删除数据。详细选项与保留范围见 [一键部署与工作台](docs/SETUP_WORKBENCH.md)。完整离线 ZIP 仍可用 [Windows 离线迁移](docs/WINDOWS_PORTABILITY.md)。
+
+试用各模块：`workbench.cmd workbench --demo`。生成的合成数据仅位于 `.local/test-workspace/`，不进入 Git 或离线包，不混入正式证据；重复打开保留样本编辑。
 
 第一次导入：
 
@@ -30,6 +42,7 @@ Windows 之间迁移：运行 `portable.cmd pack --apply` 生成包含 Python、
 |---|---|
 | `$workspace-context` | 算法问答、文档与实现核对、证据不足时扩展上下文 |
 | `$context-maintenance` | 整理、批量导入、版本变化与映射维护、保存续作进度 |
+| `$evidence-inspection` | 查看证据、复核与报告影响；只读监测材料变化、实验结束和维护候选 |
 
 新安装的技能可能需要重新打开会话才能被客户端发现。当前会话也可直接说“读取 automation/workflows/workspace-context/SKILL.md 后处理这个问题”。其他研究、诊断和报告方法按需读取 [工作流目录](automation/workflows/README.md)，不必记很多技能名。
 
@@ -48,7 +61,9 @@ Windows 之间迁移：运行 `portable.cmd pack --apply` 生成包含 Python、
 | 检索 `retrieval/` | 来源登记、检索/上下文配置、评估集、调查与反馈；generated 是可重建缓存 | 写回材料后更新索引；查询也自动刷新；真实反馈用于改来源、别名和阅读策略 |
 | 本地运行时 `services/qdrant/` | 便携 Python、Qdrant local、多语言嵌入模型、OCR、数据库与离线安装包 | 框架维护时升级；正常推理离线，模型文件校验后加载 |
 | 导航 `context/` | START_HERE 入口、NOW 现状、MEMORY 记录规则、交接、派生索引 | AI 在重点变化/交接时更新，不堆聊天全文 |
+| 本机安装与测试 `.local/` | 合成测试工作区、升级备份及最小 Python 引导 | 程序按需创建，Git 与离线包排除；升级恢复按 SHA-256 检查冲突；不得把沙盒结论晋升为业务依据 |
 | 自动化 `automation/` | CLI、测试、工作流源；`.agents/skills/` 只放技能发现入口 | 实现或用法变化时更新；方法正文只维护一份 |
+| 证据查看 / 监测 `context/monitor/` | 本机观察基线、变化事件与维护候选；浏览器展示当前证据 | AI 或已配置调度器运行 evidence-monitor；候选不自动合并、不提升可信状态；本机观察历史不随 Git 发布 |
 | 待办/归档 `inbox/`、`archive/` | 尚未整理的小材料或路径清单 / 冷存档 | AI 按用户范围处理，默认不检索、不自动搬移或删除 |
 | 规则/手册 `governance/`、`docs/` | 数据边界与保留策略 / 操作指南、模板和历史设计 | 根规则优先，当前手册随实现更新，历史设计保留日期和背景 |
 
@@ -98,6 +113,8 @@ Windows 之间迁移：运行 `portable.cmd pack --apply` 生成包含 Python、
 
 完整示例与批次清单见 [材料导入与变更](docs/EXISTING_MATERIALS.md)。
 
+需要把结论用于正式交付时，按 [证据准入手册](docs/EVIDENCE_CONTROLS.md) 固定来源版本、适用范围与复核依据，并检查已登记的上下游失效关系。当前副本的实际能力用 `doctor` 查询；`verify --profile full` 会拒绝缺失组件或跳过测试的验收结果。
+
 不常用命令无需记忆，让 AI 执行即可：
 
 ```powershell
@@ -107,6 +124,18 @@ Windows 之间迁移：运行 `portable.cmd pack --apply` 生成包含 Python、
 .\automation\workspace.ps1 refresh-index
 .\automation\workspace.ps1 validate
 ```
+
+## 查看证据与观察变化
+
+直接说“打开证据工作台，查看为什么保存、依据和受影响报告”，或使用 `$evidence-inspection`。界面支持搜索、筛选、来源预览和复核历史；没有登记的内容如实留空。保存原因可填在 claim 的 `record_reason`，AI 按任务背景填写，不根据重复出现次数推断可信度。
+
+```powershell
+.\automation\workspace.ps1 evidence-view --serve
+.\automation\workspace.ps1 evidence-monitor --dry-run
+.\automation\workspace.ps1 evidence-monitor
+```
+
+第一个命令返回本机网页地址；后两个命令预览/保存一次只读监测。首次建立基线，之后记录材料变化、实验结束、依赖风险并提出维护候选。日常材料导入仍用 context-maintenance 分批登记与融合；监测只发现需检查的变化，不代替导入、索引或领域验证。定时器可重复调用同一命令，不自动安装系统任务。完整操作、历史保留和旧工作区升级见 [查看与监测手册](docs/EVIDENCE_VIEW_MONITOR.md)。
 
 ## 附录：检索和向量化到底怎样工作
 

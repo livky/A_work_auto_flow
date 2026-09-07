@@ -1,0 +1,39 @@
+{
+  "incomplete_succeeded_run": {
+    "empty_fields": [
+      "inputs",
+      "artifacts",
+      "quality_results"
+    ],
+    "validation_errors": [],
+    "validation_warnings": []
+  },
+  "retraction_scope": [
+    {
+      "path": "runs/run-20260906t130500z-a8e675f3d652/run.json",
+      "mode": "full",
+      "review": {
+        "status": "retracted",
+        "reviewer": "synthetic-probe",
+        "reason": "合成反证"
+      },
+      "blocking_run_ids": [
+        "RUN-20260906T130500Z-A8E675F3D652"
+      ]
+    },
+    {
+      "path": "research/probe/SYNTHESIS.md",
+      "mode": "full",
+      "review": {},
+      "blocking_run_ids": []
+    }
+  ],
+  "sensitivity_metadata": {
+    "source_card_sensitivity": "restricted",
+    "indexed_state": "ready",
+    "indexed_sensitivity": null
+  },
+  "relocated_source_id": {
+    "same_logical_file_different_path_has_same_id": false
+  }
+}

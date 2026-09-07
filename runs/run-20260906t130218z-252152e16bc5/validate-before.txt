@@ -1,0 +1,5 @@
+WARNING: 内部链接不存在：docs\design\adaptive-context-review-2026-09-06.md -> ../../services/qdrant/context-cli-verification.json
+WARNING: 内部链接不存在：docs\design\adaptive-context-review-2026-09-06.md -> ../../services/qdrant/test-results.txt
+WARNING: 内部链接不存在：docs\design\core-algorithms-rename-plan.md -> ../../tmp/core-algorithms-before.zip
+WARNING: 内部链接不存在：docs\design\local-retrieval-review-2026-09-06.md -> ../../services/qdrant/test-results.txt
+校验通过：0 个错误，4 个警告。

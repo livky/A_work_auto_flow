@@ -1,4 +1,4 @@
-"""安装两个常用工作区 Skill 的轻量入口，详细方法始终维护在 workflows。
+"""安装常用工作区 Skill 的轻量入口，详细方法始终维护在 workflows。
 
 默认只预览；--apply 新建入口。拒绝覆盖内容不同的已有技能，不修改全局技能、
 权限或客户端设置。仓库保留目录若只读，应按环境审批流程执行此具体安装。
@@ -9,12 +9,15 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
-NAMES = ("workspace-context", "context-maintenance")
+NAMES = ("workspace-context", "context-maintenance", "evidence-inspection")
 
 
-def install(apply=False):
+def install(apply=False, names=None):
     entries = []
-    for name in NAMES:
+    selected = NAMES if names is None else tuple(dict.fromkeys(names))
+    if not selected or not set(selected).issubset(NAMES):
+        raise ValueError("只能安装已登记的工作区技能")
+    for name in selected:
         source = ROOT / "automation/workflows" / name / "SKILL.md"
         text = source.read_text(encoding="utf-8")
         frontmatter = re.match(r"---\s*\n(.*?)\n---", text, re.S)
@@ -38,9 +41,10 @@ def install(apply=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument("--name", choices=NAMES, action="append", help="只安装指定入口，保留其他本地修改；可重复")
     args = parser.parse_args()
     try:
-        install(args.apply)
+        install(args.apply, args.name)
     except (OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         raise SystemExit(2)

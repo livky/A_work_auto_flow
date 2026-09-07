@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260906T130218Z-252152E16BC5",
+  "project_id": null,
+  "title": "工作区架构审阅、回归检查与缺口验证",
+  "keywords": [
+    "记忆治理",
+    "OpenClaw",
+    "结构审阅"
+  ],
+  "review_history": [],
+  "run_type": "analysis",
+  "status": "succeeded",
+  "created_at": "2026-09-06T13:02:18Z",
+  "started_at": "2026-09-06T13:02:18Z",
+  "ended_at": "2026-09-06T13:11:40.610197+00:00",
+  "owner": "assistant",
+  "question": "当前研发工作区与相近工作智能体有哪些结构和功能缺口，哪些优先改进？",
+  "hypotheses": [],
+  "inputs": [
+    {
+      "manifest": "inputs.json",
+      "git_commit": "8b54b060dd8d0366baf049f4851a40a7edd522bf"
+    },
+    {
+      "evidence_ledger": "../../research/agent-workspace-review/EVIDENCE_LEDGER.md",
+      "access_date": "2026-09-06",
+      "external_release_pin": null
+    }
+  ],
+  "parameters": {
+    "probe_data": "synthetic isolated workspace",
+    "probe_vectors": "disabled only in synthetic workspace",
+    "production_retrieval_config_changed": false
+  },
+  "code": {
+    "commit": "8b54b060dd8d0366baf049f4851a40a7edd522bf",
+    "dirty": false,
+    "scope": "被审阅框架源码；初始工作树干净，评审文件单独新增",
+    "initial_default_git_probe": {
+      "commit": null,
+      "dirty": null
+    },
+    "verification_method": "git -c safe.directory=<current workspace> rev-parse HEAD; no persistent config changes"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [
+    {
+      "check": "unittest",
+      "status": "completed-with-skips",
+      "total": 49,
+      "passed": 42,
+      "skipped": 7,
+      "failed": 0
+    },
+    {
+      "check": "validate-before",
+      "errors": 0,
+      "warnings": 4
+    },
+    {
+      "check": "synthetic-probes",
+      "status": "completed",
+      "observations": 4
+    },
+    {
+      "check": "index-knowledge",
+      "status": "failed",
+      "error": "No module named 'qdrant_client'"
+    },
+    {
+      "check": "validate-final",
+      "errors": 0,
+      "warnings": 4,
+      "new_warnings": 0
+    }
+  ],
+  "metrics": {
+    "business_evaluation_cases_at_review_start": 0
+  },
+  "artifacts": [
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/index-attempt.txt",
+      "sha256": "b75780c350e07f1e1f24ad4b76a840b6cea4c5872d0da8247a85ad1d6977181d",
+      "bytes": 40
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/inputs.json",
+      "sha256": "3ef8b6ef5983656a4a66da7e4533de43ffd79e4c82fd47c9766fbf1aa24aae61",
+      "bytes": 6022
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/lineage.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/probe-results.json",
+      "sha256": "8e3cf96c0b5daa6ba829689807a094147f92e0657a0f8821358441d9cae97479",
+      "bytes": 921
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/probe_gaps.py",
+      "sha256": "05e1382585c614aa96c670f0fd425988e6afdfe98c6de441d0eebc9fc5658420",
+      "bytes": 5394
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/README.md",
+      "sha256": "f3f248dee21fdfa1a7abab17406fb65122cbfe8e0fe1ecae9e38132b1fba05c6",
+      "bytes": 2771
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/steps.jsonl",
+      "sha256": "940c624f50c7b571b686b8f4eb244178707cd5b3966164bb85d70910078f9aef",
+      "bytes": 716
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/tests.txt",
+      "sha256": "10d51f12fa7ab45b15203afd70fb1093a5a4a690e80853a84e165d2737c1c1f9",
+      "bytes": 13055
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/validate-before.txt",
+      "sha256": "f2caecf0b099e32a44360552524b6dc814df6561eed64e8fdd068ffb96ecdaf6",
+      "bytes": 552
+    },
+    {
+      "path": "runs/run-20260906t130218z-252152e16bc5/validate-final.txt",
+      "sha256": "f2caecf0b099e32a44360552524b6dc814df6561eed64e8fdd068ffb96ecdaf6",
+      "bytes": 552
+    },
+    {
+      "path": "research/agent-workspace-review/README.md",
+      "sha256": "89cb737ca419e11d68efd284dde9b33aabe50f59907b2b132b301e3f6a3894e0",
+      "bytes": 811
+    },
+    {
+      "path": "research/agent-workspace-review/PLAN.md",
+      "sha256": "35c3744441aa9b610088a10c001cf912f1aa8de953b1f0e3de7fbede8f2ff759",
+      "bytes": 1954
+    },
+    {
+      "path": "research/agent-workspace-review/EVIDENCE_LEDGER.md",
+      "sha256": "69bd79dfe2cb2bdf6d24e90d667cac9414a943022ee2f07f9801a9a3d9460ad0",
+      "bytes": 7945
+    },
+    {
+      "path": "research/agent-workspace-review/SYNTHESIS.md",
+      "sha256": "d47f7706d7a7c46c7f66f514a5c1c74612c3af08e7961253c0467cdd8c38fed6",
+      "bytes": 20416
+    },
+    {
+      "path": "research/agent-workspace-review/research.json",
+      "sha256": "e3c3096292e311d1ba7ccbae3b2064c6f2a143e02bebf94cd27b2e3616cd7f1a",
+      "bytes": 838
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "保留显式证据组织与有界检索；建议优先补结论准入、跨对象失效、真实评估和环境健康。",
+  "limitations": [
+    "42 项通过、7 项跳过不能证明本地模型/OCR 能力。",
+    "未用真实公司算法/数据，未测答案准确率或大规模性能。",
+    "外部以当日官方文档为据，未部署或固定 release。",
+    "建议未获业务复核；评审成功不表示索引执行成功。"
+  ],
+  "parent_run_ids": [],
+  "related_module_ids": [],
+  "related_research_ids": [
+    "RES-AGENT-WORKSPACE-REVIEW"
+  ],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  }
+}

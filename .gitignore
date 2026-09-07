@@ -1,4 +1,5 @@
 # Python cache and local environments
+.local/
 __pycache__/
 *.py[cod]
 .venv/
@@ -23,6 +24,9 @@ secrets/
 # Generated context and temporary execution state
 context/generated/context-pack.md
 context/generated/*.tmp
+# 本机证据快照、监测历史可能包含内部结论和路径；不随源码发布。
+context/generated/evidence-view.html
+context/monitor/
 retrieval/generated/
 # 查询/反馈可能含业务内容；本机保留，获批后再纳入适合的备份/版本管理。
 retrieval/queries/
@@ -60,6 +64,7 @@ data/samples/private/
 
 # 可搬迁的本地运行时和模型；打离线包时需包含，通常不提交 Git。
 services/qdrant/runtime/
+services/qdrant/runtime-stage-*/
 services/qdrant/models/
 services/qdrant/storage/
 services/qdrant/wheelhouse/

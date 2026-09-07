@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 # 嵌入版 _pth 不自动加入脚本目录，显式定位同目录模块。
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 # 缓存含旧绝对路径，迁移后重建；查询、反馈、Run 等历史证据必须保留。
-OMIT = {".git", "__pycache__", "scratch", "tmp", "dist", ".venv", "venv"}
+OMIT = {".git", ".local", "__pycache__", "scratch", "tmp", "dist", ".venv", "venv"}
 OMIT_PATHS = {"retrieval/generated", "services/qdrant/storage"}
 
 
@@ -28,7 +28,7 @@ def inventory(root):
         for name in list(dirs):
             path = base / name
             relative = path.relative_to(root).as_posix()
-            if name in OMIT or relative in OMIT_PATHS:
+            if name in OMIT or relative in OMIT_PATHS or name.startswith("runtime-stage-"):
                 dirs.remove(name)
             elif path.is_symlink() or path.is_junction():
                 raise ValueError(f"请先处理目录链接：{relative}")

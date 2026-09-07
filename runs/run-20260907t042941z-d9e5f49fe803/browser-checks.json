@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-09-07T04:44:38.073785+00:00",
+  "workbench_home": true,
+  "synthetic_banner": true,
+  "manual_monitor_baseline": true,
+  "continuous_monitor_start_stop": true,
+  "environment_check": true,
+  "module_file_dialog": true,
+  "evidence_navigation_and_return_link": true,
+  "claim_reason_source_and_affected_report": true,
+  "desktop_narrow_layout_visually_checked": true,
+  "note": "浏览器检验证据不含临时 URL 令牌；CSV 文本预览另有 HTTP 内容断言。"
+}

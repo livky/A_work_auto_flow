@@ -1,4 +1,4 @@
-# 不使用高级函数参数绑定：Python 的 -p/-v 不能被误识别为 PowerShell
+﻿# 不使用高级函数参数绑定：Python 的 -p/-v 不能被误识别为 PowerShell
 # PythonArgs / Verbose 缩写，所有参数按原顺序转发。
 $PythonArgs = @($args)
 
@@ -19,6 +19,12 @@ $candidates = [System.Collections.Generic.List[object]]::new()
 $workspacePython = Join-Path $PSScriptRoot '..\services\qdrant\runtime\python.exe'
 if (Test-Path -LiteralPath $workspacePython -PathType Leaf) {
     $candidates.Add([pscustomobject]@{ File = $workspacePython; Prefix = @() })
+}
+
+# Minimal installs keep the bootstrap interpreter local; no PATH or registry changes.
+$bootstrapPython = Join-Path $PSScriptRoot '..\.local\bootstrap\python.exe'
+if (Test-Path -LiteralPath $bootstrapPython -PathType Leaf) {
+    $candidates.Add([pscustomobject]@{ File = $bootstrapPython; Prefix = @() })
 }
 
 if ($env:CODEX_WORKSPACE_PYTHON) {

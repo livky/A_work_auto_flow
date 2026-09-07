@@ -1,21 +1,31 @@
 # 当前状态
 
-更新日期：2026-09-06
+更新日期：2026-09-07
 
 ## 当前实现
+
+- 2026-09-07 已增加 setup.cmd 一键 Windows 完整/基础安装、--target 原位保留升级、SHA-256 备份恢复、--register/--unregister 幂等用户命令。已在本机注册 rdwork；工作台聚合证据、模块清单、监测启停与能力检查。合成数据位于 Git/离线包排除的 .local/test-workspace，正式记录保持独立。手册 docs/SETUP_WORKBENCH.md。
+- 本批最终完整验证 102 项全部通过，无跳过；实际在线部署及离线复用、真实嵌入/OCR、自包含 cmd 升级恢复和命令注册均已验证。证据 RUN-20260907T042941Z-D9E5F49FE803；尚无另一台物理机或业务有效性验收。跨会话调度未创建，工作台持续监测需手动开启。
+
+- 2026-09-07 已增加证据工作台：浏览器搜索/筛选、保存原因、来源预览、Run 输入/产物、复核历史、失效观察时间与报告依赖路径；不依赖向量/OCR。新增 evidence-monitor 单次只读监测，原子保存本机基线、事件和维护候选，重复不晋升。已安装 evidence-inspection 技能入口；定时频率尚待用户选择，未创建定时自动化。用法见 docs/EVIDENCE_VIEW_MONITOR.md。
+- 本批回归 86 项，79 通过、7 原有模型测试跳过；界面及只读 HTTP/中文路径迁移已验证。首次监测已建基线，相同内容的重复日志只提出比较候选。证据见 RUN-20260907T023756Z-035991E67BBA；完整模型环境及真实业务验收仍未完成。
 
 - “模块”已改为核心算法（测校项），目录 core-algorithms；仅收录公司算法/模块文档定义的关键模型算法。创建命令 new-core-algorithm 要求 --source-document，旧命令同样检查；MOD-ID 和 module.json 等兼容字段保留。普通脚本默认应用代码，不自动作为核心实现。变更证据见 docs/design/core-algorithms-rename-plan.md。
 
 - Windows x64 迁移入口已补齐：`portable.cmd pack --apply` 创建完整离线 ZIP，解压后 `portable.cmd check` 自检；含中文/空格新路径迁移及索引重建通过，47 项回归通过。说明见 docs/WINDOWS_PORTABILITY.md，证据见 docs/design/windows-portability-plan.md；尚未跨物理电脑验证。
 
 - core-algorithms、runs、research、tools 平级；project 仅可选交付聚合，旧 Run 兼容。尚未导入真实公司算法或数据。
-- 已有工作区内 Python、Qdrant local、多语言 MiniLM 与 OCR，正常索引/推理离线；原件先保存，索引随后增量刷新，无文件保存监听。
+- 框架支持工作区内 Python、Qdrant local、多语言 MiniLM 与 OCR，正常索引/推理离线；原件先保存，索引随后增量刷新，无文件保存监听。该源码副本早期缺少运行时和模型；2026-09-07 已通过 setup 补齐并实际自检，具体边界与本批 Run 见上方。
 - 当前上下文使用 focus→investigate→wide：目标算法全文优先，代码/Run/研究/知识按角色、长度和必要性选择，支持 include/full/exclude 和持久偏好。未解决/冲突反馈可触发下一阶段，最多两次；预算和排除项保留。
 - CTX 调查链、CF 上下文反馈、Q 查询与单源反馈分别保留。候选预览最多 40 项，完整选择清单另存；缺失算法或预算不足显式报告。
 - workspace-context 与 context-maintenance 已安装为仓库 Skill，当前会话已识别；入口只引用 automation/workflows 的方法正文。
-- 全套 46 项测试通过，含真实本地模型离线分阶段检查；上下文后续调整通过定向回归及隔离 CLI 父子链验证。证据见 PLAN.md 和 docs/design/adaptive-context-review-2026-09-06.md。
+- 历史完整副本有 46 项测试通过，含真实本地模型离线分阶段检查；后续上下文调整通过定向回归及隔离 CLI 父子链验证。该历史证据见 PLAN.md 和 docs/design/adaptive-context-review-2026-09-06.md，不能证明本副本当前具备模型能力。
+- 研发可靠性第一批已实现：结论级 claims、复核版本绑定、supports/input 跨文档失效传播、check-run/finalize-run、按 scope 筛选正式结论、doctor 与严格 verify。用法见 [证据准入手册](../docs/EVIDENCE_CONTROLS.md)，实现与验证见 RUN-20260906T140125Z-6DEFDCB569C4；尚无真实业务结论封存。
+- 本批最终 core 回归共 72 项，65 通过、7 因缺本地模型跳过；full 实测返回失败，缺 vector/OCR 且存在 skipped。index-knowledge 仍因缺 qdrant_client 退出 2；未改成其他检索配置来绕过此问题。
 
 ## 下一步
+
+2026-09-06 结构评审已完成，见 [工作智能体对比与改进建议](../research/agent-workspace-review/SYNTHESIS.md)。评审时基线为 49 项测试中 42 通过、7 跳过；该历史观察保留于 RUN-20260906T130218Z-252152E16BC5。第一批已针对其中的正式准入与跨研究失效缺口实施，范围见 [实施计划](../docs/design/evidence-controls-plan.md)；其他路线建议和真实业务验收仍待后续推进。
 
 1. 提供首批低敏算法文档、关键代码、历史结果、研究/PPT 路径，按维护 Skill 分批接入并核对阅读清单。
 2. 用真实问题检查召回、文档—代码一致性与上下文必要性，再调整角色和偏好；真实评估集仍为空，不宣称质量已获业务验证。

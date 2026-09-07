@@ -1,0 +1,177 @@
+{
+  "captured_at": "2026-09-06T13:11:12.293960+00:00",
+  "git_commit": "8b54b060dd8d0366baf049f4851a40a7edd522bf",
+  "note": "定向审阅文件的内容指纹；不表示每行均已审计。NOW 已增加本次评审状态，其余源文件未修改。",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "da7d744903c5d54fb5e16bd0326a117568b1ae92da485070a857174e48080beb",
+      "bytes": 4085
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "sha256": "4514899b512615e23f0619bed1768b44d14b35efd10512de38720add45e39a9b",
+      "bytes": 3269
+    },
+    {
+      "path": "README.md",
+      "sha256": "ca1d450995414e626251c609c864f274bae60fef13681b5a723530e65b49b0d2",
+      "bytes": 15106
+    },
+    {
+      "path": "workspace.json",
+      "sha256": "0c97f93ace9d23358c31d9101d1272ebf8707cfdeb3a239ffcda52a4459b4686",
+      "bytes": 1674
+    },
+    {
+      "path": "context/START_HERE.md",
+      "sha256": "5ebd2f3911b80547f09f53f6dbdf8045ab8c147ffc1c3fe2d79a7691c4ed2b04",
+      "bytes": 4488
+    },
+    {
+      "path": "context/NOW.md",
+      "sha256": "fde7c4e3d9882ea12ba6d1ecedbcd7dd543827266ae9dd5b4a6d351d3f585579",
+      "bytes": 3188
+    },
+    {
+      "path": "context/MEMORY.md",
+      "sha256": "951868f538c67edf13b7dd3f3159265fdd4dd0a6cb3242429ec80f9817151508",
+      "bytes": 5989
+    },
+    {
+      "path": "retrieval/config.json",
+      "sha256": "1a47aaa1c3e6fac690b3c52915ea490532a77771144f54b659460a2bd9cd111c",
+      "bytes": 1138
+    },
+    {
+      "path": "retrieval/context-policy.json",
+      "sha256": "644a1d2d1eb7a3a712107c8868b73d61d3eb4458baa6a10effa81f6b6749bb28",
+      "bytes": 608
+    },
+    {
+      "path": "retrieval/eval.json",
+      "sha256": "6029d200c7d9f62eaf3e50f6b08c5d0d2eb1fe49a629e01231d820d9d9b0d903",
+      "bytes": 45
+    },
+    {
+      "path": "retrieval/sources.json",
+      "sha256": "e5d3cf64c728558a3de142635b1342121826955fa7aca63a4264dc4e5f70cc91",
+      "bytes": 47
+    },
+    {
+      "path": "automation/scripts/workspace_cli.py",
+      "sha256": "8691898b054d8c45b24091a89f98066bdcd1916afd8afb764193cd5c6fdfd5cc",
+      "bytes": 48005
+    },
+    {
+      "path": "automation/scripts/retrieval.py",
+      "sha256": "91e66999945a6c5cf8db50f03a38079e43512e306fa9cf31b32eb8783f78c71c",
+      "bytes": 46459
+    },
+    {
+      "path": "automation/scripts/context_engine.py",
+      "sha256": "60a0c7a816e03a8201c1e40bfa13a83b4bd9eceed8281ff64e13869639c73fef",
+      "bytes": 17675
+    },
+    {
+      "path": "automation/scripts/material_extract.py",
+      "sha256": "891335fc3c93cffe87b7d8d7112cd9b1ea7d1369a79dac079ccf6c5e80a3ab8e",
+      "bytes": 10368
+    },
+    {
+      "path": "automation/scripts/qdrant_backend.py",
+      "sha256": "e5ab3c1a4e51843406c02dbcde2c5ea135be24e3a011e3ffc29b8b7e66467705",
+      "bytes": 9546
+    },
+    {
+      "path": "automation/scripts/retrieval_interfaces.py",
+      "sha256": "75c88a924d41ab205f6b1912be741e6838668a91588648f67e45c8ab5162c5cb",
+      "bytes": 1592
+    },
+    {
+      "path": "automation/tests/test_local_retrieval.py",
+      "sha256": "276f507ca74b1c8d91988b2ab82f794d4a39e7eeb5c53ea6572ac7f7b70c0ab1",
+      "bytes": 8752
+    },
+    {
+      "path": "automation/tests/test_retrieval.py",
+      "sha256": "bb7b2ef221fa3fd73031ae2e36ebabf24f9eb8f5b64eb9e70c636f69c4af0f60",
+      "bytes": 11891
+    },
+    {
+      "path": "automation/python.ps1",
+      "sha256": "85b1552bad23e4d5ce160cde21474ffa16acf329b1de438b3d4767821e94fd3c",
+      "bytes": 2990
+    },
+    {
+      "path": "tools/registry.json",
+      "sha256": "1598fb678710ae9bd02f2e7e6fe967ca7cdf149c3e98fded98398b35beae7e2e",
+      "bytes": 668
+    },
+    {
+      "path": "tools/external/README.md",
+      "sha256": "dbff32dd09c2511ac6b44556c1edc8399cd74ead5468b1599cb8165cd048255b",
+      "bytes": 476
+    },
+    {
+      "path": "core-algorithms/_template/module.json",
+      "sha256": "c6c6c175fb2ba28c83794498d677f81b82bf57eda9ed6964953967ee68febe9e",
+      "bytes": 543
+    },
+    {
+      "path": "core-algorithms/_template/README.md",
+      "sha256": "fc62d034806d5163d6655eff7ffdebd4515dc102989e35713504176959fb16a2",
+      "bytes": 951
+    },
+    {
+      "path": "governance/SECURITY_AND_DATA_BOUNDARIES.md",
+      "sha256": "6d973bfe0fe2ff59748efeec222994ec1274d011e56a3e87a6dc088187524c62",
+      "bytes": 3715
+    },
+    {
+      "path": "governance/RETENTION_POLICY.md",
+      "sha256": "b47ff662c77a296d78b5b2cd919dbc5c1546fda8f20ea2508e0a4304bced84be",
+      "bytes": 1640
+    },
+    {
+      "path": "data/contracts/example.contract.json",
+      "sha256": "e77be5623385960f9d455abc9f390748a9c5fbf5d4353a1112e769fcef4fcdee",
+      "bytes": 1254
+    },
+    {
+      "path": "reports/manifests/report_manifest.example.json",
+      "sha256": "811c32d8671deedd3558cd1096504ad3a231b3945a715ddc287bffb2c95607f2",
+      "bytes": 527
+    },
+    {
+      "path": "services/qdrant/README.md",
+      "sha256": "3169207c41a06947883d65c2914c79cd7b82fff052a3e81915469d014d98d0cb",
+      "bytes": 1288
+    },
+    {
+      "path": "services/qdrant/requirements.lock.txt",
+      "sha256": "5bc0ebab661be8031755b4852953ae9dc054f451ab18def291f5eed078d3d1e4",
+      "bytes": 863
+    },
+    {
+      "path": "automation/workflows/analysis-diagnosis/SKILL.md",
+      "sha256": "bcf51d9e4afb3dbd6d584b513c8459f430221cef9f540dad8bd27c7b2cf243b0",
+      "bytes": 1611
+    },
+    {
+      "path": "automation/workflows/report-production/SKILL.md",
+      "sha256": "ebd2976b938ef269a02fb9a6a76a7d1202166a9b2ce4b354c799dcbdb9da06b6",
+      "bytes": 1391
+    },
+    {
+      "path": "automation/workflows/workspace-context/SKILL.md",
+      "sha256": "0c003eb625f5912a709b148b27545622844d2e340e74cba891869e2ea3df3e72",
+      "bytes": 3222
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "d0fde11e7dabf76b81d58d989329340a35dedfa5d70011a6f478e9fc5816e382",
+      "bytes": 1500
+    }
+  ]
+}

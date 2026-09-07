@@ -26,6 +26,7 @@ from xml.etree import ElementTree
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import material_extract
 import qdrant_backend
+import evidence
 
 
 TEXT = {".md", ".txt", ".json", ".jsonl", ".py", ".ps1", ".m", ".c", ".h",
@@ -493,8 +494,10 @@ def search(root, query, *, project=None, module=None, limit=8, record=True, refr
                         "locator": p["locator"], "retrievers": ["qdrant"], "vector_score": point.score}
         hits = sorted(best.values(), key=lambda h: (-h["score"], h["source_id"]))[:limit]
         risks = run_risks(docs)
+        graph = evidence.EvidenceGraph(root)
         for hit in hits:
             hit["blocking_run_ids"] = sorted(risks.get(hit["meta"].get("run_id"), set()))
+            hit["evidence_state"] = graph.document_state(hit["path"], docs[hit["source_id"]]["body"])
     result = {"query_id": "Q-" + uuid.uuid4().hex, "created_at": now(), "query": query,
               "project": project, "module": module, "strategy": "fts-qdrant-source-rrf-v3" if vector_active else "fts5-cjk-bigram-coverage-v1", "vector_enabled": vector_active,
               "vector_collection": vector_collection,
@@ -505,13 +508,15 @@ def search(root, query, *, project=None, module=None, limit=8, record=True, refr
     return result
 
 
-def assemble(root, result, budget=None, mode=None, selection=None):
+def assemble(root, result, budget=None, mode=None, selection=None, purpose="exploration", scope=None):
     """按来源格式/召回策略选择全文或片段，实际预算不足时再降级。
 
 预算包含头部和证据标记，是调用方提供的可用证据字符数，不假称能探测模型剩余
 token 或压缩阈值。每个未装载/过期来源写入独立 manifest，不静默遗漏。
     """
     cfg = config(root)
+    if purpose not in {"exploration", "formal"} or purpose == "formal" and not scope:
+        raise ValueError("purpose 必须为 exploration/formal；formal 需要明确 scope")
     mode = mode or cfg.get("context_mode", "auto")
     if mode not in {"auto", "full", "excerpt"}:
         raise ValueError("context mode 必须为 auto/full/excerpt")
@@ -525,6 +530,8 @@ token 或压缩阈值。每个未装载/过期来源写入独立 manifest，不�
     for doc in docs.values():
         doc["meta"]["related"] = [str((root / p).resolve()) for p in doc["meta"].get("related", [])]
     edges, risks = (relations(docs) if selection is None else {}), run_risks(docs)
+    graph = evidence.EvidenceGraph(root)
+    emitted_claims = set()
     candidates, seen = [], set()
     hits = result["results"]
     # 无选择计划时保留基础的一跳装载接口；当前 CLI 使用 context_engine 提供的
@@ -568,6 +575,8 @@ token 或压缩阈值。每个未装载/过期来源写入独立 manifest，不�
             entry["detail"] = str(exc)
             continue
         meta = doc["meta"]
+        evidence_state = graph.document_state(doc["path"], doc["body"], scope)
+        entry["evidence_state"] = evidence_state
         hit = next((h for h in hits if h["source_id"] == sid), None)
         selected_mode = mode
         if mode == "auto":
@@ -586,6 +595,23 @@ token 或压缩阈值。每个未装载/过期来源写入独立 manifest，不�
         blockers = sorted(risks.get(run_id or sibling.get("run_id"), set()))
         entry.update(review=review, blocking_run_ids=blockers, version=meta.get("version", ""))
         prefix = f"\n---\nSource: {sid}\nPath: {doc['path']}\nVersion: {meta.get('version') or 'unknown'}\nSHA256: {actual}\nReview: {json.dumps(review, ensure_ascii=False)}\nBlocking runs: {blockers}\n"
+        prefix += "Evidence blockers: " + json.dumps(evidence_state["blocking_evidence_ids"], ensure_ascii=False) + "\n"
+        if evidence_state["issues"]:
+            prefix += "Evidence issues: " + json.dumps(evidence_state["issues"], ensure_ascii=False) + "\n"
+        if purpose == "formal":
+            body, formal_state = graph.formal_text(doc["path"], scope, excluded=emitted_claims)
+            chosen = [c["claim_id"] for c in formal_state["claims"] if c["eligible"] and c["claim_id"] not in emitted_claims]
+            segment = prefix + "Mode: claims; only reviewed statements in the requested scope\n\n" + body + "\n"
+            # 不截断一条正式结论：截断可能丢失限定条件或证据定位。
+            if not body:
+                entry["detail"] = "没有符合 scope 的有效结论，或已装载相同结论"
+            elif len(text) + len(segment) > budget:
+                entry["detail"] = "正式结论完整条目超出剩余预算"
+            else:
+                text += segment
+                emitted_claims.update(chosen)
+                entry.update(mode="claims", claim_ids=chosen, span=None)
+            continue
         body = doc["body"]
         if selected_mode == "brief":
             body = selection["briefs"][sid]
@@ -659,6 +685,8 @@ token 或压缩阈值。每个未装载/过期来源写入独立 manifest，不�
                          span=None if selected_mode == "brief" else [start, end], detail=cause)
     return {"text": text, "manifest": {"query_id": result["query_id"], "budget_chars": budget,
             "used_chars": len(text), "sources": entries,
+            "purpose": purpose, "scope": scope, "evidence_errors": graph.errors,
+            "formal_claim_ids": sorted(emitted_claims),
             "related_limit": cfg["related_limit"], "related_omitted_by_limit": sorted(related_omitted - seen),
             "note": "关联一跳且有数量上限；未装载材料见 sources"}}
 
@@ -762,6 +790,8 @@ def add_commands(subparsers):
         p.add_argument("--module", help="全局 MOD-ID，不要求项目")
         p.add_argument("--limit", type=int, default=8 if command == "search-knowledge" else None)
         if command == "retrieve-context":
+            p.add_argument("--purpose", choices=["exploration", "formal"], default="exploration")
+            p.add_argument("--scope", help="formal 必需；与已复核结论 scope 精确匹配")
             p.add_argument("--budget-chars", type=int)
             p.add_argument("--context-mode", choices=["auto", "full", "excerpt"])
             p.add_argument("--stage", choices=["focus", "investigate", "wide"], default="focus")
@@ -801,6 +831,7 @@ def dispatch(root, args):
             from context_engine import create
             return create(root, args.query, stage=args.stage, module=args.module, project=args.project,
                           budget=args.budget_chars, mode=args.context_mode, limit=args.limit,
+                          purpose=args.purpose, scope=args.scope,
                           include=args.include, full=args.full, exclude=args.exclude)
         result = search(root, args.query, project=args.project, module=args.module, limit=args.limit)
         return result

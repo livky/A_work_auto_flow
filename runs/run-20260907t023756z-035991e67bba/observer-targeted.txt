@@ -1,0 +1,20 @@
+test_background_reference_does_not_inherit_retraction (test_evidence_observer.ObserverTests.test_background_reference_does_not_inherit_retraction) ... ok
+test_corrupt_state_requires_explicit_recovery (test_evidence_observer.ObserverTests.test_corrupt_state_requires_explicit_recovery) ... ok
+test_dry_run_and_failed_scan_do_not_replace_baseline (test_evidence_observer.ObserverTests.test_dry_run_and_failed_scan_do_not_replace_baseline) ... ok
+test_duplicates_remain_candidates_without_promotion (test_evidence_observer.ObserverTests.test_duplicates_remain_candidates_without_promotion) ... ok
+test_html_escapes_untrusted_content_and_preview_is_bounded (test_evidence_observer.ObserverTests.test_html_escapes_untrusted_content_and_preview_is_bounded) ... ok
+test_http_is_loopback_readonly_and_rejects_unknown_paths (test_evidence_observer.ObserverTests.test_http_is_loopback_readonly_and_rejects_unknown_paths) ... ok
+test_initial_baseline_then_change_without_duplicate_events (test_evidence_observer.ObserverTests.test_initial_baseline_then_change_without_duplicate_events) ... ok
+test_oversized_file_keeps_previous_state (test_evidence_observer.ObserverTests.test_oversized_file_keeps_previous_state) ... ok
+test_relocated_workspace_keeps_relative_baseline (test_evidence_observer.ObserverTests.test_relocated_workspace_keeps_relative_baseline) ... ok
+test_retraction_and_restoration_preserve_observation_history (test_evidence_observer.ObserverTests.test_retraction_and_restoration_preserve_observation_history) ... ok
+test_selective_skill_upgrade_preserves_existing_local_edits (test_evidence_observer.ObserverTests.test_selective_skill_upgrade_preserves_existing_local_edits) ... ok
+test_terminal_transition_is_observed_not_accepted (test_evidence_observer.ObserverTests.test_terminal_transition_is_observed_not_accepted) ... ok
+test_view_explains_review_and_report_claim_dependency_without_writes (test_evidence_observer.ObserverTests.test_view_explains_review_and_report_claim_dependency_without_writes) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.766s
+
+OK
+安装：C:\Users\livky\AppData\Local\Temp\tmp_zlg7xyo\.agents\skills\evidence-inspection\SKILL.md
+安装：C:\Users\livky\AppData\Local\Temp\tmp_zlg7xyo\.agents\skills\evidence-inspection\SKILL.md

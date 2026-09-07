@@ -1,10 +1,16 @@
 # 工作区自动化
 
+统一入口：根目录 `setup.cmd` 安装/升级/命令注册，`workbench.cmd` 打开工作台，`workbench.cmd test-data` 生成 Git 忽略的跨模块合成沙盒。参数、数据保留和恢复见 [一键部署手册](../docs/SETUP_WORKBENCH.md)。
+
 核心 CLI 创建全局核心算法、Run 与可选项目；检索使用 SQLite FTS5 + 已安装的本地 Qdrant/FastEmbed，多格式解析与 OCR 只读取配置范围和显式登记文件。上下文新增 focus/investigate/wide 选择与 context-feedback 扩展；检索命令、反馈闭环和来源登记详见 [检索手册](../docs/RETRIEVAL.md)。
 
-`workflows/` 保存方法正文，常用 workspace-context 和 context-maintenance 已在 .agents/skills 安装轻量入口；其他流程按需读源。安装器默认预览，--apply 新建入口，不覆盖不同的已有技能。
+`workflows/` 保存方法正文，workspace-context、context-maintenance 和 evidence-inspection 已在 .agents/skills 安装轻量入口；其他流程按需读源。安装器默认预览，--apply 新建入口，不覆盖不同的已有技能；升级时可用 `--name evidence-inspection` 只安装新增入口，保留其他本地修改。
 
 ## 命令
+
+环境健康、逐结论复核、正式 Run 封存与跨文档失效已接入现有 CLI，详见 [证据准入手册](../docs/EVIDENCE_CONTROLS.md)。`doctor` 报告实际组件状态，`verify --profile full` 不允许跳过必要集成测试。
+
+证据工作台使用 `evidence-view --serve`，只监听本机并展示依据/复核/报告影响；省略 --serve 可生成离线 HTML。`evidence-monitor --dry-run` 预览变化，去掉 --dry-run 保存观察基线与维护候选，不修改原件或可信状态。监测可交给已配置的定时器重复调用。见 [查看与监测手册](../docs/EVIDENCE_VIEW_MONITOR.md)。
 
 ```powershell
 # 检查目录、JSON、链接、疑似秘密和大文件。

@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260907T023756Z-035991E67BBA",
+  "project_id": null,
+  "title": "证据查看界面与只读监测实现验证",
+  "keywords": [
+    "证据查看",
+    "只读监测",
+    "维护候选"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "succeeded",
+  "created_at": "2026-09-07T02:37:56Z",
+  "started_at": "2026-09-07T02:37:56Z",
+  "ended_at": "2026-09-07T03:04:34.195352+00:00",
+  "owner": "assistant",
+  "question": "如何让研发证据的保存、复核与影响可见，并只读监测变更而不因重复而提升可信状态？",
+  "hypotheses": [],
+  "inputs": [
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/inputs.json",
+      "sha256": "709fcad62588b1f760cdbe111eef8c4a78c1bbc36824d67f8f625d1bfe78b558",
+      "bytes": 2382
+    }
+  ],
+  "parameters": {
+    "observer": "single-shot",
+    "scheduled": false,
+    "data": "synthetic plus framework metadata"
+  },
+  "code": {
+    "commit": "8b54b060dd8d0366baf049f4851a40a7edd522bf",
+    "dirty": true
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [
+    {
+      "check": "verify-core-final",
+      "status": "passed-with-skips",
+      "required": true,
+      "total": 86,
+      "passed": 79,
+      "skipped": 7,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "check": "browser-inspection",
+      "status": "passed",
+      "required": true,
+      "evidence": "browser-checks.json"
+    },
+    {
+      "check": "validate-final",
+      "status": "passed",
+      "required": true,
+      "errors": 0,
+      "warnings": 4
+    },
+    {
+      "check": "skill-quick-validate",
+      "status": "unavailable",
+      "required": false,
+      "detail": "No module named yaml"
+    },
+    {
+      "check": "index-knowledge",
+      "status": "failed",
+      "required": false,
+      "detail": "No module named qdrant_client"
+    }
+  ],
+  "metrics": {
+    "new_observer_tests": 14,
+    "business_cases": 0
+  },
+  "artifacts": [
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/browser-checks.json",
+      "sha256": "7424d6137d72261aaed9e476ae8b4ed563c8b1ea04bfd66b32e98394354dc274",
+      "bytes": 620
+    },
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/index-attempt.txt",
+      "sha256": "b75780c350e07f1e1f24ad4b76a840b6cea4c5872d0da8247a85ad1d6977181d",
+      "bytes": 40
+    },
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/lineage.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/monitor-baseline.json",
+      "sha256": "6a9f49e7b9b9bb272ee45ed516688e0a66dfbf8377df7ad0867a34d855238f23",
+      "bytes": 368
+    },
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/observer-targeted.txt",
+      "sha256": "7830c0325484af158aab2a871203da8ba37d50c97249d2e6ef102f95ad192829",
+      "bytes": 2335
+    },
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/README.md",
+      "sha256": "68498e4055d66637c36576a3465cf95d1faa8fe92c010bed75a0f232be1372af",
+      "bytes": 3761
+    },
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/validate-final.txt",
+      "sha256": "f2caecf0b099e32a44360552524b6dc814df6561eed64e8fdd068ffb96ecdaf6",
+      "bytes": 552
+    },
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/verify-core-final.json",
+      "sha256": "061c414cb8be6370bcc8c83726665163b2f1fa50e6f0be9b5b2946c78d7b4edd",
+      "bytes": 20988
+    },
+    {
+      "path": "runs/run-20260907t023756z-035991e67bba/verify-core.json",
+      "sha256": "102c8016af1d6942af3886cc649ae6daa636deef7ed6e41c971be0bc0bcc543f",
+      "bytes": 20988
+    },
+    {
+      "path": "docs/EVIDENCE_VIEW_MONITOR.md",
+      "sha256": "088b38266f2e442665a512ea67dfce4f3f6a43fdaf8908452b16ee397d31fb26",
+      "bytes": 7045
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "证据工作台与单次可调度只读监测已实现；查看和候选不改变复核状态；当前尚未启用定时运行。",
+  "limitations": [
+    "原有向量/OCR 依赖缺失，7 项模型测试跳过。",
+    "真实公司材料与跨物理电脑验证未进行。",
+    "观察时间不等于实际失效时间；未登记依赖无法追溯。",
+    "定时频率待用户选择；无自动执行、合并或可信晋升。"
+  ],
+  "parent_run_ids": [
+    "RUN-20260906T140125Z-6DEFDCB569C4"
+  ],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  },
+  "record_reason": "记录用户要求的证据查看界面与只读监测实现、验证及限制，以供后续升级复查。"
+}

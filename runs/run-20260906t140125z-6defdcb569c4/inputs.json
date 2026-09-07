@@ -1,0 +1,67 @@
+{
+  "snapshot_at": "2026-09-06T14:31:21.369012+00:00",
+  "base_commit": "8b54b060dd8d0366baf049f4851a40a7edd522bf",
+  "dirty": true,
+  "files": [
+    {
+      "path": "automation/scripts/evidence.py",
+      "sha256": "c3307a6be1be22c9411ace8dae7b71c33d74e78cd1a07780cdad8053d6f9d94a",
+      "bytes": 27618
+    },
+    {
+      "path": "automation/scripts/health.py",
+      "sha256": "0df23953fc0c6b82fd24663ec85665ae7af9c1cf7e2f669dad78b1b29962b1b1",
+      "bytes": 8325
+    },
+    {
+      "path": "automation/scripts/workspace_cli.py",
+      "sha256": "f115a35886d86b396ed636cf8269b27abd18ade4ee5246a1395149cdde24cbad",
+      "bytes": 52055
+    },
+    {
+      "path": "automation/scripts/retrieval.py",
+      "sha256": "b5577342879e6dedfdca1686ad6209e8917edfe83b0f08efd871fa7ef1a18465",
+      "bytes": 48589
+    },
+    {
+      "path": "automation/scripts/context_engine.py",
+      "sha256": "9a50a6f5cf668444a272ad3196871692f997c45536ed3fb14247c29029c02e91",
+      "bytes": 18044
+    },
+    {
+      "path": "automation/tests/test_evidence.py",
+      "sha256": "ebeb73c1ad8fc359293a4d68d6e18c2c015d83ce9c44fda8d9d0b42b70d68f32",
+      "bytes": 17099
+    },
+    {
+      "path": "retrieval/config.json",
+      "sha256": "1a47aaa1c3e6fac690b3c52915ea490532a77771144f54b659460a2bd9cd111c",
+      "bytes": 1138
+    },
+    {
+      "path": "retrieval/context-policy.json",
+      "sha256": "644a1d2d1eb7a3a712107c8868b73d61d3eb4458baa6a10effa81f6b6749bb28",
+      "bytes": 608
+    },
+    {
+      "path": "retrieval/sources.json",
+      "sha256": "e5d3cf64c728558a3de142635b1342121826955fa7aca63a4264dc4e5f70cc91",
+      "bytes": 47
+    },
+    {
+      "path": "retrieval/eval.json",
+      "sha256": "6029d200c7d9f62eaf3e50f6b08c5d0d2eb1fe49a629e01231d820d9d9b0d903",
+      "bytes": 45
+    },
+    {
+      "path": "docs/design/evidence-controls-plan.md",
+      "sha256": "c479b7233f3bec8c0190c52b8293c44f0eeb8c64a02294c77912e5956c62b6f6",
+      "bytes": 2879
+    },
+    {
+      "path": "research/agent-workspace-review/SYNTHESIS.md",
+      "sha256": "d47f7706d7a7c46c7f66f514a5c1c74612c3af08e7961253c0467cdd8c38fed6",
+      "bytes": 20416
+    }
+  ]
+}

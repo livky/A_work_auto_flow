@@ -1,0 +1,10 @@
+{
+  "claim_id": "CLM-EXAMPLE",
+  "statement": "填写具体结论；示例不代表已验证事实",
+  "record_reason": "",
+  "kind": "inference",
+  "scope": "填写明确适用范围，正式查询精确匹配",
+  "evidence_refs": [],
+  "review": {"status": "not-reviewed"},
+  "review_history": []
+}

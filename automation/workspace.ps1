@@ -1,4 +1,4 @@
-param(
+﻿param(
     # 第一个位置参数是子命令，例如 validate、new-project 或 build-context。
     [Parameter(Mandatory = $true, Position = 0)]
     [string]$Command,

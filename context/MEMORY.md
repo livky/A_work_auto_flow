@@ -51,6 +51,12 @@ Run 的 `status` 表示执行（例如 planned、running、succeeded、failed）
 
 ## 长期与接入边界
 
+Run、研究和算法元数据中的 claims/dependencies，以及知识/报告逐文档 `.evidence.json`，现在可由程序检查。`review-claim` 绑定结论和所属对象版本、追加复核历史；`check-run`/`finalize-run` 检查正式记录，封存不等于科学确认。`retrieve-context --purpose formal --scope "范围"` 只导出合格结论；默认探索继续展示候选和失效风险。scope 在扩展链保留。
+
+撤回、缺失、版本变化与循环通过 supports/input 传播到已登记下游；background/contradicts 不按实际依赖传播。旧文档链接到失效对象但没有类型时显示待分类提示。未登记或无链接的改写仍无法自动追溯，旧聊天内容不会撤回。使用方法和完整边界见 [证据准入手册](../docs/EVIDENCE_CONTROLS.md)。
+
 项目文件保存可迁移证据；Codex 记忆辅助找线索；索引是可重建缓存。外部平台通过工具注册表、数据卡和 adapter 接入，逐个声明来源、版本、权限、失败方式，避免同时加载所有连接器内容。
 
-没有守护进程监控任意脚本，助手按任务负责写回。文件不是备份，当前未配置 Git/远程备份，也没有防篡改审计。清理按保留策略单独授权，不因“临时”分类自动删除。
+没有守护进程监控任意脚本，助手按任务负责写回。文件不是备份；Git 已初始化，但没有自动远程备份或防篡改审计。清理按保留策略单独授权，不因“临时”分类自动删除。
+
+`evidence-monitor` 可由助手或已配置的定时器重复调用，只扫描获准材料和证据引用，观察实验终态/依赖风险；不会执行实验或升级可信状态。观察日志保存在 `context/monitor/state.json`，页面用 `evidence-view --serve` 查看。重复文本、同字节材料、重复引用只产生比较候选，不算独立验证；观察时间和复核记录时间分开。详情见 [查看与监测手册](../docs/EVIDENCE_VIEW_MONITOR.md)。

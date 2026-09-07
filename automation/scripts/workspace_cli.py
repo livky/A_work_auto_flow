@@ -32,6 +32,7 @@ from typing import Any, Iterable, Sequence
 # 显式加入此可信路径，避免依赖调用者 cwd；不加载外部插件或模型。
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import retrieval
+import evidence as evidence_controls
 
 
 # 只有这些小型文本类型会进入上下文包或内容安全检查。二进制文件始终按路径处理，
@@ -308,6 +309,9 @@ def create_run(root: Path, project_slug: str | None, title: str, dry_run: bool =
         "title": title,
         "keywords": list(dict.fromkeys(word.strip() for word in keywords if word.strip())),
         "review_history": [],
+        # 空结论集合只表示探索尚未形成正式依据；accepted 必须逐条复核。
+        "claims": [],
+        "dependencies": [],
         "run_type": "analysis",
         "status": "planned",
         "created_at": moment.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
@@ -477,7 +481,9 @@ def review_run(root: Path, run_id: str, status: str, reviewer: str, reason: str,
                for r in records]
     affected = [r["run_id"] for r in annotate_run_impacts(updated)
                 if run_id in r["blocking_run_ids"] and r["run_id"] != run_id]
-    return {"run_id": run_id, "review": current, "affected_run_ids": affected, "dry_run": dry_run}
+    graph = evidence_controls.EvidenceGraph(root, {path: record})
+    return {"run_id": run_id, "review": current, "affected_run_ids": affected,
+            "affected_evidence_ids": graph.status(run_id)["affected_ids"], "dry_run": dry_run}
 
 
 def safe_metadata_records(paths: Iterable[Path], id_field: str) -> tuple[list[dict[str, Any]], list[str]]:
@@ -630,7 +636,7 @@ def refresh_index(root: Path, dry_run: bool = False) -> tuple[Path, list[str]]:
 def is_excluded(relative: Path, excluded_directories: Sequence[str]) -> bool:
     """按路径组件判断排除，避免简单字符串前缀把相似目录误排除。"""
 
-    normalized_exclusions = {Path(item).as_posix().strip("/") for item in excluded_directories}
+    normalized_exclusions = {Path(item).as_posix().strip("/") for item in excluded_directories} | {".local"}
     relative_posix = relative.as_posix()
     return any(
         relative_posix == excluded or relative_posix.startswith(excluded + "/")
@@ -748,7 +754,7 @@ def build_context(
 def iter_small_text_files(root: Path, max_bytes: int = 1_000_000) -> Iterable[Path]:
     """迭代小型文本，跳过缓存、Git 与明显生成/归档目录。"""
 
-    excluded = {".git", ".venv", "__pycache__", "archive", "tmp", "dist", "reports/generated", "retrieval/generated",
+    excluded = {".git", ".local", ".venv", "__pycache__", "archive", "tmp", "dist", "reports/generated", "retrieval/generated",
                 "services/qdrant/runtime", "services/qdrant/models", "services/qdrant/wheelhouse", "services/qdrant/downloads"}
     for path in root.rglob("*"):
         if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
@@ -884,6 +890,24 @@ def validate_workspace(root: Path) -> tuple[list[str], list[str]]:
     except (OSError, ValueError) as exc:
         errors.append(f"Run 元数据无法校验：{exc}")
 
+    # 新证据关系必须可解析。旧记录继续可读，但执行成功且证据为空时
+    # 给出准确警告；正式使用由 check-run / finalize-run 的非零退出码拦截。
+    try:
+        graph = evidence_controls.EvidenceGraph(root)
+        errors.extend("证据元数据：" + problem for problem in graph.errors)
+        for nid, node in graph.nodes.items():
+            errors.extend(f"证据 {nid}：{problem}" for problem in node["issues"])
+            raw = node["raw"]
+            if raw.get("run_id") and raw.get("status") == "succeeded":
+                missing = [key for key in ("inputs", "artifacts", "quality_results") if not raw.get(key)]
+                if missing:
+                    warnings.append(f"Run 执行成功但记录不完整：{nid} 缺 {', '.join(missing)}；不得用于正式交付")
+            seal = raw.get("finalization")
+            if seal and (not isinstance(seal, dict) or seal.get("fingerprint") != node["fingerprint"]):
+                errors.append(f"封存后内容变化：{nid}；重新检查并 finalize")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        errors.append(f"证据检查无法完成：{exc}")
+
     return sorted(set(errors)), sorted(set(warnings))
 
 
@@ -903,6 +927,44 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
     retrieval.add_commands(subparsers)
+
+    bench = subparsers.add_parser("workbench", help="一键打开研发工作台；证据、监测、模块与环境状态")
+    bench.add_argument("--port", type=int, default=0)
+    bench.add_argument("--no-browser", action="store_true")
+    bench.add_argument("--demo", action="store_true", help="使用 .local 下独立合成工作区，绝不混入正式材料")
+    samples = subparsers.add_parser("test-data", help="生成本机跨模块合成测试工作区，不随 Git/离线包发布")
+    samples.add_argument("--preview", action="store_true")
+
+    view_parser = subparsers.add_parser("evidence-view", help="生成证据查看快照，或启动本机只读界面")
+    view_parser.add_argument("--serve", action="store_true", help="只监听 127.0.0.1；Ctrl+C 停止")
+    view_parser.add_argument("--port", type=int, default=0, help="本地端口，默认自动选择；仅 serve 使用")
+    monitor_parser = subparsers.add_parser("evidence-monitor", help="单次只读监测；仅更新本机观察记录与候选")
+    monitor_parser.add_argument("--dry-run", action="store_true", help="预览差异，不创建基线或修改日志")
+
+    doctor_parser = subparsers.add_parser("doctor", help="报告当前组件能力；缺依赖不自动安装")
+    doctor_parser.add_argument("--require", action="append", default=[],
+                               choices=["structure", "fts", "vector", "ocr", "portable", "business-eval"])
+    doctor_parser.add_argument("--smoke", action="store_true", help="实际离线探测已安装的模型/OCR")
+    verify_parser = subparsers.add_parser("verify", help="能力检查与回归；full 不允许 skipped")
+    verify_parser.add_argument("--profile", choices=["core", "full"], default="core")
+    evidence_parser = subparsers.add_parser("evidence-status", help="查看结论/文档风险、内容指纹和影响范围")
+    evidence_parser.add_argument("target", nargs="?")
+    evidence_parser.add_argument("--scope")
+    evidence_parser.add_argument("--formal", action="store_true", help="不满足正式使用时返回非零")
+    claim_parser = subparsers.add_parser("review-claim", help="逐结论复核与撤回；保留历史，支持预览")
+    claim_parser.add_argument("claim_id")
+    claim_parser.add_argument("--status", choices=sorted(REVIEW_STATES), required=True)
+    for field in ("reviewer", "reason"):
+        claim_parser.add_argument("--" + field, required=True)
+    for field in ("evidence", "scope", "replacement"):
+        claim_parser.add_argument("--" + field, default="")
+    claim_parser.add_argument("--dry-run", action="store_true")
+    for command in ("check-run", "finalize-run"):
+        gate_parser = subparsers.add_parser(command, help="检查正式 Run 记录；finalize 保存内容指纹，不代替科学复核")
+        gate_parser.add_argument("run_id")
+        gate_parser.add_argument("--scope", required=True)
+        if command == "finalize-run":
+            gate_parser.add_argument("--dry-run", action="store_true")
 
     validate_parser = subparsers.add_parser("validate", help="校验工作区结构和高风险问题")
     validate_parser.add_argument("--root", type=Path, help="显式工作区根；默认向上查找")
@@ -973,8 +1035,58 @@ def main(argv: Sequence[str] | None = None) -> int:
         explicit_root = getattr(args, "root", None)
         root = find_workspace_root(explicit_root or Path.cwd())
 
+        if args.command == "test-data":
+            import local_test_data
+            print(dump_json(local_test_data.generate(root, preview=args.preview)))
+            return 0
+        if args.command == "workbench":
+            import workbench
+            if args.demo:
+                import local_test_data
+                root = Path(local_test_data.generate(root)["root"])
+            workbench.serve(root, args.port, not args.no_browser)
+            return 0
+
+        if args.command == "evidence-view":
+            import evidence_view
+            if args.serve:
+                evidence_view.serve(root, args.port)
+            else:
+                print(dump_json(evidence_view.export(root)))
+            return 0
+        if args.command == "evidence-monitor":
+            import evidence_observer
+            result = evidence_observer.monitor(root, args.dry_run)
+            print(dump_json(result))
+            return 1 if result["errors"] else 0
+
+        if args.command in {"doctor", "verify"}:
+            import health
+            result = health.doctor(root, args.require, args.smoke) if args.command == "doctor" else health.verify(root, args.profile)
+            print(dump_json(result))
+            return 0 if result["eligible"] else 1
+        if args.command == "evidence-status":
+            if args.formal and (not args.target or not args.scope):
+                raise ValueError("正式检查需要 target 与 --scope")
+            result = evidence_controls.EvidenceGraph(root).status(args.target, args.scope)
+            print(dump_json(result))
+            return 1 if args.formal and not result.get("eligible", result.get("formal_eligible", False)) else 0
+        if args.command == "review-claim":
+            print(dump_json(evidence_controls.review_claim(root, args.claim_id, args.status, args.reviewer, args.reason,
+                                                 args.evidence, args.scope, args.replacement, args.dry_run)))
+            return 0
+        if args.command in {"check-run", "finalize-run"}:
+            result = (evidence_controls.check_run(root, args.run_id, args.scope) if args.command == "check-run" else
+                      evidence_controls.finalize_run(root, args.run_id, args.scope, args.dry_run))
+            print(dump_json(result))
+            return 0 if result["eligible"] else 1
+
         if args.command in retrieval.COMMANDS:
-            print(dump_json(retrieval.dispatch(root, args)))
+            result = retrieval.dispatch(root, args)
+            print(dump_json(result))
+            manifest = result.get("manifest", {})
+            if manifest.get("purpose") == "formal" and not manifest.get("formal_claim_ids"):
+                return 1  # 已保留缺失清单；没有正式依据不能冒充生成成功。
             return 0
 
         if args.command == "validate":

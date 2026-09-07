@@ -198,10 +198,13 @@ def plan(root, result, cfg, *, stage, focus, include, full, exclude, mode=None):
 
 
 def create(root, query, *, stage="focus", module=None, project=None, budget=None, mode=None,
-           include=(), full=(), exclude=(), parent=None, focus_modules=None, limit=None, trigger_feedback=None):
+           include=(), full=(), exclude=(), parent=None, focus_modules=None, limit=None, trigger_feedback=None,
+           purpose="exploration", scope=None):
     import retrieval as r
     if stage not in STAGES:
         raise ValueError("未知上下文阶段")
+    if purpose not in {"exploration", "formal"} or purpose == "formal" and not scope:
+        raise ValueError("formal 上下文需要明确 scope")
     cfg = policy(root)
     mode = mode or r.config(root).get("context_mode", "auto")
     result = r.search(root, query, module=None if stage == "wide" else module,
@@ -211,7 +214,7 @@ def create(root, query, *, stage="focus", module=None, project=None, budget=None
     if not focus:
         focus = list(dict.fromkeys(m for h in result["results"] for m in h["meta"].get("module_ids", [])))[:cfg["max_focus_modules"]]
     selection = plan(root, result, cfg, stage=stage, focus=focus, include=include, full=full, exclude=exclude, mode=mode)
-    pack = r.assemble(root, result, budget, mode, selection=selection)
+    pack = r.assemble(root, result, budget, mode, selection=selection, purpose=purpose, scope=scope)
     context_id = "CTX-" + uuid.uuid4().hex
     manifest = pack["manifest"]
     manifest.pop("related_limit", None)
@@ -242,6 +245,7 @@ def create(root, query, *, stage="focus", module=None, project=None, budget=None
               "parent_context_id": parent, "query": query, "stage": stage, "module": module, "project": project,
               "trigger_feedback_id": trigger_feedback,
               "focus_modules": focus, "budget": budget, "mode": mode,
+              "purpose": purpose, "scope": scope,
               "include": list(include), "full": list(full), "exclude": list(exclude),
               "policy_digest": hashlib.sha256(json.dumps(cfg, sort_keys=True).encode()).hexdigest(),
               "candidate_inventory": selection["inventory"],
@@ -281,7 +285,8 @@ def feedback(root, context_id, outcome, actor, note, *, include=(), full=(), exc
         child = create(root, query or previous["query"], stage=STAGES[STAGES.index(previous["stage"])+1],
                        module=previous["module"], project=previous["project"], budget=previous["budget"], mode=previous["mode"],
                        include=selected_include, full=selected_full, exclude=selected_exclude,
-                       parent=context_id, focus_modules=previous["focus_modules"], trigger_feedback=event_id)
+                       parent=context_id, focus_modules=previous["focus_modules"], trigger_feedback=event_id,
+                       purpose=previous.get("purpose", "exploration"), scope=previous.get("scope"))
     except (OSError, ValueError, RuntimeError) as exc:
         return {"feedback": event, "status": "recorded; expansion failed", "error": str(exc)}
     return {"feedback": event, "status": "expanded", **child}

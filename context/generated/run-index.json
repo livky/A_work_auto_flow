@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "run_id": "RUN-20260906T130218Z-252152E16BC5",
+    "project_id": null,
+    "title": "工作区架构审阅、回归检查与缺口验证",
+    "created_at": "2026-09-06T13:02:18Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "记忆治理",
+      "OpenClaw",
+      "结构审阅"
+    ],
+    "question": "当前研发工作区与相近工作智能体有哪些结构和功能缺口，哪些优先改进？",
+    "conclusion": "保留显式证据组织与有界检索；建议优先补结论准入、跨对象失效、真实评估和环境健康。",
+    "parent_run_ids": [],
+    "path": "runs/run-20260906t130218z-252152e16bc5/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260906T140125Z-6DEFDCB569C4",
+    "project_id": null,
+    "title": "研发可靠性第一批实现与回归验证",
+    "created_at": "2026-09-06T14:01:25Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "结论准入",
+      "失效传播",
+      "环境健康"
+    ],
+    "question": "现有工作区能否在保留探索检索的同时，按结论版本/范围/复核与依赖状态控制正式使用，并如实报告环境能力？",
+    "conclusion": "第一批证据准入、失效传播与能力诊断已实现；机制 core 回归部分通过，full 和业务验收尚未通过。",
+    "parent_run_ids": [
+      "RUN-20260906T130218Z-252152E16BC5"
+    ],
+    "path": "runs/run-20260906t140125z-6defdcb569c4/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260907T023756Z-035991E67BBA",
+    "project_id": null,
+    "title": "证据查看界面与只读监测实现验证",
+    "created_at": "2026-09-07T02:37:56Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "证据查看",
+      "只读监测",
+      "维护候选"
+    ],
+    "question": "如何让研发证据的保存、复核与影响可见，并只读监测变更而不因重复而提升可信状态？",
+    "conclusion": "证据工作台与单次可调度只读监测已实现；查看和候选不改变复核状态；当前尚未启用定时运行。",
+    "parent_run_ids": [
+      "RUN-20260906T140125Z-6DEFDCB569C4"
+    ],
+    "path": "runs/run-20260907t023756z-035991e67bba/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260907T042941Z-D9E5F49FE803",
+    "project_id": null,
+    "title": "Windows 一键部署、统一工作台与隔离测试数据验证",
+    "created_at": "2026-09-07T04:29:41Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "Windows",
+      "一键部署",
+      "迁移",
+      "工作台",
+      "合成测试",
+      "PATH",
+      "回滚"
+    ],
+    "question": "如何实现 Windows 一命令升级并保留业务数据，同时统一工作台和可撤销命令注册？",
+    "conclusion": "基础/完整安装、旧工作区保留升级、证据与只读监测工作台以及隔离样本生成已实现；软件级验证通过。",
+    "parent_run_ids": [
+      "RUN-20260907T023756Z-035991E67BBA"
+    ],
+    "path": "runs/run-20260907t042941z-d9e5f49fe803/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  }
+]

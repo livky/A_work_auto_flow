@@ -1,0 +1,112 @@
+test_algorithm_baseline_and_function_scope (test_context_engine.ContextEngineTests.test_algorithm_baseline_and_function_scope) ... ok
+test_expansion_searches_cross_module_but_keeps_budget_and_stops (test_context_engine.ContextEngineTests.test_expansion_searches_cross_module_but_keeps_budget_and_stops) ... ok
+test_large_run_brief_and_excluded_required_are_explicit (test_context_engine.ContextEngineTests.test_large_run_brief_and_excluded_required_are_explicit) ... ok
+test_preferences_and_unindexed_file_boundaries (test_context_engine.ContextEngineTests.test_preferences_and_unindexed_file_boundaries) ... ok
+test_required_budget_gap_and_missing_algorithm_are_visible (test_context_engine.ContextEngineTests.test_required_budget_gap_and_missing_algorithm_are_visible) ... ok
+test_software_functions_do_not_become_core_algorithm_evidence (test_context_engine.ContextEngineTests.test_software_functions_do_not_become_core_algorithm_evidence)
+工具即使关联 MOD-ID 也不是核心实现；规则页和辅助说明不作算法基线。 ... ok
+test_solved_feedback_does_not_expand_or_change_truth (test_context_engine.ContextEngineTests.test_solved_feedback_does_not_expand_or_change_truth) ... ok
+test_source_keywords_and_role_override (test_context_engine.ContextEngineTests.test_source_keywords_and_role_override) ... ok
+test_user_choices_persist_and_can_be_reversed (test_context_engine.ContextEngineTests.test_user_choices_persist_and_can_be_reversed) ... ok
+test_corrupt_pdf_does_not_block_other_sources (test_local_retrieval.LocalRetrievalTests.test_corrupt_pdf_does_not_block_other_sources) ... skipped '需先安装工作区本地嵌入模型'
+test_offline_semantic_update_delete_filter_and_full_override (test_local_retrieval.LocalRetrievalTests.test_offline_semantic_update_delete_filter_and_full_override) ... skipped '需先安装工作区本地嵌入模型'
+test_scanned_pdf_and_standalone_image_ocr (test_local_retrieval.LocalRetrievalTests.test_scanned_pdf_and_standalone_image_ocr) ... skipped '需先安装工作区本地嵌入模型'
+test_slide_ocr_locator_and_context_policy (test_local_retrieval.LocalRetrievalTests.test_slide_ocr_locator_and_context_policy) ... skipped '需先安装工作区本地嵌入模型'
+test_staged_engine_with_real_offline_vectors (test_local_retrieval.LocalRetrievalTests.test_staged_engine_with_real_offline_vectors) ... skipped '需先安装工作区本地嵌入模型'
+test_table_row_locators (test_local_retrieval.LocalRetrievalTests.test_table_row_locators) ... skipped '需先安装工作区本地嵌入模型'
+test_xlsx_cached_formula_is_marked (test_local_retrieval.LocalRetrievalTests.test_xlsx_cached_formula_is_marked) ... skipped '需先安装工作区本地嵌入模型'
+test_package_keeps_runtime_and_history_but_omits_caches (test_portable.PortableTests.test_package_keeps_runtime_and_history_but_omits_caches) ... ok
+test_alias_command_preview_history_and_feedback_report (test_retrieval.RetrievalTests.test_alias_command_preview_history_and_feedback_report) ... ok
+test_budget_only_falls_back_when_full_does_not_fit (test_retrieval.RetrievalTests.test_budget_only_falls_back_when_full_does_not_fit) ... ok
+test_chinese_short_words_identifiers_and_full_related_context (test_retrieval.RetrievalTests.test_chinese_short_words_identifiers_and_full_related_context) ... ok
+test_crlf_and_run_directory_do_not_inflate_context (test_retrieval.RetrievalTests.test_crlf_and_run_directory_do_not_inflate_context) ... ok
+test_docx_extraction_and_bad_run_are_reported (test_retrieval.RetrievalTests.test_docx_extraction_and_bad_run_are_reported) ... ok
+test_dry_run_and_empty_eval (test_retrieval.RetrievalTests.test_dry_run_and_empty_eval) ... ok
+test_external_sources_are_explicit_and_links_do_not_expand_scope (test_retrieval.RetrievalTests.test_external_sources_are_explicit_and_links_do_not_expand_scope) ... ok
+test_feedback_is_append_only_and_alias_changes_are_evaluable (test_retrieval.RetrievalTests.test_feedback_is_append_only_and_alias_changes_are_evaluable) ... ok
+test_incremental_update_removal_and_stale_pack (test_retrieval.RetrievalTests.test_incremental_update_removal_and_stale_pack) ... ok
+test_limit_failure_does_not_remove_previous_index (test_retrieval.RetrievalTests.test_limit_failure_does_not_remove_previous_index) ... ok
+test_module_filter_precedes_candidate_limit (test_retrieval.RetrievalTests.test_module_filter_precedes_candidate_limit) ... ok
+test_parent_change_after_search_is_visible_in_child_context (test_retrieval.RetrievalTests.test_parent_change_after_search_is_visible_in_child_context) ... ok
+test_project_filter_and_literal_query (test_retrieval.RetrievalTests.test_project_filter_and_literal_query) ... ok
+test_run_state_updates_apply_to_results_and_key_output (test_retrieval.RetrievalTests.test_run_state_updates_apply_to_results_and_key_output) ... ok
+test_unreadable_large_and_disabled_sources_do_not_reuse_old_content (test_retrieval.RetrievalTests.test_unreadable_large_and_disabled_sources_do_not_reuse_old_content) ... ok
+test_angle_bracket_links_with_spaces_are_checked (test_workspace_cli.WorkspaceCliTests.test_angle_bracket_links_with_spaces_are_checked)
+尖括号只是 Markdown 路径包裹，不能借此绕过坏链接检查。 ... ok
+test_bad_metadata_is_reported_and_generated_reports_are_excluded (test_workspace_cli.WorkspaceCliTests.test_bad_metadata_is_reported_and_generated_reports_are_excluded)
+坏元数据不应导致索引 traceback，生成报告不参与正式源文本检查。 ... ok
+test_chinese_titles_search_and_old_manifest (test_workspace_cli.WorkspaceCliTests.test_chinese_titles_search_and_old_manifest) ... ok
+test_core_algorithm_requires_document_even_for_legacy_command (test_workspace_cli.WorkspaceCliTests.test_core_algorithm_requires_document_even_for_legacy_command)
+缺来源时在写入前拒绝；旧命令不能绕过新的业务对象边界。 ... usage: python.exe -m unittest new-core-algorithm [-h] --title TITLE
+                                                 --source-document
+                                                 SOURCE_DOCUMENT [--dry-run]
+                                                 slug
+python.exe -m unittest new-core-algorithm: error: the following arguments are required: --source-document
+usage: python.exe -m unittest new-core-algorithm [-h] --title TITLE
+                                                 --source-document
+                                                 SOURCE_DOCUMENT [--dry-run]
+                                                 slug
+python.exe -m unittest new-core-algorithm: error: the following arguments are required: --source-document
+ok
+test_cross_project_impact_and_cyclic_dependencies_terminate (test_workspace_cli.WorkspaceCliTests.test_cross_project_impact_and_cyclic_dependencies_terminate) ... ok
+test_existing_destination_is_never_overwritten (test_workspace_cli.WorkspaceCliTests.test_existing_destination_is_never_overwritten) ... ok
+test_global_modules_runs_and_optional_projects (test_workspace_cli.WorkspaceCliTests.test_global_modules_runs_and_optional_projects) ... ok
+test_legacy_run_path_still_supports_review (test_workspace_cli.WorkspaceCliTests.test_legacy_run_path_still_supports_review) ... ok
+test_missing_parent_and_duplicate_id_are_visible (test_workspace_cli.WorkspaceCliTests.test_missing_parent_and_duplicate_id_are_visible) ... ok
+test_project_and_run_creation_preserve_traceability (test_workspace_cli.WorkspaceCliTests.test_project_and_run_creation_preserve_traceability) ... ok
+test_recent_navigation_is_bounded_but_full_index_is_complete (test_workspace_cli.WorkspaceCliTests.test_recent_navigation_is_bounded_but_full_index_is_complete) ... ok
+test_refresh_index_and_bounded_context (test_workspace_cli.WorkspaceCliTests.test_refresh_index_and_bounded_context) ... ok
+test_review_guards_dry_run_and_supersession (test_workspace_cli.WorkspaceCliTests.test_review_guards_dry_run_and_supersession) ... ok
+test_review_history_retraction_and_transitive_impact (test_workspace_cli.WorkspaceCliTests.test_review_history_retraction_and_transitive_impact) ... ok
+test_slugify_rejects_non_ascii_only_identifier (test_workspace_cli.WorkspaceCliTests.test_slugify_rejects_non_ascii_only_identifier)
+显示标题可用中文，但机器 slug 必须保持跨工具安全。 ... ok
+test_titles_preserve_quotes_paths_and_literal_template_tokens (test_workspace_cli.WorkspaceCliTests.test_titles_preserve_quotes_paths_and_literal_template_tokens)
+真实材料标题常含引号/路径，创建后必须仍是有效 JSON 且原文不变。 ... ok
+test_workflow_sources_have_valid_minimal_skill_metadata (test_workspace_cli.WorkspaceCliTests.test_workflow_sources_have_valid_minimal_skill_metadata)
+工作流源保持可迁移格式；技能入口只引用源，不限制可扩展的总数量。 ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 4.168s
+
+OK (skipped=7)
+已刷新索引：C:\Users\livky\AppData\Local\Temp\tmpbc2nswgy\context\generated\workspace-index.md
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmpwgnlhhau\projects\demo
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmpwgnlhhau\runs\run-20260906t130311z-c7cc593febd4
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmpwgnlhhau\runs\run-20260906t130311z-109636ec8b3d
+已刷新索引：C:\Users\livky\AppData\Local\Temp\tmpwgnlhhau\context\generated\workspace-index.md
+已创建核心算法（测校项）：C:\Users\livky\AppData\Local\Temp\tmpgjhzze2v\core-algorithms\align
+[dry-run] 从 C:\Users\livky\AppData\Local\Temp\tmpgjhzze2v\core-algorithms\_template 创建 C:\Users\livky\AppData\Local\Temp\tmpgjhzze2v\core-algorithms\preview
+[dry-run] 将创建核心算法（测校项）：C:\Users\livky\AppData\Local\Temp\tmpgjhzze2v\core-algorithms\preview
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmp03eltjgb\projects\demo
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmp03eltjgb\runs\run-20260906t130311z-16478405bc40
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmp03eltjgb\projects\other
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmp03eltjgb\runs\run-20260906t130311z-6d32f1f289f5
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmp1soir47a\projects\demo
+已创建核心算法（测校项）：C:\Users\livky\AppData\Local\Temp\tmp5evasm3z\core-algorithms\align
+已刷新索引：C:\Users\livky\AppData\Local\Temp\tmp5evasm3z\context\generated\workspace-index.md
+已生成上下文包：C:\Users\livky\AppData\Local\Temp\tmp5evasm3z\context\generated\context-pack.md（约 1965 字符）
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmp5evasm3z\runs\run-20260906t130311z-a7696e224054
+已刷新索引：C:\Users\livky\AppData\Local\Temp\tmp5evasm3z\context\generated\workspace-index.md
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmp5evasm3z\projects\view
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmpremo1k69\projects\demo
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmpremo1k69\runs\run-20260906t130311z-b322d13356d4
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmpremo1k69\runs\run-20260906t130312z-2ef4e04cb8f6
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmpma4fnmsn\projects\demo-project
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmpma4fnmsn\runs\run-20260906t130312z-4511e477f625
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmp_gvyx7nd\projects\demo
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmp_gvyx7nd\runs\run-20260906t130312z-9bd440ed45cb
+已刷新索引：C:\Users\livky\AppData\Local\Temp\tmp_gvyx7nd\context\generated\workspace-index.md
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmpgj0wmlhb\projects\demo
+已刷新索引：C:\Users\livky\AppData\Local\Temp\tmpgj0wmlhb\context\generated\workspace-index.md
+已刷新索引：C:\Users\livky\AppData\Local\Temp\tmpgj0wmlhb\context\generated\workspace-index.md
+已生成上下文包：C:\Users\livky\AppData\Local\Temp\tmpgj0wmlhb\context\generated\context-pack.md（约 3080 字符）
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmp5gvgt_0k\projects\demo
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmp5gvgt_0k\runs\run-20260906t130312z-7396b22e9ce9
+[dry-run] 写入 C:\Users\livky\AppData\Local\Temp\tmp5gvgt_0k\runs\run-20260906t130312z-7396b22e9ce9\run.json
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmp5gvgt_0k\runs\run-20260906t130312z-21c9c8133c55
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmpbynqb5bc\projects\demo
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmpbynqb5bc\runs\run-20260906t130312z-859ef99f2bf1
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmpbynqb5bc\runs\run-20260906t130312z-60293590ada9
+已创建 Run：C:\Users\livky\AppData\Local\Temp\tmpbynqb5bc\runs\run-20260906t130312z-16255d0e41b4
+已创建项目：C:\Users\livky\AppData\Local\Temp\tmpe7anq8m_\projects\quoted
+已创建研究：C:\Users\livky\AppData\Local\Temp\tmpe7anq8m_\research\quoted

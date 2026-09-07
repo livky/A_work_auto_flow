@@ -21,7 +21,11 @@
 
 ## 检索提示
 
+- 日常统一入口为 `workbench.cmd`（注册后 `rdwork`）；安装/升级使用 `setup.cmd`，合成测试用 `workbench.cmd workbench --demo`。见 [一键部署与工作台](../docs/SETUP_WORKBENCH.md)。
+
 - 记录、确认和纠错先看 [MEMORY.md](MEMORY.md)。简单任务不必创建完整项目或套工作流。
+- 当前组件能力用 `doctor` 检查；正式结论、封存和跨文档失效使用 [证据准入手册](../docs/EVIDENCE_CONTROLS.md)。探索记录不自动成为正式依据。
+- 查看证据依据、复核、失效时间与报告影响，使用 evidence-inspection Skill 或 `evidence-view --serve`；变化观察用 `evidence-monitor`，只写本机观察记录和候选。见 [查看与监测手册](../docs/EVIDENCE_VIEW_MONITOR.md)。
 - 接入已有算法/文档/仓库时，按 [已有材料接入指南](../docs/EXISTING_MATERIALS.md) 从用户给的路径和用途开始；助手负责归组与登记，不要求用户预先建项目或填完整核心算法模板。
 - 历史 Run 使用 `search-runs "关键词" --project <slug>`；命令即时读源记录，注意复核状态与 `needs_revalidation`，再按链接读取证据。
 - 先按稳定 ID 检索：项目 `PRJ-*`、核心算法 `MOD-*`、数据 `DATA-*`、运行 `RUN-*`、决策 `ADR-*`、事故 `INC-*`、报告 `REP-*`。

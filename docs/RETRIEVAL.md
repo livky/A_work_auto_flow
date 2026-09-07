@@ -1,5 +1,7 @@
 # 检索、上下文选择与反馈手册
 
+正式结论导出新增 `retrieve-context --purpose formal --scope "适用范围"`，只装载通过版本/复核/依赖检查的结论，purpose/scope 在扩展链保持。默认 exploration 继续读取原材料并显示跨文档风险。详细格式、复核与封存入口见 [证据准入手册](EVIDENCE_CONTROLS.md)。
+
 检索找候选，上下文策略决定实际读多少。原理和概念见 [README 附录](../README.md#附录检索和向量化到底怎样工作)；本页集中说明命令、配置与恢复。
 
 ## 常用操作

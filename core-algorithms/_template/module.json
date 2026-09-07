@@ -16,5 +16,7 @@
   "related_tool_ids": [],
   "project_ids": [],
   "source_files": [],
-  "validation_run_ids": []
+  "validation_run_ids": [],
+  "claims": [],
+  "dependencies": []
 }

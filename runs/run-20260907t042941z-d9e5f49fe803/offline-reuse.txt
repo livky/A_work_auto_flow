@@ -1,0 +1,41 @@
+C:\Users\livky\.codex\worktrees\a092\A_work_auto_flow\services\qdrant\runtime\python.exe
+{"target": "C:\\Users\\livky\\.codex\\worktrees\\a092\\A_work_auto_flow", "profile": "full", "replacements": [], "preserve": "business records, existing configs/rules/skills/runtime", "preview": false}
+{"backup": null}
+WARNING: 内部链接不存在：docs\design\adaptive-context-review-2026-09-06.md -> ../../services/qdrant/context-cli-verification.json
+WARNING: 内部链接不存在：docs\design\adaptive-context-review-2026-09-06.md -> ../../services/qdrant/test-results.txt
+WARNING: 内部链接不存在：docs\design\core-algorithms-rename-plan.md -> ../../tmp/core-algorithms-before.zip
+WARNING: 内部链接不存在：docs\design\local-retrieval-review-2026-09-06.md -> ../../services/qdrant/test-results.txt
+校验通过：0 个错误，4 个警告。
+{
+  "status": "passed",
+  "root": "C:\\Users\\livky\\.codex\\worktrees\\a092\\A_work_auto_flow",
+  "python": "C:\\Users\\livky\\.codex\\worktrees\\a092\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+  "embedding_dimensions": 384,
+  "ocr": "loaded and executed",
+  "external_sources_to_review": {
+    "schema_version": 1,
+    "sources": []
+  }
+}
+已刷新索引：C:\Users\livky\.codex\worktrees\a092\A_work_auto_flow\context\generated\workspace-index.md
+WARNING: 内部链接不存在：docs\design\adaptive-context-review-2026-09-06.md -> ../../services/qdrant/context-cli-verification.json
+WARNING: 内部链接不存在：docs\design\adaptive-context-review-2026-09-06.md -> ../../services/qdrant/test-results.txt
+WARNING: 内部链接不存在：docs\design\core-algorithms-rename-plan.md -> ../../tmp/core-algorithms-before.zip
+WARNING: 内部链接不存在：docs\design\local-retrieval-review-2026-09-06.md -> ../../services/qdrant/test-results.txt
+校验通过：0 个错误，4 个警告。
+{
+  "updated": 0,
+  "unchanged": 55,
+  "unavailable": [],
+  "removed": 0,
+  "qdrant": {
+    "enabled": true,
+    "updated_sources": 3,
+    "unchanged_sources": 52,
+    "removed_sources": 0,
+    "collection": "workspace_6916d3bf4f7a",
+    "points": 434
+  }
+}
+
+{"status": "installed", "profile": "full", "open": "C:\\Users\\livky\\.codex\\worktrees\\a092\\A_work_auto_flow\\workbench.cmd", "note": "完整组件检查与索引已通过；业务结论仍需领域验收；外部来源路径请在目标机核对"}
