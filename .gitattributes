@@ -3,3 +3,8 @@ automation/frontend/** text eol=lf
 automation/ui/workbench-assets/** text eol=lf
 # 固定合成材料按原字节做SHA-256校验，Windows检出不能自动改成CRLF。
 docs/design/system-memory/fixtures/** text eol=lf
+
+# 字体按二进制保存，覆盖目录级 text 规则，避免换行转换破坏发行指纹。
+automation/ui/workbench-assets/assets/*.ttf binary
+automation/ui/workbench-assets/assets/*.woff binary
+automation/ui/workbench-assets/assets/*.woff2 binary
