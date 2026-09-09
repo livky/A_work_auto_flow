@@ -58,9 +58,9 @@ ZIP 内 `dependency-manifest.json` 记录版本、平台和逐文件 SHA-256，`
 
 ## GitHub Release 分发
 
-Release 可附加二进制文件，每个附件须小于 2 GiB，见 [GitHub 官方说明](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)。上传独立依赖 ZIP 及 `.sha256`，源码使用该 Release 对应提交自动生成的源码 ZIP。发布说明应写明兼容 Windows x64、依赖包 ID、检查记录和已知限制。
+Release 可附加二进制文件，每个附件须小于 2 GiB，见 [GitHub 官方说明](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)。上传独立依赖 ZIP 及 `.sha256`，源码使用该 Release 对应提交通过 `git archive` 生成的 ZIP，作为独立源码附件上传；`.gitattributes` 的 `export-ignore` 排除研究、项目、核心算法和 Run 实例，仅保留规则与模板。不要用整个 checkout 压缩代替发行打包。发布说明应写明兼容 Windows x64、依赖包 ID、检查记录和已知限制。
 
-先将配套源码提交到准备发布的版本，再创建 Release 并附加两份文件。打包命令不自动提交、打标签或上传。普通 `portable.cmd pack` 会保留业务历史，不能用于公共依赖发布。
+先将配套源码提交并推送到准备发布的版本，执行 `git archive --format=zip --output=framework-source.zip HEAD`，解包核对无业务实例且规则、模板、前端资源齐全，再创建 Release 并附加源码 ZIP、依赖 ZIP 和校验文件。打包命令不自动提交、打标签或上传。普通 `portable.cmd pack` 会保留业务历史，不能用于公共依赖发布。
 
 本框架使用的 Qdrant local 不需要服务端，依据见 [Qdrant Python Client](https://github.com/qdrant/qdrant-client/blob/master/README.md)。更换为服务器部署、GPU 或自定义模型属于不同环境契约，不能假设本 ZIP 兼容。
 

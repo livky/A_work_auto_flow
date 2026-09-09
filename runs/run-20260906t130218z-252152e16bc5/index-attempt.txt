@@ -1,1 +1,0 @@
-ERROR: No module named 'qdrant_client'

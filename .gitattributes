@@ -8,3 +8,24 @@ docs/design/system-memory/fixtures/** text eol=lf
 automation/ui/workbench-assets/assets/*.ttf binary
 automation/ui/workbench-assets/assets/*.woff binary
 automation/ui/workbench-assets/assets/*.woff2 binary
+
+# Frozen research inputs and memory snapshots must retain their exact recorded bytes.
+research/floating-point-summation/** -text
+
+# Developer instances stay in Git but are omitted by git archive/release ZIPs.
+# Keep directory rules and reusable templates available to fresh installations.
+/research/* export-ignore
+/research/AGENTS.md -export-ignore
+/research/_template -export-ignore
+/projects/* export-ignore
+/projects/AGENTS.md -export-ignore
+/projects/README.md -export-ignore
+/projects/_template -export-ignore
+/core-algorithms/* export-ignore
+/core-algorithms/AGENTS.md -export-ignore
+/core-algorithms/README.md -export-ignore
+/core-algorithms/_template -export-ignore
+/runs/* export-ignore
+/runs/*.md -export-ignore
+/runs/_template -export-ignore
+/context/generated export-ignore

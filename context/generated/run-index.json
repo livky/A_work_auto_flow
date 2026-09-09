@@ -1,9 +1,9 @@
 [
   {
-    "run_id": "RUN-20260906T130218Z-252152E16BC5",
+    "run_id": "RUN-20260908T201214Z-D0AB308F66AD",
     "project_id": null,
-    "title": "工作区架构审阅、回归检查与缺口验证",
-    "created_at": "2026-09-06T13:02:18Z",
+    "title": "求和探索01：大数与小增量的顺序影响",
+    "created_at": "2026-09-08T20:12:14Z",
     "status": "succeeded",
     "review": {
       "status": "not-reviewed",
@@ -11,22 +11,20 @@
       "date": null
     },
     "keywords": [
-      "记忆治理",
-      "OpenClaw",
-      "结构审阅"
+      "浮点求和"
     ],
-    "question": "当前研发工作区与相近工作智能体有哪些结构和功能缺口，哪些优先改进？",
-    "conclusion": "保留显式证据组织与有界检索；建议优先补结论准入、跨对象失效、真实评估和环境健康。",
+    "question": "同一组数改变排列后，逐项求和与fsum的误差是否变化？",
+    "conclusion": "逐项累加对本组输入的排列敏感；观察结果促使下一轮比较补偿算法，不能只依赖改顺序。",
     "parent_run_ids": [],
-    "path": "runs/run-20260906t130218z-252152e16bc5/run.json",
+    "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/run.json",
     "needs_revalidation": false,
     "blocking_run_ids": []
   },
   {
-    "run_id": "RUN-20260906T140125Z-6DEFDCB569C4",
+    "run_id": "RUN-20260908T201228Z-A0980824DC18",
     "project_id": null,
-    "title": "研发可靠性第一批实现与回归验证",
-    "created_at": "2026-09-06T14:01:25Z",
+    "title": "求和探索02：补偿求和的抵消反例",
+    "created_at": "2026-09-08T20:12:28Z",
     "status": "succeeded",
     "review": {
       "status": "not-reviewed",
@@ -34,24 +32,70 @@
       "date": null
     },
     "keywords": [
-      "结论准入",
-      "失效传播",
-      "环境健康"
+      "浮点求和"
     ],
-    "question": "现有工作区能否在保留探索检索的同时，按结论版本/范围/复核与依赖状态控制正式使用，并如实报告环境能力？",
-    "conclusion": "第一批证据准入、失效传播与能力诊断已实现；机制 core 回归部分通过，full 和业务验收尚未通过。",
+    "question": "Kahan补偿能否修复三个数的所有排列？Neumaier与fsum如何？",
+    "conclusion": "三项抵消输入揭示Kahan实现仍存在排列反例；下一轮扩大排列数量，检查该限制是否继续出现。",
+    "parent_run_ids": [],
+    "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260908T201240Z-90107A617CF8",
+    "project_id": null,
+    "title": "求和探索03：固定种子多排列复验",
+    "created_at": "2026-09-08T20:12:40Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "浮点求和"
+    ],
+    "question": "前轮观察在重复抵消结构的30个固定种子排列中是否保留？",
+    "conclusion": "本轮以固定随机种子扩展排列，结果限于这30个已保存输入；不作任意浮点数据的正确性保证。",
+    "parent_run_ids": [],
+    "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260908T214955Z-2273015D2CEF",
+    "project_id": null,
+    "title": "三轮求和的逐步误差轨迹与细节复核",
+    "created_at": "2026-09-08T21:49:55Z",
+    "status": "failed",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "浮点求和",
+      "逐步误差",
+      "抵消",
+      "Kahan",
+      "Neumaier"
+    ],
+    "question": "旧三轮的每个结果能否逐项复现，补偿变量如何产生抵消反例？",
+    "conclusion": "数值轨迹文件已生成，但隔离绘图依赖在沙箱中不可读，Matplotlib导入为不完整命名空间，绘图步骤失败。",
     "parent_run_ids": [
-      "RUN-20260906T130218Z-252152E16BC5"
+      "RUN-20260908T201214Z-D0AB308F66AD",
+      "RUN-20260908T201228Z-A0980824DC18",
+      "RUN-20260908T201240Z-90107A617CF8"
     ],
-    "path": "runs/run-20260906t140125z-6defdcb569c4/run.json",
+    "path": "research/floating-point-summation/runs/run-20260908t214955z-2273015d2cef/run.json",
     "needs_revalidation": false,
     "blocking_run_ids": []
   },
   {
-    "run_id": "RUN-20260907T023756Z-035991E67BBA",
+    "run_id": "RUN-20260908T215458Z-04C7D84D40D8",
     "project_id": null,
-    "title": "证据查看界面与只读监测实现验证",
-    "created_at": "2026-09-07T02:37:56Z",
+    "title": "逐步误差轨迹复核：隔离绘图环境复试",
+    "created_at": "2026-09-08T21:54:58Z",
     "status": "succeeded",
     "review": {
       "status": "not-reviewed",
@@ -59,140 +103,20 @@
       "date": null
     },
     "keywords": [
-      "证据查看",
-      "只读监测",
-      "维护候选"
+      "浮点求和",
+      "逐步误差",
+      "抵消",
+      "Kahan",
+      "Neumaier"
     ],
-    "question": "如何让研发证据的保存、复核与影响可见，并只读监测变更而不因重复而提升可信状态？",
-    "conclusion": "证据工作台与单次可调度只读监测已实现；查看和候选不改变复核状态；当前尚未启用定时运行。",
+    "question": "旧三轮的每个结果能否逐项复现，补偿变量如何产生抵消反例？",
+    "conclusion": "150个既有方法结果逐项一致；明确保存了顺序/Kahan/Neumaier的中间变量，math.fsum内部不可见未伪造轨迹。",
     "parent_run_ids": [
-      "RUN-20260906T140125Z-6DEFDCB569C4"
+      "RUN-20260908T201214Z-D0AB308F66AD",
+      "RUN-20260908T201228Z-A0980824DC18",
+      "RUN-20260908T201240Z-90107A617CF8"
     ],
-    "path": "runs/run-20260907t023756z-035991e67bba/run.json",
-    "needs_revalidation": false,
-    "blocking_run_ids": []
-  },
-  {
-    "run_id": "RUN-20260907T042941Z-D9E5F49FE803",
-    "project_id": null,
-    "title": "Windows 一键部署、统一工作台与隔离测试数据验证",
-    "created_at": "2026-09-07T04:29:41Z",
-    "status": "succeeded",
-    "review": {
-      "status": "not-reviewed",
-      "reviewer": null,
-      "date": null
-    },
-    "keywords": [
-      "Windows",
-      "一键部署",
-      "迁移",
-      "工作台",
-      "合成测试",
-      "PATH",
-      "回滚"
-    ],
-    "question": "如何实现 Windows 一命令升级并保留业务数据，同时统一工作台和可撤销命令注册？",
-    "conclusion": "基础/完整安装、旧工作区保留升级、证据与只读监测工作台以及隔离样本生成已实现；软件级验证通过。",
-    "parent_run_ids": [
-      "RUN-20260907T023756Z-035991E67BBA"
-    ],
-    "path": "runs/run-20260907t042941z-d9e5f49fe803/run.json",
-    "needs_revalidation": false,
-    "blocking_run_ids": []
-  },
-  {
-    "run_id": "RUN-20260907T063633Z-159B86592CDD",
-    "project_id": null,
-    "title": "材料关系图的工具调研与现有结构核对",
-    "created_at": "2026-09-07T06:36:33Z",
-    "status": "succeeded",
-    "review": {
-      "status": "not-reviewed",
-      "reviewer": null,
-      "date": null
-    },
-    "keywords": [
-      "知识图谱",
-      "关联可视化",
-      "证据关系"
-    ],
-    "question": "笔记关系图、主题聚合与语义联系如何用于当前材料，并帮助 AI 分析实际问题？",
-    "conclusion": "建议新增工作台局部辐射、主题聚合和证据链视图，复用现有事实记录；候选相似关系单独展示，AI 使用带类型和来源的局部摘要。",
-    "parent_run_ids": [],
-    "path": "runs/run-20260907t063633z-159b86592cdd/run.json",
-    "needs_revalidation": false,
-    "blocking_run_ids": []
-  },
-  {
-    "run_id": "RUN-20260907T071646Z-CE49506865C4",
-    "project_id": null,
-    "title": "模块化工作台与完整材料关系功能实施验证",
-    "created_at": "2026-09-07T07:16:46Z",
-    "status": "succeeded",
-    "review": {
-      "status": "not-reviewed",
-      "reviewer": null,
-      "date": null
-    },
-    "keywords": [
-      "工作台重构",
-      "材料关系",
-      "前端工程"
-    ],
-    "question": "在保持证据边界和 Windows 一命令迁移的条件下，完成可扩展工作台和全部材料关联功能。",
-    "conclusion": "七步计划的软件功能与本机验收完成；运行结果不构成真实公司研发结论的复核。",
-    "parent_run_ids": [],
-    "path": "runs/run-20260907t071646z-ce49506865c4/run.json",
-    "needs_revalidation": false,
-    "blocking_run_ids": []
-  },
-  {
-    "run_id": "RUN-20260907T094813Z-4EE938390289",
-    "project_id": null,
-    "title": "核心算法术语与 Windows 依赖分发实施验证",
-    "created_at": "2026-09-07T09:48:13Z",
-    "status": "succeeded",
-    "review": {
-      "status": "not-reviewed",
-      "reviewer": null,
-      "date": null
-    },
-    "keywords": [
-      "deployment",
-      "offline",
-      "release"
-    ],
-    "question": "去掉框架固定领域例名，提供本机依赖可分发包与 Windows 一键离线安装、升级和恢复。",
-    "conclusion": "本机隔离环境的离线分发、安装、升级、二次打包与恢复执行成功；保留业务数据和配置，候选与业务结论状态未改变。",
-    "parent_run_ids": [],
-    "path": "runs/run-20260907t094813z-4ee938390289/run.json",
-    "needs_revalidation": false,
-    "blocking_run_ids": []
-  },
-  {
-    "run_id": "RUN-20260907T143437Z-96C331370A32",
-    "project_id": null,
-    "title": "已有扩展目录的 Windows 升级回归验证",
-    "created_at": "2026-09-07T14:34:37Z",
-    "status": "succeeded",
-    "review": {
-      "status": "not-reviewed",
-      "reviewer": null,
-      "date": null
-    },
-    "keywords": [
-      "升级",
-      "回归测试",
-      "目录工具",
-      "数据保留",
-      "Windows",
-      "离线依赖"
-    ],
-    "question": "防止目录工具入口误报，并验证已有大量用户子目录时升级和恢复保留数据。",
-    "conclusion": "127 项回归通过；真实离线安装、扩展旧工作区升级、接收端再次打包和依赖恢复通过，受保护文件指纹和目录全部保留。",
-    "parent_run_ids": [],
-    "path": "runs/run-20260907t143437z-96c331370a32/run.json",
+    "path": "research/floating-point-summation/runs/run-20260908t215458z-04c7d84d40d8/run.json",
     "needs_revalidation": false,
     "blocking_run_ids": []
   }

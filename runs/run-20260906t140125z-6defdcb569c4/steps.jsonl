@@ -1,6 +1,0 @@
-{"step": "implement", "result": "证据图、CLI、健康检查、正式上下文与模板手册完成"}
-{"step": "first-regression", "result": "4 errors，修正 evidence 模块与参数重名；原失败日志保留"}
-{"step": "first-verify-capture", "result": "测试无错误；空输出 JSON 被校验扫描，改为先写 tmp 后移入 Run"}
-{"step": "boundary-review", "result": "补复核版本绑定、封存后字节重查、无效 sidecar 与质量条目、正式空输出非零等边界"}
-{"step": "final-regression", "result": "core 72 total/65 passed/7 skipped；full 退出 1，环境未满足"}
-{"step": "index-refresh", "result": "退出 2；qdrant_client 缺失，配置未改"}

@@ -154,4 +154,4 @@
 - [x] S6 AI 摘要、候选、CLI/Skill
 - [x] S7 验收、迁移、文档
 
-实施与验收：见 [固定 Run](../../runs/run-20260907t071646z-ce49506865c4/README.md)。各步输入、检查、产物及限制分别记录在该 Run 的 stage-verification.json；本计划正文完整保留。
+实施与验收：见 固定 Run（历史记录已从 main 移除，原路径：`../../runs/run-20260907t071646z-ce49506865c4/README.md`）。各步输入、检查、产物及限制分别记录在该 Run 的 stage-verification.json；本计划正文完整保留。

@@ -26,6 +26,6 @@
 | L4 | [上下文选择](../../automation/scripts/context_engine.py) 的 plan | 已按关联跳数扩展候选，保留预算与用户选择；理由主要为 relation-hop-N，没有完整的带类型路径解释 |
 | L5 | [工作台](../../automation/scripts/workbench.py) 与 [HTTP 接口](../../automation/scripts/evidence_view.py) | 模块清单、证据快照、限定来源预览、固定操作；尚无全材料带类型图接口或 AI 关系导出按钮 |
 | L6 | [本地向量后端](../../automation/scripts/qdrant_backend.py) | 文本分窗编码，保存来源/指纹/定位；已有检索能力不能直接等同于材料两两语义图 |
-| L7 | [只读盘点](../../runs/run-20260907t063633z-159b86592cdd/relationship-audit.json) | 盘点时旧检索缓存 63 份材料、277 对无向邻接；含本次研究和 Run 的证据图 7 节点、0 claim、3 条传播边；既有合成沙盒 6 节点、1 claim、4 条有类型引用 |
+| L7 | 只读盘点（历史记录已从 main 移除，原路径：`../../runs/run-20260907t063633z-159b86592cdd/relationship-audit.json`） | 盘点时旧检索缓存 63 份材料、277 对无向邻接；含本次研究和 Run 的证据图 7 节点、0 claim、3 条传播边；既有合成沙盒 6 节点、1 claim、4 条有类型引用 |
 
 L7 是盘点时的固定快照，随本次研究归档和重新索引会变化。没有公司业务算法/数据样本，不能据此证明业务有效性。未使用未能读取的 Juggl 文档作为论据；Heptabase 帮助域检索无结果，改以官网功能说明为据。
