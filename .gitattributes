@@ -1,3 +1,5 @@
 # Build/source hashes must survive GitHub ZIP and Windows autocrlf checkouts.
 automation/frontend/** text eol=lf
 automation/ui/workbench-assets/** text eol=lf
+# 固定合成材料按原字节做SHA-256校验，Windows检出不能自动改成CRLF。
+docs/design/system-memory/fixtures/** text eol=lf

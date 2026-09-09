@@ -1,0 +1,3031 @@
+{
+  "schema_version": 1,
+  "synthetic_only": true,
+  "status": "specification-not-executed",
+  "cases": [
+    {
+      "test_id": "B01",
+      "package_id": "W00",
+      "title": "合成材料和计划交叉引用自检",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "fixtures/verify_plan.py",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "执行 python verify_plan.py --self-test；校验计划、场景、材料、负例和查询的固定关联。"
+      ],
+      "acceptance": [
+        "正常材料返回 0；所有测试均关联存在的任务和场景；八种业务类型、四层、五种问题状态齐全。",
+        "内存中注入坏引用、重复 ID、缺边界、错误计数和删除资产时必须逐项拒绝；原文件哈希不变。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "B02",
+      "package_id": "W00",
+      "title": "固定现有回归基线",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "workspace validate / unittest discover",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "运行现有 validate 和完整 unittest；记录失败/跳过、运行时/模型能力、源码提交及未提交差异。"
+      ],
+      "acceptance": [
+        "保存命令、退出码、通过/失败/跳过数量和具体测试名；不得省略失败输出。",
+        "现有阻塞标为 baseline_issue 并给出影响任务；W13 仍要求必要测试通过，基线记录不豁免最终验收。"
+      ],
+      "expected_exit": "按实际结果记录，非功能通过判据",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "B03",
+      "package_id": "W00",
+      "title": "测试隔离与材料不可误导入",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "fixture.materialize",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "在临时目录转换 recipes，随后比较正式工作区的业务目录与来源登记。"
+      ],
+      "acceptance": [
+        "只在指定临时目录创建合成对象；正式 research/runs/knowledge/core-algorithms、sources.json 均无新增合成实例。",
+        "素材和输出标注 SYNTHETIC ONLY；清理目标经绝对路径边界检查，不删除正式工作区。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "C01",
+      "package_id": "W01",
+      "title": "四层及辅助实体契约",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "contracts.validate_record",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "参数化提交 L0/source、L1/event、L2/experience、L3/map，以及 question/route/checkpoint/association 等全部辅助 kind。"
+      ],
+      "acceptance": [
+        "所有合法示例通过，辅助实体 level=null；全部已登记 kind 至少有一个正例。",
+        "层级由 kind 派生；正文保存中文和换行，不新建 L4。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "C02",
+      "package_id": "W01",
+      "title": "拒绝未知层级和类型",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [
+        "NEG-LAYER",
+        "NEG-KIND",
+        "NEG-UNKNOWN"
+      ],
+      "entrypoint": "contracts.validate_record",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "分别应用 NEG-LAYER、NEG-KIND、NEG-UNKNOWN。"
+      ],
+      "acceptance": [
+        "三例均报 INVALID_SCHEMA，字段定位分别指向 level、kind、payload.magic_score。",
+        "没有 HEAD、记录、请求 ledger 或索引变化。"
+      ],
+      "expected_exit": "2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "C03",
+      "package_id": "W01",
+      "title": "必需字段与未知值",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "contracts.validate_record",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "逐一删除 owner_id/title/payload/record_reason，另对 observation 使用合法 UnknownValue 和错误空字符串。"
+      ],
+      "acceptance": [
+        "每个缺字段都有对应 JSON pointer；合法 unknown/not_acquired/not_applicable 可区分并保存。",
+        "不把未知发生时间回填为实验完成时间。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "C04",
+      "package_id": "W01",
+      "title": "经验边界和类比限制",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [
+        "NEG-BOUNDARY",
+        "NEG-ANALOGY"
+      ],
+      "entrypoint": "contracts.validate_record",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "验证正常 experience/association，再应用 NEG-BOUNDARY、NEG-ANALOGY。"
+      ],
+      "acceptance": [
+        "正例保留适用、禁用和再试条件；两反例拒绝且无写入。",
+        "不允许只有推荐方法但没有任何适用条件的 L2。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "C05",
+      "package_id": "W01",
+      "title": "固定引用及批次临时 ID",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [
+        "NEG-REFERENCE",
+        "NEG-REVISION"
+      ],
+      "entrypoint": "service.validate_draft",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "一批创建 source/event/experience 并以 client_key 引用；另省略固定版本及引用不存在 ID。"
+      ],
+      "acceptance": [
+        "合法批次解析出全部目标，正式回执给出唯一 ID 映射；记录中不残留 client_key。",
+        "缺版本报 INVALID_SCHEMA；缺目标报 UNRESOLVED_REFERENCE；整批无部分写入。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "C06",
+      "package_id": "W01",
+      "title": "对象归属与类型扩展",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "owners.register_type / contracts",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "尝试未知 owner_type，再注册测试专用 simulation 类型的 schema 和适配器后重试。"
+      ],
+      "acceptance": [
+        "未登记类型拒绝；登记后统一 inspect/commit/search 可识别，其他八类行为不变。",
+        "扩展 schema_version 不兼容时拒绝写入，不能退回任意 JSON 保存。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "C07",
+      "package_id": "W01",
+      "title": "原文与 AI 摘要区分",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [
+        "NEG-RAW"
+      ],
+      "entrypoint": "contracts.validate_record / source excerpt validator",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对 verbatim_export 按来源定位比对原文，再应用 NEG-RAW；对 AI 归纳使用 event/experience。"
+      ],
+      "acceptance": [
+        "真实逐字选段通过；声称逐字但与来源选段不同的文本报 INVALID_SCHEMA。",
+        "AI 归纳可保存为 L1/L2，不能提升成 L0 原始证据；未取得原文时仅保存缺口。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "C08",
+      "package_id": "W01",
+      "title": "哈希与跨语言契约一致",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "contracts.canonical_hash / generated frontend types",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对同一含中文、非 BMP 字符、换行和嵌套字段的记录用不同键顺序提交；改变正文、只改变时间分别比较。"
+      ],
+      "acceptance": [
+        "键顺序不改变 content_hash；正文变化改变 content_hash；仅版本/时间/理由变化不改变 content_hash。",
+        "NaN/Infinity 拒绝；Python 正反例和前端契约验证得到相同合法性结果。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S01",
+      "package_id": "W02",
+      "title": "首次写入与读取闭环",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "service.commit / inspect",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "HEAD=null 时单批提交来源、事件、经验和地图，然后通过 ID 和 owner 读取。"
+      ],
+      "acceptance": [
+        "仅一个 commit 生效，四条新记录 revision=1，HEAD 可达全部新文件且 hash 匹配。",
+        "回执含 ID 映射、commit/generation、save_status 和 index_status；源材料未复制覆盖。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S02",
+      "package_id": "W02",
+      "title": "修订保留历史",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "store.commit_batch",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "读取 experience r1，改 recommendation 并带正确 expected_head/revision 提交，分别读取 r1/r2。"
+      ],
+      "acceptance": [
+        "当前为 r2，previous_revision=1；r1 字节不变且可按固定引用读取。",
+        "旧引用仍解析 r1，不被悄悄改指 r2；无关记录修订不变。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S03",
+      "package_id": "W02",
+      "title": "同一请求重试",
+      "scenario_ids": [
+        "SC-RACE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "service.commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "提交成功后以同一 request_id 和原 expected_head 重放 100 次。"
+      ],
+      "acceptance": [
+        "100 次返回同一 commit_id、记录 ID 和修订；规范记录数量不增加。",
+        "幂等检查先于旧 HEAD 冲突检查；索引补偿允许改变索引状态，不新增业务提交。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S04",
+      "package_id": "W02",
+      "title": "请求 ID 被不同正文复用",
+      "scenario_ids": [
+        "SC-RACE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "service.commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "第一次提交后，保持 request_id 不变并修改正文再次提交。"
+      ],
+      "acceptance": [
+        "返回 IDEMPOTENCY_CONFLICT；返回原提交定位供调用者检查。",
+        "HEAD、原正文、revision 和已提交记录数量不变。"
+      ],
+      "expected_exit": "5",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S05",
+      "package_id": "W02",
+      "title": "两个写入者争用旧版本",
+      "scenario_ids": [
+        "SC-RACE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "store.commit_batch",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "两个进程读取同一 HEAD，经屏障同时提交不同修改。"
+      ],
+      "acceptance": [
+        "恰好一个提交成功；另一个返回 VERSION_CONFLICT 或先 LOCKED 后重试得 VERSION_CONFLICT。",
+        "没有混合正文/丢更新；失败者取得当前版本差异，可重新生成请求而不覆盖成功者。"
+      ],
+      "expected_exit": "一方0；另一方5或6后5",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S06",
+      "package_id": "W02",
+      "title": "批次中有一个坏记录",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "service.commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "一批四条记录中第三条使用不存在的目标。"
+      ],
+      "acceptance": [
+        "整批返回 UNRESOLVED_REFERENCE，四条均不可见；无新 HEAD。",
+        "禁止留下前两条已成功的假象；staging 如保留须可定位且不被检索。"
+      ],
+      "expected_exit": "2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S07",
+      "package_id": "W02",
+      "title": "写入、flush、改名和 HEAD 前故障",
+      "scenario_ids": [
+        "SC-STORAGE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "store.commit_batch / recovery.recover",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "逐个窗口注入异常或终止子进程：写记录中、flush、staging改名后、HEAD替换前。"
+      ],
+      "acceptance": [
+        "每个窗口当前读者只见旧完整快照；已提交历史 hash 不变。",
+        "恢复能区分未提交 staging/孤立 commit，不自动覆盖更新的 HEAD；再次提交可成功。"
+      ],
+      "expected_exit": "8或受控进程终止",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S08",
+      "package_id": "W02",
+      "title": "HEAD 后崩溃与回执重放",
+      "scenario_ids": [
+        "SC-STORAGE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "store.commit_batch / recovery.recover",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "HEAD 原子替换后、响应返回前终止子进程，再用同一请求重试。"
+      ],
+      "acceptance": [
+        "完整新快照可读；重试从 ledger 返回原 commit_id，不产生第二个修订。",
+        "索引待办仍可恢复，不能报记录丢失或把本次写入说成未提交。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S09",
+      "package_id": "W02",
+      "title": "索引失败与补偿",
+      "scenario_ids": [
+        "SC-STORAGE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "index.sync_owner / service.commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "成功提交时分别注入 FTS 和向量错误，随后移除故障并 reconcile。"
+      ],
+      "acceptance": [
+        "初次返回 save_status=committed、INDEX_PENDING，按 ID 可读。",
+        "补偿后 indexed_generation 追上 HEAD；FTS/向量状态分别明确；规范记录和 ID 数量不变。"
+      ],
+      "expected_exit": "初次3；补偿0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S10",
+      "package_id": "W02",
+      "title": "无变化与 dry-run",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "service.validate_draft / commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "分别预览一批新记录、提交相同 content_hash，以及重放该 no_change 请求。"
+      ],
+      "acceptance": [
+        "dry-run 不创建目录/回执/索引；相同内容不增加记录 revision。",
+        "no_change 请求可重放；轻量回执不改旧 commit；重复100次不生成100份正文。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S11",
+      "package_id": "W02",
+      "title": "损坏与危险路径",
+      "scenario_ids": [
+        "SC-STORAGE"
+      ],
+      "negative_ids": [
+        "NEG-PATH"
+      ],
+      "entrypoint": "store.read_snapshot / owners.resolve_owner",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "修改已提交修订字节、损坏 manifest，另通过 Windows 联接或 ../ 指向外部目录。"
+      ],
+      "acceptance": [
+        "hash/manifest 损坏报 INTEGRITY_ERROR；路径重定向报 UNSAFE_PATH。",
+        "拒绝回写新 hash 掩盖损坏；禁止目录无新增文件。"
+      ],
+      "expected_exit": "7或4",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "S12",
+      "package_id": "W02",
+      "title": "锁恢复和 Windows 文件占用",
+      "scenario_ids": [
+        "SC-STORAGE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "recovery.recover",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "分别持有活跃锁、模拟已退出进程遗留锁、由另一进程占用 HEAD 文件。"
+      ],
+      "acceptance": [
+        "活跃/无法确认归属的锁返回 LOCKED；已证明退出的遗留锁可恢复并记录原因。",
+        "HEAD 替换被 Windows 拒绝时旧快照可读；释放占用后重试成功，不能强删其他进程文件。"
+      ],
+      "expected_exit": "阻塞6或8；恢复0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "O01",
+      "package_id": "W03",
+      "title": "八类旧对象只读适配",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "owners.list_owners / inspect",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "加载 research/run/project/core-algorithm/knowledge/report/data/tool 的旧原文件，不创建记忆。"
+      ],
+      "acceptance": [
+        "每类都有唯一 ID、原定位和正确类型；原专用字段可读取。",
+        "旧业务文件哈希不变；无记忆对象不被批量创建空层级目录。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "O02",
+      "package_id": "W03",
+      "title": "平铺文档采用与稳定身份",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "owners.adopt_owner",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "给无稳定 ID 的知识文档首次 adopt，重复 adopt，再用显式迁移移动目录。"
+      ],
+      "acceptance": [
+        "只创建一个旁目录和 OBJ ID；重复采用返回同一身份。",
+        "移动后规范 ID/引用不变，仅定位映射变化；原知识正文不被重写。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "O03",
+      "package_id": "W03",
+      "title": "Run 直接作为事件",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "owners.run_adapter / history.build_history",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "研究引用 RUN-SYN-THERMAL，多次生成经过和索引。"
+      ],
+      "acceptance": [
+        "该尝试只以 RUN-SYN-THERMAL 一个身份出现；未创建等价 MEM-event。",
+        "Run 多条 CLM 可独立命中，不能把三条结论合并为一个不可分记录。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "O04",
+      "package_id": "W03",
+      "title": "父目录和显示名不污染归属",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [
+        "NEG-OWNER"
+      ],
+      "entrypoint": "owners.resolve_owner",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "两个不同 ID 对象使用同名标题，文档位于多层中文/空格目录，关联 project_id。",
+        "另用 NEG-OWNER 请求不存在的归属，验证 NOT_FOUND。"
+      ],
+      "acceptance": [
+        "按 ID 正确区分两个对象；project_id 仅为关联，不被当作新主体。",
+        "同一 native_ref 双重认领报错；路径大小写冲突在 Windows 上被检出。",
+        "未知归属返回 NOT_FOUND，不创建虚构对象。"
+      ],
+      "expected_exit": "正例0；冲突2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "O05",
+      "package_id": "W03",
+      "title": "旧规则和默认策略优先级",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "policy.resolve",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "组合工作区默认、类型默认、对象显式 auto_summary=false、当前请求显式覆盖。"
+      ],
+      "acceptance": [
+        "优先级为本次明确要求>对象>类型>工作区；显式 false 不被覆盖。",
+        "Research 默认 explore、Run basic、Project basic；所有类型允许按契约使用四层。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "O06",
+      "package_id": "W03",
+      "title": "损坏业务不能按兼容忽略",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "owners.list_owners / validate",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "损坏旧业务 JSON、删除工具登记入口，同时保留应跳过缓存中的坏 JSON。"
+      ],
+      "acceptance": [
+        "真实坏业务 JSON 和缺失工具入口均报具体路径；缓存坏 JSON 不误报。",
+        "新增 sidecar 适配不扩大为忽略未知业务目录。"
+      ],
+      "expected_exit": "非零",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "O07",
+      "package_id": "W03",
+      "title": "现有命令与证据身份兼容",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "workspace_cli / EvidenceGraph",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "采用旧对象前后运行 search-runs、review-run、review-claim、材料关系投影。"
+      ],
+      "acceptance": [
+        "旧命令输入与返回主字段兼容；RUN/CLM/EVD 身份不变且没有重复节点。",
+        "不批量重算旧 review.owner_fingerprint；原复核历史保留。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "O08",
+      "package_id": "W03",
+      "title": "既有内容修改与记忆入口分离",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "owners.adopt_owner / service.commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对已接受旧 Research/Run 采用记忆入口并写 policy/checkpoint，再检查旧结论。"
+      ],
+      "acceptance": [
+        "旧 manifest 字节完全不变，旧正式资格与采用前相同。",
+        "直接修改旧 input/parameter 后仍触发原有失效，不能因新适配而绕过。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E01",
+      "package_id": "W04",
+      "title": "新 CLM 复核门槛",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [
+        "NEG-CLAIM"
+      ],
+      "entrypoint": "service.review",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "创建 memory claim，分别尝试缺范围、缺依据、正确范围与依据的 accepted。"
+      ],
+      "acceptance": [
+        "缺范围/依据拒绝；合法请求保存 reviewer、scope、证据和内容 hash。",
+        "accepted 只属于该 claim，其他同文档 claim 保持 not-reviewed。"
+      ],
+      "expected_exit": "反例9；正例0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E02",
+      "package_id": "W04",
+      "title": "普通提交不能伪造复核",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [
+        "NEG-REVIEW"
+      ],
+      "entrypoint": "service.commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "应用 NEG-REVIEW；另直接提交 kind=review 绕过 review 专用入口。"
+      ],
+      "acceptance": [
+        "两例均拒绝；无新的 accepted 状态或复核历史。",
+        "错误定位说明应使用 review 服务，不允许前端自行写状态。"
+      ],
+      "expected_exit": "2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E03",
+      "package_id": "W04",
+      "title": "新增进度不使结论失效",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "service.commit / EvidenceGraph",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "已有 memory claim accepted 后新增 goal、checkpoint、policy、无关经验各一条。"
+      ],
+      "acceptance": [
+        "原 claim content hash、绑定证据记录 hash 不变；在原 scope 下仍可正式使用。",
+        "新增对象级 HEAD 变化不被当成原结论内容变化。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E04",
+      "package_id": "W04",
+      "title": "修改结论与修改依据必须失效",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "evidence_adapter.formal_projection / EvidenceGraph",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "分别改 claim statement、经验适用范围、被引用原件字节。"
+      ],
+      "acceptance": [
+        "三个变体均阻止旧 acceptance 用于新内容，显示具体变化来源。",
+        "旧复核记录和旧修订可追溯；新版本默认未复核/待重验，不自动 accepted。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E05",
+      "package_id": "W04",
+      "title": "撤回传播跨对象及旧索引",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "evidence_adapter.formal_projection / EvidenceGraph",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "冻结旧索引，撤回 CLM-SYN-THERMAL，调用正式证据投影检查经验、地图、跨项目综合和报告；完整上下文包联动在 Z02 再验证。"
+      ],
+      "acceptance": [
+        "正式包不含该 claim 或依赖它的合格声明；返回 source→claim→下游 的实际阻断路径。",
+        "探索/历史可见原文与撤回事由；Run status 仍 succeeded。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E06",
+      "package_id": "W04",
+      "title": "支持与反证传播分工",
+      "scenario_ids": [
+        "SC-GRAPH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "EvidenceGraph / impact.reverse_dependencies",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "同一节点分别经 supports/input/background/contradicts/analogous_to 连接下游后撤回。"
+      ],
+      "acceptance": [
+        "supports/input 的正式依赖失效；background/contradicts/类比邻居不被错误地自动撤回。",
+        "相关摘要/地图可显示更新提示，但不改各自复核历史。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E07",
+      "package_id": "W04",
+      "title": "循环、缺失和菱形去重",
+      "scenario_ids": [
+        "SC-GRAPH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "EvidenceGraph",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "构造 supports 环、缺失来源及菱形依赖。"
+      ],
+      "acceptance": [
+        "支持环和缺失证据阻止正式使用，并输出定位；遍历在有限节点内终止。",
+        "菱形终点只报告一次规范节点，保留可解释路径而不重复计数。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E08",
+      "package_id": "W04",
+      "title": "替代、撤回纠错与新依据",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "service.review",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "把旧 claim superseded 指向新 claim；新 claim 再撤回；最后用新依据重新 accepted 旧 claim。"
+      ],
+      "acceptance": [
+        "替代必须存在且非自身；不能因替代出现自动恢复下游。",
+        "旧状态序列完整保留，重新 accepted 绑定新证据/范围；原执行状态不变。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E09",
+      "package_id": "W04",
+      "title": "混合结论与正式范围",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "evidence_adapter.formal_projection / EvidenceGraph",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "同一 event 含 accepted、not-reviewed、disputed 三条 claim，分别用正确/错误 scope 查询。"
+      ],
+      "acceptance": [
+        "正确范围仅输出 accepted 且依赖有效的一条；错误 scope 无正式正文。",
+        "对象 UI 显示混合状态，不能整篇显示为全部已确认。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "E10",
+      "package_id": "W04",
+      "title": "问题答案失效不抹掉历史",
+      "scenario_ids": [
+        "SC-QUESTION"
+      ],
+      "negative_ids": [],
+      "entrypoint": "impact.question_resolution_validity",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "问题已 resolved，随后撤回其 resolution_refs 引用的答案。"
+      ],
+      "acceptance": [
+        "问题原 resolved 修订保留；当前视图显示 resolution_needs_revalidation 和缺失/失效依据。",
+        "续接包明确问题需要重新核对，不能仅凭 resolved 排除该风险。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "R01",
+      "package_id": "W05",
+      "title": "问题合法转换与必需依据",
+      "scenario_ids": [
+        "SC-QUESTION"
+      ],
+      "negative_ids": [
+        "NEG-RESOLVE",
+        "NEG-SUPERSEDE"
+      ],
+      "entrypoint": "research.transition_question",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "参数化执行契约声明的每条合法转换，另将 resolved/superseded 重开而不填理由。"
+      ],
+      "acceptance": [
+        "合法转换均生成一个新修订；resolved 有答案/决策引用，superseded 有非自身替代。",
+        "无依据或重开理由的转换拒绝，旧状态/历史不变。"
+      ],
+      "expected_exit": "正例0；反例9",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "R02",
+      "package_id": "W05",
+      "title": "任务完成不解决问题",
+      "scenario_ids": [
+        "SC-QUESTION"
+      ],
+      "negative_ids": [],
+      "entrypoint": "Run adapter / question_view",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "将关联 Run 更新 succeeded、Research 更新 completed。"
+      ],
+      "acceptance": [
+        "open/investigating/blocked 问题数量和状态均不变。",
+        "问题列表不因对象完成而隐藏未决问题。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "R03",
+      "package_id": "W05",
+      "title": "目标版本演进",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "research.set_goal",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "从旧目标更换为新目标，再查询旧 Run 和旧路线的 goal_ref。"
+      ],
+      "acceptance": [
+        "新目标记录 change_impact 和前一版本；旧尝试仍绑定旧目标。",
+        "研究经过清楚显示新旧约束，不能把 B 的标准回填给 A。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "R04",
+      "package_id": "W05",
+      "title": "路线阻塞与重新开启",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "research.route_transition",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "将路线 blocked，补齐阻碍条件后重新 active，再关闭。"
+      ],
+      "acceptance": [
+        "blocked 必须有具体 blocker；重新 active 必须记录理由及依据变化。",
+        "旧路线及 attempt_refs 保留，next_step 与当前状态一致。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "R05",
+      "package_id": "W05",
+      "title": "四类失败记录",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "service.commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "分别提交 execution、no_improvement、counterexample、insufficient_evidence 失败及缺 cannot_infer 的反例。"
+      ],
+      "acceptance": [
+        "四类正常保存 tested_scope/result/cannot_infer/retry_conditions；缺字段拒绝。",
+        "no_improvement 不被自动改写为 counterexample；正式使用限制在 E 组验证。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "R06",
+      "package_id": "W05",
+      "title": "检查点暂停和预算未知",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "research.checkpoint",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "保存因输入缺失暂停的检查点，预算使用 UnknownValue；读取恢复包。"
+      ],
+      "acceptance": [
+        "保留 stop_reason、已完成项、前提、下一步和未知预算原因。",
+        "不自动安排后台任务，也不把未知预算填成 0 或无限。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "R07",
+      "package_id": "W05",
+      "title": "记录策略与价值触发职责",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "policy.resolve / consolidation.prepare",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "长但重复的步骤设置 basic；短而有独立反例的步骤显式请求保留；设置 auto_deepen=false。"
+      ],
+      "acceptance": [
+        "程序按请求保存反例，不按文件大小/调用次数强制补四层。",
+        "不得覆盖用户 retain 和 auto_deepen=false；程序返回触发原因，不自行生成科学判断。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "R08",
+      "package_id": "W05",
+      "title": "源链接与实际对话取得范围",
+      "scenario_ids": [
+        "SC-ACCESS"
+      ],
+      "negative_ids": [
+        "NEG-READONLY"
+      ],
+      "entrypoint": "source ingestion",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "仅提供一段实际对话导出和已登记文件，另引用未取得的更早聊天。",
+        "用 NEG-READONLY 尝试覆盖原件。"
+      ],
+      "acceptance": [
+        "partial 标记及定位保留；未取得内容列缺口而不生成伪原文。",
+        "不读取未登记来源，不自动下载网页或抓取平台全部聊天。",
+        "覆盖原件动作返回 INVALID_ARGUMENT，原文件指纹不变。"
+      ],
+      "expected_exit": "正常0；非法覆盖2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I01",
+      "package_id": "W06",
+      "title": "四层及未晋升局部结果可检索",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "index.sync_owner / search.search",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "索引八个研究，按各主题原问题检索；其中经验仅属于 Research，未建 knowledge 入口。"
+      ],
+      "acceptance": [
+        "L0 来源、L1 Run/event、L2 经验、L3 地图可按类型检索；局部经验无需晋升也能命中。",
+        "相同 Run 或 CLM 的适配记录不产生第二个规范身份。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I02",
+      "package_id": "W06",
+      "title": "多表示去重不增加排名优势",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "search.collapse_channel / rrf",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对 MEM-EXP-THERMAL 增加六类表示，再把单类触发问题文本扩为十条同义表达。"
+      ],
+      "acceptance": [
+        "按 target+slot 仅有六条当前表示；结果中的规范经验只出现一次。",
+        "重复表示折叠后重新编号；固定通道名次下规范排名不因复制摘要而提升。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I03",
+      "package_id": "W06",
+      "title": "RRF 数值和并列规则",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "search.rrf",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "注入固定通道排名：A=[1,3]、B=[2,1]，并设两个对象完全同分。"
+      ],
+      "acceptance": [
+        "A=1/61+1/63，B=1/62+1/61；绝对误差≤1e-12，B排在A前。",
+        "完全同分按 canonical_id 升序；缺失通道不贡献分数；不能叠加原始向量分数。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I04",
+      "package_id": "W06",
+      "title": "只更新变化对象及表示",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "index.sync_owner",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "记录索引水位，修改一条 experience 的正文及一条表示，保持其余对象不变。"
+      ],
+      "acceptance": [
+        "该对象水位推进，变化条目及派生表示重建；其他 owner 水位和向量 ID 不变。",
+        "过期表示不能与新目标版本混合命中，需标 stale 或重建后才启用。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I05",
+      "package_id": "W06",
+      "title": "索引删除与可见范围收窄",
+      "scenario_ids": [
+        "SC-ACCESS"
+      ],
+      "negative_ids": [
+        "NEG-SENSITIVITY"
+      ],
+      "entrypoint": "index.sync_owner / search.search",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "把经验从 workspace_summary 改 owner_only，并删除一个表示；在索引中保留旧值模拟未更新。",
+        "应用 NEG-SENSITIVITY，尝试降低受限来源摘要的分类。"
+      ],
+      "acceptance": [
+        "其他 owner 的查询回源后不展示该经验正文或摘要；本 owner 仍可查看。",
+        "同步后旧表示/旧可见项从 FTS与向量移除，规范历史仍保留。",
+        "未经授权降级返回 ACCESS_DENIED，不保存较宽可见性。"
+      ],
+      "expected_exit": "正常0；非法降级4",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I06",
+      "package_id": "W06",
+      "title": "无模型降级与 required 失败",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "search.search",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "分别设置 vector=off、auto 且模型缺失、required 且模型缺失。"
+      ],
+      "acceptance": [
+        "off/auto 返回可用 FTS 候选；auto 明示向量缺失，不联网、不换模型。",
+        "required 返回 CAPABILITY_UNAVAILABLE；基础测试不把真实模型评价标成通过。"
+      ],
+      "expected_exit": "前两例0；required10",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I07",
+      "package_id": "W06",
+      "title": "删除索引后完全重建",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "index.rebuild",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "在隔离工作区删除派生 SQLite/向量索引，再从规范记录重建。"
+      ],
+      "acceptance": [
+        "规范文件 hash、ID、revision 和复核历史完全不变；重建后精确查询规范 ID 集合一致。",
+        "丢失外部来源明示 unavailable，不用旧缓存正文伪装已重建。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I08",
+      "package_id": "W13",
+      "title": "关键词与向量真实离线评价",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "evaluation.compare_variants",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "在固定模型环境运行48条查询：32开发、16留出；比较现有基线、多表示无图、完整方案。"
+      ],
+      "acceptance": [
+        "留出集 Recall@6≥0.85，nDCG@6≥0.80；二者相对基线下降均不超过0.02。",
+        "paraphrase/local_result 留出子集 Recall@6≥0.85；重复规范结果率=0；必须边界丢失率=0。",
+        "保存逐查询排名、分数、版本、延迟；留出集不得用于调阈值，修改标签或门槛需新评价版本。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "I09",
+      "package_id": "W06",
+      "title": "历史修订不污染默认排名",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "search.search / packets.expand",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "经验 r1/r2 内容不同；默认查询旧词，再显式 history 模式或按 r1 展开。"
+      ],
+      "acceptance": [
+        "默认只索引当前修订，不用历史全文制造重复结果。",
+        "显式历史能定位 r1 并显示旧版本/当时状态和当前风险，不能绕过正式回源检查。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "G01",
+      "package_id": "W07",
+      "title": "关键词关系可解释",
+      "scenario_ids": [
+        "SC-GRAPH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "associations.keyword_candidates",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "使用关键词集合A={预热,偏差,条件}、B={预热,偏差,夹具}；另设仅一个共有词。"
+      ],
+      "acceptance": [
+        "A/B Jaccard=2/4=0.5，误差≤1e-12，返回共有词及差异；共有词不足2的对不通过首版阈值。",
+        "输出只为 candidate，不写 supports 或改变 review。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "G02",
+      "package_id": "W07",
+      "title": "向量相似计算与版本",
+      "scenario_ids": [
+        "SC-GRAPH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "associations.semantic_candidates",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "注入向量[1,0]、[1,0]、[0,1]，再用真实模型运行合成材料。"
+      ],
+      "acceptance": [
+        "确定性相似值分别为1和0，误差≤1e-12；记录 encoder/model/source_version。",
+        "缺模型不偷偷联网；真实模型候选展示方法和阈值，不能当独立验证证据。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "G03",
+      "package_id": "W07",
+      "title": "关联处理与单一规范关系",
+      "scenario_ids": [
+        "SC-GRAPH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "associations.decide",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "采纳、拒绝、撤销同一候选，重复相同采纳请求，再从两端查看。"
+      ],
+      "acceptance": [
+        "一条规范 association 的状态历史可追溯；两端反向关系由索引生成，不另存副本。",
+        "重复请求不多建边；两端结论状态不变。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "G04",
+      "package_id": "W07",
+      "title": "错误类比保留限制",
+      "scenario_ids": [
+        "SC-BOUNDARY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "associations.propose / decide",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "比较 MEM-ASSOC-VALID 与 MEM-ASSOC-WRONG，并尝试清空共同结构或迁移限制。"
+      ],
+      "acceptance": [
+        "合法类比有共同结构和不可迁移内容；错误候选不会默认变为支持或直接方法建议。",
+        "缺共同结构/限制的 analogous_to 请求拒绝。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "G05",
+      "package_id": "W07",
+      "title": "一跳两跳与反馈上限",
+      "scenario_ids": [
+        "SC-GRAPH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "associations.expand_neighbors",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "从6节点环/菱形图中心分别请求一跳、两跳和第三次反馈扩展。"
+      ],
+      "acceptance": [
+        "一跳/两跳结果等于手工枚举的允许邻居集合；节点去重，循环终止。",
+        "第三次自动扩展拒绝或返回已到上限；不增加预算。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "G06",
+      "package_id": "W07",
+      "title": "排除节点不能成为隐形桥梁",
+      "scenario_ids": [
+        "SC-ACCESS"
+      ],
+      "negative_ids": [],
+      "entrypoint": "associations.expand_neighbors",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "仅有 A→B→C 路径，排除 B；再以当前权限禁止 B。"
+      ],
+      "acceptance": [
+        "两种情况下从 A 扩展都不能经 B 得到 C；返回结果/解释中不泄露 B 正文。",
+        "用户明确把 C 作为直接命中时可独立评估，不伪造经B的路径。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "G07",
+      "package_id": "W07",
+      "title": "关系版本过期",
+      "scenario_ids": [
+        "SC-GRAPH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "associations.view / search",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "关联绑定两端 r1，修改其中一端为 r2，保留旧关联缓存。"
+      ],
+      "acceptance": [
+        "当前关联显示 stale 并指出变化端；旧关联历史仍固定到 r1。",
+        "默认正式导航不把旧关系当已核验的新关系，AI 可重新检查后修订。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "G08",
+      "package_id": "W07",
+      "title": "来源沿袭不等于独立支持",
+      "scenario_ids": [
+        "SC-GRAPH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "EvidenceGraph / association projection",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "将同一来源的三份摘要通过 derived_from 连到同一经验。"
+      ],
+      "acceptance": [
+        "来源身份归并后仍为一份来源，派生摘要不增加独立证据数量。",
+        "derived_from 不被转换为 supports；类比图和证据图方向明确。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P01",
+      "package_id": "W08",
+      "title": "完整经过的结构与分页",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "history.build_history",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "准备旧/新目标、两条路线、成功/失败尝试、撤回/替代和未决问题，按每页3项取完。"
+      ],
+      "acceptance": [
+        "所有已登记关键事件恰好出现一次；目标演进、转向依据、失败和未决问题均可展开固定引用。",
+        "分页合并与不分页 ID 顺序一致；时间未知明确标注而不补造发生日期。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P02",
+      "package_id": "W08",
+      "title": "续接包恢复当前工作",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "history.resume",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "从 MEM-CHECKPOINT 恢复，当前目标为 NEW，旧目标为 OLD。"
+      ],
+      "acceptance": [
+        "包含新目标、只读约束、B输入缺失、已完成A、下一步及前提。",
+        "不会把旧目标要求回填旧Run，不建议无理由重做A，不宣称B已经完成。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P03",
+      "package_id": "W08",
+      "title": "恢复时重验来源",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "history.resume",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "检查点保存后修改关键输入、撤回答案、取消一个来源登记。"
+      ],
+      "acceptance": [
+        "三种变化均列出具体源/版本和受影响下一步；旧检查点仍能查看。",
+        "未经重新检查的旧 acceptance 不进入正式依据区。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P04",
+      "package_id": "W08",
+      "title": "预算按 Unicode 码点计算",
+      "scenario_ids": [
+        "SC-BOUNDARY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "packets.build_context",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对含中文和emoji的上下文设置预算恰好等于、少于一个码点、极小值，前后端分别统计。"
+      ],
+      "acceptance": [
+        "len(context_text)与Array.from计数一致，始终≤请求预算及工作区硬上限。",
+        "不足时整体省略条目或用已保存短表示，禁止输出半个字符或丢失禁用条件。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P05",
+      "package_id": "W08",
+      "title": "必读内容超预算",
+      "scenario_ids": [
+        "SC-BOUNDARY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "packets.expand",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "full_ids 指定一条超过预算且没有合格短表示的记录。"
+      ],
+      "acceptance": [
+        "返回 insufficient_budget 及 required_not_full/具体缺口；不标上下文完整。",
+        "不扩大预算、不静默取消用户 full 选择。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P06",
+      "package_id": "W08",
+      "title": "反馈继承范围与正式目的",
+      "scenario_ids": [
+        "SC-ACCESS"
+      ],
+      "negative_ids": [],
+      "entrypoint": "packets.build_context / context feedback",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "focus→investigate→wide，设置include/full/exclude、formal scope和预算；第三次继续扩展。"
+      ],
+      "acceptance": [
+        "两次扩展保留全部选择、formal、scope和原预算；exclude胜过include。",
+        "超过上限不继续扩展，记录缺口；禁止通过反馈扩大来源授权。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P07",
+      "package_id": "W08",
+      "title": "规范身份与角色分组",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "packets.build_context",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "输入直接证据、未复核经验、错误类比、失败/反证和未决问题，以及同一来源的多个表示。"
+      ],
+      "acceptance": [
+        "每项显示正确角色、来源和状态；同一规范记录只装载一次。",
+        "正式正文只含符合scope和证据门槛的claim，类比不能混作已验证答案。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P08",
+      "package_id": "W08",
+      "title": "来源缺失与跨对象快照",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "packets.expand / history.build_history",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "导出包固定两个owner HEAD，随后使其中一个原件不可读或HEAD改变。"
+      ],
+      "acceptance": [
+        "包保存采用的各对象HEAD/引用版本、缺失项和生成时间；无法取得版本明确说明。",
+        "生成中发现依据变化按STALE_BASIS重试或拒绝，不拼成自称同一时刻的一致全局事务。"
+      ],
+      "expected_exit": "稳定0；变化5",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "P09",
+      "package_id": "W08",
+      "title": "总结材料包可用于AI且无隐式执行",
+      "scenario_ids": [
+        "SC-CONSOLIDATE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "summaries.prepare",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "按主题指定两个研究及排除一个来源，生成有界材料包并复制。"
+      ],
+      "acceptance": [
+        "包含共性/差异所需的固定结果、边界与缺口，排除项不进入正文。",
+        "程序未调用独立模型、未执行实验；输出不能声称跨项目总结已由AI完成。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "N01",
+      "package_id": "W09",
+      "title": "变化和受影响项计算",
+      "scenario_ids": [
+        "SC-CONSOLIDATE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "consolidation.prepare",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "上次巩固后修改一个来源，新增一个经验，保留一个defer问题。"
+      ],
+      "acceptance": [
+        "changed 包含变更和新增；affected 包含真实依赖的经验/地图；remaining 包含原defer问题。",
+        "不把全部工作区都列成受影响，不漏掉跨对象显式依赖。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "N02",
+      "package_id": "W09",
+      "title": "同依据重复巩固",
+      "scenario_ids": [
+        "SC-CONSOLIDATE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "consolidation.apply",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "同basis_hash和相同retain/revise决定重复100次。"
+      ],
+      "acceptance": [
+        "第一次必要写入后，其余no_change；规范记录和地图修订数量不再增加。",
+        "地图正文不递归嵌入旧地图全文；原remaining不消失。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "N03",
+      "package_id": "W09",
+      "title": "延期不能误标完成",
+      "scenario_ids": [
+        "SC-CONSOLIDATE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "consolidation.apply",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "三项分别revise、retain、defer，然后再次prepare。"
+      ],
+      "acceptance": [
+        "revise引用新修订，retain有理由；defer仍出现在remaining。",
+        "缺少对任一affected项的处置时保留为待处理，不因新地图生成而全部清空。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "N04",
+      "package_id": "W09",
+      "title": "来源变化导致草案过期",
+      "scenario_ids": [
+        "SC-CONSOLIDATE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "consolidation.apply",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "AI取得basis_heads后，另一个写入者修改其中一个来源，再提交旧草案。"
+      ],
+      "acceptance": [
+        "返回STALE_BASIS并列出变化对象；目标HEAD未部分更新。",
+        "重新prepare后可保留AI草稿供比较，不自动覆盖新来源。"
+      ],
+      "expected_exit": "5",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "N05",
+      "package_id": "W09",
+      "title": "跨项目L2/L3保存",
+      "scenario_ids": [
+        "SC-CONSOLIDATE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "summaries.save",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "将MEM-EXP-CROSS及MEM-MAP-CROSS提交到KNW-SYN-CROSS，来源来自两个研究。"
+      ],
+      "acceptance": [
+        "分别保存为L2/L3且只有一个归属；固定来源包含两个研究结果。",
+        "原研究正文和状态不变；不创建L4，不复制两份主正文。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "N06",
+      "package_id": "W09",
+      "title": "无新来源但新的解释",
+      "scenario_ids": [
+        "SC-CONSOLIDATE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "summaries.save",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "保持来源版本不变，AI补充一个来源能支持的适用限制并给change_reason。"
+      ],
+      "acceptance": [
+        "允许新修订；旧总结保留，差异明确显示新限制。",
+        "可检验的新claim默认not-reviewed；不能继承来源accepted。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "N07",
+      "package_id": "W09",
+      "title": "去重候选与真实反证并存",
+      "scenario_ids": [
+        "SC-CONSOLIDATE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "consolidation.prepare / apply",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "提供同源改述、不同源相似结论、以及范围重叠但相反结果。"
+      ],
+      "acceptance": [
+        "同源改述可提示合并；不同源不自动当重复；相反结果产生有来源的冲突候选。",
+        "不自动删记录、改写旧结论或凭文字相似撤回；后续复核走专用入口。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "N08",
+      "package_id": "W09",
+      "title": "使用反馈闭环",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "feedback.save",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对原查询保存missing、invalid_analogy、lost_boundary、stale及adopted/outcome，引用后续Run。"
+      ],
+      "acceptance": [
+        "每条反馈固定query_id、目标revision和依据；采用结果可追溯到新Run。",
+        "不存在查询或记录版本拒绝；任何反馈不改变复核状态。"
+      ],
+      "expected_exit": "正例0；反例2",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U01",
+      "package_id": "W10",
+      "title": "CLI和HTTP同一契约",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "memory CLI / /api/v1/memory",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "同一合法与非法请求分别走CLI和HTTP。"
+      ],
+      "acceptance": [
+        "规范结果、ID、字段错误、save/index/review语义一致；按错误表映射退出码/HTTP。",
+        "JSON日志不混入stdout；未授权动作不因换入口而可执行。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U02",
+      "package_id": "W10",
+      "title": "工作台查看四层与辅助对象",
+      "scenario_ids": [
+        "SC-UI"
+      ],
+      "negative_ids": [],
+      "entrypoint": "Memory page / inspect",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "浏览研究、Run、知识、报告对象，过滤层级/类型并查看问题路线。"
+      ],
+      "acceptance": [
+        "显示相应对象的真实记录，辅助对象不伪装第五层；无Run重复事件。",
+        "同名不同ID可区分；每项可展开版本、保存原因和来源。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U03",
+      "package_id": "W10",
+      "title": "冲突与索引失败真实显示",
+      "scenario_ids": [
+        "SC-UI"
+      ],
+      "negative_ids": [],
+      "entrypoint": "Memory editor / commit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "同时打开两个编辑视图造成冲突；另注入保存后索引失败。"
+      ],
+      "acceptance": [
+        "冲突显示当前版本和差异且保留用户草稿；不能显示已保存。",
+        "索引失败显示已保存、索引待更新，给补偿操作；不得显示记录丢失或全成功。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U04",
+      "package_id": "W10",
+      "title": "复核失败与混合状态",
+      "scenario_ids": [
+        "SC-UI"
+      ],
+      "negative_ids": [],
+      "entrypoint": "Evidence controls / review",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对缺范围claim申请accepted，再查看含混合claim的对象。"
+      ],
+      "acceptance": [
+        "页面展示后端拒绝原因，原状态不变；混合状态不被一个绿色标签覆盖。",
+        "复核操作不改变Run执行状态。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U05",
+      "package_id": "W10",
+      "title": "检索到原件的连续追溯",
+      "scenario_ids": [
+        "SC-UI"
+      ],
+      "negative_ids": [],
+      "entrypoint": "Search results / expand",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "输入问题，展开经验→Run/claim→来源，随后在后端改源再展开。"
+      ],
+      "acceptance": [
+        "每步显示规范ID和固定版本/定位；变化后显示过期而不是旧来源已核验。",
+        "排除项与边界在交互中保留；浏览器返回历史也须重新查询当前有效性。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U06",
+      "package_id": "W10",
+      "title": "跨项目总结与关系操作",
+      "scenario_ids": [
+        "SC-UI"
+      ],
+      "negative_ids": [],
+      "entrypoint": "Summary / Relations",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "选择两个研究准备材料包，回填AI总结到L2/L3；采纳一条导航关联。"
+      ],
+      "acceptance": [
+        "材料包保留来源范围和缺口；保存总结显示单一归属。",
+        "导航关联处理不增加supports、不改变科学复核；显示共同结构及迁移限制。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U07",
+      "package_id": "W10",
+      "title": "续接与复制预算",
+      "scenario_ids": [
+        "SC-UI"
+      ],
+      "negative_ids": [],
+      "entrypoint": "Resume / copy",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "生成续接包并复制到剪贴板，使用中文和emoji边界材料。"
+      ],
+      "acceptance": [
+        "复制正文与接口context_text完全一致、预算统计相同。",
+        "按钮说明为生成/复制续接内容；未启动实验或后台研究。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U08",
+      "package_id": "W10",
+      "title": "注入文本与路径访问",
+      "scenario_ids": [
+        "SC-UI"
+      ],
+      "negative_ids": [],
+      "entrypoint": "Markdown rendering / HTTP boundary",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "标题/正文加入script标签、事件属性、伪命令和外部链接，另尝试任意shell动作及路径越界。"
+      ],
+      "acceptance": [
+        "脚本与命令执行次数为0；固定HTTP动作白名单拒绝任意shell。",
+        "无授权文件的read/hash/open调用次数为0，页面不能通过预览绕过来源登记。"
+      ],
+      "expected_exit": "页面可显示安全文本；越界4/HTTP403",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "U09",
+      "package_id": "W10",
+      "title": "前端构建与无Node运行",
+      "scenario_ids": [
+        "SC-UI"
+      ],
+      "negative_ids": [],
+      "entrypoint": "contracts/typecheck/test/e2e/build/manifest",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "运行全部前端检查并重建资源；在没有系统Node的隔离使用环境启动。"
+      ],
+      "acceptance": [
+        "必要前端检查无失败/跳过；资源与源码指纹匹配，工作台可打开。",
+        "篡改一个资源或源码后启动检查拒绝不匹配；不从CDN取运行脚本。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M01",
+      "package_id": "W11",
+      "title": "真实旧工作区升级预览",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "setup.cmd --target ... --preview",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "现有upgrade_fixture.populate生成旧目录，再叠加memory四层、旁目录、历史及空目录；运行真实setup预览。"
+      ],
+      "acceptance": [
+        "目标保护清单中每个文件SHA-256和目录存在性均不变，预览不写规范记录。",
+        "输出框架替换/补缺/保留清单；新旧目录同路径或相互嵌套时拒绝。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M02",
+      "package_id": "W11",
+      "title": "真实升级和重复升级",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "setup.cmd --target ...",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对同一扩展旧目录执行真实core升级两次，每次运行目标validate并逐项检查完整保护清单。"
+      ],
+      "acceptance": [
+        "两次均无真实业务校验错误；全部受保护文件hash和目录存在性保持，包括自定义Skill/脚本/用户规则/工具目录。",
+        "缺省配置仅补缺，显式false和既有模型/来源配置不被默认覆盖；第二次不累积PATH或后台服务。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M03",
+      "package_id": "W11",
+      "title": "源码恢复及升级后新记忆",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "setup.cmd --rollback",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "升级后创建一条新记忆，再恢复源码；另改一个待恢复框架文件制造冲突。"
+      ],
+      "acceptance": [
+        "恢复源码保留升级前后全部业务记忆；不批量删除新的memory目录。",
+        "框架新修改冲突时拒绝覆盖并保留回执；旧源码不支持新schema时明确拒写。"
+      ],
+      "expected_exit": "正常0；冲突非零",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M04",
+      "package_id": "W11",
+      "title": "损坏业务、缺失入口与缓存边界",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "setup.cmd / validate",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "分别注入未知业务子目录坏JSON、缺失工具入口、非法联接；另保留node_modules/.local坏JSON。"
+      ],
+      "acceptance": [
+        "前三类真实错误均返回非零且明确路径；不能为通过升级而忽略未知业务目录。",
+        "缓存坏JSON按既有规则排除；合法文件/目录工具仍通过。"
+      ],
+      "expected_exit": "业务反例非零；缓存正例0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M05",
+      "package_id": "W11",
+      "title": "单对象导出导入和依赖缺口",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "migration.export / import",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "仅导出THERMAL研究，不打包外部原件或PRESSURE对象；导入另一个中文/空格路径工作区。"
+      ],
+      "acceptance": [
+        "包清单逐项列含入对象、固定依赖和未包含来源；导入后规范ID/历史/复核不变。",
+        "未随包来源明确缺失，不自动扫描新共享盘或复制外部文件。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M06",
+      "package_id": "W11",
+      "title": "身份冲突和包损坏拒绝",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "migration.import",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "依次篡改包内记录、让相同ID不同正文已存在目标、加入../或绝对路径包条目。"
+      ],
+      "acceptance": [
+        "分别报告INTEGRITY_ERROR、VERSION_CONFLICT、UNSAFE_PATH；无目标部分覆盖。",
+        "相同ID相同内容重复导入幂等；不得按同名标题静默合并。"
+      ],
+      "expected_exit": "反例7/5/4；幂等0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M07",
+      "package_id": "W11",
+      "title": "显式旧材料提取迁移",
+      "scenario_ids": [
+        "SC-LEGACY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "migration.preview / apply",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "对旧研究进展Markdown提供AI提取草案，预览后改原文指纹再apply，随后基于新原文重试。"
+      ],
+      "acceptance": [
+        "旧预览返回STALE_BASIS且不写记录；重新预览后可导入并保留来源定位。",
+        "未知发生时间/失败原因/复核过程保留缺口；旧正文不改写；重复迁移不复制同一条记录。"
+      ],
+      "expected_exit": "旧基线5；新基线0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M08",
+      "package_id": "W11",
+      "title": "框架清单和公共包边界",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "deployment.framework_files / package audit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "构建受控源码分发清单；添加测试用业务记忆、查询历史、密钥诱饵、规范测试材料与缓存。"
+      ],
+      "acceptance": [
+        "只纳入登记的代码/schema/模板/文档/预构建资源与合成测试素材；真实业务记忆、数据库、查询历史和密钥不在公共包。",
+        "明确纳入本计划新增嵌套文档/测试素材的受控清单，不能用全盘递归代替；哈希逐项核对。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M09",
+      "package_id": "W11",
+      "title": "完整离线依赖安装与再次打包",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "verify_dependency_release.py",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "使用匹配依赖ZIP，在无系统Python/Node的隔离目标断网安装、升级，再在接收端无原下载缓存条件下打包。"
+      ],
+      "acceptance": [
+        "full自检、真实嵌入/OCR及再次打包校验全部通过；不得静默联网补包。",
+        "保留扩展旧工作区保护清单；源码、锁、模型指纹及ZIP校验对应；同机结果不得称第二台物理机通过。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M10",
+      "package_id": "W11",
+      "title": "依赖切换失败和恢复",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "setup dependency switch / --rollback-dependencies",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "分别在组件切换及后续自检/索引重建失败处注入故障，再恢复依赖。"
+      ],
+      "acceptance": [
+        "切换中失败自动恢复旧组件；后续检查失败返回非零并保存恢复回执。",
+        "恢复前验证指纹，拒绝覆盖升级后被修改组件；业务记忆不变。"
+      ],
+      "expected_exit": "故障非零；合法恢复0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "M11",
+      "package_id": "W11",
+      "title": "新表示索引和模型版本隔离",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "index.rebuild / dependency contract",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "保留旧向量集合，构建新schema/编码器集合；切换前注入失败，再尝试不匹配维度的模型。"
+      ],
+      "acceptance": [
+        "失败时旧索引可用且规范记录不变；成功后新集合匹配固定384维及模型指纹。",
+        "不兼容维度/名称/路径拒绝，不宣称任意模型可一键迁移；模型变更必须配套依赖和索引迁移。"
+      ],
+      "expected_exit": "正例0；不兼容非零",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "K01",
+      "package_id": "W12",
+      "title": "AI识别记录方式",
+      "scenario_ids": [
+        "SC-SKILL"
+      ],
+      "negative_ids": [],
+      "entrypoint": "AI + final memory Skill",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "提供12张固定任务卡：查字段、一次实验、失败、决定、未知来源、问题、目标变化、暂停、局部经验、跨研究总结、冲突、采用反馈。"
+      ],
+      "acceptance": [
+        "12/12选择合理已有对象或创建入口；Run不重复建等价event；只生成必要层级，无L4。",
+        "所有可核对事实/引用/边界正确；临时操作不强迫建立完整Research。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "K02",
+      "package_id": "W12",
+      "title": "AI通过接口正式落盘",
+      "scenario_ids": [
+        "SC-SKILL"
+      ],
+      "negative_ids": [],
+      "entrypoint": "AI + memory CLI",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "让AI提交固定源和经验、读取回执，再从全新上下文按ID读取。"
+      ],
+      "acceptance": [
+        "返回的ID/revision/正文/引用与实际规范文件一致；无直接手工拼写正式目录步骤。",
+        "报告已保存不等于accepted；未取得信息明确缺口；回执不是仅屏幕展示。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "K03",
+      "package_id": "W12",
+      "title": "AI处理冲突和索引失败",
+      "scenario_ids": [
+        "SC-SKILL"
+      ],
+      "negative_ids": [],
+      "entrypoint": "AI + memory CLI",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "演练用户修改造成VERSION_CONFLICT，以及保存后INDEX_PENDING。"
+      ],
+      "acceptance": [
+        "AI保留用户修改，读取差异后另提请求，不盲覆盖。",
+        "INDEX_PENDING时报告已保存并调用补偿，不重复创建；重试使用正确request_id规则。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "K04",
+      "package_id": "W12",
+      "title": "AI纠错和撤回",
+      "scenario_ids": [
+        "SC-EVIDENCE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "AI + review / impact",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "给出与旧结论矛盾的固定新证据，要求保存并处理影响。"
+      ],
+      "acceptance": [
+        "先保存冲突和依据，经适用复核入口登记disputed/retracted，不改Run succeeded。",
+        "列出已登记下游影响及未覆盖引用限制；不删原文、不把新结论自动accepted。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "K05",
+      "package_id": "W12",
+      "title": "第二轮AI只靠记录续接",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "AI + resume",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "第一轮结束后只给第二轮owner ID、Skill和持久记录，不给原聊天；让其说明并保存下一步。"
+      ],
+      "acceptance": [
+        "正确还原新目标、A已完成、B缺输入、旧路线关闭和不能直接迁移参数五项，5/5正确。",
+        "未自动重做A或伪造B结果；下一步满足前提；来源缺口被明确报告。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "K06",
+      "package_id": "W12",
+      "title": "Skill与调用文档可复现",
+      "scenario_ids": [
+        "SC-SKILL"
+      ],
+      "negative_ids": [],
+      "entrypoint": "skill installer / documented examples",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "在八类对象上执行手册示例；安装新版Skill到含用户同名修改和自定义Skill的隔离旧目录。"
+      ],
+      "acceptance": [
+        "示例均使用实际存在的命令与字段、帮助和失败码；最终Skill覆盖分类、来源、提交、复核、纠错和续接。",
+        "用户修改保留并给合并差异；不提前用提示词替代未实现底层接口。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "Z01",
+      "package_id": "W13",
+      "title": "完整后端与前端回归",
+      "scenario_ids": [
+        "SC-BASE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "full verification matrix",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "运行validate、完整Python unittest、全部前端检查和真实工作台E2E。"
+      ],
+      "acceptance": [
+        "必要测试失败=0、错误=0、跳过=0；每项测试ID有执行证据和实际代码版本。",
+        "不能以计划自检、mock向量或core通过替代full/真实模型验收。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "Z02",
+      "package_id": "W13",
+      "title": "端到端记录检索纠错续接",
+      "scenario_ids": [
+        "SC-HISTORY"
+      ],
+      "negative_ids": [],
+      "entrypoint": "CLI + HTTP + AI workflow",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "以一条完整合成研究链执行记录→检索→跨项目总结→新证据撤回→更新影响→暂停→第二轮续接。"
+      ],
+      "acceptance": [
+        "每阶段回执能定位同一规范身份/版本链；正式输出不含已撤回依据。",
+        "新总结、问题状态和下一步一致；全链没有独立证据重复计数、越界读取或后台自主执行。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "Z03",
+      "package_id": "W13",
+      "title": "规模、延迟和资源界限",
+      "scenario_ids": [
+        "SC-SCALE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "benchmark",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "固定8逻辑核/16GiB/SSD或记录实际更低配置；测100owner/10000记录以及单owner/10000记录；预热5次后30次测量。"
+      ],
+      "acceptance": [
+        "提交10000条后逐ID/hash核对无缺失；单次提交1KiB变更p95≤2s（不含异步向量），FTS查询p95≤2s，含向量上下文组装p95≤8s。",
+        "峰值Python RSS≤2GiB（不含另行记录的模型首次加载）；记录实际配置、冷启动时间和增长曲线；不达标须优化或走版本化范围变更，不能删样本降低门槛。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "Z04",
+      "package_id": "W13",
+      "title": "README和交付一致",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "documentation and artifact audit",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "逐条执行README入口，核对概念/目录维护/导入旧知识/常用Skill/迁移恢复说明与实际接口。"
+      ],
+      "acceptance": [
+        "每项已实现能力、已知限制和验证范围一致；规划项不冒充已上线。",
+        "源代码、schema、构建指纹、锁/依赖包及Run对应；本计划全部任务有明确最终状态。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "Z05",
+      "package_id": "W13",
+      "title": "检索与AI质量报告分离",
+      "scenario_ids": [
+        "SC-SEARCH"
+      ],
+      "negative_ids": [],
+      "entrypoint": "evaluation report",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "汇总I08和K01–K06结果、开发/留出分割、逐查询指标、AI任务评分及反例。"
+      ],
+      "acceptance": [
+        "检索全部数值由固定评价Run生成；AI关键事实/边界/操作断言全部满足，未满足项明确失败。",
+        "明确合成评价不等于业务有效性；第二台物理机和真实公司研究试用单独列未验证或实测证据。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    },
+    {
+      "test_id": "Z06",
+      "package_id": "W13",
+      "title": "发布准备和恢复资料",
+      "scenario_ids": [
+        "SC-UPGRADE"
+      ],
+      "negative_ids": [],
+      "entrypoint": "release preparation",
+      "preconditions": "每例从该场景的独立临时工作区开始；固定时钟、ID、来源内容与配置。执行前保存规范文件 SHA-256、HEAD 和目录清单。",
+      "steps": [
+        "核对源码提交、依赖ZIP/sha256、安装升级/恢复命令和固定验证Run；不执行公开上传。"
+      ],
+      "acceptance": [
+        "附件实际内容及hash与记录对应，恢复步骤可执行；未上传时只标发布准备完成。",
+        "公开Release需用户明确发布请求；缺必要验收不得标整项开发完成。"
+      ],
+      "expected_exit": "0",
+      "preservation": "除步骤明确声明的新修订、状态事件或故障注入外，旧修订、原始材料及无关对象的字节指纹不变。",
+      "evidence": [
+        "测试调用及可解析返回",
+        "前后 HEAD/规范 ID/修订清单和文件指纹差异",
+        "断言结果、实际代码版本与环境"
+      ],
+      "status": "not-run"
+    }
+  ]
+}

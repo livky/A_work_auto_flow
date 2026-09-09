@@ -95,6 +95,7 @@ def collect(root, progress=lambda *_: None):
         if meta:
             item['title'] = meta.get('title') or item['title']
             item['keywords'] = sorted(set(item['keywords'] + business_words(meta)))
+            item['level'] = meta.get('memory_level')
         nodes[nid], paths[path] = item, nid
         return nid
 
@@ -178,7 +179,12 @@ def collect(root, progress=lambda *_: None):
             for ref in raw.get(field, []):
                 if isinstance(ref, dict) and isinstance(ref.get('path'), str):
                     try:
-                        edge(nid, target(ref['path']), relation, nodes[nid]['path'], field)
+                        target_id = target(ref['path'])
+                        # Run input/output files are raw evidence. Merely
+                        # linking them from a Run does not create an L1 paper.
+                        if nodes[target_id]['id'].startswith('FILE-'):
+                            nodes[target_id]['level'] = 'L0'
+                        edge(nid, target_id, relation, nodes[nid]['path'], field)
                     except (OSError, ValueError) as exc:
                         errors.append(str(exc))
         for field in ('related_module_ids', 'module_ids', 'related_research_ids', 'related_project_ids'):
@@ -214,22 +220,70 @@ def collect(root, progress=lambda *_: None):
                 edge(fid, target(dest), rel, nodes[fid]['path'], loc)
             except (OSError, ValueError) as exc:
                 errors.append(str(exc))
+    # Canonical memory records are graph entities, never new FILE aliases of
+    # immutable JSON. L0 remains available by fixed references, not normal graph
+    # discovery. Unclassified legacy materials keep level=None for opt-in use.
+    from memory.document import Reader
+    from memory.service import MemoryService
+    from memory.contracts import project_memory_level
+    from memory.evidence_adapter import iter_refs
+    from memory.errors import MemoryError
+    reader = Reader(MemoryService(root))
+    memory_records = {}
+    for oid, view in reader.views.items():
+        if view['native_data'].get('sensitivity') == 'restricted':
+            continue
+        if oid in nodes and view['owner_type'] == 'run':
+            nodes[oid]['level'] = 'L2'
+        state = reader.state(oid)
+        for rid, record in state['records'].items():
+            level = project_memory_level(record)
+            if level not in {'L1', 'L2', 'L3', 'L4'} or record['sensitivity'] == 'restricted':
+                continue
+            issues, denied = [], False
+            for ref in iter_refs({'sources': record['sources'], 'payload': record['payload']}):
+                try:
+                    reader.check_ref(ref)
+                except MemoryError as exc:
+                    issues.append(exc.code)
+                    denied = denied or exc.code in {'ACCESS_DENIED', 'UNSAFE_PATH'}
+            if denied:
+                continue
+            nodes[rid] = {'id': rid, 'title': record['title'], 'kind': record['kind'],
+                'level': level, 'owner': oid, 'path': view['native_ref']['path'],
+                'fingerprint': record['record_hash'], 'keywords': record['keywords'],
+                'review': {}, 'risks': sorted(set(issues)), 'locator': 'memory:' + rid,
+                'record_reason': record['record_reason'], 'statement': record['body_markdown'],
+                'record_revision': record['revision'], 'missing': False}
+            memory_records[rid] = record
+    for rid, record in memory_records.items():
+        for ref in iter_refs({'sources': record['sources'], 'payload': record['payload']}):
+            edge(rid, ref['target_id'], ref.get('relation', 'references'),
+                 nodes[rid]['path'], 'fixed memory reference')
+    reader.recheck()
+    for node in nodes.values():
+        node.setdefault('level', None)
     result = {'schema_version': 1, 'generated_at': r.now(), 'nodes': list(nodes.values()), 'edges': list(edges.values()),
               'errors': sorted(set(errors)), 'coverage': {'files': len(paths), 'index_only': False,
                 'excluded': ['模板、导航规则、缓存和未登记外部目录'], 'unread': '非文本内容仅登记元数据；正文通过原有检索/预览按需读取'},
               'synthetic': (root / 'synthetic-marker.json').exists()}
     result['file_stats'] = {label_path(root, path): [path.stat().st_size, path.stat().st_mtime_ns] if path.is_file() else None for path in paths}
     result['boundary'] = {name: e.sha256(root / name) for name in ('retrieval/config.json', 'retrieval/sources.json')}
+    for oid, state in reader.states.items():
+        if state['head']:
+            for name in (reader.views[oid]['native_ref']['path'], reader.views[oid]['memory_home'] + '/HEAD.json'):
+                result['boundary'][name] = e.sha256(root / name)
     result['fingerprint'] = e.fingerprint({'nodes': result['nodes'], 'edges': result['edges']})
     return result
 
 
-def subgraph(graph, center='', hops=1, query='', excluded=(), kinds=(), types=(), limit=300, offset=0):
+def subgraph(graph, center='', hops=1, query='', excluded=(), kinds=(), types=(), limit=300, offset=0, levels=()):
     """所有筛选先于范围导出；局部 BFS 不穿过被排除节点。"""
     limit = max(1, min(int(limit), 300))
     if hops not in (1, 2):
         raise ValueError('展开深度只能为 1 或 2')
     eligible = {n['id']: n for n in graph['nodes'] if n['id'] not in excluded and
+                (not levels or (n.get('level') or 'native') in levels) and
                 (not kinds or n['kind'] in kinds) and (not query or query.casefold() in (n['title'] + ' ' + n['id']).casefold())}
     edges = [edge for edge in graph['edges'] if edge['source'] in eligible and edge['target'] in eligible and (not types or edge['type'] in types)]
     if center:
@@ -250,5 +304,5 @@ def subgraph(graph, center='', hops=1, query='', excluded=(), kinds=(), types=()
     exported = {k: v for k, v in graph.items() if k not in {'file_stats', 'boundary'}}
     return {**exported, 'nodes': [eligible[nid] for nid in ordered if nid in shown], 'edges': visible_edges[:1000],
             'selection': {'center': center, 'hops': hops, 'query': query, 'excluded': list(excluded),
-                          'kinds': list(kinds), 'types': list(types), 'offset': offset},
+                          'kinds': list(kinds), 'types': list(types), 'levels': list(levels), 'offset': offset},
             'omitted_nodes': len(eligible) - len(shown), 'omitted_edges': max(0, len(visible_edges) - 1000)}

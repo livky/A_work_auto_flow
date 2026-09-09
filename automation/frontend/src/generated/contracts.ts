@@ -27,6 +27,7 @@ export interface MaterialNode {
   id: string;
   title: string;
   kind: string;
+  level?: string | null;
   path: string;
   fingerprint: string;
   keywords: string[];

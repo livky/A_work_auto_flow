@@ -19,6 +19,9 @@ class RetrievalTests(unittest.TestCase):
         (self.root / "retrieval").mkdir()
         for name in ("config.json", "sources.json", "eval.json"):
             (self.root / "retrieval" / name).write_bytes((ROOT / "retrieval" / name).read_bytes())
+        # 来源登记属于业务数据，可能含生产工作区的绝对路径。隔离测试只能
+        # 读取本测试显式登记的材料，不能因用户新增来源而扫描真实研究正文。
+        r.write_json(self.root / "retrieval/sources.json", {"sources": []})
         cfg = r.config(self.root)
         cfg["vector_store"] = {"provider": None}
         cfg["ocr_enabled"] = False

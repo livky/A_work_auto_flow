@@ -1,0 +1,194 @@
+{
+  "fixture_version": 1,
+  "negative": [
+    {
+      "negative_id": "NEG-LAYER",
+      "title": "不存在的层级",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "level": "L4"
+      },
+      "expected_error": "INVALID_SCHEMA"
+    },
+    {
+      "negative_id": "NEG-KIND",
+      "title": "未知记录类型",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "kind": "unregistered"
+      },
+      "expected_error": "INVALID_SCHEMA"
+    },
+    {
+      "negative_id": "NEG-RESOLVE",
+      "title": "解决问题却无答案",
+      "target_id": "MEM-Q-OPEN",
+      "base": "records.json",
+      "replace": {
+        "payload.status": "resolved",
+        "payload.resolution_refs": []
+      },
+      "expected_error": "INVALID_TRANSITION"
+    },
+    {
+      "negative_id": "NEG-SUPERSEDE",
+      "title": "问题替代自身",
+      "target_id": "MEM-Q-OPEN",
+      "base": "records.json",
+      "replace": {
+        "payload.status": "superseded",
+        "payload.replacement_ref": {
+          "target_id": "MEM-Q-OPEN",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      },
+      "expected_error": "INVALID_TRANSITION"
+    },
+    {
+      "negative_id": "NEG-BOUNDARY",
+      "title": "经验没有适用条件",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "payload.applicable": []
+      },
+      "expected_error": "INVALID_SCHEMA"
+    },
+    {
+      "negative_id": "NEG-ANALOGY",
+      "title": "类比无迁移限制",
+      "target_id": "MEM-ASSOC-VALID",
+      "base": "records.json",
+      "replace": {
+        "payload.transfer_limits": []
+      },
+      "expected_error": "INVALID_SCHEMA"
+    },
+    {
+      "negative_id": "NEG-REFERENCE",
+      "title": "引用不存在的对象",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "sources": [
+          {
+            "target_id": "MEM-NOT-EXISTS",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ]
+      },
+      "expected_error": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "negative_id": "NEG-RAW",
+      "title": "AI 归纳伪装逐字原件",
+      "target_id": "MEM-SRC-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "payload.acquisition": "verbatim_export",
+        "body_markdown": "未经原文支持的新总结"
+      },
+      "expected_error": "INVALID_SCHEMA"
+    },
+    {
+      "negative_id": "NEG-PATH",
+      "title": "目标路径越界",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "memory_home": "../../outside"
+      },
+      "expected_error": "UNSAFE_PATH"
+    },
+    {
+      "negative_id": "NEG-REVIEW",
+      "title": "普通提交强写复核",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "review": {
+          "status": "accepted"
+        }
+      },
+      "expected_error": "INVALID_SCHEMA"
+    },
+    {
+      "negative_id": "NEG-OWNER",
+      "title": "未知业务对象",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "owner_id": "RES-NOT-EXISTS"
+      },
+      "expected_error": "NOT_FOUND"
+    },
+    {
+      "negative_id": "NEG-REVISION",
+      "title": "省略固定版本",
+      "target_id": "MEM-EXP-CROSS",
+      "base": "records.json",
+      "replace": {
+        "sources": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": null,
+            "relation": "input",
+            "locator": ""
+          }
+        ]
+      },
+      "expected_error": "INVALID_SCHEMA"
+    },
+    {
+      "negative_id": "NEG-CLAIM",
+      "title": "复核缺范围",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "review_request": {
+          "claim_id": "CLM-SYN-THERMAL",
+          "state": "accepted",
+          "scope": null
+        }
+      },
+      "expected_error": "EVIDENCE_INELIGIBLE"
+    },
+    {
+      "negative_id": "NEG-READONLY",
+      "title": "试图覆盖原件",
+      "target_id": "MEM-SRC-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "operation": "overwrite_source"
+      },
+      "expected_error": "INVALID_ARGUMENT"
+    },
+    {
+      "negative_id": "NEG-SENSITIVITY",
+      "title": "摘要降低受限来源分类",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "sensitivity": "public",
+        "source_sensitivity": "restricted"
+      },
+      "expected_error": "ACCESS_DENIED"
+    },
+    {
+      "negative_id": "NEG-UNKNOWN",
+      "title": "错误扩展字段",
+      "target_id": "MEM-EXP-THERMAL",
+      "base": "records.json",
+      "replace": {
+        "payload.magic_score": 999
+      },
+      "expected_error": "INVALID_SCHEMA"
+    }
+  ]
+}

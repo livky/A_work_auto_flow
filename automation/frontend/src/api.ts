@@ -15,8 +15,20 @@ export async function api<T>(
         },
   );
   const value = await response.json();
-  if (!response.ok)
-    throw new Error(value.error || `请求失败 ${response.status}`);
+  if (!response.ok) {
+    // Memory endpoints expose structured conflicts and field-level errors.
+    // Keep that evidence with the exception so an editor can retain its draft
+    // and compare against the current version instead of reporting success.
+    const detail = value.error;
+    const message = typeof detail === "string" ? detail : detail?.message;
+    const failure = new Error(message || `请求失败 ${response.status}`);
+    Object.assign(failure, {
+      code: detail?.code,
+      details: detail?.details,
+      errors: detail?.errors,
+    });
+    throw failure;
+  }
   return value as T;
 }
 export function download(name: string, content: string) {
@@ -30,6 +42,10 @@ export function download(name: string, content: string) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 export const kindNames: Record<string, string> = {
+  detail: "详细研究",
+  event: "过程记录",
+  experience: "复用经验",
+  map: "研究地图",
   algorithm: "核心算法",
   run: "实验",
   claim: "结论",

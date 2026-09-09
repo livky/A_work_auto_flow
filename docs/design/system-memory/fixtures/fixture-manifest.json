@@ -1,0 +1,37 @@
+{
+  "fixture_version": 1,
+  "synthetic_only": true,
+  "counts": {
+    "owners": 23,
+    "records": 48,
+    "legacy_runs": 8,
+    "sources": 8,
+    "queries": 48,
+    "negative": 16,
+    "scenarios": 16,
+    "cases": 115,
+    "packages": 14,
+    "ai_cases": 12
+  },
+  "files": {
+    "README.md": "70ed5895fc123886175e6fc825df82bdea067af194443292e89d77849f51cd0f",
+    "acceptance.json": "2cb2b64f2c3e1c443c37103be3ebedad2c947e8b305172abffd40d0ded136abf",
+    "ai-cases.json": "cd7798b248470ae158da119e2d4dbcb471596d8f35c3cee50c1b1cc79f9e9df5",
+    "negative-drafts.json": "f3849dd4aee2b905b4333424e504cd697db735a98999857bc915b05f09fcfe9c",
+    "queries.json": "88ab36fde5597f40f87103404c16199c652d2a4debb5c94fec0433a766336692",
+    "records.json": "4e6dae8460243100e89c96d8d8b19e41c0da4f216f4afc8c1d25c63d90d0d8d5",
+    "scenarios.json": "91f182a4002a497156b1b02f53600df622c31450ab18c45827c956ce42f46429",
+    "sources/cache.md": "25228e8ce5f6fae102da3aa8228099c29d34a1d1cffc9fdf2f9d6b0df18c464d",
+    "sources/ocr.md": "60050cd8f7176af000c97b3810fae7832f287367561a267616437f4a4d683d3f",
+    "sources/pressure.md": "704fabfc1458d523ee03dc8f3bab8a503ddcad22ad0192e0bc31d836f2695020",
+    "sources/repeat.md": "8e40efdd192eae8d313a894e1d78846b29e730e219389b887af1e5b3a7eccdd2",
+    "sources/retry.md": "72038b814784a6e920aa239b785a1a0e73f1499b92464b94d9f2d288624fd17b",
+    "sources/thermal-v2.md": "edc87ba17f5b22473859d49606d202cf16d4e3d3fbacbb9ee76e94014481469d",
+    "sources/thermal.md": "e898b9ee7da829a3d92fdb2d442ba45b91a4a73b0cd3cd655fa88862bfd62bfa",
+    "sources/units.md": "97c9e77f70a07f4420e2b50789b886e778a33adcc8c3620550074ad363e7d474",
+    "sources/vibration.md": "e6fe55ac7afd7ceb57836824e895c92fd2346a77a1097152808a52e17f24addc",
+    "variants.json": "fa7676c7925762c6c579bb40a23b40d5b9e4d7d6364ff3d8a66f9041d24c7b19",
+    "verify_plan.py": "7fa923e0789f9268580801242c8cbd9a509f96becc2bdbf8a066e616be7215ae",
+    "work-packages.json": "4f8f01a3fe91e1d176bc2352b32845e3b71801bd1dc7b481891d8cee7eeef71f"
+  }
+}

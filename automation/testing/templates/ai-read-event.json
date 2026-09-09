@@ -1,0 +1,9 @@
+{
+  "actor": null,
+  "origin": {"call_id": null, "fixed_ref": null},
+  "capture_path": null,
+  "locator": null,
+  "coverage": "not-read",
+  "observation": null,
+  "unread_or_missing": []
+}

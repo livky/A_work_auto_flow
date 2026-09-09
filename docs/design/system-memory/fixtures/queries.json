@@ -1,0 +1,1302 @@
+{
+  "fixture_version": 1,
+  "judgments": "synthetic",
+  "queries": [
+    {
+      "query_id": "Q-THERMAL-1",
+      "split": "development",
+      "query": "研究温度采集的零点漂移",
+      "category": "exact",
+      "owner_id": "RES-SYN-PRESSURE",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-THERMAL",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-THERMAL",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预热 30 分钟；环境 20–25 ℃；样本 A",
+        "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-THERMAL-2",
+      "split": "development",
+      "query": "预热 零点漂移 需要满足什么条件？",
+      "category": "boundary",
+      "owner_id": "RES-SYN-PRESSURE",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-THERMAL",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-THERMAL",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预热 30 分钟；环境 20–25 ℃；样本 A",
+        "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-THERMAL-3",
+      "split": "development",
+      "query": "遇到预热与零点漂移的问题，过去有哪些失败或限制？",
+      "category": "failure",
+      "owner_id": "RES-SYN-PRESSURE",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-THERMAL",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-THERMAL",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预热 30 分钟；环境 20–25 ℃；样本 A",
+        "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-THERMAL-4",
+      "split": "development",
+      "query": "如何避免把预热的经验直接用于其他研究？",
+      "category": "cross",
+      "owner_id": "RES-SYN-PRESSURE",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-THERMAL",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-THERMAL",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预热 30 分钟；环境 20–25 ℃；样本 A",
+        "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-THERMAL-5",
+      "split": "holdout",
+      "query": "零点漂移发生变化，下一次尝试之前该核对哪些前提？",
+      "category": "paraphrase",
+      "owner_id": "RES-SYN-PRESSURE",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-THERMAL",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-THERMAL",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预热 30 分钟；环境 20–25 ℃；样本 A",
+        "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-THERMAL-6",
+      "split": "holdout",
+      "query": "哪些历史局部结果可以帮助判断预热与零点漂移，还缺什么依据？",
+      "category": "local_result",
+      "owner_id": "RES-SYN-PRESSURE",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-THERMAL",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-THERMAL",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预热 30 分钟；环境 20–25 ℃；样本 A",
+        "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-PRESSURE-1",
+      "split": "development",
+      "query": "研究压力采集的重复定位误差",
+      "category": "exact",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-PRESSURE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-PRESSURE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预载 10 次；同一夹具；样本 P",
+        "预载不是预热；更换夹具后需要重新验证。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-PRESSURE-2",
+      "split": "development",
+      "query": "预载 重复定位 需要满足什么条件？",
+      "category": "boundary",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-PRESSURE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-PRESSURE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预载 10 次；同一夹具；样本 P",
+        "预载不是预热；更换夹具后需要重新验证。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-PRESSURE-3",
+      "split": "development",
+      "query": "遇到预载与重复定位的问题，过去有哪些失败或限制？",
+      "category": "failure",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-PRESSURE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-PRESSURE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预载 10 次；同一夹具；样本 P",
+        "预载不是预热；更换夹具后需要重新验证。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-PRESSURE-4",
+      "split": "development",
+      "query": "如何避免把预载的经验直接用于其他研究？",
+      "category": "cross",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-PRESSURE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-PRESSURE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预载 10 次；同一夹具；样本 P",
+        "预载不是预热；更换夹具后需要重新验证。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-PRESSURE-5",
+      "split": "holdout",
+      "query": "重复定位发生变化，下一次尝试之前该核对哪些前提？",
+      "category": "paraphrase",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-PRESSURE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-PRESSURE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预载 10 次；同一夹具；样本 P",
+        "预载不是预热；更换夹具后需要重新验证。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-PRESSURE-6",
+      "split": "holdout",
+      "query": "哪些历史局部结果可以帮助判断预载与重复定位，还缺什么依据？",
+      "category": "local_result",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-PRESSURE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-PRESSURE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "预载 10 次；同一夹具；样本 P",
+        "预载不是预热；更换夹具后需要重新验证。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-RETRY-1",
+      "split": "development",
+      "query": "研究提交超时后重复记录",
+      "category": "exact",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-RETRY",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-RETRY",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "请求正文相同；请求键相同；服务已保存幂等回执",
+        "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-RETRY-2",
+      "split": "development",
+      "query": "重试 幂等 需要满足什么条件？",
+      "category": "boundary",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-RETRY",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-RETRY",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "请求正文相同；请求键相同；服务已保存幂等回执",
+        "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-RETRY-3",
+      "split": "development",
+      "query": "遇到超时重试与重复写入的问题，过去有哪些失败或限制？",
+      "category": "failure",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-RETRY",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-RETRY",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "请求正文相同；请求键相同；服务已保存幂等回执",
+        "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-RETRY-4",
+      "split": "development",
+      "query": "如何避免把重试的经验直接用于其他研究？",
+      "category": "cross",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-RETRY",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-RETRY",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "请求正文相同；请求键相同；服务已保存幂等回执",
+        "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-RETRY-5",
+      "split": "holdout",
+      "query": "幂等发生变化，下一次尝试之前该核对哪些前提？",
+      "category": "paraphrase",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-RETRY",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-RETRY",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "请求正文相同；请求键相同；服务已保存幂等回执",
+        "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-RETRY-6",
+      "split": "holdout",
+      "query": "哪些历史局部结果可以帮助判断超时重试与重复写入，还缺什么依据？",
+      "category": "local_result",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-RETRY",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-RETRY",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "请求正文相同；请求键相同；服务已保存幂等回执",
+        "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-CACHE-1",
+      "split": "development",
+      "query": "研究已撤回依据仍出现在摘要中",
+      "category": "exact",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-CACHE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-CACHE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "来源有固定身份与版本；正式导出执行回源检查",
+        "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-CACHE-2",
+      "split": "development",
+      "query": "撤回 缓存 需要满足什么条件？",
+      "category": "boundary",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-CACHE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-CACHE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "来源有固定身份与版本；正式导出执行回源检查",
+        "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-CACHE-3",
+      "split": "development",
+      "query": "遇到来源变化与陈旧缓存的问题，过去有哪些失败或限制？",
+      "category": "failure",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-CACHE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-CACHE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "来源有固定身份与版本；正式导出执行回源检查",
+        "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-CACHE-4",
+      "split": "development",
+      "query": "如何避免把撤回的经验直接用于其他研究？",
+      "category": "cross",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-CACHE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-CACHE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "来源有固定身份与版本；正式导出执行回源检查",
+        "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-CACHE-5",
+      "split": "holdout",
+      "query": "缓存发生变化，下一次尝试之前该核对哪些前提？",
+      "category": "paraphrase",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-CACHE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-CACHE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "来源有固定身份与版本；正式导出执行回源检查",
+        "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-CACHE-6",
+      "split": "holdout",
+      "query": "哪些历史局部结果可以帮助判断来源变化与陈旧缓存，还缺什么依据？",
+      "category": "local_result",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-CACHE",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-CACHE",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "来源有固定身份与版本；正式导出执行回源检查",
+        "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-VIBRATION-1",
+      "split": "development",
+      "query": "研究采样配置变化的影响",
+      "category": "exact",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-VIBRATION",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-VIBRATION",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入集合 X/Y；配置 S1/S2 的固定版本",
+        "相同观测不代表相同输入；未测试配置不能推断等效。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-VIBRATION-2",
+      "split": "development",
+      "query": "采样 不可辨识 需要满足什么条件？",
+      "category": "boundary",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-VIBRATION",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-VIBRATION",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入集合 X/Y；配置 S1/S2 的固定版本",
+        "相同观测不代表相同输入；未测试配置不能推断等效。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-VIBRATION-3",
+      "split": "development",
+      "query": "遇到采样配置与不可辨识结果的问题，过去有哪些失败或限制？",
+      "category": "failure",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-VIBRATION",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-VIBRATION",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入集合 X/Y；配置 S1/S2 的固定版本",
+        "相同观测不代表相同输入；未测试配置不能推断等效。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-VIBRATION-4",
+      "split": "development",
+      "query": "如何避免把采样的经验直接用于其他研究？",
+      "category": "cross",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-VIBRATION",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-VIBRATION",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入集合 X/Y；配置 S1/S2 的固定版本",
+        "相同观测不代表相同输入；未测试配置不能推断等效。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-VIBRATION-5",
+      "split": "holdout",
+      "query": "不可辨识发生变化，下一次尝试之前该核对哪些前提？",
+      "category": "paraphrase",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-VIBRATION",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-VIBRATION",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入集合 X/Y；配置 S1/S2 的固定版本",
+        "相同观测不代表相同输入；未测试配置不能推断等效。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-VIBRATION-6",
+      "split": "holdout",
+      "query": "哪些历史局部结果可以帮助判断采样配置与不可辨识结果，还缺什么依据？",
+      "category": "local_result",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-VIBRATION",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-VIBRATION",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入集合 X/Y；配置 S1/S2 的固定版本",
+        "相同观测不代表相同输入；未测试配置不能推断等效。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-UNITS-1",
+      "split": "development",
+      "query": "研究报告单位换算错误",
+      "category": "exact",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-UNITS",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-UNITS",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入单位 mm；输出单位 m；原值 2",
+        "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-UNITS-2",
+      "split": "development",
+      "query": "单位 毫米 需要满足什么条件？",
+      "category": "boundary",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-UNITS",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-UNITS",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入单位 mm；输出单位 m；原值 2",
+        "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-UNITS-3",
+      "split": "development",
+      "query": "遇到单位转换与报告数字的问题，过去有哪些失败或限制？",
+      "category": "failure",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-UNITS",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-UNITS",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入单位 mm；输出单位 m；原值 2",
+        "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-UNITS-4",
+      "split": "development",
+      "query": "如何避免把单位的经验直接用于其他研究？",
+      "category": "cross",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-UNITS",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-UNITS",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入单位 mm；输出单位 m；原值 2",
+        "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-UNITS-5",
+      "split": "holdout",
+      "query": "毫米发生变化，下一次尝试之前该核对哪些前提？",
+      "category": "paraphrase",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-UNITS",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-UNITS",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入单位 mm；输出单位 m；原值 2",
+        "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-UNITS-6",
+      "split": "holdout",
+      "query": "哪些历史局部结果可以帮助判断单位转换与报告数字，还缺什么依据？",
+      "category": "local_result",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-UNITS",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-UNITS",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "输入单位 mm；输出单位 m；原值 2",
+        "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-OCR-1",
+      "split": "development",
+      "query": "研究识别文本丢失负号",
+      "category": "exact",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-OCR",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-OCR",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "仅针对样本图 O；已取得原图",
+        "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-OCR-2",
+      "split": "development",
+      "query": "OCR 负号 需要满足什么条件？",
+      "category": "boundary",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-OCR",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-OCR",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "仅针对样本图 O；已取得原图",
+        "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-OCR-3",
+      "split": "development",
+      "query": "遇到符号识别与原文核对的问题，过去有哪些失败或限制？",
+      "category": "failure",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-OCR",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-OCR",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "仅针对样本图 O；已取得原图",
+        "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-OCR-4",
+      "split": "development",
+      "query": "如何避免把OCR的经验直接用于其他研究？",
+      "category": "cross",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-OCR",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-OCR",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "仅针对样本图 O；已取得原图",
+        "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-OCR-5",
+      "split": "holdout",
+      "query": "负号发生变化，下一次尝试之前该核对哪些前提？",
+      "category": "paraphrase",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-OCR",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-OCR",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "仅针对样本图 O；已取得原图",
+        "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-OCR-6",
+      "split": "holdout",
+      "query": "哪些历史局部结果可以帮助判断符号识别与原文核对，还缺什么依据？",
+      "category": "local_result",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-OCR",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-OCR",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "仅针对样本图 O；已取得原图",
+        "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-REPEAT-1",
+      "split": "development",
+      "query": "研究多份摘要重复计数",
+      "category": "exact",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-REPEAT",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-REPEAT",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "三个摘要均派生自来源 D1",
+        "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-REPEAT-2",
+      "split": "development",
+      "query": "重复 独立证据 需要满足什么条件？",
+      "category": "boundary",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-REPEAT",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-REPEAT",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "三个摘要均派生自来源 D1",
+        "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-REPEAT-3",
+      "split": "development",
+      "query": "遇到重复材料与独立证据的问题，过去有哪些失败或限制？",
+      "category": "failure",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-REPEAT",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-REPEAT",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "三个摘要均派生自来源 D1",
+        "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-REPEAT-4",
+      "split": "development",
+      "query": "如何避免把重复的经验直接用于其他研究？",
+      "category": "cross",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-REPEAT",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-REPEAT",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "三个摘要均派生自来源 D1",
+        "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-REPEAT-5",
+      "split": "holdout",
+      "query": "独立证据发生变化，下一次尝试之前该核对哪些前提？",
+      "category": "paraphrase",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-REPEAT",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-REPEAT",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "三个摘要均派生自来源 D1",
+        "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    },
+    {
+      "query_id": "Q-REPEAT-6",
+      "split": "holdout",
+      "query": "哪些历史局部结果可以帮助判断重复材料与独立证据，还缺什么依据？",
+      "category": "local_result",
+      "owner_id": "RES-SYN-THERMAL",
+      "purpose": "exploration",
+      "scope": null,
+      "relevant": [
+        {
+          "canonical_id": "MEM-EXP-REPEAT",
+          "grade": 3
+        },
+        {
+          "canonical_id": "CLM-SYN-REPEAT",
+          "grade": 2
+        }
+      ],
+      "must_retain": [
+        "三个摘要均派生自来源 D1",
+        "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+      ],
+      "forbidden_as_formal": [
+        "MEM-ASSOC-WRONG"
+      ],
+      "judgment": "AI-authored synthetic relevance labels; not human business acceptance"
+    }
+  ]
+}

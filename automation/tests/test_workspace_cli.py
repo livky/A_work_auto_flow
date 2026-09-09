@@ -91,8 +91,10 @@ class WorkspaceCliTests(unittest.TestCase):
         self.assertEqual({p.name for p in module.iterdir()}, {"module.json", "README.md"})
         context = workspace_cli.build_context(self.root, module="align", task="检查全局模块")
         self.assertIn("MOD-ALIGN", context.read_text(encoding="utf-8"))
+        # 单研究关联现在自动成为归属，必须解析真实登记；模块仍保留关联。
+        research = workspace_cli.create_research(self.root, 'test', '专题测试')
         run = workspace_cli.create_run(self.root, None, "独立分析", module_ids=["MOD-ALIGN"], research_ids=["RES-TEST"])
-        self.assertEqual(run.parent, self.root / "runs")
+        self.assertEqual(run.parent, research / "runs")
         self.assertIsNone(json.loads((run / "run.json").read_text(encoding="utf-8"))["project_id"])
         self.assertEqual(len(workspace_cli.search_runs(self.root, "MOD-ALIGN")), 1)
         index, _ = workspace_cli.refresh_index(self.root)

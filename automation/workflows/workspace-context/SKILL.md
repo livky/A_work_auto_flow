@@ -5,6 +5,22 @@ description: 在当前研发工作区回答算法问题、核对文档与实现�
 
 # 算法问答与证据扩展
 
+## 按问题选择入口
+
+查询已有 Run 的一个字段，直接 `workbench.cmd memory inspect RUN-ID` 并打开返回的输入/产物定位；不为一次查看另建研究、实验或五层记录。
+
+理解研究时优先阅读当前研究文稿的L1详细说明、L2过程、L3经验和L4地图；核验关键参数/公式/结果时按固定引用展开L0。也可先用 `memory raw-materials` 指定 owner_id 列出 Run 自动登记与独立来源，再用 `memory raw-material` 按 material_id 核验原件；命令见[统一入口](../../../docs/design/L0_MATERIALS.md)。未登记文件只说明缺口；需要补入时依维护 Skill 调用 `run-register`，不能虚构旧指纹。默认search使用knowledge模式不召回L0正文，明确追溯使用 `retrieval_mode:"trace"` 并指定实际 `include_ids`/`full_ids` 或精确ID；权限、排除和预算仍有效。若缺L1，说明具体过程缺口，不把Run元数据或高层经验当成完整研究过程。
+
+查局部经验、失败、其他研究的可复用条件时，先用 `memory search --request 文件`。请求至少包含 `query`、`purpose:"exploration"`，按当前研究补 `owner_id`。它表示当前归属而非单对象过滤；限定范围用 `owner_types` 或材料包的 `selection.owner_ids`，明确排除用 `exclude_ids`。经验留在原 Research 也能以 `workspace_summary` 被其他获准研究发现，不必先晋升知识库。
+
+读取候选的规范 ID、修订、命中理由、边界、复核状态和缺口，再用 `memory expand` 打开选中的固定 `source_ref`。按实际问题需要选择 `kinds`/`levels`，不要为了出现预期答案静默删掉候选类别。总结或片段只是已读摘要；验证结论前继续打开真正来源。回答同时说明可参考条件和不能迁移的参数。
+
+需要正式依据时用 `purpose:"formal"` 并给实际 `scope`；空结果及 `rejected` 原因也要读，不能以探索摘要代替正式答案。需要材料包时调用 `memory context`；继续调查时在下一次 context 请求的 `feedback_from` 中传前次完整包，最多扩展两次，继承原选择、预算和用途。新记忆使用 `QMEM-*` 查询回执；已有算法材料检索仍使用下述 CTX/CF 流程，两套回执不能混用。
+
+实际 JSON 请求、逐种记录字段和错误处理见 [记忆使用指南](../../../docs/MEMORY_USAGE.md) 与 [请求示例](../../../docs/MEMORY_REQUESTS.md)，只读当前动作所需部分。已知 MOD 的文档—实现问题继续按下述算法证据流程，不用局部经验替代算法原文。
+
+## 算法证据流程
+
 涉及跨材料关联时，可先用 `workbench.cmd relations export --center "实际 ID" --hops 2 --format markdown` 获取局部关系摘要。保持 `--exclude` 和读取预算；查看原始关系类型、方向、指纹及未读/超限项，再执行下述原文证据扩展。相似候选、聚类与连接数不构成验证依据。AI 关联建议需要源 ID、定位及指纹，经 `relations import-candidate` 保存到本机候选，不直接写入正式依赖。完整命令见 [材料关系手册](../../../docs/MATERIAL_RELATIONS.md)。
 
 适用于已有工作区材料的问答/排查，不用于普通闲聊或与该资料库无关的写作。从当前目录向上找到 workspace.json，读取根 AGENTS 和 context/START_HERE；用户要求优先。

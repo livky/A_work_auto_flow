@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "request_id": "94fdb9be-0902-4812-b5a6-fa4d7c196403",
+  "actor": {"kind": "ai", "id": "replace-with-actual-author"},
+  "owner_id": "RES-EXAMPLE",
+  "expected_head": null,
+  "operations": [{
+    "op": "put_record",
+    "client_key": "detail",
+    "draft": {
+      "schema_version": 2,
+      "owner_id": "RES-EXAMPLE",
+      "kind": "detail",
+      "level": "L1",
+      "title": "SYNTHETIC TEMPLATE：逐轮计算说明",
+      "keywords": ["计算说明"],
+      "body_markdown": "## 问题\n替换为实际问题。\n\n## 方法与步骤\n说明实际使用的方法与可公开核验的步骤。\n\n## 输入与参数\n引用固定输入；说明单位。\n\n## 结果与限制\n写入实际结果，未执行时明确缺口，不编造验证。",
+      "payload": {
+        "run_ref": {"target_kind": "owner", "target_id": "RUN-EXAMPLE", "revision": null, "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "locator": "run.json", "relation": "input"},
+        "question": "替换为本轮实际计算问题",
+        "method": "替换为实际采用的方法与选择依据",
+        "steps": ["固定输入版本与参数", "描述实际计算和检查步骤"],
+        "inputs": [{"target_kind": "file", "target_id": "SRC-EXAMPLE", "revision": null, "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "locator": "完整输入", "relation": "input"}],
+        "parameters": [{"name": "n", "value": 3, "unit": "1", "description": "仅为模板示例；替换为实际求和项数"}],
+        "formulas": [{"latex": "s=\\sum_{i=1}^{n}x_i", "variables": [{"symbol": "s", "meaning": "和", "unit": "与输入相同"}, {"symbol": "x_i", "meaning": "第i项输入", "unit": "实际输入单位"}, {"symbol": "n", "meaning": "项数", "unit": "1"}]}],
+        "figures": [],
+        "results": "模板没有运行结果，须替换为对应Run的实际观察和数值",
+        "limitations": ["此文件仅为契约模板，身份、HEAD、UUID、来源和指纹必须替换；不是实验记录"],
+        "missing_refs": []
+      },
+      "sources": [{"target_kind": "owner", "target_id": "RUN-EXAMPLE", "revision": null, "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "locator": "run.json", "relation": "input"}],
+      "provenance_gap": null,
+      "record_reason": "依据实际Run补充可读计算说明；说明文档不是另一次实验",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal"
+    }
+  }]
+}

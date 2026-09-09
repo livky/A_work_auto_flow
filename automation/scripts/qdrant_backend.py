@@ -51,7 +51,7 @@ def encoder(model_dir, model_name):
 
 
 class LocalBackend:
-    def __init__(self, root, cfg):
+    def __init__(self, root, cfg, *, collection_prefix="workspace", encoding_version="passage-query-window-v1", expected_dimensions=None):
         from qdrant_client import QdrantClient, models
         self.models = models
         self.cfg = cfg
@@ -62,11 +62,17 @@ class LocalBackend:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if manifest.get("model") != setting["model"] or not manifest.get("files"):
             raise ValueError("嵌入配置与模型清单不一致或缺少文件校验信息")
+        # 新的记忆表示复用同一离线编码器，但不能与旧全文片段混用集合。
+        # 默认参数保持历史身份不变；调用方显式指定 schema/编码版本前缀。
+        if expected_dimensions is not None and manifest.get("dimensions") != expected_dimensions:
+            raise ValueError(f"嵌入维度不兼容：当前入口要求 {expected_dimensions} 维")
+        if not collection_prefix or any(c not in "abcdefghijklmnopqrstuvwxyz0123456789_" for c in collection_prefix):
+            raise ValueError("向量集合前缀必须为小写字母、数字或下划线")
         verify_model(str(model_dir), tuple(sorted(manifest["files"].items())))
         # 编码库升级可能改变池化或归一化；不能在同一集合混用不兼容向量。
         identity = hashlib.sha256(json.dumps({"model": manifest, "fastembed": version("fastembed"),
-            "encoding": "passage-query-window-v1"}, sort_keys=True).encode()).hexdigest()[:12]
-        self.collection = "workspace_" + identity
+            "encoding": encoding_version}, sort_keys=True).encode()).hexdigest()[:12]
+        self.collection = collection_prefix + "_" + identity
         self.model, self.tokenizer = encoder(str(model_dir), setting["model"])
         storage = (root / cfg["vector_store"].get("path", "services/qdrant/storage")).resolve()
         if not storage.is_relative_to(root.resolve()):

@@ -33,6 +33,7 @@ from typing import Any, Iterable, Sequence
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import retrieval
 import evidence as evidence_controls
+from manifest_discovery import manifests, run_home
 
 
 # 只有这些小型文本类型会进入上下文包或内容安全检查。二进制文件始终按路径处理，
@@ -283,12 +284,12 @@ def create_module(root: Path, slug_value: str, title: str, dry_run: bool = False
 
 def create_run(root: Path, project_slug: str | None, title: str, dry_run: bool = False,
                keywords: Sequence[str] = (), module_ids: Sequence[str] = (),
-               research_ids: Sequence[str] = ()) -> Path:
+               research_ids: Sequence[str] = (), owner_id: str | None = None) -> Path:
     """创建一次不可混淆的分析/仿真 Run 目录和初始 manifest。"""
 
     project_metadata = {}
     if project_slug:
-        # 兼容旧命令的可选项目关联，但新 Run 一律写全局 runs/，不再制造项目隔离。
+        # 兼容旧位置参数，同时记录项目关联；显式 owner 决定唯一物理归属。
         project_metadata_path = ensure_inside(root, root / "projects" / slugify(project_slug) / "project.json")
         if not project_metadata_path.is_file():
             raise FileNotFoundError(f"关联项目不存在：{project_slug}")
@@ -298,13 +299,30 @@ def create_run(root: Path, project_slug: str | None, title: str, dry_run: bool =
     if not title.strip():
         raise ValueError("Run 标题不能为空")
     run_id = f"RUN-{moment.strftime('%Y%m%dT%H%M%SZ')}-{uuid.uuid4().hex[:12].upper()}"
-    run_dir = ensure_inside(root, root / "runs" / run_id.lower())
+    selected_owner = owner_id
+    if not selected_owner:
+        related_research = list(dict.fromkeys(research_ids))
+        if len(related_research) > 1:
+            raise ValueError('多个研究关联存在归属歧义，请用 --owner 指定唯一对象')
+        # 研究优先于大型交付项目；多个模块仅是关联，不随意选择第一个。
+        selected_owner = (related_research[0] if related_research else
+                          project_metadata.get('project_id') or
+                          (module_ids[0] if len(set(module_ids)) == 1 else None))
+    parent, selected_owner = run_home(root, selected_owner) if selected_owner else (root / 'runs', None)
+    inherited_sensitivity = None
+    if selected_owner:
+        # 物理归属不能把受限专题的标题/运行降为默认 internal。创建时继承
+        # 已登记对象分类；无归属旧行为保持兼容，不凭关联猜测其他对象权限。
+        from memory.owners import resolve_owner
+        inherited_sensitivity = resolve_owner(root, selected_owner)['native_data'].get('sensitivity', 'internal')
+    run_dir = ensure_inside(root, parent / run_id.lower())
     if run_dir.exists():
         raise FileExistsError(f"Run 已存在，请稍后重试或更换标题：{run_dir}")
 
     manifest = {
         "schema_version": 1,
         "run_id": run_id,
+        "owner_id": selected_owner,
         "project_id": project_metadata.get("project_id"),
         "title": title,
         "keywords": list(dict.fromkeys(word.strip() for word in keywords if word.strip())),
@@ -341,6 +359,8 @@ def create_run(root: Path, project_slug: str | None, title: str, dry_run: bool =
         "related_dataset_ids": [],
         "review": {"status": "not-reviewed", "reviewer": None, "date": None},
     }
+    if inherited_sensitivity is not None:
+        manifest['sensitivity'] = inherited_sensitivity
 
     readme = f"# {run_id}：{title}\n\n"
     readme += "## 问题与成功标准\n\n- 问题：\n- 假设：\n- 成功/证伪标准：\n\n"
@@ -373,16 +393,17 @@ def collect_runs(root: Path) -> list[dict[str, Any]]:
     """
     records = []
     seen: set[str] = set()
-    paths = [*(root / "runs").glob("*/run.json"),
-             *(root / "projects").glob("*/analysis/runs/*/run.json")]
+    paths = manifests(root, {'run.json'})
     for path in sorted(paths):
         if "_template" in path.parts:
             continue
         ensure_inside(root, path)
         data = load_json(path)
         run_id = data.get("run_id") if isinstance(data, dict) else None
-        if not isinstance(run_id, str) or not run_id or run_id in seen:
+        if not isinstance(run_id, str) or not run_id or run_id.casefold() in seen:
             raise ValueError(f"缺失或重复 Run ID：{path}")
+        if data.get('owner_id') is not None and (not isinstance(data['owner_id'], str) or not data['owner_id'].strip()):
+            raise ValueError(f"{path}: owner_id 必须为非空对象 ID 或 null")
         for key in ("keywords", "parent_run_ids", "review_history"):
             if not isinstance(data.get(key, []), list):
                 raise ValueError(f"{path}: {key} 必须是数组")
@@ -394,7 +415,7 @@ def collect_runs(root: Path) -> list[dict[str, Any]]:
             raise ValueError(f"{path}: review.status 必须是字符串")
         if not isinstance(data.get("created_at", ""), str):
             raise ValueError(f"{path}: created_at 必须是字符串")
-        seen.add(run_id)
+        seen.add(run_id.casefold())
         records.append({**data, "path": path.relative_to(root).as_posix()})
     return records
 
@@ -754,7 +775,9 @@ def build_context(
 def control_files(root: Path) -> Iterable[Path]:
     """Prune local/third-party caches before walking: neither business schema
     checks nor large-file warnings should inspect generated test workspaces."""
-    ignored = {'.git', '.local', '.venv', '__pycache__', 'tmp', 'dist',
+    # Reserved raw execution containers are data, not workspace control files.
+    # Their enclosing Run and genuine business cards remain fully validated.
+    ignored = {'.run-captures', '.git', '.local', '.venv', '__pycache__', 'tmp', 'dist',
                'node_modules', 'test-results', 'playwright-report'}
     runtime = {'services/qdrant/runtime', 'services/qdrant/models',
                'services/qdrant/wheelhouse', 'services/qdrant/downloads'}
@@ -951,8 +974,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
     retrieval.add_commands(subparsers)
+    import run_capture
+    run_capture.add_commands(subparsers)
     from workbench_app import cli as relations_cli
     relations_cli.add_commands(subparsers)
+    from memory import cli as memory_cli
+    memory_cli.add_commands(subparsers)
+    testing = subparsers.add_parser("testing", help="可复用分级测试：目录、任务选择、执行与验收")
+    testing.add_argument("testing_args", nargs=argparse.REMAINDER)
 
     bench = subparsers.add_parser("workbench", help="一键打开研发工作台；证据、监测、模块与环境状态")
     bench.add_argument("--port", type=int, default=0)
@@ -1012,8 +1041,9 @@ def build_parser() -> argparse.ArgumentParser:
     research_parser.add_argument("--title", required=True)
     research_parser.add_argument("--dry-run", action="store_true")
 
-    run_parser = subparsers.add_parser("new-run", help="创建全局分析/仿真 Run，核心算法/研究/项目关联可选")
-    run_parser.add_argument("project", nargs="?", help="可选的旧式项目关联；Run 保存于根 runs")
+    run_parser = subparsers.add_parser("new-run", help="创建对象内 Run；无归属轻任务保存于根 runs")
+    run_parser.add_argument("project", nargs="?", help="可选的旧式项目关联与默认归属")
+    run_parser.add_argument("--owner", help="唯一归属对象 ID，优先于研究/项目/模块关联")
     run_parser.add_argument("--module", action="append", default=[], help="关联 MOD-ID，可重复")
     run_parser.add_argument("--research", action="append", default=[], help="关联 RES-ID，可重复")
     run_parser.add_argument("--title", required=True)
@@ -1055,16 +1085,72 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Sequence[str] | None = None) -> int:
     """CLI 主入口；将预期错误转换成清晰消息和非零退出码。"""
 
+    # memory owns its parser so even unknown options return its structured JSON
+    # error contract. argparse.REMAINDER alone still intercepts a leading --help
+    # or rejects an unknown option before dispatching to the child parser.
+    raw_args = list(sys.argv[1:] if argv is None else argv)
+    position, memory_root = 0, None
+    if raw_args and raw_args[0] == "--root" and len(raw_args) >= 2:
+        memory_root, position = Path(raw_args[1]), 2
+    elif raw_args and raw_args[0].startswith("--root="):
+        memory_root, position = Path(raw_args[0].split("=", 1)[1]), 1
+    if len(raw_args) > position and raw_args[position] == "testing":
+        # Dispatch without a shell so task arguments keep their exact boundaries.
+        # Explicit roots must identify the target itself, never a parent workspace.
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "testing"))
+        import runner as testing_runner
+        try:
+            testing_root = memory_root.resolve() if memory_root is not None else find_workspace_root(Path.cwd())
+            if not (testing_root / "workspace.json").is_file():
+                raise FileNotFoundError("显式 --root 必须直接包含 workspace.json")
+            result, exit_code = testing_runner.execute(testing_root, raw_args[position + 1:])
+        except (OSError, ValueError, RuntimeError) as exc:
+            result, exit_code = {"error": str(exc)}, 2
+        print(dump_json(result))
+        return exit_code
+    if len(raw_args) > position and raw_args[position] == "memory":
+        from memory import cli as memory_cli
+        from memory.errors import MemoryError
+        try:
+            if memory_root is not None:
+                # An explicit target is a boundary, not a starting point for
+                # discovery. Walking upward from an incomplete migration
+                # target could otherwise publish into an unrelated parent.
+                memory_workspace = memory_root.resolve()
+                if not (memory_workspace / "workspace.json").is_file():
+                    raise FileNotFoundError("显式 --root 必须直接包含 workspace.json；不会回退到上级工作区。")
+            else:
+                memory_workspace = find_workspace_root(Path.cwd())
+            result, exit_code = memory_cli.execute(memory_workspace, raw_args[position + 1:])
+        except (MemoryError, OSError, ValueError) as exc:
+            result = {"error": exc.as_dict() if isinstance(exc, MemoryError) else
+                      {"code": "INVALID_ARGUMENT", "message": str(exc)}, "save_status": "not_committed"}
+            exit_code = exc.exit_code if isinstance(exc, MemoryError) else 2
+        print(dump_json(result))
+        return exit_code
+
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
         explicit_root = getattr(args, "root", None)
         root = find_workspace_root(explicit_root or Path.cwd())
 
+        if args.command == "memory":
+            from memory import cli as memory_cli
+            result, exit_code = memory_cli.execute(root, args.memory_args)
+            print(dump_json(result))
+            return exit_code
+
         if args.command == 'relations':
             from workbench_app import cli as relations_cli
             print(relations_cli.execute(root, args))
             return 0
+
+        if args.command in {'run-register', 'run-execute', 'run-registration-rollback'}:
+            import run_capture
+            result = run_capture.dispatch(root, args)
+            print(dump_json(result))
+            return 1 if result.get('execution_status') == 'failed' else 0
 
         if args.command == "test-data":
             import local_test_data
@@ -1139,7 +1225,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         elif args.command == "new-research":
             create_research(root, args.slug, args.title, args.dry_run)
         elif args.command == "new-run":
-            create_run(root, args.project, args.title, args.dry_run, args.keyword, args.module, args.research)
+            create_run(root, args.project, args.title, args.dry_run, args.keyword, args.module, args.research, args.owner)
         elif args.command == "search-runs":
             print(dump_json(search_runs(root, args.query, args.project, args.limit)))
         elif args.command == "review-run":

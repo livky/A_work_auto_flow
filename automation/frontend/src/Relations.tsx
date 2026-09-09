@@ -2,7 +2,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { api, download, kindNames, relationNames } from "./api";
 import type { MaterialGraph } from "./generated/contracts";
 import { GraphPanel, Modal } from "./components";
-import { selectGraph, summary, topicGroups, type Mode } from "./graph-model";
+import {
+  selectGraph,
+  summary,
+  topicGroups,
+  layerGraph,
+  type Mode,
+} from "./graph-model";
 import type { ClusterResult } from "./cluster";
 
 type SavedView = {
@@ -42,6 +48,7 @@ export function Relations({
   const [hops, setHops] = useState(1);
   const [search, setSearch] = useState("");
   const [materialKinds, setMaterialKinds] = useState<string[]>([]);
+  const [levels, setLevels] = useState<string[]>(["L1"]);
   const [query, setQuery] = useState("");
   const [excluded, setExcluded] = useState<string[]>([]);
   const [types, setTypes] = useState<string[]>([]);
@@ -131,12 +138,15 @@ export function Relations({
   const base = useMemo(
     () =>
       catalog
-        ? {
-            ...catalog,
-            edges: [...catalog.edges, ...(candidates ? extra : [])],
-          }
+        ? layerGraph(
+            {
+              ...catalog,
+              edges: [...catalog.edges, ...(candidates ? extra : [])],
+            },
+            levels,
+          )
         : null,
-    [catalog, candidates, extra],
+    [catalog, candidates, extra, levels],
   );
   const graph = useMemo(
     () =>
@@ -145,10 +155,7 @@ export function Relations({
         : null,
     [base, center, hops, excluded, mode, types, offset, seeds],
   );
-  const topics = useMemo(
-    () => (catalog ? topicGroups(catalog) : []),
-    [catalog],
-  );
+  const topics = useMemo(() => (base ? topicGroups(base) : []), [base]);
   const visualGroups = useMemo(
     () => [
       ...groups.map((g, i) => ({ ...g, id: `custom:${i}` })),
@@ -167,7 +174,7 @@ export function Relations({
   const edge = base?.edges.find((e) => e.id === selected);
   const matches = useMemo(
     () =>
-      (catalog?.nodes || [])
+      (base?.nodes || [])
         .filter(
           (n) =>
             !excluded.includes(n.id) &&
@@ -176,7 +183,7 @@ export function Relations({
               (n.title + n.id).toLowerCase().includes(search.toLowerCase())),
         )
         .slice(0, 60),
-    [catalog, search, excluded, materialKinds],
+    [base, search, excluded, materialKinds],
   );
   function focus(id: string) {
     setSeeds([]);
@@ -383,6 +390,37 @@ export function Relations({
           <div className="graph-layout">
             <aside className="card material-list">
               <h2>材料与主题</h2>
+              <fieldset className="material-kind-options">
+                <legend>记录层级</legend>
+                {[
+                  ["L1", "L1 详细研究"],
+                  ["L2", "L2 过程"],
+                  ["L3", "L3 经验"],
+                  ["L4", "L4 地图"],
+                  ["native", "原生导航（未分层）"],
+                ].map(([level, label]) => (
+                  <label key={level}>
+                    <input
+                      type="checkbox"
+                      aria-label={label}
+                      checked={levels.includes(level)}
+                      onChange={() => {
+                        setLevels((old) =>
+                          old.includes(level)
+                            ? old.filter((v) => v !== level)
+                            : [...old, level],
+                        );
+                        setCenter("");
+                        setSeeds([]);
+                        setSelected("");
+                        setOffset(0);
+                      }}
+                    />
+                    {label}
+                  </label>
+                ))}
+                <small>L0 原始证据通过固定来源按需追溯。</small>
+              </fieldset>
               <input
                 aria-label="查找中心材料"
                 placeholder="搜索标题或 ID"

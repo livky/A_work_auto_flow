@@ -42,7 +42,7 @@ class Service:
 
     def view(self, options=None):
         options = options or {}
-        allowed_keys = {'center', 'hops', 'query', 'excluded', 'kinds', 'types', 'limit', 'offset', 'candidates'}
+        allowed_keys = {'center', 'hops', 'query', 'excluded', 'kinds', 'types', 'limit', 'offset', 'candidates', 'levels'}
         if set(options) - allowed_keys:
             raise ValueError('未知的图筛选参数')
         graph = self.require_graph()
@@ -104,6 +104,19 @@ class Service:
         node = next((n for n in graph['nodes'] if n['id'] == nid), None)
         if node is None or not node['path'] or node['fingerprint'] != fingerprint:
             raise ValueError('材料不在当前投影或版本不一致')
+        if node.get('locator', '').startswith('memory:'):
+            from memory.document import Reader
+            from memory.service import MemoryService
+            from memory.evidence_adapter import iter_refs
+            reader = Reader(MemoryService(self.root))
+            record = reader.state(node['owner'])['records'].get(nid)
+            if not record or record['record_hash'] != fingerprint or record['sensitivity'] == 'restricted':
+                raise ValueError('记忆记录已变化或不可读取，请刷新投影')
+            for ref in iter_refs({'sources': record['sources'], 'payload': record['payload']}):
+                reader.check_ref(ref)
+            reader.recheck()
+            return {'path': node['path'], 'locator': node['locator'],
+                    'text': record['body_markdown'], 'truncated': False}
         path = p.allowed(self.root, node['path'])
         # 重新核对当前发现范围/显式引用，不沿用过期缓存的外部授权。
         cfg, source_list = p.sources(self.root)

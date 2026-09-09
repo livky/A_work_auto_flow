@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { api, type Job, type Capabilities } from "./api";
 import { Relations } from "./Relations";
 import { Evidence } from "./Evidence";
+import { Memory } from "./Memory";
 import { Modal } from "./components";
 type Status = {
   root: string;
@@ -18,6 +19,7 @@ export const pages = [
   { id: "home", title: "工作台", icon: "◫" },
   { id: "relations", title: "材料关系", icon: "◇" },
   { id: "evidence", title: "证据与影响", icon: "▤" },
+  { id: "memory", title: "系统记忆", icon: "▥" },
   { id: "tasks", title: "任务与监测", icon: "◷" },
 ];
 export default function App() {
@@ -193,7 +195,9 @@ export default function App() {
               </button>
             </div>
           )}
-          {page === "relations" ? (
+          {page === "memory" ? (
+            <Memory />
+          ) : page === "relations" ? (
             <Relations revision={revision} error={setMessage} launch={launch} />
           ) : page === "evidence" ? (
             <Evidence revision={revision} error={setMessage} />

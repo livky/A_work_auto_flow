@@ -1,0 +1,268 @@
+/* Reading width and spacing follow a paper's hierarchy; controls remain usable
+   in the narrow workbench sidebar and equations never widen the whole page. */
+.research-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 230px) minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.research-layout nav {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  max-height: 85vh;
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid #d8e0e7;
+  border-radius: 8px;
+  background: #f6f8fa;
+  font-size: 0.88rem;
+}
+.research-layout nav a {
+  color: #29536f;
+  text-decoration: none;
+}
+.research-layout nav strong {
+  display: block;
+  margin-bottom: 1rem;
+}
+.research-layout nav ul {
+  padding-left: 1.2rem;
+  margin: 0.4rem 0 1rem;
+}
+.research-layout nav li {
+  margin: 0.45rem 0;
+}
+.research-paper {
+  max-width: 900px;
+  min-width: 0;
+  margin: 0 auto;
+  width: 100%;
+  color: #243445;
+}
+.research-paper > section > h2 {
+  border-bottom: 2px solid #b7c8d7;
+  padding-bottom: 0.6rem;
+  margin: 2.3rem 0 1.2rem;
+}
+.research-title {
+  max-width: 1120px;
+  margin: 2.5rem auto 1.5rem;
+  border-bottom: 1px solid #d8e0e7;
+  padding-bottom: 1.25rem;
+}
+.research-title h1 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.5;
+  color: #243445;
+}
+.research-paper > section {
+  scroll-margin-top: 1rem;
+  min-width: 0;
+}
+.research-section-number {
+  color: #657789;
+  font-weight: 400;
+}
+.research-block,
+.research-detail,
+.research-markdown {
+  min-width: 0;
+}
+.research-layout nav ol {
+  padding-left: 1.3rem;
+  margin-bottom: 0;
+}
+.research-record {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #d8e0e7;
+}
+.research-record > summary {
+  cursor: pointer;
+}
+.research-report-sources {
+  margin: 1rem 0;
+}
+.research-article {
+  scroll-margin-top: 1rem;
+  border-bottom: 1px solid #dce4eb;
+  padding: 0 0 2rem;
+  margin-bottom: 2rem;
+}
+.research-article header h3 {
+  font-size: 1.38rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+.research-article h4 {
+  font-size: 1.06rem;
+  color: #254d69;
+  margin: 1.6rem 0 0.6rem;
+}
+.research-level {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: #e7eff5;
+  color: #254d69;
+  font-size: 0.8rem;
+}
+.research-meta {
+  color: #657789;
+  font-size: 0.83rem;
+  overflow-wrap: anywhere;
+}
+.research-markdown {
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+.research-markdown p {
+  margin: 0.65rem 0;
+}
+.research-paragraph {
+  margin: 0.65rem 0;
+}
+.research-markdown pre {
+  overflow: auto;
+  white-space: pre;
+  padding: 1rem;
+  background: #f3f5f7;
+}
+.research-markdown table,
+.research-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.93rem;
+}
+.research-markdown th,
+.research-table th {
+  background: #eff4f7;
+  text-align: left;
+  /* Keep method names legible on narrow screens. The table itself can scroll;
+     inherited overflow-wrap:anywhere must not split Kahan or math.fsum. */
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.research-markdown th,
+.research-markdown td,
+.research-table th,
+.research-table td {
+  border-bottom: 1px solid #cfdae2;
+  padding: 0.65rem 0.75rem;
+  vertical-align: top;
+}
+.research-markdown table {
+  display: block;
+  overflow: auto;
+}
+.research-table {
+  overflow: auto;
+}
+.research-markdown .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.45rem 0.15rem;
+  margin: 1rem 0;
+}
+.research-fields {
+  margin: 0.5rem 0;
+}
+.research-fields > div {
+  margin: 0.7rem 0;
+}
+.research-fields dt {
+  font-weight: 600;
+  color: #425a70;
+}
+.research-fields dd {
+  margin: 0.25rem 0 0.8rem 1rem;
+}
+.research-fields ul {
+  margin: 0.25rem 0;
+}
+.research-variables > div {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0.2rem 0;
+}
+.research-variables dt {
+  min-width: 3rem;
+}
+.research-variables dd {
+  margin: 0;
+  color: #596c7d;
+}
+.research-figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+.research-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  background: white;
+}
+.research-figure figcaption {
+  color: #596c7d;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-top: 0.65rem;
+}
+.research-figure-description {
+  display: block;
+  margin-top: 0.3rem;
+}
+.research-sources {
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  background: #f5f7f9;
+  border-radius: 5px;
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+.research-sources button {
+  margin-left: 0.6rem;
+  font-size: 0.8rem;
+}
+.research-sources li {
+  margin: 0.5rem 0;
+}
+.research-warning {
+  background: #fff7e8;
+  border-left: 3px solid #b38a3e;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.research-empty {
+  color: #758290;
+  font-style: italic;
+}
+.research-archive {
+  border-top: 1px solid #ccd7df;
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+@media (max-width: 1050px) {
+  .research-layout {
+    grid-template-columns: 1fr;
+  }
+  .research-layout nav {
+    position: static;
+    max-height: 18rem;
+  }
+}
+@media print {
+  .research-layout {
+    display: block;
+  }
+  .research-layout nav,
+  .research-sources button {
+    display: none;
+  }
+  .research-paper {
+    max-width: none;
+  }
+}

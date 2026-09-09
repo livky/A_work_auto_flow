@@ -1,0 +1,11 @@
+{
+  "scenario_id": "A02",
+  "context_requirement": "A genuinely fresh AI context; this file does not create one",
+  "workspace_root": null,
+  "owner_id": null,
+  "public_entry": null,
+  "public_guidance_refs": [],
+  "task": "只凭研究入口和公开指引读取续接包，必要时展开，说明已做未做及下一步，并经公共入口保存下一步。不要读取原作者聊天或审查答案。",
+  "model": null,
+  "forbidden_inputs": ["original_conversation", "author_assessment", "expected_answer"]
+}

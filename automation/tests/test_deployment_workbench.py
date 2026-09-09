@@ -248,6 +248,28 @@ class DeploymentWorkbenchTests(unittest.TestCase):
             server.server_close()
             thread.join()
 
+    def test_memory_release_inputs_are_explicit_and_importable(self):
+        names = set(deploy.framework_files(ROOT))
+        self.assertTrue({'automation/schemas/memory-v1.schema.json', 'automation/schemas/memory-v1.d.ts',
+                         'docs/design/system-memory/01-data-contracts.md',
+                         'docs/design/system-memory/fixtures/records.json',
+                         'docs/design/system-memory/fixtures/sources/thermal.md'} <= names)
+        source = self.new_source()
+        self.write(source, 'automation/schemas/private-local.json', '{"private":true}')
+        self.write(source, 'docs/design/system-memory/fixtures/private-local.json', '{"private":true}')
+        self.assertFalse(any('private-local.json' in p for p in deploy.framework_files(source)))
+        isolated = self.base / '仅发行清单'
+        for name in names:
+            destination = isolated / name
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / name, destination)
+        # -I 排除当前源码路径；确保是接收目录自己的 schema 支持 import。
+        code = "import sys;sys.path.insert(0,sys.argv[1]);from memory.service import MemoryService;from memory.contracts import SCHEMA;assert 'OwnerDescriptor' in SCHEMA['$defs'];print('memory-schema-ok')"
+        result = subprocess.run([sys.executable, '-I', '-c', code, str(isolated / 'automation/scripts')],
+                                cwd=isolated, capture_output=True, text=True, timeout=30)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn('memory-schema-ok', result.stdout)
+
     @unittest.skipUnless(os.name == 'nt', 'Windows cmd/PowerShell integration')
     def test_windows_zip_upgrade_entry_and_rollback_preserve_data(self):
         protected = upgrade_fixture.populate(self.root)
@@ -281,6 +303,60 @@ class DeploymentWorkbenchTests(unittest.TestCase):
                                      capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=20)
         self.assertEqual(help_result.returncode, 0, help_result.stderr)
         self.assertIn('workbench', help_result.stdout)
+        memory_code = "\n".join([
+            "import sys; from pathlib import Path",
+            "root=Path(sys.argv[1]); sys.path.insert(0,str(root/'automation/scripts'))",
+            "from memory.service import MemoryService; from memory.owners import list_owners",
+            "service=MemoryService(root)",
+            "persisted={owner['owner_id']:owner for owner in list_owners(root) if owner['persisted']}",
+            # Preserve the original two-owner, four-generation, fourteen-kind
+            # regression. The new detail owner has its own explicit contract;
+            # it must not weaken the old history assertions or be silently skipped.
+            "legacy=[owner for owner in persisted.values() if owner['owner_id']=='RES-SYNTHETIC-MEMORY-UPGRADE' or owner['native_ref']['path']=='knowledge/用户记忆/阶段 A/经验 文档.md']",
+            "assert len(legacy)==2, list(persisted)",
+            "assert set(persisted)=={owner['owner_id'] for owner in legacy}|{'RES-OWNED-UPGRADE','RES-DOCUMENT-UPGRADE'}",
+            "for owner in legacy:",
+            " state=service.inspect(owner['owner_id']); assert state['head']['generation']==4",
+            " assert {r['kind'] for r in state['records'].values()}=={'source','event','experience','map','question','goal','route','checkpoint','association','representation','policy','consolidation','feedback','review'}",
+            " rid=next(iter(state['records'])); old=service.inspect(owner['owner_id'],1,record_id=rid)",
+            " assert old['record']['revision']==1",
+            "print('memory-history-ok')",
+            "state=service.inspect('RES-OWNED-UPGRADE'); assert state['head']['generation']==2",
+            "assert len(state['records'])==2; detail=next(r for r in state['records'].values() if r['kind']=='detail')",
+            "assert (detail['kind'],detail['schema_version'],detail['level'])==('detail',2,'L1')",
+            "assert detail['payload']['parameters'][0]['value']==42",
+            "assert detail['payload']['formulas'][0]['latex']=='s=a+b'",
+            "refs=[detail['payload']['run_ref'],*detail['payload']['inputs'],detail['payload']['figures'][0]['ref']]",
+            "assert {ref['target_id'] for ref in refs[1:]}=={'SRC-OWNED-UPGRADE-INPUT','SRC-OWNED-UPGRADE-FIGURE'}",
+            "for ref in refs: service._resolve_ref(ref,{},[])",
+            "run=next(owner for owner in list_owners(root) if owner['owner_id']==refs[0]['target_id'])",
+            "assert run['native_ref']['path'].startswith('research/升级 研究/runs/')",
+            "old=service.inspect('RES-OWNED-UPGRADE',1,record_id=detail['record_id'])['record']",
+            "assert old==detail; print('memory-detail-v2-ok')",
+            "from memory.document import build_document",
+            "document=build_document(service,'RES-OWNED-UPGRADE'); report=document['report']",
+            "assert report['complete'] and not document['report_coverage']['uncovered_detail_ids']",
+            "assert [s['section_id'] for s in report['sections']]==['question','experiment','conclusion']",
+            "block=report['sections'][1]['blocks'][1]; assert block['ref']['sha256']==detail['record_hash']",
+            "assert block['item']['record']==detail; print('memory-report-composition-ok')",
+            "state=service.inspect('RES-DOCUMENT-UPGRADE'); assert state['head']['generation']==4",
+            "assert len(state['records'])==4; unit=next(r for r in state['records'].values() if r['kind']=='detail')",
+            "assert unit['schema_version']==3 and unit['body_markdown']=='' and unit['payload']['run_ref'] is None",
+            "from memory.documents import build_document as build_independent_document",
+            "for kind in ['research_process','research_report']:",
+            " doc=build_independent_document(service,{'owner_id':'RES-DOCUMENT-UPGRADE','document_type':kind})",
+            " assert doc['document_source']=='independent' and doc['document']['document_type']==kind",
+            " assert doc['report']['complete']; block=doc['report']['sections'][0]['blocks'][0]",
+            " assert [b['block_id'] for b in block['resolved_blocks']]==['definitions','method']",
+            " assert block['item']['record']==unit and block['ref']['sha256']==unit['record_hash']",
+            "print('memory-independent-documents-v3-ok')"])
+        loaded = subprocess.run([sys.executable, '-I', '-c', memory_code, str(self.root)],
+                                cwd=self.root, env=env, capture_output=True, text=True, timeout=30)
+        self.assertEqual(loaded.returncode, 0, loaded.stdout + loaded.stderr)
+        self.assertIn('memory-history-ok', loaded.stdout)
+        self.assertIn('memory-detail-v2-ok', loaded.stdout)
+        self.assertIn('memory-report-composition-ok', loaded.stdout)
+        self.assertIn('memory-independent-documents-v3-ok', loaded.stdout)
         # Launch the copied Python application with Node absent from PATH. Read
         # the real homepage and every shipped asset, including the Worker, before
         # rollback. This exercises the new machine's paths rather than ROOT's UI.
@@ -306,6 +382,38 @@ class DeploymentWorkbenchTests(unittest.TestCase):
         finally:
             child.terminate()
             child.communicate(timeout=10)
+        # M03: create new canonical memory with the installed source, then
+        # ensure source rollback preserves both old immutable history and the
+        # legitimate newer HEAD. Do not compare that HEAD to its old value.
+        after_upgrade_code = "\n".join([
+            "import json,sys,uuid; from pathlib import Path",
+            "root=Path(sys.argv[1]); sys.path.insert(0,str(root/'automation/scripts'))",
+            "from memory.service import MemoryService",
+            "service=MemoryService(root); oid='RES-SYNTHETIC-MEMORY-UPGRADE'",
+            "state=service.inspect(oid)",
+            "draft=" + repr(upgrade_fixture.policy_request('RES-SYNTHETIC-MEMORY-UPGRADE')['operations'][0]['draft']),
+            "draft['title']='SYNTHETIC ONLY created after source upgrade'",
+            "request={'schema_version':1,'request_id':str(uuid.uuid4()),'owner_id':oid,'expected_head':state['head']['commit_id'],'actor':{'kind':'workflow','id':'synthetic-post-upgrade'},'operations':[{'op':'put_record','client_key':'new','draft':draft}]}",
+            "result=service.commit(request); assert result['save_status']=='committed'; print(json.dumps(result))"])
+        added = subprocess.run([sys.executable, '-I', '-c', after_upgrade_code, str(self.root)],
+                               cwd=self.root, env=env, capture_output=True, text=True, encoding='utf-8', timeout=30)
+        self.assertEqual(added.returncode, 0, added.stdout + added.stderr)
+        # Only HEAD legitimately changed; earlier committed records/receipts
+        # and native materials must still have their previous byte hashes.
+        immutable = {'files': {name: digest for name, digest in protected['files'].items() if not name.endswith('/HEAD.json')},
+                     'directories': protected['directories']}
+        upgrade_fixture.assert_preserved(self.root, immutable)
+        from memory.owners import list_owners
+        names, directories = set(protected['files']), set(protected['directories'])
+        for owner in list_owners(self.root):
+            if owner['persisted']:
+                home = self.root / owner['memory_home']
+                for item in [home, *home.rglob('*')]:
+                    if item.is_file():
+                        names.add(item.relative_to(self.root).as_posix())
+                    else:
+                        directories.add(item.relative_to(self.root).as_posix())
+        protected = upgrade_fixture.snapshot(self.root, names, directories)
         receipt = next((self.root / '.local/upgrades').glob('*/receipt.json'))
         result = subprocess.run(['cmd.exe', '/d', '/c', 'setup.cmd', '--rollback', str(receipt.parent)],
                                 cwd=source, env=env, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60)

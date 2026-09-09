@@ -5,6 +5,20 @@ description: 在研发工作区查看结论的保存原因、依据、复核和�
 
 # 证据查看与只读监测
 
+## 版本记忆的依据与纠错
+
+已知归属时 `workbench.cmd memory inspect 对象ID` 查看记录、逐 CLM 状态与风险；已知 MEM 再加 `--record-id` 和可选 `--revision`，打开真实来源/产物。旧 Run 保留原生登记和一次执行身份。保存成功、执行 succeeded、claim accepted 是三个不同状态；复核需要看谁、何时、什么依据、适用范围与绑定的内容版本。
+
+默认知识检索查看L1–L4；L0是统一原始材料视图，含 Run 登记与独立来源。先用 `memory raw-materials` 指定 owner_id 看清单，再用 `memory raw-material` 指定 material_id 核验并有界读取；请求见[统一入口](../../../docs/design/L0_MATERIALS.md)。执行与登记回执的区别见[执行手册](../../../docs/RUN_CAPTURE.md)：文件已保存不代表脚本成功，退出码为零也不代表科学结论已复核。明确追溯某条来源也可使用固定引用展开，或search的 `retrieval_mode:"trace"` 配合实际ID选择，不能靠空查询遍历所有原始日志。旧v1记录读取时采用新有效层级，但核验仍使用原修订哈希；层级平移不代表结论重新验证。
+
+需要判定正式可复用性时，以实际 `scope` 调用 `memory search` 或 `memory context`，请求设置 `purpose:"formal"`，阅读拒绝路径。导航关联被采纳、总结引用多次或来源计数变多都不构成新独立验证。`memory source-lineage` 返回实际可访问来源；scientific_support_count 未知时保持未知。
+
+遇到新旧冲突，先保留两份固定版本及对比，不删除旧结果。用户已授权本次纠错或适用验证流程确已执行时，走 `memory review` 保存 disputed/retracted 等结论状态；普通 commit 不能伪造 review。未具备复核依据时保存冲突和具体缺口，不冒充人工确认。已有授权不重复询问。真实请求字段见 [请求示例第 6 节](../../../docs/MEMORY_REQUESTS.md)。
+
+变更后 `memory impact` 用 changed_ids 查看下游，`question-validity` 检查历史解决依据；重新 formal 查询并打开受影响总结/报告。旧问题可保留曾 resolved 的历史，但当前依据已失效必须明确 needs_revalidation。撤回结论不能用把旧 Run succeeded 改成 failed 代替；旧实验执行记录和复核历史都保留。
+
+用户评价检索建议的实际使用时用 `memory feedback`，绑定真实 query_id、经验固定版本、adopted_in 后续 Run 及实际结果/缺口。找不到原查询就明确缺失，不编造 ID、结果或用户确认。一次采用不自动提升 accepted。只读查看/监测不顺便改变复核；下面的监测入口与范围继续适用。
+
 材料关联问题可先运行 `workbench.cmd relations export --center "实际 ID" --hops 2 --format markdown`，使用 `--exclude` 保留用户排除项。投影缺失时可 `relations refresh`；过期提示应先核对版本。摘要用于定位缺口，不能代替原文。候选虚线、归属及聚类不等于正式支持，详细范围和 AI 回传格式见 [材料关系手册](../../../docs/MATERIAL_RELATIONS.md)。
 
 AI 候选通过 `relations import-candidate` 保存，先用 `--dry-run` 核对。必须引用实际源 ID、定位和生成时指纹，actor 使用 assistant-observation；不冒充用户确认。主题名称仅用于展示；重复引用及“已处理”不提升可信状态。

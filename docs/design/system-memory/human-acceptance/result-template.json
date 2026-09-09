@@ -1,0 +1,52 @@
+{
+  "template_version": "1.1",
+  "record_type": "human-acceptance-result",
+  "case_id": null,
+  "attempt_id": null,
+  "parent_attempt_id": null,
+  "input": {
+    "user_request": null,
+    "expected_before_execution": [],
+    "scenario_id": null,
+    "fixture_version": null
+  },
+  "environment": {
+    "product_version": null,
+    "source_commit": null,
+    "skill_name": null,
+    "skill_version_or_sha256": null,
+    "ai_model": null,
+    "workspace": null,
+    "entry_mode": null,
+    "actual_entry": null
+  },
+  "execution": {
+    "status": "not-run",
+    "started_at": null,
+    "ended_at": null,
+    "calls": [],
+    "raw_returns": [],
+    "artifacts": [],
+    "errors_and_retries": []
+  },
+  "read_log": [],
+  "observed_result": {
+    "plain_language_summary": null,
+    "comparisons": [],
+    "unread_or_missing": []
+  },
+  "ai_assessment": {
+    "status": "not-reviewed",
+    "reason": null,
+    "evidence_refs": []
+  },
+  "user_review": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewed_at": null,
+    "comment": null,
+    "evidence_refs": []
+  },
+  "evidence_complete": false,
+  "final_result": "pending"
+}

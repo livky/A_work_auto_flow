@@ -1,0 +1,207 @@
+{
+  "fixture_version": 1,
+  "synthetic_only": true,
+  "source_changes": [
+    {
+      "variant_id": "VAR-THERMAL-COUNTER",
+      "source_id": "SRC-SYN-THERMAL",
+      "asset": "sources/thermal-v2.md",
+      "replace_in_temporary_copy_only": true,
+      "meaning": "同一测试条件出现相反合成结果，先记录冲突；不是现实实验。"
+    }
+  ],
+  "graph_variants": [
+    {
+      "variant_id": "VAR-GRAPH-DIAMOND",
+      "nodes": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "edges": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "C"
+        ],
+        [
+          "B",
+          "D"
+        ],
+        [
+          "C",
+          "D"
+        ],
+        [
+          "D",
+          "E"
+        ],
+        [
+          "E",
+          "A"
+        ]
+      ],
+      "one_hop_from_A": [
+        "B",
+        "C"
+      ],
+      "two_hops_from_A": [
+        "B",
+        "C",
+        "D"
+      ],
+      "canonical": "节点序号在materialize时映射到六个不同MEM ID"
+    },
+    {
+      "variant_id": "VAR-GRAPH-EXCLUDE",
+      "nodes": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ]
+      ],
+      "excluded": [
+        "B"
+      ],
+      "two_hops_from_A": []
+    },
+    {
+      "variant_id": "VAR-GRAPH-EVIDENCE-CYCLE",
+      "nodes": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "A"
+        ]
+      ],
+      "relation": "supports",
+      "expected": "formal_ineligible"
+    }
+  ],
+  "failure_payloads": [
+    {
+      "category": "execution",
+      "tested_scope": "合成运行环境缺依赖",
+      "result": "命令未产生实验结果",
+      "cannot_infer": "不能推断模型无效",
+      "retry_conditions": [
+        "补齐匹配依赖"
+      ]
+    },
+    {
+      "category": "no_improvement",
+      "tested_scope": "输入X/Y与配置S1",
+      "result": "两输入仍得到相同观测",
+      "cannot_infer": "不能推断所有配置均不可区分",
+      "retry_conditions": [
+        "使用S2并保存版本"
+      ]
+    },
+    {
+      "category": "counterexample",
+      "tested_scope": "样本A、预热30分钟、20–25℃",
+      "result": "变体v2偏差2.2，与旧阈值0.5冲突",
+      "cannot_infer": "不能推断其他样本或条件都失败",
+      "retry_conditions": [
+        "核对新输入与测量版本"
+      ]
+    },
+    {
+      "category": "insufficient_evidence",
+      "tested_scope": "样本B",
+      "result": "输入未取得",
+      "cannot_infer": "不能判定B适用或不适用",
+      "retry_conditions": [
+        "获准取得B输入"
+      ]
+    }
+  ],
+  "fault_points": [
+    "write_record",
+    "flush_record",
+    "rename_commit",
+    "before_replace_head",
+    "after_replace_head_before_response",
+    "fts_transaction",
+    "vector_sync",
+    "dependency_switch",
+    "post_install_doctor",
+    "post_install_index"
+  ],
+  "review_sequences": [
+    {
+      "target": "CLM-SYN-THERMAL",
+      "states": [
+        "not-reviewed",
+        "accepted",
+        "disputed",
+        "retracted",
+        "accepted",
+        "superseded"
+      ],
+      "replacement": "CLM-SYN-PRESSURE",
+      "note": "只检验软件状态和历史；替代必须另明确适用范围，不能作为业务等价事实。"
+    },
+    {
+      "target": "CLM-SYN-OCR",
+      "states": [
+        "not-reviewed"
+      ],
+      "note": "没有原图的测试变体不得沿用复核。"
+    }
+  ],
+  "scale": {
+    "owner_counts": [
+      100,
+      1
+    ],
+    "total_records": 10000,
+    "body_utf8_ascii_bytes": 1024,
+    "warmups": 5,
+    "repetitions": 30,
+    "seed": 20260908,
+    "initial_load": "批次装载；追加/修订单独计时；不将合成构造时间计为索引耗时。"
+  },
+  "api_result_recipes": [
+    {
+      "name": "saved-index-pending",
+      "save_status": "committed",
+      "index_status": "pending",
+      "error": "INDEX_PENDING",
+      "exit": 3
+    },
+    {
+      "name": "version-conflict",
+      "save_status": "not_committed",
+      "error": "VERSION_CONFLICT",
+      "exit": 5
+    },
+    {
+      "name": "review-rejected",
+      "error": "EVIDENCE_INELIGIBLE",
+      "exit": 9
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "fixture_version": 1,
+  "synthetic_only": true,
+  "cases": [
+    {
+      "case_id": "AI01",
+      "title": "查字段",
+      "prompt": "查看 RUN-SYN-UNITS 中的输入单位，告诉我字段在哪里。",
+      "must": [
+        "引用已有Run/来源定位；不新增独立实验或完整Research。"
+      ],
+      "forbidden": [
+        "虚构单位",
+        "强制补四层"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI02",
+      "title": "独立实验",
+      "prompt": "将 thermal 原始记录和给定结果保存为一次可复现的合成Run。",
+      "must": [
+        "记录输入版本、配置、结果、限制；Run身份只出现一次。"
+      ],
+      "forbidden": [
+        "accepted自动复核",
+        "另建等价MEM-event"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI03",
+      "title": "失败边界",
+      "prompt": "S1无法区分X/Y，请保留失败和再次尝试条件。",
+      "must": [
+        "类别为no_improvement或有依据的insufficient_evidence；范围限X/Y与S1；下一步检查S2。"
+      ],
+      "forbidden": [
+        "推断所有采样方法无效"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI04",
+      "title": "跨Run决策",
+      "prompt": "比较预热和预载研究，记录为什么不能沿用同一参数。",
+      "must": [
+        "保存L1跨Run决策，引用两个Run/经验及操作差异。"
+      ],
+      "forbidden": [
+        "重复复制两Run全部正文"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI05",
+      "title": "未知来源",
+      "prompt": "只能取得OCR提取文本，原图目前拿不到；保存这一情况。",
+      "must": [
+        "completeness/缺口明确；不宣称已核对原图。"
+      ],
+      "forbidden": [
+        "伪造原图片段",
+        "将提取文本当独立实验"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI06",
+      "title": "未决问题",
+      "prompt": "任务执行完毕，但样本B是否适用还没有证据。",
+      "must": [
+        "问题保留open/investigating/blocked之一并说明缺口。"
+      ],
+      "forbidden": [
+        "因任务结束直接resolved"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI07",
+      "title": "目标变化",
+      "prompt": "目标从样本A改为比较A和B，保留旧实验的适用范围。",
+      "must": [
+        "新目标固定前一版本、影响及B待验证；旧Run仍引用旧目标。"
+      ],
+      "forbidden": [
+        "回填旧实验为B验证"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI08",
+      "title": "暂停续接",
+      "prompt": "现在暂停，等拿到B输入再继续。",
+      "must": [
+        "检查点包含新目标、A已完成、B缺失、下一步及前提。"
+      ],
+      "forbidden": [
+        "安排后台实验",
+        "伪造剩余预算"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI09",
+      "title": "局部经验",
+      "prompt": "把预热经验保存在当前Research，并允许其他获准研究按问题发现。",
+      "must": [
+        "L2单一归属Research、workspace_summary且保留温度/样本限制。"
+      ],
+      "forbidden": [
+        "强制晋升knowledge才能检索"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI10",
+      "title": "跨项目总结",
+      "prompt": "结合THERMAL和PRESSURE总结迁移前置条件，另做主题地图。",
+      "must": [
+        "分别保存L2经验和L3地图，来源固定，两者各有唯一归属。"
+      ],
+      "forbidden": [
+        "创建L4",
+        "继承accepted"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI11",
+      "title": "冲突与撤回",
+      "prompt": "thermal-v2给出相同条件下2.2的偏差，与旧0.2冲突；保留并检查影响。",
+      "must": [
+        "保存新证据/冲突，引用原版本与变化；通过复核流程处理，列下游。"
+      ],
+      "forbidden": [
+        "删除旧Run",
+        "改旧succeeded为failed代替撤回"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    },
+    {
+      "case_id": "AI12",
+      "title": "采用结果反馈",
+      "prompt": "这次采用先核对前提的建议，关联到后续PRESSURE Run。",
+      "must": [
+        "反馈引用查询Q-SYN-SEED、经验版本、后续Run及实际结果/缺口。"
+      ],
+      "forbidden": [
+        "因采用一次自动accepted"
+      ],
+      "scoring": "所有must满足且forbidden均未发生才通过；允许不同措辞。",
+      "repetitions": 3,
+      "synthetic_only": true
+    }
+  ]
+}

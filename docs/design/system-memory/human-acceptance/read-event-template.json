@@ -1,0 +1,36 @@
+{
+  "template_version": "1.1",
+  "record_type": "ai-read-event-template",
+  "event_id": null,
+  "case_id": null,
+  "attempt_id": null,
+  "read_at": null,
+  "origin": {
+    "call_id": null,
+    "record_id": null,
+    "record_revision": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "locator": null
+  },
+  "product_return": {
+    "raw_return_path": null,
+    "sha256": null,
+    "complete": false,
+    "truncation_or_missing": null
+  },
+  "actually_read": {
+    "capture_path": null,
+    "sha256": null,
+    "locator": null,
+    "coverage": "not-read",
+    "text_or_visual_description": null
+  },
+  "comparison": {
+    "expected_item": null,
+    "observed_fact": null,
+    "match": "not-assessed",
+    "evidence_location": null
+  },
+  "note": "仅记录可核对的实际输入、返回、阅读内容与结论；不记录私有思维链。下载或保存不等于AI已经读过。"
+}

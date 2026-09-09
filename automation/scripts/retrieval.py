@@ -32,11 +32,87 @@ import evidence
 TEXT = {".md", ".txt", ".json", ".jsonl", ".py", ".ps1", ".m", ".c", ".h",
         ".cpp", ".hpp", ".cc", ".js", ".ts", ".rs", ".jl", ".yaml", ".yml", ".toml", ".tex"}
 SUPPORTED = TEXT | {".docx"} | material_extract.FORMATS
-SKIP = {".git", ".agents", ".codex", ".venv", "venv", "__pycache__", "node_modules",
+SKIP = {".run-captures", ".git", ".agents", ".codex", ".venv", "venv", "__pycache__", "node_modules",
         "_template", "archive", "private", "generated", "build", "dist"}
 SCHEMA = 2
 # 抽取实现改变时提升此版本，旧缓存必须重建，即使源文件字节没有改变。
-EXTRACTION_VERSION = 4
+EXTRACTION_VERSION = 5
+
+
+def _registered_memory_home(path):
+    """Recognize transaction storage, not every business folder named memory.
+
+    Immutable revisions are indexed by the memory service at their effective
+    layer. Feeding their JSON, receipts and previous revisions to this older
+    document index would both duplicate knowledge and expose L0 trace text.
+    """
+    container_name = (path.name == "memory" or path.name.endswith(".memory") or
+                      path.parent.name == "memory")
+    return container_name and ((path / "owner.json").is_file() or
+                               (path / ".by-id").is_dir())
+
+
+def _run_ancestor(root, path, cache):
+    """Find the nearest native Run without reading its potentially large data.
+
+    The cache lasts only for this discovery request; additions/removals on the
+    next request are therefore visible. Directory ownership is independent of
+    whether the Run lives at root, in research, or in an older project layout.
+    """
+    parent = path.parent
+    if not parent.is_relative_to(root):
+        return None
+    if parent in cache:
+        return cache[parent]
+    trail = []
+    while parent != root and parent.is_relative_to(root):
+        if parent in cache:
+            found = cache[parent]
+            break
+        trail.append(parent)
+        if (parent / "run.json").is_file():
+            found = parent
+            break
+        parent = parent.parent
+    else:
+        found = None
+    for directory in trail:
+        cache[directory] = found
+    return found
+
+
+def _knowledge_source(root, path, entry, cache):
+    """Separate discovery from permission to resolve a fixed source.
+
+    A trace-only registered source remains enabled in sources.json and can be
+    opened through its checked reference. It is merely absent from ordinary
+    full-text/vector candidates. Registering a raw Run artifact cannot bypass
+    this boundary; callers must author a separate readable L1 explanation.
+    """
+    if entry.get("memory_level") == "L0" or entry.get("discovery") == "trace_only":
+        return None
+    level = entry.get("memory_level")
+    if level is not None and level not in {"L1", "L2", "L3", "L4"}:
+        raise ValueError("来源 memory_level 必须为 L0–L4")
+    if path.is_relative_to(root):
+        relative = path.relative_to(root)
+        # An output named run.json is still L0, even if explicitly registered
+        # as a source; it must not masquerade as a legacy Run summary.
+        if '.run-captures' in relative.parts:
+            return None
+        # This also blocks explicitly registered transaction files. Do not let
+        # the registry reintroduce old HEADs/body JSON into the document index.
+        current = root
+        for part in relative.parts[:-1]:
+            current = current / part
+            if _registered_memory_home(current):
+                return None
+        run_home = _run_ancestor(root, path, cache)
+        if run_home is not None:
+            if path.parent != run_home or path.name not in {"run.json", "README.md"}:
+                return None
+            return {**entry, "memory_level": "L2", "layer_origin": "legacy_run_summary"}
+    return entry
 
 
 def now():
@@ -152,13 +228,21 @@ def discover(root, cfg):
 
 超出数量限制整体失败，避免半次扫描把未遍历文件误标删除。
     """
-    result = {}
+    root = Path(root).resolve()
+    result, run_cache = {}, {}
     for name in cfg["include_directories"]:
         base = inside(root, root / name)
         if not base.is_dir():
             continue
         for directory, dirs, files in os.walk(base, followlinks=False):
-            dirs[:] = sorted(d for d in dirs if d not in SKIP and not Path(directory, d).is_symlink())
+            dirs[:] = sorted(d for d in dirs if d not in SKIP and
+                             not Path(directory, d).is_symlink() and
+                             not getattr(Path(directory, d), 'is_junction', lambda: False)() and
+                             not _registered_memory_home(Path(directory, d)))
+            # A Run has only two legacy discovery documents. Its raw subtree
+            # is a trace store and must not be traversed merely to discard it.
+            if (Path(directory) / "run.json").is_file():
+                dirs[:] = [name for name in dirs if name == "runs"]
             for name in sorted(files):
                 path = Path(directory, name)
                 if path.is_symlink() or path.suffix.lower() not in SUPPORTED:
@@ -166,7 +250,10 @@ def discover(root, cfg):
                 if name == "AGENTS.md" or "TEMPLATE" in name or name.startswith("example."):
                     continue
                 path = inside(root, path)
-                result[str(path)] = {"path": str(path)}
+                entry = _knowledge_source(root, path, {"path": str(path)}, run_cache)
+                if entry is None:
+                    continue
+                result[str(path)] = entry
                 if len(result) > cfg["max_files"]:
                     raise ValueError("来源数量超过 max_files；请缩小范围或显式调整配置")
     registry = read_json(root / "retrieval/sources.json")
@@ -180,7 +267,11 @@ def discover(root, cfg):
         if path.is_dir():
             raise ValueError(f"sources 只接受文件：{path}")
         if item.get("enabled", True):
-            result[str(path)] = {**item, "path": str(path)}
+            entry = _knowledge_source(root, path, {**item, "path": str(path)}, run_cache)
+            if entry is not None:
+                result[str(path)] = entry
+            else:
+                result.pop(str(path), None)
         else:
             result.pop(str(path), None)
     if len(result) > cfg["max_files"]:
@@ -194,6 +285,20 @@ def extract(path, raw):
         text = raw.decode("utf-8-sig")
         if "\x00" in text:
             raise ValueError("包含 NUL，疑似二进制文件")
+        if path.name == "run.json":
+            # This is a legacy L2 attempt summary, not an L1 computation paper.
+            # Keep execution/review/dependency facts but never index arbitrary
+            # debug dumps or complete input arrays hidden in manifest fields.
+            run = json.loads(text)
+            if not isinstance(run, dict):
+                raise ValueError("run.json 必须为对象")
+            fields = ("run_id", "title", "question", "purpose", "status", "owner_id",
+                      "project_id", "related_research_ids", "related_module_ids",
+                      "related_data_ids", "parent_run_ids", "created_at", "started_at",
+                      "ended_at", "keywords", "conclusion", "limitations", "review",
+                      "claims", "dependencies")
+            return json.dumps({key: run[key] for key in fields if key in run},
+                              ensure_ascii=False, indent=2)
         # 统一提取文本换行；Windows 写上下文时避免 CRLF 再次转换产生空行。
         return text.replace("\r\n", "\n").replace("\r", "\n")
     if path.suffix.lower() == ".docx":
@@ -206,6 +311,28 @@ def extract(path, raw):
         ns = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
         return "\n".join("".join(p.itertext()) for p in tree.findall(".//w:p", ns))
     raise ValueError("不支持的格式；请提供保留来源定位的文本导出")
+
+
+def _owner_sidecars(root, path):
+    """Nearest declared owner per type, including deeply nested business paths.
+
+    The walk stops at the workspace boundary. These same files participate in
+    the extraction signature, so changing a nested owner's relationships
+    invalidates its cached document metadata without changing the document.
+    """
+    root = Path(root).resolve()
+    path = Path(path)
+    found = {}
+    if not path.is_relative_to(root):
+        return found
+    parent = path.parent
+    while parent != root and parent.is_relative_to(root):
+        for name in ("module.json", "research.json", "project.json"):
+            candidate = parent / name
+            if name not in found and candidate.is_file():
+                found[name] = candidate
+        parent = parent.parent
+    return found
 
 
 def metadata(root, source, text):
@@ -225,20 +352,17 @@ def metadata(root, source, text):
     module = re.search(r"(?:核心算法|模块) ID[：:]\s*`?(MOD-[A-Za-z0-9_-]+)", text)
     if module:
         meta["module_ids"] = [module.group(1)]
-    if len(parts) > 2 and parts[0] == "core-algorithms":
-        card = root / "core-algorithms" / parts[1] / "module.json"
-        if card.is_file():
-            item = read_json(card)
-            meta["module_ids"] = [item["module_id"]]
-            meta["keywords"] = item.get("aliases", [])
-            meta["related_module_ids"] = item.get("related_module_ids", [])
-            meta["research_ids"] = item.get("related_research_ids", [])
-    if len(parts) > 2 and parts[0] == "research":
-        card = root / "research" / parts[1] / "research.json"
-        if card.is_file():
-            item = read_json(card)
-            meta["research_ids"] = [item["research_id"]]
-            meta["module_ids"] = item.get("related_module_ids", [])
+    sidecars = _owner_sidecars(root, path)
+    if "module.json" in sidecars:
+        item = read_json(sidecars["module.json"])
+        meta["module_ids"] = [item["module_id"]]
+        meta["keywords"] = item.get("aliases", [])
+        meta["related_module_ids"] = item.get("related_module_ids", [])
+        meta["research_ids"] = item.get("related_research_ids", [])
+    if "research.json" in sidecars:
+        item = read_json(sidecars["research.json"])
+        meta["research_ids"] = [item["research_id"]]
+        meta["module_ids"] = list(dict.fromkeys(meta["module_ids"] + item.get("related_module_ids", [])))
     if path.name == "run.json":
         run = json.loads(text)
         if not isinstance(run, dict) or not isinstance(run.get("run_id"), str):
@@ -254,7 +378,7 @@ def metadata(root, source, text):
         if run.get("project_id"):
             meta["project"] = run["project_id"].removeprefix("PRJ-").lower()
     # 注册表补充描述/关系，不能覆盖 run.json 的实时复核与依赖事实。
-    meta.update({k: v for k, v in source.items() if k in {"title", "project", "module_ids", "related", "kind", "version", "context_mode", "research_ids", "context_role", "consistency", "keywords"}})
+    meta.update({k: v for k, v in source.items() if k in {"title", "project", "module_ids", "related", "kind", "version", "context_mode", "research_ids", "context_role", "consistency", "keywords", "memory_level", "layer_origin"}})
     if meta.get("context_role"):
         from context_engine import ROLES
         if meta["context_role"] not in ROLES:
@@ -295,12 +419,8 @@ def index(root, *, dry_run=False):
                 digest = hashlib.sha256(raw).hexdigest()
                 # 注册字段或切分策略改变也必须重建；仅内容相同不够。
                 # 旁边的模块/研究卡变更也可能改变关联，不仅正文变化触发重建。
-                sidecars = []
-                for parent in [path.parent, *list(path.parents)[:3]]:
-                    for name in ("module.json", "research.json"):
-                        side = parent / name
-                        if side.is_file() and side != path:
-                            sidecars.append(hashlib.sha256(side.read_bytes()).hexdigest())
+                sidecars = [hashlib.sha256(side.read_bytes()).hexdigest()
+                            for side in _owner_sidecars(root, path).values() if side != path]
                 signature = hashlib.sha256(json.dumps([source, cfg["chunk_chars"], SCHEMA, EXTRACTION_VERSION, sidecars,
                     cfg.get("ocr_enabled"), cfg.get("max_visual_assets")], sort_keys=True).encode()).hexdigest()
                 if old and old["state"] == "ready" and old["digest"] == digest and json.loads(old["meta"]).get("signature") == signature:
@@ -615,6 +735,9 @@ token 或压缩阈值。每个未装载/过期来源写入独立 manifest，不�
         body = doc["body"]
         if selected_mode == "brief":
             body = selection["briefs"][sid]
+        if meta.get('layer_origin') == 'legacy_run_summary' and Path(doc['path']).name == 'run.json':
+            selected_mode = 'brief'
+            entry['detail'] = 'L2 原生 Run 字段摘录；L0 完整输入和调试信息需按固定来源追溯'
         entry["assets"] = meta.get("assets", [])
         entry["extraction_warnings"] = meta.get("extraction_warnings", [])
         complete_mode = "brief" if selected_mode == "brief" else "full"

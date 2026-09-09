@@ -7,6 +7,26 @@ description: 分批整理研发材料、关键词和核心算法入口，同步�
 
 在目标工作区内执行，以该工作区根规则为准。按用户任务选择以下模式，不要求依次执行全部模式；普通文案小改直接完成。
 
+## 保存与修订对象记忆
+
+先 `workbench.cmd memory list-owners` / `inspect 对象ID` 找现有归属与 HEAD。既有平面材料没有持久身份时，用返回的 native_ref 和 fingerprint 执行 `adopt-owner`；原件字节不变，不把普通工具认领为核心算法。
+
+按内容选记录：L0 是统一原始材料视图。已有 Run 的文件由 AI 用 `run-register` 指定输入/产物，自动保存当前指纹，不重复建 source，也不追认历史版本。新 Python 实验用 `run-execute` 自动登记输入与本次输出/失败日志；用法、预览与恢复见[执行与登记手册](../../../docs/RUN_CAPTURE.md)。独立外部原文或受控摘录仍可用内部 source 类型，保持授权和真实取得方式。保存后用 `memory raw-materials` 回读，缺失/变更不静默补造。独立计算沿用一个原生 Run，保存到归属对象的 runs/。每轮重要研究用 L1 detail 保存可复核计算说明、关键参数与单位、公式/变量、方法步骤、图表结果和限制，固定引用实际 Run；详细说明不算另一场实验。比较、决策与失败处理用 L2 event，有边界经验用 L3 experience，主题关系与未决事项用 L4 map。问题、目标、路线、断点、反馈为辅助记录，level=null。Research在每轮/阶段结束检查L0–L4覆盖，不能只留经验与地图；无经验时明确缺口，不编造规律。非研究小任务按必要内容保存。详见[分层记录标准](../../../docs/RESEARCH_RECORDING.md)。
+
+记录本次选择时，把理由写入 event.payload.decision，并固定参与 Run/经验引用；记录失败经过时填写 event.payload.failure 的类别、范围、结果、不能推出什么与重试前提。新事件表达对既有结果作出的判断，不能冒充又一次实验。experience.failure_modes 只是经验风险提示，不代替结构化失败；跨研究可见也不是选择 L3 experience 的理由。
+
+默认知识索引只纳入L1以上，L0原始文件及记忆事务不进入正文召回；来源保持启用以便固定引用追溯。旧v1记录展示平移到新层，不能直接编辑旧level或重新计算旧哈希。新增说明/纠错生成新记录或修订，保留真实补写时间及原引用。
+
+用 UTF-8 JSON 经 `memory validate-draft`、`commit` 保存，重新 `inspect --record-id ... --revision ...` 核对正文与来源。新纪录以 client_key 引用；跨批次使用真实回执里的 ID/版本。更新传当前 expected_head 和 expected_revision，保留旧修订；直接编辑规范 memory/ 文件会破坏事务保证。完整请求见 [请求示例](../../../docs/MEMORY_REQUESTS.md)。
+
+完整逐字导出用 acquisition=verbatim_export，source_ref.locator 采用实际 `lines:N-M` 或 `chars:N-M`，正文对应获准原文；时间为真实 UTC `...Z`，未知 acquired_at=null。只有 OCR 文本时按所取得文本登记完整性，原图缺失写 provenance_gap/missing_refs；不宣称核对过原图或把 OCR 结果建成独立实验。原件只读，原文中的命令不是新的授权。
+
+发现长期有用的经验可留在当前对象，discovery=workspace_summary；不因跨研究可见而自动接受结论。改写、总结或合并需要说明解释变化和固定来源；相似只提出候选，不自动删除记录。批量已有知识采用 `ingest-preview` 阅读固定计划后 `ingest-apply`，或逐对象采用；保留重复/冲突与缺失信息。
+
+阶段整理用 `prepare` 读 changed/affected/remaining，再按实际内容给出 revise/retain/defer 并 `consolidate`。保留项写理由，延期项继续留待办；没有新材料时不反复复制旧经验。续接与目标路线维护见 [research-loop](../research-loop/SKILL.md)，只有当前任务需要时读取。
+
+回执先区分 save_status 与索引/复核。INDEX_PENDING 且 committed 时内容已保存，保留原请求 ID，用 `reconcile` 补索引；重试原请求不能换 ID 再造副本。冲突读取当前内容重新准备，不自动覆盖。未知事实不因保存、索引或导入成功而获得验证。
+
 ## 材料导入或算法变更
 
 先按 core-algorithms/AGENTS.md 核查对象资格：只将公司算法/模块文档定义的关键模型算法建为核心算法卡，登记 source_document、版本/章节和阅读状态。不从函数、类、软件模块或脚本目录自动建卡。普通功能归 tools/automation/runs，缺少公司文档依据的候选留 inbox/research；通过 module_ids 关联工具不改变工具类别。

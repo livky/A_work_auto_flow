@@ -6,6 +6,21 @@ import type {
 export type Node = MaterialNode;
 export type Edge = MaterialEdge;
 export type Mode = "radial" | "groups" | "evidence";
+/** Filter before traversal/clustering so a hidden raw record cannot bridge two
+ * visible materials. Native navigation is an explicit compatibility choice. */
+export function layerGraph(graph: MaterialGraph, levels: string[]) {
+  const nodes = graph.nodes.filter((node) =>
+    levels.includes(node.level || "native"),
+  );
+  const ids = new Set(nodes.map((node) => node.id));
+  return {
+    ...graph,
+    nodes,
+    edges: graph.edges.filter(
+      (edge) => ids.has(edge.source) && ids.has(edge.target),
+    ),
+  };
+}
 export const evidenceTypes = new Set([
   "supports",
   "input",

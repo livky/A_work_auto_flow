@@ -7,6 +7,7 @@ import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import secrets
+import time
 from urllib.parse import parse_qs, urlsplit
 
 import evidence as e
@@ -95,11 +96,48 @@ def create_server(root, port=0, controller=None):
     prefix = "/" + token + "/"
     # 新应用与旧只读快照共用同源保护，计算任务由独立应用服务排队。
     from workbench_app import web as app_web
+    from memory.errors import MemoryError
+    from memory.api import HTTP_STATUS, response_status
     service = controller.app if controller is not None else None
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *_):
             pass  # URL 包含本机临时访问令牌，不写入访问日志。
+
+        def reject(self, code, body):
+            """Discard a bounded, unambiguous body before closing a rejected request.
+
+            Closing a socket with unread incoming bytes can reset the connection
+            on Windows, hiding the intended 403/405 response from the client.
+            Read bytes only: rejected input is never parsed or dispatched. Limit
+            both total bytes (the largest supported local request) and elapsed
+            time, so oversized/chunked/slow requests cannot hold a worker open.
+            """
+            self.close_connection = True
+            lengths = (self.headers.get_all("Content-Length", []) if hasattr(self.headers, "get_all")
+                       else ([self.headers["Content-Length"]] if "Content-Length" in self.headers else []))
+            if not self.headers.get("Transfer-Encoding") and len(lengths) == 1:
+                text = lengths[0]
+                if text.isascii() and text.isdecimal() and len(text) <= 7:
+                    remaining = int(text)
+                    if 0 < remaining <= 2_000_000:
+                        previous_timeout = self.connection.gettimeout()
+                        deadline = time.monotonic() + 0.5
+                        try:
+                            while remaining:
+                                budget = deadline - time.monotonic()
+                                if budget <= 0:
+                                    break
+                                self.connection.settimeout(budget)
+                                chunk = self.rfile.read1(min(remaining, 65536))
+                                if not chunk:
+                                    break
+                                remaining -= len(chunk)
+                        except OSError:
+                            pass  # A timed-out/aborted peer is still rejected.
+                        finally:
+                            self.connection.settimeout(previous_timeout)
+            self.respond(code, body)
 
         def respond(self, code, body, mime="application/json; charset=utf-8"):
             encoded = body if isinstance(body, bytes) else body.encode("utf-8")
@@ -163,12 +201,14 @@ def create_server(root, port=0, controller=None):
                     self.respond(404, '{"error":"not found"}')
                     return
                 self.respond(200, json.dumps(value, ensure_ascii=False))
+            except MemoryError as exc:
+                self.respond(HTTP_STATUS.get(exc.code, 500), json.dumps({"error": exc.as_dict(), "save_status": exc.details.get("save_status", "not_committed")}, ensure_ascii=False))
             except (OSError, ValueError, KeyError, TypeError) as exc:
                 self.respond(400, json.dumps({"error": str(exc)}, ensure_ascii=False))
 
         def do_POST(self):
             if controller is None:
-                self.respond(405, '{"error":"read only"}')
+                self.reject(405, '{"error":"read only"}')
                 return
             expected_host = f"127.0.0.1:{self.server.server_port}"
             route = urlsplit(self.path).path
@@ -176,8 +216,9 @@ def create_server(root, port=0, controller=None):
             if (self.headers.get("Host") != expected_host or
                 self.headers.get("Origin") != "http://" + expected_host or
                 not (route == prefix + "api/action" or route.startswith(prefix + 'api/v1/'))):
-                self.respond(403, '{"error":"origin or route rejected"}')
+                self.reject(403, '{"error":"origin or route rejected"}')
                 return
+            body_read = False
             try:
                 length = int(self.headers.get("Content-Length", "0"))
                 versioned = route.startswith(prefix + 'api/v1/')
@@ -186,21 +227,26 @@ def create_server(root, port=0, controller=None):
                 cap = 2_000_000 if route == prefix + 'api/v1/clusters' else (500_000 if versioned else 256)
                 if self.headers.get("Content-Type") != "application/json" or not 0 < length <= cap:
                     raise ValueError("只接受小型 JSON 动作")
+                body_read = True
                 payload = json.loads(self.rfile.read(length))
                 if versioned:
                     name = route[len(prefix + 'api/v1/'):]
                     value = app_web.post(service, name, payload)
-                    self.respond(202 if name == 'jobs' else 200, json.dumps(value, ensure_ascii=False))
+                    status = response_status(value) if name.startswith('memory/') else (202 if name == 'jobs' else 200)
+                    self.respond(status, json.dumps(value, ensure_ascii=False))
                     return
                 if not isinstance(payload, dict) or set(payload) != {"action"}:
                     raise ValueError("只能传入 action")
                 value = controller.action(payload['action'])
                 self.respond(200, json.dumps(value, ensure_ascii=False))
+            except MemoryError as exc:
+                self.respond(HTTP_STATUS.get(exc.code, 500), json.dumps({"error": exc.as_dict(), "save_status": exc.details.get("save_status", "not_committed")}, ensure_ascii=False))
             except (OSError, ValueError, KeyError, TypeError) as exc:
-                self.respond(400, json.dumps({'error': str(exc)}, ensure_ascii=False))
+                respond = self.respond if body_read else self.reject
+                respond(400, json.dumps({'error': str(exc)}, ensure_ascii=False))
 
         def do_PUT(self):
-            self.respond(405, '{"error":"read only"}')
+            self.reject(405, '{"error":"read only"}')
 
         do_DELETE = do_PATCH = do_PUT
 

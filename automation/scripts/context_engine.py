@@ -184,6 +184,12 @@ def plan(root, result, cfg, *, stage, focus, include, full, exclude, mode=None):
         # 显式命令覆盖自动策略，full 和算法基线优先于全局 excerpt。
         if mode and mode != "auto" and sid not in required | forced:
             selected_mode = mode
+        # The document index deliberately stores selected native Run fields,
+        # never raw L0 debug dumps. A small summary must not be mislabeled as
+        # the complete original just because it fits the context budget.
+        if doc['meta'].get('layer_origin') == 'legacy_run_summary' and Path(doc['path']).name == 'run.json':
+            selected_mode = 'brief'
+            briefs[sid] = run_brief(doc) or doc['body']
         modes[sid] = selected_mode
         inventory.append({"source_id": sid, "path": doc["path"], "role": roles[sid],
                           "module_ids": doc["meta"].get("module_ids", []),

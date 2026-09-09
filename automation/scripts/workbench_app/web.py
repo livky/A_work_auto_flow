@@ -38,6 +38,18 @@ def asset(route):
 def get(service, route, query):
     args = parse_qs(query)
     one = lambda key, default='': args.get(key, [default])[0]
+    if route.startswith('memory/'):
+        from memory.api import dispatch
+        from memory.service import MemoryService
+        action = route[len('memory/'):]
+        if action not in {'inspect', 'list-owners', 'history', 'document', 'figure', 'resume', 'associations-view'}:
+            from memory.errors import MemoryError
+            raise MemoryError('INVALID_ARGUMENT', '此记忆动作需要 POST JSON')
+        request = {key: values[0] for key, values in args.items()}
+        for key in ('revision', 'offset', 'limit', 'budget', 'figure_index'):
+            if key in request:
+                request[key] = int(request[key])
+        return dispatch(MemoryService(service.root), action, request)
     if route == 'capabilities':
         return {'api_version': 1, 'build': asset_manifest()['source_fingerprint'],
                 'graph_ready': service.graph is not None, 'synthetic': (service.root / 'synthetic-marker.json').exists(),
@@ -46,7 +58,7 @@ def get(service, route, query):
     if route == 'graph':
         return service.view({'center': one('center'), 'hops': int(one('hops', '1')), 'query': one('query'),
                              'offset': int(one('offset', '0')), 'candidates': one('candidates') == 'true',
-                             'excluded': args.get('excluded', []), 'types': args.get('types', []), 'kinds': args.get('kinds', [])})
+                             'excluded': args.get('excluded', []), 'types': args.get('types', []), 'kinds': args.get('kinds', []), 'levels': args.get('levels', [])})
     if route == 'catalog':
         graph = service.require_graph()
         return {'schema_version': 1, 'fingerprint': graph['fingerprint'], 'generated_at': graph['generated_at'],
@@ -70,6 +82,10 @@ def get(service, route, query):
 
 
 def post(service, route, data):
+    if route.startswith('memory/'):
+        from memory.api import dispatch
+        from memory.service import MemoryService
+        return dispatch(MemoryService(service.root), route[len('memory/'):], data)
     if not isinstance(data, dict):
         raise ValueError('请求必须为 JSON 对象')
     if route == 'jobs':

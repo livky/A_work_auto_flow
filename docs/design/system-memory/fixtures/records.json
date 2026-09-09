@@ -1,0 +1,2779 @@
+{
+  "fixture_version": 1,
+  "synthetic_only": true,
+  "format": "test-recipes-not-committed-records",
+  "fixed_clock": "2026-01-01T00:00:00Z",
+  "owners": [
+    {
+      "owner_id": "RES-SYN-THERMAL",
+      "owner_type": "research",
+      "native_ref": "research/合成 THERMAL/research.json",
+      "title": "预热与零点漂移",
+      "project_ids": [
+        "PRJ-SYN-A"
+      ]
+    },
+    {
+      "owner_id": "RUN-SYN-THERMAL",
+      "owner_type": "run",
+      "native_ref": "runs/合成 THERMAL/run.json",
+      "title": "预热与零点漂移验证"
+    },
+    {
+      "owner_id": "RES-SYN-PRESSURE",
+      "owner_type": "research",
+      "native_ref": "research/合成 PRESSURE/research.json",
+      "title": "预载与重复定位",
+      "project_ids": [
+        "PRJ-SYN-A"
+      ]
+    },
+    {
+      "owner_id": "RUN-SYN-PRESSURE",
+      "owner_type": "run",
+      "native_ref": "runs/合成 PRESSURE/run.json",
+      "title": "预载与重复定位验证"
+    },
+    {
+      "owner_id": "RES-SYN-RETRY",
+      "owner_type": "research",
+      "native_ref": "research/合成 RETRY/research.json",
+      "title": "超时重试与重复写入",
+      "project_ids": [
+        "PRJ-SYN-A"
+      ]
+    },
+    {
+      "owner_id": "RUN-SYN-RETRY",
+      "owner_type": "run",
+      "native_ref": "runs/合成 RETRY/run.json",
+      "title": "超时重试与重复写入验证"
+    },
+    {
+      "owner_id": "RES-SYN-CACHE",
+      "owner_type": "research",
+      "native_ref": "research/合成 CACHE/research.json",
+      "title": "来源变化与陈旧缓存",
+      "project_ids": [
+        "PRJ-SYN-A"
+      ]
+    },
+    {
+      "owner_id": "RUN-SYN-CACHE",
+      "owner_type": "run",
+      "native_ref": "runs/合成 CACHE/run.json",
+      "title": "来源变化与陈旧缓存验证"
+    },
+    {
+      "owner_id": "RES-SYN-VIBRATION",
+      "owner_type": "research",
+      "native_ref": "research/合成 VIBRATION/research.json",
+      "title": "采样配置与不可辨识结果",
+      "project_ids": [
+        "PRJ-SYN-B"
+      ]
+    },
+    {
+      "owner_id": "RUN-SYN-VIBRATION",
+      "owner_type": "run",
+      "native_ref": "runs/合成 VIBRATION/run.json",
+      "title": "采样配置与不可辨识结果验证"
+    },
+    {
+      "owner_id": "RES-SYN-UNITS",
+      "owner_type": "research",
+      "native_ref": "research/合成 UNITS/research.json",
+      "title": "单位转换与报告数字",
+      "project_ids": [
+        "PRJ-SYN-B"
+      ]
+    },
+    {
+      "owner_id": "RUN-SYN-UNITS",
+      "owner_type": "run",
+      "native_ref": "runs/合成 UNITS/run.json",
+      "title": "单位转换与报告数字验证"
+    },
+    {
+      "owner_id": "RES-SYN-OCR",
+      "owner_type": "research",
+      "native_ref": "research/合成 OCR/research.json",
+      "title": "符号识别与原文核对",
+      "project_ids": [
+        "PRJ-SYN-B"
+      ]
+    },
+    {
+      "owner_id": "RUN-SYN-OCR",
+      "owner_type": "run",
+      "native_ref": "runs/合成 OCR/run.json",
+      "title": "符号识别与原文核对验证"
+    },
+    {
+      "owner_id": "RES-SYN-REPEAT",
+      "owner_type": "research",
+      "native_ref": "research/合成 REPEAT/research.json",
+      "title": "重复材料与独立证据",
+      "project_ids": [
+        "PRJ-SYN-B"
+      ]
+    },
+    {
+      "owner_id": "RUN-SYN-REPEAT",
+      "owner_type": "run",
+      "native_ref": "runs/合成 REPEAT/run.json",
+      "title": "重复材料与独立证据验证"
+    },
+    {
+      "owner_id": "PRJ-SYN-A",
+      "owner_type": "project",
+      "native_ref": "projects/合成项目 A/project.json",
+      "title": "采集研究聚合"
+    },
+    {
+      "owner_id": "PRJ-SYN-B",
+      "owner_type": "project",
+      "native_ref": "projects/合成项目 B/project.json",
+      "title": "软件可靠性聚合"
+    },
+    {
+      "owner_id": "MOD-SYN-CAL",
+      "owner_type": "core-algorithm",
+      "native_ref": "core-algorithms/合成算法/module.json",
+      "title": "测试专用校准模型",
+      "source_document": "SYNTHETIC ONLY：模拟公司模型定义，不能导入真实核心算法库"
+    },
+    {
+      "owner_id": "KNW-SYN-CROSS",
+      "owner_type": "knowledge",
+      "native_ref": "knowledge/patterns/跨研究经验.md",
+      "title": "跨研究经验"
+    },
+    {
+      "owner_id": "REP-SYN-RESULT",
+      "owner_type": "report",
+      "native_ref": "reports/manifests/合成报告.json",
+      "title": "合成报告"
+    },
+    {
+      "owner_id": "DATA-SYN-A",
+      "owner_type": "data",
+      "native_ref": "data/catalog/合成数据.dataset.json",
+      "title": "合成数据"
+    },
+    {
+      "owner_id": "TOOL-SYN-A",
+      "owner_type": "tool",
+      "native_ref": "tools/registry.json#TOOL-SYN-A",
+      "title": "合成目录工具"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "SRC-SYN-THERMAL",
+      "path": "sources/thermal.md",
+      "authorized": true
+    },
+    {
+      "source_id": "SRC-SYN-PRESSURE",
+      "path": "sources/pressure.md",
+      "authorized": true
+    },
+    {
+      "source_id": "SRC-SYN-RETRY",
+      "path": "sources/retry.md",
+      "authorized": true
+    },
+    {
+      "source_id": "SRC-SYN-CACHE",
+      "path": "sources/cache.md",
+      "authorized": true
+    },
+    {
+      "source_id": "SRC-SYN-VIBRATION",
+      "path": "sources/vibration.md",
+      "authorized": true
+    },
+    {
+      "source_id": "SRC-SYN-UNITS",
+      "path": "sources/units.md",
+      "authorized": true
+    },
+    {
+      "source_id": "SRC-SYN-OCR",
+      "path": "sources/ocr.md",
+      "authorized": true
+    },
+    {
+      "source_id": "SRC-SYN-REPEAT",
+      "path": "sources/repeat.md",
+      "authorized": true
+    }
+  ],
+  "legacy_runs": [
+    {
+      "run_id": "RUN-SYN-THERMAL",
+      "research_id": "RES-SYN-THERMAL",
+      "status": "succeeded",
+      "question": "研究温度采集的零点漂移",
+      "parameters": {
+        "fixture": "THERMAL"
+      },
+      "inputs": [
+        "SRC-SYN-THERMAL"
+      ],
+      "artifact_text": "预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。",
+      "claim_id": "CLM-SYN-THERMAL",
+      "claim_scope": "synthetic:thermal",
+      "statement": "预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。",
+      "limitations": [
+        "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+      ],
+      "keywords": [
+        "预热",
+        "零点漂移",
+        "温漂"
+      ],
+      "review_recipe": "synthetic_authorized_workflow",
+      "finalize_recipe": true
+    },
+    {
+      "run_id": "RUN-SYN-PRESSURE",
+      "research_id": "RES-SYN-PRESSURE",
+      "status": "succeeded",
+      "question": "研究压力采集的重复定位误差",
+      "parameters": {
+        "fixture": "PRESSURE"
+      },
+      "inputs": [
+        "SRC-SYN-PRESSURE"
+      ],
+      "artifact_text": "预载 10 次后，合成样本 P 的重复定位误差由 3.0 降到 0.4。",
+      "claim_id": "CLM-SYN-PRESSURE",
+      "claim_scope": "synthetic:pressure",
+      "statement": "预载 10 次后，合成样本 P 的重复定位误差由 3.0 降到 0.4。",
+      "limitations": [
+        "预载不是预热；更换夹具后需要重新验证。"
+      ],
+      "keywords": [
+        "预载",
+        "重复定位",
+        "夹具"
+      ],
+      "review_recipe": "synthetic_authorized_workflow",
+      "finalize_recipe": true
+    },
+    {
+      "run_id": "RUN-SYN-RETRY",
+      "research_id": "RES-SYN-RETRY",
+      "status": "succeeded",
+      "question": "研究提交超时后重复记录",
+      "parameters": {
+        "fixture": "RETRY"
+      },
+      "inputs": [
+        "SRC-SYN-RETRY"
+      ],
+      "artifact_text": "合成请求 req-A 在响应丢失后重试，使用同一请求键只产生一条记录。",
+      "claim_id": "CLM-SYN-RETRY",
+      "claim_scope": "synthetic:retry",
+      "statement": "合成请求 req-A 在响应丢失后重试，使用同一请求键只产生一条记录。",
+      "limitations": [
+        "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+      ],
+      "keywords": [
+        "重试",
+        "幂等",
+        "重复写入"
+      ],
+      "review_recipe": "synthetic_authorized_workflow",
+      "finalize_recipe": true
+    },
+    {
+      "run_id": "RUN-SYN-CACHE",
+      "research_id": "RES-SYN-CACHE",
+      "status": "succeeded",
+      "question": "研究已撤回依据仍出现在摘要中",
+      "parameters": {
+        "fixture": "CACHE"
+      },
+      "inputs": [
+        "SRC-SYN-CACHE"
+      ],
+      "artifact_text": "合成来源 v1 撤回后，旧缓存仍命中；正式导出回源检查能阻止沿用。",
+      "claim_id": "CLM-SYN-CACHE",
+      "claim_scope": "synthetic:cache",
+      "statement": "合成来源 v1 撤回后，旧缓存仍命中；正式导出回源检查能阻止沿用。",
+      "limitations": [
+        "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+      ],
+      "keywords": [
+        "撤回",
+        "缓存",
+        "回源"
+      ],
+      "review_recipe": "synthetic_authorized_workflow",
+      "finalize_recipe": true
+    },
+    {
+      "run_id": "RUN-SYN-VIBRATION",
+      "research_id": "RES-SYN-VIBRATION",
+      "status": "succeeded",
+      "question": "研究采样配置变化的影响",
+      "parameters": {
+        "fixture": "VIBRATION"
+      },
+      "inputs": [
+        "SRC-SYN-VIBRATION"
+      ],
+      "artifact_text": "合成配置 S1 的两个输入得到同一观测；配置 S2 才把它们分开。",
+      "claim_id": "CLM-SYN-VIBRATION",
+      "claim_scope": "synthetic:vibration",
+      "statement": "合成配置 S1 的两个输入得到同一观测；配置 S2 才把它们分开。",
+      "limitations": [
+        "相同观测不代表相同输入；未测试配置不能推断等效。"
+      ],
+      "keywords": [
+        "采样",
+        "不可辨识",
+        "配置"
+      ],
+      "review_recipe": "synthetic_authorized_workflow",
+      "finalize_recipe": true
+    },
+    {
+      "run_id": "RUN-SYN-UNITS",
+      "research_id": "RES-SYN-UNITS",
+      "status": "succeeded",
+      "question": "研究报告单位换算错误",
+      "parameters": {
+        "fixture": "UNITS"
+      },
+      "inputs": [
+        "SRC-SYN-UNITS"
+      ],
+      "artifact_text": "合成原值 2 mm 正确换算为 0.002 m，直接写为 2 m 会产生错误。",
+      "claim_id": "CLM-SYN-UNITS",
+      "claim_scope": "synthetic:units",
+      "statement": "合成原值 2 mm 正确换算为 0.002 m，直接写为 2 m 会产生错误。",
+      "limitations": [
+        "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+      ],
+      "keywords": [
+        "单位",
+        "毫米",
+        "报告"
+      ],
+      "review_recipe": "synthetic_authorized_workflow",
+      "finalize_recipe": true
+    },
+    {
+      "run_id": "RUN-SYN-OCR",
+      "research_id": "RES-SYN-OCR",
+      "status": "succeeded",
+      "question": "研究识别文本丢失负号",
+      "parameters": {
+        "fixture": "OCR"
+      },
+      "inputs": [
+        "SRC-SYN-OCR"
+      ],
+      "artifact_text": "合成图片记为 -3，提取文本是 3；与原件核对后发现符号遗漏。",
+      "claim_id": "CLM-SYN-OCR",
+      "claim_scope": "synthetic:ocr",
+      "statement": "合成图片记为 -3，提取文本是 3；与原件核对后发现符号遗漏。",
+      "limitations": [
+        "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+      ],
+      "keywords": [
+        "OCR",
+        "负号",
+        "原件"
+      ],
+      "review_recipe": "synthetic_authorized_workflow",
+      "finalize_recipe": true
+    },
+    {
+      "run_id": "RUN-SYN-REPEAT",
+      "research_id": "RES-SYN-REPEAT",
+      "status": "succeeded",
+      "question": "研究多份摘要重复计数",
+      "parameters": {
+        "fixture": "REPEAT"
+      },
+      "inputs": [
+        "SRC-SYN-REPEAT"
+      ],
+      "artifact_text": "同一合成数据的三篇摘要仍只对应一份来源，不构成三次独立验证。",
+      "claim_id": "CLM-SYN-REPEAT",
+      "claim_scope": "synthetic:repeat",
+      "statement": "同一合成数据的三篇摘要仍只对应一份来源，不构成三次独立验证。",
+      "limitations": [
+        "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+      ],
+      "keywords": [
+        "重复",
+        "独立证据",
+        "摘要"
+      ],
+      "review_recipe": "synthetic_authorized_workflow",
+      "finalize_recipe": true
+    }
+  ],
+  "records": [
+    {
+      "record_id": "MEM-SRC-THERMAL",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "source",
+      "level": "L0",
+      "title": "预热与零点漂移原始记录",
+      "body_markdown": "原文通过 source_ref 引用，不将本段说明当原件。",
+      "payload": {
+        "source_id": "SRC-SYN-THERMAL",
+        "acquisition": "original_link",
+        "completeness": "complete",
+        "acquired_at": "2026-01-01T00:00:00Z"
+      },
+      "sources": [
+        {
+          "target_id": "SRC-SYN-THERMAL",
+          "revision": null,
+          "relation": "background",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-THERMAL",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "experience",
+      "level": "L2",
+      "title": "预热与零点漂移经验",
+      "body_markdown": "先核对预热与环境范围，再比较零点偏差。\n\n观察：预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。\n\n适用：预热 30 分钟；环境 20–25 ℃；样本 A\n\n禁止直接推广：环境超过 50 ℃、不同采集器或样本 B 不得直接套用。",
+      "payload": {
+        "problem_structure": "研究温度采集的零点漂移",
+        "recommendation": "先核对预热与环境范围，再比较零点偏差。",
+        "applicable": [
+          "预热 30 分钟；环境 20–25 ℃；样本 A"
+        ],
+        "prohibited": [
+          "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+        ],
+        "failure_modes": [
+          "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。"
+        ],
+        "retry_conditions": [
+          "超出上述条件时建立新 Run 检验。"
+        ],
+        "claim_refs": [
+          {
+            "target_id": "CLM-SYN-THERMAL",
+            "revision": null,
+            "relation": "supports",
+            "locator": "完整合成记录"
+          }
+        ],
+        "claims": [],
+        "keywords": [
+          "预热",
+          "零点漂移",
+          "温漂"
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "RUN-SYN-THERMAL",
+          "revision": null,
+          "relation": "input",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-THERMAL",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "map",
+      "level": "L3",
+      "title": "预热与零点漂移研究地图",
+      "body_markdown": "目标：研究温度采集的零点漂移\n\n当前结果：预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。\n\n尚需验证：环境超过 50 ℃、不同采集器或样本 B 不得直接套用。",
+      "payload": {
+        "topic": "预热与零点漂移",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [],
+        "conflict_refs": [],
+        "next_steps": [
+          "检查当前条件是否仍满足适用范围。"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-THERMAL",
+            "RUN-SYN-THERMAL"
+          ],
+          "source_versions": [
+            {
+              "target_id": "RUN-SYN-THERMAL",
+              "revision": null,
+              "relation": "input",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": []
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-SRC-PRESSURE",
+      "owner_id": "RES-SYN-PRESSURE",
+      "kind": "source",
+      "level": "L0",
+      "title": "预载与重复定位原始记录",
+      "body_markdown": "原文通过 source_ref 引用，不将本段说明当原件。",
+      "payload": {
+        "source_id": "SRC-SYN-PRESSURE",
+        "acquisition": "original_link",
+        "completeness": "complete",
+        "acquired_at": "2026-01-01T00:00:00Z"
+      },
+      "sources": [
+        {
+          "target_id": "SRC-SYN-PRESSURE",
+          "revision": null,
+          "relation": "background",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-PRESSURE",
+      "owner_id": "RES-SYN-PRESSURE",
+      "kind": "experience",
+      "level": "L2",
+      "title": "预载与重复定位经验",
+      "body_markdown": "先固定夹具和预载次数，再比较重复定位误差。\n\n观察：预载 10 次后，合成样本 P 的重复定位误差由 3.0 降到 0.4。\n\n适用：预载 10 次；同一夹具；样本 P\n\n禁止直接推广：预载不是预热；更换夹具后需要重新验证。",
+      "payload": {
+        "problem_structure": "研究压力采集的重复定位误差",
+        "recommendation": "先固定夹具和预载次数，再比较重复定位误差。",
+        "applicable": [
+          "预载 10 次；同一夹具；样本 P"
+        ],
+        "prohibited": [
+          "预载不是预热；更换夹具后需要重新验证。"
+        ],
+        "failure_modes": [
+          "预载不是预热；更换夹具后需要重新验证。"
+        ],
+        "retry_conditions": [
+          "超出上述条件时建立新 Run 检验。"
+        ],
+        "claim_refs": [
+          {
+            "target_id": "CLM-SYN-PRESSURE",
+            "revision": null,
+            "relation": "supports",
+            "locator": "完整合成记录"
+          }
+        ],
+        "claims": [],
+        "keywords": [
+          "预载",
+          "重复定位",
+          "夹具"
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "RUN-SYN-PRESSURE",
+          "revision": null,
+          "relation": "input",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-PRESSURE",
+      "owner_id": "RES-SYN-PRESSURE",
+      "kind": "map",
+      "level": "L3",
+      "title": "预载与重复定位研究地图",
+      "body_markdown": "目标：研究压力采集的重复定位误差\n\n当前结果：预载 10 次后，合成样本 P 的重复定位误差由 3.0 降到 0.4。\n\n尚需验证：预载不是预热；更换夹具后需要重新验证。",
+      "payload": {
+        "topic": "预载与重复定位",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-PRESSURE",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [],
+        "conflict_refs": [],
+        "next_steps": [
+          "检查当前条件是否仍满足适用范围。"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-PRESSURE",
+            "RUN-SYN-PRESSURE"
+          ],
+          "source_versions": [
+            {
+              "target_id": "RUN-SYN-PRESSURE",
+              "revision": null,
+              "relation": "input",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": []
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-PRESSURE",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-SRC-RETRY",
+      "owner_id": "RES-SYN-RETRY",
+      "kind": "source",
+      "level": "L0",
+      "title": "超时重试与重复写入原始记录",
+      "body_markdown": "原文通过 source_ref 引用，不将本段说明当原件。",
+      "payload": {
+        "source_id": "SRC-SYN-RETRY",
+        "acquisition": "original_link",
+        "completeness": "complete",
+        "acquired_at": "2026-01-01T00:00:00Z"
+      },
+      "sources": [
+        {
+          "target_id": "SRC-SYN-RETRY",
+          "revision": null,
+          "relation": "background",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-RETRY",
+      "owner_id": "RES-SYN-RETRY",
+      "kind": "experience",
+      "level": "L2",
+      "title": "超时重试与重复写入经验",
+      "body_markdown": "响应超时先查询回执，再以相同请求键重试。\n\n观察：合成请求 req-A 在响应丢失后重试，使用同一请求键只产生一条记录。\n\n适用：请求正文相同；请求键相同；服务已保存幂等回执\n\n禁止直接推广：相同请求键对应不同正文必须拒绝，不能按成功重放。",
+      "payload": {
+        "problem_structure": "研究提交超时后重复记录",
+        "recommendation": "响应超时先查询回执，再以相同请求键重试。",
+        "applicable": [
+          "请求正文相同；请求键相同；服务已保存幂等回执"
+        ],
+        "prohibited": [
+          "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+        ],
+        "failure_modes": [
+          "相同请求键对应不同正文必须拒绝，不能按成功重放。"
+        ],
+        "retry_conditions": [
+          "超出上述条件时建立新 Run 检验。"
+        ],
+        "claim_refs": [
+          {
+            "target_id": "CLM-SYN-RETRY",
+            "revision": null,
+            "relation": "supports",
+            "locator": "完整合成记录"
+          }
+        ],
+        "claims": [],
+        "keywords": [
+          "重试",
+          "幂等",
+          "重复写入"
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "RUN-SYN-RETRY",
+          "revision": null,
+          "relation": "input",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-RETRY",
+      "owner_id": "RES-SYN-RETRY",
+      "kind": "map",
+      "level": "L3",
+      "title": "超时重试与重复写入研究地图",
+      "body_markdown": "目标：研究提交超时后重复记录\n\n当前结果：合成请求 req-A 在响应丢失后重试，使用同一请求键只产生一条记录。\n\n尚需验证：相同请求键对应不同正文必须拒绝，不能按成功重放。",
+      "payload": {
+        "topic": "超时重试与重复写入",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-RETRY",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [],
+        "conflict_refs": [],
+        "next_steps": [
+          "检查当前条件是否仍满足适用范围。"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-RETRY",
+            "RUN-SYN-RETRY"
+          ],
+          "source_versions": [
+            {
+              "target_id": "RUN-SYN-RETRY",
+              "revision": null,
+              "relation": "input",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": []
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-RETRY",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-SRC-CACHE",
+      "owner_id": "RES-SYN-CACHE",
+      "kind": "source",
+      "level": "L0",
+      "title": "来源变化与陈旧缓存原始记录",
+      "body_markdown": "原文通过 source_ref 引用，不将本段说明当原件。",
+      "payload": {
+        "source_id": "SRC-SYN-CACHE",
+        "acquisition": "original_link",
+        "completeness": "complete",
+        "acquired_at": "2026-01-01T00:00:00Z"
+      },
+      "sources": [
+        {
+          "target_id": "SRC-SYN-CACHE",
+          "revision": null,
+          "relation": "background",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-CACHE",
+      "owner_id": "RES-SYN-CACHE",
+      "kind": "experience",
+      "level": "L2",
+      "title": "来源变化与陈旧缓存经验",
+      "body_markdown": "检索命中后核对当前来源版本和复核状态。\n\n观察：合成来源 v1 撤回后，旧缓存仍命中；正式导出回源检查能阻止沿用。\n\n适用：来源有固定身份与版本；正式导出执行回源检查\n\n禁止直接推广：只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。",
+      "payload": {
+        "problem_structure": "研究已撤回依据仍出现在摘要中",
+        "recommendation": "检索命中后核对当前来源版本和复核状态。",
+        "applicable": [
+          "来源有固定身份与版本；正式导出执行回源检查"
+        ],
+        "prohibited": [
+          "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+        ],
+        "failure_modes": [
+          "只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。"
+        ],
+        "retry_conditions": [
+          "超出上述条件时建立新 Run 检验。"
+        ],
+        "claim_refs": [
+          {
+            "target_id": "CLM-SYN-CACHE",
+            "revision": null,
+            "relation": "supports",
+            "locator": "完整合成记录"
+          }
+        ],
+        "claims": [],
+        "keywords": [
+          "撤回",
+          "缓存",
+          "回源"
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "RUN-SYN-CACHE",
+          "revision": null,
+          "relation": "input",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-CACHE",
+      "owner_id": "RES-SYN-CACHE",
+      "kind": "map",
+      "level": "L3",
+      "title": "来源变化与陈旧缓存研究地图",
+      "body_markdown": "目标：研究已撤回依据仍出现在摘要中\n\n当前结果：合成来源 v1 撤回后，旧缓存仍命中；正式导出回源检查能阻止沿用。\n\n尚需验证：只刷新页面不能证明内容有效；不能仅信缓存中的 accepted。",
+      "payload": {
+        "topic": "来源变化与陈旧缓存",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-CACHE",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [],
+        "conflict_refs": [],
+        "next_steps": [
+          "检查当前条件是否仍满足适用范围。"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-CACHE",
+            "RUN-SYN-CACHE"
+          ],
+          "source_versions": [
+            {
+              "target_id": "RUN-SYN-CACHE",
+              "revision": null,
+              "relation": "input",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": []
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-CACHE",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-SRC-VIBRATION",
+      "owner_id": "RES-SYN-VIBRATION",
+      "kind": "source",
+      "level": "L0",
+      "title": "采样配置与不可辨识结果原始记录",
+      "body_markdown": "原文通过 source_ref 引用，不将本段说明当原件。",
+      "payload": {
+        "source_id": "SRC-SYN-VIBRATION",
+        "acquisition": "original_link",
+        "completeness": "complete",
+        "acquired_at": "2026-01-01T00:00:00Z"
+      },
+      "sources": [
+        {
+          "target_id": "SRC-SYN-VIBRATION",
+          "revision": null,
+          "relation": "background",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-VIBRATION",
+      "owner_id": "RES-SYN-VIBRATION",
+      "kind": "experience",
+      "level": "L2",
+      "title": "采样配置与不可辨识结果经验",
+      "body_markdown": "保留采样配置版本，并记录无法区分的输入边界。\n\n观察：合成配置 S1 的两个输入得到同一观测；配置 S2 才把它们分开。\n\n适用：输入集合 X/Y；配置 S1/S2 的固定版本\n\n禁止直接推广：相同观测不代表相同输入；未测试配置不能推断等效。",
+      "payload": {
+        "problem_structure": "研究采样配置变化的影响",
+        "recommendation": "保留采样配置版本，并记录无法区分的输入边界。",
+        "applicable": [
+          "输入集合 X/Y；配置 S1/S2 的固定版本"
+        ],
+        "prohibited": [
+          "相同观测不代表相同输入；未测试配置不能推断等效。"
+        ],
+        "failure_modes": [
+          "相同观测不代表相同输入；未测试配置不能推断等效。"
+        ],
+        "retry_conditions": [
+          "超出上述条件时建立新 Run 检验。"
+        ],
+        "claim_refs": [
+          {
+            "target_id": "CLM-SYN-VIBRATION",
+            "revision": null,
+            "relation": "supports",
+            "locator": "完整合成记录"
+          }
+        ],
+        "claims": [],
+        "keywords": [
+          "采样",
+          "不可辨识",
+          "配置"
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "RUN-SYN-VIBRATION",
+          "revision": null,
+          "relation": "input",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-VIBRATION",
+      "owner_id": "RES-SYN-VIBRATION",
+      "kind": "map",
+      "level": "L3",
+      "title": "采样配置与不可辨识结果研究地图",
+      "body_markdown": "目标：研究采样配置变化的影响\n\n当前结果：合成配置 S1 的两个输入得到同一观测；配置 S2 才把它们分开。\n\n尚需验证：相同观测不代表相同输入；未测试配置不能推断等效。",
+      "payload": {
+        "topic": "采样配置与不可辨识结果",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-VIBRATION",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [],
+        "conflict_refs": [],
+        "next_steps": [
+          "检查当前条件是否仍满足适用范围。"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-VIBRATION",
+            "RUN-SYN-VIBRATION"
+          ],
+          "source_versions": [
+            {
+              "target_id": "RUN-SYN-VIBRATION",
+              "revision": null,
+              "relation": "input",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": []
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-VIBRATION",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-SRC-UNITS",
+      "owner_id": "RES-SYN-UNITS",
+      "kind": "source",
+      "level": "L0",
+      "title": "单位转换与报告数字原始记录",
+      "body_markdown": "原文通过 source_ref 引用，不将本段说明当原件。",
+      "payload": {
+        "source_id": "SRC-SYN-UNITS",
+        "acquisition": "original_link",
+        "completeness": "complete",
+        "acquired_at": "2026-01-01T00:00:00Z"
+      },
+      "sources": [
+        {
+          "target_id": "SRC-SYN-UNITS",
+          "revision": null,
+          "relation": "background",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-UNITS",
+      "owner_id": "RES-SYN-UNITS",
+      "kind": "experience",
+      "level": "L2",
+      "title": "单位转换与报告数字经验",
+      "body_markdown": "先明确单位契约，再由固定 Run 生成报告数值。\n\n观察：合成原值 2 mm 正确换算为 0.002 m，直接写为 2 m 会产生错误。\n\n适用：输入单位 mm；输出单位 m；原值 2\n\n禁止直接推广：单位未知时不能猜测换算；图表数值必须引用生成 Run。",
+      "payload": {
+        "problem_structure": "研究报告单位换算错误",
+        "recommendation": "先明确单位契约，再由固定 Run 生成报告数值。",
+        "applicable": [
+          "输入单位 mm；输出单位 m；原值 2"
+        ],
+        "prohibited": [
+          "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+        ],
+        "failure_modes": [
+          "单位未知时不能猜测换算；图表数值必须引用生成 Run。"
+        ],
+        "retry_conditions": [
+          "超出上述条件时建立新 Run 检验。"
+        ],
+        "claim_refs": [
+          {
+            "target_id": "CLM-SYN-UNITS",
+            "revision": null,
+            "relation": "supports",
+            "locator": "完整合成记录"
+          }
+        ],
+        "claims": [],
+        "keywords": [
+          "单位",
+          "毫米",
+          "报告"
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "RUN-SYN-UNITS",
+          "revision": null,
+          "relation": "input",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-UNITS",
+      "owner_id": "RES-SYN-UNITS",
+      "kind": "map",
+      "level": "L3",
+      "title": "单位转换与报告数字研究地图",
+      "body_markdown": "目标：研究报告单位换算错误\n\n当前结果：合成原值 2 mm 正确换算为 0.002 m，直接写为 2 m 会产生错误。\n\n尚需验证：单位未知时不能猜测换算；图表数值必须引用生成 Run。",
+      "payload": {
+        "topic": "单位转换与报告数字",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-UNITS",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [],
+        "conflict_refs": [],
+        "next_steps": [
+          "检查当前条件是否仍满足适用范围。"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-UNITS",
+            "RUN-SYN-UNITS"
+          ],
+          "source_versions": [
+            {
+              "target_id": "RUN-SYN-UNITS",
+              "revision": null,
+              "relation": "input",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": []
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-UNITS",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-SRC-OCR",
+      "owner_id": "RES-SYN-OCR",
+      "kind": "source",
+      "level": "L0",
+      "title": "符号识别与原文核对原始记录",
+      "body_markdown": "原文通过 source_ref 引用，不将本段说明当原件。",
+      "payload": {
+        "source_id": "SRC-SYN-OCR",
+        "acquisition": "original_link",
+        "completeness": "complete",
+        "acquired_at": "2026-01-01T00:00:00Z"
+      },
+      "sources": [
+        {
+          "target_id": "SRC-SYN-OCR",
+          "revision": null,
+          "relation": "background",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-OCR",
+      "owner_id": "RES-SYN-OCR",
+      "kind": "experience",
+      "level": "L2",
+      "title": "符号识别与原文核对经验",
+      "body_markdown": "影响结论的符号必须回看固定原图或标明缺口。\n\n观察：合成图片记为 -3，提取文本是 3；与原件核对后发现符号遗漏。\n\n适用：仅针对样本图 O；已取得原图\n\n禁止直接推广：不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。",
+      "payload": {
+        "problem_structure": "研究识别文本丢失负号",
+        "recommendation": "影响结论的符号必须回看固定原图或标明缺口。",
+        "applicable": [
+          "仅针对样本图 O；已取得原图"
+        ],
+        "prohibited": [
+          "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+        ],
+        "failure_modes": [
+          "不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。"
+        ],
+        "retry_conditions": [
+          "超出上述条件时建立新 Run 检验。"
+        ],
+        "claim_refs": [
+          {
+            "target_id": "CLM-SYN-OCR",
+            "revision": null,
+            "relation": "supports",
+            "locator": "完整合成记录"
+          }
+        ],
+        "claims": [],
+        "keywords": [
+          "OCR",
+          "负号",
+          "原件"
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "RUN-SYN-OCR",
+          "revision": null,
+          "relation": "input",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-OCR",
+      "owner_id": "RES-SYN-OCR",
+      "kind": "map",
+      "level": "L3",
+      "title": "符号识别与原文核对研究地图",
+      "body_markdown": "目标：研究识别文本丢失负号\n\n当前结果：合成图片记为 -3，提取文本是 3；与原件核对后发现符号遗漏。\n\n尚需验证：不得把 OCR 文本当独立原始证据；缺原图时不得宣称已核对。",
+      "payload": {
+        "topic": "符号识别与原文核对",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-OCR",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [],
+        "conflict_refs": [],
+        "next_steps": [
+          "检查当前条件是否仍满足适用范围。"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-OCR",
+            "RUN-SYN-OCR"
+          ],
+          "source_versions": [
+            {
+              "target_id": "RUN-SYN-OCR",
+              "revision": null,
+              "relation": "input",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": []
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-OCR",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-SRC-REPEAT",
+      "owner_id": "RES-SYN-REPEAT",
+      "kind": "source",
+      "level": "L0",
+      "title": "重复材料与独立证据原始记录",
+      "body_markdown": "原文通过 source_ref 引用，不将本段说明当原件。",
+      "payload": {
+        "source_id": "SRC-SYN-REPEAT",
+        "acquisition": "original_link",
+        "completeness": "complete",
+        "acquired_at": "2026-01-01T00:00:00Z"
+      },
+      "sources": [
+        {
+          "target_id": "SRC-SYN-REPEAT",
+          "revision": null,
+          "relation": "background",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-REPEAT",
+      "owner_id": "RES-SYN-REPEAT",
+      "kind": "experience",
+      "level": "L2",
+      "title": "重复材料与独立证据经验",
+      "body_markdown": "按规范来源身份归并证据，保留各表示的定位。\n\n观察：同一合成数据的三篇摘要仍只对应一份来源，不构成三次独立验证。\n\n适用：三个摘要均派生自来源 D1\n\n禁止直接推广：不同来源是否独立需要另行判定；相似内容不自动证明同源。",
+      "payload": {
+        "problem_structure": "研究多份摘要重复计数",
+        "recommendation": "按规范来源身份归并证据，保留各表示的定位。",
+        "applicable": [
+          "三个摘要均派生自来源 D1"
+        ],
+        "prohibited": [
+          "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+        ],
+        "failure_modes": [
+          "不同来源是否独立需要另行判定；相似内容不自动证明同源。"
+        ],
+        "retry_conditions": [
+          "超出上述条件时建立新 Run 检验。"
+        ],
+        "claim_refs": [
+          {
+            "target_id": "CLM-SYN-REPEAT",
+            "revision": null,
+            "relation": "supports",
+            "locator": "完整合成记录"
+          }
+        ],
+        "claims": [],
+        "keywords": [
+          "重复",
+          "独立证据",
+          "摘要"
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "RUN-SYN-REPEAT",
+          "revision": null,
+          "relation": "input",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-REPEAT",
+      "owner_id": "RES-SYN-REPEAT",
+      "kind": "map",
+      "level": "L3",
+      "title": "重复材料与独立证据研究地图",
+      "body_markdown": "目标：研究多份摘要重复计数\n\n当前结果：同一合成数据的三篇摘要仍只对应一份来源，不构成三次独立验证。\n\n尚需验证：不同来源是否独立需要另行判定；相似内容不自动证明同源。",
+      "payload": {
+        "topic": "重复材料与独立证据",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-REPEAT",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [],
+        "conflict_refs": [],
+        "next_steps": [
+          "检查当前条件是否仍满足适用范围。"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-REPEAT",
+            "RUN-SYN-REPEAT"
+          ],
+          "source_versions": [
+            {
+              "target_id": "RUN-SYN-REPEAT",
+              "revision": null,
+              "relation": "input",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": []
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-REPEAT",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-GOAL-OLD",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "goal",
+      "level": null,
+      "title": "旧目标",
+      "body_markdown": "只考察样本 A。",
+      "payload": {
+        "objective": "解释样本 A 的零点漂移",
+        "constraints": [
+          "只读合成原件"
+        ],
+        "success_criteria": [
+          "固定条件内偏差低于 0.5"
+        ],
+        "previous_goal_ref": null,
+        "change_impact": "初始目标"
+      },
+      "sources": [],
+      "provenance_gap": "合成测试作者直接提供的设定，不是业务证据。",
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-GOAL-NEW",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "goal",
+      "level": null,
+      "title": "新目标",
+      "body_markdown": "增加对样本 B 的适用性检查。",
+      "payload": {
+        "objective": "比较 A/B 的预热差异",
+        "constraints": [
+          "不得从 A 直接推断 B"
+        ],
+        "success_criteria": [
+          "分别取得 A/B 的固定版本 Run"
+        ],
+        "previous_goal_ref": {
+          "target_id": "MEM-GOAL-OLD",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "change_impact": "A 的旧结论保留，不能直接用于 B"
+      },
+      "sources": [
+        {
+          "target_id": "MEM-GOAL-OLD",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-Q-OPEN",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "question",
+      "level": null,
+      "title": "问题状态 open",
+      "body_markdown": "这是一条独立问题。",
+      "payload": {
+        "question": "样本 B 是否适用 A 的预热经验？",
+        "status": "open",
+        "decision_affected": "是否沿用参数",
+        "missing_evidence": [
+          "样本 B 的验证结果"
+        ],
+        "resolution_refs": [],
+        "replacement_ref": null,
+        "reopen_reason": null
+      },
+      "sources": [],
+      "provenance_gap": "合成测试作者直接提供的设定，不是业务证据。",
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-Q-INVESTIGATING",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "question",
+      "level": null,
+      "title": "问题状态 investigating",
+      "body_markdown": "这是一条独立问题。",
+      "payload": {
+        "question": "样本 B 是否适用 A 的预热经验？",
+        "status": "investigating",
+        "decision_affected": "是否沿用参数",
+        "missing_evidence": [
+          "样本 B 的验证结果"
+        ],
+        "resolution_refs": [],
+        "replacement_ref": null,
+        "reopen_reason": null
+      },
+      "sources": [],
+      "provenance_gap": "合成测试作者直接提供的设定，不是业务证据。",
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-Q-BLOCKED",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "question",
+      "level": null,
+      "title": "问题状态 blocked",
+      "body_markdown": "这是一条独立问题。",
+      "payload": {
+        "question": "样本 B 是否适用 A 的预热经验？",
+        "status": "blocked",
+        "decision_affected": "是否沿用参数",
+        "missing_evidence": [
+          "样本 B 的验证结果"
+        ],
+        "resolution_refs": [],
+        "replacement_ref": null,
+        "reopen_reason": null
+      },
+      "sources": [],
+      "provenance_gap": "合成测试作者直接提供的设定，不是业务证据。",
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-Q-RESOLVED",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "question",
+      "level": null,
+      "title": "问题状态 resolved",
+      "body_markdown": "这是一条独立问题。",
+      "payload": {
+        "question": "样本 A 在已测试环境下是否满足偏差低于 0.5？",
+        "status": "resolved",
+        "decision_affected": "是否在原测试范围采用 A 参数",
+        "missing_evidence": [],
+        "resolution_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "replacement_ref": null,
+        "reopen_reason": null
+      },
+      "sources": [],
+      "provenance_gap": "合成测试作者直接提供的设定，不是业务证据。",
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-Q-SUPERSEDED",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "question",
+      "level": null,
+      "title": "问题状态 superseded",
+      "body_markdown": "这是一条独立问题。",
+      "payload": {
+        "question": "样本 B 是否适用 A 的预热经验？",
+        "status": "superseded",
+        "decision_affected": "是否沿用参数",
+        "missing_evidence": [
+          "样本 B 的验证结果"
+        ],
+        "resolution_refs": [],
+        "replacement_ref": {
+          "target_id": "MEM-Q-OPEN",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "reopen_reason": null
+      },
+      "sources": [],
+      "provenance_gap": "合成测试作者直接提供的设定，不是业务证据。",
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-ROUTE-OLD",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "route",
+      "level": null,
+      "title": "旧路线",
+      "body_markdown": "旧路线已关闭。",
+      "payload": {
+        "goal_ref": {
+          "target_id": "MEM-GOAL-OLD",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "hypothesis": "直接复用 A 参数",
+        "status": "closed",
+        "attempt_refs": [
+          {
+            "target_id": "RUN-SYN-THERMAL",
+            "revision": null,
+            "relation": "references",
+            "locator": "完整合成记录"
+          }
+        ],
+        "blocker": null,
+        "next_step": "改做 B 验证",
+        "reopen_condition": "取得支持跨样本适用的新证据",
+        "replacement_ref": null
+      },
+      "sources": [
+        {
+          "target_id": "MEM-GOAL-OLD",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-ROUTE-NEW",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "route",
+      "level": null,
+      "title": "新路线",
+      "body_markdown": "新路线等待样本 B。",
+      "payload": {
+        "goal_ref": {
+          "target_id": "MEM-GOAL-NEW",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "hypothesis": "B 需要独立验证",
+        "status": "blocked",
+        "attempt_refs": [],
+        "blocker": "缺样本 B",
+        "next_step": "取得 B 的获准合成输入",
+        "reopen_condition": "B 输入可取得",
+        "replacement_ref": null
+      },
+      "sources": [
+        {
+          "target_id": "MEM-GOAL-NEW",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-CHECKPOINT",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "checkpoint",
+      "level": null,
+      "title": "暂停检查点",
+      "body_markdown": "已完成 A，尚未完成 B。",
+      "payload": {
+        "goal_ref": {
+          "target_id": "MEM-GOAL-NEW",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "route_refs": [
+          {
+            "target_id": "MEM-ROUTE-NEW",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "completed_refs": [
+          {
+            "target_id": "RUN-SYN-THERMAL",
+            "revision": null,
+            "relation": "references",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [
+          {
+            "target_id": "MEM-Q-BLOCKED",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "next_step": "补齐 B 输入再启动新 Run",
+        "prerequisites": [
+          "B 来源获准"
+        ],
+        "stop_reason": "缺少输入",
+        "budget_remaining": {
+          "value": null,
+          "reason": "unknown",
+          "note": "本合成场景未记录预算。"
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-GOAL-NEW",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        {
+          "target_id": "MEM-ROUTE-NEW",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EVENT-COMPARE",
+      "owner_id": "KNW-SYN-CROSS",
+      "kind": "event",
+      "level": "L1",
+      "title": "两研究比较决策",
+      "body_markdown": "比较预热和预载；名称相似不能直接迁移参数。",
+      "payload": {
+        "occurred_at": "2026-01-02T00:00:00Z",
+        "question_refs": [],
+        "goal_ref": null,
+        "route_ref": null,
+        "action": "比较两个研究的条件",
+        "observation": "预热依赖温度条件；预载依赖夹具条件。",
+        "decision": "分别验证，不直接沿用次数或时长",
+        "decision_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          },
+          {
+            "target_id": "MEM-EXP-PRESSURE",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "run_refs": [
+          {
+            "target_id": "RUN-SYN-THERMAL",
+            "revision": null,
+            "relation": "references",
+            "locator": "完整合成记录"
+          },
+          {
+            "target_id": "RUN-SYN-PRESSURE",
+            "revision": null,
+            "relation": "references",
+            "locator": "完整合成记录"
+          }
+        ],
+        "failure": null,
+        "claims": []
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        {
+          "target_id": "MEM-EXP-PRESSURE",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-EXP-CROSS",
+      "owner_id": "KNW-SYN-CROSS",
+      "kind": "experience",
+      "level": "L2",
+      "title": "跨研究前置条件经验",
+      "body_markdown": "先确定前置条件及失效边界，再迁移方法；预热和预载不是同一操作。",
+      "payload": {
+        "problem_structure": "初始条件变化导致结果变化",
+        "recommendation": "迁移方法前先比较前置条件",
+        "applicable": [
+          "已保存各研究的输入条件"
+        ],
+        "prohibited": [
+          "不能跨研究直接套用相同参数"
+        ],
+        "failure_modes": [
+          "只比较标题而忽略条件"
+        ],
+        "retry_conditions": [
+          "在新条件下建立验证 Run"
+        ],
+        "claim_refs": [],
+        "claims": []
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        {
+          "target_id": "MEM-EXP-PRESSURE",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-MAP-CROSS",
+      "owner_id": "KNW-SYN-CROSS",
+      "kind": "map",
+      "level": "L3",
+      "title": "跨研究主题地图",
+      "body_markdown": "共同点是先检查前置条件；差异是物理操作和参数含义不同。",
+      "payload": {
+        "topic": "条件迁移",
+        "goal_refs": [],
+        "route_refs": [],
+        "result_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          },
+          {
+            "target_id": "MEM-EXP-PRESSURE",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          },
+          {
+            "target_id": "MEM-EXP-CROSS",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "question_refs": [
+          {
+            "target_id": "MEM-Q-OPEN",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "conflict_refs": [],
+        "next_steps": [
+          "检验 B 的适用性"
+        ],
+        "coverage": {
+          "owner_ids": [
+            "RES-SYN-THERMAL",
+            "RES-SYN-PRESSURE"
+          ],
+          "source_versions": [
+            {
+              "target_id": "MEM-EXP-THERMAL",
+              "revision": 1,
+              "relation": "derived_from",
+              "locator": "完整合成记录"
+            },
+            {
+              "target_id": "MEM-EXP-PRESSURE",
+              "revision": 1,
+              "relation": "derived_from",
+              "locator": "完整合成记录"
+            }
+          ],
+          "missing": [
+            "样本 B 结果"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-CROSS",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-REPR-TITLE",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "representation",
+      "level": null,
+      "title": "表示 title",
+      "body_markdown": "",
+      "payload": {
+        "target": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "slot": "title",
+        "text": "预热与零点漂移 预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。",
+        "boundary_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-REPR-RESULT",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "representation",
+      "level": null,
+      "title": "表示 result",
+      "body_markdown": "",
+      "payload": {
+        "target": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "slot": "result",
+        "text": "预热与零点漂移 预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。",
+        "boundary_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-REPR-PROBLEM",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "representation",
+      "level": null,
+      "title": "表示 problem",
+      "body_markdown": "",
+      "payload": {
+        "target": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "slot": "problem",
+        "text": "预热与零点漂移 预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。",
+        "boundary_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-REPR-TRIGGER",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "representation",
+      "level": null,
+      "title": "表示 trigger",
+      "body_markdown": "",
+      "payload": {
+        "target": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "slot": "trigger",
+        "text": "预热与零点漂移 预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。",
+        "boundary_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-REPR-FAILURE",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "representation",
+      "level": null,
+      "title": "表示 failure",
+      "body_markdown": "",
+      "payload": {
+        "target": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "slot": "failure",
+        "text": "预热与零点漂移 预热 30 分钟后，合成样本 A 的偏差从 2.0 降到 0.2。",
+        "boundary_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-REPR-BOUNDARY",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "representation",
+      "level": null,
+      "title": "表示 boundary",
+      "body_markdown": "",
+      "payload": {
+        "target": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "slot": "boundary",
+        "text": "环境超过 50 ℃、不同采集器或样本 B 不得直接套用。",
+        "boundary_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-ASSOC-VALID",
+      "owner_id": "KNW-SYN-CROSS",
+      "kind": "association",
+      "level": null,
+      "title": "MEM-ASSOC-VALID",
+      "body_markdown": "类比测试，不代表支持关系。",
+      "payload": {
+        "from": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "to": {
+          "target_id": "MEM-EXP-PRESSURE",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "relation": "analogous_to",
+        "explanation": "共同点是前置条件影响结果，参数不可直接迁移。",
+        "shared_structure": "前置条件影响结果",
+        "transfer_limits": [
+          "不迁移参数；不证明因果"
+        ],
+        "basis_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          },
+          {
+            "target_id": "MEM-EXP-PRESSURE",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "status": "accepted"
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        {
+          "target_id": "MEM-EXP-PRESSURE",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-ASSOC-WRONG",
+      "owner_id": "KNW-SYN-CROSS",
+      "kind": "association",
+      "level": null,
+      "title": "MEM-ASSOC-WRONG",
+      "body_markdown": "类比测试，不代表支持关系。",
+      "payload": {
+        "from": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "to": {
+          "target_id": "MEM-EXP-RETRY",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "relation": "analogous_to",
+        "explanation": "仅出现重复一词，尚无共同机制依据。",
+        "shared_structure": "待检查",
+        "transfer_limits": [
+          "不迁移参数；不证明因果"
+        ],
+        "basis_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          },
+          {
+            "target_id": "MEM-EXP-RETRY",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "status": "candidate"
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        {
+          "target_id": "MEM-EXP-RETRY",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-POLICY",
+      "owner_id": "RES-SYN-THERMAL",
+      "kind": "policy",
+      "level": null,
+      "title": "对象策略",
+      "body_markdown": "",
+      "payload": {
+        "mode": "explore",
+        "overrides": {
+          "retain": [
+            "失败边界"
+          ],
+          "auto_summary": false,
+          "discovery": "owner_only"
+        }
+      },
+      "sources": [],
+      "provenance_gap": "合成测试作者直接提供的设定，不是业务证据。",
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-CONSOLIDATION",
+      "owner_id": "KNW-SYN-CROSS",
+      "kind": "consolidation",
+      "level": null,
+      "title": "阶段巩固",
+      "body_markdown": "B 尚待处理。",
+      "payload": {
+        "basis_heads": {},
+        "trigger": "阶段结束",
+        "affected_refs": [
+          {
+            "target_id": "MEM-EXP-THERMAL",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ],
+        "decisions": [
+          {
+            "target": {
+              "target_id": "MEM-EXP-THERMAL",
+              "revision": 1,
+              "relation": "derived_from",
+              "locator": "完整合成记录"
+            },
+            "action": "retain",
+            "reason": "没有新的反证"
+          }
+        ],
+        "remaining_refs": [
+          {
+            "target_id": "MEM-Q-BLOCKED",
+            "revision": 1,
+            "relation": "derived_from",
+            "locator": "完整合成记录"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "record_id": "MEM-FEEDBACK",
+      "owner_id": "KNW-SYN-CROSS",
+      "kind": "feedback",
+      "level": null,
+      "title": "查询反馈",
+      "body_markdown": "这次只采纳检查条件的建议。",
+      "payload": {
+        "query_id": "Q-SYN-SEED",
+        "target": {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        },
+        "label": "adopted",
+        "note": "采用不代表验证",
+        "adopted_in": {
+          "target_id": "RUN-SYN-PRESSURE",
+          "revision": null,
+          "relation": "references",
+          "locator": "完整合成记录"
+        }
+      },
+      "sources": [
+        {
+          "target_id": "MEM-EXP-THERMAL",
+          "revision": 1,
+          "relation": "derived_from",
+          "locator": "完整合成记录"
+        }
+      ],
+      "provenance_gap": null,
+      "record_reason": "SYNTHETIC ONLY：用于系统记忆契约与验收。",
+      "discovery": "workspace_summary",
+      "sensitivity": "internal",
+      "actor": {
+        "kind": "ai",
+        "id": "synthetic-fixture-author"
+      },
+      "occurred_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "review_recipes": [
+    {
+      "claim_id": "CLM-SYN-THERMAL",
+      "state": "accepted",
+      "scope": "synthetic:thermal",
+      "reviewer": {
+        "kind": "workflow",
+        "id": "synthetic-authorized-test"
+      },
+      "reason": "只验证软件中的合成状态设置，不确认现实模型。",
+      "evidence_source": "SRC-SYN-THERMAL"
+    },
+    {
+      "claim_id": "CLM-SYN-PRESSURE",
+      "state": "accepted",
+      "scope": "synthetic:pressure",
+      "reviewer": {
+        "kind": "workflow",
+        "id": "synthetic-authorized-test"
+      },
+      "reason": "只验证软件中的合成状态设置，不确认现实模型。",
+      "evidence_source": "SRC-SYN-PRESSURE"
+    },
+    {
+      "claim_id": "CLM-SYN-RETRY",
+      "state": "accepted",
+      "scope": "synthetic:retry",
+      "reviewer": {
+        "kind": "workflow",
+        "id": "synthetic-authorized-test"
+      },
+      "reason": "只验证软件中的合成状态设置，不确认现实模型。",
+      "evidence_source": "SRC-SYN-RETRY"
+    },
+    {
+      "claim_id": "CLM-SYN-CACHE",
+      "state": "accepted",
+      "scope": "synthetic:cache",
+      "reviewer": {
+        "kind": "workflow",
+        "id": "synthetic-authorized-test"
+      },
+      "reason": "只验证软件中的合成状态设置，不确认现实模型。",
+      "evidence_source": "SRC-SYN-CACHE"
+    },
+    {
+      "claim_id": "CLM-SYN-VIBRATION",
+      "state": "accepted",
+      "scope": "synthetic:vibration",
+      "reviewer": {
+        "kind": "workflow",
+        "id": "synthetic-authorized-test"
+      },
+      "reason": "只验证软件中的合成状态设置，不确认现实模型。",
+      "evidence_source": "SRC-SYN-VIBRATION"
+    },
+    {
+      "claim_id": "CLM-SYN-UNITS",
+      "state": "accepted",
+      "scope": "synthetic:units",
+      "reviewer": {
+        "kind": "workflow",
+        "id": "synthetic-authorized-test"
+      },
+      "reason": "只验证软件中的合成状态设置，不确认现实模型。",
+      "evidence_source": "SRC-SYN-UNITS"
+    },
+    {
+      "claim_id": "CLM-SYN-OCR",
+      "state": "accepted",
+      "scope": "synthetic:ocr",
+      "reviewer": {
+        "kind": "workflow",
+        "id": "synthetic-authorized-test"
+      },
+      "reason": "只验证软件中的合成状态设置，不确认现实模型。",
+      "evidence_source": "SRC-SYN-OCR"
+    },
+    {
+      "claim_id": "CLM-SYN-REPEAT",
+      "state": "accepted",
+      "scope": "synthetic:repeat",
+      "reviewer": {
+        "kind": "workflow",
+        "id": "synthetic-authorized-test"
+      },
+      "reason": "只验证软件中的合成状态设置，不确认现实模型。",
+      "evidence_source": "SRC-SYN-REPEAT"
+    }
+  ],
+  "query_seeds": [
+    {
+      "query_id": "Q-SYN-SEED",
+      "query": "如何迁移预热条件？"
+    }
+  ]
+}

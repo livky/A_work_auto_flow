@@ -14,7 +14,7 @@
     "MaterialNode": {
       "type": "object", "required": ["id", "title", "kind", "path", "fingerprint", "keywords", "review", "risks"],
       "properties": {
-        "id": {"type": "string"}, "title": {"type": "string"}, "kind": {"type": "string"},
+        "id": {"type": "string"}, "title": {"type": "string"}, "kind": {"type": "string"}, "level": {"type": ["string", "null"]},
         "path": {"type": "string"}, "fingerprint": {"type": "string"},
         "keywords": {"type": "array", "items": {"type": "string"}},
         "review": {"type": "object", "properties": {"status": {"type": "string"}, "reviewer": {"type": ["string", "null"]}}},

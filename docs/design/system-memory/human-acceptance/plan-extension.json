@@ -1,0 +1,35 @@
+{
+  "version": "1.1",
+  "base_technical_tests": 115,
+  "additional_human_tests": 18,
+  "total_planned_tests": 133,
+  "extends_package": "W13",
+  "requires": [
+    "W12",
+    "existing-W13-technical-checks"
+  ],
+  "human_test_ids": [
+    "H01",
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "H06",
+    "H07",
+    "H08",
+    "H09",
+    "H10",
+    "H11",
+    "H12",
+    "H13",
+    "H14",
+    "H15",
+    "H16",
+    "H17",
+    "H18"
+  ],
+  "acceptance_file": "cases.json",
+  "user_review_required": true,
+  "status": "planned",
+  "preserve_original_baseline": true
+}

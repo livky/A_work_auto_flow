@@ -1,0 +1,175 @@
+{
+  "fixture_version": 1,
+  "scenarios": [
+    {
+      "scenario_id": "SC-BASE",
+      "title": "正常四层记录与八类对象",
+      "record_ids": [
+        "MEM-SRC-THERMAL",
+        "MEM-EVENT-COMPARE",
+        "MEM-EXP-THERMAL",
+        "MEM-MAP-THERMAL"
+      ],
+      "setup": "载入固定基础配方；不写入真实业务区。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-LEGACY",
+      "title": "旧对象与类型适配",
+      "record_ids": [],
+      "setup": "分别生成旧版有/无记忆入口的八类业务对象，以及无稳定 ID 的知识文档。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-QUESTION",
+      "title": "五种问题状态与目标变更",
+      "record_ids": [
+        "MEM-Q-OPEN",
+        "MEM-Q-INVESTIGATING",
+        "MEM-Q-BLOCKED",
+        "MEM-Q-RESOLVED",
+        "MEM-Q-SUPERSEDED",
+        "MEM-GOAL-OLD",
+        "MEM-GOAL-NEW"
+      ],
+      "setup": "每条用例从独立初始副本开始，避免上一状态变更污染下一用例。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-RACE",
+      "title": "重复请求与两个写入者",
+      "record_ids": [
+        "MEM-EXP-THERMAL"
+      ],
+      "setup": "从同一 HEAD 发起两个进程；使用屏障控制到达 HEAD 比较点。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-STORAGE",
+      "title": "提交五个故障窗口",
+      "record_ids": [
+        "MEM-EXP-THERMAL"
+      ],
+      "setup": "在写修订、flush、改名、HEAD 替换前、HEAD 替换后逐点注入异常；用子进程退出测试恢复。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-EVIDENCE",
+      "title": "复核与依赖传播",
+      "record_ids": [
+        "MEM-EXP-THERMAL",
+        "MEM-MAP-THERMAL",
+        "MEM-EXP-CROSS",
+        "MEM-MAP-CROSS"
+      ],
+      "setup": "用测试授权流程准备 accepted 且封存的旧 Run；建立 source→CLM→experience→map→report 的显式依赖。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-SEARCH",
+      "title": "八主题跨对象检索",
+      "record_ids": [
+        "MEM-EXP-THERMAL",
+        "MEM-EXP-PRESSURE",
+        "MEM-EXP-RETRY",
+        "MEM-EXP-CACHE",
+        "MEM-EXP-VIBRATION",
+        "MEM-EXP-UNITS",
+        "MEM-EXP-OCR",
+        "MEM-EXP-REPEAT"
+      ],
+      "setup": "使用 queries.json；分别运行当前基线、多表示无图、完整方案；固定模型与配置。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-BOUNDARY",
+      "title": "预算与禁止直接迁移",
+      "record_ids": [
+        "MEM-EXP-THERMAL",
+        "MEM-ASSOC-VALID",
+        "MEM-ASSOC-WRONG"
+      ],
+      "setup": "复制边界文本构成超预算条目；在最后一个字符和 Unicode 非 BMP 字符处做边界检查。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-GRAPH",
+      "title": "关系循环、菱形与错误类比",
+      "record_ids": [
+        "MEM-ASSOC-VALID",
+        "MEM-ASSOC-WRONG"
+      ],
+      "setup": "构造 A→B→C→A 导航环及 A→B/C→D 菱形；另构造非法 supports 环；节点总数 6。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-ACCESS",
+      "title": "范围、排除与外部来源",
+      "record_ids": [
+        "MEM-EXP-THERMAL",
+        "MEM-EXP-PRESSURE"
+      ],
+      "setup": "临时目录外模拟已登记可读原件、未登记诱饵文件；监视 read/hash/open，禁止读取诱饵。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-CONSOLIDATE",
+      "title": "变化清单与跨项目总结",
+      "record_ids": [
+        "MEM-CONSOLIDATION",
+        "MEM-EXP-CROSS",
+        "MEM-MAP-CROSS",
+        "MEM-Q-BLOCKED"
+      ],
+      "setup": "准备一个已处理、一个新增、一个 defer 项；分别修改来源与 AI 综合文字。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-HISTORY",
+      "title": "研究经过与 AI 续接",
+      "record_ids": [
+        "MEM-GOAL-OLD",
+        "MEM-GOAL-NEW",
+        "MEM-ROUTE-OLD",
+        "MEM-ROUTE-NEW",
+        "MEM-CHECKPOINT"
+      ],
+      "setup": "增加一个发生时间未知事件及一次失败 Run；保留旧目标和缺失 B 输入。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-UI",
+      "title": "工作台操作与错误展示",
+      "record_ids": [
+        "MEM-EXP-THERMAL"
+      ],
+      "setup": "隔离测试服务；使用真实 HTTP 后端；注入保存冲突、索引失败与复核拒绝；恶意文本只在测试页面。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-UPGRADE",
+      "title": "已扩展旧工作区",
+      "record_ids": [],
+      "setup": "必须调用现有 upgrade_fixture.populate；叠加四层记录、旁目录、历史、请求回执和新业务 schema；继承完整保护清单。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-SKILL",
+      "title": "AI 分类、落盘与续接",
+      "record_ids": [
+        "MEM-EVENT-COMPARE",
+        "MEM-CHECKPOINT",
+        "MEM-EXP-CROSS"
+      ],
+      "setup": "将固定任务卡给 AI，运行真实 CLI；另一轮仅获得持久文件和续接包，不提供原聊天。",
+      "synthetic_only": true
+    },
+    {
+      "scenario_id": "SC-SCALE",
+      "title": "可重复的记录规模",
+      "record_ids": [],
+      "setup": "克隆基础配方为 100 个 owner、10,000 条记录，每条正文 1 KiB；ID、引用及内容添加序号保持唯一；另测单 owner 10,000 条。",
+      "synthetic_only": true
+    }
+  ]
+}

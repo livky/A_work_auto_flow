@@ -34,10 +34,34 @@ def safe(root, relative):
 def framework_files(source):
     """允许替换的框架，不包含任何业务实例、运行时、来源登记或检索历史。"""
     fixed = ['setup.cmd', 'workbench.cmd', 'portable.cmd', 'README.md', 'ARCHITECTURE.md', '.gitattributes',
-             'services/qdrant/requirements.lock.txt', 'services/qdrant/README.md', 'core-algorithms/README.md']
+             'services/qdrant/requirements.lock.txt', 'services/qdrant/README.md', 'core-algorithms/README.md',
+             'automation/schemas/memory-v1.schema.json', 'automation/schemas/memory-v1.d.ts',
+             'automation/schemas/memory-v2.schema.json', 'automation/schemas/memory-v2.d.ts',
+             'automation/schemas/memory-v3.schema.json', 'automation/schemas/memory-v3.d.ts',
+             'automation/testing/catalog.json',
+             'automation/schemas/memory-detail-v2.example.json']
     patterns = ['docs/templates/**/*', 'docs/design/*.md', 'docs/*.md',
                 'services/qdrant/*.py']
     names = set(fixed)
+    # Only version-controlled acceptance templates travel with framework code;
+    # executed AI requests and reports remain in their owner Run.
+    names.update(p.relative_to(source).as_posix() for p in (source / 'automation/testing/templates').glob('*.json'))
+    # 记忆契约是 Python core 的运行输入；设计与冻结合成配方也是随源码
+    # 分发的可复现实验输入。逐名登记 JSON，禁止通配业务 JSON 或本机回执。
+    memory_docs = 'docs/design/system-memory/'
+    names.update(memory_docs + name for name in (
+        '01-data-contracts.md', '02-services-algorithms.md', '03-work-packages.md',
+        '04-acceptance.md', '05-human-acceptance.md', 'STATUS.md', 'IMPLEMENTATION.md', 'L0-L4-REFACTOR.md',
+        'RESEARCH-REPORT-COMPOSITION.md',
+        'human-acceptance/REVIEW_TEMPLATE.md', 'human-acceptance/result-template.json',
+        'human-acceptance/read-event-template.json', 'human-acceptance/plan-extension.json',
+        'human-acceptance/cases.json', 'fixtures/README.md', 'fixtures/verify_plan.py',
+        'fixtures/fixture-manifest.json', 'fixtures/acceptance.json', 'fixtures/ai-cases.json',
+        'fixtures/negative-drafts.json', 'fixtures/queries.json', 'fixtures/records.json',
+        'fixtures/scenarios.json', 'fixtures/variants.json', 'fixtures/work-packages.json',
+        'fixtures/sources/cache.md', 'fixtures/sources/ocr.md', 'fixtures/sources/pressure.md',
+        'fixtures/sources/repeat.md', 'fixtures/sources/retry.md', 'fixtures/sources/thermal.md',
+        'fixtures/sources/thermal-v2.md', 'fixtures/sources/units.md', 'fixtures/sources/vibration.md'))
     # 在遍历时剪枝，避免每次升级遍历数万份前端依赖后再过滤。
     for folder, dirs, files in os.walk(source / 'automation'):
         dirs[:] = [d for d in dirs if d not in {'node_modules', '__pycache__', 'test-results', 'playwright-report'}]

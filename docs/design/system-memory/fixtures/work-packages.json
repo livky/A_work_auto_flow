@@ -1,0 +1,510 @@
+{
+  "schema_version": 1,
+  "packages": [
+    {
+      "package_id": "W00",
+      "title": "执行基线与合成测试材料",
+      "depends_on": [],
+      "goals": [
+        "T01",
+        "T09"
+      ],
+      "deliverables": [
+        "当前提交及差异、现有回归结果",
+        "fixture.materialize/固定时钟ID/故障注入支持"
+      ],
+      "implementation_steps": [
+        "保存现有行为与环境基线，不改变测试门槛。",
+        "把recipes转为临时旧对象和待提交草案；最终hash由真实适配器计算。",
+        "冻结查询分割；建立逐用例结果记录，不提前标pass。"
+      ],
+      "locations": [
+        "docs/design/system-memory/fixtures/",
+        "automation/tests/memory_fixture.py（待建）"
+      ],
+      "test_ids": [
+        "B01",
+        "B02",
+        "B03"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W01",
+      "title": "统一数据契约",
+      "depends_on": [
+        "W00"
+      ],
+      "goals": [
+        "T01",
+        "T02"
+      ],
+      "deliverables": [
+        "MemoryRecord/Owner/Ref/Claim/请求回执schema",
+        "公共验证和前端类型生成"
+      ],
+      "implementation_steps": [
+        "实现01文档字段和状态约束，补齐每个kind正反例。",
+        "规范hash、未知值、类型登记与client_key批量解析。",
+        "以同一schema生成前端类型，写失败字段定位。"
+      ],
+      "locations": [
+        "automation/scripts/memory/contracts.py（待建）",
+        "automation/schemas/memory-v1.schema.json（待建）"
+      ],
+      "test_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W02",
+      "title": "版本存储与最小调用闭环",
+      "depends_on": [
+        "W01"
+      ],
+      "goals": [
+        "T01",
+        "T02"
+      ],
+      "deliverables": [
+        "不可变commit/HEAD/回执/锁/恢复",
+        "inspect、validate-draft、commit、recover最小CLI"
+      ],
+      "implementation_steps": [
+        "先实现首次保存、按ID读取与单记录修订。",
+        "加入批次原子性、幂等ledger和no_change回执，再测试全部故障窗口。",
+        "接入CLI JSON输出/失败码，索引以接口桩返回pending并可补偿。"
+      ],
+      "locations": [
+        "automation/scripts/memory/store.py、service.py、cli.py、recovery.py（待建）",
+        "automation/scripts/workspace_cli.py"
+      ],
+      "test_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W03",
+      "title": "八类旧对象适配",
+      "depends_on": [
+        "W02"
+      ],
+      "goals": [
+        "T01",
+        "T09"
+      ],
+      "deliverables": [
+        "八类OwnerAdapter及adopt-owner",
+        "保留旧Run/CLM/文档身份的读取映射"
+      ],
+      "implementation_steps": [
+        "按01文档分别实现专属目录、旁目录和tool映射。",
+        "缺稳定ID文档按需采用，原正文和旧manifest不改。",
+        "把已有Run作为事件视图，保留旧命令及复核指纹。"
+      ],
+      "locations": [
+        "automation/scripts/memory/owners.py、policy.py（待建）",
+        "automation/scripts/workbench_app/projection.py"
+      ],
+      "test_ids": [
+        "O01",
+        "O02",
+        "O03",
+        "O04",
+        "O05",
+        "O06",
+        "O07",
+        "O08"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W04",
+      "title": "结论复核与失效传播",
+      "depends_on": [
+        "W03"
+      ],
+      "goals": [
+        "T02",
+        "T05"
+      ],
+      "deliverables": [
+        "memory CLM读取适配和ReviewEvent",
+        "正式证据检查与派生更新影响图"
+      ],
+      "implementation_steps": [
+        "扩展EvidenceGraph读取，不修改旧fingerprint解释。",
+        "绑定新claim到证据记录content_hash，动态状态独立。",
+        "实现撤回/替代/来源变化回源及跨对象影响；处理循环、范围和混合状态。"
+      ],
+      "locations": [
+        "automation/scripts/memory/evidence_adapter.py、impact.py（待建）",
+        "automation/scripts/evidence.py"
+      ],
+      "test_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E10"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W05",
+      "title": "问题、目标、路线与检查点",
+      "depends_on": [
+        "W03"
+      ],
+      "goals": [
+        "T03",
+        "T06"
+      ],
+      "deliverables": [
+        "状态转换函数、目标/路线版本、检查点",
+        "基础/积累/探索策略解析"
+      ],
+      "implementation_steps": [
+        "先实现问题状态机及resolved/superseded依据。",
+        "加入目标演进、路线阻碍/重开及四类失败。",
+        "完成策略优先级和检查点提交；执行状态不自动驱动问题状态。"
+      ],
+      "locations": [
+        "automation/scripts/memory/research.py、policy.py（待建）"
+      ],
+      "test_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W06",
+      "title": "统一索引与多表示检索",
+      "depends_on": [
+        "W03"
+      ],
+      "goals": [
+        "T04"
+      ],
+      "deliverables": [
+        "新增SQLite派生表、索引水位和多表示",
+        "FTS、向量适配、折叠排名与评价入口"
+      ],
+      "implementation_steps": [
+        "先验收无模型FTS和可按ID重建。",
+        "加入表示槽约束、通道内去重与RRF。",
+        "加入现有向量后端与版本隔离，仅用32条开发查询调试；完整方案/留出集I08归W13，避免下游未完成就要求集成通过。"
+      ],
+      "locations": [
+        "automation/scripts/memory/index.py、search.py、evaluation.py（待建）",
+        "automation/scripts/retrieval.py、qdrant_backend.py"
+      ],
+      "test_ids": [
+        "I01",
+        "I02",
+        "I03",
+        "I04",
+        "I05",
+        "I06",
+        "I07",
+        "I09"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W07",
+      "title": "跨对象相关性与关系记录",
+      "depends_on": [
+        "W04",
+        "W06"
+      ],
+      "goals": [
+        "T04",
+        "T05"
+      ],
+      "deliverables": [
+        "关键词/语义/显式关系候选",
+        "单一关系写入、邻接遍历及过期检查"
+      ],
+      "implementation_steps": [
+        "先读取/保存显式关系和两端版本。",
+        "实现Jaccard/向量候选解释、处理状态和单边存储。",
+        "实现有界图扩展、排除先行与循环去重，不自动建科学支持。"
+      ],
+      "locations": [
+        "automation/scripts/memory/associations.py（待建）",
+        "automation/scripts/workbench_app/analysis.py、projection.py"
+      ],
+      "test_ids": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W08",
+      "title": "研究经过、检索包与AI续接",
+      "depends_on": [
+        "W04",
+        "W05",
+        "W06",
+        "W07"
+      ],
+      "goals": [
+        "T03",
+        "T04"
+      ],
+      "deliverables": [
+        "history/resume/expand/context服务",
+        "角色分组、预算、两次反馈扩展、总结材料包"
+      ],
+      "implementation_steps": [
+        "按目标和路线组装确定性经过，处理未知时间和分页。",
+        "组装续接并重验来源，保留已完成和缺口。",
+        "统一检索包预算与范围；复用context_engine反馈链，补入跨对象版本清单。"
+      ],
+      "locations": [
+        "automation/scripts/memory/history.py、packets.py、summaries.py（待建）",
+        "automation/scripts/context_engine.py"
+      ],
+      "test_ids": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W09",
+      "title": "价值触发、巩固与跨项目总结",
+      "depends_on": [
+        "W08"
+      ],
+      "goals": [
+        "T05",
+        "T06"
+      ],
+      "deliverables": [
+        "prepare/apply变化清单与巩固水位",
+        "L2/L3总结保存和采用结果反馈"
+      ],
+      "implementation_steps": [
+        "计算changed/affected/remaining以及basis_hash。",
+        "校验AI的revise/retain/defer，保留未处理项，拒绝过期依据。",
+        "实现总结提交与新解释修订、去重/冲突候选、反馈关联到后续Run。"
+      ],
+      "locations": [
+        "automation/scripts/memory/consolidation.py、summaries.py、feedback.py（待建）"
+      ],
+      "test_ids": [
+        "N01",
+        "N02",
+        "N03",
+        "N04",
+        "N05",
+        "N06",
+        "N07",
+        "N08"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W10",
+      "title": "工作台与完整公共入口",
+      "depends_on": [
+        "W09"
+      ],
+      "goals": [
+        "T07"
+      ],
+      "deliverables": [
+        "/api/v1/memory固定服务路由",
+        "对象/检索/经过/总结/关系/续接页面和预构建资源"
+      ],
+      "implementation_steps": [
+        "映射统一服务与错误契约，不在前端复制业务状态逻辑。",
+        "完成查看、编辑冲突、索引补偿、复核、关联和复制续接。",
+        "执行浏览器E2E、安全显示、构建与指纹检查。"
+      ],
+      "locations": [
+        "automation/scripts/workbench_app/web.py、service.py",
+        "automation/frontend/src/Memory.tsx、MemorySearch.tsx（待建）",
+        "automation/ui/workbench-assets/"
+      ],
+      "test_ids": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W11",
+      "title": "迁移、保护清单与离线交付",
+      "depends_on": [
+        "W09"
+      ],
+      "goals": [
+        "T09"
+      ],
+      "deliverables": [
+        "记忆导出导入和旧材料显式采用",
+        "共享升级fixture扩展、受控发行清单、索引/依赖恢复"
+      ],
+      "implementation_steps": [
+        "先实现导出依赖清单、预览/冲突/恢复与路径映射。",
+        "扩展现有upgrade_fixture保护整个memory历史、旁目录和用户扩展。",
+        "跑真实setup预览、升级、重复升级、源码恢复及完整离线依赖链路；补足嵌套计划/schema/测试素材的受控分发清单。"
+      ],
+      "locations": [
+        "automation/scripts/memory/migration.py（待建）",
+        "automation/tests/upgrade_fixture.py",
+        "automation/scripts/deployment.py、portable.py"
+      ],
+      "test_ids": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11"
+      ],
+      "status": "planned",
+      "verification_depends_on": [
+        "W10"
+      ]
+    },
+    {
+      "package_id": "W12",
+      "title": "正式调用指导与AI Skill",
+      "depends_on": [
+        "W10",
+        "W11"
+      ],
+      "goals": [
+        "T08"
+      ],
+      "deliverables": [
+        "真实接口使用指南、示例、失败处理",
+        "更新workspace-context/context-maintenance/evidence-inspection与research-loop入口"
+      ],
+      "implementation_steps": [
+        "所有底层数据结构/函数/算法验收后，从真实接口生成调用示例。",
+        "按职责更新现有工作流；在执行时使用skill-creator约定，保留用户Skill。",
+        "运行固定AI任务卡，进行第二轮仅凭落盘记录的续接评价。"
+      ],
+      "locations": [
+        "automation/workflows/各相关SKILL.md",
+        "automation/scripts/install_workspace_skills.py",
+        ".agents/skills/相关入口（实施时维护）",
+        "docs/MEMORY_USAGE.md（待建）"
+      ],
+      "test_ids": [
+        "K01",
+        "K02",
+        "K03",
+        "K04",
+        "K05",
+        "K06"
+      ],
+      "status": "planned"
+    },
+    {
+      "package_id": "W13",
+      "title": "整体评价与交付核对",
+      "depends_on": [
+        "W12"
+      ],
+      "goals": [
+        "T01",
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "T06",
+        "T07",
+        "T08",
+        "T09"
+      ],
+      "deliverables": [
+        "固定验证Run与逐用例报告",
+        "源码/资源/依赖/README/恢复/发布准备核对"
+      ],
+      "implementation_steps": [
+        "执行完整回归、留出评价、AI长链演练和规模测试。",
+        "复查README概念、目录维护、知识导入、常用Skill和迁移命令。",
+        "保存实际程序版本、输入/输出hash和限制；公开上传另按用户发布指令。"
+      ],
+      "locations": [
+        "README.md、docs/使用/部署手册",
+        "runs/<实际验收Run>/",
+        "docs/design/system-memory/STATUS.md"
+      ],
+      "test_ids": [
+        "I08",
+        "Z01",
+        "Z02",
+        "Z03",
+        "Z04",
+        "Z05",
+        "Z06"
+      ],
+      "status": "planned"
+    }
+  ]
+}

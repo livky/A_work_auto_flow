@@ -1,0 +1,4649 @@
+{
+  "schema_version": 1,
+  "revision": 12,
+  "capabilities": [
+    {
+      "id": "workspace",
+      "title": "登记与校验",
+      "acceptance": "创建/刷新可追溯对象，真实损坏或缺入口明确失败",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "owned-runs",
+      "title": "对象内Run",
+      "acceptance": "八类归属与旧路径可发现，输入与历史不复制或覆盖",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "sources",
+      "title": "来源与权限",
+      "acceptance": "固定引用与撤销即时生效，不泄漏旧缓存或越界原件",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "store",
+      "title": "版本保存与恢复",
+      "acceptance": "预检/CAS/不可变旧版/幂等/崩溃恢复正确",
+      "actual_ai_scenarios": [
+        "A01",
+        "A02",
+        "A06"
+      ]
+    },
+    {
+      "id": "evidence",
+      "title": "复核与失效",
+      "acceptance": "逐结论范围、撤回和下游传播保留历史",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "retrieval",
+      "title": "检索",
+      "acceptance": "真实FTS/可选向量可检索，L0排除且排序不冒充科学支持",
+      "actual_ai_scenarios": [
+        "A01",
+        "A02",
+        "A06"
+      ]
+    },
+    {
+      "id": "context",
+      "title": "上下文预算",
+      "acceptance": "选择/排除与字符预算有效，扩展有界并报告缺口",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "resume",
+      "title": "目标与续接",
+      "acceptance": "恢复目标/检查点/旧输入，复制与回读保持固定内容",
+      "actual_ai_scenarios": [
+        "A01",
+        "A02",
+        "A06"
+      ]
+    },
+    {
+      "id": "associations",
+      "title": "跨研究总结",
+      "acceptance": "固定依据跨研究比较，导航相似不晋升可信状态",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "research",
+      "title": "研究文档",
+      "acceptance": "技术单元、章节与报告可独立阅读，固定版本和图表可追溯",
+      "actual_ai_scenarios": [
+        "A03",
+        "A04",
+        "A05"
+      ]
+    },
+    {
+      "id": "workbench",
+      "title": "工作台与任务",
+      "acceptance": "实际页面、图谱导出、来源预览和监测任务可用",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "upgrade",
+      "title": "Windows升级",
+      "acceptance": "扩展旧工作区真实setup预览/升级/重复/恢复保护所有数据",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "dependencies",
+      "title": "依赖与迁移",
+      "acceptance": "离线包校验/组件切换/恢复不改变用户原件",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "testing",
+      "title": "测试基线",
+      "acceptance": "选择版本和覆盖可审计，零测试/失败/skip/超时不误报通过",
+      "actual_ai_scenarios": []
+    },
+    {
+      "id": "actual-ai",
+      "title": "实际AI留存",
+      "acceptance": "机械留存不预填AI正文或人工通过，实际场景另留证据",
+      "actual_ai_scenarios": []
+    }
+  ],
+  "tests": [
+    {
+      "id": "browser:e2e/memory.spec.ts::四层记录、真实编辑冲突、索引待补偿与安全导出",
+      "kind": "browser",
+      "selector": "四层记录、真实编辑冲突、索引待补偿与安全导出",
+      "path": "automation/frontend/e2e/memory.spec.ts",
+      "capability": "store",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/memory.spec.ts::研究、Run、知识与报告真实记录及辅助对象可区分",
+      "kind": "browser",
+      "selector": "研究、Run、知识与报告真实记录及辅助对象可区分",
+      "path": "automation/frontend/e2e/memory.spec.ts",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/memory.spec.ts::缺范围复核被拒绝并保留逐结论状态",
+      "kind": "browser",
+      "selector": "缺范围复核被拒绝并保留逐结论状态",
+      "path": "automation/frontend/e2e/memory.spec.ts",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/memory.spec.ts::跨研究材料回填L3与L4，并采纳有边界的导航关联",
+      "kind": "browser",
+      "selector": "跨研究材料回填L3与L4，并采纳有边界的导航关联",
+      "path": "automation/frontend/e2e/memory.spec.ts",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/memory.spec.ts::连续研究报告、固定图示、目录路由和窄屏阅读",
+      "kind": "browser",
+      "selector": "连续研究报告、固定图示、目录路由和窄屏阅读",
+      "path": "automation/frontend/e2e/memory.spec.ts",
+      "capability": "store",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/memory.spec.ts::逐层读取固定原件、返回已读版本，并识别原件变化",
+      "kind": "browser",
+      "selector": "逐层读取固定原件、返回已读版本，并识别原件变化",
+      "path": "automation/frontend/e2e/memory.spec.ts",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/workbench.spec.ts::一万节点十万关系下局部图和轻量状态响应",
+      "kind": "browser",
+      "selector": "一万节点十万关系下局部图和轻量状态响应",
+      "path": "automation/frontend/e2e/workbench.spec.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": false,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": [
+        "scale"
+      ]
+    },
+    {
+      "id": "browser:e2e/workbench.spec.ts::勾选联动图与导出，分类结合搜索且保留跨分类勾选",
+      "kind": "browser",
+      "selector": "勾选联动图与导出，分类结合搜索且保留跨分类勾选",
+      "path": "automation/frontend/e2e/workbench.spec.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/workbench.spec.ts::完整导航、关系、证据、候选和摘要",
+      "kind": "browser",
+      "selector": "完整导航、关系、证据、候选和摘要",
+      "path": "automation/frontend/e2e/workbench.spec.ts",
+      "capability": "workbench",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev",
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "check:frontend-types",
+      "kind": "check",
+      "selector": "typecheck",
+      "path": "automation/frontend/tsconfig.json",
+      "capability": "workbench",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ResearchDocument.test.tsx::filters raw/legacy graph nodes before traversal; higher layers are opt-in",
+      "kind": "component",
+      "selector": "filters raw/legacy graph nodes before traversal; higher layers are opt-in",
+      "path": "automation/frontend/src/ResearchDocument.test.tsx",
+      "capability": "research",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ResearchDocument.test.tsx::labels an uncomposed legacy object and appends its unplaced registered figure once",
+      "kind": "component",
+      "selector": "labels an uncomposed legacy object and appends its unplaced registered figure once",
+      "path": "automation/frontend/src/ResearchDocument.test.tsx",
+      "capability": "research",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ResearchDocument.test.tsx::reads authored order once, embeds a controlled figure, and keeps metadata in the archive",
+      "kind": "component",
+      "selector": "reads authored order once, embeds a controlled figure, and keeps metadata in the archive",
+      "path": "automation/frontend/src/ResearchDocument.test.tsx",
+      "capability": "research",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ResearchDocument.test.tsx::reads independent documents with selected unit blocks and chapter context",
+      "kind": "component",
+      "selector": "reads independent documents with selected unit blocks and chapter context",
+      "path": "automation/frontend/src/ResearchDocument.test.tsx",
+      "capability": "research",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ResearchDocument.test.tsx::renders equations and tables without HTML execution or arbitrary images",
+      "kind": "component",
+      "selector": "renders equations and tables without HTML execution or arbitrary images",
+      "path": "automation/frontend/src/ResearchDocument.test.tsx",
+      "capability": "research",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/components.test.tsx::弹窗纯文本显示材料并支持关闭",
+      "kind": "component",
+      "selector": "弹窗纯文本显示材料并支持关闭",
+      "path": "automation/frontend/src/components.test.tsx",
+      "capability": "workbench",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/graph-model.test.ts::一万材料十万稀疏关系保持有界可见图",
+      "kind": "component",
+      "selector": "一万材料十万稀疏关系保持有界可见图",
+      "path": "automation/frontend/src/graph-model.test.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": false,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": [
+        "scale"
+      ]
+    },
+    {
+      "id": "component:src/graph-model.test.ts::勾选单个或多个材料只展示其关联，清空后恢复全图",
+      "kind": "component",
+      "selector": "勾选单个或多个材料只展示其关联，清空后恢复全图",
+      "path": "automation/frontend/src/graph-model.test.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/graph-model.test.ts::勾选根节点遵守跳数、排除和关系类型，不回退为全部材料",
+      "kind": "component",
+      "selector": "勾选根节点遵守跳数、排除和关系类型，不回退为全部材料",
+      "path": "automation/frontend/src/graph-model.test.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/graph-model.test.ts::反证保留在证据链，相似候选不作为证据链",
+      "kind": "component",
+      "selector": "反证保留在证据链，相似候选不作为证据链",
+      "path": "automation/frontend/src/graph-model.test.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/graph-model.test.ts::固定输入聚类可重复；主题归属不制造证据关系",
+      "kind": "component",
+      "selector": "固定输入聚类可重复；主题归属不制造证据关系",
+      "path": "automation/frontend/src/graph-model.test.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/graph-model.test.ts::折叠和展开保留底层事实，多重归属不会复制原节点",
+      "kind": "component",
+      "selector": "折叠和展开保留底层事实，多重归属不会复制原节点",
+      "path": "automation/frontend/src/graph-model.test.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/graph-model.test.ts::排除节点不会作为隐藏中介扩展，摘要只导出可见选择",
+      "kind": "component",
+      "selector": "排除节点不会作为隐藏中介扩展，摘要只导出可见选择",
+      "path": "automation/frontend/src/graph-model.test.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/memory-contract.test.ts::executes every registered kind and positive/negative variant in both runtimes",
+      "kind": "component",
+      "selector": "executes every registered kind and positive/negative variant in both runtimes",
+      "path": "automation/frontend/src/memory-contract.test.ts",
+      "capability": "store",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/memory-contract.test.ts::rejects non-finite browser values before JSON can coerce them to null",
+      "kind": "component",
+      "selector": "rejects non-finite browser values before JSON can coerce them to null",
+      "path": "automation/frontend/src/memory-contract.test.ts",
+      "capability": "store",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "integration:dependency-release",
+      "kind": "integration",
+      "selector": "dependency-release",
+      "path": "automation/tests/verify_dependency_release.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": false,
+      "requires": [
+        "windows",
+        "dependency-bundle"
+      ],
+      "authorization": [
+        "dependency-release"
+      ],
+      "on_impact": true
+    },
+    {
+      "id": "python:test_ai_review.ActualAIRecorderTests.test_assessment_requires_all_observations_and_refuses_human_acceptance",
+      "kind": "python",
+      "selector": "test_ai_review.ActualAIRecorderTests.test_assessment_requires_all_observations_and_refuses_human_acceptance",
+      "path": "automation/tests/test_ai_review.py",
+      "capability": "actual-ai",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_ai_review.ActualAIRecorderTests.test_failure_then_success_preserves_unique_receipts",
+      "kind": "python",
+      "selector": "test_ai_review.ActualAIRecorderTests.test_failure_then_success_preserves_unique_receipts",
+      "path": "automation/tests/test_ai_review.py",
+      "capability": "actual-ai",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_ai_review.ActualAIRecorderTests.test_read_archives_exact_snapshot_with_declared_partial_coverage",
+      "kind": "python",
+      "selector": "test_ai_review.ActualAIRecorderTests.test_read_archives_exact_snapshot_with_declared_partial_coverage",
+      "path": "automation/tests/test_ai_review.py",
+      "capability": "actual-ai",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_ai_review.ActualAIRecorderTests.test_render_without_reading_never_invents_pass",
+      "kind": "python",
+      "selector": "test_ai_review.ActualAIRecorderTests.test_render_without_reading_never_invents_pass",
+      "path": "automation/tests/test_ai_review.py",
+      "capability": "actual-ai",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_ai_review.ActualAIRecorderTests.test_timeout_is_not_success",
+      "kind": "python",
+      "selector": "test_ai_review.ActualAIRecorderTests.test_timeout_is_not_success",
+      "path": "automation/tests/test_ai_review.py",
+      "capability": "actual-ai",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_algorithm_baseline_and_function_scope",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_algorithm_baseline_and_function_scope",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_expansion_searches_cross_module_but_keeps_budget_and_stops",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_expansion_searches_cross_module_but_keeps_budget_and_stops",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_large_run_brief_and_excluded_required_are_explicit",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_large_run_brief_and_excluded_required_are_explicit",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_preferences_and_unindexed_file_boundaries",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_preferences_and_unindexed_file_boundaries",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_required_budget_gap_and_missing_algorithm_are_visible",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_required_budget_gap_and_missing_algorithm_are_visible",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_software_functions_do_not_become_core_algorithm_evidence",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_software_functions_do_not_become_core_algorithm_evidence",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_solved_feedback_does_not_expand_or_change_truth",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_solved_feedback_does_not_expand_or_change_truth",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_source_keywords_and_role_override",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_source_keywords_and_role_override",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_context_engine.ContextEngineTests.test_user_choices_persist_and_can_be_reversed",
+      "kind": "python",
+      "selector": "test_context_engine.ContextEngineTests.test_user_choices_persist_and_can_be_reversed",
+      "path": "automation/tests/test_context_engine.py",
+      "capability": "context",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_component_swap_preserves_data_and_removes_stale_packages_then_restores",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_component_swap_preserves_data_and_removes_stale_packages_then_restores",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_core_preview_does_not_load_an_optional_full_bundle",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_core_preview_does_not_load_an_optional_full_bundle",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_framework_lock_upgrades_and_rolls_back_with_user_config_preserved",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_framework_lock_upgrades_and_rolls_back_with_user_config_preserved",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_interrupted_component_switch_automatically_restores",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_interrupted_component_switch_automatically_restores",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_inventory_only_includes_distribution_files_not_local_private_additions",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_inventory_only_includes_distribution_files_not_local_private_additions",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_no_python_bootstrap_preview_corruption_and_path_boundary",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_no_python_bootstrap_preview_corruption_and_path_boundary",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_paths_cannot_escape_or_smuggle_business_database",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_paths_cannot_escape_or_smuggle_business_database",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_restore_preflights_modified_dependencies_and_corrupt_backup",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_restore_preflights_modified_dependencies_and_corrupt_backup",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_verify_rejects_corruption_extra_files_and_incompatible_lock",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_verify_rejects_corruption_extra_files_and_incompatible_lock",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_controller_start_stop_idempotence_and_errors_are_visible",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_controller_start_stop_idempotence_and_errors_are_visible",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_corrupt_backup_blocks_restore",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_corrupt_backup_blocks_restore",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_environment_missing_or_wrong_versions_is_not_reused",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_environment_missing_or_wrong_versions_is_not_reused",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_expanded_workspace_still_rejects_missing_tools_and_bad_business_metadata",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_expanded_workspace_still_rejects_missing_tools_and_bad_business_metadata",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_fixture_covers_modules_and_never_marks_claims_accepted",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_fixture_covers_modules_and_never_marks_claims_accepted",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_generate_preview_idempotence_and_isolation",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_generate_preview_idempotence_and_isolation",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_http_action_origin_whitelist_and_existing_evidence_preview",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_http_action_origin_whitelist_and_existing_evidence_preview",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_keyword_index_and_full_algorithm_context",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_keyword_index_and_full_algorithm_context",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_memory_release_inputs_are_explicit_and_importable",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_memory_release_inputs_are_explicit_and_importable",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_module_inventory_is_limited_and_rejects_arbitrary_paths",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_module_inventory_is_limited_and_rejects_arbitrary_paths",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_path_registration_is_idempotent_and_preserves_other_entries",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_path_registration_is_idempotent_and_preserves_other_entries",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_portable_omits_generated_data_and_upgrade_backups",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_portable_omits_generated_data_and_upgrade_backups",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_registration_preview_repeat_and_uninstall_with_isolated_registry",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_registration_preview_repeat_and_uninstall_with_isolated_registry",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_restore_checks_all_conflicts_before_changing_any_file",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_restore_checks_all_conflicts_before_changing_any_file",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_source_change_reaches_report_and_experiment_completion",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_source_change_reaches_report_and_experiment_completion",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_upgrade_preserves_business_config_rules_and_runtime",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_upgrade_preserves_business_config_rules_and_runtime",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_upgrade_rejects_nested_target_and_changed_source",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_upgrade_rejects_nested_target_and_changed_source",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_windows_zip_upgrade_entry_and_rollback_preserve_data",
+      "kind": "python",
+      "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_windows_zip_upgrade_entry_and_rollback_preserve_data",
+      "path": "automation/tests/test_deployment_workbench.py",
+      "capability": "upgrade",
+      "quick": true,
+      "full": true,
+      "requires": [
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_accepted_but_unfinalized_run_cannot_export_formal_claim",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_accepted_but_unfinalized_run_cannot_export_formal_claim",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_background_and_counterevidence_do_not_invalidate_claims",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_background_and_counterevidence_do_not_invalidate_claims",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_changed_source_digest_blocks_previously_accepted_claim",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_changed_source_digest_blocks_previously_accepted_claim",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_duplicate_ids_bad_schema_and_atomic_stale_write",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_duplicate_ids_bad_schema_and_atomic_stale_write",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_editing_claim_does_not_reuse_previous_acceptance",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_editing_claim_does_not_reuse_previous_acceptance",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_empty_formal_context_cli_returns_nonzero_and_keeps_manifest",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_empty_formal_context_cli_returns_nonzero_and_keeps_manifest",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_empty_succeeded_run_is_warned_and_formal_gate_fails",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_empty_succeeded_run_is_warned_and_formal_gate_fails",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_finalize_preview_change_detection_and_reseal",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_finalize_preview_change_detection_and_reseal",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_formal_context_emits_only_good_claims_and_preserves_scope",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_formal_context_emits_only_good_claims_and_preserves_scope",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_formal_context_never_truncates_claim_and_rejects_wrong_scope",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_formal_context_never_truncates_claim_and_rejects_wrong_scope",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_formal_reuse_rechecks_sealed_run_files_beyond_claim_references",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_formal_reuse_rechecks_sealed_run_files_beyond_claim_references",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_legacy_link_to_retracted_run_is_explicitly_unclassified",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_legacy_link_to_retracted_run_is_explicitly_unclassified",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_missing_and_cyclic_dependencies_fail_without_looping",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_missing_and_cyclic_dependencies_fail_without_looping",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_retracted_run_propagates_to_research_then_report",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_retracted_run_propagates_to_research_then_report",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_retracting_one_claim_invalidates_consumers_of_whole_run",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_retracting_one_claim_invalidates_consumers_of_whole_run",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_review_changes_do_not_change_content_fingerprint",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_review_changes_do_not_change_content_fingerprint",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_review_claim_preview_history_and_accepted_guards",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_review_claim_preview_history_and_accepted_guards",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_sidecar_cannot_replace_run_identity_and_missing_document_fails",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_sidecar_cannot_replace_run_identity_and_missing_document_fails",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_skipped_required_check_blocks_finalize",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_skipped_required_check_blocks_finalize",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.EvidenceTests.test_unregistered_external_reference_is_not_read",
+      "kind": "python",
+      "selector": "test_evidence.EvidenceTests.test_unregistered_external_reference_is_not_read",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.HealthTests.test_cli_formal_failure_has_nonzero_exit",
+      "kind": "python",
+      "selector": "test_evidence.HealthTests.test_cli_formal_failure_has_nonzero_exit",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.HealthTests.test_full_verification_cannot_pass_skipped_tests",
+      "kind": "python",
+      "selector": "test_evidence.HealthTests.test_full_verification_cannot_pass_skipped_tests",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence.HealthTests.test_missing_components_are_reported_separately",
+      "kind": "python",
+      "selector": "test_evidence.HealthTests.test_missing_components_are_reported_separately",
+      "path": "automation/tests/test_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_background_reference_does_not_inherit_retraction",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_background_reference_does_not_inherit_retraction",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_corrupt_state_requires_explicit_recovery",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_corrupt_state_requires_explicit_recovery",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_dry_run_and_failed_scan_do_not_replace_baseline",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_dry_run_and_failed_scan_do_not_replace_baseline",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_duplicates_remain_candidates_without_promotion",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_duplicates_remain_candidates_without_promotion",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_html_escapes_untrusted_content_and_preview_is_bounded",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_html_escapes_untrusted_content_and_preview_is_bounded",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_http_is_loopback_readonly_and_rejects_unknown_paths",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_http_is_loopback_readonly_and_rejects_unknown_paths",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_initial_baseline_then_change_without_duplicate_events",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_initial_baseline_then_change_without_duplicate_events",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_local_output_cannot_redirect_into_source_material",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_local_output_cannot_redirect_into_source_material",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_oversized_file_keeps_previous_state",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_oversized_file_keeps_previous_state",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_relocated_workspace_keeps_relative_baseline",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_relocated_workspace_keeps_relative_baseline",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_retraction_and_restoration_preserve_observation_history",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_retraction_and_restoration_preserve_observation_history",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_selective_skill_upgrade_preserves_existing_local_edits",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_selective_skill_upgrade_preserves_existing_local_edits",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_terminal_transition_is_observed_not_accepted",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_terminal_transition_is_observed_not_accepted",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_evidence_observer.ObserverTests.test_view_explains_review_and_report_claim_dependency_without_writes",
+      "kind": "python",
+      "selector": "test_evidence_observer.ObserverTests.test_view_explains_review_and_report_claim_dependency_without_writes",
+      "path": "automation/tests/test_evidence_observer.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_http_rejection.HttpRejectionTests.test_discard_is_bounded_and_ambiguous_framing_is_not_read",
+      "kind": "python",
+      "selector": "test_http_rejection.HttpRejectionTests.test_discard_is_bounded_and_ambiguous_framing_is_not_read",
+      "path": "automation/tests/test_http_rejection.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_http_rejection.HttpRejectionTests.test_readonly_post_delete_patch_retain_rejection_after_drain",
+      "kind": "python",
+      "selector": "test_http_rejection.HttpRejectionTests.test_readonly_post_delete_patch_retain_rejection_after_drain",
+      "path": "automation/tests/test_http_rejection.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_http_rejection.HttpRejectionTests.test_unsupported_method_consumes_small_body_before_405",
+      "kind": "python",
+      "selector": "test_http_rejection.HttpRejectionTests.test_unsupported_method_consumes_small_body_before_405",
+      "path": "automation/tests/test_http_rejection.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_default_preview_four_entries_install_and_repeat_preserve_extra_skill",
+      "kind": "python",
+      "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_default_preview_four_entries_install_and_repeat_preserve_extra_skill",
+      "path": "automation/tests/test_install_workspace_skills.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_last_entry_conflict_rejects_whole_batch_before_any_write",
+      "kind": "python",
+      "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_last_entry_conflict_rejects_whole_batch_before_any_write",
+      "path": "automation/tests/test_install_workspace_skills.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_name_selection_preserves_other_modified_skills_and_is_idempotent",
+      "kind": "python",
+      "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_name_selection_preserves_other_modified_skills_and_is_idempotent",
+      "path": "automation/tests/test_install_workspace_skills.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_release_framework_inventory_includes_each_workflow_and_installer",
+      "kind": "python",
+      "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_release_framework_inventory_includes_each_workflow_and_installer",
+      "path": "automation/tests/test_install_workspace_skills.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_local_retrieval.LocalRetrievalTests.test_corrupt_pdf_does_not_block_other_sources",
+      "kind": "python",
+      "selector": "test_local_retrieval.LocalRetrievalTests.test_corrupt_pdf_does_not_block_other_sources",
+      "path": "automation/tests/test_local_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_local_retrieval.LocalRetrievalTests.test_offline_semantic_update_delete_filter_and_full_override",
+      "kind": "python",
+      "selector": "test_local_retrieval.LocalRetrievalTests.test_offline_semantic_update_delete_filter_and_full_override",
+      "path": "automation/tests/test_local_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_local_retrieval.LocalRetrievalTests.test_scanned_pdf_and_standalone_image_ocr",
+      "kind": "python",
+      "selector": "test_local_retrieval.LocalRetrievalTests.test_scanned_pdf_and_standalone_image_ocr",
+      "path": "automation/tests/test_local_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector",
+        "ocr"
+      ],
+      "authorization": [
+        "vector",
+        "ocr"
+      ]
+    },
+    {
+      "id": "python:test_local_retrieval.LocalRetrievalTests.test_slide_ocr_locator_and_context_policy",
+      "kind": "python",
+      "selector": "test_local_retrieval.LocalRetrievalTests.test_slide_ocr_locator_and_context_policy",
+      "path": "automation/tests/test_local_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector",
+        "ocr"
+      ],
+      "authorization": [
+        "vector",
+        "ocr"
+      ]
+    },
+    {
+      "id": "python:test_local_retrieval.LocalRetrievalTests.test_staged_engine_with_real_offline_vectors",
+      "kind": "python",
+      "selector": "test_local_retrieval.LocalRetrievalTests.test_staged_engine_with_real_offline_vectors",
+      "path": "automation/tests/test_local_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_local_retrieval.LocalRetrievalTests.test_table_row_locators",
+      "kind": "python",
+      "selector": "test_local_retrieval.LocalRetrievalTests.test_table_row_locators",
+      "path": "automation/tests/test_local_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_local_retrieval.LocalRetrievalTests.test_xlsx_cached_formula_is_marked",
+      "kind": "python",
+      "selector": "test_local_retrieval.LocalRetrievalTests.test_xlsx_cached_formula_is_marked",
+      "path": "automation/tests/test_local_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_memory_association_navigation.AssociationNavigationTests.test_G01_explanation_candidate_and_real_proposal_are_read_only",
+      "kind": "python",
+      "selector": "test_memory_association_navigation.AssociationNavigationTests.test_G01_explanation_candidate_and_real_proposal_are_read_only",
+      "path": "automation/tests/test_memory_association_navigation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_association_navigation.AssociationNavigationTests.test_G03_G07_indexed_reverse_view_single_edge_and_stale_search",
+      "kind": "python",
+      "selector": "test_memory_association_navigation.AssociationNavigationTests.test_G03_G07_indexed_reverse_view_single_edge_and_stale_search",
+      "path": "automation/tests/test_memory_association_navigation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_association_navigation.AssociationNavigationTests.test_G04_frozen_valid_wrong_analogy_never_becomes_support",
+      "kind": "python",
+      "selector": "test_memory_association_navigation.AssociationNavigationTests.test_G04_frozen_valid_wrong_analogy_never_becomes_support",
+      "path": "automation/tests/test_memory_association_navigation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_association_navigation.AssociationNavigationTests.test_G04_public_formal_search_rejects_candidate_even_with_accepted_endpoint",
+      "kind": "python",
+      "selector": "test_memory_association_navigation.AssociationNavigationTests.test_G04_public_formal_search_rejects_candidate_even_with_accepted_endpoint",
+      "path": "automation/tests/test_memory_association_navigation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_association_navigation.AssociationNavigationTests.test_G05_G06_frozen_six_node_directed_graph_and_excluded_bridge",
+      "kind": "python",
+      "selector": "test_memory_association_navigation.AssociationNavigationTests.test_G05_G06_frozen_six_node_directed_graph_and_excluded_bridge",
+      "path": "automation/tests/test_memory_association_navigation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_associations.AssociationTests.test_G01_G02_explanation_and_vector_math",
+      "kind": "python",
+      "selector": "test_memory_associations.AssociationTests.test_G01_G02_explanation_and_vector_math",
+      "path": "automation/tests/test_memory_associations.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_associations.AssociationTests.test_G03_G04_G07_single_edge_history_stale_and_boundaries",
+      "kind": "python",
+      "selector": "test_memory_associations.AssociationTests.test_G03_G04_G07_single_edge_history_stale_and_boundaries",
+      "path": "automation/tests/test_memory_associations.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_associations.AssociationTests.test_G05_G06_exclusion_before_graph_walk",
+      "kind": "python",
+      "selector": "test_memory_associations.AssociationTests.test_G05_G06_exclusion_before_graph_walk",
+      "path": "automation/tests/test_memory_associations.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_associations_real.RealAssociationTests.test_G02_missing_local_model_rejects_without_network",
+      "kind": "python",
+      "selector": "test_memory_associations_real.RealAssociationTests.test_G02_missing_local_model_rejects_without_network",
+      "path": "automation/tests/test_memory_associations_real.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_associations_real.RealAssociationTests.test_G02_real_384_cosine_and_propose_are_read_only_candidates",
+      "kind": "python",
+      "selector": "test_memory_associations_real.RealAssociationTests.test_G02_real_384_cosine_and_propose_are_read_only_candidates",
+      "path": "automation/tests/test_memory_associations_real.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_memory_associations_real.RealAssociationTests.test_G08_three_derived_summaries_do_not_become_scientific_support",
+      "kind": "python",
+      "selector": "test_memory_associations_real.RealAssociationTests.test_G08_three_derived_summaries_do_not_become_scientific_support",
+      "path": "automation/tests/test_memory_associations_real.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_consolidation.ConsolidationTests.test_N01_N02_N03_repeat_and_remaining",
+      "kind": "python",
+      "selector": "test_memory_consolidation.ConsolidationTests.test_N01_N02_N03_repeat_and_remaining",
+      "path": "automation/tests/test_memory_consolidation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_consolidation.ConsolidationTests.test_N04_stale_basis_and_forged_omission_are_rejected",
+      "kind": "python",
+      "selector": "test_memory_consolidation.ConsolidationTests.test_N04_stale_basis_and_forged_omission_are_rejected",
+      "path": "automation/tests/test_memory_consolidation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_consolidation.ConsolidationTests.test_n01_external_bytes_review_and_cross_owner_impact",
+      "kind": "python",
+      "selector": "test_memory_consolidation.ConsolidationTests.test_n01_external_bytes_review_and_cross_owner_impact",
+      "path": "automation/tests/test_memory_consolidation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_consolidation.ConsolidationTests.test_n03_real_revise_retain_defer_and_unhandled",
+      "kind": "python",
+      "selector": "test_memory_consolidation.ConsolidationTests.test_n03_real_revise_retain_defer_and_unhandled",
+      "path": "automation/tests/test_memory_consolidation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_consolidation.ConsolidationTests.test_n07_same_source_paraphrase_distinct_source_and_explicit_counterexample",
+      "kind": "python",
+      "selector": "test_memory_consolidation.ConsolidationTests.test_n07_same_source_paraphrase_distinct_source_and_explicit_counterexample",
+      "path": "automation/tests/test_memory_consolidation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contract_service.ContractServiceTests.test_C02_level_kind_unknown_payload_have_precise_pointer_and_no_writes",
+      "kind": "python",
+      "selector": "test_memory_contract_service.ContractServiceTests.test_C02_level_kind_unknown_payload_have_precise_pointer_and_no_writes",
+      "path": "automation/tests/test_memory_contract_service.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contract_service.ContractServiceTests.test_C04_normal_boundaries_persist_and_each_missing_boundary_is_rejected",
+      "kind": "python",
+      "selector": "test_memory_contract_service.ContractServiceTests.test_C04_normal_boundaries_persist_and_each_missing_boundary_is_rejected",
+      "path": "automation/tests/test_memory_contract_service.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contract_service.ContractServiceTests.test_C07_registered_original_compared_to_excerpt_and_summary_stays_interpretation",
+      "kind": "python",
+      "selector": "test_memory_contract_service.ContractServiceTests.test_C07_registered_original_compared_to_excerpt_and_summary_stays_interpretation",
+      "path": "automation/tests/test_memory_contract_service.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_all_fifteen_kinds_and_unknown_values",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_all_fifteen_kinds_and_unknown_values",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_boundaries_and_reference_versions",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_boundaries_and_reference_versions",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_callback_domain_errors_preserved_and_generic_details_redacted",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_callback_domain_errors_preserved_and_generic_details_redacted",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_generated_structural_types_match_schema",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_generated_structural_types_match_schema",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_hash_order_metadata_body_and_nonfinite",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_hash_order_metadata_body_and_nonfinite",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_precise_missing_and_unknown_fields",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_precise_missing_and_unknown_fields",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_reference_bool_identity_and_unresolved_slot",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_reference_bool_identity_and_unresolved_slot",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_request_temporary_refs_and_protected_server_fields",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_request_temporary_refs_and_protected_server_fields",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_schema_compositions_cannot_bypass_siblings",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_schema_compositions_cannot_bypass_siblings",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_schema_subset_rejects_unknown_and_external_even_unselected",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_schema_subset_rejects_unknown_and_external_even_unselected",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_contracts.MemoryContractsTests.test_verbatim_characters_and_lines",
+      "kind": "python",
+      "selector": "test_memory_contracts.MemoryContractsTests.test_verbatim_characters_and_lines",
+      "path": "automation/tests/test_memory_contracts.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_document.DocumentTests.test_document_current_layers_and_no_unrelated_memory_body_reads",
+      "kind": "python",
+      "selector": "test_memory_document.DocumentTests.test_document_current_layers_and_no_unrelated_memory_body_reads",
+      "path": "automation/tests/test_memory_document.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_document.DocumentTests.test_document_round_order_is_natural_not_random_record_id",
+      "kind": "python",
+      "selector": "test_memory_document.DocumentTests.test_document_round_order_is_natural_not_random_record_id",
+      "path": "automation/tests/test_memory_document.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_document.DocumentTests.test_history_traverses_chain_once_and_detects_head_change",
+      "kind": "python",
+      "selector": "test_memory_document.DocumentTests.test_history_traverses_chain_once_and_detects_head_change",
+      "path": "automation/tests/test_memory_document.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_document.DocumentTests.test_image_is_fixed_local_raster_and_changed_source_is_not_silent",
+      "kind": "python",
+      "selector": "test_memory_document.DocumentTests.test_image_is_fixed_local_raster_and_changed_source_is_not_silent",
+      "path": "automation/tests/test_memory_document.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_document.DocumentTests.test_report_fixed_revision_order_coverage_and_revoked_blocks",
+      "kind": "python",
+      "selector": "test_memory_document.DocumentTests.test_report_fixed_revision_order_coverage_and_revoked_blocks",
+      "path": "automation/tests/test_memory_document.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_document.DocumentTests.test_report_rejects_duplicate_and_synthesis_before_experiment",
+      "kind": "python",
+      "selector": "test_memory_document.DocumentTests.test_report_rejects_duplicate_and_synthesis_before_experiment",
+      "path": "automation/tests/test_memory_document.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_document.DocumentTests.test_resume_includes_detailed_calculation_and_map_by_default",
+      "kind": "python",
+      "selector": "test_memory_document.DocumentTests.test_resume_includes_detailed_calculation_and_map_by_default",
+      "path": "automation/tests/test_memory_document.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_document.DocumentTests.test_shared_revocation_hides_all_dependants_and_figure",
+      "kind": "python",
+      "selector": "test_memory_document.DocumentTests.test_shared_revocation_hides_all_dependants_and_figure",
+      "path": "automation/tests/test_memory_document.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evaluation.EvaluationIdentityTests.test_development_retry_query_has_one_native_fts_signal_and_real_experience",
+      "kind": "python",
+      "selector": "test_memory_evaluation.EvaluationIdentityTests.test_development_retry_query_has_one_native_fts_signal_and_real_experience",
+      "path": "automation/tests/test_memory_evaluation.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evaluation.EvaluationIdentityTests.test_single_existing_claim_identity_alignment_keeps_raw_rank_and_text",
+      "kind": "python",
+      "selector": "test_memory_evaluation.EvaluationIdentityTests.test_single_existing_claim_identity_alignment_keeps_raw_rank_and_text",
+      "path": "automation/tests/test_memory_evaluation.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E01_review_requires_scope_evidence_and_is_per_claim",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E01_review_requires_scope_evidence_and_is_per_claim",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E02_ordinary_commit_cannot_forge_review",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E02_ordinary_commit_cannot_forge_review",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E03_unrelated_progress_preserves_accepted_content",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E03_unrelated_progress_preserves_accepted_content",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E04_statement_boundary_source_changes_invalidate_bindings",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E04_statement_boundary_source_changes_invalidate_bindings",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E05_E08_legacy_review_and_run_seal_are_preserved",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E05_E08_legacy_review_and_run_seal_are_preserved",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E05_cross_owner_retraction_and_maps_ignore_stale_projection",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E05_cross_owner_retraction_and_maps_ignore_stale_projection",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E06_support_and_navigation_have_distinct_propagation",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E06_support_and_navigation_have_distinct_propagation",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E07_missing_cycles_and_diamond_are_bounded_and_deduplicated",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E07_missing_cycles_and_diamond_are_bounded_and_deduplicated",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E08_replacement_history_and_reacceptance",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E08_replacement_history_and_reacceptance",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E09_mixed_claims_and_explicit_formal_scope",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E09_mixed_claims_and_explicit_formal_scope",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_E10_question_resolution_invalidation_keeps_history",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_E10_question_resolution_invalidation_keeps_history",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_G04_association_endpoint_acceptance_does_not_grant_formal_support",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_G04_association_endpoint_acceptance_does_not_grant_formal_support",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_fixed_historical_provenance_cannot_borrow_clean_current_sources",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_fixed_historical_provenance_cannot_borrow_clean_current_sources",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_record_ref_hash_agrees_across_commit_read_formal_and_history",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_record_ref_hash_agrees_across_commit_read_formal_and_history",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_source_permissions_propagate_through_memory_source_navigation",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_source_permissions_propagate_through_memory_source_navigation",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_evidence.MemoryEvidenceTests.test_unchanged_claim_hash_preserves_parent_source_permission_union",
+      "kind": "python",
+      "selector": "test_memory_evidence.MemoryEvidenceTests.test_unchanged_claim_hash_preserves_parent_source_permission_union",
+      "path": "automation/tests/test_memory_evidence.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_feedback.FeedbackTests.test_n08_actual_search_six_labels_and_following_run_preserve_review",
+      "kind": "python",
+      "selector": "test_memory_feedback.FeedbackTests.test_n08_actual_search_six_labels_and_following_run_preserve_review",
+      "path": "automation/tests/test_memory_feedback.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_fixture.MemoryFixtureTests.test_b01_frozen_plan_self_test_leaves_assets_unchanged",
+      "kind": "python",
+      "selector": "test_memory_fixture.MemoryFixtureTests.test_b01_frozen_plan_self_test_leaves_assets_unchanged",
+      "path": "automation/tests/test_memory_fixture.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_fixture.MemoryFixtureTests.test_b03_materialize_preserves_formal_data_and_frozen_sources",
+      "kind": "python",
+      "selector": "test_memory_fixture.MemoryFixtureTests.test_b03_materialize_preserves_formal_data_and_frozen_sources",
+      "path": "automation/tests/test_memory_fixture.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_fixture.MemoryFixtureTests.test_fixed_inputs_and_fault_injection_are_explicit",
+      "kind": "python",
+      "selector": "test_memory_fixture.MemoryFixtureTests.test_fixed_inputs_and_fault_injection_are_explicit",
+      "path": "automation/tests/test_memory_fixture.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_fixture.MemoryFixtureTests.test_real_legacy_execution_review_and_finalize",
+      "kind": "python",
+      "selector": "test_memory_fixture.MemoryFixtureTests.test_real_legacy_execution_review_and_finalize",
+      "path": "automation/tests/test_memory_fixture.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_fixture.MemoryFixtureTests.test_recipe_source_submits_through_real_service",
+      "kind": "python",
+      "selector": "test_memory_fixture.MemoryFixtureTests.test_recipe_source_submits_through_real_service",
+      "path": "automation/tests/test_memory_fixture.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_fixture.MemoryFixtureTests.test_rejects_business_roots_escape_and_existing_target_without_writes",
+      "kind": "python",
+      "selector": "test_memory_fixture.MemoryFixtureTests.test_rejects_business_roots_escape_and_existing_target_without_writes",
+      "path": "automation/tests/test_memory_fixture.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_fixture.MemoryFixtureTests.test_source_release_without_git_uses_explicit_source_snapshot",
+      "kind": "python",
+      "selector": "test_memory_fixture.MemoryFixtureTests.test_source_release_without_git_uses_explicit_source_snapshot",
+      "path": "automation/tests/test_memory_fixture.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_frozen_summary.FrozenSummaryTests.test_N05_N06_frozen_cross_summary_adopted_knowledge_and_new_interpretation",
+      "kind": "python",
+      "selector": "test_memory_frozen_summary.FrozenSummaryTests.test_N05_N06_frozen_cross_summary_adopted_knowledge_and_new_interpretation",
+      "path": "automation/tests/test_memory_frozen_summary.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_http.MemoryHttpTests.test_U01_U03_same_request_identity_and_index_pending",
+      "kind": "python",
+      "selector": "test_memory_http.MemoryHttpTests.test_U01_U03_same_request_identity_and_index_pending",
+      "path": "automation/tests/test_memory_http.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_http.MemoryHttpTests.test_U01_real_review_and_subprocess_stdout_match_public_http",
+      "kind": "python",
+      "selector": "test_memory_http.MemoryHttpTests.test_U01_real_review_and_subprocess_stdout_match_public_http",
+      "path": "automation/tests/test_memory_http.py",
+      "capability": "store",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_http.MemoryHttpTests.test_U08_origin_shell_and_path_do_not_read_external",
+      "kind": "python",
+      "selector": "test_memory_http.MemoryHttpTests.test_U08_origin_shell_and_path_do_not_read_external",
+      "path": "automation/tests/test_memory_http.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_http.MemoryHttpTests.test_U08_unregistered_preview_hash_open_never_read_external_file",
+      "kind": "python",
+      "selector": "test_memory_http.MemoryHttpTests.test_U08_unregistered_preview_hash_open_never_read_external_file",
+      "path": "automation/tests/test_memory_http.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_http.MemoryHttpTests.test_owner_revocation_after_staging_prevents_head_publication",
+      "kind": "python",
+      "selector": "test_memory_http.MemoryHttpTests.test_owner_revocation_after_staging_prevents_head_publication",
+      "path": "automation/tests/test_memory_http.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_http.MemoryHttpTests.test_public_impact_question_and_lineage_match_cli_without_writes",
+      "kind": "python",
+      "selector": "test_memory_http.MemoryHttpTests.test_public_impact_question_and_lineage_match_cli_without_writes",
+      "path": "automation/tests/test_memory_http.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_http.MemoryHttpTests.test_restricted_owner_not_listed_and_cli_http_mutations_rejected_before_snapshot",
+      "kind": "python",
+      "selector": "test_memory_http.MemoryHttpTests.test_restricted_owner_not_listed_and_cli_http_mutations_rejected_before_snapshot",
+      "path": "automation/tests/test_memory_http.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_impact_visibility.ImpactVisibilityTests.test_restricted_owner_records_are_absent_from_impact_paths_and_heads",
+      "kind": "python",
+      "selector": "test_memory_impact_visibility.ImpactVisibilityTests.test_restricted_owner_records_are_absent_from_impact_paths_and_heads",
+      "path": "automation/tests/test_memory_impact_visibility.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I01_eight_researches_legacy_levels_project_without_identity_changes",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I01_eight_researches_legacy_levels_project_without_identity_changes",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I02_six_slots_and_duplicate_channel_collapse",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I02_six_slots_and_duplicate_channel_collapse",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I03_rrf_fixed_numbers_and_tie_order",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I03_rrf_fixed_numbers_and_tie_order",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I04_incremental_owner_and_stale_representation",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I04_incremental_owner_and_stale_representation",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I05_I07_source_revocation_and_missing_original_remove_cached_text",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I05_I07_source_revocation_and_missing_original_remove_cached_text",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I05_exclusion_wins_over_include_and_full",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I05_exclusion_wins_over_include_and_full",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I05_visibility_shrinks_before_stale_index_refresh",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I05_visibility_shrinks_before_stale_index_refresh",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I06_off_auto_and_required_without_model",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I06_off_auto_and_required_without_model",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I07_rebuild_preserves_canonical_and_old_tables",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I07_rebuild_preserves_canonical_and_old_tables",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_I09_history_is_explicit_and_does_not_pollute_current",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_I09_history_is_explicit_and_does_not_pollute_current",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_S09_fts_and_vector_failures_reconcile_without_business_revision",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_S09_fts_and_vector_failures_reconcile_without_business_revision",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_actual_receipt_matches_generated_contract",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_actual_receipt_matches_generated_contract",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_evaluation_math_and_holdout_guard",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_evaluation_math_and_holdout_guard",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_evaluation_profiles_use_distinct_real_channels",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_evaluation_profiles_use_distinct_real_channels",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_fixed_old_provenance_cannot_bypass_revoked_original_in_search_or_history",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_fixed_old_provenance_cannot_bypass_revoked_original_in_search_or_history",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_formal_projection_and_legacy_fulltext_use_one_claim_identity",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_formal_projection_and_legacy_fulltext_use_one_claim_identity",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_query_receipt_and_strict_request",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_query_receipt_and_strict_request",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_real_384_vectors_and_M11_collection_isolation",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_real_384_vectors_and_M11_collection_isolation",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_reconcile_repairs_physically_missing_fts_rows",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_reconcile_repairs_physically_missing_fts_rows",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_removed_owner_vector_failure_remains_pending_until_reconcile",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_removed_owner_vector_failure_remains_pending_until_reconcile",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_index.MemoryIndexTests.test_status_and_rebuild_preview_are_read_only",
+      "kind": "python",
+      "selector": "test_memory_index.MemoryIndexTests.test_status_and_rebuild_preview_are_read_only",
+      "path": "automation/tests/test_memory_index.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_legacy_identity.LegacyIdentityTests.test_O03_three_claims_repeat_history_and_index_keep_one_run_attempt",
+      "kind": "python",
+      "selector": "test_memory_legacy_identity.LegacyIdentityTests.test_O03_three_claims_repeat_history_and_index_keep_one_run_attempt",
+      "path": "automation/tests/test_memory_legacy_identity.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_levels_v2.MemoryLevelV2Tests.test_contract_default_v3_and_explicit_legacy_are_distinct",
+      "kind": "python",
+      "selector": "test_memory_levels_v2.MemoryLevelV2Tests.test_contract_default_v3_and_explicit_legacy_are_distinct",
+      "path": "automation/tests/test_memory_levels_v2.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_levels_v2.MemoryLevelV2Tests.test_detail_is_a_fixed_run_document_and_not_a_new_experiment",
+      "kind": "python",
+      "selector": "test_memory_levels_v2.MemoryLevelV2Tests.test_detail_is_a_fixed_run_document_and_not_a_new_experiment",
+      "path": "automation/tests/test_memory_levels_v2.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_levels_v2.MemoryLevelV2Tests.test_l0_trace_only_and_cross_owner_representation_cannot_bypass",
+      "kind": "python",
+      "selector": "test_memory_levels_v2.MemoryLevelV2Tests.test_l0_trace_only_and_cross_owner_representation_cannot_bypass",
+      "path": "automation/tests/test_memory_levels_v2.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_levels_v2.MemoryLevelV2Tests.test_mixed_revision_keeps_old_hashes_refs_and_idempotency",
+      "kind": "python",
+      "selector": "test_memory_levels_v2.MemoryLevelV2Tests.test_mixed_revision_keeps_old_hashes_refs_and_idempotency",
+      "path": "automation/tests/test_memory_levels_v2.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_levels_v2.MemoryLevelV2Tests.test_projection_refresh_with_same_head_does_not_rewrite_canonical",
+      "kind": "python",
+      "selector": "test_memory_levels_v2.MemoryLevelV2Tests.test_projection_refresh_with_same_head_does_not_rewrite_canonical",
+      "path": "automation/tests/test_memory_levels_v2.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_lineage.NativeLineageTests.test_changed_original_is_not_rebound_to_a_new_hash",
+      "kind": "python",
+      "selector": "test_memory_lineage.NativeLineageTests.test_changed_original_is_not_rebound_to_a_new_hash",
+      "path": "automation/tests/test_memory_lineage.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_lineage.NativeLineageTests.test_memory_to_native_run_follows_existing_evidence_and_revocation",
+      "kind": "python",
+      "selector": "test_memory_lineage.NativeLineageTests.test_memory_to_native_run_follows_existing_evidence_and_revocation",
+      "path": "automation/tests/test_memory_lineage.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_lineage.NativeLineageTests.test_native_run_and_claim_share_one_registered_source_without_writes",
+      "kind": "python",
+      "selector": "test_memory_lineage.NativeLineageTests.test_native_run_and_claim_share_one_registered_source_without_writes",
+      "path": "automation/tests/test_memory_lineage.py",
+      "capability": "evidence",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M05_export_refuses_revoked_source_access",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M05_export_refuses_revoked_source_access",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M05_legacy_originals_are_declared_without_copying",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M05_legacy_originals_are_declared_without_copying",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M05_native_locator_mapping_preserves_immutable_history",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M05_native_locator_mapping_preserves_immutable_history",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M05_public_cli_explicit_empty_target_never_uses_parent_workspace",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M05_public_cli_explicit_empty_target_never_uses_parent_workspace",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M05_selected_owner_history_review_and_missing_dependencies",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M05_selected_owner_history_review_and_missing_dependencies",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M06_corrupt_record_and_zip_slip_rejected_before_writes",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M06_corrupt_record_and_zip_slip_rejected_before_writes",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M06_failed_import_recovers_only_created_files",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M06_failed_import_recovers_only_created_files",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M06_malformed_manifest_types_fail_closed_before_writes",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M06_malformed_manifest_types_fail_closed_before_writes",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M06_recovery_refuses_user_modifications",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M06_recovery_refuses_user_modifications",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M06_same_identity_conflict_and_identical_retry",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M06_same_identity_conflict_and_identical_retry",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M06_successful_recovery_removes_only_imported_bytes",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M06_successful_recovery_removes_only_imported_bytes",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryMigrationTests.test_M07_extraction_stale_preview_unknown_facts_and_idempotency",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryMigrationTests.test_M07_extraction_stale_preview_unknown_facts_and_idempotency",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MemoryReleaseContractTests.test_release_contains_both_contract_versions_and_detail_example",
+      "kind": "python",
+      "selector": "test_memory_migration.MemoryReleaseContractTests.test_release_contains_both_contract_versions_and_detail_example",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_migration.MixedVersionMigrationTests.test_v1_v2_detail_roundtrip_missing_dependencies_retry_and_recovery",
+      "kind": "python",
+      "selector": "test_memory_migration.MixedVersionMigrationTests.test_v1_v2_detail_roundtrip_missing_dependencies_retry_and_recovery",
+      "path": "automation/tests/test_memory_migration.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_navigation.PacketNavigationTests.test_U05_fixed_experience_run_claim_file_chain_and_live_invalidations",
+      "kind": "python",
+      "selector": "test_memory_navigation.PacketNavigationTests.test_U05_fixed_experience_run_claim_file_chain_and_live_invalidations",
+      "path": "automation/tests/test_memory_navigation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_navigation.PacketNavigationTests.test_U05_snapshot_memo_keeps_final_real_source_recheck",
+      "kind": "python",
+      "selector": "test_memory_navigation.PacketNavigationTests.test_U05_snapshot_memo_keeps_final_real_source_recheck",
+      "path": "automation/tests/test_memory_navigation.py",
+      "capability": "associations",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owner_service.OwnerServiceTests.test_O01_O05_eight_native_types_public_inspect_and_default_v2_kinds",
+      "kind": "python",
+      "selector": "test_memory_owner_service.OwnerServiceTests.test_O01_O05_eight_native_types_public_inspect_and_default_v2_kinds",
+      "path": "automation/tests/test_memory_owner_service.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owner_service.OwnerServiceTests.test_O02_flat_adoption_repeat_and_mapped_import_keep_obj_and_fixed_ref",
+      "kind": "python",
+      "selector": "test_memory_owner_service.OwnerServiceTests.test_O02_flat_adoption_repeat_and_mapped_import_keep_obj_and_fixed_ref",
+      "path": "automation/tests/test_memory_owner_service.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_adopt_and_policy_commit_preserve_verified_legacy_evidence",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_adopt_and_policy_commit_preserve_verified_legacy_evidence",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_adopt_document_stable_id_alias_and_hash_guard",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_adopt_document_stable_id_alias_and_hash_guard",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_bad_business_json_and_missing_tool_not_ignored",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_bad_business_json_and_missing_tool_not_ignored",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_duplicate_ids_and_double_claim_rejected",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_duplicate_ids_and_double_claim_rejected",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_eight_types_read_only_and_nested_identity",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_eight_types_read_only_and_nested_identity",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_ensure_owner_preserves_run_and_claims",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_ensure_owner_preserves_run_and_claims",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_frozen_fixture_all_declared_native_objects_are_readable",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_frozen_fixture_all_declared_native_objects_are_readable",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_manual_move_is_not_silently_reidentified",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_manual_move_is_not_silently_reidentified",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_path_windows_boundaries_and_casing",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_path_windows_boundaries_and_casing",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_policy_priority_explicit_false_and_type_mode",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_policy_priority_explicit_false_and_type_mode",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_saved_frozen_policy_resolves_retain_and_false_via_inspect",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_saved_frozen_policy_resolves_retain_and_false_via_inspect",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_owners.OwnerTests.test_trusted_extension_validate_resolve_commit_and_inspect",
+      "kind": "python",
+      "selector": "test_memory_owners.OwnerTests.test_trusted_extension_validate_resolve_commit_and_inspect",
+      "path": "automation/tests/test_memory_owners.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p01_history_pages_cover_all_fixed_revisions_and_one_legacy_run",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p01_history_pages_cover_all_fixed_revisions_and_one_legacy_run",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p02_resume_keeps_new_goal_old_checkpoint_and_real_pause",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p02_resume_keeps_new_goal_old_checkpoint_and_real_pause",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p03_resume_reports_changed_input_retracted_answer_and_removed_registration",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p03_resume_reports_changed_input_retracted_answer_and_removed_registration",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p04_p05_unicode_whole_records_and_required_budget",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p04_p05_unicode_whole_records_and_required_budget",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p04_u07_native_newlines_exact_budget_short_form_and_idempotence",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p04_u07_native_newlines_exact_budget_short_form_and_idempotence",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p06_feedback_preserves_formal_scope_selection_budget_and_stops",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p06_feedback_preserves_formal_scope_selection_budget_and_stops",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p07_roles_deduplicate_representations_without_hidden_body",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p07_roles_deduplicate_representations_without_hidden_body",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p08_fixed_heads_reject_concurrent_change_and_page_drift",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p08_fixed_heads_reject_concurrent_change_and_page_drift",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p09_summary_prepare_fixed_selected_results_and_single_owner_save",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p09_summary_prepare_fixed_selected_results_and_single_owner_save",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "resume",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_ranking_policy.TopicRankingTests.test_english_keyword_requires_identifier_boundary",
+      "kind": "python",
+      "selector": "test_memory_ranking_policy.TopicRankingTests.test_english_keyword_requires_identifier_boundary",
+      "path": "automation/tests/test_memory_ranking_policy.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_ranking_policy.TopicRankingTests.test_live_search_explicit_selection_and_exclusion_override_tiers",
+      "kind": "python",
+      "selector": "test_memory_ranking_policy.TopicRankingTests.test_live_search_explicit_selection_and_exclusion_override_tiers",
+      "path": "automation/tests/test_memory_ranking_policy.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_ranking_policy.TopicRankingTests.test_missing_keywords_and_unknown_granularity_are_retained",
+      "kind": "python",
+      "selector": "test_memory_ranking_policy.TopicRankingTests.test_missing_keywords_and_unknown_granularity_are_retained",
+      "path": "automation/tests/test_memory_ranking_policy.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_ranking_policy.TopicRankingTests.test_no_explicit_topic_keeps_vector_discovery_exactly",
+      "kind": "python",
+      "selector": "test_memory_ranking_policy.TopicRankingTests.test_no_explicit_topic_keeps_vector_discovery_exactly",
+      "path": "automation/tests/test_memory_ranking_policy.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_ranking_policy.TopicRankingTests.test_specific_claim_precedes_container_without_merging_identity",
+      "kind": "python",
+      "selector": "test_memory_ranking_policy.TopicRankingTests.test_specific_claim_precedes_container_without_merging_identity",
+      "path": "automation/tests/test_memory_ranking_policy.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r01_every_legal_question_transition_has_one_new_revision",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r01_every_legal_question_transition_has_one_new_revision",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r01_invalid_resolution_replacement_and_reopening_preserve_history",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r01_invalid_resolution_replacement_and_reopening_preserve_history",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r02_completed_native_objects_do_not_close_or_hide_questions",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r02_completed_native_objects_do_not_close_or_hide_questions",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r03_goal_revision_keeps_old_attempt_and_route_versions",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r03_goal_revision_keeps_old_attempt_and_route_versions",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r04_route_block_reopen_and_close_preserve_attempts",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r04_route_block_reopen_and_close_preserve_attempts",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r05_four_failure_categories_are_not_reclassified",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r05_four_failure_categories_are_not_reclassified",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r06_checkpoint_preserves_unknown_budget_and_pause_conditions",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r06_checkpoint_preserves_unknown_budget_and_pause_conditions",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r07_explicit_retention_and_false_do_not_force_extra_layers",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r07_explicit_retention_and_false_do_not_force_extra_layers",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_research.ResearchTests.test_r08_partial_conversation_and_missing_earlier_context_remain_read_only",
+      "kind": "python",
+      "selector": "test_memory_research.ResearchTests.test_r08_partial_conversation_and_missing_earlier_context_remain_read_only",
+      "path": "automation/tests/test_memory_research.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_snapshot_paths.SnapshotPathTests.test_case_change_during_snapshot_is_not_hidden_by_cached_parent",
+      "kind": "python",
+      "selector": "test_memory_snapshot_paths.SnapshotPathTests.test_case_change_during_snapshot_is_not_hidden_by_cached_parent",
+      "path": "automation/tests/test_memory_snapshot_paths.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_snapshot_paths.SnapshotPathTests.test_directory_enumeration_is_linear_and_cache_is_per_snapshot",
+      "kind": "python",
+      "selector": "test_memory_snapshot_paths.SnapshotPathTests.test_directory_enumeration_is_linear_and_cache_is_per_snapshot",
+      "path": "automation/tests/test_memory_snapshot_paths.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_snapshot_paths.SnapshotPathTests.test_junction_inserted_after_cached_parent_is_rejected_before_return",
+      "kind": "python",
+      "selector": "test_memory_snapshot_paths.SnapshotPathTests.test_junction_inserted_after_cached_parent_is_rejected_before_return",
+      "path": "automation/tests/test_memory_snapshot_paths.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_C05_S06_batch_resolves_client_keys_or_rejects_all",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_C05_S06_batch_resolves_client_keys_or_rejects_all",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S01_S02_save_read_and_immutable_revision",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S01_S02_save_read_and_immutable_revision",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S01_four_kinds_one_commit_and_S06_third_invalid",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S01_four_kinds_one_commit_and_S06_third_invalid",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S03_S04_retry_100_and_idempotency_conflict",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S03_S04_retry_100_and_idempotency_conflict",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S05_two_processes_cannot_lose_update",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S05_two_processes_cannot_lose_update",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S07_fault_windows_keep_previous_snapshot",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S07_fault_windows_keep_previous_snapshot",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S08_process_exit_after_head_replays_ledger",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S08_process_exit_after_head_replays_ledger",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S10_preview_and_no_change_receipts",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S10_preview_and_no_change_receipts",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S11_corruption_is_not_repaired",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S11_corruption_is_not_repaired",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S11_manifest_corruption_is_rejected",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S11_manifest_corruption_is_rejected",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S11_windows_junction_cannot_redirect_store",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S11_windows_junction_cannot_redirect_store",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S12_active_and_unknown_locks_not_removed",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S12_active_and_unknown_locks_not_removed",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_S12_real_windows_head_sharing_denial",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_S12_real_windows_head_sharing_denial",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "windows"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_cli_json_success_pending_and_invalid_input",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_cli_json_success_pending_and_invalid_input",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_owner_reference_cannot_lower_sensitivity",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_owner_reference_cannot_lower_sensitivity",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_store.MemoryStoreTests.test_support_cycles_rejected_without_writes",
+      "kind": "python",
+      "selector": "test_memory_store.MemoryStoreTests.test_support_cycles_rejected_without_writes",
+      "path": "automation/tests/test_memory_store.py",
+      "capability": "store",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_owned_runs.OwnedRunsTests.test_all_owner_types_and_legacy_paths_share_discovery",
+      "kind": "python",
+      "selector": "test_owned_runs.OwnedRunsTests.test_all_owner_types_and_legacy_paths_share_discovery",
+      "path": "automation/tests/test_owned_runs.py",
+      "capability": "owned-runs",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_owned_runs.OwnedRunsTests.test_auto_owner_explicit_override_ambiguity_and_preview",
+      "kind": "python",
+      "selector": "test_owned_runs.OwnedRunsTests.test_auto_owner_explicit_override_ambiguity_and_preview",
+      "path": "automation/tests/test_owned_runs.py",
+      "capability": "owned-runs",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_owned_runs.OwnedRunsTests.test_cache_and_memory_are_not_run_sources",
+      "kind": "python",
+      "selector": "test_owned_runs.OwnedRunsTests.test_cache_and_memory_are_not_run_sources",
+      "path": "automation/tests/test_owned_runs.py",
+      "capability": "owned-runs",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_owned_runs.OwnedRunsTests.test_nested_duplicate_and_corrupt_manifests_fail",
+      "kind": "python",
+      "selector": "test_owned_runs.OwnedRunsTests.test_nested_duplicate_and_corrupt_manifests_fail",
+      "path": "automation/tests/test_owned_runs.py",
+      "capability": "owned-runs",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_owned_runs.OwnedRunsTests.test_nested_parent_retraction_and_invalid_owner_are_visible",
+      "kind": "python",
+      "selector": "test_owned_runs.OwnedRunsTests.test_nested_parent_retraction_and_invalid_owner_are_visible",
+      "path": "automation/tests/test_owned_runs.py",
+      "capability": "owned-runs",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_owned_runs.OwnedRunsTests.test_owned_run_inherits_restricted_classification",
+      "kind": "python",
+      "selector": "test_owned_runs.OwnedRunsTests.test_owned_run_inherits_restricted_classification",
+      "path": "automation/tests/test_owned_runs.py",
+      "capability": "owned-runs",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_portable.PortableTests.test_package_keeps_runtime_and_history_but_omits_caches",
+      "kind": "python",
+      "selector": "test_portable.PortableTests.test_package_keeps_runtime_and_history_but_omits_caches",
+      "path": "automation/tests/test_portable.py",
+      "capability": "dependencies",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_alias_command_preview_history_and_feedback_report",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_alias_command_preview_history_and_feedback_report",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_budget_only_falls_back_when_full_does_not_fit",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_budget_only_falls_back_when_full_does_not_fit",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_chinese_short_words_identifiers_and_full_related_context",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_chinese_short_words_identifiers_and_full_related_context",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_crlf_and_run_directory_do_not_inflate_context",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_crlf_and_run_directory_do_not_inflate_context",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_docx_extraction_and_bad_run_are_reported",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_docx_extraction_and_bad_run_are_reported",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_dry_run_and_empty_eval",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_dry_run_and_empty_eval",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_external_sources_are_explicit_and_links_do_not_expand_scope",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_external_sources_are_explicit_and_links_do_not_expand_scope",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_feedback_is_append_only_and_alias_changes_are_evaluable",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_feedback_is_append_only_and_alias_changes_are_evaluable",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_incremental_update_removal_and_stale_pack",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_incremental_update_removal_and_stale_pack",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_limit_failure_does_not_remove_previous_index",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_limit_failure_does_not_remove_previous_index",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_module_filter_precedes_candidate_limit",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_module_filter_precedes_candidate_limit",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_parent_change_after_search_is_visible_in_child_context",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_parent_change_after_search_is_visible_in_child_context",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_project_filter_and_literal_query",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_project_filter_and_literal_query",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_run_state_updates_apply_to_results_and_key_output",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_run_state_updates_apply_to_results_and_key_output",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval.RetrievalTests.test_unreadable_large_and_disabled_sources_do_not_reuse_old_content",
+      "kind": "python",
+      "selector": "test_retrieval.RetrievalTests.test_unreadable_large_and_disabled_sources_do_not_reuse_old_content",
+      "path": "automation/tests/test_retrieval.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval_layers.RetrievalLayerTests.test_business_memory_folder_is_not_mistaken_for_transaction_home",
+      "kind": "python",
+      "selector": "test_retrieval_layers.RetrievalLayerTests.test_business_memory_folder_is_not_mistaken_for_transaction_home",
+      "path": "automation/tests/test_retrieval_layers.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval_layers.RetrievalLayerTests.test_deep_owner_sidecar_change_invalidates_cached_association",
+      "kind": "python",
+      "selector": "test_retrieval_layers.RetrievalLayerTests.test_deep_owner_sidecar_change_invalidates_cached_association",
+      "path": "automation/tests/test_retrieval_layers.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval_layers.RetrievalLayerTests.test_flat_and_tool_memory_homes_are_trace_only",
+      "kind": "python",
+      "selector": "test_retrieval_layers.RetrievalLayerTests.test_flat_and_tool_memory_homes_are_trace_only",
+      "path": "automation/tests/test_retrieval_layers.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval_layers.RetrievalLayerTests.test_nested_run_raw_artifacts_and_transactions_do_not_enter_index",
+      "kind": "python",
+      "selector": "test_retrieval_layers.RetrievalLayerTests.test_nested_run_raw_artifacts_and_transactions_do_not_enter_index",
+      "path": "automation/tests/test_retrieval_layers.py",
+      "capability": "sources",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_retrieval_layers.RetrievalLayerTests.test_trace_registry_removes_prior_search_text_without_disabling_source",
+      "kind": "python",
+      "selector": "test_retrieval_layers.RetrievalLayerTests.test_trace_registry_removes_prior_search_text_without_disabling_source",
+      "path": "automation/tests/test_retrieval_layers.py",
+      "capability": "sources",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_authorization_change_invalidates_cached_projection",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_authorization_change_invalidates_cached_projection",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_candidate_history_dry_run_and_no_promotion",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_candidate_history_dry_run_and_no_promotion",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_development_caches_are_not_business_control_files",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_development_caches_are_not_business_control_files",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_exclusion_and_summary_are_same_scope",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_exclusion_and_summary_are_same_scope",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_jobs_failure_cancel_and_restart",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_jobs_failure_cancel_and_restart",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_keyword_pairs_are_candidates_not_dependencies",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_keyword_pairs_are_candidates_not_dependencies",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_projection_contract_direction_and_read_only",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_projection_contract_direction_and_read_only",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_real_semantic_read_only_existing_index",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_real_semantic_read_only_existing_index",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_release_resources_in_upgrade_manifest",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_release_resources_in_upgrade_manifest",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_server_lease_prevents_job_history_clobber",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_server_lease_prevents_job_history_clobber",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_stale_ai_candidate_is_preserved_and_marked",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_stale_ai_candidate_is_preserved_and_marked",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_stale_preview_refuses_then_rebuild_changes",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_stale_preview_refuses_then_rebuild_changes",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_versioned_http_and_static_manifest",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_versioned_http_and_static_manifest",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workbench_relations.RelationsTests.test_view_path_and_source_boundaries",
+      "kind": "python",
+      "selector": "test_workbench_relations.RelationsTests.test_view_path_and_source_boundaries",
+      "path": "automation/tests/test_workbench_relations.py",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_angle_bracket_links_with_spaces_are_checked",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_angle_bracket_links_with_spaces_are_checked",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_bad_metadata_is_reported_and_generated_reports_are_excluded",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_bad_metadata_is_reported_and_generated_reports_are_excluded",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_chinese_titles_search_and_old_manifest",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_chinese_titles_search_and_old_manifest",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_core_algorithm_requires_document_even_for_legacy_command",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_core_algorithm_requires_document_even_for_legacy_command",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_cross_project_impact_and_cyclic_dependencies_terminate",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_cross_project_impact_and_cyclic_dependencies_terminate",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_existing_destination_is_never_overwritten",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_existing_destination_is_never_overwritten",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_global_modules_runs_and_optional_projects",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_global_modules_runs_and_optional_projects",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_legacy_run_path_still_supports_review",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_legacy_run_path_still_supports_review",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_missing_parent_and_duplicate_id_are_visible",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_missing_parent_and_duplicate_id_are_visible",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_project_and_run_creation_preserve_traceability",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_project_and_run_creation_preserve_traceability",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_recent_navigation_is_bounded_but_full_index_is_complete",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_recent_navigation_is_bounded_but_full_index_is_complete",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_refresh_index_and_bounded_context",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_refresh_index_and_bounded_context",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_review_guards_dry_run_and_supersession",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_review_guards_dry_run_and_supersession",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_review_history_retraction_and_transitive_impact",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_review_history_retraction_and_transitive_impact",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_slugify_rejects_non_ascii_only_identifier",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_slugify_rejects_non_ascii_only_identifier",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_titles_preserve_quotes_paths_and_literal_template_tokens",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_titles_preserve_quotes_paths_and_literal_template_tokens",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_tool_registry_accepts_files_and_directories_but_rejects_missing_paths",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_tool_registry_accepts_files_and_directories_but_rejects_missing_paths",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_workspace_cli.WorkspaceCliTests.test_workflow_sources_have_valid_minimal_skill_metadata",
+      "kind": "python",
+      "selector": "test_workspace_cli.WorkspaceCliTests.test_workflow_sources_have_valid_minimal_skill_metadata",
+      "path": "automation/tests/test_workspace_cli.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_catalog_detects_new_missing_and_duplicate_tests",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_catalog_detects_new_missing_and_duplicate_tests",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_selection_updates_keep_prior_bytes_and_require_fresh_discovery",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_selection_updates_keep_prior_bytes_and_require_fresh_discovery",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_forged_empty_selection_and_business_output_are_rejected",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_forged_empty_selection_and_business_output_are_rejected",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_real_subprocess_pass_keeps_command_fingerprints_and_no_overwrite",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_real_subprocess_pass_keeps_command_fingerprints_and_no_overwrite",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_real_discover_reports_failure_and_skip_without_green_overall",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_real_discover_reports_failure_and_skip_without_green_overall",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_scale_needs_explicit_selection_and_authorization",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_scale_needs_explicit_selection_and_authorization",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_timeout_keeps_partial_results_and_does_not_overwrite_selection",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_timeout_keeps_partial_results_and_does_not_overwrite_selection",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_ai_review.ActualAIRecorderTests.test_report_links_are_relative_and_external_artifacts_are_rejected",
+      "kind": "python",
+      "selector": "test_ai_review.ActualAIRecorderTests.test_report_links_are_relative_and_external_artifacts_are_rejected",
+      "path": "automation/tests/test_ai_review.py",
+      "capability": "actual-ai",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n01_unit_contract_and_prerequisites",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n01_unit_contract_and_prerequisites",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n02_two_fixed_documents_and_independent_chapter_revisions",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n02_two_fixed_documents_and_independent_chapter_revisions",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n03_context_budget_and_excluded_prerequisite",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n03_context_budget_and_excluded_prerequisite",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n04_explicit_changes_watch_and_inconsistent_document_bases",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n04_explicit_changes_watch_and_inconsistent_document_bases",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n05_short_cross_research_search_and_explicit_full_expansion",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n05_short_cross_research_search_and_explicit_full_expansion",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n05_current_restriction_hides_old_unit_and_wrong_hash_is_rejected",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n05_current_restriction_hides_old_unit_and_wrong_hash_is_rejected",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n05_revocation_hides_cited_prose_and_unit_together",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n05_revocation_hides_cited_prose_and_unit_together",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n05_old_unversioned_drafts_and_missing_brief_are_not_relabelled",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n05_old_unversioned_drafts_and_missing_brief_are_not_relabelled",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n02_brief_prose_covers_unit_without_requiring_every_owner_unit",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n02_brief_prose_covers_unit_without_requiring_every_owner_unit",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/memory.spec.ts::独立双文稿、必要定义、章节上下文与固定修订影响",
+      "kind": "browser",
+      "selector": "独立双文稿、必要定义、章节上下文与固定修订影响",
+      "path": "automation/frontend/e2e/memory.spec.ts",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_component_selection_ignores_filtered_skip_but_rejects_selected_skip_or_wrong_identity",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_component_selection_ignores_filtered_skip_but_rejects_selected_skip_or_wrong_identity",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_atomic_sharing_retries_preserve_errors_and_pending_payload_on_exhaustion",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_atomic_sharing_retries_preserve_errors_and_pending_payload_on_exhaustion",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_test_tiers.TieredTestingTests.test_receipt_failure_marks_unstarted_stage_failed_and_preserves_final_fallback",
+      "kind": "python",
+      "selector": "test_test_tiers.TieredTestingTests.test_receipt_failure_marks_unstarted_stage_failed_and_preserves_final_fallback",
+      "path": "automation/tests/test_test_tiers.py",
+      "capability": "testing",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ResearchDocument.test.tsx::keeps delayed fixed images mounted across parent status refreshes",
+      "kind": "component",
+      "selector": "keeps delayed fixed images mounted across parent status refreshes",
+      "path": "automation/frontend/src/ResearchDocument.test.tsx",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_memory_packets.PacketTests.test_p10_summary_balances_selected_owners_without_duplicate_report_prose",
+      "kind": "python",
+      "selector": "test_memory_packets.PacketTests.test_p10_summary_balances_selected_owners_without_duplicate_report_prose",
+      "path": "automation/tests/test_memory_packets.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_raw_materials.RawMaterialsTests.test_l01_native_run_without_source_and_research_deduplicate_usage",
+      "kind": "python",
+      "selector": "test_raw_materials.RawMaterialsTests.test_l01_native_run_without_source_and_research_deduplicate_usage",
+      "path": "automation/tests/test_raw_materials.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_raw_materials.RawMaterialsTests.test_l02_source_alias_merges_with_native_fixed_file",
+      "kind": "python",
+      "selector": "test_raw_materials.RawMaterialsTests.test_l02_source_alias_merges_with_native_fixed_file",
+      "path": "automation/tests/test_raw_materials.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_raw_materials.RawMaterialsTests.test_l03_fixed_versions_do_not_merge_or_return_changed_content",
+      "kind": "python",
+      "selector": "test_raw_materials.RawMaterialsTests.test_l03_fixed_versions_do_not_merge_or_return_changed_content",
+      "path": "automation/tests/test_raw_materials.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_raw_materials.RawMaterialsTests.test_l04_revoked_alias_restricted_owner_and_traversal_are_not_bypassed",
+      "kind": "python",
+      "selector": "test_raw_materials.RawMaterialsTests.test_l04_revoked_alias_restricted_owner_and_traversal_are_not_bypassed",
+      "path": "automation/tests/test_raw_materials.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_raw_materials.RawMaterialsTests.test_l05_missing_hash_missing_file_and_client_identity_fail_closed",
+      "kind": "python",
+      "selector": "test_raw_materials.RawMaterialsTests.test_l05_missing_hash_missing_file_and_client_identity_fail_closed",
+      "path": "automation/tests/test_raw_materials.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_raw_materials.RawMaterialsTests.test_l06_listing_does_not_open_original_bodies_or_create_memory",
+      "kind": "python",
+      "selector": "test_raw_materials.RawMaterialsTests.test_l06_listing_does_not_open_original_bodies_or_create_memory",
+      "path": "automation/tests/test_raw_materials.py",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/memory.spec.ts::L0统一材料、无来源条目的Run、固定原件预览与清单导出",
+      "kind": "browser",
+      "selector": "L0统一材料、无来源条目的Run、固定原件预览与清单导出",
+      "path": "automation/frontend/e2e/memory.spec.ts",
+      "capability": "research",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_run_capture.RunCaptureTests.test_c01_execute_auto_register_and_l0_read_without_source",
+      "kind": "python",
+      "selector": "test_run_capture.RunCaptureTests.test_c01_execute_auto_register_and_l0_read_without_source",
+      "path": "automation/tests/test_run_capture.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_run_capture.RunCaptureTests.test_c02_failed_and_timeout_preserve_logs_and_partial_output",
+      "kind": "python",
+      "selector": "test_run_capture.RunCaptureTests.test_c02_failed_and_timeout_preserve_logs_and_partial_output",
+      "path": "automation/tests/test_run_capture.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_run_capture.RunCaptureTests.test_c03_register_idempotent_and_rollback_conflict",
+      "kind": "python",
+      "selector": "test_run_capture.RunCaptureTests.test_c03_register_idempotent_and_rollback_conflict",
+      "path": "automation/tests/test_run_capture.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_run_capture.RunCaptureTests.test_c04_changed_version_revoked_source_and_invalid_request",
+      "kind": "python",
+      "selector": "test_run_capture.RunCaptureTests.test_c04_changed_version_revoked_source_and_invalid_request",
+      "path": "automation/tests/test_run_capture.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_run_capture.RunCaptureTests.test_c05_input_mutation_and_concurrent_card_change_fail_closed",
+      "kind": "python",
+      "selector": "test_run_capture.RunCaptureTests.test_c05_input_mutation_and_concurrent_card_change_fail_closed",
+      "path": "automation/tests/test_run_capture.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_run_capture.RunCaptureTests.test_c06_output_business_names_are_materials_not_objects",
+      "kind": "python",
+      "selector": "test_run_capture.RunCaptureTests.test_c06_output_business_names_are_materials_not_objects",
+      "path": "automation/tests/test_run_capture.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_run_capture.RunCaptureTests.test_c07_public_cli_exit_codes_and_actual_material_registration",
+      "kind": "python",
+      "selector": "test_run_capture.RunCaptureTests.test_c07_public_cli_exit_codes_and_actual_material_registration",
+      "path": "automation/tests/test_run_capture.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_run_capture.RunCaptureTests.test_c08_restricted_input_and_self_reference_do_not_write",
+      "kind": "python",
+      "selector": "test_run_capture.RunCaptureTests.test_c08_restricted_input_and_self_reference_do_not_write",
+      "path": "automation/tests/test_run_capture.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    }
+  ],
+  "deferred": [
+    {
+      "authorization": "scale",
+      "reason": "万条规模按用户此前要求暂缓；不纳入默认full或quick"
+    },
+    {
+      "authorization": "dependency-release",
+      "reason": "仅依赖/模型/发行链路影响且提供本地包时执行"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-09-09T06:17:11.478091+00:00",
+      "reason": "新增分级runner行为验证",
+      "added": [
+        "python:test_test_tiers.TieredTestingTests.test_catalog_detects_new_missing_and_duplicate_tests",
+        "python:test_test_tiers.TieredTestingTests.test_selection_updates_keep_prior_bytes_and_require_fresh_discovery",
+        "python:test_test_tiers.TieredTestingTests.test_forged_empty_selection_and_business_output_are_rejected",
+        "python:test_test_tiers.TieredTestingTests.test_real_subprocess_pass_keeps_command_fingerprints_and_no_overwrite",
+        "python:test_test_tiers.TieredTestingTests.test_real_discover_reports_failure_and_skip_without_green_overall",
+        "python:test_test_tiers.TieredTestingTests.test_scale_needs_explicit_selection_and_authorization",
+        "python:test_test_tiers.TieredTestingTests.test_timeout_keeps_partial_results_and_does_not_overwrite_selection"
+      ]
+    },
+    {
+      "at": "2026-09-09T06:20:39.195170+00:00",
+      "reason": "AI审查报告相对链接与外部产物拒绝回归",
+      "added": [
+        "python:test_ai_review.ActualAIRecorderTests.test_report_links_are_relative_and_external_artifacts_are_rejected"
+      ]
+    },
+    {
+      "at": "2026-09-09T06:27:19.683407+00:00",
+      "reason": "技术单元和独立文稿v3固定依据及增量边界",
+      "added": [
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n01_unit_contract_and_prerequisites",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n02_two_fixed_documents_and_independent_chapter_revisions",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n03_context_budget_and_excluded_prerequisite",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n04_explicit_changes_watch_and_inconsistent_document_bases",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n05_short_cross_research_search_and_explicit_full_expansion",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n05_current_restriction_hides_old_unit_and_wrong_hash_is_rejected",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n05_revocation_hides_cited_prose_and_unit_together",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n05_old_unversioned_drafts_and_missing_brief_are_not_relabelled",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n02_brief_prose_covers_unit_without_requiring_every_owner_unit"
+      ]
+    },
+    {
+      "at": "2026-09-09T06:27:36.494966+00:00",
+      "reason": "独立文稿实际浏览器保存与章节上下文验收",
+      "added": [
+        "browser:e2e/memory.spec.ts::独立双文稿、必要定义、章节上下文与固定修订影响"
+      ]
+    },
+    {
+      "at": "2026-09-09T07:03:47.774604+00:00",
+      "reason": "真实full暴露组件过滤skip计数及Windows回执共享冲突，补固定选择对账与异常留存回归",
+      "added": [
+        "python:test_test_tiers.TieredTestingTests.test_component_selection_ignores_filtered_skip_but_rejects_selected_skip_or_wrong_identity",
+        "python:test_test_tiers.TieredTestingTests.test_atomic_sharing_retries_preserve_errors_and_pending_payload_on_exhaustion",
+        "python:test_test_tiers.TieredTestingTests.test_receipt_failure_marks_unstarted_stage_failed_and_preserves_final_fallback"
+      ]
+    },
+    {
+      "at": "2026-09-09T07:03:59.601145+00:00",
+      "reason": "状态轮询时延迟固定图片保持挂载",
+      "added": [
+        "component:src/ResearchDocument.test.tsx::keeps delayed fixed images mounted across parent status refreshes"
+      ]
+    },
+    {
+      "at": "2026-09-09T07:28:53.590649+00:00",
+      "reason": "完整浏览器发现长首研究挤占总结预算，新增跨owner公平选材和显式全文/排除回归",
+      "added": [
+        "python:test_memory_packets.PacketTests.test_p10_summary_balances_selected_owners_without_duplicate_report_prose"
+      ]
+    },
+    {
+      "at": "2026-09-09T10:44:44.742090+00:00",
+      "reason": "统一L0登记与固定版本、权限和只读回归",
+      "added": [
+        "python:test_raw_materials.RawMaterialsTests.test_l01_native_run_without_source_and_research_deduplicate_usage",
+        "python:test_raw_materials.RawMaterialsTests.test_l02_source_alias_merges_with_native_fixed_file",
+        "python:test_raw_materials.RawMaterialsTests.test_l03_fixed_versions_do_not_merge_or_return_changed_content",
+        "python:test_raw_materials.RawMaterialsTests.test_l04_revoked_alias_restricted_owner_and_traversal_are_not_bypassed",
+        "python:test_raw_materials.RawMaterialsTests.test_l05_missing_hash_missing_file_and_client_identity_fail_closed",
+        "python:test_raw_materials.RawMaterialsTests.test_l06_listing_does_not_open_original_bodies_or_create_memory"
+      ]
+    },
+    {
+      "at": "2026-09-09T10:44:45.018599+00:00",
+      "reason": "L0统一列表、无source的Run与原件预览导出真实浏览器场景",
+      "added": [
+        "browser:e2e/memory.spec.ts::L0统一材料、无来源条目的Run、固定原件预览与清单导出"
+      ]
+    },
+    {
+      "at": "2026-09-09T11:21:58.450690+00:00",
+      "reason": "Run执行自动登记与恢复以及L0闭环",
+      "added": [
+        "python:test_run_capture.RunCaptureTests.test_c01_execute_auto_register_and_l0_read_without_source",
+        "python:test_run_capture.RunCaptureTests.test_c02_failed_and_timeout_preserve_logs_and_partial_output",
+        "python:test_run_capture.RunCaptureTests.test_c03_register_idempotent_and_rollback_conflict",
+        "python:test_run_capture.RunCaptureTests.test_c04_changed_version_revoked_source_and_invalid_request",
+        "python:test_run_capture.RunCaptureTests.test_c05_input_mutation_and_concurrent_card_change_fail_closed",
+        "python:test_run_capture.RunCaptureTests.test_c06_output_business_names_are_materials_not_objects"
+      ]
+    },
+    {
+      "at": "2026-09-09T11:23:34.403263+00:00",
+      "reason": "补充公开CLI退出码与受限输入自引用拒绝",
+      "added": [
+        "python:test_run_capture.RunCaptureTests.test_c07_public_cli_exit_codes_and_actual_material_registration",
+        "python:test_run_capture.RunCaptureTests.test_c08_restricted_input_and_self_reference_do_not_write"
+      ]
+    }
+  ]
+}

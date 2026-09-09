@@ -70,13 +70,23 @@ def reference_path(root, target):
     """外部引用只接受 sources 中已启用的逐文件登记，不跟随正文链接扩权。"""
     if not isinstance(target, str) or not target.strip() or "://" in target:
         raise ValueError("证据路径必须是非空文件路径，不能自动读取 URL")
-    path = (root / target).resolve()
+    raw = (root / target).absolute()
+    # Do not resolve a junction first and then mistake its destination for a
+    # directly authorized file. The same rule applies to local legacy refs.
+    if any(parent.is_symlink() or (parent.exists() and getattr(parent.lstat(), "st_file_attributes", 0) & 0x400)
+           for parent in [raw, *raw.parents]):
+        raise ValueError("证据来源含符号链接或联接")
+    path = raw.resolve()
+    registry = root / "retrieval/sources.json"
+    entries = [item for item in read(registry).get("sources", [])
+               if (root / item["path"]).resolve() == path] if registry.is_file() else []
+    # Explicit revocation also applies to a source physically inside root. A
+    # legacy path reference must not bypass a newer source-registration denial.
+    if any(not item.get("enabled", True) or item.get("sensitivity") == "restricted" for item in entries):
+        raise ValueError("证据来源登记已禁用或限制访问")
     if path.is_relative_to(root.resolve()):
         return path
-    registry = root / "retrieval/sources.json"
-    allowed = {(root / item["path"]).resolve() for item in read(registry).get("sources", [])
-               if item.get("enabled", True)} if registry.is_file() else set()
-    if path not in allowed:
+    if len(entries) != 1:
         raise ValueError("外部证据未逐文件登记")
     return path
 
@@ -119,13 +129,14 @@ class EvidenceGraph:
     def __init__(self, root, overrides=None):
         self.root = Path(root).resolve()
         self.nodes, self.owners, self.documents, self.edges = {}, [], {}, {}
+        self._identities = set()
         self.errors = []
         # 一次证据图快照内复用文件检查；下一次正式读取会创建新图并重验。
         self.run_checks = {}
         self.overrides = overrides or {}
-        patterns = (("runs/*/run.json", "run_id"), ("projects/*/analysis/runs/*/run.json", "run_id"),
-                    ("research/*/research.json", "research_id"), ("core-algorithms/*/module.json", "module_id"))
-        paths = [(p, key) for pattern, key in patterns for p in self.root.glob(pattern)]
+        from manifest_discovery import manifests
+        cards = {'run.json': 'run_id', 'research.json': 'research_id', 'module.json': 'module_id'}
+        paths = [(p, cards[p.name]) for p in manifests(self.root, cards)]
         # 任意深度的知识/报告只认逐文档旁文件，跳过模板和生成件。
         paths += [(p, "evidence_id") for base in ("knowledge", "reports/sources", "reports/manifests")
                   for p in (self.root / base).rglob("*.evidence.json")]
@@ -143,6 +154,8 @@ class EvidenceGraph:
         if not isinstance(raw, dict) or not isinstance(raw.get(key), str) or not raw[key]:
             raise ValueError(f"缺少有效 {key}")
         oid = raw[key]
+        if key == 'run_id' and raw.get('owner_id') is not None and (not isinstance(raw['owner_id'], str) or not raw['owner_id'].strip()):
+            raise ValueError('owner_id 必须为非空对象 ID 或 null')
         if not isinstance(raw.get("review", {}), dict):
             raise ValueError("review 必须为对象")
         if not isinstance(raw.get("parent_run_ids", []), list) or not all(isinstance(p, str) for p in raw.get("parent_run_ids", [])):
@@ -168,8 +181,9 @@ class EvidenceGraph:
             self._add(claim["claim_id"], claim, path, "claim", owner=oid)
 
     def _add(self, nid, raw, path, kind, owner=None):
-        if nid in self.nodes:
+        if nid.casefold() in self._identities:
             raise ValueError(f"重复证据 ID：{nid}")
+        self._identities.add(nid.casefold())
         self.nodes[nid] = {"id": nid, "raw": raw, "path": path, "kind": kind, "owner": owner,
                            "fingerprint": fingerprint(raw), "blockers": set(), "issues": []}
         self.edges[nid] = set()
