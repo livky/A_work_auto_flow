@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "request_id": "aa0a43f6-3188-4cf5-9a23-4ac360760e9c",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex /root/retrieval_review actual AI"
+  },
+  "owner_id": "RES-F3-TANK",
+  "expected_head": "COM-4e059c51-dafc-4618-b1e6-db489c8df193",
+  "operations": [
+    {
+      "op": "put_record",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RES-F3-TANK",
+        "kind": "document_section",
+        "title": "SYNTHETIC F3 水箱结论与边界（旧依据基线）",
+        "body_markdown": "",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "水箱"
+        ],
+        "payload": {
+          "section_key": "brief",
+          "title": "水箱结论与边界（旧依据基线）",
+          "role": "conclusion",
+          "blocks": [
+            {
+              "type": "prose",
+              "markdown": "旧r1依据仅说明：在给定连续、无延迟且全过程未饱和的合成模型中，液位误差指数衰减。该结论不能推广到饱和泵或现实系统；尚需检查目标所需流量与泵容量。新输入尚未融合到这份显式基线，本文不确认新参数下可达。",
+              "evidence_refs": [
+                {
+                  "revision": 1,
+                  "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                  "locator": "",
+                  "target_kind": "record",
+                  "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                  "relation": "references"
+                },
+                {
+                  "revision": 1,
+                  "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+                  "locator": "",
+                  "target_kind": "record",
+                  "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+                  "relation": "references"
+                }
+              ]
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        },
+        "sources": [
+          {
+            "revision": 1,
+            "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+            "relation": "references"
+          },
+          {
+            "revision": 1,
+            "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      },
+      "client_key": "baseline-brief-section"
+    }
+  ]
+}

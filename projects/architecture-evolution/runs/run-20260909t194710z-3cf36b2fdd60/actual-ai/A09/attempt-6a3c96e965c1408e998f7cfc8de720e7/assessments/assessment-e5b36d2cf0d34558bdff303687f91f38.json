@@ -1,0 +1,53 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "comparisons": [
+    {
+      "expectation_id": "A09-E1",
+      "status": "meets",
+      "observation": "没有旧记录边的新约束仍进入真实维护；读完新约束与五部分维护正文后算出目标不可维持，保留条件推导并补边界。候选存在共享 SYNTHETIC/F3 词项，不能证明语义召回质量。",
+      "evidence_refs": [
+        "delivered/saturation-full.md",
+        "delivered/maintenance-plan.md",
+        "AI-ANALYSIS.md",
+        "reads"
+      ]
+    },
+    {
+      "expectation_id": "A09-E2",
+      "status": "meets",
+      "observation": "实际 AI 填写自身 ai 身份、交付固定 refs 和逐项理由，保留 read_receipt、未检查范围；retain 定义与新输入、revise 原模型。没有伪造人工确认或将计算冒充实验。",
+      "evidence_refs": [
+        "AI-ANALYSIS.md",
+        "authored-requests",
+        "outcomes/maintenance-review.json"
+      ]
+    },
+    {
+      "expectation_id": "A09-E3",
+      "status": "meets",
+      "observation": "公开 review/apply 使用服务器摘要，真实写出模型 r2；同 request_id 返回相同 COM，HEAD 变化后旧 review 返回 CONFLICT。索引 pending 与随后文本 reconcile 分别记录；两文稿 r2 和历史 r1 均读回。A08 导航 stale 保留待复核。",
+      "evidence_refs": [
+        "outcomes/maintenance-apply.json",
+        "outcomes/maintenance-apply-same-id.json",
+        "outcomes/maintenance-stale-review.json",
+        "document-update-receipt.json",
+        "AI-ANALYSIS.md"
+      ]
+    }
+  ],
+  "readable_artifacts": [
+    {
+      "title": "A09 实际反证维护与双文稿读回",
+      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\AI-ANALYSIS.md"
+    }
+  ],
+  "limitations": [
+    "输入与分析由同一 AI 在连续上下文完成，不是盲测。",
+    "未配置结构模型或向量，文本索引成功不证明模型与科学结论有效。",
+    "双文稿旧依据基线是本次公开新建；没有应撤回的已复核 claim。",
+    "未执行故障注入、跨 owner 部分失败恢复或人工验收；A08 旧导航仍 stale 待复核。"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "recorded_at": "2026-09-09T21:27:58.265454Z"
+}

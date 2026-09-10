@@ -366,6 +366,12 @@ def validate_record(draft, context=None):
     if errors:
         return {"valid": False, "errors": errors, "record": record}
     p = record["payload"]
+    # Optional v3 knowledge classifications are canonical payload content. Keep
+    # validation separate from scientific review and never add defaults to old
+    # records: their original payload and content fingerprints remain unchanged.
+    if "knowledge_facets" in p:
+        from .facets import validate_knowledge_facets
+        errors.extend(_error('/payload' + path, message) for path, message in validate_knowledge_facets(record))
     if kind == 'map' and 'report' in p:
         errors.extend({**error, 'path': '/payload/report' + error['path']}
                       for error in validate_report(p['report'], context))

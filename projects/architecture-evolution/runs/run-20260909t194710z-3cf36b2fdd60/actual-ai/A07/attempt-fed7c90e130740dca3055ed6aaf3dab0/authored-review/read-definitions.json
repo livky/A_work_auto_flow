@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query CLI",
+  "capture_path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A07/attempt-fed7c90e130740dca3055ed6aaf3dab0/delivered/definitions.md",
+  "locator": "实际工具呈现的完整交付投影；coverage 描述所交付内容相对于材料的覆盖",
+  "coverage": "full",
+  "observation": "读到 original/full/section/unit_digest/topic/domain 六种版本1类型；unit_digest 是已有字段的摘要配方，full 保留正文和定义。"
+}

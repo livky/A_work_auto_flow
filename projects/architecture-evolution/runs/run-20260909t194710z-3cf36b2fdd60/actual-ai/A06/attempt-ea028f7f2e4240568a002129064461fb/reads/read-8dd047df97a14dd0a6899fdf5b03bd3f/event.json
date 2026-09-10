@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/memory_review actual AI",
+  "origin": "public material-query search --assemble",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "assembly 全部五个内容部分，四个独立固定记录",
+  "coverage": "full",
+  "observation": "已在工具输出实际读完水箱模型r2（原线性推导和新增饱和边界）、必要定义r1、APIr1、饱和输入r1；定义作为直接与必要上下文重复出现，不算独立证据。核对变量单位、API缺少状态方程、幂等/超时限制及水箱特定参数不可达。组包ok、complete=true；无现实试验。",
+  "recorded_at": "2026-09-09T23:00:12.470858Z",
+  "capture_sha256": "a0a61c2ecf8d95fd47d562b787f299817c5bc8dab70deaf9eb26b0a2e0d7fd33",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

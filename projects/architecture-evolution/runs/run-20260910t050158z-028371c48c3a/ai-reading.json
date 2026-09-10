@@ -1,0 +1,13 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": {
+    "public_calls": "record_repair.py 的独立CLI回执；本次实际CUA工作台操作"
+  },
+  "capture_path": "recording-verification.json",
+  "locator": "新记录字段、四文稿完整性、冻结文件核对",
+  "coverage": "summary",
+  "observation": "已实际阅读新章节的回读正文、固定引用和验证摘要；浮点文稿8章/4章、Project12章/4章均完整，无缺失。工作台已观察浮点8章目录、公式、正文和11个候选；未逐像素复核全部历史图示。",
+  "unread_or_missing": [
+    "未逐段重读全部历史Project内容；导航fixture details/README.md有既存指纹差异，未将隔离例子全套复现记为通过。"
+  ]
+}

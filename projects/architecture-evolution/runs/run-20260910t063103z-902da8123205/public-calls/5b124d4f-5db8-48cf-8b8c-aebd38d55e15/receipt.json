@@ -1,0 +1,11 @@
+{
+  "command": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "memory",
+    "validate-draft",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\audit-documents-map-request.json"
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,11 @@
+{
+  "status": "failed",
+  "environment": "Windows x64; restricted execution; Node.js v22.11.0",
+  "steps": [
+    {"command": "automation/python.ps1 automation/scripts/material_query/generate_types.py", "exit_code": 0, "result": "Generated material JSON/TS"},
+    {"command": "C:/nvm4w/nodejs/node.exe scripts/contracts.mjs", "cwd": "automation/frontend", "exit_code": 1, "error": "EPERM: operation not permitted, open automation/frontend/src/generated/contracts.ts"},
+    {"command": "C:/nvm4w/nodejs/node.exe node_modules/typescript/bin/tsc --noEmit", "cwd": "automation/frontend", "exit_code": 0, "limitation": "Memory schema generation had failed; this does not validate final generated sources"},
+    {"command": "C:/nvm4w/nodejs/node.exe node_modules/vite/bin/vite.js build", "cwd": "automation/frontend", "exit_code": 1, "error": "EPERM: operation not permitted, open node_modules/.vite-temp/vite.config.ts.timestamp-1788991695068-b6296dbd2c41a.mjs"}
+  ],
+  "observation": "Existing output file was Archive, not ReadOnly. No completed build or current resource-fingerprint claim from this attempt."
+}

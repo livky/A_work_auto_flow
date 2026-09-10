@@ -1,0 +1,555 @@
+{
+  "status": "passed",
+  "scope": "inheritance identifiers, obligations, declared-copy fingerprints and local links only",
+  "checked_at": "2026-09-09T22:25:30.814565+00:00",
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "groups": 13,
+  "methods": 43,
+  "acceptance": 26,
+  "q_cases": 74,
+  "direct_design_mappings": 16,
+  "partial_design_mappings": 10,
+  "open_runtime_obligation_groups": 12,
+  "baseline_files": [
+    {
+      "name": "check_contracts.py",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "contract_ports.py",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "contract_types.py",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "CORE.md",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "DATATYPES.md",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "function-catalog.json",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "FUNCTIONS.md",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "IMPLEMENTATION.md",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "README.md",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "REPRESENTATION_AND_GRAPH.md",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "request-examples.json",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    },
+    {
+      "name": "SPEC.md",
+      "public_sha256_matches": true,
+      "original_available": true,
+      "original_sha256_matches": true,
+      "declared_copy_transform_matches": true
+    }
+  ],
+  "mapping_inputs": [
+    {
+      "path": "docs/design/representation-query-v0.2/CONTRACTS.md",
+      "matches": true,
+      "actual_sha256": "efe777ee17ccc3e42185060008ba81400221b7a0e99777a2f724db19ad61cf88"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/contracts.py",
+      "matches": true,
+      "actual_sha256": "ac8c2b35c5602cb424af4066aef54ee906bc6514c86ecaa5862862bd2ef8c5ec"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/DEVELOPMENT_READINESS.md",
+      "matches": true,
+      "actual_sha256": "93b964a34982830685f17dddfe4a0849dd49ea55cb52b382ffc93243b60eef38"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/test-cases.json",
+      "matches": true,
+      "actual_sha256": "7c2df489ae741846f98f24384e85023e01ce5c0b4428551c03644224f4153f48"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/baseline-v0.1/source-manifest.json",
+      "matches": true,
+      "actual_sha256": "41d7833485ac383a968a0706d5980b11b1434f3b18f946e718fc1b07eb7f2979"
+    }
+  ],
+  "local_links": [
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "RUNTIME_STATUS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "CONTRACTS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "inheritance-map.json",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "baseline-v0.1/PUBLIC_BASELINE.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "baseline-v0.1/source-manifest.json",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "baseline-v0.1/SPEC.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "baseline-v0.1/contract_types.py",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "baseline-v0.1/contract_ports.py",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "baseline-v0.1/function-catalog.json",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "baseline-v0.1/IMPLEMENTATION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "RUNTIME_STATUS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "RUNTIME_STATUS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/INHERITANCE.md",
+      "target": "test-cases.json",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "SPEC.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "REPRESENTATION_AND_GRAPH.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "REPRESENTATION_AND_GRAPH.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "REPRESENTATION_AND_GRAPH.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "REPRESENTATION_AND_GRAPH.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "SPEC.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "FUNCTIONS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "DATATYPES.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/CORE.md",
+      "target": "IMPLEMENTATION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/IMPLEMENTATION.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/IMPLEMENTATION.md",
+      "target": "PUBLIC_BASELINE.md#未随公共包分发的研究回执",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/IMPLEMENTATION.md",
+      "target": "PUBLIC_BASELINE.md#未随公共包分发的研究回执",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/PUBLIC_BASELINE.md",
+      "target": "../INHERITANCE.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/PUBLIC_BASELINE.md",
+      "target": "source-manifest.json",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "CORE.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "CORE.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "REPRESENTATION_AND_GRAPH.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "SPEC.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "contract_types.py",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "contract_ports.py",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "function-catalog.json",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "FUNCTIONS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "DATATYPES.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "request-examples.json",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "check_contracts.py",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/README.md",
+      "target": "IMPLEMENTATION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/REPRESENTATION_AND_GRAPH.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/SPEC.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/SPEC.md",
+      "target": "CORE.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/SPEC.md",
+      "target": "FUNCTIONS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/SPEC.md",
+      "target": "DATATYPES.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/SPEC.md",
+      "target": "IMPLEMENTATION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/SPEC.md",
+      "target": "REPRESENTATION_AND_GRAPH.md",
+      "exists": true
+    },
+    {
+      "from": "docs/design/representation-query-v0.2/baseline-v0.1/SPEC.md",
+      "target": "IMPLEMENTATION.md",
+      "exists": true
+    }
+  ],
+  "runtime_target_observations": [
+    {
+      "path": "automation/scripts/context_engine.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/evidence.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/assembly.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/associations.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/budget.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/coordinator.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/deepening.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/definitions.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/foundation.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/legacy_adapter.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/maintenance.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/reader.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/representations.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/state.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/material_query/structure.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/associations.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/consolidation.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/contracts.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/document.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/documents.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/evidence_adapter.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/impact.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/index.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/lineage.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/packets.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/raw_materials.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/search.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/service.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/store.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/summaries.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/memory/technical_units.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/qdrant_backend.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/retrieval.py",
+      "exists": true,
+      "behavior_verified": false
+    },
+    {
+      "path": "automation/scripts/retrieval_interfaces.py",
+      "exists": true,
+      "behavior_verified": false
+    }
+  ],
+  "errors": [],
+  "not_tested": [
+    "Runtime adapter behavior",
+    "Product backend conformance",
+    "Actual AI review",
+    "Retrieval quality or performance",
+    "P6 release archive or real setup upgrade",
+    "External source contents",
+    "Human or scientific acceptance"
+  ]
+}

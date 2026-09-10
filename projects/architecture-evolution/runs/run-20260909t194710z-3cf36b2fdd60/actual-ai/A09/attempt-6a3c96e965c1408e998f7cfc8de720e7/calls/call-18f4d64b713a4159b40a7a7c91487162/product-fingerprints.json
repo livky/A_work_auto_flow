@@ -1,0 +1,5 @@
+{
+  "automation\\scripts\\workspace_cli.py": "7ac41817fa1b11740c90731da8f5b3cf0c5b28654f7f0cffdebc865152630128",
+  "automation\\scripts\\material_query\\coordinator.py": "6745125c94d2b057d080d6a864f2a5a9d1d24cbb9eea27d79d5d4273120b07cf",
+  "automation\\scripts\\material_query\\assembly.py": "950c514983f7f82e687a2a8c36845e97135c5eb28b4bfe9afe0c99dc0f139191"
+}

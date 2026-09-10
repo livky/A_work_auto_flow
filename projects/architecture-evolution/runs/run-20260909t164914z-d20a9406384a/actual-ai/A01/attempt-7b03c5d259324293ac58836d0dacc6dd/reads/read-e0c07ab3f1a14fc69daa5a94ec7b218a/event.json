@@ -1,0 +1,14 @@
+{
+  "actor": "assistant",
+  "origin": {
+    "fixed_ref": "expand-unit.md"
+  },
+  "capture_path": "capture.snapshot.txt",
+  "locator": "全文",
+  "coverage": "full",
+  "observation": "已读取U07正文、七项功能、调用链、记录规则及固定来源。",
+  "unread_or_missing": [],
+  "recorded_at": "2026-09-09T17:20:33.684803Z",
+  "capture_sha256": "7e504af634fc007aa6af7f54507946fbf761103faa7ed3f7fa25e20af7e5e2dd",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

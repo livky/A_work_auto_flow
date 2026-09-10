@@ -1,0 +1,57 @@
+{
+  "definition": {
+    "key": "full",
+    "version": "1"
+  },
+  "question": "重试等待达到上限后，能否借用其他反馈模型的分段分析来检查边界，并据此保证稳定和最终成功？",
+  "keywords": [
+    "重试",
+    "饱和",
+    "误差",
+    "边界"
+  ],
+  "scope": {
+    "owner_ids": [
+      "RES-F3-TANK",
+      "RES-F3-RETRY",
+      "RES-F3-SATURATION"
+    ],
+    "kinds": [
+      "detail"
+    ],
+    "include_unknown": false
+  },
+  "scope_ceiling": {
+    "owner_ids": [
+      "RES-F3-TANK",
+      "RES-F3-RETRY",
+      "RES-F3-SATURATION"
+    ],
+    "kinds": [
+      "detail"
+    ],
+    "include_unknown": false
+  },
+  "purpose": "exploration",
+  "association": {
+    "mode": "off"
+  },
+  "budget": {
+    "wall_ms": 10000,
+    "read_bytes": 2097152,
+    "output_chars": 14000,
+    "candidates": 100,
+    "graph_nodes": 50,
+    "graph_edges": 100,
+    "graph_hops": 2,
+    "model_tokens": 0
+  },
+  "freshness": "current",
+  "result_limit": 8,
+  "missing_policy": "reject",
+  "fallback_definitions": [],
+  "applicability": "SYNTHETIC F3 cross-research reference only",
+  "channels": [
+    "lexical"
+  ]
+}

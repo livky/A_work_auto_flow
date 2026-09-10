@@ -1,0 +1,22 @@
+{
+  "valid": true,
+  "errors": [],
+  "dry_run": true,
+  "owner_id": "RES-F3-TANK",
+  "head": {
+    "commit_id": "COM-818cb25e-c314-4d44-a9b5-973e355a3b65",
+    "generation": 10,
+    "manifest_hash": "932c6b2f512abdf7aad72c53e062c084c9c191ecebab8b71b02634b0a389a662"
+  },
+  "record_results": [
+    {
+      "client_key": null,
+      "record_id": "MEM-35305be1-6956-5547-8457-b07b06b3b29d",
+      "revision": 2,
+      "content_hash": "7295f1471eedba1d9a6c7bf94592aa6b1c2df97858231957eb26faf77e56ae28",
+      "status": "would_update"
+    }
+  ],
+  "writes": 0
+}
+

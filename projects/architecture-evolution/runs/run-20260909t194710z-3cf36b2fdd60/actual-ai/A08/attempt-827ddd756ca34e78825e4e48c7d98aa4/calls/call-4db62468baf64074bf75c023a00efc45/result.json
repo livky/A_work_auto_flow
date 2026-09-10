@@ -1,0 +1,28 @@
+{
+  "call_id": "call-4db62468baf64074bf75c023a00efc45",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "material-query",
+    "capabilities"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "started_at": "2026-09-09T21:04:42.116665Z",
+  "timeout_seconds": 120,
+  "request": null,
+  "ended_at": "2026-09-09T21:04:42.302238Z",
+  "status": "completed",
+  "exit_code": 0,
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "b365787cb9a4c6f7f4d5f0210e8514c889eb7e3d9440785c4746305dbe48a7a6"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending"
+}

@@ -1,0 +1,924 @@
+{
+  "schema_version": 1,
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "title": "框架架构演进与文档一致性",
+  "document_source": "independent",
+  "document": {
+    "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+    "revision": 6,
+    "title": "表示查询：当前实现与核心简报",
+    "document_type": "research_report",
+    "purpose": "阅读实际实现、固定验证及保留的设计过程",
+    "audience": "项目使用者与实施决策者",
+    "scope": "本项目接口v0.1历史设计与v0.2本轮实际实现；验证范围和限制见当前实现章节。",
+    "common_refs": [
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+        "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+        "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+        "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+        "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+        "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+        "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+        "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 4,
+        "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+        "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "0d45da80e028fa231a8d24652df833373707737bf8d05bbcbe5cf421b4d2ba9c",
+        "target_id": "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "cc35f69de2b5644362c977cd2885e2be0912d1ca8c2ec6d71d69c4f78a4494d9",
+        "target_id": "MEM-4143f480-712a-5739-8044-3535ecaf1b0a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "e164f67b43688a742e773a9c4bb025c118a30ca473a389ba62c79d4d8b7036ae",
+        "target_id": "MEM-b0390c59-c458-5690-bc68-6dd030d32de0",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "8456744c71e630fe052dade1cafe1b20f3c96d75dc3923e742a323de4ec8eb2d",
+        "target_id": "MEM-05943bf4-63fe-5f0e-bd93-e5db72378c1d",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 4,
+        "sha256": "ea1cf1091e9cf2a634af4ba8b052ba3523d04658a9e4783b69777b80f54ead70",
+        "target_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 4,
+        "sha256": "1306cb4ff426aa4b910f823391942393033109ed9bfe2653d931dad805a15122",
+        "target_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "bf5e06a7664c6915671d08a5a0ef43de825b141fc6c223e2a823aa72c8141177",
+        "target_id": "MEM-07d8a202-977c-50ed-b88b-01ea1e7b651d",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "report": {
+    "version": 1,
+    "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+    "revision": 6,
+    "title": "表示查询：当前实现与核心简报",
+    "sections": [
+      {
+        "section_id": "MEM-05943bf4-63fe-5f0e-bd93-e5db72378c1d",
+        "section_key": "implementation-current",
+        "title": "本轮实际实现与验证",
+        "role": "conclusion",
+        "ref": {
+          "locator": "完整固定正文",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "8456744c71e630fe052dade1cafe1b20f3c96d75dc3923e742a323de4ec8eb2d",
+          "target_id": "MEM-05943bf4-63fe-5f0e-bd93-e5db72378c1d",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "0d45da80e028fa231a8d24652df833373707737bf8d05bbcbe5cf421b4d2ba9c",
+                "target_id": "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "cc35f69de2b5644362c977cd2885e2be0912d1ca8c2ec6d71d69c4f78a4494d9",
+                "target_id": "MEM-4143f480-712a-5739-8044-3535ecaf1b0a",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "e164f67b43688a742e773a9c4bb025c118a30ca473a389ba62c79d4d8b7036ae",
+                "target_id": "MEM-b0390c59-c458-5690-bc68-6dd030d32de0",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "表示查询现已接通原始、全文、章节、单元概览、专题和领域六类表示。用户选择问题与范围，检查可用性后显式组包；缺少的表示只有获准才回退。输出范围是可信授权、硬上限和当前选择的交集，再减显式排除；必需依赖读取也受硬上限约束。固定修订、SHA256和块定位贯穿读取。\n\n查询、续页、加深和组包共用累计资源账本，小结果集逐批核验正文，通道故障保留已完成结果及缺口。正式支持按单个claim的当前依据和适用域判断，不将同篇其他文字借用为已获准结论。已有关系用于导航，采纳联想不产生科学认可。\n\n语义维护先交付实际材料，AI或人阅读并逐项审查草案，再由原CAS事务保存；request_id重试不重复提交，索引失败单独补偿。浏览器已修复有效partial被错误阻断。使用入口为工作台“材料查询”和workbench.cmd material-query；开发与升级方式见材料查询手册。\n\n下面引用与完整过程稿相同的三个固定技术单元，保留验证边界。旧设计简报保留在后续章节，其“尚未实现”描述属于当时状态。",
+            "type": "prose",
+            "source_issues": []
+          },
+          {
+            "block_ids": [
+              "scope"
+            ],
+            "ref": {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "0d45da80e028fa231a8d24652df833373707737bf8d05bbcbe5cf421b4d2ba9c",
+              "target_id": "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": {
+              "id": "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+              "level": "L1",
+              "record": {
+                "body_markdown": "",
+                "change_reason": "将实际实现保存为可独立阅读的技术单元；测试及未完成边界引用固定Run。",
+                "content_hash": "ce89d11f659f25d1eb1b9785c8955192a18c6678381a3ee3e7e032d7f70ab2ad",
+                "created_at": "2026-09-09T22:37:43.900376Z",
+                "created_by": {
+                  "id": "assistant",
+                  "kind": "ai"
+                },
+                "discovery": "workspace_summary",
+                "keywords": [
+                  "表示查询v0.2",
+                  "实际实现",
+                  "固定引用",
+                  "累计预算",
+                  "软件验证"
+                ],
+                "kind": "detail",
+                "level": "L1",
+                "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+                "payload": {
+                  "blocks": [
+                    {
+                      "block_id": "scope",
+                      "markdown": "本单元记录本次软件实现。变量与单位在正文定义；功能回归、实际AI自查、人工/科学复核分别报告。",
+                      "requires_block_ids": [],
+                      "role": "definitions"
+                    },
+                    {
+                      "block_id": "implementation",
+                      "markdown": "# 表示查询运行实现：契约、范围和累计资源\n\n本轮在既有版本记忆之上增加材料查询应用。类型定义说明如何组织材料；候选指向已固定的规范记录；组包按用户选择组合正文，不产生第二套规范正文。原始、全文、章节、单元概览、专题和领域六种定义由同一注册表提供。字段缺失返回真实可用性；只有请求允许时才按注册的回退顺序换用表示。\n\n## 范围与固定身份\n\n设可信授权为 $A$，请求硬上限为 $C$，当前选择为 $S$，显式排除为 $E$。可输出集合为：\n\n$$\nO=(A\\cap C\\cap S)\\setminus E.\n$$\n\n其中空集合表示无结果，`null` 表示该维度不限。必需来源可以位于当前选择以外，但必须位于 $A\\cap C$ 且未被排除；正文读取之前核验这一边界。进入材料包时仍检查当前输出范围。这样可以识别“来源存在但不可输出”的缺口，同时避免由派生材料越界读取原件。\n\n记录引用包含修订号和 SHA256；历史读取保持旧版字节，当前查询另行核对真实 HEAD。显式 `block:` 定位沿候选、选择和组包保留；找不到相关块时报告缺失，不能把第一块当作回答。完整块的 `requires_block_ids` 决定所需定义，公式和定义不从中间截断。读取依据记录固定引用、owner HEAD、索引水位、观察时间与依据身份；跨 owner 是乐观观察，不能冒充全局事务快照。\n\n## 资源与状态\n\n对资源种类 $r$，各阶段共享总额度 $B_r$。第 $i$ 阶段消耗为 $c_{i,r}$，下一次操作之前要求：\n\n$$\n\\sum_i c_{i,r}+c_{\\mathrm{next},r}\\leq B_r.\n$$\n\n读字节以实际 UTF-8/文件字节计；输出以字符计；候选、节点、边、跳数、模型调用及输入输出 token 分开计量。活动墙钟按阶段并集累计，用户等待不扣活动时间；查询 TTL 独立。保留已完成消耗，取消或预算耗尽不能清零重试。提供器预留和结算使用同一账本；真实超额会阻止新工作，不能把消耗截断成上限制造达标。\n\n查询后显式选择候选再组包。正式模式按 claim 检查适用域和当前依据，一篇记录仅一个 claim 获准时不会带入其余结论；旧复核记录仍可读取，但不因此继续有效。材料包显示来源、补充定义和缺口。结构化 Issue 保留错误码、恢复条件及已授权固定引用；未知或拒绝对象不附带身份信息。\n\n实现入口是 `automation/scripts/material_query/`，公共用法见 `docs/MATERIAL_QUERY.md`。与旧基础能力逐项对应的映射和验收证据见本 Run 的 `INHERITANCE_ACCEPTANCE.md`，最终软件结果见 `FINAL_VALIDATION.md`。本单元是软件实现说明，不证明检索质量、模型有效性或未执行策略。\n",
+                      "requires_block_ids": [
+                        "scope"
+                      ],
+                      "role": "methods"
+                    },
+                    {
+                      "block_id": "validation",
+                      "markdown": "# 表示查询首期软件验证固定记录\n\nRun：`RUN-20260909T194710Z-3CF36B2FDD60`，本机 Windows 11 x64、Python 3.12.10、Node 22.11.0。验证时源码含既有未提交修改，未创建新 Git 提交。本文件固定软件验证时点；后续项目文稿保存和 AI 页面审查另附回执，不据此预先宣布通过。\n\n## 实际执行\n\n| 层级 | 原始结果 | 固定依据 |\n|---|---|---|\n| quick v2 | 517 项：516 通过，1 项既有 B01 失败；其中 Python 473、类型 1、组件 29、Edge 14 | `testing/quick-attempt-01/results.json`；这是较早集成版本，不能替代最终 full |\n| full v4 | 599 项：596 通过，2 失败、1 错误，无跳过；Python 555（552 通过），类型 1、组件 29、真实 Edge 14 均通过 | `testing/full-attempt-01/results.json` 及原始日志；整体状态保留 failed |\n| C17 补测 | 测试夹具误用不存在 owner C；按真实 A/B 端点修正后 1/1 通过 | `inheritance-closure-final.json`；full 载入旧测试形成的 KeyError 原样保留 |\n| 结构类型补测 | 关联 differences 字段未同步到 memory-v3.d.ts；用正式生成器同步后 11/11 契约检查通过 | `testing/memory-contracts-supplement-final.log` |\n| 最终工作台构建 | 契约生成、前端契约、类型检查、Vite 构建 4 步通过 | `testing/build-attempt-03/results.json` 与资源指纹；先前 EPERM 失败回执保留 |\n| 定向继承反例 | 范围、局部证据、召回、图、维护、复核和资源等按实际回执逐项映射 | `INHERITANCE_ACCEPTANCE.md`；方法存在不等于全部旧 DTO 或可选策略完成 |\n| 六种表示成本 | 6/6 查询并组包 complete；累计读取 45,845–57,635 字节，输出 223–746 字符，模型调用 0 | `cost-attempt-02/results.json`、`COST_REVIEW.md`；合成小例，非独立性能基准 |\n\nfull 的程序、测试、schema、选择和资源指纹在原回执中冻结。补测只关闭对应问题，不改写 full 的原始结果，也不重复计算成 599 项全部通过。生成声明的更新不改变运行逻辑；最后一次工作台构建已含匹配的 JSON schema。\n\n## 保留的故障与边界\n\nB01 `test_b01_frozen_plan_self_test_leaves_assets_unchanged` 仍失败：历史冻结 fixture 的现有指纹差异与基线一致。没有更新冻结清单来制造通过，需另行追溯历史输入。当前不能将整个回归层宣布全绿。\n\n真实 `setup.cmd` 扩展旧工作区测试已在 quick/full 执行，覆盖预览、升级、重复升级、恢复及损坏业务元数据/真实缺失工具拒绝。共享 fixture 包含多层目录、中文/空格、空目录、自定义工具/Skill、缓存边界及持久维护计划；按完整保护清单检查哈希与目录。该结果限本机隔离合成目录，第二台物理机尚未验收。\n\nPython 锁和标准模型指纹未变，前端增加的 @types/node、undici-types 是开发依赖。使用端仍随源码接收预构建资源，升级入口为独立新版目录的 `setup.cmd --target \"旧工作区路径\" --register --open`。依赖/模型更新仍须配套离线 ZIP；本次没有生成或发布新依赖包。清单审查见 `PORTABILITY_REVIEW.md`，当前业务来源登记不得带入公共发行。\n\n## 实际 AI 与人工\n\nA07–A09 已有真实公开调用、材料阅读、逐项 AI 自查及失败尝试，分别验证表示缺口、结构类比与新反证维护；见 `actual-ai/` 和 `browser/partial-status/AI_UI_REVIEW.md`。这是合成案例中的实际 AI 使用，不是企业材料准确度结论。项目实现章节、完整过程稿和简报的当前回读及界面检查将在本文件冻结后单独登记。\n\n人工验收、科学复核、独立检索质量题集、第二物理机及万条规模实验未因软件结果获得通过。未配置的模型/分词器、向量或其他可选策略仍按能力表显式不可用或降级；不能承诺任意后端/模型一键替换。未执行对外发布、企业连接或原始材料修改。\n",
+                      "requires_block_ids": [
+                        "scope"
+                      ],
+                      "role": "results"
+                    }
+                  ],
+                  "evidence_refs": [
+                    {
+                      "locator": "完整固定报告",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "fd3ec45fd3279cc3288dc58c506a12272b2218592046617c2b4d1b4d138d5cbf",
+                      "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-1",
+                      "target_kind": "file"
+                    },
+                    {
+                      "locator": "完整固定报告",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "bea5a8016f928c66cc7f3b81b9cdaa8de0890b34dda2c764ac5b0babe8f3be1e",
+                      "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-4",
+                      "target_kind": "file"
+                    }
+                  ],
+                  "figures": [],
+                  "missing_refs": [],
+                  "retrieval_description": {
+                    "applicable": [
+                      "本次工作区实现及已执行合成案例"
+                    ],
+                    "key_findings": [
+                      "表示查询运行实现：契约、范围和累计资源已接通运行入口，详细支持范围和实际验证结果见正文及固定验证报告。"
+                    ],
+                    "limitations": [
+                      "人工、第二物理机和大规模验收单列；历史夹具失败不篡改为通过。"
+                    ],
+                    "method": "实现与反例回归、公开CLI回读及实际AI/浏览器检查分别记录。",
+                    "not_applicable": [
+                      "未执行策略、科学模型有效性、真实企业数据外推"
+                    ],
+                    "question": "表示查询运行实现：契约、范围和累计资源如何工作？"
+                  },
+                  "run_ref": null,
+                  "unit_type": "analysis"
+                },
+                "previous_revision": null,
+                "provenance_gap": null,
+                "record_hash": "0d45da80e028fa231a8d24652df833373707737bf8d05bbcbe5cf421b4d2ba9c",
+                "record_id": "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+                "record_reason": "将实际实现保存为可独立阅读的技术单元；测试及未完成边界引用固定Run。",
+                "revision": 1,
+                "schema_version": 3,
+                "sensitivity": "internal",
+                "sources": [
+                  {
+                    "locator": "完整固定报告",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "fd3ec45fd3279cc3288dc58c506a12272b2218592046617c2b4d1b4d138d5cbf",
+                    "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-1",
+                    "target_kind": "file"
+                  },
+                  {
+                    "locator": "完整固定报告",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "bea5a8016f928c66cc7f3b81b9cdaa8de0890b34dda2c764ac5b0babe8f3be1e",
+                    "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-4",
+                    "target_kind": "file"
+                  }
+                ],
+                "title": "表示查询运行实现：契约、范围和累计资源",
+                "updated_at": "2026-09-09T22:37:43.900376Z",
+                "updated_by": {
+                  "id": "assistant",
+                  "kind": "ai"
+                }
+              },
+              "source_issues": [],
+              "formal_eligibility": "not_evaluated"
+            },
+            "resolved_blocks": [
+              {
+                "block_id": "scope",
+                "markdown": "本单元记录本次软件实现。变量与单位在正文定义；功能回归、实际AI自查、人工/科学复核分别报告。",
+                "requires_block_ids": [],
+                "role": "definitions"
+              }
+            ],
+            "required_block_ids": [],
+            "source_issues": []
+          },
+          {
+            "block_ids": [
+              "scope"
+            ],
+            "ref": {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "cc35f69de2b5644362c977cd2885e2be0912d1ca8c2ec6d71d69c4f78a4494d9",
+              "target_id": "MEM-4143f480-712a-5739-8044-3535ecaf1b0a",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": {
+              "id": "MEM-4143f480-712a-5739-8044-3535ecaf1b0a",
+              "level": "L1",
+              "record": {
+                "body_markdown": "",
+                "change_reason": "将实际实现保存为可独立阅读的技术单元；测试及未完成边界引用固定Run。",
+                "content_hash": "8781a626251a38b2cf204c451278db33a661cdc290a8a12ab2004d21ccacb3a2",
+                "created_at": "2026-09-09T22:37:43.900376Z",
+                "created_by": {
+                  "id": "assistant",
+                  "kind": "ai"
+                },
+                "discovery": "workspace_summary",
+                "keywords": [
+                  "表示查询v0.2",
+                  "实际实现",
+                  "固定引用",
+                  "累计预算",
+                  "软件验证"
+                ],
+                "kind": "detail",
+                "level": "L1",
+                "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+                "payload": {
+                  "blocks": [
+                    {
+                      "block_id": "scope",
+                      "markdown": "本单元记录本次软件实现。变量与单位在正文定义；功能回归、实际AI自查、人工/科学复核分别报告。",
+                      "requires_block_ids": [],
+                      "role": "definitions"
+                    },
+                    {
+                      "block_id": "implementation",
+                      "markdown": "# 局部证据、关系加深与语义维护\n\n局部 Reader 从已授权的候选开始，读取其固定来源闭包和必需复核记录。没有为了评估一个候选而先构建全库正文适配器。复核状态和当前有效性是两个维度：accepted 但内容、依据或适用域已变更的 claim 不能进入正式支持；retracted、superseded 也不会被改写成“从未审查”。历史字节保留，当前准入重新计算。\n\n## 关系与新认识\n\n已有关系遍历用于定位、依赖展开和导航；关联与类比另放补充区，保留共同点、差异、来源和建议。采纳导航不生成科学 accepted 状态。图节点和边受累计预算、跳数和 owner 硬上限约束；来源变更使导航显式 stale，旧导航不会悄悄替换为新内容。\n\n新的反证不一定已有依赖边。因此维护计划既检查已有下游，也提供当前主题材料及缺口供真实 AI 或人阅读。工具形成任务包和正文阅读回执；AI/人逐项提出保留、局部修订、重建或延期及理由。程序校验读取范围、版本和计划一致性，不能由“已下载任务包”推断 AI 已理解，也不能自动生成一份全部通过的审查。\n\n## 保存与恢复\n\n审查通过的内容变更由 Writer 复用原规范记忆事务：预检、固定 expected HEAD、request_id 幂等、逐项修订、原子提交。持久计划状态可在进程重启后只读查询。相同提交请求重放不产生第二修订；计划过期或目标变化显式冲突。内容提交成功与索引成功分别报告，索引失败使用原索引计划补偿，不再提交正文。\n\n索引可以从 manifest 内容枚举恢复；分页必须完整连续，不能漏页发布完整水位。当前索引代次必须与真实规范 HEAD 核对，不能仅比较两个陈旧水位就报告完整。维护计划和阅读回执是工作数据，真实旧工作区升级 fixture 将它们纳入受保护文件及目录清单。\n\n本 Run 的 A08、A09 保留真实 AI 使用：A08 阅读合成材料、比较结构并采纳导航；A09 对新增反证做逐项审查、实际提交后重放验证幂等，并更新两个共享固定依据的文稿。旧版仍可回读。相关结果只适用于已执行的合成案例；人工与科学复核仍待完成，最终入口在 `FINAL_VALIDATION.md`。\n",
+                      "requires_block_ids": [
+                        "scope"
+                      ],
+                      "role": "methods"
+                    },
+                    {
+                      "block_id": "validation",
+                      "markdown": "# 表示查询首期软件验证固定记录\n\nRun：`RUN-20260909T194710Z-3CF36B2FDD60`，本机 Windows 11 x64、Python 3.12.10、Node 22.11.0。验证时源码含既有未提交修改，未创建新 Git 提交。本文件固定软件验证时点；后续项目文稿保存和 AI 页面审查另附回执，不据此预先宣布通过。\n\n## 实际执行\n\n| 层级 | 原始结果 | 固定依据 |\n|---|---|---|\n| quick v2 | 517 项：516 通过，1 项既有 B01 失败；其中 Python 473、类型 1、组件 29、Edge 14 | `testing/quick-attempt-01/results.json`；这是较早集成版本，不能替代最终 full |\n| full v4 | 599 项：596 通过，2 失败、1 错误，无跳过；Python 555（552 通过），类型 1、组件 29、真实 Edge 14 均通过 | `testing/full-attempt-01/results.json` 及原始日志；整体状态保留 failed |\n| C17 补测 | 测试夹具误用不存在 owner C；按真实 A/B 端点修正后 1/1 通过 | `inheritance-closure-final.json`；full 载入旧测试形成的 KeyError 原样保留 |\n| 结构类型补测 | 关联 differences 字段未同步到 memory-v3.d.ts；用正式生成器同步后 11/11 契约检查通过 | `testing/memory-contracts-supplement-final.log` |\n| 最终工作台构建 | 契约生成、前端契约、类型检查、Vite 构建 4 步通过 | `testing/build-attempt-03/results.json` 与资源指纹；先前 EPERM 失败回执保留 |\n| 定向继承反例 | 范围、局部证据、召回、图、维护、复核和资源等按实际回执逐项映射 | `INHERITANCE_ACCEPTANCE.md`；方法存在不等于全部旧 DTO 或可选策略完成 |\n| 六种表示成本 | 6/6 查询并组包 complete；累计读取 45,845–57,635 字节，输出 223–746 字符，模型调用 0 | `cost-attempt-02/results.json`、`COST_REVIEW.md`；合成小例，非独立性能基准 |\n\nfull 的程序、测试、schema、选择和资源指纹在原回执中冻结。补测只关闭对应问题，不改写 full 的原始结果，也不重复计算成 599 项全部通过。生成声明的更新不改变运行逻辑；最后一次工作台构建已含匹配的 JSON schema。\n\n## 保留的故障与边界\n\nB01 `test_b01_frozen_plan_self_test_leaves_assets_unchanged` 仍失败：历史冻结 fixture 的现有指纹差异与基线一致。没有更新冻结清单来制造通过，需另行追溯历史输入。当前不能将整个回归层宣布全绿。\n\n真实 `setup.cmd` 扩展旧工作区测试已在 quick/full 执行，覆盖预览、升级、重复升级、恢复及损坏业务元数据/真实缺失工具拒绝。共享 fixture 包含多层目录、中文/空格、空目录、自定义工具/Skill、缓存边界及持久维护计划；按完整保护清单检查哈希与目录。该结果限本机隔离合成目录，第二台物理机尚未验收。\n\nPython 锁和标准模型指纹未变，前端增加的 @types/node、undici-types 是开发依赖。使用端仍随源码接收预构建资源，升级入口为独立新版目录的 `setup.cmd --target \"旧工作区路径\" --register --open`。依赖/模型更新仍须配套离线 ZIP；本次没有生成或发布新依赖包。清单审查见 `PORTABILITY_REVIEW.md`，当前业务来源登记不得带入公共发行。\n\n## 实际 AI 与人工\n\nA07–A09 已有真实公开调用、材料阅读、逐项 AI 自查及失败尝试，分别验证表示缺口、结构类比与新反证维护；见 `actual-ai/` 和 `browser/partial-status/AI_UI_REVIEW.md`。这是合成案例中的实际 AI 使用，不是企业材料准确度结论。项目实现章节、完整过程稿和简报的当前回读及界面检查将在本文件冻结后单独登记。\n\n人工验收、科学复核、独立检索质量题集、第二物理机及万条规模实验未因软件结果获得通过。未配置的模型/分词器、向量或其他可选策略仍按能力表显式不可用或降级；不能承诺任意后端/模型一键替换。未执行对外发布、企业连接或原始材料修改。\n",
+                      "requires_block_ids": [
+                        "scope"
+                      ],
+                      "role": "results"
+                    }
+                  ],
+                  "evidence_refs": [
+                    {
+                      "locator": "完整固定报告",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "5acbbfbc1868d93c4f849aa4532ca9c8c395fd9f5d78651a20a4fb26e28823d8",
+                      "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-2",
+                      "target_kind": "file"
+                    },
+                    {
+                      "locator": "完整固定报告",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "bea5a8016f928c66cc7f3b81b9cdaa8de0890b34dda2c764ac5b0babe8f3be1e",
+                      "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-4",
+                      "target_kind": "file"
+                    }
+                  ],
+                  "figures": [],
+                  "missing_refs": [],
+                  "retrieval_description": {
+                    "applicable": [
+                      "本次工作区实现及已执行合成案例"
+                    ],
+                    "key_findings": [
+                      "局部证据、关系加深与语义维护已接通运行入口，详细支持范围和实际验证结果见正文及固定验证报告。"
+                    ],
+                    "limitations": [
+                      "人工、第二物理机和大规模验收单列；历史夹具失败不篡改为通过。"
+                    ],
+                    "method": "实现与反例回归、公开CLI回读及实际AI/浏览器检查分别记录。",
+                    "not_applicable": [
+                      "未执行策略、科学模型有效性、真实企业数据外推"
+                    ],
+                    "question": "局部证据、关系加深与语义维护如何工作？"
+                  },
+                  "run_ref": null,
+                  "unit_type": "analysis"
+                },
+                "previous_revision": null,
+                "provenance_gap": null,
+                "record_hash": "cc35f69de2b5644362c977cd2885e2be0912d1ca8c2ec6d71d69c4f78a4494d9",
+                "record_id": "MEM-4143f480-712a-5739-8044-3535ecaf1b0a",
+                "record_reason": "将实际实现保存为可独立阅读的技术单元；测试及未完成边界引用固定Run。",
+                "revision": 1,
+                "schema_version": 3,
+                "sensitivity": "internal",
+                "sources": [
+                  {
+                    "locator": "完整固定报告",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "5acbbfbc1868d93c4f849aa4532ca9c8c395fd9f5d78651a20a4fb26e28823d8",
+                    "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-2",
+                    "target_kind": "file"
+                  },
+                  {
+                    "locator": "完整固定报告",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "bea5a8016f928c66cc7f3b81b9cdaa8de0890b34dda2c764ac5b0babe8f3be1e",
+                    "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-4",
+                    "target_kind": "file"
+                  }
+                ],
+                "title": "局部证据、关系加深与语义维护",
+                "updated_at": "2026-09-09T22:37:43.900376Z",
+                "updated_by": {
+                  "id": "assistant",
+                  "kind": "ai"
+                }
+              },
+              "source_issues": [],
+              "formal_eligibility": "not_evaluated"
+            },
+            "resolved_blocks": [
+              {
+                "block_id": "scope",
+                "markdown": "本单元记录本次软件实现。变量与单位在正文定义；功能回归、实际AI自查、人工/科学复核分别报告。",
+                "requires_block_ids": [],
+                "role": "definitions"
+              }
+            ],
+            "required_block_ids": [],
+            "source_issues": []
+          },
+          {
+            "block_ids": [
+              "scope"
+            ],
+            "ref": {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "e164f67b43688a742e773a9c4bb025c118a30ca473a389ba62c79d4d8b7036ae",
+              "target_id": "MEM-b0390c59-c458-5690-bc68-6dd030d32de0",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": {
+              "id": "MEM-b0390c59-c458-5690-bc68-6dd030d32de0",
+              "level": "L1",
+              "record": {
+                "body_markdown": "",
+                "change_reason": "将实际实现保存为可独立阅读的技术单元；测试及未完成边界引用固定Run。",
+                "content_hash": "6e6b9c290b9bf4bc2923cfb7cbd882868962c18681850b66a3d8f67fb07d4eca",
+                "created_at": "2026-09-09T22:37:43.900376Z",
+                "created_by": {
+                  "id": "assistant",
+                  "kind": "ai"
+                },
+                "discovery": "workspace_summary",
+                "keywords": [
+                  "表示查询v0.2",
+                  "实际实现",
+                  "固定引用",
+                  "累计预算",
+                  "软件验证"
+                ],
+                "kind": "detail",
+                "level": "L1",
+                "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+                "payload": {
+                  "blocks": [
+                    {
+                      "block_id": "scope",
+                      "markdown": "本单元记录本次软件实现。变量与单位在正文定义；功能回归、实际AI自查、人工/科学复核分别报告。",
+                      "requires_block_ids": [],
+                      "role": "definitions"
+                    },
+                    {
+                      "block_id": "implementation",
+                      "markdown": "# 工作台接入、验证和 Windows 升级\n\n材料查询工作台接通定义选择、问题与范围、结果可用性、固定候选选择、材料组包、结构导航、关系加深和维护任务包。HTTP 与 CLI 调用同一应用层。基础43方法通过显式 foundation 动作暴露；每项能力的支持策略、拒绝和实际测试单列，方法名字存在不能代替行为验收。\n\n## 已发现的真实问题\n\n实际浏览器发现维护审查虽有有效内容，但返回 partial 时界面仍按失败阻断。现根据状态和错误码判断可操作结果，并保留未完成审查及相同失败请求供重试。另修复了过期复核被当作当前有效、显式技术块定位丢失、全文漏结构字段、单元概览遗漏禁用条件及必要来源越过 owner 硬上限等问题。回归测试保留这些具体反例，不以删除失败样本消除故障。\n\n验证分为软件功能测试、实际 AI 使用和人工验收。前端类型检查、组件、真实 Edge 与布局截图是不同证据；实际 AI 必须读材料、提交请求并回读后逐项自查。固定 fixture 的历史指纹差异保留为已知失败；没有把它改成当前通过。具体测试数量和最终失败状态只引用同一 Run 的 `FINAL_VALIDATION.md`，不从过程中的部分通过推断整体通过。\n\n## 分发和维护方式\n\n前端源代码及锁文件供开发，预构建工作台资源及指纹随新版源码分发；使用端无需 Node。Python 运行环境与模型仍通过独立配套依赖 ZIP 和 SHA256 文件分发，本次没有更换 Python 锁或标准模型。Windows 升级从独立新版目录执行 `setup.cmd --target \"旧工作区路径\" --register --open`，继续使用原工作区；新旧目录不能互相嵌套。\n\n真实升级测试使用含多层业务目录、中文/空格路径、空目录、工具、用户 Skill、缓存和规范维护计划的共享合成旧工作区，核对预览、升级、重复升级及恢复的受保护文件哈希与目录。当前来源登记包含项目工作数据，不能直接把这份完整工作区当作公共发行包。第二台物理机、人工业务验收及万条规模实验分别保留未执行，不由本机隔离测试替代。\n\n日常入口和概念见根 README 与材料查询手册。技术单元、事件、经验、地图和完整/精简两份文稿由公开版本记忆入口维护；Run 保存代码/配置指纹、原始回执和实际自查。历史设计保留其原来时点，当前实现另存新章节，从而区分“曾计划”“已实现”和“已验证”。\n",
+                      "requires_block_ids": [
+                        "scope"
+                      ],
+                      "role": "methods"
+                    },
+                    {
+                      "block_id": "validation",
+                      "markdown": "# 表示查询首期软件验证固定记录\n\nRun：`RUN-20260909T194710Z-3CF36B2FDD60`，本机 Windows 11 x64、Python 3.12.10、Node 22.11.0。验证时源码含既有未提交修改，未创建新 Git 提交。本文件固定软件验证时点；后续项目文稿保存和 AI 页面审查另附回执，不据此预先宣布通过。\n\n## 实际执行\n\n| 层级 | 原始结果 | 固定依据 |\n|---|---|---|\n| quick v2 | 517 项：516 通过，1 项既有 B01 失败；其中 Python 473、类型 1、组件 29、Edge 14 | `testing/quick-attempt-01/results.json`；这是较早集成版本，不能替代最终 full |\n| full v4 | 599 项：596 通过，2 失败、1 错误，无跳过；Python 555（552 通过），类型 1、组件 29、真实 Edge 14 均通过 | `testing/full-attempt-01/results.json` 及原始日志；整体状态保留 failed |\n| C17 补测 | 测试夹具误用不存在 owner C；按真实 A/B 端点修正后 1/1 通过 | `inheritance-closure-final.json`；full 载入旧测试形成的 KeyError 原样保留 |\n| 结构类型补测 | 关联 differences 字段未同步到 memory-v3.d.ts；用正式生成器同步后 11/11 契约检查通过 | `testing/memory-contracts-supplement-final.log` |\n| 最终工作台构建 | 契约生成、前端契约、类型检查、Vite 构建 4 步通过 | `testing/build-attempt-03/results.json` 与资源指纹；先前 EPERM 失败回执保留 |\n| 定向继承反例 | 范围、局部证据、召回、图、维护、复核和资源等按实际回执逐项映射 | `INHERITANCE_ACCEPTANCE.md`；方法存在不等于全部旧 DTO 或可选策略完成 |\n| 六种表示成本 | 6/6 查询并组包 complete；累计读取 45,845–57,635 字节，输出 223–746 字符，模型调用 0 | `cost-attempt-02/results.json`、`COST_REVIEW.md`；合成小例，非独立性能基准 |\n\nfull 的程序、测试、schema、选择和资源指纹在原回执中冻结。补测只关闭对应问题，不改写 full 的原始结果，也不重复计算成 599 项全部通过。生成声明的更新不改变运行逻辑；最后一次工作台构建已含匹配的 JSON schema。\n\n## 保留的故障与边界\n\nB01 `test_b01_frozen_plan_self_test_leaves_assets_unchanged` 仍失败：历史冻结 fixture 的现有指纹差异与基线一致。没有更新冻结清单来制造通过，需另行追溯历史输入。当前不能将整个回归层宣布全绿。\n\n真实 `setup.cmd` 扩展旧工作区测试已在 quick/full 执行，覆盖预览、升级、重复升级、恢复及损坏业务元数据/真实缺失工具拒绝。共享 fixture 包含多层目录、中文/空格、空目录、自定义工具/Skill、缓存边界及持久维护计划；按完整保护清单检查哈希与目录。该结果限本机隔离合成目录，第二台物理机尚未验收。\n\nPython 锁和标准模型指纹未变，前端增加的 @types/node、undici-types 是开发依赖。使用端仍随源码接收预构建资源，升级入口为独立新版目录的 `setup.cmd --target \"旧工作区路径\" --register --open`。依赖/模型更新仍须配套离线 ZIP；本次没有生成或发布新依赖包。清单审查见 `PORTABILITY_REVIEW.md`，当前业务来源登记不得带入公共发行。\n\n## 实际 AI 与人工\n\nA07–A09 已有真实公开调用、材料阅读、逐项 AI 自查及失败尝试，分别验证表示缺口、结构类比与新反证维护；见 `actual-ai/` 和 `browser/partial-status/AI_UI_REVIEW.md`。这是合成案例中的实际 AI 使用，不是企业材料准确度结论。项目实现章节、完整过程稿和简报的当前回读及界面检查将在本文件冻结后单独登记。\n\n人工验收、科学复核、独立检索质量题集、第二物理机及万条规模实验未因软件结果获得通过。未配置的模型/分词器、向量或其他可选策略仍按能力表显式不可用或降级；不能承诺任意后端/模型一键替换。未执行对外发布、企业连接或原始材料修改。\n",
+                      "requires_block_ids": [
+                        "scope"
+                      ],
+                      "role": "results"
+                    }
+                  ],
+                  "evidence_refs": [
+                    {
+                      "locator": "完整固定报告",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "c41ed10dc965f68d778af9799cd3e15761cc9b8319683a43874011255c5461a5",
+                      "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-3",
+                      "target_kind": "file"
+                    },
+                    {
+                      "locator": "完整固定报告",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "bea5a8016f928c66cc7f3b81b9cdaa8de0890b34dda2c764ac5b0babe8f3be1e",
+                      "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-4",
+                      "target_kind": "file"
+                    }
+                  ],
+                  "figures": [],
+                  "missing_refs": [],
+                  "retrieval_description": {
+                    "applicable": [
+                      "本次工作区实现及已执行合成案例"
+                    ],
+                    "key_findings": [
+                      "工作台接入、验证和Windows升级已接通运行入口，详细支持范围和实际验证结果见正文及固定验证报告。"
+                    ],
+                    "limitations": [
+                      "人工、第二物理机和大规模验收单列；历史夹具失败不篡改为通过。"
+                    ],
+                    "method": "实现与反例回归、公开CLI回读及实际AI/浏览器检查分别记录。",
+                    "not_applicable": [
+                      "未执行策略、科学模型有效性、真实企业数据外推"
+                    ],
+                    "question": "工作台接入、验证和Windows升级如何工作？"
+                  },
+                  "run_ref": null,
+                  "unit_type": "analysis"
+                },
+                "previous_revision": null,
+                "provenance_gap": null,
+                "record_hash": "e164f67b43688a742e773a9c4bb025c118a30ca473a389ba62c79d4d8b7036ae",
+                "record_id": "MEM-b0390c59-c458-5690-bc68-6dd030d32de0",
+                "record_reason": "将实际实现保存为可独立阅读的技术单元；测试及未完成边界引用固定Run。",
+                "revision": 1,
+                "schema_version": 3,
+                "sensitivity": "internal",
+                "sources": [
+                  {
+                    "locator": "完整固定报告",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "c41ed10dc965f68d778af9799cd3e15761cc9b8319683a43874011255c5461a5",
+                    "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-3",
+                    "target_kind": "file"
+                  },
+                  {
+                    "locator": "完整固定报告",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "bea5a8016f928c66cc7f3b81b9cdaa8de0890b34dda2c764ac5b0babe8f3be1e",
+                    "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-4",
+                    "target_kind": "file"
+                  }
+                ],
+                "title": "工作台接入、验证和Windows升级",
+                "updated_at": "2026-09-09T22:37:43.900376Z",
+                "updated_by": {
+                  "id": "assistant",
+                  "kind": "ai"
+                }
+              },
+              "source_issues": [],
+              "formal_eligibility": "not_evaluated"
+            },
+            "resolved_blocks": [
+              {
+                "block_id": "scope",
+                "markdown": "本单元记录本次软件实现。变量与单位在正文定义；功能回归、实际AI自查、人工/科学复核分别报告。",
+                "requires_block_ids": [],
+                "role": "definitions"
+              }
+            ],
+            "required_block_ids": [],
+            "source_issues": []
+          },
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "0d45da80e028fa231a8d24652df833373707737bf8d05bbcbe5cf421b4d2ba9c",
+                "target_id": "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "cc35f69de2b5644362c977cd2885e2be0912d1ca8c2ec6d71d69c4f78a4494d9",
+                "target_id": "MEM-4143f480-712a-5739-8044-3535ecaf1b0a",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "e164f67b43688a742e773a9c4bb025c118a30ca473a389ba62c79d4d8b7036ae",
+                "target_id": "MEM-b0390c59-c458-5690-bc68-6dd030d32de0",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "# 表示查询首期软件验证固定记录\n\nRun：`RUN-20260909T194710Z-3CF36B2FDD60`，本机 Windows 11 x64、Python 3.12.10、Node 22.11.0。验证时源码含既有未提交修改，未创建新 Git 提交。本文件固定软件验证时点；后续项目文稿保存和 AI 页面审查另附回执，不据此预先宣布通过。\n\n## 实际执行\n\n| 层级 | 原始结果 | 固定依据 |\n|---|---|---|\n| quick v2 | 517 项：516 通过，1 项既有 B01 失败；其中 Python 473、类型 1、组件 29、Edge 14 | `testing/quick-attempt-01/results.json`；这是较早集成版本，不能替代最终 full |\n| full v4 | 599 项：596 通过，2 失败、1 错误，无跳过；Python 555（552 通过），类型 1、组件 29、真实 Edge 14 均通过 | `testing/full-attempt-01/results.json` 及原始日志；整体状态保留 failed |\n| C17 补测 | 测试夹具误用不存在 owner C；按真实 A/B 端点修正后 1/1 通过 | `inheritance-closure-final.json`；full 载入旧测试形成的 KeyError 原样保留 |\n| 结构类型补测 | 关联 differences 字段未同步到 memory-v3.d.ts；用正式生成器同步后 11/11 契约检查通过 | `testing/memory-contracts-supplement-final.log` |\n| 最终工作台构建 | 契约生成、前端契约、类型检查、Vite 构建 4 步通过 | `testing/build-attempt-03/results.json` 与资源指纹；先前 EPERM 失败回执保留 |\n| 定向继承反例 | 范围、局部证据、召回、图、维护、复核和资源等按实际回执逐项映射 | `INHERITANCE_ACCEPTANCE.md`；方法存在不等于全部旧 DTO 或可选策略完成 |\n| 六种表示成本 | 6/6 查询并组包 complete；累计读取 45,845–57,635 字节，输出 223–746 字符，模型调用 0 | `cost-attempt-02/results.json`、`COST_REVIEW.md`；合成小例，非独立性能基准 |\n\nfull 的程序、测试、schema、选择和资源指纹在原回执中冻结。补测只关闭对应问题，不改写 full 的原始结果，也不重复计算成 599 项全部通过。生成声明的更新不改变运行逻辑；最后一次工作台构建已含匹配的 JSON schema。\n\n## 保留的故障与边界\n\nB01 `test_b01_frozen_plan_self_test_leaves_assets_unchanged` 仍失败：历史冻结 fixture 的现有指纹差异与基线一致。没有更新冻结清单来制造通过，需另行追溯历史输入。当前不能将整个回归层宣布全绿。\n\n真实 `setup.cmd` 扩展旧工作区测试已在 quick/full 执行，覆盖预览、升级、重复升级、恢复及损坏业务元数据/真实缺失工具拒绝。共享 fixture 包含多层目录、中文/空格、空目录、自定义工具/Skill、缓存边界及持久维护计划；按完整保护清单检查哈希与目录。该结果限本机隔离合成目录，第二台物理机尚未验收。\n\nPython 锁和标准模型指纹未变，前端增加的 @types/node、undici-types 是开发依赖。使用端仍随源码接收预构建资源，升级入口为独立新版目录的 `setup.cmd --target \"旧工作区路径\" --register --open`。依赖/模型更新仍须配套离线 ZIP；本次没有生成或发布新依赖包。清单审查见 `PORTABILITY_REVIEW.md`，当前业务来源登记不得带入公共发行。\n\n## 实际 AI 与人工\n\nA07–A09 已有真实公开调用、材料阅读、逐项 AI 自查及失败尝试，分别验证表示缺口、结构类比与新反证维护；见 `actual-ai/` 和 `browser/partial-status/AI_UI_REVIEW.md`。这是合成案例中的实际 AI 使用，不是企业材料准确度结论。项目实现章节、完整过程稿和简报的当前回读及界面检查将在本文件冻结后单独登记。\n\n人工验收、科学复核、独立检索质量题集、第二物理机及万条规模实验未因软件结果获得通过。未配置的模型/分词器、向量或其他可选策略仍按能力表显式不可用或降级；不能承诺任意后端/模型一键替换。未执行对外发布、企业连接或原始材料修改。\n",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+        "section_key": "b0",
+        "title": "核心概念、七项功能和完整闭环",
+        "role": "methods",
+        "ref": {
+          "locator": "完整固定正文",
+          "relation": "references",
+          "revision": 4,
+          "sha256": "ea1cf1091e9cf2a634af4ba8b052ba3523d04658a9e4783b69777b80f54ead70",
+          "target_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+                "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+                "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+                "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+                "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+                "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+                "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+                "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 4,
+                "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+                "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "v0.2实施设计已完成：六种表示类型与实际内容分离；工作台采用存储结构、查询候选、材料预览三栏；14个应用端口覆盖选择组包、联想加深与语义维护。三个专项Skill使用现有公开动作，P6再接安装发现。P0-P6和70项用例已设计，复杂策略的选择原因与触发条件记入根待开发计划。当前只通过设计检查，产品功能、浏览器、升级及检索质量均未因本轮而验证。",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+        "section_key": "b1",
+        "title": "验证、边界与实施顺序",
+        "role": "conclusion",
+        "ref": {
+          "locator": "完整固定正文",
+          "relation": "references",
+          "revision": 4,
+          "sha256": "1306cb4ff426aa4b910f823391942393033109ed9bfe2653d931dad805a15122",
+          "target_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+                "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+                "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+                "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+                "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+                "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+                "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+                "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 4,
+                "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+                "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "v0.2实施设计已完成：六种表示类型与实际内容分离；工作台采用存储结构、查询候选、材料预览三栏；14个应用端口覆盖选择组包、联想加深与语义维护。三个专项Skill使用现有公开动作，P6再接安装发现。P0-P6和70项用例已设计，复杂策略的选择原因与触发条件记入根待开发计划。当前只通过设计检查，产品功能、浏览器、升级及检索质量均未因本轮而验证。",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-07d8a202-977c-50ed-b88b-01ea1e7b651d",
+        "section_key": "floating-repair-brief",
+        "title": "来源恢复与索引覆盖修复",
+        "role": "discussion",
+        "ref": {
+          "locator": "完整固定正文",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "bf5e06a7664c6915671d08a5a0ef43de825b141fc6c223e2a823aa72c8141177",
+          "target_id": "MEM-07d8a202-977c-50ed-b88b-01ea1e7b651d",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "b2423bd7037468bb6f57e64bea17b37ffef80c92cb41c52a10e282108b67f6d3",
+                "target_id": "MEM-2c7941ed-b272-573c-ad70-2c7739ccac99",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "本次修复了遗漏来源登记、历史Run旧路径定位和检索索引。浮点双文稿可读，全局探索查询返回11项且无覆盖警告。102项Python、8项组件、3项浏览器及类型检查通过；真实setup保留检查通过。仅验证本机软件与合成材料，人工和科学复核未完成。",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      }
+    ],
+    "complete": true
+  },
+  "items": [],
+  "missing": [],
+  "generated_at": "2026-09-10T06:35:46.176295Z",
+  "report_candidates": [
+    {
+      "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+      "revision": 6,
+      "title": "表示查询：当前实现与核心简报",
+      "updated_at": "2026-09-10T05:27:09.172416Z",
+      "document_type": "research_report"
+    },
+    {
+      "record_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+      "revision": 6,
+      "title": "表示查询：完整设计与实施过程",
+      "updated_at": "2026-09-10T05:27:09.172416Z",
+      "document_type": "research_process"
+    }
+  ],
+  "report_coverage": {
+    "included_detail_ids": [
+      "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+      "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+      "MEM-2c7941ed-b272-573c-ad70-2c7739ccac99",
+      "MEM-4143f480-712a-5739-8044-3535ecaf1b0a",
+      "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+      "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+      "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+      "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+      "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+      "MEM-b0390c59-c458-5690-bc68-6dd030d32de0",
+      "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+      "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745"
+    ],
+    "uncovered_detail_ids": []
+  },
+  "report_version_hints": [],
+  "basis_heads": {
+    "PRJ-ARCHITECTURE-EVOLUTION": "COM-4dcedc87-6981-4bbd-8c96-c79b1665f3b1"
+  },
+  "metrics": {
+    "elapsed_ms": 699.1,
+    "inventory_owners": 20,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 41,
+    "resolved_sections": 4
+  },
+  "writes": 0
+}

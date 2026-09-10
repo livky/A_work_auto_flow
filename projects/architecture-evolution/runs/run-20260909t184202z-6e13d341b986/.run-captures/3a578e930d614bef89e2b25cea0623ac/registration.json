@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "run_path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/run.json",
+  "before": {
+    "schema_version": 1,
+    "run_id": "RUN-20260909T184202Z-6E13D341B986",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "表示组合、经验联想与AI和图维护分工设计",
+    "keywords": [
+      "表示类型",
+      "经验联想",
+      "图维护"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-09T18:42:02Z",
+    "started_at": null,
+    "ended_at": "2026-09-09T18:48:14.782068Z",
+    "owner": "assistant",
+    "question": "表示怎样组合现有层与文稿，怎样增加经验联想，AI和工具如何维护内容及关系图？",
+    "hypotheses": [],
+    "inputs": [],
+    "parameters": {
+      "scope": "design proposal and canonical documentation only",
+      "runtime_changes": false
+    },
+    "code": {
+      "commit": null,
+      "dirty": null
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "existing_contract_structure",
+        "status": "passed",
+        "evidence": "contract-checks.json",
+        "details": "仅现有未改类型与12合成请求；不验证新字段提案",
+        "required": true
+      },
+      {
+        "check": "canonical_roundtrip_and_old_revision",
+        "status": "passed",
+        "evidence": "readback-checks.json",
+        "required": true
+      },
+      {
+        "check": "workspace",
+        "status": "passed",
+        "evidence": "workspace-checks.json",
+        "required": true
+      },
+      {
+        "check": "human_review",
+        "status": "not-run",
+        "evidence": "AI_REVIEW.json",
+        "required": false
+      }
+    ],
+    "metrics": {
+      "new_events": 1,
+      "revised_records": 7,
+      "document_revision": 3,
+      "official_sources": 4,
+      "existing_contract_cases": 12
+    },
+    "artifacts": [],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "形成类型/实例/组合、联想通道、AI分工和图生命周期提案，同步核心L1、3章、地图及双文稿r3；新字段待下一版契约。",
+    "limitations": [
+      "新定义注册、组合和联想字段未进入v0.1 Python契约或运行实现。",
+      "无联想质量、现实语义正确性、规模、页面或第二台机器实验；人工反馈待收集。"
+    ],
+    "parent_run_ids": [
+      "RUN-20260909T175530Z-40721B975BDB"
+    ],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "before_bytes": "ew0KICAic2NoZW1hX3ZlcnNpb24iOiAxLA0KICAicnVuX2lkIjogIlJVTi0yMDI2MDkwOVQxODQyMDJaLTZFMTNEMzQxQjk4NiIsDQogICJvd25lcl9pZCI6ICJQUkotQVJDSElURUNUVVJFLUVWT0xVVElPTiIsDQogICJwcm9qZWN0X2lkIjogIlBSSi1BUkNISVRFQ1RVUkUtRVZPTFVUSU9OIiwNCiAgInRpdGxlIjogIuihqOekuue7hOWQiOOAgee7j+mqjOiBlOaDs+S4jkFJ5ZKM5Zu+57u05oqk5YiG5bel6K6+6K6hIiwNCiAgImtleXdvcmRzIjogWw0KICAgICLooajnpLrnsbvlnosiLA0KICAgICLnu4/pqozogZTmg7MiLA0KICAgICLlm77nu7TmiqQiDQogIF0sDQogICJyZXZpZXdfaGlzdG9yeSI6IFtdLA0KICAiY2xhaW1zIjogW10sDQogICJkZXBlbmRlbmNpZXMiOiBbXSwNCiAgInJ1bl90eXBlIjogImFuYWx5c2lzIiwNCiAgInN0YXR1cyI6ICJzdWNjZWVkZWQiLA0KICAiY3JlYXRlZF9hdCI6ICIyMDI2LTA5LTA5VDE4OjQyOjAyWiIsDQogICJzdGFydGVkX2F0IjogbnVsbCwNCiAgImVuZGVkX2F0IjogIjIwMjYtMDktMDlUMTg6NDg6MTQuNzgyMDY4WiIsDQogICJvd25lciI6ICJhc3Npc3RhbnQiLA0KICAicXVlc3Rpb24iOiAi6KGo56S65oCO5qC357uE5ZCI546w5pyJ5bGC5LiO5paH56i/77yM5oCO5qC35aKe5Yqg57uP6aqM6IGU5oOz77yMQUnlkozlt6XlhbflpoLkvZXnu7TmiqTlhoXlrrnlj4rlhbPns7vlm77vvJ8iLA0KICAiaHlwb3RoZXNlcyI6IFtdLA0KICAiaW5wdXRzIjogW10sDQogICJwYXJhbWV0ZXJzIjogew0KICAgICJzY29wZSI6ICJkZXNpZ24gcHJvcG9zYWwgYW5kIGNhbm9uaWNhbCBkb2N1bWVudGF0aW9uIG9ubHkiLA0KICAgICJydW50aW1lX2NoYW5nZXMiOiBmYWxzZQ0KICB9LA0KICAiY29kZSI6IHsNCiAgICAiY29tbWl0IjogbnVsbCwNCiAgICAiZGlydHkiOiBudWxsDQogIH0sDQogICJlbnZpcm9ubWVudCI6IHsNCiAgICAicHl0aG9uIjogIjMuMTIuMTAiLA0KICAgICJwbGF0Zm9ybSI6ICJXaW5kb3dzLTExLTEwLjAuMjI2MzEtU1AwIiwNCiAgICAibG9ja19vcl9pbWFnZV9kaWdlc3QiOiBudWxsDQogIH0sDQogICJyYW5kb21fc2VlZHMiOiBbXSwNCiAgInF1YWxpdHlfcmVzdWx0cyI6IFsNCiAgICB7DQogICAgICAiY2hlY2siOiAiZXhpc3RpbmdfY29udHJhY3Rfc3RydWN0dXJlIiwNCiAgICAgICJzdGF0dXMiOiAicGFzc2VkIiwNCiAgICAgICJldmlkZW5jZSI6ICJjb250cmFjdC1jaGVja3MuanNvbiIsDQogICAgICAiZGV0YWlscyI6ICLku4XnjrDmnInmnKrmlLnnsbvlnovkuI4xMuWQiOaIkOivt+axgu+8m+S4jemqjOivgeaWsOWtl+auteaPkOahiCIsDQogICAgICAicmVxdWlyZWQiOiB0cnVlDQogICAgfSwNCiAgICB7DQogICAgICAiY2hlY2siOiAiY2Fub25pY2FsX3JvdW5kdHJpcF9hbmRfb2xkX3JldmlzaW9uIiwNCiAgICAgICJzdGF0dXMiOiAicGFzc2VkIiwNCiAgICAgICJldmlkZW5jZSI6ICJyZWFkYmFjay1jaGVja3MuanNvbiIsDQogICAgICAicmVxdWlyZWQiOiB0cnVlDQogICAgfSwNCiAgICB7DQogICAgICAiY2hlY2siOiAid29ya3NwYWNlIiwNCiAgICAgICJzdGF0dXMiOiAicGFzc2VkIiwNCiAgICAgICJldmlkZW5jZSI6ICJ3b3Jrc3BhY2UtY2hlY2tzLmpzb24iLA0KICAgICAgInJlcXVpcmVkIjogdHJ1ZQ0KICAgIH0sDQogICAgew0KICAgICAgImNoZWNrIjogImh1bWFuX3JldmlldyIsDQogICAgICAic3RhdHVzIjogIm5vdC1ydW4iLA0KICAgICAgImV2aWRlbmNlIjogIkFJX1JFVklFVy5qc29uIiwNCiAgICAgICJyZXF1aXJlZCI6IGZhbHNlDQogICAgfQ0KICBdLA0KICAibWV0cmljcyI6IHsNCiAgICAibmV3X2V2ZW50cyI6IDEsDQogICAgInJldmlzZWRfcmVjb3JkcyI6IDcsDQogICAgImRvY3VtZW50X3JldmlzaW9uIjogMywNCiAgICAib2ZmaWNpYWxfc291cmNlcyI6IDQsDQogICAgImV4aXN0aW5nX2NvbnRyYWN0X2Nhc2VzIjogMTINCiAgfSwNCiAgImFydGlmYWN0cyI6IFtdLA0KICAibGluZWFnZV9ldmVudHMiOiAibGluZWFnZS5qc29ubCIsDQogICJjb25jbHVzaW9uIjogIuW9ouaIkOexu+Weiy/lrp7kvosv57uE5ZCI44CB6IGU5oOz6YCa6YGT44CBQUnliIblt6Xlkozlm77nlJ/lkb3lkajmnJ/mj5DmoYjvvIzlkIzmraXmoLjlv4NMMeOAgTPnq6DjgIHlnLDlm77lj4rlj4zmlofnqL9yM++8m+aWsOWtl+auteW+heS4i+S4gOeJiOWlkee6puOAgiIsDQogICJsaW1pdGF0aW9ucyI6IFsNCiAgICAi5paw5a6a5LmJ5rOo5YaM44CB57uE5ZCI5ZKM6IGU5oOz5a2X5q615pyq6L+b5YWldjAuMSBQeXRob27lpZHnuqbmiJbov5DooYzlrp7njrDjgIIiLA0KICAgICLml6DogZTmg7PotKjph4/jgIHnjrDlrp7or63kuYnmraPnoa7mgKfjgIHop4TmqKHjgIHpobXpnaLmiJbnrKzkuozlj7DmnLrlmajlrp7pqozvvJvkurrlt6Xlj43ppojlvoXmlLbpm4bjgIIiDQogIF0sDQogICJwYXJlbnRfcnVuX2lkcyI6IFsNCiAgICAiUlVOLTIwMjYwOTA5VDE3NTUzMFotNDA3MjFCOTc1QkRCIg0KICBdLA0KICAicmVsYXRlZF9tb2R1bGVfaWRzIjogW10sDQogICJyZWxhdGVkX3Jlc2VhcmNoX2lkcyI6IFtdLA0KICAicmVsYXRlZF9kYXRhc2V0X2lkcyI6IFtdLA0KICAicmV2aWV3Ijogew0KICAgICJzdGF0dXMiOiAibm90LXJldmlld2VkIiwNCiAgICAicmV2aWV3ZXIiOiBudWxsLA0KICAgICJkYXRlIjogbnVsbA0KICB9LA0KICAic2Vuc2l0aXZpdHkiOiAiaW50ZXJuYWwiDQp9DQo=",
+  "after": {
+    "schema_version": 1,
+    "run_id": "RUN-20260909T184202Z-6E13D341B986",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "表示组合、经验联想与AI和图维护分工设计",
+    "keywords": [
+      "表示类型",
+      "经验联想",
+      "图维护"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-09T18:42:02Z",
+    "started_at": null,
+    "ended_at": "2026-09-09T18:48:14.782068Z",
+    "owner": "assistant",
+    "question": "表示怎样组合现有层与文稿，怎样增加经验联想，AI和工具如何维护内容及关系图？",
+    "hypotheses": [],
+    "inputs": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/CORE-before.md.snapshot",
+        "sha256": "d0d9d55912c5bfbebe50410e61964c70498f14822be9f4212a3f18848f0a6737",
+        "role": "input",
+        "registered_at": "2026-09-09T18:48:15.205006Z"
+      }
+    ],
+    "parameters": {
+      "scope": "design proposal and canonical documentation only",
+      "runtime_changes": false
+    },
+    "code": {
+      "commit": null,
+      "dirty": null
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "existing_contract_structure",
+        "status": "passed",
+        "evidence": "contract-checks.json",
+        "details": "仅现有未改类型与12合成请求；不验证新字段提案",
+        "required": true
+      },
+      {
+        "check": "canonical_roundtrip_and_old_revision",
+        "status": "passed",
+        "evidence": "readback-checks.json",
+        "required": true
+      },
+      {
+        "check": "workspace",
+        "status": "passed",
+        "evidence": "workspace-checks.json",
+        "required": true
+      },
+      {
+        "check": "human_review",
+        "status": "not-run",
+        "evidence": "AI_REVIEW.json",
+        "required": false
+      }
+    ],
+    "metrics": {
+      "new_events": 1,
+      "revised_records": 7,
+      "document_revision": 3,
+      "official_sources": 4,
+      "existing_contract_cases": 12
+    },
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/AI_REVIEW.json",
+        "sha256": "53cb50fe87d3173358c63f87b8ae40d02897838e7104f852ee46e062a4242da7",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.209998Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/before.json",
+        "sha256": "47d29df6533438b2fa0ce2b8f5cea19cdc39b97c52a00ebb287566b2cedffe59",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.215999Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/brief-old-read.json",
+        "sha256": "b7dc9846a3e17755dc7b883a28b0c338e1392ac90bc2c9980bf7bd901c691e92",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.221005Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/brief-old-request.json",
+        "sha256": "145cb0174f64c442a8dd68f1456520ce5e9320905027676906ba5e096561b4d0",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.226005Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/brief-read-request.json",
+        "sha256": "d50d252488a650e294c0e95eba94bafbf4ced717fec94c7f97374189b3c382bd",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.231004Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/brief-read.json",
+        "sha256": "1fb726e076eb33ec60bad4f347f30c89991b36358c8fdc3134fe4a0a443a3b94",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.236523Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/chapters-inspect.json",
+        "sha256": "bbac32befc2163965a39026e5bf88607debcdbec77a86af8d10528cd33b20cbb",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.242522Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/chapters-receipt.json",
+        "sha256": "522f0579bace0f446dc5d346f11c86c8ea45235e202a41621b810a099b80d85a",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.246515Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/chapters-request.json",
+        "sha256": "1469e0b75ce1558e3f88d51fc2ccb0a07f01bb1a46494862c4c16f7c653be322",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.252514Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/chapters-validation.json",
+        "sha256": "d84248ec939c587ce4cdbca43ed8b6037647d0129e0e0fc8fa320cc2ebb1a271",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.258515Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/contract-checks.json",
+        "sha256": "eb2f2cec949a6d71ef8bccb9620ae95abe11ccab10290fc3f01db47e387517ab",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.264517Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/CORE-expanded.md.snapshot",
+        "sha256": "3f91a72a08f558e42c35d995240acf7b5fd90038dfe1482b34b8ad0052a385af",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.269514Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/diff-check.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.274513Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/documents-map-inspect.json",
+        "sha256": "cdb38af3cdad6279b9854f43a603856b31364648a19595e4f3ce84666d1233d7",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.283515Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/documents-map-receipt.json",
+        "sha256": "3b0bc467351201bc0e0d2a0a05b7bebddd4f962f9f88f79d770dc044aaa4bb1b",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:48:15.290850Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "形成类型/实例/组合、联想通道、AI分工和图生命周期提案，同步核心L1、3章、地图及双文稿r3；新字段待下一版契约。",
+    "limitations": [
+      "新定义注册、组合和联想字段未进入v0.1 Python契约或运行实现。",
+      "无联想质量、现实语义正确性、规模、页面或第二台机器实验；人工反馈待收集。"
+    ],
+    "parent_run_ids": [
+      "RUN-20260909T175530Z-40721B975BDB"
+    ],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "created_at": "2026-09-09T18:48:15.341979Z"
+}

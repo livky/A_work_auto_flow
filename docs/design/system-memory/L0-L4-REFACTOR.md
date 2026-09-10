@@ -1,4 +1,9 @@
 # 对象内运行与 L0–L4 研究记录重构
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：2026-09-09 引入详细 L1 和对象内 Run 的重构计划；末尾“尚未完成”保留起始时点，后续状态见同目录 STATUS。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../../ARCHITECTURE.md)、[研究记录标准](../../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 状态：2026-09-09，已进入代码审计与实施。本文覆盖本次用户验收反馈；旧 L0–L3 计划与历史验收保留为历史，不能作为本次实现状态。
 

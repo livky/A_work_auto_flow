@@ -1,0 +1,902 @@
+{
+  "reviewed_at": "2026-09-10",
+  "scope": "planned_development_not_change_order",
+  "files": [
+    {
+      "path": "automation/scripts/memory/contracts.py",
+      "phase": "P0",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "旧契约和入口适配"
+    },
+    {
+      "path": "automation/scripts/memory/api.py",
+      "phase": "P0",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "旧契约和入口适配"
+    },
+    {
+      "path": "automation/scripts/memory/cli.py",
+      "phase": "P0",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "旧契约和入口适配"
+    },
+    {
+      "path": "automation/scripts/memory/generate_types.py",
+      "phase": "P0",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "旧契约和入口适配"
+    },
+    {
+      "path": "automation/schemas/memory-v3.schema.json",
+      "phase": "P0",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "保留旧持久化schema"
+    },
+    {
+      "path": "automation/scripts/material_query/__init__.py",
+      "phase": "P0",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "新应用契约及兼容校验"
+    },
+    {
+      "path": "automation/scripts/material_query/contracts.py",
+      "phase": "P0",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "新应用契约及兼容校验"
+    },
+    {
+      "path": "automation/scripts/material_query/validation.py",
+      "phase": "P0",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "新应用契约及兼容校验"
+    },
+    {
+      "path": "automation/scripts/material_query/legacy_adapter.py",
+      "phase": "P0",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "新应用契约及兼容校验"
+    },
+    {
+      "path": "automation/schemas/material-query.schema.json",
+      "phase": "P0",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "运行契约生成产物"
+    },
+    {
+      "path": "automation/frontend/src/generated/material-query.ts",
+      "phase": "P0",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "生成TS类型"
+    },
+    {
+      "path": "automation/scripts/memory/service.py",
+      "phase": "P1",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "固定内容与版本读取"
+    },
+    {
+      "path": "automation/scripts/memory/store.py",
+      "phase": "P1",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "固定内容与版本读取"
+    },
+    {
+      "path": "automation/scripts/memory/raw_materials.py",
+      "phase": "P1",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "固定内容与版本读取"
+    },
+    {
+      "path": "automation/scripts/memory/technical_units.py",
+      "phase": "P1",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "固定内容与版本读取"
+    },
+    {
+      "path": "automation/scripts/memory/documents.py",
+      "phase": "P1",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "固定内容与版本读取"
+    },
+    {
+      "path": "automation/scripts/material_query/definitions.py",
+      "phase": "P1",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "类型定义与实际表示"
+    },
+    {
+      "path": "automation/scripts/material_query/reader.py",
+      "phase": "P1",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "类型定义与实际表示"
+    },
+    {
+      "path": "automation/scripts/material_query/representations.py",
+      "phase": "P1",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "类型定义与实际表示"
+    },
+    {
+      "path": "automation/scripts/memory/search.py",
+      "phase": "P2",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现有召回投影及组包"
+    },
+    {
+      "path": "automation/scripts/memory/index.py",
+      "phase": "P2",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现有召回投影及组包"
+    },
+    {
+      "path": "automation/scripts/memory/packets.py",
+      "phase": "P2",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现有召回投影及组包"
+    },
+    {
+      "path": "automation/scripts/retrieval.py",
+      "phase": "P2",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "材料检索适配"
+    },
+    {
+      "path": "automation/scripts/qdrant_backend.py",
+      "phase": "P2",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "材料检索适配"
+    },
+    {
+      "path": "automation/scripts/material_query/coordinator.py",
+      "phase": "P2",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询状态累计预算及组合"
+    },
+    {
+      "path": "automation/scripts/material_query/state.py",
+      "phase": "P2",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询状态累计预算及组合"
+    },
+    {
+      "path": "automation/scripts/material_query/budget.py",
+      "phase": "P2",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询状态累计预算及组合"
+    },
+    {
+      "path": "automation/scripts/material_query/assembly.py",
+      "phase": "P2",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询状态累计预算及组合"
+    },
+    {
+      "path": "automation/scripts/memory/associations.py",
+      "phase": "P3",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "关系与固定引用适配"
+    },
+    {
+      "path": "automation/scripts/memory/lineage.py",
+      "phase": "P3",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "关系与固定引用适配"
+    },
+    {
+      "path": "automation/scripts/material_query/associations.py",
+      "phase": "P3",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "联想和加深策略"
+    },
+    {
+      "path": "automation/scripts/material_query/deepening.py",
+      "phase": "P3",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "联想和加深策略"
+    },
+    {
+      "path": "automation/scripts/memory/impact.py",
+      "phase": "P4",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "影响复核和恢复"
+    },
+    {
+      "path": "automation/scripts/memory/recovery.py",
+      "phase": "P4",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "影响复核和恢复"
+    },
+    {
+      "path": "automation/scripts/memory/evidence_adapter.py",
+      "phase": "P4",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "影响复核和恢复"
+    },
+    {
+      "path": "automation/scripts/material_query/maintenance.py",
+      "phase": "P4",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "计划审查及受控提交"
+    },
+    {
+      "path": "automation/scripts/workbench_app/web.py",
+      "phase": "P5",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "HTTP路由和应用接入"
+    },
+    {
+      "path": "automation/scripts/workbench_app/service.py",
+      "phase": "P5",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "HTTP路由和应用接入"
+    },
+    {
+      "path": "automation/scripts/workbench_app/contracts.py",
+      "phase": "P5",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "HTTP路由和应用接入"
+    },
+    {
+      "path": "automation/frontend/src/App.tsx",
+      "phase": "P5",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "页面导航及旧入口"
+    },
+    {
+      "path": "automation/frontend/src/api.ts",
+      "phase": "P5",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "页面导航及旧入口"
+    },
+    {
+      "path": "automation/frontend/src/Memory.tsx",
+      "phase": "P5",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "页面导航及旧入口"
+    },
+    {
+      "path": "automation/frontend/src/MemorySearch.tsx",
+      "phase": "P5",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "页面导航及旧入口"
+    },
+    {
+      "path": "automation/frontend/src/ResearchDocument.tsx",
+      "phase": "P5",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "页面导航及旧入口"
+    },
+    {
+      "path": "automation/scripts/material_query/api.py",
+      "phase": "P5",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "同一应用入口与结构视图"
+    },
+    {
+      "path": "automation/scripts/material_query/structure.py",
+      "phase": "P5",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "同一应用入口与结构视图"
+    },
+    {
+      "path": "automation/frontend/src/MaterialQuery.tsx",
+      "phase": "P5",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询交互"
+    },
+    {
+      "path": "automation/frontend/src/MaterialStructure.tsx",
+      "phase": "P5",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询交互"
+    },
+    {
+      "path": "automation/frontend/src/MaterialPacket.tsx",
+      "phase": "P5",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询交互"
+    },
+    {
+      "path": "automation/frontend/src/MaterialMaintenance.tsx",
+      "phase": "P5",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询交互"
+    },
+    {
+      "path": "automation/frontend/src/material-query.css",
+      "phase": "P5",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "查询交互"
+    },
+    {
+      "path": "automation/frontend/package.json",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "生成构建及锁"
+    },
+    {
+      "path": "automation/frontend/package-lock.json",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "生成构建及锁"
+    },
+    {
+      "path": "automation/frontend/scripts/contracts.mjs",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "生成构建及锁"
+    },
+    {
+      "path": "automation/frontend/scripts/manifest.mjs",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "生成构建及锁"
+    },
+    {
+      "path": "automation/ui/workbench-assets/asset-manifest.json",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "构建资源指纹；assets哈希文件由build生成"
+    },
+    {
+      "path": "automation/ui/workbench-assets/index.html",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "构建资源指纹；assets哈希文件由build生成"
+    },
+    {
+      "path": "automation/scripts/install_workspace_skills.py",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "Skill登记与发行/升级"
+    },
+    {
+      "path": "automation/scripts/portable.py",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "Skill登记与发行/升级"
+    },
+    {
+      "path": "automation/setup.ps1",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "交付边界"
+    },
+    {
+      "path": "setup.cmd",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "交付边界"
+    },
+    {
+      "path": ".gitattributes",
+      "phase": "P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "交付边界"
+    },
+    {
+      "path": ".agents/skills/material-query/SKILL.md",
+      "phase": "P6",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "发现入口，当前未安装"
+    },
+    {
+      "path": "automation/workflows/material-query/SKILL.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "专项Skill方法源"
+    },
+    {
+      "path": ".agents/skills/association-exploration/SKILL.md",
+      "phase": "P6",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "发现入口，当前未安装"
+    },
+    {
+      "path": "automation/workflows/association-exploration/SKILL.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "专项Skill方法源"
+    },
+    {
+      "path": ".agents/skills/semantic-maintenance/SKILL.md",
+      "phase": "P6",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "发现入口，当前未安装"
+    },
+    {
+      "path": "automation/workflows/semantic-maintenance/SKILL.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "专项Skill方法源"
+    },
+    {
+      "path": "automation/workflows/workspace-context/SKILL.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "按影响同步已有Skill"
+    },
+    {
+      "path": "automation/workflows/context-maintenance/SKILL.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "按影响同步已有Skill"
+    },
+    {
+      "path": "automation/workflows/research-loop/SKILL.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "按影响同步已有Skill"
+    },
+    {
+      "path": "automation/workflows/development-checks/SKILL.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "按影响同步已有Skill"
+    },
+    {
+      "path": "automation/testing/catalog.json",
+      "phase": "TEST",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "真实测试登记与执行"
+    },
+    {
+      "path": "automation/testing/runner.py",
+      "phase": "TEST",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "真实测试登记与执行"
+    },
+    {
+      "path": "automation/tests/memory_fixture.py",
+      "phase": "TEST",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "既有合成与升级验收"
+    },
+    {
+      "path": "automation/tests/upgrade_fixture.py",
+      "phase": "TEST",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "既有合成与升级验收"
+    },
+    {
+      "path": "automation/tests/test_portable.py",
+      "phase": "TEST",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "既有合成与升级验收"
+    },
+    {
+      "path": "automation/tests/test_install_workspace_skills.py",
+      "phase": "TEST",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "既有合成与升级验收"
+    },
+    {
+      "path": "automation/tests/test_representation_contracts.py",
+      "phase": "TEST",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "实现时映射Q用例"
+    },
+    {
+      "path": "automation/tests/test_material_queries.py",
+      "phase": "TEST",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "实现时映射Q用例"
+    },
+    {
+      "path": "automation/tests/test_material_deepening.py",
+      "phase": "TEST",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "实现时映射Q用例"
+    },
+    {
+      "path": "automation/tests/test_material_maintenance.py",
+      "phase": "TEST",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "实现时映射Q用例"
+    },
+    {
+      "path": "automation/frontend/src/MaterialQuery.test.tsx",
+      "phase": "TEST",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "组件测试"
+    },
+    {
+      "path": "automation/frontend/src/MaterialMaintenance.test.tsx",
+      "phase": "TEST",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "组件测试"
+    },
+    {
+      "path": "automation/frontend/e2e/workbench.spec.ts",
+      "phase": "TEST",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "旧浏览器旅程回归"
+    },
+    {
+      "path": "automation/frontend/e2e/material-query.spec.ts",
+      "phase": "TEST",
+      "status": "new",
+      "exists_at_review": false,
+      "role": "新增真实浏览器旅程"
+    },
+    {
+      "path": "AGENTS.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "规则与用户入口"
+    },
+    {
+      "path": "README.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "规则与用户入口"
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "规则与用户入口"
+    },
+    {
+      "path": "待开发计划.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "规则与用户入口"
+    },
+    {
+      "path": "context/START_HERE.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "规则与用户入口"
+    },
+    {
+      "path": "context/NOW.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "规则与用户入口"
+    },
+    {
+      "path": "docs/MEMORY_REQUESTS.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/MEMORY_USAGE.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/RETRIEVAL.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/MATERIAL_RELATIONS.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/RESEARCH_RECORDING.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/WORKBENCH_DEVELOPMENT.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/DOCUMENTATION_MAINTENANCE.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/TESTING.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/UPGRADE_TESTING.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/DEPENDENCY_RELEASE.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/SETUP_WORKBENCH.md",
+      "phase": "GUIDE",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "实现后同步现行手册"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/README.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/CONTRACTS.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/contracts.py",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/WORKBENCH.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/IMPLEMENTATION.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/TEST_DESIGN.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/test-cases.json",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/check_design.py",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/DEVELOPMENT_READINESS.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "现行计划与设计"
+    },
+    {
+      "path": "projects/architecture-evolution/project.json",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "本地活动计划与影响"
+    },
+    {
+      "path": "projects/architecture-evolution/PLAN.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "本地活动计划与影响"
+    },
+    {
+      "path": "projects/architecture-evolution/plans/implementation-preparation.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "本地活动计划与影响"
+    },
+    {
+      "path": "projects/architecture-evolution/context/MODULE_IMPACT.md",
+      "phase": "PLAN",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "本地活动计划与影响"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/check_contracts.py",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/contract_ports.py",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/contract_types.py",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/CORE.md",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/DATATYPES.md",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/function-catalog.json",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/FUNCTIONS.md",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/IMPLEMENTATION.md",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/README.md",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/REPRESENTATION_AND_GRAPH.md",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/request-examples.json",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    },
+    {
+      "path": "projects/architecture-evolution/design/interfaces-v0.1/SPEC.md",
+      "phase": "BASELINE-P0-P6",
+      "status": "existing",
+      "exists_at_review": true,
+      "role": "仍有效的总体设计/底层契约依据；仅明确替换部分采用v0.2，不整体废弃"
+    }
+  ]
+}

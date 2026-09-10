@@ -1,0 +1,228 @@
+{
+  "config": {
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "e2e/material-query.spec.ts"
+    ],
+    "configFile": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\playwright.config.ts",
+    "rootDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../../tmp/workbench-e2e.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "material-query.spec.ts",
+      "file": "material-query.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "材料查询真实HTTP组装四区、固定依据与来源映射",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2420,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:31:46.060Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-7de1a56ebcd8df7dd1e8",
+          "file": "material-query.spec.ts",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "维护任务包导出保留未审状态，改变条件使旧候选失效",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 31680,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('审查结果 JSON', { exact: true })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('审查结果 JSON', { exact: true }) with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('审查结果 JSON', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('审查结果 JSON', { exact: true })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('审查结果 JSON', { exact: true }) with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('审查结果 JSON', { exact: true })\u001b[22m\n\n    at D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:138:24",
+                    "location": {
+                      "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                      "column": 24,
+                      "line": 138
+                    },
+                    "snippet": "  136 |   await page.getByRole(\"button\", { name: /生成维护任务包/ }).click();\n  137 |   const editor = page.getByLabel(\"审查结果 JSON\", { exact: true });\n> 138 |   await expect(editor).toBeVisible();\n      |                        ^\n  139 |   const plan = JSON.parse(await editor.inputValue());\n  140 |   expect(plan.reviewed_refs).toEqual([]);\n  141 |   expect(plan.semantic_reviewer).toBeNull();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                        "column": 24,
+                        "line": 138
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('审查结果 JSON', { exact: true })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('审查结果 JSON', { exact: true }) with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('审查结果 JSON', { exact: true })\u001b[22m\n\n\n  136 |   await page.getByRole(\"button\", { name: /生成维护任务包/ }).click();\n  137 |   const editor = page.getByLabel(\"审查结果 JSON\", { exact: true });\n> 138 |   await expect(editor).toBeVisible();\n      |                        ^\n  139 |   const plan = JSON.parse(await editor.inputValue());\n  140 |   expect(plan.reviewed_refs).toEqual([]);\n  141 |   expect(plan.semantic_reviewer).toBeNull();\n    at D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:138:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:31:55.443Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visible-page",
+                      "contentType": "text/plain",
+                      "body": "56CUCueglOWPkeW3peS9nOWPsArmnZDmlpkgwrcg6K+B5o2uIMK3IOiBlOezuwril6sK5bel5L2c5Y+wCuKWpgrmnZDmlpnmn6Xor6IK4peHCuadkOaWmeWFs+ezuwrilqQK6K+B5o2u5LiO5b2x5ZONCuKWpQrns7vnu5/orrDlv4YK4pe3CuS7u+WKoeS4juebkea1iwrmnKzmnLrlt6XkvZzljLoK5Y6f5aeL6K6w5b2V5Y+v6L+95rqvCkFJIOeglOWPkeW3peS9nOWMugril4sg5oyJ6ZyA5YiG5p6QCuWQiOaIkOa1i+ivleaymeebkiDCtyDlhajpg6jmoLfkvovkuLromZrmnoTvvIzkuI3lsZ7kuo7mraPlvI/kuJrliqHor4Hmja4KCuWIhuWxguadkOaWmSAvIOWbuuWumuS+neaNrgoK5p2Q5paZ5p+l6K+iCgrlhYjpgInmi6nojIPlm7TvvIzlho3lr7vmib7mnZDmlpnjgILlhbPogZTlu7rorq7kuI7lvoXnu7TmiqTojYnmoYjkv53nlZnni6znq4vnirbmgIHjgIIKCuadkOaWmee7k+aehArnu5PmnoTop4blm74K6YC76L6R5YiG5bGCCueZu+iusOeahOWtmOWCqOi3r+W+hArlhajlsYDojrflh4bojIPlm7QKKwpTWU5USEVUSUMgT05MWTog5ZCI5oiQ5pWw5o2uCm93bmVyCisK6Leo56CU56m257uP6aqMCm93bmVyCisKU1lOVEhFVElDIE9OTFk6IOa1i+ivleS4k+eUqOagoeWHhuaooeWeiwpvd25lcgorClNZTlRIRVRJQyBPTkxZOiDph4fpm4bnoJTnqbbogZrlkIgKb3duZXIKKwpTWU5USEVUSUMgT05MWTog6L2v5Lu25Y+v6Z2g5oCn6IGa5ZCICm93bmVyCisKU1lOVEhFVElDIE9OTFk6IOWQiOaIkOaKpeWRigpvd25lcgorClNZTlRIRVRJQyBPTkxZOiDmnaXmupDlj5jljJbkuI7pmYjml6fnvJPlrZgKb3duZXIKKwpTWU5USEVUSUMgT05MWTog56ym5Y+36K+G5Yir5LiO5Y6f5paH5qC45a+5Cm93bmVyCisKU1lOVEhFVElDIE9OTFk6IOmihOi9veS4jumHjeWkjeWumuS9jQpvd25lcgorClNZTlRIRVRJQyBPTkxZOiDph43lpI3mnZDmlpnkuI7ni6znq4vor4Hmja4Kb3duZXIKKwpTWU5USEVUSUMgT05MWTog6LaF5pe26YeN6K+V5LiO6YeN5aSN5YaZ5YWlCm93bmVyCisKU1lOVEhFVElDIE9OTFk6IOmihOeDreS4jumbtueCuea8guenuwpvd25lcgorClNZTlRIRVRJQyBPTkxZOiDljZXkvY3ovazmjaLkuI7miqXlkYrmlbDlrZcKb3duZXIKKwpTWU5USEVUSUMgT05MWTog6YeH5qC36YWN572u5LiO5LiN5Y+v6L6o6K+G57uT5p6cCm93bmVyCisKU1lOVEhFVElDIE9OTFk6IOadpea6kOWPmOWMluS4jumZiOaXp+e8k+WtmOmqjOivgQpvd25lcgorClNZTlRIRVRJQyBPTkxZOiDnrKblj7for4bliKvkuI7ljp/mlofmoLjlr7npqozor4EKb3duZXIKKwpTWU5USEVUSUMgT05MWTog6aKE6L295LiO6YeN5aSN5a6a5L2N6aqM6K+BCm93bmVyCisKU1lOVEhFVElDIE9OTFk6IOmHjeWkjeadkOaWmeS4jueLrOeri+ivgeaNrumqjOivgQpvd25lcgorClNZTlRIRVRJQyBPTkxZOiDotoXml7bph43or5XkuI7ph43lpI3lhpnlhaXpqozor4EKb3duZXIKKwpTWU5USEVUSUMgT05MWTog6aKE54Ot5LiO6Zu254K55ryC56e76aqM6K+BCm93bmVyCisKU1lOVEhFVElDIE9OTFk6IOWNleS9jei9rOaNouS4juaKpeWRiuaVsOWtl+mqjOivgQpvd25lcgorClNZTlRIRVRJQyBPTkxZOiDph4fmoLfphY3nva7kuI7kuI3lj6/ovqjor4bnu5Pmnpzpqozor4EKb3duZXIKKwpTWU5USEVUSUMgT05MWTog5ZCI5oiQ55uu5b2V5bel5YW3Cm93bmVyCuafpeaJvuS4jue7hOijhQoK5p+l6K+i6IyD5Zu077ya5YWo5bGA6I635YeG6IyD5Zu0Cgrpl67popgK5YWz6ZSu6K+NCuihqOi+vuW9ouW8jwrljp/lp4vmnZDmlpkK5a6M5pW056CU56m25YaF5a65CuebuOWFs+eroOiKguS4juaKgOacr+WdlwrljZXlhYPmkZjopoEK5Li76aKY5p2Q5paZCumihuWfn+adkOaWmQrmn6Xor6LnlKjpgJQK5o6i57SiCuato+W8j+S9v+eUqArlrqHorqEKCuaKgOacr+WNleWFg+WFqOaWh+aIlueglOeptui/h+eoi+aWh+eov++8jOS/neeVmeWumuS5ieS4jumZkOWItgoK6auY57qn6IyD5Zu05LiO5p+l6K+i57qm5p2fCuWFs+iBlOihpeWFheS4jumihOeulwrlvIDlp4vmn6Xor6IK6YOo5YiG5a6M5oiQCgrlgZzmraLljp/lm6DvvJpleGhhdXN0ZWQKCumDqOWIhuWAmemAieWboOiMg+WbtOOAgeadpea6kOaIlueJiOacrOS4jea7oei2s+iAjOecgeeVpQrpooTnrpfmtojogJfkuI7lm7rlrprkvp3mja4K5p+l6K+i5YCZ6YCJ77yIMe+8iQoK5Zu65a6a5p+l6K+i5pyJ5pWI5pyf6IezIDIwMjYtMDktMDlUMjA6NDY6NTUuNzc4NjMyWgoK6YOo5YiG5YCZ6YCJ5Zug6IyD5Zu044CB5p2l5rqQ5oiW54mI5pys5LiN5ruh6Laz6ICM55yB55WlCuebtOaOpeadkOaWmQpTWU5USEVUSUMgTDEg6K665paH5byP6L+H56iL6K6w5b2VCgojIyDlj6/moLjpqoznmoTlsZXnpLror7TmmI4g5pys6K6w5b2V55So5LqO55WM6Z2i6aqM6K+B77yM5LiN5aOw56ew5a6e6aqM5bey5omn6KGM44CCIHwg5YaF5a65IHwg54q25oCBIHwgfC0tLXwtLS18IHwg5YWs5byPIHwg5ZCI5oiQ5bGV56S6IHwgfCDlm7rlrprlm77niYcgfCDlj5fmjqfor7vlj5YgfAoK55u05o6l5Y+v55SoIMK3IG5vdC1yZXZpZXdlZAoK5ZG95Lit5p2l5rqQ5LiO5Zu65a6a5byV55SoCuW/heimgeS4iuS4i+aWhwrlhbPogZTlu7rorq4K57uE6KOF5omA6YCJ5p2Q5paZ77yIMe+8iQrmsr/miYDpgInmnZDmlpnmt7HljJYK5p+l55yL5YWz6IGU5bu66K6uCuadkOaWmeWMhQoK6YCJ5oup5YCZ6YCJ5ZCO57uE6KOF44CC6L+Z6YeM5bCG5YiG5Yir5pi+56S65q2j5paH44CB5b+F6KaB5LiK5LiL5paH44CB5YWz6IGU5bu66K6u5ZKM57y65Y+j44CCCgrnu7TmiqTku7vliqHljIUKCuS7peaJgOmAieadkOaWmeS4uuWPmOWMluWFpeWPo++8jOaVtOeQhuS+nei1luW9seWTjeOAguWvvOWHuueahOS7u+WKoeWMhemcgOimgeWunumZhemYheivu+S4juWuoeafpeWQjuWbnuWhq++8m+eUn+aIkOiuoeWIkuacrOi6q+S4jeS7o+ihqOW3suWkjeaguOOAggoK55Sf5oiQ57u05oqk5Lu75Yqh5YyF77yIMSDkuKrlvJXnlKjvvIkKClR5cGVFcnJvcjogRmFpbGVkIHRvIGZldGNo"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\test-results\\material-query-维护任务包导出保留未审状态，改变条件使旧候选失效\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\test-results\\material-query-维护任务包导出保留未审状态，改变条件使旧候选失效\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                    "column": 24,
+                    "line": 138
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-80d2c40b458a95044cab",
+          "file": "material-query.spec.ts",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "真实预算耗尽显示停止原因并保留查询范围",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1928,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:32:28.099Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-5427513d154c2d506817",
+          "file": "material-query.spec.ts",
+          "line": 179,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-09T20:31:45.362Z",
+    "duration": 52140.126000000004,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

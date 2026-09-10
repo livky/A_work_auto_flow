@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "--root",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+    "memory",
+    "validate-draft",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\f3-inputs\\setup-calls\\tank-definitions-validate\\request.json"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "exit_code": 0
+}

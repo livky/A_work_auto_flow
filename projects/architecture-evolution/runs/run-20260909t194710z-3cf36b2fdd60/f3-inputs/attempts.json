@@ -1,0 +1,68 @@
+{
+  "attempts": {
+    "A07": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0",
+    "A08": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4"
+  },
+  "calls": [
+    {
+      "label": "definitions",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\calls\\call-dd0e19d8d7a3471788f36f7c9047d9c3",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\delivered\\definitions.md",
+      "exit_code": 0
+    },
+    {
+      "label": "tank-summary",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\calls\\call-4a61ae9bb3cb49749cf45fdf4fca376d",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\delivered\\tank-summary.md",
+      "exit_code": 0
+    },
+    {
+      "label": "tank-full",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\calls\\call-a4d7f5b72bfd41cfbef26cb843c0f5e3",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\delivered\\tank-full.md",
+      "exit_code": 0
+    },
+    {
+      "label": "tank-excluded-definition",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\calls\\call-969484b4d00848f2bbb04f4041d8e10c",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\delivered\\tank-excluded-definition.md",
+      "exit_code": 2
+    },
+    {
+      "label": "section-summary-missing",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\calls\\call-0651848342b546c6ac2b7715b52ac1bd",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\delivered\\section-summary-missing.md",
+      "exit_code": 2
+    },
+    {
+      "label": "tank-small-budget",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\calls\\call-3cf2ca12cc5b40b39f2d2f8a46e63243",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\delivered\\tank-small-budget.md",
+      "exit_code": 2
+    },
+    {
+      "label": "capabilities",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\calls\\call-4db62468baf64074bf75c023a00efc45",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\delivered\\capabilities.md",
+      "exit_code": 0
+    },
+    {
+      "label": "tank-full",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\calls\\call-b7513a3df54049bf9675ac508d3a19b4",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\delivered\\tank-full.md",
+      "exit_code": 0
+    },
+    {
+      "label": "retry-full",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\calls\\call-5dd2950b5e564b53b1cbbe12612b7d04",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\delivered\\retry-full.md",
+      "exit_code": 0
+    },
+    {
+      "label": "unconfigured-structural",
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\calls\\call-5ec313d053ed49ebaa3061e856bebfc1",
+      "delivered": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\delivered\\unconfigured-structural.md",
+      "exit_code": 2
+    }
+  ]
+}

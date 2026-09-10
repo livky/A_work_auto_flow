@@ -1,0 +1,8 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "public-cli",
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A03\\attempt-b9dbc53dac534685a36c8714794d6044\\calls\\call-faeaccc97c334350b1dd1bf9c061b31e\\stdout.txt",
+  "locator": "所选实现章节、scope 必需定义、方法正文和 manifest",
+  "coverage": "partial",
+  "observation": "选块包含 scope 定义及两处完整公式；其余共同依据以描述补充，没有冒充全文。"
+}

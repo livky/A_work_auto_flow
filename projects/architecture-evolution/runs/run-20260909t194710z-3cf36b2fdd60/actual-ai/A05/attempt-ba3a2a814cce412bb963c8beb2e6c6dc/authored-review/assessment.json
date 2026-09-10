@@ -1,0 +1,69 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "comparisons": [
+    {
+      "expectation_id": "A05-E1",
+      "status": "meets",
+      "observation": "限定为交叉复用A09已经执行的明确影响路径和局部修订：我阅读原A09分析及独立源回执复审，定义/饱和输入保持r1，受影响两章节/文稿才更新。本次又完整读新计划5部分，对已处理的相同输入作三项retain并公开应用，未重复写正文。没有声称重演A09。",
+      "evidence_refs": [
+        "../../A09/attempt-6a3c96e965c1408e998f7cfc8de720e7/AI-ANALYSIS.md",
+        "../../A09/attempt-6a3c96e965c1408e998f7cfc8de720e7/outcomes/impact-before-process.json",
+        "../../A09/attempt-6a3c96e965c1408e998f7cfc8de720e7/outcomes/impact-before-report.json",
+        "../../../a05-cross-reference-review.md",
+        "delivered/no-new-evidence-plan.md",
+        "outcomes/no-change-apply.json"
+      ]
+    },
+    {
+      "expectation_id": "A05-E2",
+      "status": "meets",
+      "observation": "限定为A09既有固定历史与双文稿回执，加本次独立副本的当前impact再读。原历史两稿仍r1/完整，当前两稿r2共同固定定义r1、模型r2、饱和r1，impact changes均空。原r1是A09显式创建的合成旧依据基线，不能冒充现实历史恢复。",
+      "evidence_refs": [
+        "../../A09/attempt-6a3c96e965c1408e998f7cfc8de720e7/document-update-receipt.json",
+        "../../A09/attempt-6a3c96e965c1408e998f7cfc8de720e7/outcomes/historical-process-read.json",
+        "../../A09/attempt-6a3c96e965c1408e998f7cfc8de720e7/outcomes/historical-report-read.json",
+        "outcomes/process-impact-current.json",
+        "outcomes/report-impact-current.json"
+      ]
+    },
+    {
+      "expectation_id": "A05-E3",
+      "status": "meets",
+      "observation": "本次新增实际执行：无新证据计划→全文读取→AI三项retain→review→新request_id apply，ok且commits/pending均空；55份规范/来源哈希与公开owner前后相同。实际移走副本登记原件后计划rejected/SOURCE_MISSING，Issue要求after_external_change；恢复相同SHA后新计划交付相同5部分。旧A09同request_id幂等没有替代这两项新执行。",
+      "evidence_refs": [
+        "outcomes/no-new-evidence-plan-retry.json",
+        "delivered/no-new-evidence-plan.md",
+        "outcomes/no-change-retain-review.json",
+        "outcomes/no-change-apply.json",
+        "outcomes/missing-saturation-plan.json",
+        "outcomes/missing-saturation-plan-restoration.json",
+        "outcomes/restored-source-plan.json",
+        "mechanical-verification.json"
+      ]
+    }
+  ],
+  "readable_artifacts": [
+    {
+      "title": "A05实际补充阅读与逐项判断",
+      "path": "A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/AI-ANALYSIS.md"
+    },
+    {
+      "title": "新计划五部分完整交付",
+      "path": "A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/delivered/no-new-evidence-plan.md"
+    },
+    {
+      "title": "55文件与公开结果机械核对",
+      "path": "A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/mechanical-verification.json"
+    }
+  ],
+  "limitations": [
+    "A05-E1/E2复用并复审A09实际证据，非本次重新执行局部修订；旧双文稿为明确创建的合成基线。",
+    "当前planner仍产生defer任务，是否retain来自实际AI判断；不宣称自动识别任意语义等价或全库无变化。",
+    "无新正文时保留本地计划、审查和应用审计回执；无重复堆积仅指规范知识内容/修订。",
+    "首条material-query前置--root参数调用解析失败保留；改用隔离cwd后另存新执行。",
+    "A06在原F3的获准新增与本独立副本分开，不把原目录整个并发时段HEAD恒定作为断言。",
+    "本机Windows合成TANK/SATURATION材料；未验证真实业务、语义向量质量、人工/科学结论或另一物理机。"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed"
+}

@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public memory CLI",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整 stdout JSON，已在工具中实际呈现",
+  "coverage": "full",
+  "observation": "实际回执 save_status=committed、index_status=pending、INDEX_PENDING，保留退出码3，区分保存成功与索引待处理。",
+  "recorded_at": "2026-09-09T21:12:56.240102Z",
+  "capture_sha256": "8edff56ea3bd556b10b1b4db3c1eb6ac27e7e29b2285ff33595a0f69a5678c00",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

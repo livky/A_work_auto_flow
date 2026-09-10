@@ -1,0 +1,91 @@
+ M AGENTS.md
+ M ARCHITECTURE.md
+ M PLAN.md
+ M README.md
+ M automation/README.md
+ M automation/scripts/memory/policy.py
+ M automation/testing/catalog.json
+ M automation/tests/test_memory_owner_service.py
+ M automation/tests/test_memory_owners.py
+ M automation/workflows/README.md
+ M automation/workflows/context-maintenance/SKILL.md
+ M automation/workflows/development-checks/SKILL.md
+ M automation/workflows/evidence-inspection/SKILL.md
+ M automation/workflows/research-loop/SKILL.md
+ M automation/workflows/workspace-context/SKILL.md
+ M context/GLOSSARY.md
+ M context/MEMORY.md
+ M context/NOW.md
+ M context/START_HERE.md
+ M context/SYSTEM_MAP.md
+ M context/generated/run-index.json
+ M context/generated/workspace-index.md
+ M core-algorithms/README.md
+ M data/lineage/README.md
+ M docs/DEPENDENCY_RELEASE.md
+ M docs/EVIDENCE_CONTROLS.md
+ M docs/EVIDENCE_VIEW_MONITOR.md
+ M docs/EXISTING_MATERIALS.md
+ M docs/MATERIAL_RELATIONS.md
+ M docs/MEMORY_DEVELOPMENT.md
+ M docs/MEMORY_REQUESTS.md
+ M docs/MEMORY_USAGE.md
+ M docs/OBJECT_RUN_STORAGE.md
+ M docs/RESEARCH_RECORDING.md
+ M docs/RETRIEVAL.md
+ M docs/RUN_CAPTURE.md
+ M docs/SETUP_WORKBENCH.md
+ M docs/TESTING.md
+ M docs/UPGRADE_TESTING.md
+ M docs/WINDOWS_PORTABILITY.md
+ M docs/WORKBENCH_DEVELOPMENT.md
+ M docs/design/L0_MATERIALS.md
+ M docs/design/RESEARCH_DOCUMENTS.md
+ M docs/design/adaptive-context-review-2026-09-06.md
+ M docs/design/ai-assisted-rd-workspace-practices.md
+ M docs/design/core-algorithms-rename-plan.md
+ M docs/design/dependency-release-plan.md
+ M docs/design/evidence-controls-plan.md
+ M docs/design/evidence-view-monitor-plan.md
+ M docs/design/local-retrieval-review-2026-09-06.md
+ M docs/design/materials-review-2026-09-06.md
+ M docs/design/setup-workbench-plan.md
+ M docs/design/system-memory/01-data-contracts.md
+ M docs/design/system-memory/02-services-algorithms.md
+ M docs/design/system-memory/03-work-packages.md
+ M docs/design/system-memory/04-acceptance.md
+ M docs/design/system-memory/05-human-acceptance.md
+ M docs/design/system-memory/IMPLEMENTATION.md
+ M docs/design/system-memory/L0-L4-REFACTOR.md
+ M docs/design/system-memory/RESEARCH-REPORT-COMPOSITION.md
+ M docs/design/system-memory/STATUS.md
+ M docs/design/windows-portability-plan.md
+ M docs/design/workbench-relations-plan.md
+ M docs/design/workflow-review-2026-09-06.md
+ M "docs/\347\263\273\347\273\237\350\256\260\345\277\206\346\250\241\345\235\227\346\212\200\346\234\257\345\256\236\347\216\260\350\256\241\345\210\222.md"
+ M "docs/\347\263\273\347\273\237\350\256\260\345\277\206\346\250\241\345\235\227\346\212\200\346\234\257\347\233\256\346\240\207\350\256\250\350\256\272\347\250\277.md"
+ M knowledge/README.md
+ M projects/AGENTS.md
+ M projects/README.md
+ M projects/_template/AGENTS.md
+ M projects/_template/README.md
+ M reports/README.md
+ M research/AGENTS.md
+ M research/_template/README.md
+ M research/agent-workspace-review/README.md
+ M research/floating-point-summation/README.md
+ M research/floating-point-summation/details/README.md
+ M research/material-relationship-view/README.md
+ M retrieval/sources.json
+ M runs/AGENTS.md
+ M runs/README.md
+ M services/qdrant/README.md
+ M tools/README.md
+?? automation/workflows/association-exploration/
+?? automation/workflows/material-query/
+?? automation/workflows/semantic-maintenance/
+?? docs/DOCUMENTATION_MAINTENANCE.md
+?? docs/design/representation-query-v0.2/
+?? "docs/\347\263\273\347\273\237\350\256\260\345\277\206\346\250\241\345\235\227\345\274\200\345\217\221\350\256\241\345\210\222.md"
+?? projects/architecture-evolution/
+?? "\345\276\205\345\274\200\345\217\221\350\256\241\345\210\222.md"

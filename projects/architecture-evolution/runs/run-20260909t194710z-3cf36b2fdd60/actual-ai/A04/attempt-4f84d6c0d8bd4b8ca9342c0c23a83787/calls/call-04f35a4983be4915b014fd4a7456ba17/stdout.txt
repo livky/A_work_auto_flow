@@ -1,0 +1,52 @@
+{
+  "request_id": "565c6910-22fd-43d8-9bea-0a4a4bb23065",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "commit_id": "COM-d7671ffb-1416-4ff9-ba2e-f80b91f78188",
+  "generation": 15,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": "IMPL-P1",
+      "record_id": "MEM-b75bea5c-7e9e-54bd-b471-8b669beca2e5",
+      "revision": 1,
+      "content_hash": "0e7aa454637f92a232a61f3bf58329ed74d568ddc8065361a86c66ecb588593b",
+      "status": "created"
+    },
+    {
+      "client_key": "IMPL-P2",
+      "record_id": "MEM-f7c70f53-cecd-50ce-aac9-f7d59e091fdd",
+      "revision": 1,
+      "content_hash": "447a2fc9eb9118c1fe9d6a3307c52df9ffe1ccdfa905f6a0c98af1e127fd4adf",
+      "status": "created"
+    },
+    {
+      "client_key": "IMPL-P3",
+      "record_id": "MEM-9aaa1a6e-9a1e-592b-97a6-bb93f65e5748",
+      "revision": 1,
+      "content_hash": "f19f47c1956e0cb308475b27b1c2bb0dce60d84697e400d817c894af88e78959",
+      "status": "created"
+    },
+    {
+      "client_key": "IMPL-BRIEF",
+      "record_id": "MEM-05943bf4-63fe-5f0e-bd93-e5db72378c1d",
+      "revision": 1,
+      "content_hash": "a71c6a03f60088f2c5c4fb89f32cb51b45931925543eb236b0664af5cf0e7d57",
+      "status": "created"
+    }
+  ],
+  "index_status": "indexed",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "indexed",
+    "indexed_generation": 15,
+    "vector_generation": 15,
+    "target_generation": 15,
+    "encoder_version": "memory-record-representation-v3-technical-description",
+    "collection": "memory_v1_662ca1e31184",
+    "error": null
+  },
+  "warnings": [],
+  "error": null,
+  "recovery_ref": null
+}
+

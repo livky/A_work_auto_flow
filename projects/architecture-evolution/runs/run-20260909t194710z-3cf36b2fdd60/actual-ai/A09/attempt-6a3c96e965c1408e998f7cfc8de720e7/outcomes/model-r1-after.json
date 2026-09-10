@@ -1,0 +1,134 @@
+{
+  "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\calls\\call-23dbf3b48dea496f985c55a16aaa2120",
+  "exit_code": 0,
+  "result": {
+    "owner": {
+      "schema_version": 1,
+      "owner_id": "RES-F3-TANK",
+      "owner_type": "research",
+      "native_ref": {
+        "id_field": "research_id",
+        "id_value": "RES-F3-TANK",
+        "path": "research/tank/research.json"
+      },
+      "memory_home": "research/tank/memory",
+      "adapter_version": 1,
+      "temporary": false,
+      "persisted": true,
+      "title": "SYNTHETIC F3 tank",
+      "fingerprint": "52adfc2af72e6d3ec184ea08041a271b7d349a726eabebb839b8c8a833c9f200",
+      "native_data": {
+        "research_id": "RES-F3-TANK",
+        "title": "SYNTHETIC F3 tank",
+        "status": "active",
+        "claims": [],
+        "dependencies": [],
+        "sensitivity": "internal"
+      },
+      "created_at": "2026-09-09T21:01:04.942894Z",
+      "created_by": {
+        "id": "Codex actual-AI F3 setup",
+        "kind": "ai"
+      }
+    },
+    "record": {
+      "body_markdown": "",
+      "change_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+      "content_hash": "4f786f9e28baf3ef293c833a34d2b666609bc63df05d2819dbaa706f2c44ae35",
+      "created_at": "2026-09-09T21:02:10.226996Z",
+      "created_by": {
+        "id": "Codex actual-AI F3 setup",
+        "kind": "ai"
+      },
+      "discovery": "workspace_summary",
+      "keywords": [
+        "SYNTHETIC",
+        "F3",
+        "水箱线性段误差分析"
+      ],
+      "kind": "detail",
+      "level": "L1",
+      "owner_id": "RES-F3-TANK",
+      "payload": {
+        "blocks": [
+          {
+            "block_id": "model",
+            "markdown": "## 水箱负反馈的线性段\n\n质量守恒与控制律为\n\n$$\nA\\frac{dh}{dt}=q-ch,\\qquad q_c=c h_r+K(h_r-h),\\qquad q=\\operatorname{clip}(q_c,0,q_{max}).\n$$\n\n在整个讨论区间保持 $0<q_c<q_{max}$ 时，可代入 $q=q_c$；目标不变，故\n\n$$\n\\frac{de}{dt}=-\\frac{c+K}{A}e,\\qquad e(t)=e(0)\\exp\\left(-\\frac{c+K}{A}t\\right).\n$$\n\n这是给定合成连续线性模型的代数推导，未做现实实验。若 $A>0,c>0,K\\geq0$ 且不触发饱和，误差按该模型指数衰减。时间常数 $\\tau=A/(c+K)$，单位为秒。\n\n## 边界\n\n上述指数解只属于未饱和区间；更大目标或初始误差可能使泵触顶或关闭，此时必须返回带 clip 的分段动力学。材料未提供普遍“增益越大越好”的现实结论。尚未测量延迟、噪声与出流非线性，也未验证目标流量是否可达。\n",
+            "requires_block_ids": [],
+            "role": "methods"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "locator": "完整合成输入",
+            "relation": "input",
+            "revision": null,
+            "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+            "target_id": "SRC-F3-TANK",
+            "target_kind": "file"
+          },
+          {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+            "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+            "target_kind": "record"
+          }
+        ],
+        "figures": [],
+        "missing_refs": [],
+        "retrieval_description": {
+          "applicable": [
+            "变量字典一致且全过程未饱和"
+          ],
+          "key_findings": [
+            "给定无延迟合成模型中，误差在未饱和区间指数衰减"
+          ],
+          "limitations": [
+            "尚未验证目标可达性；需要同组必要定义"
+          ],
+          "method": "代入质量守恒并在未饱和区间求解一阶误差方程",
+          "not_applicable": [
+            "执行器饱和、未知延迟或直接外推现实模型"
+          ],
+          "question": "未饱和水箱负反馈的误差怎样变化"
+        },
+        "run_ref": null,
+        "unit_type": "analysis"
+      },
+      "previous_revision": null,
+      "provenance_gap": null,
+      "record_hash": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+      "record_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+      "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+      "revision": 1,
+      "schema_version": 3,
+      "sensitivity": "internal",
+      "sources": [
+        {
+          "locator": "完整合成输入",
+          "relation": "input",
+          "revision": null,
+          "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+          "target_id": "SRC-F3-TANK",
+          "target_kind": "file"
+        },
+        {
+          "locator": "",
+          "relation": "prerequisite",
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "target_kind": "record"
+        }
+      ],
+      "title": "SYNTHETIC F3 水箱线性段误差分析",
+      "updated_at": "2026-09-09T21:02:10.226996Z",
+      "updated_by": {
+        "id": "Codex actual-AI F3 setup",
+        "kind": "ai"
+      }
+    }
+  }
+}

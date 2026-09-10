@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "public material-query maintenance-plan, no-new-evidence-plan-retry",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "实际阅读全部5部分、三个规范对象和两份已登记原件，omitted均为空；模型r2已包含相同饱和约束，故逐项决定retain。",
+  "recorded_at": "2026-09-09T22:59:20.860872Z",
+  "capture_sha256": "04f485e75c880e5642c9a932232858630ffd28700eadd5f60c11750a5c04ae91",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

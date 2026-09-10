@@ -1,0 +1,122 @@
+{
+  "schema_version": 3,
+  "request_id": "ad3adfc1-97dd-42ea-8288-f603e630b8a2",
+  "actor": {
+    "kind": "ai",
+    "id": "assistant"
+  },
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "expected_head": "COM-6751590d-9754-49df-8fa5-2f8713f8504c",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "process",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document_section",
+        "level": null,
+        "title": "来源恢复与索引覆盖修复",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-2c7941ed-b272-573c-ad70-2c7739ccac99",
+            "revision": 1,
+            "sha256": "b2423bd7037468bb6f57e64bea17b37ffef80c92cb41c52a10e282108b67f6d3",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "payload": {
+          "section_key": "floating-repair-process",
+          "title": "来源恢复与索引覆盖修复",
+          "role": "discussion",
+          "blocks": [
+            {
+              "type": "unit",
+              "ref": {
+                "target_kind": "record",
+                "target_id": "MEM-2c7941ed-b272-573c-ad70-2c7739ccac99",
+                "revision": 1,
+                "sha256": "b2423bd7037468bb6f57e64bea17b37ffef80c92cb41c52a10e282108b67f6d3",
+                "locator": "完整固定正文",
+                "relation": "references"
+              },
+              "block_ids": [
+                "repair"
+              ]
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        }
+      }
+    },
+    {
+      "op": "put_record",
+      "client_key": "brief",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document_section",
+        "level": null,
+        "title": "来源恢复与索引覆盖修复",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-2c7941ed-b272-573c-ad70-2c7739ccac99",
+            "revision": 1,
+            "sha256": "b2423bd7037468bb6f57e64bea17b37ffef80c92cb41c52a10e282108b67f6d3",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "payload": {
+          "section_key": "floating-repair-brief",
+          "title": "来源恢复与索引覆盖修复",
+          "role": "discussion",
+          "blocks": [
+            {
+              "type": "prose",
+              "markdown": "本次修复了遗漏来源登记、历史Run旧路径定位和检索索引。浮点双文稿可读，全局探索查询返回11项且无覆盖警告。102项Python、8项组件、3项浏览器及类型检查通过；真实setup保留检查通过。仅验证本机软件与合成材料，人工和科学复核未完成。",
+              "evidence_refs": [
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-2c7941ed-b272-573c-ad70-2c7739ccac99",
+                  "revision": 1,
+                  "sha256": "b2423bd7037468bb6f57e64bea17b37ffef80c92cb41c52a10e282108b67f6d3",
+                  "locator": "完整固定正文",
+                  "relation": "references"
+                }
+              ]
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        }
+      }
+    }
+  ]
+}

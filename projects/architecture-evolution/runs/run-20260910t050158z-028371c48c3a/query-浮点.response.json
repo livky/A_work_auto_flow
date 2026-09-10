@@ -1,0 +1,875 @@
+{
+  "status": "ok",
+  "value": {
+    "query_id": "MQ-cac1e4b6-0422-498e-b624-accb24a0785e",
+    "request_digest": "28705e0d66b9cf7a4a83cdd589e471dbbcabeea782905fbf46879a97f9da14da",
+    "candidates": [
+      {
+        "candidate_id": "C-d2d43714c5caac27b1499ec5",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "revision": 1,
+            "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+            "locator": null
+          }
+        ],
+        "title": "浮点求和方法：精确基准、递推与适用条件",
+        "excerpt": "问题：\n如何对实际浮点输入建立精确求和基准，并解释不同补偿方法的操作与边界？\n\n方法：\n精确有理数基准、显式逐项累加、Kahan与Neumaier递推及实际输出对照。\n\n主要发现：\n- 精确命中针对已表示binary64输入，不混入十进制转换误差。\n- 补偿变量含义和舍入顺序不同，有限样本精确不能证明普适正确。\n\n适用条件：\n- 保存脚本与有限构造浮点输入的解释、误差核对和反例分析。\n\n不适用条件：\n- 任意输入精确性保证、业务误差概率和性能排名。\n\n限制：\n- 非整数、极端指数、跨平台、性能及非有限值未验证；未人工科学复核。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.01639344262295082,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+              "revision": 1,
+              "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 1,
+            "raw_score": -0.6226758071546605,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "revision": 1,
+                "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+                "locator": null
+              }
+            ],
+            "matched_text": "浮点求和方法：精确基准、递推与适用条件\n问题：\n如何对实际浮点输入建立精确求和基准，并解释不同补偿方法的操作与边界？\n\n方法：\n精确有理数基准、显式逐项累加、Kahan与Neumaier递推及实际输出对照。\n\n主要发现：\n- 精确命中针对已表示binary64输入，不混入十进制转换误差。\n- 补偿变量含义和舍入顺序不同，有限样本精确不能证明普适正确。\n\n适用条件：\n- 保存脚本与有限构造浮点输入的解释、误差核对和反例分析。\n\n不适用条件：\n- 任意输入精确性保证、业务误差概率"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-54782399bd4624cf1e982339",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+            "revision": 4,
+            "sha256": "2b2cde250faf2c20f1f9adaba22b90ce505312cc4a629a4bfa761daf40f41bb9",
+            "locator": null
+          }
+        ],
+        "title": "求和稳定性三轮探索地图",
+        "excerpt": "研究依次检验顺序造成的小量损失、三项补偿反例及30项多排列复验。完整研究过程提供独立方法章、三组完整实验和复核附录；简版研究报告概括关键结果与适用边界。两份文档共享固定证据。当前结论仍限于构造输入，非整数、极端指数、跨平台和性能问题未验证；研究not-reviewed。原经验、检查点和已完成实验继续保留各自的原固定依据。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.016129032258064516,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+              "revision": 4,
+              "sha256": "2b2cde250faf2c20f1f9adaba22b90ce505312cc4a629a4bfa761daf40f41bb9",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 2,
+            "raw_score": -0.5217982298442426,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+                "revision": 4,
+                "sha256": "2b2cde250faf2c20f1f9adaba22b90ce505312cc4a629a4bfa761daf40f41bb9",
+                "locator": null
+              }
+            ],
+            "matched_text": "reviewed。原经验、检查点和已完成实验继续保留各自的原固定依据。\n非整数与极端指数测试\n跨平台复算\n单独测量性能\n浮点求和局部稳定性\n浮点求和 数值稳定性 map"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-6fd85617069b6a6f856fef92",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-58fd845a-05a5-516c-8bbe-c88d887cbb91",
+            "revision": 3,
+            "sha256": "c1545ee2a072322142632e4363f13a5aaba1ce1b17902766618d8fbf4a6b15fe",
+            "locator": null
+          }
+        ],
+        "title": "大数抵消场景的求和方法局部比较",
+        "excerpt": "三轮实际计算表明：本研究的显式逐项累加对顺序敏感；Kahan实现未消除所选抵消结构的全部误差；Neumaier与math.fsum在第二轮6种排列和第三轮30种排列中均与精确基准一致。该观察只适用于已保存输入与脚本，不能推出任意浮点输入都准确，也未比较运行时间。\n\n## 新增过程依据\n本次逐步复核150个结果全部一致，三篇L1补齐了中间数值、公式、图表和参数。Kahan的补偿在所选三项抵消中再次舍入，不能只凭采用补偿保证精确。先固定输入与精确参考，再观察逐步状态；环境失败应与数值反例分别记录。\n\n## 适用与禁用范围\n仅限已保存有限整数binary64样本与本机环境。其他分布、极端指数、平台和性能须新建Run验证；本次没有人工认可。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.015625,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-58fd845a-05a5-516c-8bbe-c88d887cbb91",
+              "revision": 3,
+              "sha256": "c1545ee2a072322142632e4363f13a5aaba1ce1b17902766618d8fbf4a6b15fe",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 4,
+            "raw_score": -0.45582374101336137,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-58fd845a-05a5-516c-8bbe-c88d887cbb91",
+                "revision": 3,
+                "sha256": "c1545ee2a072322142632e4363f13a5aaba1ce1b17902766618d8fbf4a6b15fe",
+                "locator": null
+              }
+            ],
+            "matched_text": "r与math.fsum在第二轮6种排列和第三轮30种排列中均与精确基准一致。该观察只适用于已保存输入与脚本，不能推出任意浮点输入都准确，也未比较运行时间。\n\n## 新增过程依据\n本次逐步复核150个结果全部一致，三篇L1补齐了中间数值、公式、图表和参数。Kahan的补偿在所选三项抵消中再次舍入，不能只凭采用补偿保证精确。先固定输入与精确参考，再观察逐步状态；环境失败应与数值反例分别记录。\n\n## 适用与禁用范围\n仅限已保存有限整数binary64样本与本机环境。其他分布、极端"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-cd14fbeee6cd134d28b3c26d",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-eae11b05-09a7-5f4e-a2fd-65fc1ec6000e",
+            "revision": 1,
+            "sha256": "51ce944f340f7ac7e947e9e8a96dd8079284ae7dd5cf8618c27b7d8d1942e7b4",
+            "locator": null
+          }
+        ],
+        "title": "第1轮观察与决策",
+        "excerpt": "## 实际观察\n逐项累加精确1/3，最大绝对误差1000；math.fsum精确3/3。\n\n## 决策与边界\n把问题缩小到三项抵消并比较补偿方法。\n\n本记录为事后补记，不是重新执行。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.015384615384615385,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-eae11b05-09a7-5f4e-a2fd-65fc1ec6000e",
+              "revision": 1,
+              "sha256": "51ce944f340f7ac7e947e9e8a96dd8079284ae7dd5cf8618c27b7d8d1942e7b4",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 5,
+            "raw_score": -0.41201730356532407,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-eae11b05-09a7-5f4e-a2fd-65fc1ec6000e",
+                "revision": 1,
+                "sha256": "51ce944f340f7ac7e947e9e8a96dd8079284ae7dd5cf8618c27b7d8d1942e7b4",
+                "locator": null
+              }
+            ],
+            "matched_text": "补记）\n把问题缩小到三项抵消并比较补偿方法。\n逐项累加精确1/3，最大绝对误差1000；math.fsum精确3/3。\n浮点求和 数值稳定性 event"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-ee78637ad649059a5d4249bd",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-f1b731ce-9e87-502b-a9cf-a93c3f47c5f6",
+            "revision": 1,
+            "sha256": "8ead05ea3582edd0a3d4de093cf5a978b6c37728b9112cca2c1979b8f6b1fd38",
+            "locator": null
+          }
+        ],
+        "title": "第2轮观察与决策",
+        "excerpt": "## 实际观察\n6种排列中逐项与Kahan均精确2/6；Neumaier与math.fsum均精确6/6，最大误差0。\n\n## 决策与边界\n增加重复项与固定排列数，复验反例结构。\n\n本记录为事后补记，不是重新执行。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.015151515151515152,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-f1b731ce-9e87-502b-a9cf-a93c3f47c5f6",
+              "revision": 1,
+              "sha256": "8ead05ea3582edd0a3d4de093cf5a978b6c37728b9112cca2c1979b8f6b1fd38",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 6,
+            "raw_score": -0.3955777104056104,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-f1b731ce-9e87-502b-a9cf-a93c3f47c5f6",
+                "revision": 1,
+                "sha256": "8ead05ea3582edd0a3d4de093cf5a978b6c37728b9112cca2c1979b8f6b1fd38",
+                "locator": null
+              }
+            ],
+            "matched_text": "复验反例结构。\n6种排列中逐项与Kahan均精确2/6；Neumaier与math.fsum均精确6/6，最大误差0。\n浮点求和 数值稳定性 event"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-c9cd3715db3cdf6efc35736f",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-d117fbde-ec6b-5168-9a40-f4a25459aa2a",
+            "revision": 1,
+            "sha256": "8b167a4be79448fb63a770ea401e21fa58e46777382295b647b4f60fcbc46c12",
+            "locator": null
+          }
+        ],
+        "title": "首次逐步复核命令退出1；数值输出已产生，Matplotlib环境无法完整导入。",
+        "excerpt": "## 观察\n首次逐步复核命令退出1；数值输出已产生，Matplotlib环境无法完整导入。\n\n## 决策及依据\n保留失败Run，修复绘图依赖可读性后用新Run复试。\n\n未在本保存任务重跑实验；此处只是整理已发生事实。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.014925373134328358,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-d117fbde-ec6b-5168-9a40-f4a25459aa2a",
+              "revision": 1,
+              "sha256": "8b167a4be79448fb63a770ea401e21fa58e46777382295b647b4f60fcbc46c12",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 7,
+            "raw_score": -0.38595294859525486,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-d117fbde-ec6b-5168-9a40-f4a25459aa2a",
+                "revision": 1,
+                "sha256": "8b167a4be79448fb63a770ea401e21fa58e46777382295b647b4f60fcbc46c12",
+                "locator": null
+              }
+            ],
+            "matched_text": "，修复绘图依赖可读性后用新Run复试。\n首次逐步复核命令退出1；数值输出已产生，Matplotlib环境无法完整导入。\n浮点求和 数值稳定性 event"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-8fb34e400f74b0afebe79ba5",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+            "revision": 3,
+            "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+            "locator": null
+          }
+        ],
+        "title": "探索01：相同数量的小量，为什么会因顺序不同而丢失？",
+        "excerpt": "问题：\n输入顺序如何影响小量保存？\n\n方法：\n读取对应固定构造输入，按已保存实现与精确有理数和比较；本文仅重新组织既有完整说明。\n\n主要发现：\n- 逐项累加1/3精确，最大绝对误差1000；math.fsum为3/3、误差0。\n\n适用条件：\n- 第1轮保存的构造输入、实现和环境。\n\n不适用条件：\n- 任意输入的正确性或真实数据分布成功概率。\n\n限制：\n- 非整数、极端指数、跨平台和性能未验证；研究not-reviewed。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.014705882352941176,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+              "revision": 3,
+              "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 8,
+            "raw_score": -0.3850161695938101,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "locator": null
+              }
+            ],
+            "matched_text": "入的正确性或真实数据分布成功概率。\n\n限制：\n- 非整数、极端指数、跨平台和性能未验证；研究not-reviewed。\n浮点求和 数值稳定性 detail"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-654aad9efcd43a625c9d1d28",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+            "revision": 3,
+            "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+            "locator": null
+          }
+        ],
+        "title": "探索02：Kahan补偿为何仍会在三项抵消中失败？",
+        "excerpt": "问题：\n补偿能否消除三项抵消输入的全部误差？\n\n方法：\n读取对应固定构造输入，按已保存实现与精确有理数和比较；本文仅重新组织既有完整说明。\n\n主要发现：\n- 逐项累加与Kahan各2/6精确，最大误差1；Neumaier与math.fsum各6/6、误差0。\n\n适用条件：\n- 第2轮保存的构造输入、实现和环境。\n\n不适用条件：\n- 任意输入的正确性或真实数据分布成功概率。\n\n限制：\n- 非整数、极端指数、跨平台和性能未验证；研究not-reviewed。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.014492753623188406,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+              "revision": 3,
+              "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 9,
+            "raw_score": -0.37768252826821375,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "locator": null
+              }
+            ],
+            "matched_text": "入的正确性或真实数据分布成功概率。\n\n限制：\n- 非整数、极端指数、跨平台和性能未验证；研究not-reviewed。\n浮点求和 数值稳定性 detail"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-c8e86501c9487d39489ad734",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+            "revision": 3,
+            "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+            "locator": null
+          }
+        ],
+        "title": "探索03：反例扩大到30项和30种排列后是否仍成立？",
+        "excerpt": "问题：\n同类反例能否延续至30项的多种排列？\n\n方法：\n读取对应固定构造输入，按已保存实现与精确有理数和比较；本文仅重新组织既有完整说明。\n\n主要发现：\n- 逐项累加0/30、Kahan5/30，最大误差均10；Neumaier与math.fsum各30/30、误差0。\n\n适用条件：\n- 第3轮保存的构造输入、实现和环境。\n\n不适用条件：\n- 任意输入的正确性或真实数据分布成功概率。\n\n限制：\n- 非整数、极端指数、跨平台和性能未验证；研究not-reviewed。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.014285714285714285,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+              "revision": 3,
+              "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 10,
+            "raw_score": -0.3758925636792648,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "locator": null
+              }
+            ],
+            "matched_text": "入的正确性或真实数据分布成功概率。\n\n限制：\n- 非整数、极端指数、跨平台和性能未验证；研究not-reviewed。\n浮点求和 数值稳定性 detail"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-816a2d8b424160422f683956",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-77b35d77-f6c1-5d05-80a1-7c3b9d5e9d09",
+            "revision": 1,
+            "sha256": "82472fd278b094ffe89ac9b05e0dcb686486de9a5e95b1ee3bf41ace205a884b",
+            "locator": null
+          }
+        ],
+        "title": "第3轮观察与决策",
+        "excerpt": "## 实际观察\n30组固定排列中逐项0/30精确、Kahan5/30，最大误差均10；Neumaier与math.fsum均30/30精确。\n\n## 决策与边界\n停止本组三轮计算；后续再单独验证非整数、极端指数、跨平台与性能。\n\n本记录为事后补记，不是重新执行。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.014084507042253521,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-77b35d77-f6c1-5d05-80a1-7c3b9d5e9d09",
+              "revision": 1,
+              "sha256": "82472fd278b094ffe89ac9b05e0dcb686486de9a5e95b1ee3bf41ace205a884b",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 11,
+            "raw_score": -0.37149101141135776,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-77b35d77-f6c1-5d05-80a1-7c3b9d5e9d09",
+                "revision": 1,
+                "sha256": "82472fd278b094ffe89ac9b05e0dcb686486de9a5e95b1ee3bf41ace205a884b",
+                "locator": null
+              }
+            ],
+            "matched_text": "固定排列中逐项0/30精确、Kahan5/30，最大误差均10；Neumaier与math.fsum均30/30精确。\n浮点求和 数值稳定性 event"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      },
+      {
+        "candidate_id": "C-d851fdaf821b887eee75081c",
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-ff3cf263-e13e-51b3-8a4f-6c7574040f10",
+            "revision": 1,
+            "sha256": "0cb6037a509e300658ef86e81e19e25983e526fcd0016ffb10f7deff001f4ef7",
+            "locator": null
+          }
+        ],
+        "title": "独立复试成功",
+        "excerpt": "## 观察\n独立复试成功：150个最终结果及精确误差全部一致，保存111组显式算法轨迹；30组采样配方与输入一致。\n\n## 决策及依据\n保留原结果和首次失败，以三篇L1呈现可读步骤；不晋升为普适结论。\n\n未在本保存任务重跑实验；此处只是整理已发生事实。",
+        "channels": [
+          "lexical"
+        ],
+        "score": 0.013888888888888888,
+        "realization": {
+          "definition": {
+            "key": "full",
+            "version": "1"
+          },
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-ff3cf263-e13e-51b3-8a4f-6c7574040f10",
+              "revision": 1,
+              "sha256": "0cb6037a509e300658ef86e81e19e25983e526fcd0016ffb10f7deff001f4ef7",
+              "locator": null
+            }
+          ],
+          "state": "direct",
+          "missing_selectors": [],
+          "generator_version": null
+        },
+        "evidence_status": "not-assessed",
+        "group": "direct",
+        "hits": [
+          {
+            "channel": "lexical",
+            "provider": "memory-fts",
+            "provider_version": "memory-v3-technical-description-documents",
+            "rank": 12,
+            "raw_score": -0.36719134692743,
+            "score_meaning": "FTS bm25（越低越相关）",
+            "representation_refs": [
+              {
+                "kind": "record",
+                "id": "MEM-ff3cf263-e13e-51b3-8a4f-6c7574040f10",
+                "revision": 1,
+                "sha256": "0cb6037a509e300658ef86e81e19e25983e526fcd0016ffb10f7deff001f4ef7",
+                "locator": null
+              }
+            ],
+            "matched_text": "升为普适结论。\n独立复试成功：150个最终结果及精确误差全部一致，保存111组显式算法轨迹；30组采样配方与输入一致。\n浮点求和 数值稳定性 event"
+          }
+        ],
+        "evaluated_claim_refs": [],
+        "unresolved_claim_refs": [],
+        "unknown_facets": []
+      }
+    ],
+    "next_cursor": null,
+    "expires_at": "2026-09-10T05:32:16.792012Z",
+    "gaps": []
+  },
+  "code": null,
+  "warnings": [],
+  "issues": [],
+  "consumed": {
+    "wall_ms": 3328,
+    "read_bytes": 382121,
+    "output_chars": 3162,
+    "candidates": 13,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "graph_hops": 0,
+    "model_tokens": 0,
+    "model_calls": 0,
+    "model_input_tokens": 0,
+    "model_output_tokens": 0,
+    "rerank_items": 0
+  },
+  "stop_reason": "exhausted",
+  "basis": {
+    "refs": [
+      {
+        "kind": "record",
+        "id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+        "revision": 1,
+        "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+        "revision": 4,
+        "sha256": "2b2cde250faf2c20f1f9adaba22b90ce505312cc4a629a4bfa761daf40f41bb9",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-3090dc56-e320-5db7-8489-e0bff4d9a153",
+        "revision": 1,
+        "sha256": "942b428430701fe15176250bd73d682b6c10379ba2ae1ef07afc5d8e0410c4f7",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-58fd845a-05a5-516c-8bbe-c88d887cbb91",
+        "revision": 3,
+        "sha256": "c1545ee2a072322142632e4363f13a5aaba1ce1b17902766618d8fbf4a6b15fe",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-eae11b05-09a7-5f4e-a2fd-65fc1ec6000e",
+        "revision": 1,
+        "sha256": "51ce944f340f7ac7e947e9e8a96dd8079284ae7dd5cf8618c27b7d8d1942e7b4",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-f1b731ce-9e87-502b-a9cf-a93c3f47c5f6",
+        "revision": 1,
+        "sha256": "8ead05ea3582edd0a3d4de093cf5a978b6c37728b9112cca2c1979b8f6b1fd38",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-d117fbde-ec6b-5168-9a40-f4a25459aa2a",
+        "revision": 1,
+        "sha256": "8b167a4be79448fb63a770ea401e21fa58e46777382295b647b4f60fcbc46c12",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+        "revision": 3,
+        "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+        "revision": 3,
+        "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+        "revision": 3,
+        "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-77b35d77-f6c1-5d05-80a1-7c3b9d5e9d09",
+        "revision": 1,
+        "sha256": "82472fd278b094ffe89ac9b05e0dcb686486de9a5e95b1ee3bf41ace205a884b",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-ff3cf263-e13e-51b3-8a4f-6c7574040f10",
+        "revision": 1,
+        "sha256": "0cb6037a509e300658ef86e81e19e25983e526fcd0016ffb10f7deff001f4ef7",
+        "locator": null
+      },
+      {
+        "kind": "record",
+        "id": "MEM-5c24b3d1-3802-537e-a963-d25d63f837f8",
+        "revision": 1,
+        "sha256": "fa4b58242aa7e21c98d5f4d8cd572cd4b47fe4e1f292310db35790e97b3655bd",
+        "locator": null
+      }
+    ],
+    "owner_heads": [
+      [
+        "RES-FLOATING-POINT-SUMMATION",
+        "COM-abddae26-f26e-4c76-8b28-fe0b98a29d05"
+      ]
+    ],
+    "index_watermarks": [
+      [
+        "PRJ-ARCHITECTURE-EVOLUTION",
+        "16"
+      ],
+      [
+        "RES-FLOATING-POINT-SUMMATION",
+        "11"
+      ],
+      [
+        "RUN-20260908T201214Z-D0AB308F66AD",
+        "0"
+      ],
+      [
+        "RUN-20260908T201228Z-A0980824DC18",
+        "0"
+      ],
+      [
+        "RUN-20260908T201240Z-90107A617CF8",
+        "0"
+      ],
+      [
+        "RUN-20260908T214955Z-2273015D2CEF",
+        "0"
+      ],
+      [
+        "RUN-20260908T215458Z-04C7D84D40D8",
+        "0"
+      ],
+      [
+        "RUN-20260909T151004Z-A68FBA9F176D",
+        "0"
+      ],
+      [
+        "RUN-20260909T155125Z-2961BDF175A8",
+        "0"
+      ],
+      [
+        "RUN-20260909T164914Z-D20A9406384A",
+        "0"
+      ],
+      [
+        "RUN-20260909T175530Z-40721B975BDB",
+        "0"
+      ],
+      [
+        "RUN-20260909T184202Z-6E13D341B986",
+        "0"
+      ],
+      [
+        "RUN-20260909T190818Z-8ADA1DF3337B",
+        "0"
+      ],
+      [
+        "RUN-20260909T193424Z-94CB7B841F02",
+        "0"
+      ],
+      [
+        "RUN-20260909T194710Z-3CF36B2FDD60",
+        "0"
+      ],
+      [
+        "RUN-20260910T050158Z-028371C48C3A",
+        "0"
+      ],
+      [
+        "TOOL-WORKSPACE-001",
+        "0"
+      ]
+    ],
+    "consistency": "fixed_refs",
+    "observed_at": "2026-09-10T05:17:20.117679Z",
+    "basis_id": "BASIS-e197a3e21534f95c1143926c3ad758c6c967ec19657edd5a3d3b1585f19017f0"
+  }
+}

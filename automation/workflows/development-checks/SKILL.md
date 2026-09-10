@@ -2,10 +2,11 @@
 name: development-checks
 description: 在 AI 研发工作区开发或修复功能时，更新并执行可复用分级测试清单，保存实际 AI 自查和人工审查入口。
 ---
-
 # 开发验证
 
 在含 `workspace.json` 的工作区使用。读取 [分级测试规范](../../../docs/TESTING.md)，按目标选择影响能力和 quick/full 层级；命令入口为 `workbench.cmd testing`，可用 `--help` 查看参数。
+
+先按[文档与模块影响维护](../../../docs/DOCUMENTATION_MAINTENANCE.md)定位变化模块和本工作区的影响图，沿实际关联检查契约、索引、技术文稿、CLI/UI、Skill、README/AGENTS 和迁移。将需修改、已检查无需修改、延期及理由保存到本轮 Run 或小任务摘要；据此选择测试，职责变化时同步更新图并留固定快照。
 
 开发前先执行 `testing audit`，盘点新功能或未分类测试。使用 `testing prepare` 将目标、能力、必要场景和排除理由保存到本次固定 Run；范围变化用 `testing update` 生成下一版，保留原版。新增测试用 `testing register` 明确归类，不能为消除失败降低验收标准。
 

@@ -1,0 +1,137 @@
+{
+  "schema_version": 3,
+  "request_id": "93eccf59-4cfa-448d-b6d7-5f43ef16f498",
+  "actor": {
+    "kind": "ai",
+    "id": "assistant"
+  },
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "expected_head": "COM-4dcedc87-6981-4bbd-8c96-c79b1665f3b1",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "unit",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "detail",
+        "level": "L1",
+        "title": "本地登记、双索引与人工验收覆盖审计",
+        "body_markdown": "",
+        "keywords": [
+          "登记审计",
+          "索引覆盖",
+          "人工验收"
+        ],
+        "sources": [
+          {
+            "target_kind": "file",
+            "target_id": "SRC-LOCAL-COVERAGE-AUDIT-20260910",
+            "revision": null,
+            "sha256": "32fa9b2ea747ec50fdb94c7a4c7ef23e4b2774cef5a024397a335730ed41cb5b",
+            "locator": "登记覆盖审计正文",
+            "relation": "input"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "保存本地覆盖核验事实、缺口和人工操作安排。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "payload": {
+          "unit_type": "analysis",
+          "retrieval_description": {
+            "question": "当前本地数据是否均有登记和索引，如何完成工作台及AI最终验收？",
+            "method": "对比业务登记、固定文件哈希、记忆提交链、预期投影和公开文稿回读。",
+            "key_findings": [
+              "登记主体和4份文稿可读，但历史输入变化、旧Run缺失与snapshot解析缺口仍须区分。"
+            ],
+            "applicable": [
+              "当前工作区的小规模本地登记审计与人工验收安排"
+            ],
+            "not_applicable": [
+              "整个电脑文件覆盖、科学结论确认或检索质量保证"
+            ],
+            "limitations": [
+              "人工评价、第二物理机和业务检索评测未执行。"
+            ]
+          },
+          "run_ref": null,
+          "evidence_refs": [
+            {
+              "target_kind": "file",
+              "target_id": "SRC-LOCAL-COVERAGE-AUDIT-20260910",
+              "revision": null,
+              "sha256": "32fa9b2ea747ec50fdb94c7a4c7ef23e4b2774cef5a024397a335730ed41cb5b",
+              "locator": "登记覆盖审计正文",
+              "relation": "input"
+            }
+          ],
+          "blocks": [
+            {
+              "block_id": "audit",
+              "role": "methods",
+              "markdown": "# 本地登记与索引覆盖审计\n\n审计日期：2026-09-10；范围为当前工作区及显式登记文件，不代表整个电脑或共享盘。结论：**已登记主体与当前文稿可读取，但不能认定所有本地文件均已登记、所有检索入口都完整覆盖。**\n\n## 固定基线\n\n依据 `audit-20260910T063348Z.json`、`details-20260910T063550Z.json`。审计脚本逐对象验证当前HEAD、不可变提交链和历史记录哈希，对比规范记忆应有投影与实际条目，逐文件核对来源及Run登记。不是仅查看目录数量。\n\n| 检查 | 结果与解释 |\n|---|---|\n| 结构校验 | validate：0错误、0警告。表示结构合法，不证明内容齐全 |\n| 登记对象 | 20个：1项目、3研究、15Run、1工具。包含本次新Run；没有公司核心算法或数据资产卡 |\n| 来源登记 | 71条，全部文件存在；44条带登记SHA且一致，27条登记本身未固定SHA。后者不能单凭“存在”判断历史字节未变化；固定记忆引用另有哈希检查 |\n| Run输入/产物 | 498条登记路径均可解析；490条匹配，8条当前源码与历史输入SHA不一致，涉及两个旧Run及5个不同程序/Schema文件；未更改原登记 |\n| 规范记忆 | 项目41条、浮点研究27条，共68条当前记录，历史提交链读取未报完整性错误；另外两项旧研究未建立记忆正文 |\n| 默认知识索引 | 基线应有51条，实际50条；18/20对象索引就绪。上一修复Run摘要过期、本次新Run尚未索引。合法L0、文稿、章节不会直接混入默认知识条目 |\n| 固定依赖可访问性 | 当前投影missing=0。它不表示每份历史外部资料均已取得，也不等于科学结论通过 |\n| 文稿 | 项目r6完整12章/简版4章，浮点r1完整8章/简版4章；公开document回读4份均complete=true、missing=[] |\n| 旧材料索引 | 基线发现110份候选文件；有新增及过期项。单看数据库110行不能判断覆盖，因为包含removed历史行 |\n\n## 明确缺口与合理排除\n\n1. 两项旧研究 `RES-AGENT-WORKSPACE-REVIEW`、`RES-MATERIAL-RELATIONSHIP-VIEW` 均为restricted，且无版本记忆正文。当前新版查询排除有权限依据，不自动扩大权限或生成新记忆；日后需要使用时应先明确授权和导入目的。\n2. 两项研究分别引用的 `RUN-20260906T130218Z-252152E16BC5`、`RUN-20260907T063633Z-159B86592CDD` 在本地登记对象中不存在。现有说明已提示部分历史Run未分发；本轮保留缺口，不生成假Run补齐。\n3. 8条历史输入变化均是后续开发的当前源码：memory-v3.schema.json、memory/contracts.py、memory/index.py、memory/store.py、memory/service.py。当前代码不再等于旧验证输入，旧Run不能证明当前版本通过；不通过更新旧哈希掩盖差异。\n4. 受控业务目录仅扫描文件元数据，排除记忆事务、缓存、fixture、归档和私有目录，共1939份文件；464份路径命中显式来源/Run登记，另外1475份包括1382份Run辅助回执/脚本、25份项目文档、42份研究文档、26份目录入口。这些是待按用途分类的文件，并非1475份遗失资料；普通文档可通过配置目录自动发现，不需要每份手工source登记。辅助回执不应全部转成默认知识正文。\n5. 上轮已记录浮点冻结fixture中的details/README.md指纹差异。本轮未重新执行整个科学例子，不能取消该历史风险。\n\n## 本次派生索引补偿\n\n已执行公开 `index-knowledge`：updated=11、unchanged=96、removed=6；本地向量同步107份来源、1045个点。保留真实回执。仍有3份已登记的 `fixtures/original-documents/details/round-01.md.snapshot`、02、03因旧解析器不支持.snapshot后缀而unavailable。对应固定来源可读、规范技术单元和研究文稿完整；旧材料全文/向量入口的这3份仍是明确缺口。命令退出0不等于零缺失。\n\n材料关系旧视图因读取范围改变而拒绝提供缓存；已通过公开relations refresh重建，回执716节点、1017边。节点数包含多种材料身份，不能与20个Owner或51条知识入口直接对比，也不代表每条边经人工确认。\n\n规范记忆补偿及本轮登记会改变当前数量，以本Run的最终索引回执为准。本报告固定以上基线，不随新产物生成不断重算历史数字。\n\n## 验收安排与限制\n\n`HUMAN_CHECKLIST.md`提供29项工作台操作、A01–A09实际AI场景及贯穿Run捕获/反馈检查。先在正式区只读验收，再在独立演示区做写入、冲突、复核和维护。所有人工结果保持待审；A02需要真正独立上下文，当前会话不能代替。\n\ntesting audit发现601项测试、目录603项，无未分类或缺失（两种计数的范围不同）；这只证明测试登记覆盖，不是执行601项测试。本轮没有改产品代码，未重跑全量软件测试、真实升级或依赖打包。doctor的结构/FTS探针ready；vector/OCR/portable显示unverified，业务评测0题unavailable。已实际完成的索引向量同步也不能替代OCR、迁移或真实业务质量验收。\n\n本轮L3复用既有“保存、授权、依赖、投影分别验证”的经验，没有新增普适科学结论。L4与双文稿追加本次审计入口，保留旧版本。Windows路径、中文文件名和本地运行已实际使用；第二物理机验收仍未执行。\n",
+              "requires_block_ids": []
+            }
+          ],
+          "figures": [],
+          "missing_refs": []
+        }
+      }
+    },
+    {
+      "op": "put_record",
+      "client_key": "event",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "event",
+        "level": "L2",
+        "title": "完成覆盖基线核对并安排分批人工验收",
+        "body_markdown": "",
+        "keywords": [
+          "登记审计",
+          "索引覆盖",
+          "人工验收"
+        ],
+        "sources": [
+          {
+            "target_kind": "file",
+            "target_id": "SRC-LOCAL-COVERAGE-AUDIT-20260910",
+            "revision": null,
+            "sha256": "32fa9b2ea747ec50fdb94c7a4c7ef23e4b2774cef5a024397a335730ed41cb5b",
+            "locator": "登记覆盖审计正文",
+            "relation": "input"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "保存本地覆盖核验事实、缺口和人工操作安排。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "payload": {
+          "occurred_at": null,
+          "question_refs": [],
+          "goal_ref": null,
+          "route_ref": null,
+          "action": "只读对账、公开文稿回读、派生材料索引和关系刷新、准备人工清单",
+          "observation": "71个来源存在，498个Run登记文件可解析，8个历史输入与当前源码不同；3个snapshot旧索引不可用。",
+          "decision": "保留历史哈希和权限，区分缺口与合理排除；真实区只读、演示区写操作。",
+          "decision_refs": [
+            {
+              "target_kind": "file",
+              "target_id": "SRC-LOCAL-COVERAGE-AUDIT-20260910",
+              "revision": null,
+              "sha256": "32fa9b2ea747ec50fdb94c7a4c7ef23e4b2774cef5a024397a335730ed41cb5b",
+              "locator": "登记覆盖审计正文",
+              "relation": "input"
+            }
+          ],
+          "run_refs": [],
+          "failure": null,
+          "claims": [],
+          "missing_refs": []
+        }
+      }
+    }
+  ]
+}

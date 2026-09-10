@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260910T050158Z-028371C48C3A",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "project_id": null,
+  "title": "修复浮点研究章节读取与全局检索索引覆盖",
+  "keywords": [
+    "浮点",
+    "索引",
+    "文稿"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "succeeded",
+  "created_at": "2026-09-10T05:01:58Z",
+  "started_at": "2026-09-10T05:01:58Z",
+  "ended_at": "2026-09-10T05:31:47.247740+00:00",
+  "owner": null,
+  "question": "当前浮点研究为何不可读、不可检索，数据库是否损坏？",
+  "hypotheses": [],
+  "inputs": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/sources-before.json",
+      "sha256": "14480974dc741e120fe0ceea043e7598669fe8b31785d4286f019373017d729a",
+      "role": "input",
+      "registered_at": "2026-09-10T05:34:37.156060Z"
+    },
+    {
+      "path": "research/floating-point-summation/fixtures/restore-manifest.json",
+      "sha256": "9af46fea0e3115e21d8724a0fe4bcf96bde8fe2fd449b2ade333049f00e54592",
+      "role": "input",
+      "registered_at": "2026-09-10T05:34:37.169734Z"
+    }
+  ],
+  "parameters": {},
+  "code": {
+    "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+    "dirty": true
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [
+    {
+      "check": "selected quick regression",
+      "status": "passed"
+    },
+    {
+      "check": "live floating documents and queries",
+      "status": "passed"
+    },
+    {
+      "check": "real setup expanded workspace preservation",
+      "status": "passed"
+    }
+  ],
+  "metrics": {},
+  "artifacts": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/README.md",
+      "sha256": "85489c6297280b4d304e4214a18990da83ccf47060b77227079e2a6fdf7d5051",
+      "role": "artifact",
+      "registered_at": "2026-09-10T05:33:46.751711Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/REPAIR_ANALYSIS.md",
+      "sha256": "6f2d8d07f30d6f08cf86a88dd3c88e38751bc75fd3a15e8a5e70f3cf17f45ebf",
+      "role": "artifact",
+      "registered_at": "2026-09-10T05:33:46.760978Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/testing/attempt-01/results.json",
+      "sha256": "fafb3f7cc48058f3b642c23d67c551601e3fe67a5d8898901a772766b7dfa25c",
+      "role": "artifact",
+      "registered_at": "2026-09-10T05:33:46.771155Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/verification-final.json",
+      "sha256": "f1a3002c24a8badf52c5977b25cae46665771458368b7becbadef05da8702001",
+      "role": "artifact",
+      "registered_at": "2026-09-10T05:33:46.780560Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/recording-verification.json",
+      "sha256": "47a0d4beab604da4a29d034bf08b5acc8b45949277b30179fe4716deafd3ba1e",
+      "role": "artifact",
+      "registered_at": "2026-09-10T05:33:46.790649Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/MODULE_IMPACT.snapshot",
+      "sha256": "c7b1036504066dab83b3c7f2877aa64ed0c1bc8c4dfab20b4c6aefe90045938c",
+      "role": "artifact",
+      "registered_at": "2026-09-10T05:33:46.800637Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/AI_REVIEW.md",
+      "sha256": "eca2d3f649635f4fd07abf1276d70826b8bad88f122c9a348feae4cbd724575a",
+      "role": "artifact",
+      "registered_at": "2026-09-10T05:33:46.810841Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/index-restored.json",
+      "sha256": "9b3ced9a33f7265e0b992559ec4ee8c65e9e7926592179e88bee5b84c6467935",
+      "role": "artifact",
+      "registered_at": "2026-09-10T05:33:46.819913Z"
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "数据库完整性正常；修复缺失来源及旧Run路径映射，恢复双文稿和全文/向量索引，用户查询返回候选且无索引覆盖警告。",
+  "limitations": [
+    "本机Windows x64及合成研究；人工、第二物理机和科学复核未执行。",
+    "冻结导航details/README.md存在指纹差异，本轮未修改其字节或宣称隔离例子全套复现通过。"
+  ],
+  "parent_run_ids": [],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  },
+  "sensitivity": "internal"
+}

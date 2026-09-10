@@ -1,0 +1,35 @@
+{
+  "call_id": "call-9e18c55872034b8d895fdbb6141c0b54",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "--root",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+    "memory",
+    "inspect",
+    "RES-F3-TANK",
+    "--record-id",
+    "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+    "--revision",
+    "2"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "started_at": "2026-09-09T21:21:59.014751Z",
+  "timeout_seconds": 120,
+  "request": null,
+  "ended_at": "2026-09-09T21:21:59.204956Z",
+  "status": "completed",
+  "exit_code": 0,
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "0693aa893579c3645b23b8c13d1562efda7534e8bac811e39be33d3fe1cc1767"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending"
+}

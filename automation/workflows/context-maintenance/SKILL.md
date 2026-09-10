@@ -7,15 +7,19 @@ description: 分批整理研发材料、关键词和核心算法入口，同步�
 
 在目标工作区内执行，以该工作区根规则为准。按用户任务选择以下模式，不要求依次执行全部模式；普通文案小改直接完成。
 
+维护框架概念、命令或保存规则时，按 [文档维护约定](../../../docs/DOCUMENTATION_MAINTENANCE.md) 同步受影响操作文档与 Skill；模块职责查 [ARCHITECTURE.md](../../../ARCHITECTURE.md)，保留历史设计的时间边界。
+
 ## 保存与修订对象记忆
 
 先 `workbench.cmd memory list-owners` / `inspect 对象ID` 找现有归属与 HEAD。既有平面材料没有持久身份时，用返回的 native_ref 和 fingerprint 执行 `adopt-owner`；原件字节不变，不把普通工具认领为核心算法。
 
-按内容选记录：L0 是统一原始材料视图。已有 Run 的文件由 AI 用 `run-register` 指定输入/产物，自动保存当前指纹，不重复建 source，也不追认历史版本。新 Python 实验用 `run-execute` 自动登记输入与本次输出/失败日志；用法、预览与恢复见[执行与登记手册](../../../docs/RUN_CAPTURE.md)。独立外部原文或受控摘录仍可用内部 source 类型，保持授权和真实取得方式。保存后用 `memory raw-materials` 回读，缺失/变更不静默补造。独立计算沿用一个原生 Run，保存到归属对象的 runs/。每轮重要研究用 L1 detail 保存可复核计算说明、关键参数与单位、公式/变量、方法步骤、图表结果和限制，固定引用实际 Run；详细说明不算另一场实验。比较、决策与失败处理用 L2 event，有边界经验用 L3 experience，主题关系与未决事项用 L4 map。问题、目标、路线、断点、反馈为辅助记录，level=null。Research在每轮/阶段结束检查L0–L4覆盖，不能只留经验与地图；无经验时明确缺口，不编造规律。非研究小任务按必要内容保存。详见[分层记录标准](../../../docs/RESEARCH_RECORDING.md)。
+按内容选记录：L0 是统一原始材料视图。已有 Run 的文件由 AI 用 run-register 指定输入/产物，自动保存当前指纹，不重复建 source，也不追认历史版本。新 Python 实验用 run-execute 自动登记输入与本次输出/失败日志；用法、预览与恢复见 [执行与登记手册](../../../docs/RUN_CAPTURE.md)。独立外部原文或受控摘录仍可用内部 source 类型，保持授权和真实取得方式。保存后用 memory raw-materials 回读，缺失/变更不静默补造。独立计算沿用一个原生 Run，保存到归属对象的 runs/。
+
+新 L1 detail 明确使用 v3 技术单元，unit_type 区分 experiment/method/derivation/analysis；检索说明写 retrieval_description，完整参数、公式、步骤、图表和限制只写稳定 blocks，body_markdown 留空。实验固定引用实际 Run；未执行的方法、推导和分析可令 run_ref=null，并保留依据或缺口。比较、决策和失败处理用 L2 event，有边界经验用 L3 experience，主题关系与未决事项用 L4 map。独立 document/document_section 编排研究过程与精简报告，与目标、路线、断点等一样 level=null；旧 map.payload.report 保留兼容。Research 与 Project 默认在每轮/阶段结束检查 L0–L4 覆盖：每轮 L0/L1/L2，阶段 L3/L4 与双文稿，不只留 Run 附件、经验与地图。没有可推广经验时明确缺口，不编造规律；简单查阅按必要内容保存，已有显式策略优先。字段和文稿局部更新见 [分层记录标准](../../../docs/RESEARCH_RECORDING.md)。
 
 记录本次选择时，把理由写入 event.payload.decision，并固定参与 Run/经验引用；记录失败经过时填写 event.payload.failure 的类别、范围、结果、不能推出什么与重试前提。新事件表达对既有结果作出的判断，不能冒充又一次实验。experience.failure_modes 只是经验风险提示，不代替结构化失败；跨研究可见也不是选择 L3 experience 的理由。
 
-默认知识索引只纳入L1以上，L0原始文件及记忆事务不进入正文召回；来源保持启用以便固定引用追溯。旧v1记录展示平移到新层，不能直接编辑旧level或重新计算旧哈希。新增说明/纠错生成新记录或修订，保留真实补写时间及原引用。
+默认 knowledge 模式发现 L1 及更高层知识；文稿/章节使用 documents 模式，L0 原始材料显式追溯，记忆事务不进入正文召回。来源保持启用以便固定引用追溯。旧 v1 记录按有效层级投影，v2 detail 和 map 编排保留原形状；不能直接编辑旧 level、重算旧哈希或把兼容读取写成历史已迁移。新增说明/纠错生成新记录或修订，保留真实补写时间及原引用。
 
 用 UTF-8 JSON 经 `memory validate-draft`、`commit` 保存，重新 `inspect --record-id ... --revision ...` 核对正文与来源。新纪录以 client_key 引用；跨批次使用真实回执里的 ID/版本。更新传当前 expected_head 和 expected_revision，保留旧修订；直接编辑规范 memory/ 文件会破坏事务保证。完整请求见 [请求示例](../../../docs/MEMORY_REQUESTS.md)。
 

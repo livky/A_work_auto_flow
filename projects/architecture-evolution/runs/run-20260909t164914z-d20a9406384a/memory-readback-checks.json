@@ -1,0 +1,33 @@
+{
+  "authored_fields_roundtrip": {
+    "layered": 11,
+    "sections_and_map": 11,
+    "documents": 2
+  },
+  "independent_documents": true,
+  "same_common_refs": true,
+  "process_sections": 8,
+  "brief_sections": 2,
+  "complete": {
+    "process": true,
+    "brief": true
+  },
+  "uncovered": {
+    "process": [],
+    "brief": []
+  },
+  "missing": {
+    "process": [],
+    "brief": []
+  },
+  "definition_closure": [
+    [
+      "scope",
+      "technical-body"
+    ]
+  ],
+  "context_complete": true,
+  "ui": "not-verified: browser ERR_BLOCKED_BY_CLIENT for existing local workbench",
+  "human_review": "pending",
+  "scientific_review": "not-reviewed"
+}

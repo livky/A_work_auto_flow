@@ -1,0 +1,14 @@
+{
+  "call_id": "call-c5415b5b19fd4f0e83925c80a1ca676e",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "memory",
+    "inspect",
+    "PRJ-ARCHITECTURE-EVOLUTION"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow",
+  "started_at": "2026-09-09T21:38:37.419330Z",
+  "timeout_seconds": 120,
+  "request": null
+}

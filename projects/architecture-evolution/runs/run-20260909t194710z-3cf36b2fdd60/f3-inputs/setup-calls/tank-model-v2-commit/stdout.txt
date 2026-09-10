@@ -1,0 +1,41 @@
+{
+  "request_id": "4c61bdec-baf8-4829-87a3-7edf6e638cc2",
+  "owner_id": "RES-F3-TANK",
+  "commit_id": "COM-4200728e-1f1e-40e9-83c0-0d09a28d4bcb",
+  "generation": 2,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": "tank-model-v2",
+      "record_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+      "revision": 1,
+      "content_hash": "4f786f9e28baf3ef293c833a34d2b666609bc63df05d2819dbaa706f2c44ae35",
+      "status": "created"
+    }
+  ],
+  "index_status": "pending",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "pending",
+    "indexed_generation": 2,
+    "vector_generation": null,
+    "target_generation": 2,
+    "encoder_version": null,
+    "collection": null,
+    "error": {
+      "code": "CAPABILITY_UNAVAILABLE",
+      "details": {},
+      "errors": [],
+      "message": "未配置本地向量后端"
+    }
+  },
+  "warnings": [
+    "运行 memory reconcile 可继续索引，不要重复业务记录"
+  ],
+  "error": {
+    "code": "INDEX_PENDING",
+    "message": "记录已保存；索引待补偿"
+  },
+  "recovery_ref": null
+}
+

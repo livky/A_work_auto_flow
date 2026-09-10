@@ -1,0 +1,32 @@
+{
+  "registered_fingerprints_checked": 194,
+  "registered_fingerprints_equal": true,
+  "search_candidate_count": 8,
+  "search_ids": [
+    "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+    "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+    "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+    "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+    "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+    "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+    "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+    "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5"
+  ],
+  "raw_keys": [
+    "schema_version",
+    "owner_id",
+    "items",
+    "total",
+    "missing",
+    "basis_heads",
+    "canonical_writes",
+    "content_loaded"
+  ],
+  "raw_items": 270,
+  "raw_missing": [],
+  "run_ids": [
+    "RUN-20260909T164914Z-D20A9406384A",
+    "RUN-20260909T155125Z-2961BDF175A8",
+    "RUN-20260909T151004Z-A68FBA9F176D"
+  ]
+}

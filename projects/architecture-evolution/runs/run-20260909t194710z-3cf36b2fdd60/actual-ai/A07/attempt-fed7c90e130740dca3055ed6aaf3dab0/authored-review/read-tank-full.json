@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query CLI",
+  "capture_path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A07/attempt-fed7c90e130740dca3055ed6aaf3dab0/delivered/tank-full.md",
+  "locator": "实际工具呈现的完整交付投影；coverage 描述所交付内容相对于材料的覆盖",
+  "coverage": "full",
+  "observation": "实际交付章节引言、必要变量全文和模型全文；读到 A、c、K、h、h_r、q、q_max 单位，clip定义和未饱和误差指数式。"
+}

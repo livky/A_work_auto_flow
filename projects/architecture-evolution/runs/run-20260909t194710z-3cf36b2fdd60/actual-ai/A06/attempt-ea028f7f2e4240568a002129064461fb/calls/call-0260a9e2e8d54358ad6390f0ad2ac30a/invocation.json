@@ -1,0 +1,22 @@
+{
+  "call_id": "call-0260a9e2e8d54358ad6390f0ad2ac30a",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "--root",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+    "memory",
+    "inspect",
+    "RES-F3-RETRY",
+    "--record-id",
+    "MEM-1c372f0d-3afe-5a4b-96fb-867eff035115",
+    "--revision",
+    "1"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "started_at": "2026-09-09T23:01:47.245332Z",
+  "timeout_seconds": 120,
+  "request": null
+}

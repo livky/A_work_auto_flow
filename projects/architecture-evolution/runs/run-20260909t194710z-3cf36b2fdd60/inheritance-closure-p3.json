@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "execution_owner": "frontier_review",
+  "observed_session_id": 47021,
+  "recorded_at": "2026-09-09T21:58:59.140987Z",
+  "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_deepening.py -v",
+  "total": 20,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 75.337,
+  "tests": [
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_cancel_and_busy_query_reject_without_new_work",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_ceiling_filters_graph_content_and_basis",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_cycles_diamonds_and_cursor_share_unique_budget",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_decision_retries_are_idempotent_and_never_promote_review",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_discover_cannot_bypass_original_off_switch",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_excluded_node_is_not_a_bridge_or_a_basis_entry",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_existing_association_uses_explicit_supplement_scope_and_ceiling",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_formal_cached_deepening_rechecks_withdrawn_claim",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_legacy_relations_keep_parallel_edges_and_explicit_evidence_links",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_new_seed_does_not_reset_cumulative_hop_boundary",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_no_model_structural_discovery_has_explicit_skill_entry",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_node_budget_exhaustion_is_explicit_and_never_reset",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_relation_filter_and_direction_do_not_add_reverse_edge",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_reverse_prerequisite_is_verified_from_canonical_sources",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_same_title_fixed_entities_are_not_merged_by_navigation",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_source_mapping_preserves_document_revision_block_and_original",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_source_revocation_blocks_cached_cursor_and_hidden_details",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_stale_existing_edge_is_gap_and_not_reused",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_unknown_strategy_and_foreign_cursor_are_rejected",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_deepening.MaterialDeepeningTests.test_unmapped_canonical_relation_is_a_gap_not_an_invented_dependency",
+      "status": "passed"
+    }
+  ],
+  "source_fingerprints_observed_after_execution": [
+    {
+      "path": "automation/scripts/material_query/contracts.py",
+      "sha256": "064a35d77ad0e198094e20f1b9b72293e6ef4e8cd182b4cb4f667e0bdbeee480"
+    },
+    {
+      "path": "automation/scripts/material_query/associations.py",
+      "sha256": "fb5b902467bd32d2ef74dd9c583db43163c1bd9e7b83f504ccebba5cc873a8a5"
+    },
+    {
+      "path": "automation/scripts/material_query/deepening.py",
+      "sha256": "64d241dfedd66b26c89e53957942a6d610c0d98e75c072bfbab7a53aa9b410b7"
+    },
+    {
+      "path": "automation/schemas/memory-v3.schema.json",
+      "sha256": "9091987bda689421cfd10e17922f9550967e2d13d8bc4f67188d52b9525c2d4a"
+    },
+    {
+      "path": "automation/tests/test_material_deepening.py",
+      "sha256": "9276ef01872888e3f95c91e951fd87966a661461ec4c23e22f65bc7e1f64134d"
+    }
+  ],
+  "limitations": [
+    "本机 Windows x64 隔离合成 F1，使用真实公开 memory 提交。",
+    "指纹为执行后观察；共享 contracts/schema 正在被其他闭合任务扩展，完整整合以最终 quick/full 为准。",
+    "20 项通过不证明现实关系正确、模型发现能力、全部多路径差异或人工验收。"
+  ]
+}

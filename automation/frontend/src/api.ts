@@ -26,6 +26,13 @@ export async function api<T>(
       code: detail?.code,
       details: detail?.details,
       errors: detail?.errors,
+      // Materials use an explicit Result envelope. Preserve its partial output,
+      // consumption and basis instead of flattening a conflict into a string.
+      responseBody: value,
+      materialResult:
+        value && typeof value.status === "string" && "consumed" in value
+          ? value
+          : undefined,
     });
     throw failure;
   }

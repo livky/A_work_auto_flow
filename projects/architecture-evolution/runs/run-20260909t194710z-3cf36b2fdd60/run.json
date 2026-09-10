@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "project_id": null,
+  "title": "表示查询与语义维护首期正式开发",
+  "keywords": [
+    "表示查询",
+    "固定引用",
+    "范围硬上限",
+    "累计预算",
+    "局部证据",
+    "语义维护",
+    "Windows升级",
+    "双文稿"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "completed",
+  "created_at": "2026-09-09T19:47:10Z",
+  "started_at": "2026-09-09T19:47:10Z",
+  "ended_at": "2026-09-09T23:08:03.641070+00:00",
+  "owner": "Codex主任务及用户授权协作代理",
+  "question": "怎样实现表示查询与语义维护首期，并按继承行为、实际AI使用和旧工作区升级分别验证？",
+  "hypotheses": [],
+  "inputs": [],
+  "parameters": {
+    "full_selection": "testing/selection-full-v4.json",
+    "quick_selection": "testing/selection-v2.json",
+    "scale": "deferred",
+    "external_models": "not-enabled"
+  },
+  "code": {
+    "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+    "dirty": true,
+    "fingerprints": "final-source-fingerprints.json"
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [
+    {
+      "name": "full-v4",
+      "status": "failed",
+      "passed": 596,
+      "failed": 2,
+      "errors": 1,
+      "total": 599,
+      "evidence": "testing/full-attempt-01/results.json"
+    },
+    {
+      "name": "C17-fixture-supplement",
+      "status": "passed",
+      "evidence": "inheritance-closure-final.json"
+    },
+    {
+      "name": "structural-types-supplement",
+      "status": "passed",
+      "evidence": "testing/memory-contracts-supplement-final.log"
+    },
+    {
+      "name": "project-documents",
+      "status": "executed",
+      "evidence": "implementation-recording-checks.json"
+    },
+    {
+      "name": "project-ui",
+      "status": "ai-reviewed",
+      "evidence": "project-ui-attempt-02/results.json"
+    }
+  ],
+  "metrics": {},
+  "artifacts": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/FINAL_VALIDATION.md",
+      "sha256": "bea5a8016f928c66cc7f3b81b9cdaa8de0890b34dda2c764ac5b0babe8f3be1e",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:48:15.839917Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/testing/full-attempt-01/results.json",
+      "sha256": "163e1dbf38f6e24de2351882f134aabf0a185b26510d829e816016a256fdd851",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:48:15.845873Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/testing/quick-attempt-01/results.json",
+      "sha256": "8db15796d03f132f5c247c13ee71f22ed729229a90ad60c2c40e9176cf995d1b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:48:15.850864Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/implementation-recording-checks.json",
+      "sha256": "be513fa6ec4e22c9d9a78fd70fc6492fe8cb651c1f5d475093939c0dad6a7346",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:48:15.855865Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/final-source-fingerprints.json",
+      "sha256": "de1577461cced4df25abfc4a964c5845565b6b874e9ccf77d454c5f5e42d1a97",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:48:15.860865Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/project-ui-preservation.json",
+      "sha256": "ac8c01a2f25650a0484419a9c7670a437c8a7da2647e05e4262c508e973e90a1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:48:15.867865Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/reports/report-ff44c20b371046cab453c7b91b19b660/REVIEW.md",
+      "sha256": "5e600430c5c197221e65585b641e9ebfc91d6cddc9e9c29494c9e3dae4c3909f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:48:15.872865Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/INHERITANCE_ACCEPTANCE.md",
+      "sha256": "729f1992001a5b59fa6a9a69d8c8971768a499797b6e8ffa091ae366ffeb9fde",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:50:58.578317Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/IMPACT_REVIEW.md",
+      "sha256": "4f74d86217db9a697ca663fa1c606e4881b93f407b9ce6c4162d9ae3c3b6b546",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:50:58.583345Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/COST_REVIEW.md",
+      "sha256": "efdd24ea1a4eded81715ea1d9f03bbc8adc61832b4689de8fde9d4b12a6be5f1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:50:58.588238Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/testing/final-workspace-validate-02.log",
+      "sha256": "8010bf11c642fe652a2456440d50ef662a95451c685d7e53d067532dbe1c934a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:50:58.593812Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/testing/memory-contracts-supplement-final.log",
+      "sha256": "2e7e222920e1e6d7c451822a56277db00ac55478ad090cffb45c7577a3577b44",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:50:58.599670Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/inheritance-closure-final.json",
+      "sha256": "2fa90abbea28248ce1a42208b8dd30da0fa569ed42b781803cffb3215f010248",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:50:58.604461Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/testing/final-audit.log",
+      "sha256": "f492f38bfc322610f096747133781ee2e1105904e12ebb901016bf28d7442d91",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:50:58.611277Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/MODULE_IMPACT_FINAL.snapshot",
+      "sha256": "b054d843d128b7e3990fe1054a03815ce9de2408384016113983d850487e30dc",
+      "role": "artifact",
+      "registered_at": "2026-09-09T22:52:11.348913Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/a05-supplement-receipt.json",
+      "sha256": "eb8df92cf42073092429165ee30017774f676abff172ae0911e13c7a3da6597c",
+      "role": "artifact",
+      "registered_at": "2026-09-09T23:05:25.907298Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/AI-ANALYSIS.md",
+      "sha256": "577d15c416da8da1f0260879f2fdc1ec4a6280a2fe471788c41b81d13360db9f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T23:05:25.914038Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/a06-supplement-receipt.json",
+      "sha256": "e608fa7c9eec7aefd9b7306d71ca0b91b5177e9534ce00f50d2eb7808915ba31",
+      "role": "artifact",
+      "registered_at": "2026-09-09T23:08:04.657473Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A06/attempt-ea028f7f2e4240568a002129064461fb/AI-ANALYSIS.md",
+      "sha256": "ab255513f50c0da3529296be171478b4d92959c9b102905a0604f786ef17ebb6",
+      "role": "artifact",
+      "registered_at": "2026-09-09T23:08:04.662477Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/AI_CROSS_COVERAGE.md",
+      "sha256": "4e6299b9efe1c9899c8d3a4b36f8859993409df8f25efdb3668965f01bb39425",
+      "role": "artifact",
+      "registered_at": "2026-09-09T23:08:04.667517Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/reports/report-be6000af5c46421cb7d1f55575403d8d/REVIEW.md",
+      "sha256": "63d8918640f9b055c4b086070c07f76cd77aa65141a06fb3f231c9522ab2da8f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T23:08:04.673763Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/README.md",
+      "sha256": "c06dad55f88218ae37dd07f0879b6386f0a6e430a5e6a0f40904d6f98dcbbcb0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T23:08:04.679429Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/testing/final-workspace-validate-03.log",
+      "sha256": "8010bf11c642fe652a2456440d50ef662a95451c685d7e53d067532dbe1c934a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T23:08:30.336774Z"
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "P0-P6首期实现和整合执行完成。full原始596/599通过，两项补测关闭；既有B01指纹故障保留。双文稿r5公开回读完整并完成实际UI自查。",
+  "limitations": [
+    "软件与AI自查不等于人工或科学认可",
+    "B01历史冻结指纹故障未关闭",
+    "合成材料和本机隔离目录结果，不外推真实企业质量或第二物理机",
+    "万条规模、未注册策略及依赖包发布未执行"
+  ],
+  "parent_run_ids": [],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  },
+  "sensitivity": "internal"
+}

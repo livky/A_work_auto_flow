@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "run_path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/run.json",
+  "before": {
+    "schema_version": 1,
+    "run_id": "RUN-20260910T063103Z-902DA8123205",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": null,
+    "title": "本地登记与索引覆盖全面审计及工作台人工验收安排",
+    "keywords": [
+      "登记",
+      "索引覆盖",
+      "人工验收"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-10T06:31:03Z",
+    "started_at": "2026-09-10T06:31:03Z",
+    "ended_at": "2026-09-10T06:58:55.628427+00:00",
+    "owner": null,
+    "question": "核对本地登记与索引覆盖，并安排工作台及实际AI人工验收。",
+    "hypotheses": [],
+    "inputs": [],
+    "parameters": {},
+    "code": {
+      "commit": null,
+      "dirty": true
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "baseline structure and immutable history",
+        "status": "passed"
+      },
+      {
+        "check": "four documents public readback",
+        "status": "passed"
+      },
+      {
+        "check": "human acceptance",
+        "status": "pending"
+      }
+    ],
+    "metrics": {},
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/README.md",
+        "sha256": "4ee744361cfffa623011d029412fba2d9e7a2483645cc9a659cb96919bfddb93",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.698862Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/AUDIT_REPORT.md",
+        "sha256": "32fa9b2ea747ec50fdb94c7a4c7ef23e4b2774cef5a024397a335730ed41cb5b",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.709242Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/HUMAN_CHECKLIST.md",
+        "sha256": "2265377e950f48e877be62915fadc6a127f3b2ce97e26dd320e451476882d2a3",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.719503Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/audit-20260910T063348Z.json",
+        "sha256": "a8a629029c7197e60ec4f56087cf4527bbc86de80cf30be25d9f2ebc2baaf654",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.729681Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/details-20260910T063550Z.json",
+        "sha256": "7fdf50b363565804fefbf5cdd879c36ea592ee7e221074907b34b0b0bfffe76b",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.740070Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/raw-listings.json",
+        "sha256": "83a8b585fee77a7d3e88c7757cd2fc6bd46700da40d0a1b8d20086af54172f99",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.750544Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/recording-summary.json",
+        "sha256": "62b2b1ab631f0810a72d63b5a50f7e283e927286e81885f712ef2921811722e8",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.761861Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/recording-verification.json",
+        "sha256": "213aaa3dae8263f622e97b2048daa66941607efc48f9c6baeab0bd87797d6ed0",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.771994Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/index-knowledge-initial.log",
+        "sha256": "3ce73c9c8c161f0c396a3b389baf650083d35ce322ceb74bffb4818885e0eaf4",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.782751Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/relations-refresh-initial.json",
+        "sha256": "d7596c48481657629fba81b15f208f22a62d1505d113b96811376efe60e1515e",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.793144Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/doctor.json",
+        "sha256": "1cb68c38388bfa179734f5d0f3703e321d5366fabf4683a853cec43d3876846b",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.804145Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "完成只读覆盖审计和人工验收准备；历史缺口、权限排除与旧snapshot解析缺口显式保留。",
+    "limitations": [
+      "人工/科学/第二物理机验收未执行。",
+      "旧Run缺失、历史输入变化与三份旧snapshot解析缺口未被索引补偿消除。"
+    ],
+    "parent_run_ids": [],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "before_bytes": "ew0KICAic2NoZW1hX3ZlcnNpb24iOiAxLA0KICAicnVuX2lkIjogIlJVTi0yMDI2MDkxMFQwNjMxMDNaLTkwMkRBODEyMzIwNSIsDQogICJvd25lcl9pZCI6ICJQUkotQVJDSElURUNUVVJFLUVWT0xVVElPTiIsDQogICJwcm9qZWN0X2lkIjogbnVsbCwNCiAgInRpdGxlIjogIuacrOWcsOeZu+iusOS4jue0ouW8leimhuebluWFqOmdouWuoeiuoeWPiuW3peS9nOWPsOS6uuW3pemqjOaUtuWuieaOkiIsDQogICJrZXl3b3JkcyI6IFsNCiAgICAi55m76K6wIiwNCiAgICAi57Si5byV6KaG55uWIiwNCiAgICAi5Lq65bel6aqM5pS2Ig0KICBdLA0KICAicmV2aWV3X2hpc3RvcnkiOiBbXSwNCiAgImNsYWltcyI6IFtdLA0KICAiZGVwZW5kZW5jaWVzIjogW10sDQogICJydW5fdHlwZSI6ICJhbmFseXNpcyIsDQogICJzdGF0dXMiOiAic3VjY2VlZGVkIiwNCiAgImNyZWF0ZWRfYXQiOiAiMjAyNi0wOS0xMFQwNjozMTowM1oiLA0KICAic3RhcnRlZF9hdCI6ICIyMDI2LTA5LTEwVDA2OjMxOjAzWiIsDQogICJlbmRlZF9hdCI6ICIyMDI2LTA5LTEwVDA2OjU4OjU1LjYyODQyNyswMDowMCIsDQogICJvd25lciI6IG51bGwsDQogICJxdWVzdGlvbiI6ICLmoLjlr7nmnKzlnLDnmbvorrDkuI7ntKLlvJXopobnm5bvvIzlubblronmjpLlt6XkvZzlj7Dlj4rlrp7pmYVBSeS6uuW3pemqjOaUtuOAgiIsDQogICJoeXBvdGhlc2VzIjogW10sDQogICJpbnB1dHMiOiBbXSwNCiAgInBhcmFtZXRlcnMiOiB7fSwNCiAgImNvZGUiOiB7DQogICAgImNvbW1pdCI6IG51bGwsDQogICAgImRpcnR5IjogdHJ1ZQ0KICB9LA0KICAiZW52aXJvbm1lbnQiOiB7DQogICAgInB5dGhvbiI6ICIzLjEyLjEwIiwNCiAgICAicGxhdGZvcm0iOiAiV2luZG93cy0xMS0xMC4wLjIyNjMxLVNQMCIsDQogICAgImxvY2tfb3JfaW1hZ2VfZGlnZXN0IjogbnVsbA0KICB9LA0KICAicmFuZG9tX3NlZWRzIjogW10sDQogICJxdWFsaXR5X3Jlc3VsdHMiOiBbDQogICAgew0KICAgICAgImNoZWNrIjogImJhc2VsaW5lIHN0cnVjdHVyZSBhbmQgaW1tdXRhYmxlIGhpc3RvcnkiLA0KICAgICAgInN0YXR1cyI6ICJwYXNzZWQiDQogICAgfSwNCiAgICB7DQogICAgICAiY2hlY2siOiAiZm91ciBkb2N1bWVudHMgcHVibGljIHJlYWRiYWNrIiwNCiAgICAgICJzdGF0dXMiOiAicGFzc2VkIg0KICAgIH0sDQogICAgew0KICAgICAgImNoZWNrIjogImh1bWFuIGFjY2VwdGFuY2UiLA0KICAgICAgInN0YXR1cyI6ICJwZW5kaW5nIg0KICAgIH0NCiAgXSwNCiAgIm1ldHJpY3MiOiB7fSwNCiAgImFydGlmYWN0cyI6IFsNCiAgICB7DQogICAgICAicGF0aCI6ICJwcm9qZWN0cy9hcmNoaXRlY3R1cmUtZXZvbHV0aW9uL3J1bnMvcnVuLTIwMjYwOTEwdDA2MzEwM3otOTAyZGE4MTIzMjA1L1JFQURNRS5tZCIsDQogICAgICAic2hhMjU2IjogIjRlZTc0NDM2MWNmZmZhNjIzMDExZDAyOTQxMmZiYTJkOWU3YTI0ODM2NDVjYzlhNjU5Y2I5NjkxOWJmZGRiOTMiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNjo1ODo1Ni42OTg4NjJaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNjMxMDN6LTkwMmRhODEyMzIwNS9BVURJVF9SRVBPUlQubWQiLA0KICAgICAgInNoYTI1NiI6ICIzMmZhOWIyZWE3NDdlYzUwZmRiOTRjN2E0YzdlZjIzZTRiMjc3NGNlZjVhMDI0Mzk3YTMzNTczMGVkNDFjYjViIiwNCiAgICAgICJyb2xlIjogImFydGlmYWN0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMTBUMDY6NTg6NTYuNzA5MjQyWiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MTB0MDYzMTAzei05MDJkYTgxMjMyMDUvSFVNQU5fQ0hFQ0tMSVNULm1kIiwNCiAgICAgICJzaGEyNTYiOiAiMjI2NTM3N2U5NTBmNDhlODc3YmU2MjkxNWZhZGM2YTEyN2YzYjJjZTk3ZTI2ZGQzMjBlNDUxNDc2ODgyZDJhMyIsDQogICAgICAicm9sZSI6ICJhcnRpZmFjdCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTEwVDA2OjU4OjU2LjcxOTUwM1oiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJwcm9qZWN0cy9hcmNoaXRlY3R1cmUtZXZvbHV0aW9uL3J1bnMvcnVuLTIwMjYwOTEwdDA2MzEwM3otOTAyZGE4MTIzMjA1L2F1ZGl0LTIwMjYwOTEwVDA2MzM0OFouanNvbiIsDQogICAgICAic2hhMjU2IjogImE4YTYyOTAyOWM3MTk3ZTYwZWM0ZjU2MDg3Y2Y0NTI3YmJjODZkZTgwY2YzMGJlMjVkOWYyZWJjMmJhYWY2NTQiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNjo1ODo1Ni43Mjk2ODFaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNjMxMDN6LTkwMmRhODEyMzIwNS9kZXRhaWxzLTIwMjYwOTEwVDA2MzU1MFouanNvbiIsDQogICAgICAic2hhMjU2IjogIjdmZGY1MGIzNjM1NjU4MDRmZWZiZjVjZGQ4NzljMzZlYTU5MmVlN2UyMjEwNzQ5MDdiMzRiMGIwYmZmZmU3NmIiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNjo1ODo1Ni43NDAwNzBaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNjMxMDN6LTkwMmRhODEyMzIwNS9yYXctbGlzdGluZ3MuanNvbiIsDQogICAgICAic2hhMjU2IjogIjgzYThiNTg1ZmVlNzdhN2QzZTg4Yzc3NTdjZDJmYzZiZDQ2NzAwZGE0MGQwYTFiOGQyMDA4NmFmNTQxNzJmOTkiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNjo1ODo1Ni43NTA1NDRaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNjMxMDN6LTkwMmRhODEyMzIwNS9yZWNvcmRpbmctc3VtbWFyeS5qc29uIiwNCiAgICAgICJzaGEyNTYiOiAiNjJiMmIxYWI2MzFmMDgxMGE3MmQ2M2I1YTUwZjdlMjgzZTkyNzI4NmU4MTg4NWY3MTJlZjI5MjE4MTE3MjJlOCIsDQogICAgICAicm9sZSI6ICJhcnRpZmFjdCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTEwVDA2OjU4OjU2Ljc2MTg2MVoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJwcm9qZWN0cy9hcmNoaXRlY3R1cmUtZXZvbHV0aW9uL3J1bnMvcnVuLTIwMjYwOTEwdDA2MzEwM3otOTAyZGE4MTIzMjA1L3JlY29yZGluZy12ZXJpZmljYXRpb24uanNvbiIsDQogICAgICAic2hhMjU2IjogIjIxM2FhYTNkYWU4MjYzZjYyMmU5N2IyMDQ4ZGFhNjY5NDE2MDdlZmM0OGY5YzZiYWVhYjBiZDg3Nzk3ZDZlZDAiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNjo1ODo1Ni43NzE5OTRaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNjMxMDN6LTkwMmRhODEyMzIwNS9pbmRleC1rbm93bGVkZ2UtaW5pdGlhbC5sb2ciLA0KICAgICAgInNoYTI1NiI6ICIzY2U3M2M5YzhjMTYxZjBjMzk2YTNiMzg5YmFmNjUwMDgzZDM1Y2UzMjJjZWI3NGJmZmI0ODE4ODg1ZTBlYWY0IiwNCiAgICAgICJyb2xlIjogImFydGlmYWN0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMTBUMDY6NTg6NTYuNzgyNzUxWiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MTB0MDYzMTAzei05MDJkYTgxMjMyMDUvcmVsYXRpb25zLXJlZnJlc2gtaW5pdGlhbC5qc29uIiwNCiAgICAgICJzaGEyNTYiOiAiZDc1OTZjNDg0ODE2NTc2MjlmYmE4MWIxNWYyMDhmMjJhNjJkMTUwNWQxMTNiOTY4MTEzNzZlZmU2MGUxNTE1ZSIsDQogICAgICAicm9sZSI6ICJhcnRpZmFjdCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTEwVDA2OjU4OjU2Ljc5MzE0NFoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJwcm9qZWN0cy9hcmNoaXRlY3R1cmUtZXZvbHV0aW9uL3J1bnMvcnVuLTIwMjYwOTEwdDA2MzEwM3otOTAyZGE4MTIzMjA1L2RvY3Rvci5qc29uIiwNCiAgICAgICJzaGEyNTYiOiAiMWNiNjhjMzgzODhiZmExNzk3MzRmNWQwZjM3MDNlMzIxZDUzNjZmYWJmNDY4M2E4NTNjZWM0M2QzODc2ODQ2YiIsDQogICAgICAicm9sZSI6ICJhcnRpZmFjdCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTEwVDA2OjU4OjU2LjgwNDE0NVoiDQogICAgfQ0KICBdLA0KICAibGluZWFnZV9ldmVudHMiOiAibGluZWFnZS5qc29ubCIsDQogICJjb25jbHVzaW9uIjogIuWujOaIkOWPquivu+imhuebluWuoeiuoeWSjOS6uuW3pemqjOaUtuWHhuWkh++8m+WOhuWPsue8uuWPo+OAgeadg+mZkOaOkumZpOS4juaXp3NuYXBzaG906Kej5p6Q57y65Y+j5pi+5byP5L+d55WZ44CCIiwNCiAgImxpbWl0YXRpb25zIjogWw0KICAgICLkurrlt6Uv56eR5a2mL+esrOS6jOeJqeeQhuacuumqjOaUtuacquaJp+ihjOOAgiIsDQogICAgIuaXp1J1bue8uuWkseOAgeWOhuWPsui+k+WFpeWPmOWMluS4juS4ieS7veaXp3NuYXBzaG906Kej5p6Q57y65Y+j5pyq6KKr57Si5byV6KGl5YG/5raI6Zmk44CCIg0KICBdLA0KICAicGFyZW50X3J1bl9pZHMiOiBbXSwNCiAgInJlbGF0ZWRfbW9kdWxlX2lkcyI6IFtdLA0KICAicmVsYXRlZF9yZXNlYXJjaF9pZHMiOiBbXSwNCiAgInJlbGF0ZWRfZGF0YXNldF9pZHMiOiBbXSwNCiAgInJldmlldyI6IHsNCiAgICAic3RhdHVzIjogIm5vdC1yZXZpZXdlZCIsDQogICAgInJldmlld2VyIjogbnVsbCwNCiAgICAiZGF0ZSI6IG51bGwNCiAgfSwNCiAgInNlbnNpdGl2aXR5IjogImludGVybmFsIg0KfQ0K",
+  "after": {
+    "schema_version": 1,
+    "run_id": "RUN-20260910T063103Z-902DA8123205",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": null,
+    "title": "本地登记与索引覆盖全面审计及工作台人工验收安排",
+    "keywords": [
+      "登记",
+      "索引覆盖",
+      "人工验收"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-10T06:31:03Z",
+    "started_at": "2026-09-10T06:31:03Z",
+    "ended_at": "2026-09-10T06:58:55.628427+00:00",
+    "owner": null,
+    "question": "核对本地登记与索引覆盖，并安排工作台及实际AI人工验收。",
+    "hypotheses": [],
+    "inputs": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/sources-before-audit.snapshot",
+        "sha256": "7a8d35411a65f84ea937f5940728b63dabd314d5b44828b352abca40db98bcae",
+        "role": "input",
+        "registered_at": "2026-09-10T07:02:50.505850Z"
+      }
+    ],
+    "parameters": {},
+    "code": {
+      "commit": null,
+      "dirty": true
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "baseline structure and immutable history",
+        "status": "passed"
+      },
+      {
+        "check": "four documents public readback",
+        "status": "passed"
+      },
+      {
+        "check": "human acceptance",
+        "status": "pending"
+      }
+    ],
+    "metrics": {},
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/README.md",
+        "sha256": "4ee744361cfffa623011d029412fba2d9e7a2483645cc9a659cb96919bfddb93",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.698862Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/AUDIT_REPORT.md",
+        "sha256": "32fa9b2ea747ec50fdb94c7a4c7ef23e4b2774cef5a024397a335730ed41cb5b",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.709242Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/HUMAN_CHECKLIST.md",
+        "sha256": "2265377e950f48e877be62915fadc6a127f3b2ce97e26dd320e451476882d2a3",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.719503Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/audit-20260910T063348Z.json",
+        "sha256": "a8a629029c7197e60ec4f56087cf4527bbc86de80cf30be25d9f2ebc2baaf654",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.729681Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/details-20260910T063550Z.json",
+        "sha256": "7fdf50b363565804fefbf5cdd879c36ea592ee7e221074907b34b0b0bfffe76b",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.740070Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/raw-listings.json",
+        "sha256": "83a8b585fee77a7d3e88c7757cd2fc6bd46700da40d0a1b8d20086af54172f99",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.750544Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/recording-summary.json",
+        "sha256": "62b2b1ab631f0810a72d63b5a50f7e283e927286e81885f712ef2921811722e8",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.761861Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/recording-verification.json",
+        "sha256": "213aaa3dae8263f622e97b2048daa66941607efc48f9c6baeab0bd87797d6ed0",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.771994Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/index-knowledge-initial.log",
+        "sha256": "3ce73c9c8c161f0c396a3b389baf650083d35ce322ceb74bffb4818885e0eaf4",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.782751Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/relations-refresh-initial.json",
+        "sha256": "d7596c48481657629fba81b15f208f22a62d1505d113b96811376efe60e1515e",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.793144Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/doctor.json",
+        "sha256": "1cb68c38388bfa179734f5d0f3703e321d5366fabf4683a853cec43d3876846b",
+        "role": "artifact",
+        "registered_at": "2026-09-10T06:58:56.804145Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "完成只读覆盖审计和人工验收准备；历史缺口、权限排除与旧snapshot解析缺口显式保留。",
+    "limitations": [
+      "人工/科学/第二物理机验收未执行。",
+      "旧Run缺失、历史输入变化与三份旧snapshot解析缺口未被索引补偿消除。"
+    ],
+    "parent_run_ids": [],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "created_at": "2026-09-10T07:02:50.515847Z"
+}

@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "document_source": "independent",
+  "document": {
+    "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+    "revision": 1,
+    "title": "接口契约与Project记录：核心简报",
+    "document_type": "research_report",
+    "purpose": "快速了解核心接口、已完成变化和验证边界",
+    "audience": "项目使用者与实施决策者",
+    "scope": "本项目接口契约v0.1；仅Project默认策略已实际修改，运行适配待实施。",
+    "common_refs": [
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+        "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+        "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+        "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+        "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+        "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+        "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+        "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "c02a192f776612703c207c87281da52ee3d323ab2110c9f72ba4ad7129ca2fdd",
+        "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "c54916f1e6d2a8fcf1f3197147b320a3b3c7f779eb2a80546caf96e431f3b5e3",
+        "target_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "37636e55845600daaa1e67f3e1e1ec4cf328a23e28e461119fbfedb3a000a474",
+        "target_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "section_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+      "ref": {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "c54916f1e6d2a8fcf1f3197147b320a3b3c7f779eb2a80546caf96e431f3b5e3",
+        "target_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+        "target_kind": "record"
+      },
+      "section_key": "b0",
+      "title": "七个重点功能和调用链",
+      "role": "methods",
+      "unit_refs": [],
+      "source_issues": []
+    },
+    {
+      "section_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+      "ref": {
+        "locator": "完整固定正文",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "37636e55845600daaa1e67f3e1e1ec4cf328a23e28e461119fbfedb3a000a474",
+        "target_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+        "target_kind": "record"
+      },
+      "section_key": "b1",
+      "title": "验证、边界与实施顺序",
+      "role": "conclusion",
+      "unit_refs": [],
+      "source_issues": []
+    }
+  ],
+  "report_candidates": [
+    {
+      "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+      "revision": 1,
+      "title": "接口契约与Project记录：核心简报",
+      "updated_at": "2026-09-09T17:18:11.922306Z",
+      "document_type": "research_report"
+    },
+    {
+      "record_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+      "revision": 1,
+      "title": "接口契约与Project记录：完整设计过程",
+      "updated_at": "2026-09-09T17:18:11.922306Z",
+      "document_type": "research_process"
+    }
+  ],
+  "watch_baseline": {
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "head": "COM-5150e9bb-4bb1-47ee-b833-534dacd24545",
+    "unit_ids": [
+      "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+      "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+      "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+      "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+      "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+      "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+      "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+      "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d"
+    ]
+  },
+  "missing": [],
+  "basis_heads": {
+    "PRJ-ARCHITECTURE-EVOLUTION": "COM-5150e9bb-4bb1-47ee-b833-534dacd24545"
+  },
+  "metrics": {
+    "elapsed_ms": 242.92,
+    "inventory_owners": 13,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 24,
+    "resolved_sections": 2
+  },
+  "writes": 0
+}
+

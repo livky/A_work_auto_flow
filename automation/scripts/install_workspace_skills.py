@@ -12,7 +12,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 # 默认发现入口与 --name 的允许集合使用同一登记；完整方法仍只维护在
 # workflows，升级此脚本不会覆盖用户已修改的本地 Skill。
-NAMES = ("workspace-context", "context-maintenance", "evidence-inspection", "research-loop", "development-checks")
+NAMES = ("workspace-context", "context-maintenance", "evidence-inspection", "research-loop", "development-checks",
+         "material-query", "association-exploration", "semantic-maintenance")
 
 
 def install(apply=False, names=None):

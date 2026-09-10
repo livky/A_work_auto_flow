@@ -1,4 +1,9 @@
 # 系统记忆持续实施计划
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：2026-09-08 至 09 的实施批次与历史验收摘要；此后的 L0–L4 和 v3 文稿改造另有计划。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../../ARCHITECTURE.md)、[研究记录标准](../../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 开始：2026-09-08。用户已要求通读设计、分工并开始实施；主计划中上一轮“只交付计划”的范围说明不再约束本批开发。冻结素材和既有计划 Run 保留。
 

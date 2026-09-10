@@ -1,0 +1,421 @@
+{
+  "schema_version": 3,
+  "request_id": "6ba10601-3def-4f14-a17c-d84efb8db133",
+  "actor": {
+    "kind": "ai",
+    "id": "assistant"
+  },
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "expected_head": "COM-43fdf9b4-cc54-4ba9-bb6e-a7290d17da3e",
+  "operations": [
+    {
+      "op": "put_record",
+      "record_id": "MEM-12ab4fe8-bee3-5179-a3ef-e7ddaed461a2",
+      "expected_revision": 3,
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document_section",
+        "title": "核心功能说明：定义、维护与完整闭环",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "payload": {
+          "blocks": [
+            {
+              "evidence_refs": [
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+                  "revision": 4,
+                  "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+                  "locator": "完整固定正文",
+                  "relation": "references"
+                }
+              ],
+              "markdown": "v0.2实施设计已完成：六种表示类型与实际内容分离；工作台采用存储结构、查询候选、材料预览三栏；14个应用端口覆盖选择组包、联想加深与语义维护。三个专项Skill使用现有公开动作，P6再接安装发现。P0-P6和70项用例已设计，复杂策略的选择原因与触发条件记入根待开发计划。当前只通过设计检查，产品功能、浏览器、升级及检索质量均未因本轮而验证。",
+              "type": "prose"
+            },
+            {
+              "block_ids": [
+                "technical-body"
+              ],
+              "ref": {
+                "target_kind": "record",
+                "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+                "revision": 4,
+                "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+                "locator": "完整固定正文",
+                "relation": "references"
+              },
+              "type": "unit"
+            }
+          ],
+          "missing_refs": [],
+          "role": "conclusion",
+          "section_key": "process-7",
+          "title": "核心功能说明：定义、维护与完整闭环",
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+            "revision": 4,
+            "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "level": null,
+        "change_reason": "将表示提案落实为v0.2接口、工作台、Skill和实施/测试设计；产品实现待后续阶段。"
+      }
+    },
+    {
+      "op": "put_record",
+      "record_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+      "expected_revision": 3,
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document_section",
+        "title": "核心概念、七项功能和完整闭环",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "payload": {
+          "blocks": [
+            {
+              "evidence_refs": [
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+                  "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+                  "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+                  "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+                  "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+                  "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+                  "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+                  "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+                  "target_kind": "record"
+                },
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+                  "revision": 4,
+                  "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+                  "locator": "完整固定正文",
+                  "relation": "references"
+                }
+              ],
+              "markdown": "v0.2实施设计已完成：六种表示类型与实际内容分离；工作台采用存储结构、查询候选、材料预览三栏；14个应用端口覆盖选择组包、联想加深与语义维护。三个专项Skill使用现有公开动作，P6再接安装发现。P0-P6和70项用例已设计，复杂策略的选择原因与触发条件记入根待开发计划。当前只通过设计检查，产品功能、浏览器、升级及检索质量均未因本轮而验证。",
+              "type": "prose"
+            }
+          ],
+          "missing_refs": [],
+          "role": "methods",
+          "section_key": "b0",
+          "title": "核心概念、七项功能和完整闭环",
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+            "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+            "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+            "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+            "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+            "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+            "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+            "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+            "target_kind": "record"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+            "revision": 4,
+            "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "level": null,
+        "change_reason": "将表示提案落实为v0.2接口、工作台、Skill和实施/测试设计；产品实现待后续阶段。"
+      }
+    },
+    {
+      "op": "put_record",
+      "record_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+      "expected_revision": 3,
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document_section",
+        "title": "验证、边界与实施顺序",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "payload": {
+          "blocks": [
+            {
+              "evidence_refs": [
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+                  "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+                  "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+                  "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+                  "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+                  "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+                  "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "完整固定正文",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+                  "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+                  "target_kind": "record"
+                },
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+                  "revision": 4,
+                  "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+                  "locator": "完整固定正文",
+                  "relation": "references"
+                }
+              ],
+              "markdown": "v0.2实施设计已完成：六种表示类型与实际内容分离；工作台采用存储结构、查询候选、材料预览三栏；14个应用端口覆盖选择组包、联想加深与语义维护。三个专项Skill使用现有公开动作，P6再接安装发现。P0-P6和70项用例已设计，复杂策略的选择原因与触发条件记入根待开发计划。当前只通过设计检查，产品功能、浏览器、升级及检索质量均未因本轮而验证。",
+              "type": "prose"
+            }
+          ],
+          "missing_refs": [],
+          "role": "conclusion",
+          "section_key": "b1",
+          "title": "验证、边界与实施顺序",
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+            "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+            "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+            "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+            "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+            "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+            "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+            "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+            "target_kind": "record"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+            "revision": 4,
+            "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "level": null,
+        "change_reason": "将表示提案落实为v0.2接口、工作台、Skill和实施/测试设计；产品实现待后续阶段。"
+      }
+    }
+  ]
+}

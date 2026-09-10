@@ -24,8 +24,12 @@
 
 - 研究计划：`PLAN.md`
 - 证据台账：`EVIDENCE_LEDGER.md`
-- 仿真/分析 Run：保存于根 `runs/`，使用 new-run --research RES-ID 关联，在证据台账中引用，无需创建项目。
+- 仿真/分析 Run：使用 `new-run --owner {{research_id}}` 保存在本研究 `runs/`，在证据台账中固定引用；跨研究共享同一 RUN-ID，无需创建项目或复制实验。
+- 分层记录：L0 原始材料、L1 技术单元、L2 事件/决策、L3 经验、L4 主题地图，按实际内容保存并回读。
+- 研究文稿：独立 document/document_section 编排完整过程与简版报告，固定引用 L1 正文块；不把文稿存为新的 L4 地图。
 - 综合结论：`SYNTHESIS.md`
+
+保存、回读、索引待办和文稿维护按 [分层记录标准](../../docs/RESEARCH_RECORDING.md) 与 [版本记忆指南](../../docs/MEMORY_USAGE.md) 执行。纯方法、推导或分析单元可以没有 Run，须保留依据或缺口；实际实验先创建一个原生 Run。
 
 ## 完成定义
 

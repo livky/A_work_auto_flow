@@ -1,0 +1,695 @@
+{
+  "schema_version": 1,
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "items": [
+    {
+      "material_id": "RAW-4cb63bfcaa6052ff448da0ba627fcf407e8e1c6f86a03e8d3867833a128cac07",
+      "title": ".gitattributes",
+      "path": ".gitattributes",
+      "sha256": "e9dd37c0a4c59eb0f1c6e989ebc4bdbc7162d94482237f52a478a41a1cef3c7f",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-ac863251bcf269a3e298aafe951157cfee03f6b59b44ced905986718ce088019",
+      "title": "memory-v1.schema.json",
+      "path": "automation/schemas/memory-v1.schema.json",
+      "sha256": "1463ba729c67637cd8d1e05260daa0898493e0b0cbcd27f7a1a5a78c88a50698",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-d3138ad16107c2d198031aa6be14c0747fd2461a3e68464b7dbca96dfecdb705",
+      "title": "memory-v2.schema.json",
+      "path": "automation/schemas/memory-v2.schema.json",
+      "sha256": "f9ebf8217edb9d6d4b3cf2035f554002dcf705644f14f759840abc2f70980bbc",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-e5fd058b15d061de90f65835a5361940af3140b8f2833157541a9079a46ea62d",
+      "title": "memory-v3.schema.json",
+      "path": "automation/schemas/memory-v3.schema.json",
+      "sha256": "de7ce77443f6aefee4725187491315fa9c29fa7d529239b9ad891f24e46167c0",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-6d3b50eae8e1898001aae7971f58b7af0768a6468f7f699b989d645a33919aaa",
+      "title": "context_engine.py",
+      "path": "automation/scripts/context_engine.py",
+      "sha256": "b5acbfcec9ca22e5ba4b4681e571b893af3ed035a27c6f46088b5f7560c4a829",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-669d21a4288815f2d20390f69d576477445b653e220820cb60277f093c1133d8",
+      "title": "manifest_discovery.py",
+      "path": "automation/scripts/manifest_discovery.py",
+      "sha256": "d8afd9f334270176e505bc963ddf309023c8d08a36da291b72786acb5690aea6",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-68c586e121acfc8e078c69fe783c5c33fe43cdfa8249867986d04d174dbe5e0e",
+      "title": "contracts.py",
+      "path": "automation/scripts/memory/contracts.py",
+      "sha256": "0627273ba36a4572572c2885656166d34784e54d76d135ed730532deed92b178",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-81be64d6a27b083caeaa503ef7df5bb9bd5a619b816d2d49be4ac0179a6c4464",
+      "title": "document.py",
+      "path": "automation/scripts/memory/document.py",
+      "sha256": "626d2f7975e06f4119537ade9be0ebb1bcfe2c00324f389a050027a5a4ec4b10",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-b07c2df5794dcdf6d72bad80f06259d12f6e1dcf62fbf2e0b57529b0e541ff21",
+      "title": "documents.py",
+      "path": "automation/scripts/memory/documents.py",
+      "sha256": "4642b398c416a9515b7864cdea7f7287fd76cc9e9e146814f038bca63ed690bd",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-a27e2d1a27d3bc91ee4226963eba6c4f1a4783d80cbf778afc57a5def66e5b89",
+      "title": "index.py",
+      "path": "automation/scripts/memory/index.py",
+      "sha256": "319d674596bf6a9394a87f7f0bb6d878937e2d8aa12917f6cdd3f6d34d1a4eb5",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-396fd0246e653f05f5cf580e34a43f0f1cd65e311deb7993d6bfbca3a5706cfa",
+      "title": "owners.py",
+      "path": "automation/scripts/memory/owners.py",
+      "sha256": "a54bb703b1fd2101099dcdda74832882f443a7e64b76fff6593eed50f8bd10fe",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-2e8f8e8bd52f2424bde09a2cb74098f2d7872575327cf6e86ab15764e71f2dc2",
+      "title": "packets.py",
+      "path": "automation/scripts/memory/packets.py",
+      "sha256": "2ebca3a045416f140d32ab418968ec23d08e098bde1da4f441af7b85c92c4d27",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-1fe020cfda876198b378b6878cc3f9aa19094e56f6c8fd54a77476b6e50aa84c",
+      "title": "raw_materials.py",
+      "path": "automation/scripts/memory/raw_materials.py",
+      "sha256": "4f735783552288890caa21e9b1d5a02a46cfc438f37446ec1cb56d81fef876b5",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-f8502c56e7543d6dda19f877e49ca48f578cf01c66c0b070d8e1a5212b6c0bc9",
+      "title": "search.py",
+      "path": "automation/scripts/memory/search.py",
+      "sha256": "b7aa1c364279c52eabd049df094caadd570aad6935cea382fba54b3c725543b6",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-e194aa4dc093df5ea42afadd8287837e8b82becfd514ce4268c3ee1746d1be1f",
+      "title": "technical_units.py",
+      "path": "automation/scripts/memory/technical_units.py",
+      "sha256": "fe707cba7c75e6272b90f37734396d680960b5133d287c82abb3ef5cd75da287",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-d4bd91850cf555ea211aedb848275803e9f6a2a4b54444c7e556e8b84142767b",
+      "title": "retrieval.py",
+      "path": "automation/scripts/retrieval.py",
+      "sha256": "2e3ac39f719c7e73b96f53f91d159ee0afec50738515499e33655da870e926bf",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-c26da5dc205a9d4bfa00932d4cb52a9c91b44ee5fcb7552ac6175e513520109f",
+      "title": "run_capture.py",
+      "path": "automation/scripts/run_capture.py",
+      "sha256": "3abc181c0b744fea2e49ef9b9e44bf6110d07e5003d681f3c3b8c4f0bed29aef",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-1ac2684c267bf830246ccc85ce180dd4a35d4223a047a35589884064dd20bdb8",
+      "title": "IMPACT_REVIEW.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/IMPACT_REVIEW.md",
+      "sha256": "93162ecdc61ca2224db96b1777b5f4b1622c57e17e58fa3b6fa70522d53935f9",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-54eca02b1191cefba37403107bdd01478a1bc10103107389095d9bbf8a0d5723",
+      "title": "README.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/README.md",
+      "sha256": "c58b8cd72434151087a9fe3d1042e280ddbecb570e081e3f7fb4e648e85c0bcf",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-e16069b3c41cce76a45b87ee8031df4ba52365efd6fe55f3088dd9d4c69d0cca",
+      "title": "REVIEW.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/REVIEW.md",
+      "sha256": "3d8513ae9b5b3ab0766921fe09ef49ba1e60591434d1e87b08b8cb226debcf65",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-2c1408062c4fb6169ec86fd2c47b061732fac0b030bd0e48267656dd50961a83",
+      "title": "DOCUMENT_HISTORY.md.snapshot",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/artifacts/DOCUMENT_HISTORY.md.snapshot",
+      "sha256": "d5061d66561635d34a454c4fe4860134e1e1e1cd507f7a73d4a8ef9fc2673593",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-3ca91f2d4016da01f6e8b203e66c5b98dc3ef09de852ec437c541614a7105c80",
+      "title": "MODULE_IMPACT-v1.md.snapshot",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/artifacts/MODULE_IMPACT-v1.md.snapshot",
+      "sha256": "e15674897788ae19ecec4f1892b4df3dce3ccfc4a2bf61c1a5899861870f4333",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-6e7903639f628583f5a329597cb08f0a5264cb52abde02fd98b02ceca1ab6f10",
+      "title": "document-inventory.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/artifacts/document-inventory.json",
+      "sha256": "af27bf9636333af8e90425c26471e8865ad328b136383008b314dc1f745c5dc9",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-9d32106458a04b030a3ec612848ffb6d70854d18a4d2113bf9ce76705cb1d476",
+      "title": "AGENTS.md.snapshot",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/baseline/AGENTS.md.snapshot",
+      "sha256": "145aa8e49535c569010ffffe6192b8fc4feeddc952da637b49e9ae2df8f9b01a",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-712c4dd7e74399b15a80d664f831ffc52f76808e11d7355cdcb4a9949f69d726",
+      "title": "ARCHITECTURE.md.snapshot",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/baseline/ARCHITECTURE.md.snapshot",
+      "sha256": "57fba80111f0f403f9d28e4f3895f791616d28c7fb9d58ec5e53f4d24b5a42f5",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-67b8402378eeab5c27387e4f1f991bb1fe9fb35fe0112a14a7ba1b7e9391d528",
+      "title": "NOW.md.snapshot",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/baseline/NOW.md.snapshot",
+      "sha256": "26ab92081147336512b6ee9c13e356e954583262fdc43644605406ba751aaa46",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-f9c08eee12fe74bfe4705d551dacfbc1a47680a74053cb4e2e1ba976fef00237",
+      "title": "README.md.snapshot",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/baseline/README.md.snapshot",
+      "sha256": "ad86f99a6c3cce4847c4a2fa9c60b68e046dd2c1d01abf3c3652c3fdced6558d",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "inputs",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-cc747ecb831cfcfe2c149bade8bea2c15a1e1eca1e91cf612d28567e21801fc4",
+      "title": "doc-checks-attempt-01.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/doc-checks-attempt-01.json",
+      "sha256": "babcd7b2be5a299bf221cc1a406a7abd1b0389937b0ca3e7049aae26b70b12ed",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-c94b8002a0cc0155fbc5b59bc7d6c84046cbe57423a464826690fd07bb494868",
+      "title": "doc-checks-attempt-02.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/doc-checks-attempt-02.json",
+      "sha256": "676e41d42b730842faf3a97e93b80fd96fb3528aae1b7ff8fb33b7a5a04fc3cf",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-77ba9073b115a129dd7efc9318cbfe1aa254415c972540d0eaaa6959dec2a949",
+      "title": "doc-checks-final.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/doc-checks-final.json",
+      "sha256": "db7c3e0d078927f3f0a207ee3afa79a31803363bc5738008d6bbe30bedd0ea63",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-0a09068cffafa98e064b5a1afd1b13aaf4d532b30af2619ff12ee68ec633e723",
+      "title": "review-document-history.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/review-document-history.md",
+      "sha256": "0176a7c88449db9a92871fd0ffe6e44dc6eac3c3dedff39eef0a72650bf974b3",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-7d56fdd69f51820765ca81502118209936378695d7fe6429453b7a876e8227cf",
+      "title": "review-memory-docs.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/review-memory-docs.md",
+      "sha256": "79a29dc1d99d12cbbfffec5f982bcd09d015bd2b2548f53b450ad91e33a65a1b",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-b0178f38d3caf6151bd99a57c7f90b4979b35a0254c28014bbc0c7479f7e305d",
+      "title": "review-navigation-docs.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/review-navigation-docs.md",
+      "sha256": "367ab1f990007dc234843b29047ae88e6b70499e6d9f40a4c741ed031d9cd40f",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-b645cfa2e299c4d938bf943994ae607dc669d424eb2a2d660c956bcc3fd2ab78",
+      "title": "run.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/run.json",
+      "sha256": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "current_run_metadata",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-7ad065f891e18de0975d5fa21a42e7d4717d939746b3a05db819c83a4b9703fc",
+      "title": "01-python.ids.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/testing/attempt-01/01-python.ids.json",
+      "sha256": "18e204d1857879bcb1fbfe3eddc2b18db05f8d3c086192fbb12753c261d4446f",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-eecc6976e99fdd9bf43ad1189b9eafa0ac7682a481664dc08b0cdfa6b643fb1c",
+      "title": "01-python.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/testing/attempt-01/01-python.json",
+      "sha256": "6870f965e40e762941a51062909027742b51d5d46a2200f4305b7d1d895c1d2c",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-f8b136ac514a03ba432229659a20f73257af4db3f532682fa4bdc251dad8cbee",
+      "title": "README.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/testing/attempt-01/README.md",
+      "sha256": "c7efdef016293bd0dea1c193ba1e004c7a7a8cff45738fbd2ad455c6171c4cc5",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-68bf4a95dc0b0375a8458002977eb167247a40b7fe365e225ca30cfbe6bbc833",
+      "title": "results.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/testing/attempt-01/results.json",
+      "sha256": "a82145197108ea68733251342cb83255a1978be3967ea7b95fe3f771663c43d7",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-cf35975a245c867db49714f806c109280083950fe52b471afda97ed5fd0d03d7",
+      "title": "selection-v1.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/testing/selection-v1.json",
+      "sha256": "f23e39d7a268d85e66f8514de689114614f65c93f89a4218580b1db6f848e110",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    },
+    {
+      "material_id": "RAW-5e1e763864a847a3b956682e67c8de9b2cdfd8acacd69399fc411b32bde5d418",
+      "title": "verify_documents.py",
+      "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/verify_documents.py",
+      "sha256": "c01399dc3bc13a685f6cc5de868d4e346062f59ee943b38d884a0df709dc2639",
+      "level": "L0",
+      "origins": [
+        {
+          "owner_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+          "role": "artifacts",
+          "native_fingerprint": "8d033bc53121976df27d76410a10c3a052a4834686bc972689b56f20c1636d84"
+        }
+      ],
+      "source_refs": [],
+      "status": "registered"
+    }
+  ],
+  "total": 40,
+  "missing": [],
+  "basis_heads": {
+    "PRJ-ARCHITECTURE-EVOLUTION": null,
+    "RUN-20260909T151004Z-A68FBA9F176D": null
+  },
+  "canonical_writes": 0,
+  "content_loaded": false
+}
+

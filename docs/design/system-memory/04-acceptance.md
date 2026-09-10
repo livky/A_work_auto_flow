@@ -1,4 +1,9 @@
 # 测试点与明确验收标准
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：首版冻结技术验收规格；not-run 是配方状态，实际执行结果另存 Run，不能回写规格追认通过。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../../ARCHITECTURE.md)、[研究记录标准](../../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 版本1.0，共115个测试点。机器真源为[acceptance.json](fixtures/acceptance.json)，本文是同版阅读视图。**当前全部为not-run产品验收规格。**
 

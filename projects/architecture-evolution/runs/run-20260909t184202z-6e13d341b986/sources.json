@@ -1,0 +1,25 @@
+{
+  "accessed_at": "2026-09-09T18:47:29.330984+00:00",
+  "sources": [
+    {
+      "title": "GraphRAG Local Search",
+      "url": "https://microsoft.github.io/graphrag/query/local_search/",
+      "supports": "实体到文本单元和关联信息的映射帮助定位上下文；不证明本地质量。"
+    },
+    {
+      "title": "GraphRAG DRIFT",
+      "url": "https://microsoft.github.io/graphrag/query/drift_search/",
+      "supports": "概览与后续局部查询组合；本项目联想策略为独立提案。"
+    },
+    {
+      "title": "SQLite FTS5",
+      "url": "https://www.sqlite.org/fts5.html#external_content_tables",
+      "supports": "外部内容索引同步与重建机制；不提供语义审核。"
+    },
+    {
+      "title": "SQLite WITH",
+      "url": "https://www.sqlite.org/lang_with.html",
+      "supports": "递归CTE可遍历树/图；不要求新图数据库，不构成本地性能验证。"
+    }
+  ]
+}

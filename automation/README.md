@@ -2,9 +2,18 @@
 
 统一入口：根目录 `setup.cmd` 安装/升级/命令注册，`workbench.cmd` 打开工作台，`workbench.cmd test-data` 生成 Git 忽略的跨模块合成沙盒。参数、数据保留和恢复见 [一键部署手册](../docs/SETUP_WORKBENCH.md)。
 
-核心 CLI 创建全局核心算法、Run 与可选项目；检索使用 SQLite FTS5 + 已安装的本地 Qdrant/FastEmbed，多格式解析与 OCR 只读取配置范围和显式登记文件。上下文新增 focus/investigate/wide 选择与 context-feedback 扩展；检索命令、反馈闭环和来源登记详见 [检索手册](../docs/RETRIEVAL.md)。
+核心 CLI 创建全局核心算法、对象内 Run 与可选项目；无归属轻量任务才使用根 runs，旧布局按稳定身份兼容。文件与记忆检索共用 SQLite 文件和本地 Qdrant/FastEmbed 基础设施，表、向量集合、回执和默认策略仍有区别。文件上下文使用 focus/investigate/wide 与 CTX 反馈，记忆使用 QMEM 查询和 PKT 材料包；选择入口见 [检索手册](../docs/RETRIEVAL.md)。
 
-`workflows/` 保存方法正文，workspace-context、context-maintenance 和 evidence-inspection 已在 .agents/skills 安装轻量入口；其他流程按需读源。安装器默认预览，--apply 新建入口，不覆盖不同的已有技能；升级时可用 `--name evidence-inspection` 只安装新增入口，保留其他本地修改。
+`workflows/` 保存方法正文，workspace-context、context-maintenance、evidence-inspection、research-loop、development-checks 已登记轻量入口；其他流程按需读源。安装器默认预览，--apply 新建缺失入口，已有不同内容保留并输出合并差异。
+
+## 维护边界
+
+- `scripts/memory/store.py` 和 `service.py` 维护对象 HEAD、不可变提交和专用动作；普通编辑器不直接改规范记忆。
+- `memory/index.py/search.py/packets.py` 维护可重建索引、规范身份排名与预算；SQLite/Qdrant 不是规范正文的权威来源。
+- `memory/technical_units.py/documents.py` 维护 L1 技术块与独立完整过程/简版文稿；L4 地图和旧 map.report 兼容有明确边界。
+- `scripts/workbench_app/` 与 `frontend/` 维护展示和交互，文件检索由 `retrieval.py/context_engine.py` 保留；AI 行为由规则和 Skill 指导，不由相似度分数自动决定。
+
+具体数据流见 [架构说明](../ARCHITECTURE.md)，同步范围见 [文档维护手册](../docs/DOCUMENTATION_MAINTENANCE.md)。
 
 ## 命令
 
@@ -20,7 +29,7 @@
 .\automation\workspace.ps1 new-project <slug> --title "项目名"
 .\automation\workspace.ps1 new-research <slug> --title "研究问题"
 .\automation\workspace.ps1 new-run --title "分析目的"
-.\automation\workspace.ps1 new-run --title "中文标题" --keyword "温漂"
+.\automation\workspace.ps1 new-run --owner RES-ID --title "中文标题" --keyword "温漂"
 .\automation\workspace.ps1 search-runs "温漂" --project <slug> --limit 10
 .\automation\workspace.ps1 review-run RUN-ID --status disputed --reviewer "用户" --reason "发现新反证"
 
@@ -55,6 +64,6 @@
 - 每周：整理 `inbox/`、检查 open Run 和未决行动。
 - 每月：填写 `knowledge/reviews/REVIEW_TEMPLATE.md` 的实例，评估文档漂移和自动化机会。
 
-当前已启用 SQLite FTS5 与本地 Qdrant 混合召回，依赖和模型位于 services/qdrant/。其他平台按真实案例需求选择，保留现有业务对象 ID 与开放文件格式。
+配置支持 SQLite FTS5 与本地 Qdrant 混合召回，当前副本的依赖和模型能力由 doctor 实测。`memory search` 缺省 vector=auto，`memory context` 内部查询缺省 off；文件检索按配置启用向量。派生索引 pending 或模型不可用时读取具体回执，不能把结果存在当作全链路就绪。其他平台按实际需要选择，保留业务对象 ID 与开放文件格式。
 
 核心算法导航使用 `build-context --module <slug>`，这里接收目录短名；语义材料问答用 `retrieve-context --module MOD-ID`，这里接收稳定 ID。

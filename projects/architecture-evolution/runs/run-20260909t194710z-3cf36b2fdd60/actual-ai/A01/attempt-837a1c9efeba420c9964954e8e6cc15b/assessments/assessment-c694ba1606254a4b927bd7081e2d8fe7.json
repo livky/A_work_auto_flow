@@ -1,0 +1,40 @@
+{
+  "actor": "Codex主任务助手",
+  "comparisons": [
+    {
+      "expectation_id": "A01-E1",
+      "status": "meets",
+      "observation": "归属准确，L1/L2/L3 保留未知时间和 Run 引用；实现说明引用固定验证报告。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A01\\attempt-837a1c9efeba420c9964954e8e6cc15b\\reads\\read-09ec11c05a8849c9ba1fd9c0a70ca483",
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A01\\attempt-837a1c9efeba420c9964954e8e6cc15b\\reads\\read-59049103ad1348c6a5b213fef1b0d5bd"
+      ]
+    },
+    {
+      "expectation_id": "A01-E2",
+      "status": "meets",
+      "observation": "已公开预检/提交后 inspect；按真实固定引用 expand 了 U1 和原文来源，正文及 SHA 一致。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A01\\attempt-837a1c9efeba420c9964954e8e6cc15b\\reads\\read-09ec11c05a8849c9ba1fd9c0a70ca483",
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A01\\attempt-837a1c9efeba420c9964954e8e6cc15b\\reads\\read-59049103ad1348c6a5b213fef1b0d5bd"
+      ]
+    },
+    {
+      "expectation_id": "A01-E3",
+      "status": "meets",
+      "observation": "保存/indexed 与科学状态分开；没有 claims accepted 或人工认可。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A01\\attempt-837a1c9efeba420c9964954e8e6cc15b\\reads\\read-09ec11c05a8849c9ba1fd9c0a70ca483",
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A01\\attempt-837a1c9efeba420c9964954e8e6cc15b\\reads\\read-59049103ad1348c6a5b213fef1b0d5bd"
+      ]
+    }
+  ],
+  "limitations": [
+    "真实调用和AI自查；人工仍待审。",
+    "UI用实际Project字节相同副本；原工作区既有工作台未被中断。",
+    "读取声明按所见范围记录，历史全部章节未重新逐字审查。"
+  ],
+  "recorded_at": "2026-09-09T22:44:34.445624Z",
+  "human_review": "pending",
+  "scientific_review": "not-reviewed"
+}

@@ -1,0 +1,258 @@
+{
+  "process": {
+    "body_markdown": "",
+    "change_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+    "content_hash": "e81b08c32d76702b64a7dbb66728f81675823f03526a1af034b82aec8d2cea69",
+    "created_at": "2026-09-09T21:16:40.706538Z",
+    "created_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    },
+    "discovery": "workspace_summary",
+    "keywords": [
+      "SYNTHETIC",
+      "F3",
+      "水箱"
+    ],
+    "kind": "document",
+    "level": null,
+    "owner_id": "RES-F3-TANK",
+    "payload": {
+      "audience": "合成检查执行者",
+      "common_refs": [
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "target_kind": "record"
+        },
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+          "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+          "target_kind": "record"
+        }
+      ],
+      "document_type": "research_process",
+      "missing_refs": [],
+      "purpose": "SYNTHETIC F3固定双文稿维护检查",
+      "scope": "旧r1依据基线；新饱和输入尚未融合，不据此认可新参数下的结论",
+      "section_refs": [
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+          "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+          "target_kind": "record"
+        }
+      ],
+      "watch_refs": []
+    },
+    "previous_revision": null,
+    "provenance_gap": null,
+    "record_hash": "8cef3944102f4255ad62750a31ecd15f92230009a595b055909cbd7f8ab78d3e",
+    "record_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+    "record_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+    "revision": 1,
+    "schema_version": 3,
+    "sensitivity": "internal",
+    "sources": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      }
+    ],
+    "title": "SYNTHETIC F3 水箱完整过程（旧依据基线）",
+    "updated_at": "2026-09-09T21:16:40.706538Z",
+    "updated_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    }
+  },
+  "brief_section": {
+    "body_markdown": "",
+    "change_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+    "content_hash": "33159a663977dbdc5aeb48761c469cbce037fed21e7c9d07f8a27ee75dc7e411",
+    "created_at": "2026-09-09T21:16:41.903848Z",
+    "created_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    },
+    "discovery": "workspace_summary",
+    "keywords": [
+      "SYNTHETIC",
+      "F3",
+      "水箱"
+    ],
+    "kind": "document_section",
+    "level": null,
+    "owner_id": "RES-F3-TANK",
+    "payload": {
+      "blocks": [
+        {
+          "evidence_refs": [
+            {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+              "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+              "target_kind": "record"
+            },
+            {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+              "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+              "target_kind": "record"
+            }
+          ],
+          "markdown": "旧r1依据仅说明：在给定连续、无延迟且全过程未饱和的合成模型中，液位误差指数衰减。该结论不能推广到饱和泵或现实系统；尚需检查目标所需流量与泵容量。新输入尚未融合到这份显式基线，本文不确认新参数下可达。",
+          "type": "prose"
+        }
+      ],
+      "missing_refs": [],
+      "role": "conclusion",
+      "section_key": "brief",
+      "title": "水箱结论与边界（旧依据基线）",
+      "watch_refs": []
+    },
+    "previous_revision": null,
+    "provenance_gap": null,
+    "record_hash": "a8a611af0cbe69d15adcdcd816cc2a70309817ae205abc2cb474d7bab0a9e1c6",
+    "record_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+    "record_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+    "revision": 1,
+    "schema_version": 3,
+    "sensitivity": "internal",
+    "sources": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      }
+    ],
+    "title": "SYNTHETIC F3 水箱结论与边界（旧依据基线）",
+    "updated_at": "2026-09-09T21:16:41.903848Z",
+    "updated_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    }
+  },
+  "report": {
+    "body_markdown": "",
+    "change_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+    "content_hash": "71a5e870c709f73a8df7caa60f1f4d353e78f1ae5cc77ed72f0eaab4ddd27b09",
+    "created_at": "2026-09-09T21:16:43.111707Z",
+    "created_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    },
+    "discovery": "workspace_summary",
+    "keywords": [
+      "SYNTHETIC",
+      "F3",
+      "水箱"
+    ],
+    "kind": "document",
+    "level": null,
+    "owner_id": "RES-F3-TANK",
+    "payload": {
+      "audience": "合成检查执行者",
+      "common_refs": [
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "target_kind": "record"
+        },
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+          "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+          "target_kind": "record"
+        }
+      ],
+      "document_type": "research_report",
+      "missing_refs": [],
+      "purpose": "SYNTHETIC F3固定双文稿维护检查",
+      "scope": "旧r1依据基线；新饱和输入尚未融合，不据此认可新参数下的结论",
+      "section_refs": [
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "a8a611af0cbe69d15adcdcd816cc2a70309817ae205abc2cb474d7bab0a9e1c6",
+          "target_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+          "target_kind": "record"
+        }
+      ],
+      "watch_refs": []
+    },
+    "previous_revision": null,
+    "provenance_gap": null,
+    "record_hash": "5a7f8e1870d9b3aed6fedd07697a717fcac9d896818447235792a0b7f48227d6",
+    "record_id": "MEM-35305be1-6956-5547-8457-b07b06b3b29d",
+    "record_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+    "revision": 1,
+    "schema_version": 3,
+    "sensitivity": "internal",
+    "sources": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      }
+    ],
+    "title": "SYNTHETIC F3 水箱精简报告（旧依据基线）",
+    "updated_at": "2026-09-09T21:16:43.111707Z",
+    "updated_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "scope": "static design and synthetic request structures only",
+  "checked_at": "2026-09-09T19:53:11.686775+00:00",
+  "domain_methods": 40,
+  "control_methods": 3,
+  "data_structures": 72,
+  "alternative_decisions": 12,
+  "cases": [
+    {
+      "id": "P01_failure_experience_query",
+      "passed": true,
+      "observed_error": null
+    },
+    {
+      "id": "P02_graph_seed_query",
+      "passed": true,
+      "observed_error": null
+    },
+    {
+      "id": "P03_empty_scope_is_empty_not_unbounded",
+      "passed": true,
+      "observed_error": null
+    },
+    {
+      "id": "P04_reserved_representation_schema",
+      "passed": true,
+      "observed_error": null
+    },
+    {
+      "id": "N01_bool_is_not_integer",
+      "passed": true,
+      "observed_error": "$.result_limit: scalar type mismatch"
+    },
+    {
+      "id": "N02_unknown_scope_field",
+      "passed": true,
+      "observed_error": "$.scope: missing or unknown fields"
+    },
+    {
+      "id": "N03_negative_budget",
+      "passed": true,
+      "observed_error": "$.limits: budget cannot be negative"
+    },
+    {
+      "id": "N04_formal_needs_applicability",
+      "passed": true,
+      "observed_error": "$: formal purpose needs applicability"
+    },
+    {
+      "id": "N05_unfixed_record_revision",
+      "passed": true,
+      "observed_error": "$: record revision must be fixed and positive"
+    },
+    {
+      "id": "N06_invalid_hash",
+      "passed": true,
+      "observed_error": "$.sha256: invalid SHA-256"
+    },
+    {
+      "id": "N07_strategy_is_not_knowledge_role",
+      "passed": true,
+      "observed_error": "$.scope.facets: no union branch matches"
+    },
+    {
+      "id": "N08_uncalibrated_probability",
+      "passed": true,
+      "observed_error": "$: calibrated probability needs range and evidence"
+    }
+  ],
+  "errors": [],
+  "inputs": {
+    "contract_types.py": "881707ca58c07d2ddb7a9a12fff7f70c1af9e011b96fbeadc7149165dd4b6937",
+    "contract_ports.py": "28b8545586d969771360ec995223c0a69842bca4c3895daa5b7b80b79495e0c0",
+    "function-catalog.json": "922f0523853bbba05d4b911f2efb3034a6710da2555085dcbd617b271591925c",
+    "request-examples.json": "9f9f42419ab0d1b43a8462cb05963ae7ab39b62f6fe70fe77613c801036362b4"
+  },
+  "not_tested": [
+    "Backend conformance",
+    "Retrieval quality",
+    "Runtime performance",
+    "Access enforcement by future adapters"
+  ]
+}

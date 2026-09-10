@@ -1,4 +1,9 @@
 # Windows 一键部署、工作台与本机测试计划
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../ARCHITECTURE.md)、[研究记录标准](../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 目标：GitHub 下载解压后从 setup.cmd 安装或升级旧工作区；保护业务数据和本机配置，提供可撤销的命令注册；统一只读工作台与监测入口；在隔离且不发布的数据沙盒中补全测试。
 

@@ -1,0 +1,158 @@
+{
+  "owner": {
+    "schema_version": 1,
+    "owner_id": "RES-F3-RETRY",
+    "owner_type": "research",
+    "native_ref": {
+      "id_field": "research_id",
+      "id_value": "RES-F3-RETRY",
+      "path": "research/retry/research.json"
+    },
+    "memory_home": "research/retry/memory",
+    "adapter_version": 1,
+    "temporary": false,
+    "persisted": true,
+    "title": "SYNTHETIC F3 retry",
+    "fingerprint": "30126a569a80473ab8dd4f980c11d3949c56892434f7ab44bf2c8b2253cd0076",
+    "native_data": {
+      "research_id": "RES-F3-RETRY",
+      "title": "SYNTHETIC F3 retry",
+      "status": "active",
+      "claims": [],
+      "dependencies": [],
+      "sensitivity": "internal"
+    },
+    "created_at": "2026-09-09T21:02:12.154985Z",
+    "created_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    }
+  },
+  "record": {
+    "body_markdown": "# API 重试采用分段检查方法的条件说明\n\n执行者：Codex `/root/memory_review actual AI`。本次从“重试等待达到上限后，能否借用其他反馈模型的分段分析来检查边界，并据此保证稳定和最终成功？”发起公共 lexical 查询，关键词为“重试、饱和、误差、边界”，未在发现请求预填 MEM ID 或 include_refs，也未使用 SYNTHETIC/F3 标签作为关键词。实际看到候选后，再选择返回的四个固定引用并读取 full 正文。\n\n这是继 A08/A09 之后的连续上下文补充检查：我已经知道两类材料大意，不能将这次执行称为未知题盲测或语义模型质量评测。通道为词项检索；“自然语言问题”不等于产品调用了向量或语义模型。\n\n## 实际阅读与选择\n\n首次请求缺少 Scope 和 AssociationOptions 的必填字段，公共调用拒绝为 VALIDATION、消耗为 0，未进入材料读取；原失败保留。第二份请求只补齐必填字段，问题和关键词不变，返回四个 lexical 候选：水箱模型 r2、必要定义 r1、API 重试 r1、新饱和约束 r1，均 evidence_status=not-assessed。\n\n选择水箱模型是因为其摘要明确给出未饱和适用条件和新参数不可达限制；选择必要定义是为核对变量与单位；选择 API 策略以核对待采用问题本身；选择饱和输入以读清模型 r2 的新边界。组包真实返回 ok、complete=true，共四个独立记录，定义同时作为必要上下文和直接选择出现，实际有五个内容部分。我读完所有部分，没有把重复定义视为第五份独立证据。\n\nCLI 查询身份随进程关闭，因此第二次固定阅读是新查询；它根据第一次返回的固定引用读取，不声称续用了首次 query_id 或同一预算账本。\n\n## 可以有条件参考的内容\n\n可以在 API 策略分析中采用“先检查适用前提，再按动作是否触顶分段检查”的方法。水箱模型把未饱和线性段和泵触顶后的动力学分开；对应到 API，只能用这一分析次序检查等待尚未封顶与已经封顶两种情况，并分别检查成功、可重试失败、不可重试失败以及次数终止。\n\nAPI 材料给出\n\n\\[\nd_k=\\min(d_{\\max},b r^k),\\qquad b=0.2\\,\\mathrm s,\\quad r=2,\\quad d_{\\max}=3.2\\,\\mathrm s.\n\\]\n\n其中，\\(k\\) 是连续失败后的重试序号，\\(d_k\\) 是下一次等待时间；\\(b\\) 为初始等待，\\(r\\) 为无量纲倍率，\\(d_{\\max}\\) 为等待上限。采用此检查方法前，必须明确幂等或去重语义、错误分类、请求超时、最大总耗时，以及文中“总重试上限”的计数约定。给定上限本身并不包含这些保证。\n\n待执行的验证可使用成功、连续失败、不可重试失败、接近等待封顶、达到次数上限、多客户端同步重试的独立事件序列，检查终止、耗时和重复副作用。这些验证本次尚未执行，不能称为算法性能已改善。\n\n## 不能推广的内容\n\n不能把水箱比例增益 \\(K\\) 与 API 倍率 \\(r\\) 互换，也不能从水箱的误差衰减推出 API 稳定、最优吞吐或最终成功。水箱有状态方程与流量守恒，\\(K\\) 的单位为 \\(\\mathrm{m^2/s}\\)；API 只有离散失败序号和等待策略，没有服务端队列、容量、到达率或响应概率模型。\n\n本次检索得到的水箱 r2 进一步说明目标所需流量超过泵上限时，仅增大增益不能使目标可达。这个结论仅属于给定水箱参数；它提醒检查限制条件，但不能转写为 API 成功概率的定理。若要评价 API 稳定或成功率，仍须补充服务端与负载模型、响应延迟和并发策略，再做独立验证。\n\n## 保存范围\n\n拟在第二研究 RES-F3-RETRY 保存一份 analogous_to / candidate 的条件参考说明，固定本次发现的模型 r2、API r1、定义 r1 和饱和输入 r1。它增加参考判断，不复制实验、不修改四份材料、不提高可信状态；既有 A08 的旧章节导航仍保留原历史。实际保存、索引和 inspect 结果另见本 attempt 的回执。\n\n本说明只适用于 SYNTHETIC F3 合成前提，没有现实实验、科学复核或人工认可。\n",
+    "change_reason": "自然语言词项发现候选并实际固定读完后，保存当前模型r2的条件参考；未执行实验或科学复核",
+    "content_hash": "423371d166c41ff81c057b38ae880c479c1e4567a8915f604eab2668b9c55ec1",
+    "created_at": "2026-09-09T23:00:12.842885Z",
+    "created_by": {
+      "id": "Codex /root/memory_review actual AI",
+      "kind": "ai"
+    },
+    "discovery": "workspace_summary",
+    "keywords": [],
+    "kind": "association",
+    "level": null,
+    "owner_id": "RES-F3-RETRY",
+    "payload": {
+      "basis_refs": [
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 2,
+          "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+          "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+          "target_kind": "record"
+        },
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "target_kind": "record"
+        },
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+          "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+          "target_kind": "record"
+        },
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+          "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+          "target_kind": "record"
+        }
+      ],
+      "explanation": "条件采用分段检查方法；不能从水箱连续模型推导API稳定、吞吐或最终成功。",
+      "from": {
+        "locator": "",
+        "relation": "references",
+        "revision": 2,
+        "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      },
+      "missing_refs": [],
+      "relation": "analogous_to",
+      "shared_structure": "先核对适用前提，再区分动作未触顶与触顶后的边界行为；不建立同一状态方程。",
+      "status": "candidate",
+      "to": {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+        "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+        "target_kind": "record"
+      },
+      "transfer_limits": [
+        "仅在幂等/去重、错误分类、超时、总耗时与重试计数约定明确后采用检查方法。",
+        "K有流量对液位的单位，r无量纲；两者数值和动力学结论不能互换。",
+        "API缺少服务端容量、到达率、队列和响应概率模型，不保证稳定、成功或最优吞吐。",
+        "待用独立事件序列检查封顶、终止、连续失败及同步唤醒；本次未执行这些实验。"
+      ]
+    },
+    "previous_revision": null,
+    "provenance_gap": null,
+    "record_hash": "cd92874aed47cdfb48b734d1d3569221cd4b6913d6cf685161a9f34cb10bf4e7",
+    "record_id": "MEM-1c372f0d-3afe-5a4b-96fb-867eff035115",
+    "record_reason": "自然语言词项发现候选并实际固定读完后，保存当前模型r2的条件参考；未执行实验或科学复核",
+    "revision": 1,
+    "schema_version": 3,
+    "sensitivity": "internal",
+    "sources": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 2,
+        "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+        "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+        "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+        "target_kind": "record"
+      }
+    ],
+    "title": "SYNTHETIC F3 重试分段检查的条件采用（词项发现补充）",
+    "updated_at": "2026-09-09T23:00:12.842885Z",
+    "updated_by": {
+      "id": "Codex /root/memory_review actual AI",
+      "kind": "ai"
+    }
+  }
+}
+

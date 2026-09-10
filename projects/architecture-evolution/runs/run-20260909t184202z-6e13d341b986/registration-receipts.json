@@ -1,0 +1,20 @@
+[
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/.run-captures/3a578e930d614bef89e2b25cea0623ac/registration.json",
+    "run_id": "RUN-20260909T184202Z-6E13D341B986",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/.run-captures/cfabd31dc1a24da19c19c3cc14d84735/registration.json",
+    "run_id": "RUN-20260909T184202Z-6E13D341B986",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/.run-captures/b462b4e0fb224a80b3d0819666fb94e6/registration.json",
+    "run_id": "RUN-20260909T184202Z-6E13D341B986",
+    "scientific_review": "unchanged"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "actor": "assistant",
+  "origin": {
+    "fixed_ref": "definition-context.md"
+  },
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t164914z-d20a9406384a\\definition-context.md",
+  "locator": "开头至集合范围公式与变量说明；其余代码仅机械对比",
+  "coverage": "partial",
+  "observation": "范围公式、属性/证据区分、定义块补齐可从实际回读文本核对。",
+  "unread_or_missing": []
+}

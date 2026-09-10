@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "request_id": "2f11c367-b201-48d3-b3fc-2b2a45c7bfab",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex actual-AI F3 setup"
+  },
+  "owner_id": "RES-F3-SATURATION",
+  "expected_head": null,
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "saturation",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RES-F3-SATURATION",
+        "kind": "detail",
+        "title": "SYNTHETIC F3 执行器饱和的新约束",
+        "body_markdown": "",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "执行器饱和的新约束"
+        ],
+        "payload": {
+          "unit_type": "analysis",
+          "retrieval_description": {
+            "question": "执行器饱和的新约束的机制与约束",
+            "method": "读取独立合成前提并保留变量、公式和限制",
+            "key_findings": [
+              "此输入没有真实执行结果"
+            ],
+            "applicable": [
+              "本文明确的合成条件"
+            ],
+            "not_applicable": [
+              "现实系统的稳定或性能结论"
+            ],
+            "limitations": [
+              "缺少实测与科学复核"
+            ]
+          },
+          "run_ref": null,
+          "evidence_refs": [
+            {
+              "target_kind": "file",
+              "target_id": "SRC-F3-SATURATION",
+              "revision": null,
+              "sha256": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f",
+              "locator": "完整合成输入",
+              "relation": "input"
+            }
+          ],
+          "blocks": [
+            {
+              "block_id": "body",
+              "role": "methods",
+              "markdown": "# SYNTHETIC F3 新材料：执行器饱和约束\n\n这是新收到的独立合成约束输入，没有旧材料 ID、引用或关联边，不是现实实验结果。\n\n## 变量与可达性\n\n水箱模型的面积 $A=2\\,\\mathrm{m^2}$，出流系数 $c=0.1\\,\\mathrm{m^2/s}$，液位 $h$ 与目标 $h_r$ 单位为米。新给定泵上限 $q_{max}=0.15\\,\\mathrm{m^3/s}$，目标 $h_r=2\\,\\mathrm{m}$。非负泵流量必须满足 $0\\leq q\\leq q_{max}$，状态方程为 $A\\dot h=q-ch$。\n\n在目标液位维持平衡需要 $q=c h_r=0.2\\,\\mathrm{m^3/s}$，超出给定泵上限。持续饱和时，平衡液位为 $h_{sat}=q_{max}/c=1.5\\,\\mathrm{m}$，低于目标。仅增大比例增益不能提高泵的物理上限。\n\n## 阅读边界\n\n本材料给出特定合成参数下的代数约束，足以要求重新检查“未饱和”的前提。它不是线性段指数推导错误的证明，也不含真实泵、传感器或延迟数据。对其他目标与流量上限必须重新判断可达性。\n",
+              "requires_block_ids": []
+            }
+          ],
+          "figures": [],
+          "missing_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "file",
+            "target_id": "SRC-F3-SATURATION",
+            "revision": null,
+            "sha256": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f",
+            "locator": "完整合成输入",
+            "relation": "input"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

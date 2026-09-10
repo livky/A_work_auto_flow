@@ -1,0 +1,76 @@
+{
+  "request_id": "562c9380-6753-4324-b660-97d08e569eee",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex /root/retrieval_review actual AI"
+  },
+  "owner_id": "RES-F3-RETRY",
+  "expected_head": "COM-b18654cc-36f8-4cc5-9743-726c1d770d59",
+  "title": "SYNTHETIC F3 有界动作的条件参考：水箱与重试",
+  "reason": "实际阅读固定双方全文后保存导航草案；不是科学支持，人工待审",
+  "discovery": "workspace_summary",
+  "sensitivity": "internal",
+  "body_markdown": "实际 AI 阅读后判断：可参考按未受限/受限区间分别检查边界的方法；不能把水箱比例增益与重试倍率相等，也不能用连续误差衰减证明 API 稳定或最终成功。API 缺少服务端状态转移和负载模型。下一步须独立检查幂等性、错误分类、超时、次数/总耗时与同步重试情形。未执行该验证；此记录仅为 candidate 导航。",
+  "payload": {
+    "from": {
+      "revision": 1,
+      "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+      "locator": "",
+      "target_kind": "record",
+      "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+      "relation": "references"
+    },
+    "to": {
+      "revision": 1,
+      "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+      "locator": "",
+      "target_kind": "record",
+      "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+      "relation": "references"
+    },
+    "relation": "analogous_to",
+    "status": "candidate",
+    "explanation": "条件参考：对动作封顶前后分别检查边界行为。不可推广：水箱连续误差方程不能证明 API 重试的稳定、吞吐或成功保证。",
+    "shared_structure": "观测后采取调整动作，并区分动作尚未受限与已受限的状态；这一局部结构不建立相同动力学。",
+    "transfer_limits": [
+      "水箱状态是有单位的液位误差，API 状态是失败序号；没有统一状态方程，不能将 K 与 r 或其数值互换。",
+      "只有明确幂等/去重、可重试错误分类、超时和总耗时边界后，才可参考分段检查方法。",
+      "须以独立事件序列验证封顶、立即成功、连续失败、不可重试失败和同步重试；本次未运行该实验。",
+      "缺少到达率、服务能力、响应延迟与并发策略时，不推断服务端稳定或最优吞吐；导航候选不提供科学支持。"
+    ],
+    "basis_refs": [
+      {
+        "revision": 1,
+        "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+        "locator": "",
+        "target_kind": "record",
+        "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+        "relation": "references"
+      },
+      {
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "locator": "",
+        "target_kind": "record",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "relation": "references"
+      },
+      {
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "locator": "",
+        "target_kind": "record",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "relation": "references"
+      },
+      {
+        "revision": 1,
+        "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+        "locator": "",
+        "target_kind": "record",
+        "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+        "relation": "references"
+      }
+    ]
+  }
+}

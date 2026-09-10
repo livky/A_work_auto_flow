@@ -1,0 +1,11 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "public-cli",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "三个新增技术单元、事件和经验的归属及固定修订",
+  "coverage": "partial",
+  "observation": "归属 PRJ-ARCHITECTURE-EVOLUTION；未知 Run/发生时间留空；未生成 accepted 科学认可。",
+  "recorded_at": "2026-09-09T22:44:34.424353Z",
+  "capture_sha256": "c45e8ce12e9d2899ca1eae03ebd692e1134dc3b2dd9bfe513d09ff7dbe02b22e",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

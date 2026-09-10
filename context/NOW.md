@@ -1,60 +1,45 @@
 # 当前状态
 
-更新日期：2026-09-09
+更新日期：2026-09-10。本页只保留当前能力、限制与续接入口；实现细节见[架构说明](../ARCHITECTURE.md)。
 
 ## 当前实现
 
-- 2026-09-09：main 根 runs 历史记录清空；浮点研究作为长期开发例子保留，三份原根 Run 以冻结配套文件保存，仅在 `.local/examples/` 恢复原路径。发布归档排除实例并保留模板。入口：research/floating-point-summation/README.md。
+- 版本记忆已采用 v3：L1 为实验/方法/推导/分析技术单元，检索说明与完整正文块分离；`document_section` 和 `document` 独立保存章节、完整研究过程与精简研究报告，`level=null`。L4 继续是知识地图；v1/v2 历史按兼容方式读取。
+- Run 优先保存在实际所属对象内。`run-execute` / `run-register` 保存执行材料与当前指纹，L0 自动投影；不是后台捕获任意程序，也不会自动编写技术文稿。
+- 材料检索与规范记忆检索两条路径并存；共用 SQLite 文件但分表、分回执和部分策略。默认知识搜索排除 L0 正文；文稿与原始追溯使用对应模式。新记忆完整图扩展目前属于评估链路，不能推断默认 context 已自动执行。
+- 工作台提供材料关系、版本记忆、研究文稿与续接、证据查看和监测。监测需显式开启，仅生成观察和维护候选。
+- 材料查询应用已接通六类表示、逻辑/存储树、固定候选选择与组包、已有关系加深和语义维护任务包；查询复用规范记忆，未引入第二套正文存储。范围硬上限、累计预算、局部证据和事务恢复均有显式回执。当前策略及限制见[材料查询手册](../docs/MATERIAL_QUERY.md)与[运行继承状态](../docs/design/representation-query-v0.2/RUNTIME_STATUS.md)。
+- Windows 升级仍由新版源码中的 `setup.cmd --target` 更新旧工作区，保留业务对象、规范记忆、自定义 Skill 和可恢复回执。依赖/模型按配套包离线核验，当前自动模型迁移限于约定路径/名称与兼容 384 维。
+- 完整 checkout 保留浮点求和开发例子；公共 `git archive` 排除研究、项目和 Run 实例。当前工作区来源登记以固定 SHA 和显式旧路径映射支持直接回读；数值复现的准备脚本仍只在 `.local/examples/` 恢复旧布局。
 
-- 2026-09-09：新增分层系统记忆、研究文稿、对象 Run 存储及 L0 自动登记；用法见 docs/MEMORY_USAGE.md、docs/RESEARCH_RECORDING.md 和 docs/RUN_CAPTURE.md。源码交付保留测试程序与合成 fixture；本轮实际 Run、验收产物和本机来源登记保留在本地完整分支；浮点研究后来按用户要求纳入 main 作为隔离开发例子。设计文档中历史 Run 引用需要在完整本地工作区查看，不能据源码副本独立核验这些历史结果。
+当前使用入口：[记忆指南](../docs/MEMORY_USAGE.md)、[研究记录标准](../docs/RESEARCH_RECORDING.md)、[Run 捕获](../docs/RUN_CAPTURE.md)、[检索手册](../docs/RETRIEVAL.md)。
 
+## 最近完成
 
-- 2026-09-07 本批修复准备发布为 v0.1.1（发布状态以 GitHub Release 页面为准），目标包含目录工具入口修复、扩展旧工作区回归及历史附件说明；依赖/模型未变，复用 v0.1.0 已验证依赖包。最终文档修改后 17 项部署回归通过，validate 为 0 错误、0 警告。下方“尚未发布”为各批执行时快照。
+浮点研究读取与检索现场修复：补回 23 个来源 ID 和 27 个冻结历史文件的位置映射，保留原 Run/记忆字节。全文/向量索引补偿完成，完整过程 8 章可读，“浮点数”全局完整研究探索查询返回 11 项且无覆盖警告。102 项 Python、8 项组件、3 项浏览器及类型检查通过；真实 setup 预览/升级/重复/恢复保留检查通过。记录见 RUN-20260910T050158Z-028371C48C3A；人工、第二物理机与科学复核独立待审。
 
-- 2026-09-07 修正文档中四处指向 Git 排除日志/临时快照的失效链接，保留原路径并明确历史附件未分发、当前无法据附件复核；补充迁移 warning 排障说明。未关闭链接检查，未补造旧证据，仅更新框架文档，尚未发布。
-
-- 2026-09-07 补齐已有扩展目录的升级回归：共享七类业务区多层合成场景，真实 setup 预览/升级/重复升级/恢复逐项核对文件指纹和空目录；缺失入口、坏业务 JSON 与缓存排除均有反例。127 项回归、完整离线安装/升级/接收端再次打包/依赖恢复通过，保护 67 文件及 119 目录。证据 RUN-20260907T143437Z-96C331370A32（历史记录已从 main 移除，原路径：`../runs/run-20260907t143437z-96c331370a32/README.md`），后续约定见 [升级测试](../docs/UPGRADE_TESTING.md)。尚未发布，第二台物理机与真实旧目录待验收。
-
-- 2026-09-07 根据接收机反馈修复工具目录入口误报不存在：validate 原先只接受 is_file，现同时接受文件和目录，真正缺失时显示工作区根路径。修复保持工具登记与业务数据不变；新增文件/包目录/脚本目录/真实缺失回归，详细本机结果位于 .local/tool-entry-regression.txt。v0.1.0 发布包仍含旧检查，本次修复尚未发布；另一机完整验收待重试原升级命令。
-
-- 2026-09-07 根 AGENTS.md 已固化框架、依赖、模型的迁移与发布标准，包含旧数据保留、备份恢复、模型兼容边界和离线验证。本轮发布目标为 [v0.1.0](https://github.com/livky/A_work_auto_flow/releases/tag/v0.1.0)，标签绑定当前分支配套提交，附件为独立依赖 ZIP 及校验文件；下方未发布表述是前次验证时的快照，实际发布状态以 Release 页面为准。
-
-- 2026-09-07 正式框架统一为“核心算法”，现行规则、模板、CLI、导航和 Skill 去掉固定领域例名，历史记录与明确测试示例保留。新增 setup --pack-dependencies 与 --bundle：本机已验证的 Python/锁定包/Qdrant local/模型按发行清单打包，支持无系统 Python/Node 的离线安装、保留业务升级、依赖恢复及接收端再次打包。完整 125 项回归通过；真实中文路径安装、升级、再次打包和恢复通过；证据 RUN-20260907T094813Z-4EE938390289，使用 docs/DEPENDENCY_RELEASE.md。本地依赖 ZIP 已生成，尚未发布 Release，未在第二台物理机或真实业务上验收。
-
-- 2026-09-07 按用户修正将材料分类下拉框改成紧凑多选勾选项；多个大类取并集，与搜索叠加，未选分类显示全部，已有材料勾选保持。前端 8 项测试与浏览器 3 项回归通过，预构建资源已更新。
-
-- 2026-09-07 已提交半成品基线 `47809c4`。随后修复关系页勾选未参与图范围计算的问题：多选按一/两跳关联联动图、局部聚类和导出；清空恢复全图，明确聚焦时退出多选。材料列表新增大类筛选，与标题/ID 搜索叠加；跨分类保留勾选，同名材料显示 ID 区分。新增勾选/排除单元测试及跨分类浏览器回归；8 项前端测试、3 项浏览器测试和 116 项 Python 回归通过。
-
-- 2026-09-07 已完成模块化工作台与材料关系：React/TypeScript 预构建界面、版本化 API、后台任务、辐射/聚合/证据链、按需关键词/本地语义/Louvain、桥接候选及 AI 摘要与 CLI。原始证据不因展示或候选改变；缓存、布局与候选位于排除发布的 `.local/workbench`。完整七步计划保留在 docs/design/workbench-relations-plan.md，操作 docs/MATERIAL_RELATIONS.md，开发 docs/WORKBENCH_DEVELOPMENT.md；验证证据 RUN-20260907T071646Z-CE49506865C4。Windows 中文路径无 Node 启动及离线完整环境复用通过；尚未在第二台物理机或真实公司问题上验收。
-
-- 2026-09-07 已完成材料关系可视化工具调研与现有关系盘点。建议工作台增加问题辐射、主题聚合、证据链及 AI 局部关系摘要；本批仅调研，未实现图功能或新的底层存储。见 [调研建议](../research/material-relationship-view/SYNTHESIS.md)，证据 RUN-20260907T063633Z-159B86592CDD；业务有效性和交互性能待验证。
+[表示查询 v0.2](../docs/design/representation-query-v0.2/README.md)已从实施准备进入实际开发与整合验收。工作台已接入，三个AI Skill已安装；具体软件回归、实际AI使用、历史故障及待验收项分别保存于实施 Run：RUN-20260909T194710Z-3CF36B2FDD60。实施准备 Run RUN-20260909T190818Z-8ADA1DF3337B 保留为历史设计证据。
 
 
-- 2026-09-07 已增加 setup.cmd 一键 Windows 完整/基础安装、--target 原位保留升级、SHA-256 备份恢复、--register/--unregister 幂等用户命令。已在本机注册 rdwork；工作台聚合证据、模块清单、监测启停与能力检查。合成数据位于 Git/离线包排除的 .local/test-workspace，正式记录保持独立。手册 docs/SETUP_WORKBENCH.md。
-- 本批最终完整验证 102 项全部通过，无跳过；实际在线部署及离线复用、真实嵌入/OCR、自包含 cmd 升级恢复和命令注册均已验证。证据 RUN-20260907T042941Z-D9E5F49FE803；尚无另一台物理机或业务有效性验收。跨会话调度未创建，工作台持续监测需手动开启。
+根据用户后续问题，[CORE说明](../projects/architecture-evolution/design/interfaces-v0.1/CORE.md)及[专项提案](../projects/architecture-evolution/design/interfaces-v0.1/REPRESENTATION_AND_GRAPH.md)区分表示类型、实例和查询组合，补齐L0–L4/双文稿配方、经验联想、AI与确定性维护分工、关系图字段和更新触发。`RUN-20260909T184202Z-6E13D341B986`保存当时尚未实施的提案和相关文稿r3，旧版保留；其后形成v0.2契约，本轮运行接入与验证见上方实施Run。
 
-- 2026-09-07 已增加证据工作台：浏览器搜索/筛选、保存原因、来源预览、Run 输入/产物、复核历史、失效观察时间与报告依赖路径；不依赖向量/OCR。新增 evidence-monitor 单次只读监测，原子保存本机基线、事件和维护候选，重复不晋升。已安装 evidence-inspection 技能入口；定时频率尚待用户选择，未创建定时自动化。用法见 docs/EVIDENCE_VIEW_MONITOR.md。
-- 本批回归 86 项，79 通过、7 原有模型测试跳过；界面及只读 HTTP/中文路径迁移已验证。首次监测已建基线，相同内容的重复日志只提出比较候选。证据见 RUN-20260907T023756Z-035991E67BBA；完整模型环境及真实业务验收仍未完成。
+接口契约v0.1已形成[核心简版](../projects/architecture-evolution/design/interfaces-v0.1/CORE.md)、完整签名/数据结构与实施映射；所有未显式覆盖的Project默认采用Research同等explore/fine、L0–L4与总结建议。`RUN-20260909T164914Z-D20A9406384A`保存实际默认策略变化及24条分层/文稿记录的回读：两文稿均覆盖8个技术单元。quick为135项Python通过、1项既有冻结夹具失败、19项前端未运行；真实setup扩展旧工作区测试通过。页面检查受浏览器ERR_BLOCKED_BY_CLIENT限制，人工及第二台物理机验收仍待完成。
 
-- “模块”已改为核心算法，目录 core-algorithms；仅收录公司算法/模块文档定义的关键模型算法。创建命令 new-core-algorithm 要求 --source-document，旧命令同样检查；MOD-ID 和 module.json 等兼容字段保留。普通脚本默认应用代码，不自动作为核心实现。变更证据见 docs/design/core-algorithms-rename-plan.md。
+框架文档与模块影响同步已完成，记录于 `PRJ-ARCHITECTURE-EVOLUTION`，目录为 `projects/architecture-evolution/`。本轮按 docs 的声明时间、合入时间及实际代码修正 README/AGENTS、手册和 Skill；现行影响图位于该项目的 `context/MODULE_IMPACT.md`，执行 Run 为 `RUN-20260909T151004Z-A68FBA9F176D`。74 文件时间盘点及本地链接/指纹检查通过；quick 的 12 项 Python 通过、12 项前端因缺开发依赖未执行，整体 incomplete。历史 fixture 清单的三个既有指纹差异保留待追溯。
 
-- Windows x64 迁移入口已补齐：`portable.cmd pack --apply` 创建完整离线 ZIP，解压后 `portable.cmd check` 自检；含中文/空格新路径迁移及索引重建通过，47 项回归通过。说明见 docs/WINDOWS_PORTABILITY.md，证据见 docs/design/windows-portability-plan.md；尚未跨物理电脑验证。
+后续开发先按[文档与模块影响维护](../docs/DOCUMENTATION_MAINTENANCE.md)检查关联。Project 是本工作区的研发数据，公共源码包不携带该实例；发行仍保留通用维护入口。
 
-- core-algorithms、runs、research、tools 平级；project 仅可选交付聚合，旧 Run 兼容。尚未导入真实公司算法或数据。
-- 框架支持工作区内 Python、Qdrant local、多语言 MiniLM 与 OCR，正常索引/推理离线；原件先保存，索引随后增量刷新，无文件保存监听。该源码副本早期缺少运行时和模型；2026-09-07 已通过 setup 补齐并实际自检，具体边界与本批 Run 见上方。
-- 当前上下文使用 focus→investigate→wide：目标算法全文优先，代码/Run/研究/知识按角色、长度和必要性选择，支持 include/full/exclude 和持久偏好。未解决/冲突反馈可触发下一阶段，最多两次；预算和排除项保留。
-- CTX 调查链、CF 上下文反馈、Q 查询与单源反馈分别保留。候选预览最多 40 项，完整选择清单另存；缺失算法或预算不足显式报告。
-- workspace-context 与 context-maintenance 已安装为仓库 Skill，当前会话已识别；入口只引用 automation/workflows 的方法正文。
-- 历史完整副本有 46 项测试通过，含真实本地模型离线分阶段检查；后续上下文调整通过定向回归及隔离 CLI 父子链验证。该历史证据见 PLAN.md 和 docs/design/adaptive-context-review-2026-09-06.md，不能证明本副本当前具备模型能力。
-- 研发可靠性第一批已实现：结论级 claims、复核版本绑定、supports/input 跨文档失效传播、check-run/finalize-run、按 scope 筛选正式结论、doctor 与严格 verify。用法见 [证据准入手册](../docs/EVIDENCE_CONTROLS.md)，实现与验证见 RUN-20260906T140125Z-6DEFDCB569C4；尚无真实业务结论封存。
-- 本批最终 core 回归共 72 项，65 通过、7 因缺本地模型跳过；full 实测返回失败，缺 vector/OCR 且存在 skipped。index-knowledge 仍因缺 qdrant_client 退出 2；未改成其他检索配置来绕过此问题。
+## 尚未完成的验收与风险
+
+- 历史检索独立题集质量未通过，万条规模测试按此前授权暂缓；没有真实公司材料上的准确度或大规模性能承诺。
+- 实际 AI 检查、人工意见和第二台物理机验收分别记录；软件回归不能替代。历史详情见[状态台账](../docs/design/system-memory/STATUS.md)。
+- 来源、旧修订与文稿引用不自动换成新版；已进入旧聊天的内容也不会撤回。
+- 当前没有自动远程备份、通用代码影响监听器或企业连接器。文件与自然语言规则不能替代备份、实际权限和审计。
 
 ## 下一步
 
-2026-09-06 结构评审已完成，见 [工作智能体对比与改进建议](../research/agent-workspace-review/SYNTHESIS.md)。评审时基线为 49 项测试中 42 通过、7 跳过；该历史观察保留于 RUN-20260906T130218Z-252152E16BC5。第一批已针对其中的正式准入与跨研究失效缺口实施，范围见 [实施计划](../docs/design/evidence-controls-plan.md)；其他路线建议和真实业务验收仍待后续推进。
+当前用户验收入口：[本地登记与索引审计](../projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/AUDIT_REPORT.md)、[29项工作台与A01–A09检查表](../projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/HUMAN_CHECKLIST.md)。先做正式区只读检查，再用独立演示区检验写入/维护；人工结果单独追加。审计发现的历史源码指纹变化、未分发旧Run及snapshot旧解析缺口保持显式，不用索引补偿消除历史风险。
 
-1. 提供首批低敏算法文档、关键代码、历史结果、研究/PPT 路径，按维护 Skill 分批接入并核对阅读清单。
-2. 用真实问题检查召回、文档—代码一致性与上下文必要性，再调整角色和偏好；真实评估集仍为空，不宣称质量已获业务验证。
-3. 公司数据边界按治理目录执行；当前没有企业连接器或自动备份。Git 已初始化，公开仓库仅发布框架源码、规则、模板与测试，本机环境和查询历史排除。
+P0–P6首期实现和整合记录已收口，见[实施Run](../projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/README.md)。full原始596/599通过，两项已补测关闭，既有B01冻结指纹故障保留；Project双文稿r5及实际页面检查已完成。后续策略优化见[待开发计划](../待开发计划.md)。人工及第二机器验收独立待审；冻结的开发清单与v0.1基线保留设计时点。
 
-限制：AI/用户判断是否解决，程序不自动验证答案；OCR 不理解复杂图形；同一 Qdrant local 数据库串行使用；扩展不突破读取授权、不自动增加预算或撤回旧聊天内容。
+此前逐批 NOW 记录原样保存在本轮 Run 的 `baseline/NOW.md.snapshot`；docs 时间线位于 Project 的 `docs/DOCUMENT_HISTORY.md`，旧 Git 历史和未分发 Run 的缺失边界继续保留。不要把历史某批“当前/下一步/未发布”当成今天的能力状态。

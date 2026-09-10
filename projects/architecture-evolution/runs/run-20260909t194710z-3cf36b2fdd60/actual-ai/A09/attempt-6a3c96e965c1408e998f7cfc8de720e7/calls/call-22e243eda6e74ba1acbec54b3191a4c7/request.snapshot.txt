@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "request_id": "807ff369-b91e-4722-acdd-d481a7133d46",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex /root/retrieval_review actual AI"
+  },
+  "owner_id": "RES-F3-TANK",
+  "expected_head": "COM-bec66d4e-dfcd-4d7c-9b96-7e9900bef8fc",
+  "operations": [
+    {
+      "op": "put_record",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RES-F3-TANK",
+        "kind": "document",
+        "title": "SYNTHETIC F3 水箱精简报告（旧依据基线）",
+        "body_markdown": "",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "水箱"
+        ],
+        "payload": {
+          "document_type": "research_report",
+          "purpose": "SYNTHETIC F3固定双文稿维护检查",
+          "audience": "合成检查执行者",
+          "scope": "旧r1依据基线；新饱和输入尚未融合，不据此认可新参数下的结论",
+          "common_refs": [
+            {
+              "revision": 1,
+              "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+              "locator": "",
+              "target_kind": "record",
+              "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+              "relation": "references"
+            },
+            {
+              "revision": 1,
+              "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+              "locator": "",
+              "target_kind": "record",
+              "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+              "relation": "references"
+            }
+          ],
+          "section_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+              "revision": 1,
+              "sha256": "a8a611af0cbe69d15adcdcd816cc2a70309817ae205abc2cb474d7bab0a9e1c6",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        },
+        "sources": [
+          {
+            "revision": 1,
+            "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+            "relation": "references"
+          },
+          {
+            "revision": 1,
+            "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      },
+      "client_key": "baseline-report"
+    }
+  ]
+}

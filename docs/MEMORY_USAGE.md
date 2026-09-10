@@ -1,6 +1,6 @@
 # 版本记忆使用指南
 
-本指南对应 `automation/scripts/memory/api.py` 和 `memory/cli.py` 的实际入口。示例中的对象 ID、文件路径、请求 ID 和修订号需要替换为当前工作区的值；示例不是业务结论或验收记录。
+本指南按 2026-09-09 的 main 实现核对，对应 `automation/scripts/memory/api.py` 和 `memory/cli.py` 的实际入口。示例中的对象 ID、文件路径、请求 ID 和修订号需要替换为当前工作区的值；示例不是业务结论或验收记录。模块职责以 [ARCHITECTURE.md](../ARCHITECTURE.md) 为入口；修改功能时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 检查本指南、请求示例与 Skill 的同步范围。
 
 ## 1. 先理解保存的对象
 
@@ -14,11 +14,13 @@
 
 | 记录类型 | 主要内容 |
 | --- | --- |
-| `source` | L0：获准原文的受控摘录及原始定位；默认仅追溯 |
-| `detail` | L1：问题、参数、公式、计算说明、图表结果及限制；固定引用原生 Run |
+| `source` | L0 的内部来源记录：独立来源或受控摘录；Run 输入/产物由统一 L0 视图汇总，无需再复制一条 source |
+| `detail` | L1：实验、方法、推导或分析技术单元；检索说明用于发现，稳定正文块保存完整解释，实验绑定原生 Run |
 | `event` | L2：一次观察、跨 Run 决策或失败处理经过；未知时间保留未知 |
 | `experience` | L3：局部经验、适用与禁止迁移条件、失败模式 |
 | `map` | L4：对象和问题之间的结构说明 |
+| `document_section` | 独立章节，level=null；用衔接文字和固定技术块组织阅读 |
+| `document` | 完整研究过程或精简研究报告，level=null；固定有序章节、目的、读者与范围 |
 | `question` | 问题、尝试、剩余缺口与解决依据 |
 | `goal` | 当前目标、成功条件及目标变化来源 |
 | `route` | 研究路线、备选路线和限制 |
@@ -30,9 +32,11 @@
 | `feedback` | 纠错、无关、撤回或其他使用反馈 |
 | `review` | 某个 CLM 的独立复核历史；通过专用 `review` 入口保存 |
 
-完整字段以 [v2 JSON 契约](../automation/schemas/memory-v2.schema.json) 为准；[旧v1契约](../automation/schemas/memory-v1.schema.json)继续用于固定历史。新草稿默认v2，旧存储L1/L2/L3分别投影为新L2/L3/L4，历史字节与哈希不变。正文公式用可读LaTeX，并说明符号、单位与适用条件。研究默认覆盖与论文式正文标准见[分层记录标准](RESEARCH_RECORDING.md)。
+当前字段以 [v3 JSON 契约](../automation/schemas/memory-v3.schema.json) 和服务校验为准；[v2](../automation/schemas/memory-v2.schema.json)、[v1](../automation/schemas/memory-v1.schema.json) 保留兼容。新草稿默认 v3；只有未指定记录版本的旧 detail 形状，以及仍含 `map.payload.report` 的旧地图，会按 v2 解释。建议新记录明确写 `draft.schema_version: 3`，不要依赖兼容形状猜版本。CommitRequest 封套版本与记录版本相互独立，不能靠修改封套迁移正文。旧 v1 存储 L1/L2/L3 分别投影为新 L2/L3/L4，历史字节与哈希不变；v2 detail 仍读取原 `body_markdown`。正文公式用可读 LaTeX，并说明符号、单位与适用条件。研究默认覆盖与写作标准见 [分层记录标准](RESEARCH_RECORDING.md)。
 
-每轮实质研究先保存L1 `detail` 的参数、计算与结果，再用L2 `event` 记录“这次为何作出选择”，将选择写入 `payload.decision`，固定参与Run及来源；可复用条件写L3 `experience`，阶段结构写L4 `map`。跨研究不自动意味着经验。L2的 `payload.failure` 记录失败类别、实际范围、结果、不能推出的判断和重试条件；经验的 `failure_modes` 文本不能代替失败经过。说明和事件引用原Run，不重复登记实验。
+每轮实质研究先保存 L1 `detail`：`unit_type` 区分 experiment/method/derivation/analysis，`retrieval_description` 说明问题、方法、发现与适用边界，完整技术正文只写入 `blocks`，`body_markdown` 留空。实验必须固定引用实际 Run；未执行的方法、推导或分析可以令 `run_ref=null`，并交代依据或缺口。再用 L2 `event` 记录“这次为何作出选择”，将选择写入 `payload.decision`，固定参与 Run 及来源；可复用条件写 L3 `experience`，阶段结构写 L4 `map`。跨研究不自动意味着经验。L2 的 `payload.failure` 记录失败类别、实际范围、结果、不能推出的判断和重试条件；经验的 `failure_modes` 文本不能代替失败经过。说明和事件引用原 Run，不重复登记实验。
+
+Research 与 Project 默认都按上述标准记录实质工作：类型策略 explore/fine、保留 L0–L4、建议阶段总结。已有显式对象策略仍优先；这不等于后台自动生成。Project 的设计/开发正文应保存为技术单元和双文稿，只有 Run 附件时仍缺知识正文。
 
 需要构造请求时，只读 [请求示例](MEMORY_REQUESTS.md) 中当前动作的小节。常用任务可用 workspace-context 查字段与经验、context-maintenance 保存或整理、evidence-inspection 查看依据与纠错、research-loop 维护目标/路线/断点与研究总结；安装入口由 `install_workspace_skills.py` 维护，保留用户自定义 Skill。
 
@@ -92,11 +96,15 @@
 
 正式查询将 `purpose` 改为 `formal` 并补充实际 `scope`。`vector: "off"` 可显式只使用非向量通道；可选能力缺失或索引待更新会出现在返回状态中。
 
+`retrieval_mode` 默认为 `knowledge`：发现 L1 技术说明及更高层知识，v3 技术单元主要按检索说明召回，完整正文在固定引用展开时读取。查文稿或章节使用 `documents`，该模式使用全文通道并关闭向量，不能同时要求 `vector:"required"`。L0 追溯用 `trace` 并显式选择实际 ID，或用 `raw-materials` / `raw-material` 查看已登记材料。独立文稿不默认混入知识排名；三种模式都保留权限、排除和版本检查。
+
 探索查询明确提到已有主题关键词时，优先列出该主题的具体记录；匹配结论和其完整 Run 同时出现时，先展示结论，Run 仍可按 ID 或引用读取。缺少关键词的记录和其他向量结果保留为后备；没有明确主题时仍使用原多通道排序。显式选择与排除保持优先，检索位置不代表结论已经复核。当前质量评价与已知限制以[执行状态](design/system-memory/STATUS.md)为准。
 
 | 操作 | CLI 动作与请求要点 |
 | --- | --- |
-| 连贯研究报告 | `document --request 文件`，包含 `owner_id`，可用 `report_record_id` 明确选择编排；返回正文、覆盖和版本提示 |
+| 研究过程或精简报告 | `document --request 文件`，包含 `owner_id`；`document_type` 默认为 `research_process`，可选 `research_report`；用 `document_id` 和可选 `revision` 固定文稿 |
+| 文稿目录与局部阅读 | `outline` 返回章节 ID；`section-context` 带实际 `section_id`、选择清单及 `budget:{"max_chars":20000}`；返回正文、遗漏和缺失前提 |
+| 文稿变更影响 | `document-impact` 比较固定依据、变化关注和两类文稿使用的版本；只提示需复核的章节，不自动改稿 |
 | 原始记录与旧版本 | `history --request 文件`，包含 `owner_id`，可用 `offset`、`limit` 分页 |
 | 继续研究 | `resume --request 文件`，包含 `owner_id`，可带 `budget`、`selection` |
 | 准备阶段巩固 | `prepare --request 文件`，包含 `owner_id`，可带 `since_commit`、`trigger` |
@@ -111,7 +119,9 @@
 
 可读导出的 `format` 为 `markdown`、`json` 或 `html`，返回 `filename`、`content` 和固定版本清单。它不会生成另一条规范记录，也不是包含完整历史的迁移包。
 
-工作台“研究经过”读取 L4 map 中集中维护的 `report` 编排，按问题、方法、实验、讨论与结论阅读。L1正文只出现一次；L2关键决策由过渡段引用，L3经验用于讨论。没有编排时先显示缺口和原记录入口，不把存储层级清单冒充论文。AI写作、固定引用和后续更新方式见[报告编排](RESEARCH_RECORDING.md#连贯报告的编排)。
+新文稿由独立 `document` / `document_section` 编排，按问题、方法、技术单元、讨论与结论阅读；`research_process` 与 `research_report` 共用固定证据，分别维护正文。章节 `unit` 块固定 L1 修订，可选 `block_ids` 并补齐同单元必要定义；章节 `prose` 块集中写衔接与综合。读取服务只校验与组装，不调用模型临时改写。
+
+只有缺少所选独立文稿时，默认过程阅读才回退到旧 `map.payload.report`（此时 `report_record_id` 用于旧编排）；缺少 `research_report` 会报告未编排，不把旧长文稿改标签充当精简报告。独立文稿可用 `include_records:true` 附带原始记录卡，默认不重复附加。保存后检查 `document_source`、`report.complete`、`report_coverage`、`report_version_hints` 和来源问题，再实际阅读全文；完整性标记不等于结论复核或写作质量验收。AI 写作与局部更新见 [报告编排](RESEARCH_RECORDING.md#连贯报告的编排)。
 
 ## 4. 看懂回执与恢复
 

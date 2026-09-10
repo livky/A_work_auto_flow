@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "request_id": "7b181da0-96f5-4997-91ab-4212d180f9ff",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex actual-AI F3 setup"
+  },
+  "owner_id": "RES-F3-TANK",
+  "expected_head": "COM-4200728e-1f1e-40e9-83c0-0d09a28d4bcb",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "tank-section",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RES-F3-TANK",
+        "kind": "document_section",
+        "title": "SYNTHETIC F3 水箱模型完整章节",
+        "body_markdown": "",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "水箱模型完整章节"
+        ],
+        "payload": {
+          "section_key": "tank",
+          "title": "SYNTHETIC F3 水箱完整模型：定义、推导与边界",
+          "role": "methods",
+          "blocks": [
+            {
+              "type": "prose",
+              "markdown": "本章需要同时阅读变量定义与线性段推导；排除定义会留下解释缺口。",
+              "evidence_refs": []
+            },
+            {
+              "type": "unit",
+              "ref": {
+                "revision": 1,
+                "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                "locator": "",
+                "target_kind": "record",
+                "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                "relation": "references"
+              }
+            },
+            {
+              "type": "unit",
+              "ref": {
+                "revision": 1,
+                "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+                "locator": "",
+                "target_kind": "record",
+                "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+                "relation": "references"
+              }
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "file",
+            "target_id": "SRC-F3-TANK",
+            "revision": null,
+            "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+            "locator": "完整合成输入",
+            "relation": "input"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

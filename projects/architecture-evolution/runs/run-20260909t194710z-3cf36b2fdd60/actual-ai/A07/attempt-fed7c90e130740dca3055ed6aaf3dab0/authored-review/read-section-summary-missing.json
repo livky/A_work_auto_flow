@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query CLI",
+  "capture_path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A07/attempt-fed7c90e130740dca3055ed6aaf3dab0/delivered/section-summary-missing.md",
+  "locator": "实际工具呈现的完整交付投影；coverage 描述所交付内容相对于材料的覆盖",
+  "coverage": "partial",
+  "observation": "实际只交付下属单元摘要和缺口，complete=false；另实际读取原始输出前115行，候选为 needs_generation。"
+}

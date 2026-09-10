@@ -5,11 +5,15 @@ description: 在当前研发工作区回答算法问题、核对文档与实现�
 
 # 算法问答与证据扩展
 
+框架概念或实现发生变化时，按 [文档维护约定](../../../docs/DOCUMENTATION_MAINTENANCE.md) 核对受影响入口；模块职责查 [ARCHITECTURE.md](../../../ARCHITECTURE.md)，不把历史设计或旧请求示例当成当前实现。
+
 ## 按问题选择入口
 
 查询已有 Run 的一个字段，直接 `workbench.cmd memory inspect RUN-ID` 并打开返回的输入/产物定位；不为一次查看另建研究、实验或五层记录。
 
-理解研究时优先阅读当前研究文稿的L1详细说明、L2过程、L3经验和L4地图；核验关键参数/公式/结果时按固定引用展开L0。也可先用 `memory raw-materials` 指定 owner_id 列出 Run 自动登记与独立来源，再用 `memory raw-material` 按 material_id 核验原件；命令见[统一入口](../../../docs/design/L0_MATERIALS.md)。未登记文件只说明缺口；需要补入时依维护 Skill 调用 `run-register`，不能虚构旧指纹。默认search使用knowledge模式不召回L0正文，明确追溯使用 `retrieval_mode:"trace"` 并指定实际 `include_ids`/`full_ids` 或精确ID；权限、排除和预算仍有效。若缺L1，说明具体过程缺口，不把Run元数据或高层经验当成完整研究过程。
+理解研究时先读独立文稿：`memory document` 默认 research_process，精简阅读选 document_type=research_report；查目录用 outline，局部理解用其章节 ID 调用 section-context，并保留 max_chars 预算与遗漏清单。L1 已是实验/方法/推导/分析技术单元；检索说明用于发现，核验时读取固定正文块及必要定义。L2 保存事件/决策，L3 保存经验，L4 维护地图；document/document_section 的 level=null。旧 v2 detail 与 map 编排仅兼容读取，缺精简文稿不能把旧长文改标签。
+
+核验关键参数、公式和结果时按固定引用展开 L0；也可用 `memory raw-materials` 指定 owner_id 列出 Run 登记与独立来源，再用 `memory raw-material` 按 material_id 核验原件。未登记文件只说明缺口，需要补入时依维护 Skill 调用 run-register，不能虚构旧指纹。默认 search 的 knowledge 模式不召回 L0 正文；查文稿/章节用 retrieval_mode=documents，明确追溯用 trace 并指定实际 include_ids/full_ids 或精确 ID。权限、排除和预算始终有效。若缺 L1，明确过程缺口，不把 Run 元数据或高层经验当成完整研究过程。具体请求见 [记忆请求示例](../../../docs/MEMORY_REQUESTS.md)。
 
 查局部经验、失败、其他研究的可复用条件时，先用 `memory search --request 文件`。请求至少包含 `query`、`purpose:"exploration"`，按当前研究补 `owner_id`。它表示当前归属而非单对象过滤；限定范围用 `owner_types` 或材料包的 `selection.owner_ids`，明确排除用 `exclude_ids`。经验留在原 Research 也能以 `workspace_summary` 被其他获准研究发现，不必先晋升知识库。
 

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "scenario": {
+    "id": "A04",
+    "title": "完整过程与简版报告",
+    "task": "共享已保存证据，自行编写完整研究过程与简版报告，公开保存、分别回读并实际检查工作台两种文档。",
+    "human_priority": "new-feature",
+    "expectations": [
+      {
+        "id": "A04-E1",
+        "text": "两种文档独立且有序，正文真实可读"
+      },
+      {
+        "id": "A04-E2",
+        "text": "共同依据一致，简版保留关键限制"
+      },
+      {
+        "id": "A04-E3",
+        "text": "实际页面的目录、公式、图和链接可读"
+      }
+    ],
+    "initial_status": "not-run"
+  },
+  "created_at": "2026-09-09T21:38:37.417683Z",
+  "attempt_id": "attempt-4f84d6c0d8bd4b8ca9342c0c23a83787",
+  "parent_attempt": null,
+  "task": {
+    "path": "task.txt",
+    "sha256": "b013c65cf0024d54a2a762da914374f567d6a3fc4b51cfe74be6b3601deac351"
+  },
+  "template_sha256": "08e4f243c5ff6c4a4889967323e1e62af2c55c8ebc5879d78f4fcb6ddb71cb77",
+  "actor": "Codex主任务助手",
+  "model": null,
+  "context_mode": "continuous",
+  "input_environment": {
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+    "input_fingerprints": {
+      "automation/workflows/development-checks/SKILL.md": "62cc3f1a13776aab0affb0502bd53ccedbfaf0def63bf6a57a6558ea2ab4c600",
+      "automation/workflows/context-maintenance/SKILL.md": "4ccfc29f3e15ba9f7473c06d6faaa21b76ffe8b498f55db3a386881da498f273",
+      "automation/workflows/material-query/SKILL.md": "6832ec791e07be0ff858071272a6d5dea838b673a5903d7538de1f7e64273ca0",
+      "automation/schemas/memory-v3.schema.json": "de7ce77443f6aefee4725187491315fa9c29fa7d529239b9ad891f24e46167c0"
+    },
+    "model": null,
+    "context": "continuous; actual implementation discussion available",
+    "scientific_review": "not-reviewed",
+    "human_review": "pending"
+  },
+  "execution": "not-run",
+  "mechanical_checks": "not-run",
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "note": "Initial states are immutable; subsequent evidence is in uniquely named events."
+}

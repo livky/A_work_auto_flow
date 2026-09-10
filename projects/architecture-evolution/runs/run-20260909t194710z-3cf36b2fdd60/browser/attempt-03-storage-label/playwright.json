@@ -1,0 +1,204 @@
+{
+  "config": {
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "e2e/material-query.spec.ts",
+      "--grep",
+      "材料查询真实HTTP|真实预算耗尽"
+    ],
+    "configFile": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\playwright.config.ts",
+    "rootDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../../tmp/workbench-e2e.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "material-query.spec.ts",
+      "file": "material-query.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "材料查询真实HTTP组装四区、固定依据与来源映射",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 32265,
+                  "error": {
+                    "message": "TimeoutError: page.waitForResponse: Timeout 30000ms exceeded while waiting for event \"response\"",
+                    "stack": "TimeoutError: page.waitForResponse: Timeout 30000ms exceeded while waiting for event \"response\"\n    at D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:83:32",
+                    "location": {
+                      "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                      "column": 32,
+                      "line": 83
+                    },
+                    "snippet": "  81 |   page.on(\"pageerror\", (error) => errors.push(String(error)));\n  82 |   await search(page);\n> 83 |   const storageResponse = page.waitForResponse(\n     |                                ^\n  84 |     (response) =>\n  85 |       response.url().endsWith(\"/materials/structure\") &&\n  86 |       response.request().postDataJSON()?.view === \"storage\" &&"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                        "column": 32,
+                        "line": 83
+                      },
+                      "message": "TimeoutError: page.waitForResponse: Timeout 30000ms exceeded while waiting for event \"response\"\n\n  81 |   page.on(\"pageerror\", (error) => errors.push(String(error)));\n  82 |   await search(page);\n> 83 |   const storageResponse = page.waitForResponse(\n     |                                ^\n  84 |     (response) =>\n  85 |       response.url().endsWith(\"/materials/structure\") &&\n  86 |       response.request().postDataJSON()?.view === \"storage\" &&\n    at D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:83:32"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                        "column": 50,
+                        "line": 89
+                      },
+                      "message": "TimeoutError: locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('结构视图', { exact: true })\u001b[22m\n\n\n  87 |       response.request().postDataJSON()?.parent_node_id === null,\n  88 |   );\n> 89 |   await page.getByLabel(\"结构视图\", { exact: true }).selectOption(\"storage\");\n     |                                                  ^\n  90 |   const storage = await (await storageResponse).json();\n  91 |   expect(\n  92 |     storage.value.nodes.some(\n    at D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:89:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:45:51.162Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visible-page",
+                      "contentType": "text/plain",
+                      "body": "56CUCueglOWPkeW3peS9nOWPsArmnZDmlpkgwrcg6K+B5o2uIMK3IOiBlOezuwril6sK5bel5L2c5Y+wCuKWpgrmnZDmlpnmn6Xor6IK4peHCuadkOaWmeWFs+ezuwrilqQK6K+B5o2u5LiO5b2x5ZONCuKWpQrns7vnu5/orrDlv4YK4pe3CuS7u+WKoeS4juebkea1iwrmnKzmnLrlt6XkvZzljLoK5Y6f5aeL6K6w5b2V5Y+v6L+95rqvCkFJIOeglOWPkeW3peS9nOWMugril4sg5oyJ6ZyA5YiG5p6QCuWQiOaIkOa1i+ivleaymeebkiDCtyDlhajpg6jmoLfkvovkuLromZrmnoTvvIzkuI3lsZ7kuo7mraPlvI/kuJrliqHor4Hmja4KCuWIhuWxguadkOaWmSAvIOWbuuWumuS+neaNrgoK5p2Q5paZ5p+l6K+iCgrlhYjpgInmi6nojIPlm7TvvIzlho3lr7vmib7mnZDmlpnjgILlhbPogZTlu7rorq7kuI7lvoXnu7TmiqTojYnmoYjkv53nlZnni6znq4vnirbmgIHjgIIKCuadkOaWmee7k+aehArnu5PmnoTop4blm74K6YC76L6R5YiG5bGCCueZu+iusOeahOWtmOWCqOi3r+W+hArlhajlsYDojrflh4bojIPlm7QKKwpTWU5USEVUSUMgT05MWTog5ZCI5oiQ5pWw5o2uCuW9kuWxnuWvueixoQorCui3qOeglOeptue7j+mqjArlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog5rWL6K+V5LiT55So5qCh5YeG5qih5Z6LCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDph4fpm4bnoJTnqbbogZrlkIgK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOi9r+S7tuWPr+mdoOaAp+iBmuWQiArlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog5ZCI5oiQ5oql5ZGKCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDmnaXmupDlj5jljJbkuI7pmYjml6fnvJPlrZgK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOespuWPt+ivhuWIq+S4juWOn+aWh+aguOWvuQrlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog6aKE6L295LiO6YeN5aSN5a6a5L2NCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDph43lpI3mnZDmlpnkuI7ni6znq4vor4Hmja4K5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOi2heaXtumHjeivleS4jumHjeWkjeWGmeWFpQrlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog6aKE54Ot5LiO6Zu254K55ryC56e7CuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDljZXkvY3ovazmjaLkuI7miqXlkYrmlbDlrZcK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOmHh+agt+mFjee9ruS4juS4jeWPr+i+qOivhue7k+aenArlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog5p2l5rqQ5Y+Y5YyW5LiO6ZmI5pen57yT5a2Y6aqM6K+BCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDnrKblj7for4bliKvkuI7ljp/mlofmoLjlr7npqozor4EK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOmihOi9veS4jumHjeWkjeWumuS9jemqjOivgQrlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog6YeN5aSN5p2Q5paZ5LiO54us56uL6K+B5o2u6aqM6K+BCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDotoXml7bph43or5XkuI7ph43lpI3lhpnlhaXpqozor4EK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOmihOeDreS4jumbtueCuea8guenu+mqjOivgQrlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog5Y2V5L2N6L2s5o2i5LiO5oql5ZGK5pWw5a2X6aqM6K+BCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDph4fmoLfphY3nva7kuI7kuI3lj6/ovqjor4bnu5Pmnpzpqozor4EK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOWQiOaIkOebruW9leW3peWFtwrlvZLlsZ7lr7nosaEK5p+l5om+5LiO57uE6KOFCgrmn6Xor6LojIPlm7TvvJrlhajlsYDojrflh4bojIPlm7QKCumXrumimArlhbPplK7or40K6KGo6L6+5b2i5byPCuWOn+Wni+adkOaWmQrlrozmlbTnoJTnqbblhoXlrrkK55u45YWz56ug6IqC5LiO5oqA5pyv5Z2XCuWNleWFg+aRmOimgQrkuLvpopjmnZDmlpkK6aKG5Z+f5p2Q5paZCuafpeivoueUqOmAlArmjqLntKIK5q2j5byP5L2/55SoCuWuoeiuoQoK5oqA5pyv5Y2V5YWD5YWo5paH5oiW56CU56m26L+H56iL5paH56i/77yM5L+d55WZ5a6a5LmJ5LiO6ZmQ5Yi2Cgrpq5jnuqfojIPlm7TkuI7mn6Xor6LnuqbmnZ8K5YWz6IGU6KGl5YWF5LiO6aKE566XCuW8gOWni+afpeivogrpg6jliIblrozmiJAKCuWBnOatouWOn+WboO+8mmV4aGF1c3RlZAoK6YOo5YiG5YCZ6YCJ5Zug6IyD5Zu044CB5p2l5rqQ5oiW54mI5pys5LiN5ruh6Laz6ICM55yB55WlCumihOeul+a2iOiAl+S4juWbuuWumuS+neaNrgrmn6Xor6LlgJnpgInvvIgx77yJCgrlm7rlrprmn6Xor6LmnInmlYjmnJ/oh7MgMjAyNi85LzEwIDA1OjAwOjU577yI5pys5py65pe26Ze077yJCgrpg6jliIblgJnpgInlm6DojIPlm7TjgIHmnaXmupDmiJbniYjmnKzkuI3mu6HotrPogIznnIHnlaUK55u05o6l5p2Q5paZClNZTlRIRVRJQyBMMSDorrrmloflvI/ov4fnqIvorrDlvZUKCiMjIOWPr+aguOmqjOeahOWxleekuuivtOaYjiDmnKzorrDlvZXnlKjkuo7nlYzpnaLpqozor4HvvIzkuI3lo7Dnp7Dlrp7pqozlt7LmiafooYzjgIIgfCDlhoXlrrkgfCDnirbmgIEgfCB8LS0tfC0tLXwgfCDlhazlvI8gfCDlkIjmiJDlsZXnpLogfCB8IOWbuuWumuWbvueJhyB8IOWPl+aOp+ivu+WPliB8Cgrnm7TmjqXlj6/nlKggwrcg5bCa5pyq5aSN5qC4Cgrlkb3kuK3mnaXmupDkuI7lm7rlrprlvJXnlKgK5b+F6KaB5LiK5LiL5paHCuWFs+iBlOW7uuiurgrnu4Too4XmiYDpgInmnZDmlpnvvIgw77yJCuayv+aJgOmAieadkOaWmea3seWMlgrmn6XnnIvlhbPogZTlu7rorq4K5p2Q5paZ5YyFCgrpgInmi6nlgJnpgInlkI7nu4Too4XjgILov5nph4zlsIbliIbliKvmmL7npLrmraPmlofjgIHlv4XopoHkuIrkuIvmlofjgIHlhbPogZTlu7rorq7lkoznvLrlj6PjgIIKCue7tOaKpOS7u+WKoeWMhQoK5Lul5omA6YCJ5p2Q5paZ5Li65Y+Y5YyW5YWl5Y+j77yM5pW055CG5L6d6LWW5b2x5ZON44CC5a+85Ye655qE5Lu75Yqh5YyF6ZyA6KaB5a6e6ZmF6ZiF6K+75LiO5a6h5p+l5ZCO5Zue5aGr77yb55Sf5oiQ6K6h5YiS5pys6Lqr5LiN5Luj6KGo5bey5aSN5qC444CCCgrnlJ/miJDnu7TmiqTku7vliqHljIXvvIgwIOS4quW8leeUqO+8iQ=="
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\test-results\\material-query-材料查询真实HTTP组装四区、固定依据与来源映射\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\test-results\\material-query-材料查询真实HTTP组装四区、固定依据与来源映射\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                    "column": 32,
+                    "line": 83
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-7de1a56ebcd8df7dd1e8",
+          "file": "material-query.spec.ts",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "真实预算耗尽显示停止原因并保留查询范围",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2217,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:46:31.377Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-5427513d154c2d506817",
+          "file": "material-query.spec.ts",
+          "line": 203,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-09T20:45:50.275Z",
+    "duration": 50771.153999999995,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

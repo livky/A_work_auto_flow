@@ -1,0 +1,193 @@
+{
+  "search": {
+    "status": "ok",
+    "value": {
+      "query_id": "MQ-0cea9f3a-fbf9-4987-be28-8308be398b27",
+      "request_digest": "1c6b523cd3e344dd40b636f9d5c9576752244f52bc0e1cf2d1de1bde9f7c45ac",
+      "candidates": [
+        {
+          "candidate_id": "C-190d934473faf59aaa15f78b",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+              "revision": 1,
+              "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+              "locator": null
+            }
+          ],
+          "title": "SYNTHETIC F3 执行器饱和的新约束",
+          "excerpt": "问题：\n执行器饱和的新约束的机制与约束\n\n方法：\n读取独立合成前提并保留变量、公式和限制\n\n主要发现：\n- 此输入没有真实执行结果\n\n适用条件：\n- 本文明确的合成条件\n\n不适用条件：\n- 现实系统的稳定或性能结论\n\n限制：\n- 缺少实测与科学复核",
+          "channels": [
+            "identity"
+          ],
+          "score": 0.01639344262295082,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+                "revision": 1,
+                "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+                "locator": null
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "direct",
+          "hits": [
+            {
+              "channel": "identity",
+              "provider": "identity",
+              "provider_version": "1",
+              "rank": 1,
+              "raw_score": null,
+              "score_meaning": "精确身份匹配",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+                  "revision": 1,
+                  "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+                  "locator": null
+                }
+              ]
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": []
+        }
+      ],
+      "next_cursor": null,
+      "expires_at": "2026-09-09T21:29:55.089150Z",
+      "gaps": []
+    },
+    "code": null,
+    "warnings": [],
+    "consumed": {
+      "wall_ms": 46,
+      "read_bytes": 5633,
+      "output_chars": 124,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "exhausted",
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+          "revision": 1,
+          "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+          "locator": ""
+        }
+      ],
+      "owner_heads": [
+        [
+          "RES-F3-SATURATION",
+          "COM-4a163fb0-43b8-45b1-b946-50faa4d66659"
+        ]
+      ],
+      "index_watermarks": [
+        [
+          "RES-F3-SATURATION",
+          "1"
+        ]
+      ],
+      "consistency": "fixed_refs"
+    }
+  },
+  "assembly": {
+    "status": "ok",
+    "value": {
+      "packet_id": "PKT-d7f15e18-013e-43b0-90ec-bc28c529fad2",
+      "query_id": "MQ-0cea9f3a-fbf9-4987-be28-8308be398b27",
+      "definition": {
+        "key": "full",
+        "version": "1"
+      },
+      "parts": [
+        {
+          "group": "direct",
+          "heading": "SYNTHETIC F3 执行器饱和的新约束",
+          "markdown": "# SYNTHETIC F3 新材料：执行器饱和约束\n\n这是新收到的独立合成约束输入，没有旧材料 ID、引用或关联边，不是现实实验结果。\n\n## 变量与可达性\n\n水箱模型的面积 $A=2\\,\\mathrm{m^2}$，出流系数 $c=0.1\\,\\mathrm{m^2/s}$，液位 $h$ 与目标 $h_r$ 单位为米。新给定泵上限 $q_{max}=0.15\\,\\mathrm{m^3/s}$，目标 $h_r=2\\,\\mathrm{m}$。非负泵流量必须满足 $0\\leq q\\leq q_{max}$，状态方程为 $A\\dot h=q-ch$。\n\n在目标液位维持平衡需要 $q=c h_r=0.2\\,\\mathrm{m^3/s}$，超出给定泵上限。持续饱和时，平衡液位为 $h_{sat}=q_{max}/c=1.5\\,\\mathrm{m}$，低于目标。仅增大比例增益不能提高泵的物理上限。\n\n## 阅读边界\n\n本材料给出特定合成参数下的代数约束，足以要求重新检查“未饱和”的前提。它不是线性段指数推导错误的证明，也不含真实泵、传感器或延迟数据。对其他目标与流量上限必须重新判断可达性。\n",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+              "revision": 1,
+              "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+              "locator": null
+            }
+          ],
+          "selectors": [
+            "detail.blocks"
+          ],
+          "omitted": []
+        }
+      ],
+      "contributors": [
+        {
+          "kind": "record",
+          "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+          "revision": 1,
+          "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+          "locator": null
+        }
+      ],
+      "complete": true,
+      "canonical": false
+    },
+    "code": null,
+    "warnings": [],
+    "consumed": {
+      "wall_ms": 61,
+      "read_bytes": 10496,
+      "output_chars": 620,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": null,
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+          "revision": 1,
+          "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+          "locator": null
+        }
+      ],
+      "owner_heads": [
+        [
+          "RES-F3-SATURATION",
+          "COM-4a163fb0-43b8-45b1-b946-50faa4d66659"
+        ]
+      ],
+      "index_watermarks": [],
+      "consistency": "fixed_refs"
+    }
+  }
+}
+

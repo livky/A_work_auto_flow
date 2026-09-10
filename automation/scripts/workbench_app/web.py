@@ -38,6 +38,16 @@ def asset(route):
 def get(service, route, query):
     args = parse_qs(query)
     one = lambda key, default='': args.get(key, [default])[0]
+    if route == 'representations/definitions':
+        from material_query.api import dispatch
+        return dispatch(service.materials, 'definitions', {k: v[0] for k, v in args.items()})
+    if route.startswith('materials/'):
+        from material_query.api import dispatch
+        if route not in {'materials/capabilities', 'materials/definitions'}:
+            from material_query.coordinator import failure
+            from material_query.validation import QueryError
+            return failure(QueryError('VALIDATION', '此材料动作需要POST JSON'))
+        return dispatch(service.materials, route[len('materials/'):], {k: v[0] for k, v in args.items()})
     if route.startswith('memory/'):
         from memory.api import dispatch
         from memory.service import MemoryService
@@ -82,6 +92,12 @@ def get(service, route, query):
 
 
 def post(service, route, data):
+    if route == 'representations/inspect':
+        from material_query.api import dispatch
+        return dispatch(service.materials, 'inspect', data)
+    if route.startswith('materials/'):
+        from material_query.api import dispatch
+        return dispatch(service.materials, route[len('materials/'):], data)
     if route.startswith('memory/'):
         from memory.api import dispatch
         from memory.service import MemoryService

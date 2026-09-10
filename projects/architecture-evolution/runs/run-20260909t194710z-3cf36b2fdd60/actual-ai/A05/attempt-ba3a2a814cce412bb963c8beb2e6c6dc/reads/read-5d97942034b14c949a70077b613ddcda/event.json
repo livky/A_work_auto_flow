@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "public material-query maintenance-plan while one registered original is absent",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "完整阅读实际rejected/SOURCE_MISSING、value=null、source_missing停止原因、Issue after_external_change和输出0；缺失没有被当作完整材料或无影响。",
+  "recorded_at": "2026-09-09T23:04:35.653389Z",
+  "capture_sha256": "50a69e0bbfb06c573b6cc9e43b1886b9f3f095b58d5431177e583132ddb3ca01",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

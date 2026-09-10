@@ -1,0 +1,223 @@
+{
+  "owner": {
+    "schema_version": 1,
+    "owner_id": "RES-F3-TANK",
+    "owner_type": "research",
+    "native_ref": {
+      "id_field": "research_id",
+      "id_value": "RES-F3-TANK",
+      "path": "research/tank/research.json"
+    },
+    "memory_home": "research/tank/memory",
+    "adapter_version": 1,
+    "temporary": false,
+    "persisted": true,
+    "title": "SYNTHETIC F3 tank",
+    "fingerprint": "52adfc2af72e6d3ec184ea08041a271b7d349a726eabebb839b8c8a833c9f200",
+    "native_data": {
+      "research_id": "RES-F3-TANK",
+      "title": "SYNTHETIC F3 tank",
+      "status": "active",
+      "claims": [],
+      "dependencies": [],
+      "sensitivity": "internal"
+    },
+    "created_at": "2026-09-09T21:01:04.942894Z",
+    "created_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    }
+  },
+  "head": {
+    "commit_id": "COM-115ded93-31c8-46ec-b2ee-6d716c150c03",
+    "generation": 1,
+    "manifest_hash": "dd413b8d728e493e947923dfc70b27741d9eb451571ae6d66c1ab00e9a6b756d"
+  },
+  "manifest": {
+    "changed_ids": [
+      "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a"
+    ],
+    "commit_id": "COM-115ded93-31c8-46ec-b2ee-6d716c150c03",
+    "generation": 1,
+    "index_pending": {
+      "fts": true,
+      "generation": 1,
+      "vector": true
+    },
+    "owner_id": "RES-F3-TANK",
+    "parent_commit_id": null,
+    "parent_manifest_hash": null,
+    "pointers": {
+      "checkpoint": null,
+      "goal": null,
+      "policy": null
+    },
+    "record_heads": {
+      "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a": {
+        "commit_id": "COM-115ded93-31c8-46ec-b2ee-6d716c150c03",
+        "path": "commits/COM-115ded93-31c8-46ec-b2ee-6d716c150c03/records/MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a.json",
+        "record_hash": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "revision": 1
+      }
+    },
+    "request_ledger": {
+      "e8b366e4-0002-4126-aa29-15e86045e849": {
+        "commit_id": "COM-115ded93-31c8-46ec-b2ee-6d716c150c03",
+        "receipt_hash": "4fda9db9ca4cc40b5a05316952f385028248ee2b7371fb71521f5effd2751c0a",
+        "request_hash": "d85f11b67fcea9718f0128b5f6f38dfc9133fa96ce026ab54b72b018e0daba9c"
+      }
+    },
+    "schema_version": 1,
+    "source_checks": [
+      {
+        "kind": "owner_access",
+        "owner_id": "RES-F3-TANK"
+      },
+      {
+        "hash": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+        "kind": "file",
+        "ref": {
+          "locator": "完整合成输入",
+          "relation": "input",
+          "revision": null,
+          "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+          "target_id": "SRC-F3-TANK",
+          "target_kind": "file"
+        }
+      }
+    ]
+  },
+  "records": {
+    "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a": {
+      "body_markdown": "",
+      "change_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+      "content_hash": "cd5734f455619944ab212df1481de905501591758e356a19df38c11a1fcca75f",
+      "created_at": "2026-09-09T21:01:04.976462Z",
+      "created_by": {
+        "id": "Codex actual-AI F3 setup",
+        "kind": "ai"
+      },
+      "discovery": "workspace_summary",
+      "keywords": [
+        "SYNTHETIC",
+        "F3",
+        "水箱必要变量定义"
+      ],
+      "kind": "detail",
+      "level": "L1",
+      "owner_id": "RES-F3-TANK",
+      "payload": {
+        "blocks": [
+          {
+            "block_id": "definitions",
+            "markdown": "## 必要变量与单位\n\n设水箱横截面积 $A=2\\,\\mathrm{m^2}$，液位 $h(t)$ 与常值目标 $h_r$ 的单位为 $\\mathrm{m}$，时间 $t$ 单位为 $\\mathrm{s}$。入流量 $q(t)$ 单位为 $\\mathrm{m^3/s}$；出流量采用线性假设 $q_{out}=c h$，其中 $c=0.1\\,\\mathrm{m^2/s}$。误差定义为 $e=h_r-h$。比例增益 $K\\geq0$ 的单位为 $\\mathrm{m^2/s}$，使 $K e$ 与流量同量纲。$q_c$ 是未限幅命令，$q_{max}>0$ 是泵的流量上限，二者单位均为 $\\mathrm{m^3/s}$。\n\n操作函数 $\\operatorname{clip}(x,0,q_{max})=\\min(q_{max},\\max(0,x))$。初值 $h(0)=h_0\\geq0$。传感器、泵在此材料中假设连续、无延迟；未加入噪声、泄漏变化或积分控制。\n",
+            "requires_block_ids": [],
+            "role": "definitions"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "locator": "完整合成输入",
+            "relation": "input",
+            "revision": null,
+            "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+            "target_id": "SRC-F3-TANK",
+            "target_kind": "file"
+          }
+        ],
+        "figures": [],
+        "missing_refs": [],
+        "retrieval_description": {
+          "applicable": [
+            "同一水箱合成前提"
+          ],
+          "key_findings": [
+            "仅建立合成模型的变量字典"
+          ],
+          "limitations": [
+            "没有现实参数辨识"
+          ],
+          "method": "固定变量符号、单位与理想化前提",
+          "not_applicable": [
+            "不同单位或物理机制"
+          ],
+          "question": "水箱模型采用哪些变量和单位"
+        },
+        "run_ref": null,
+        "unit_type": "analysis"
+      },
+      "previous_revision": null,
+      "provenance_gap": null,
+      "record_hash": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+      "record_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+      "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+      "revision": 1,
+      "schema_version": 3,
+      "sensitivity": "internal",
+      "sources": [
+        {
+          "locator": "完整合成输入",
+          "relation": "input",
+          "revision": null,
+          "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+          "target_id": "SRC-F3-TANK",
+          "target_kind": "file"
+        }
+      ],
+      "title": "SYNTHETIC F3 水箱必要变量定义",
+      "updated_at": "2026-09-09T21:01:04.976462Z",
+      "updated_by": {
+        "id": "Codex actual-AI F3 setup",
+        "kind": "ai"
+      }
+    }
+  },
+  "policy": {
+    "values": {
+      "mode": "explore",
+      "retain": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "granularity": "fine",
+      "auto_summary": true,
+      "discovery": "owner_only",
+      "auto_deepen": false,
+      "checkpoint": true
+    },
+    "sources": {
+      "mode": "type",
+      "retain": "type",
+      "granularity": "type",
+      "auto_summary": "type",
+      "discovery": "workspace",
+      "auto_deepen": "workspace",
+      "checkpoint": "workspace"
+    }
+  },
+  "owner_id": "RES-F3-TANK",
+  "generation": 1,
+  "index_status": "pending",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "pending",
+    "indexed_generation": 1,
+    "vector_generation": null,
+    "target_generation": 1,
+    "encoder_version": null,
+    "collection": null,
+    "error": {
+      "code": "CAPABILITY_UNAVAILABLE",
+      "details": {},
+      "errors": [],
+      "message": "未配置本地向量后端"
+    }
+  },
+  "claim_states": {},
+  "omitted": [],
+  "warnings": []
+}
+

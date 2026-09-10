@@ -1,0 +1,33 @@
+{
+  "changed_refs": [
+    {
+      "revision": 1,
+      "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+      "locator": "",
+      "kind": "record",
+      "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef"
+    }
+  ],
+  "scope": {
+    "owner_ids": [
+      "RES-F3-TANK",
+      "RES-F3-SATURATION"
+    ],
+    "levels": null,
+    "kinds": [
+      "detail"
+    ],
+    "roles": null,
+    "outcomes": null,
+    "review_states": null,
+    "validities": null,
+    "include_unknown": false,
+    "excluded_refs": [],
+    "excluded_owner_ids": [],
+    "recorded_from": null,
+    "recorded_before": null,
+    "include_refs": []
+  },
+  "strategy": "dependency-review",
+  "strategy_version": "1"
+}

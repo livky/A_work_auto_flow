@@ -1,0 +1,8 @@
+{
+  "command": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "refresh-index"
+  ],
+  "exit_code": 0
+}

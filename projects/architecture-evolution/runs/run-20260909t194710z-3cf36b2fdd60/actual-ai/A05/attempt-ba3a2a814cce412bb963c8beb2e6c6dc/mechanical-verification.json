@@ -1,0 +1,19 @@
+{
+  "scope": "A05 isolated copied canonical files only",
+  "canonical_file_count": 55,
+  "after_retain_apply_identical": true,
+  "after_missing_restore_identical": true,
+  "changed_paths": [],
+  "public_owner_inspection_identical": true,
+  "restored_status": "partial",
+  "restored_warnings": [
+    "尚未执行语义判断；初始动作全部为defer",
+    "未调用语义向量、模型或未登记旧Run来源；不能据此声称覆盖全部影响"
+  ],
+  "restored_context_count": 5,
+  "restored_context_equals_fully_read_plan": true,
+  "restored_item_refs_equal": true,
+  "new_plan_id": "MP-bb08320e-9c81-4014-90d1-edee9bc3d07d",
+  "restored_plan_id": "MP-47545906-7308-4f6c-b8ed-b62be81a1251",
+  "limits": "Two local audit plans and application receipt remain; no canonical knowledge content was duplicated. Original F3 global HEAD is not an invariant across other agents."
+}

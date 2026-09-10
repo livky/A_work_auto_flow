@@ -18,6 +18,35 @@ class EvidenceTests(unittest.TestCase):
     put = fixture.RetrievalTests.put
     tearDown = fixture.RetrievalTests.tearDown
 
+    def test_fixed_source_relocation_preserves_history_and_rejects_unsafe_mappings(self):
+        """A moved file stays usable without rewriting an immutable old Run."""
+        target = 'runs/old place/results.txt'
+        current = self.put('research/迁移 示例/runs/old place/results.txt', 'frozen result')
+        entry = {'source_id': 'SRC-MOVED', 'path': current.relative_to(self.root).as_posix(),
+                 'relocated_from': target, 'sha256': e.sha256(current), 'enabled': True}
+        registry = self.root / 'retrieval/sources.json'
+        def register(items):
+            self.put('retrieval/sources.json', json.dumps({'sources': items}))
+        register([entry])
+        self.assertEqual(e.reference_path(self.root, target), current.resolve())
+        self.assertFalse((self.root / target).exists())
+        for bad in ({**entry, 'enabled': False}, {**entry, 'sha256': '0' * 64},
+                    {**entry, 'sha256': None}, {**entry, 'sensitivity': 'restricted'}):
+            with self.subTest(mapping=bad):
+                register([bad])
+                with self.assertRaises(ValueError):
+                    e.reference_path(self.root, target)
+        register([entry, {**entry, 'source_id': 'DUPLICATE'}])
+        with self.assertRaises(ValueError):
+            e.reference_path(self.root, target)
+        # A separate denial of the actual destination overrides the alias.
+        register([entry, {'path': entry['path'], 'enabled': False}])
+        with self.assertRaises(ValueError):
+            e.reference_path(self.root, target)
+        register([entry])
+        self.put(target, 'a later original must take precedence')
+        self.assertEqual(e.reference_path(self.root, target), (self.root / target).resolve())
+
     def setUp(self):
         fixture.RetrievalTests.setUp(self)
         self.put("workspace.json", '{"required_paths": []}')

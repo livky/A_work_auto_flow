@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "checked_at": "2026-09-09T21:40:06.485090+00:00",
+  "reviewer": "AI /root/memory_review",
+  "status": "passed_with_release_conditions",
+  "scope": "Read-only working-tree release inventory, upgrade allowlist, public baseline, build fingerprints and unchanged Python/model boundary. No release artifact or upgrade execution.",
+  "environment": {
+    "platform": "Windows-11-10.0.22631-SP0",
+    "python": "3.12.10",
+    "baseline_git_commit": "647d7862331e283439d06d42ec01d3882a32d163",
+    "working_tree_has_uncommitted_changes": true
+  },
+  "inventory": {
+    "framework_files": 427,
+    "seed_files": 37,
+    "query_runtime_files": [
+      "automation/scripts/material_query/__init__.py",
+      "automation/scripts/material_query/api.py",
+      "automation/scripts/material_query/assembly.py",
+      "automation/scripts/material_query/associations.py",
+      "automation/scripts/material_query/budget.py",
+      "automation/scripts/material_query/cli.py",
+      "automation/scripts/material_query/contracts.py",
+      "automation/scripts/material_query/coordinator.py",
+      "automation/scripts/material_query/deepening.py",
+      "automation/scripts/material_query/definitions.py",
+      "automation/scripts/material_query/evidence.py",
+      "automation/scripts/material_query/foundation.py",
+      "automation/scripts/material_query/generate_types.py",
+      "automation/scripts/material_query/legacy_adapter.py",
+      "automation/scripts/material_query/maintenance.py",
+      "automation/scripts/material_query/reader.py",
+      "automation/scripts/material_query/representations.py",
+      "automation/scripts/material_query/state.py",
+      "automation/scripts/material_query/structure.py",
+      "automation/scripts/material_query/validation.py",
+      "automation/scripts/material_query/wire.py",
+      "automation/scripts/material_query/writer.py"
+    ],
+    "query_runtime_count": 22,
+    "frontend_query_files": [
+      "automation/frontend/src/MaterialQuery.test.tsx",
+      "automation/frontend/src/MaterialQuery.tsx",
+      "automation/frontend/src/generated/material-query.ts",
+      "automation/frontend/src/material-query.css"
+    ],
+    "public_baseline_files": 15,
+    "required_paths_checked": 50,
+    "missing_required": [],
+    "unexpected_private_payload_paths": [],
+    "seed_only_skill_entries": [
+      ".agents/skills/material-query/SKILL.md",
+      ".agents/skills/association-exploration/SKILL.md",
+      ".agents/skills/semantic-maintenance/SKILL.md"
+    ]
+  },
+  "public_source_rules": {
+    "git_attribute_observations": [
+      "projects/architecture-evolution: export-ignore: set",
+      "projects/architecture-evolution/project.json: export-ignore: unspecified",
+      "research/floating-point-summation: export-ignore: set",
+      "runs/run-20260909t194710z-3cf36b2fdd60: export-ignore: set",
+      "docs/design/representation-query-v0.2/RUNTIME_STATUS.md: export-ignore: unspecified",
+      "docs/design/representation-query-v0.2/baseline-v0.1: export-ignore: unspecified",
+      "automation/scripts/material_query: export-ignore: unspecified",
+      "automation/schemas/material-query.schema.json: export-ignore: unspecified",
+      "automation/frontend/src/generated/material-query.ts: export-ignore: unspecified",
+      "automation/ui/workbench-assets: export-ignore: unspecified",
+      "automation/workflows/material-query: export-ignore: unspecified",
+      "automation/workflows/association-exploration: export-ignore: unspecified",
+      "automation/workflows/semantic-maintenance: export-ignore: unspecified"
+    ],
+    "local_plan_git_ignored": true,
+    "tracked_runtime_cache_or_local_files": [],
+    "actual_final_source_archive_checked": false
+  },
+  "assets": {
+    "sources_checked": 44,
+    "files_checked": 65,
+    "mismatch_paths": [],
+    "combined_source_fingerprint_matches": true
+  },
+  "generated_contracts": {
+    "command": ".\\automation\\python.ps1 automation/scripts/material_query/generate_types.py --check",
+    "exit_code": 0,
+    "status": "passed",
+    "changed": []
+  },
+  "inheritance": {
+    "command": ".\\automation\\python.ps1 docs/design/representation-query-v0.2/baseline-v0.1/check_inheritance.py",
+    "exit_code": 0,
+    "status": "passed",
+    "scope": "inheritance identifiers, obligations, declared-copy fingerprints and local links only",
+    "methods": 43,
+    "groups": 13,
+    "acceptance": 26,
+    "q_cases": 74,
+    "public_and_original_fingerprints_checked": 12,
+    "errors": [],
+    "runtime_method_map_count": 43,
+    "runtime_unsupported_placeholders": {},
+    "maintenance_status_runtime_hook": "delegated:maintenance.status",
+    "maintenance_status_test_ids": [
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_unreviewed_plan_survives_restart_and_status_is_strictly_read_only",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_applied_plan_reports_real_commit_fixed_changes_and_live_index_pending",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_partial_cross_owner_failure_is_observed_without_resuming_second_owner",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_missing_local_receipt_uses_canonical_ledger_without_repairing_files",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_forged_local_commit_receipt_is_not_trusted",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_source_revocation_after_restart_rejects_status_without_leaking_receipts",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_new_context_ceiling_cannot_read_old_plan_owner_body",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_zero_budget_cancellation_and_active_query_do_not_reset_the_ledger",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_unknown_plan_and_unknown_request_fields_are_rejected",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_later_head_change_keeps_verified_old_commit_but_marks_basis_stale",
+      "test_material_maintenance_status.MaterialMaintenanceStatusTests.test_review_status_is_unknown_when_pending_then_reads_real_retraction"
+    ]
+  },
+  "dependency_baseline": {
+    "basis": "The saved initial git status has no Python-lock/model-manifest changes; current HEAD remains 647d786. Byte comparison is against that existing commit, not a newly captured pre-task copy.",
+    "files": [
+      {
+        "path": "services/qdrant/requirements.lock.txt",
+        "current_sha256": "5bc0ebab661be8031755b4852953ae9dc054f451ab18def291f5eed078d3d1e4",
+        "baseline_commit_sha256": "5bc0ebab661be8031755b4852953ae9dc054f451ab18def291f5eed078d3d1e4",
+        "byte_equal_to_commit": true,
+        "same_text_after_newline_normalization": true
+      },
+      {
+        "path": "services/qdrant/model-manifest.json",
+        "current_sha256": "8bd7a882766c881dd29766c89e7bacfba32deb98308b5d69cee4b3e453c5476f",
+        "baseline_commit_sha256": "8bd7a882766c881dd29766c89e7bacfba32deb98308b5d69cee4b3e453c5476f",
+        "byte_equal_to_commit": true,
+        "same_text_after_newline_normalization": true
+      },
+      {
+        "path": "automation/frontend/package-lock.json",
+        "current_sha256": "3d0ae5ed12b1e54bc636f95616cbfdba6e7ce8f9abc5d7e2c92d03f76994982c",
+        "baseline_commit_sha256": "45be5748ee1968823c3b1280e6550ac055a6474f9d33c56ed049e70576c6b8d4",
+        "byte_equal_to_commit": false,
+        "same_text_after_newline_normalization": false
+      }
+    ],
+    "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "model_files_checked": 8,
+    "model_mismatch_files": [],
+    "frontend_dev_dependency_changes": [
+      {
+        "name": "@types/node",
+        "version": "22.10.2"
+      },
+      {
+        "name": "undici-types",
+        "version": "6.20.0"
+      }
+    ],
+    "frontend_runtime_dependencies_changed": false
+  },
+  "preserved_plan_review": {
+    "fixture": "automation/tests/upgrade_fixture.py",
+    "creation": "Actual material_query.api.dispatch maintenance-plan with unreviewed synthetic records",
+    "protected_path": ".local/material-query/plans",
+    "protection": "All plan files enter the shared SHA-256 protection list; all plan directories enter existence checks.",
+    "actual_setup_executed_by_this_review": false,
+    "actual_setup_owner": "Parent integration task"
+  },
+  "findings": [
+    {
+      "id": "PORT-01",
+      "status": "resolved",
+      "finding": "Public RUNTIME_STATUS initially retained unsupported durable-maintenance-status.",
+      "resolution": "Frontier updated RUNTIME_STATUS and inheritance-map; reread confirms delegated:maintenance.status with 11 real regression test IDs."
+    },
+    {
+      "id": "PORT-02",
+      "status": "release_condition",
+      "finding": "Current local retrieval/sources.json contains 22 registrations; committed public template contains zero. seed_files includes this path for new installations.",
+      "required_action": "Preserve the existing business registrations; never clear them for release. Prepare any future public source from a controlled empty template or clean source. Current seed enumeration is not a sanitizing release builder; existing target registry remains seed-only. No installer expansion belongs to this review.",
+      "preexisting_in_initial_status": true
+    }
+  ],
+  "limitations": [
+    "No final pushed source commit, public source ZIP, dependency ZIP or release publication was produced or inspected.",
+    "No actual setup.cmd, offline dependency installation, second-device acceptance or full regression was executed by this read-only review; parent integration owns those results.",
+    "Generated TypeScript under automation/frontend/src/generated is controlled source, not a business cache; exclusion checks use specific cache paths.",
+    "Inventory and fingerprints apply only to the recorded working-tree inputs; subsequent changes require affected checks again.",
+    "Static 43-method mapping does not establish complete original protocol conformance, semantic correctness, actual AI review or scientific validity."
+  ],
+  "inputs": [
+    {
+      "path": ".agents/skills/association-exploration/SKILL.md",
+      "sha256": "4d2ed7c2bac82422983715b9ef99ce3ecb3e40f4715cd1a954797a27c8f484a8"
+    },
+    {
+      "path": ".agents/skills/material-query/SKILL.md",
+      "sha256": "e1b5bfc629afa71a4abd85ffb04d92075c0d3338d674ae9a3578972900f42339"
+    },
+    {
+      "path": ".agents/skills/semantic-maintenance/SKILL.md",
+      "sha256": "d5e5268a7a1786243b69679e1c9056d8026cc4d6490e88038873d16b10cd959a"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "e9dd37c0a4c59eb0f1c6e989ebc4bdbc7162d94482237f52a478a41a1cef3c7f"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "8122f218c5ee553fb00de2dae1b96cba2008bd4742ec4259bb6dce066fa73324"
+    },
+    {
+      "path": "automation/frontend/package-lock.json",
+      "sha256": "3d0ae5ed12b1e54bc636f95616cbfdba6e7ce8f9abc5d7e2c92d03f76994982c"
+    },
+    {
+      "path": "automation/frontend/package.json",
+      "sha256": "3cc5bd88de980d73785a76c52d81ca519aa66b42fd752452c2abdc054b8a0ea3"
+    },
+    {
+      "path": "automation/frontend/src/generated/material-query.ts",
+      "sha256": "ccb09693f61f7f6c850909feb855ef3695593dc6cba6c2e10618fc9766d2e1ba"
+    },
+    {
+      "path": "automation/schemas/material-query.schema.json",
+      "sha256": "1c67748a60e915cd80183dd4b47ae16f68b85703679cb5640facf3965581f0cb"
+    },
+    {
+      "path": "automation/scripts/deployment.py",
+      "sha256": "329cc1fe4444609127668adaaad037ec2bdceeec4bb32f58ce482e310683a283"
+    },
+    {
+      "path": "automation/scripts/install_workspace_skills.py",
+      "sha256": "18fd51df76c74fc8e9489f083d4821ade2661e3cece1acd44a228028e6536bd9"
+    },
+    {
+      "path": "automation/scripts/material_query/__init__.py",
+      "sha256": "6e083c786c8d6914bff9cd380f793a943f7f1255f62cc8ca01c90e0bef84a01c"
+    },
+    {
+      "path": "automation/scripts/material_query/api.py",
+      "sha256": "a0cc718650bf4a45e0637067e3195b2c670d1c8acd6506531a621eb7eca33b78"
+    },
+    {
+      "path": "automation/scripts/material_query/assembly.py",
+      "sha256": "67e7224c8dbc524890f61b40d1cc63d3beccbd297b070befde8b1553a1e0fd44"
+    },
+    {
+      "path": "automation/scripts/material_query/associations.py",
+      "sha256": "eb93675387ea7d1562a5bebd0e0f2ee0badbf58750d8af63a781cd540015a856"
+    },
+    {
+      "path": "automation/scripts/material_query/budget.py",
+      "sha256": "08af22e53c5d330911d597bf238a80a1c5dc80e6391a6033a50719d9d1cf4a50"
+    },
+    {
+      "path": "automation/scripts/material_query/cli.py",
+      "sha256": "c5ac7646ea766721bad2f6c7d70ae9cfb757fca64b0957bdc26821c520a065a5"
+    },
+    {
+      "path": "automation/scripts/material_query/contracts.py",
+      "sha256": "80488421866dc385ff92ae7cab0576d8fb6aeb775e5a4c9c90dde835dbf48de2"
+    },
+    {
+      "path": "automation/scripts/material_query/coordinator.py",
+      "sha256": "47a41bb7408bf9cfce2084511f4e2e74542ba4f6d081268977e89a0d56dd8e31"
+    },
+    {
+      "path": "automation/scripts/material_query/deepening.py",
+      "sha256": "d22cdbf10e508f3b524517c693879bd4f3de422ec8534f0aa356a6a1fbf0c43f"
+    },
+    {
+      "path": "automation/scripts/material_query/definitions.py",
+      "sha256": "a13d36ef0aff774be8c6e9ee2544e61685f9f5da9d8ab7761041d853996a1208"
+    },
+    {
+      "path": "automation/scripts/material_query/evidence.py",
+      "sha256": "75805244fe8e71dda466528a30e6b313418b974bdc1c356e13235026958214e7"
+    },
+    {
+      "path": "automation/scripts/material_query/foundation.py",
+      "sha256": "c86ae1831dddcfffb1767cc280874551b74e31737957e6812e6e8efc1f781e34"
+    },
+    {
+      "path": "automation/scripts/material_query/generate_types.py",
+      "sha256": "ed15dcdbe26984bbee1e626f4cc87186d7021ef2801b4eef71a9a34413fbbd62"
+    },
+    {
+      "path": "automation/scripts/material_query/legacy_adapter.py",
+      "sha256": "32f4682d27ca40d16bbb5204fa8470e06becb20d489720b46fc1237d38eba74a"
+    },
+    {
+      "path": "automation/scripts/material_query/maintenance.py",
+      "sha256": "9d57cd431cf2f8f618ea381cd9ee3e5fd17573d303f81eac8a92dee785ef54c7"
+    },
+    {
+      "path": "automation/scripts/material_query/reader.py",
+      "sha256": "be35da67d32e519091a6481bc65341d3e78d3e980a32316bc015b07c909abcbe"
+    },
+    {
+      "path": "automation/scripts/material_query/representations.py",
+      "sha256": "01902beeec4737bfaaa5ed1dedde01bbc1e4908d3307915ea847f726b2bea86b"
+    },
+    {
+      "path": "automation/scripts/material_query/state.py",
+      "sha256": "29a61e1adc4764addf8bb93d30fb502baeea9a9bf49d512288982fbd8610897f"
+    },
+    {
+      "path": "automation/scripts/material_query/structure.py",
+      "sha256": "2ce1a09f5e5f02ea00c43f8e751f134e8daf0a8f8522db3724bcafdfb95fa63b"
+    },
+    {
+      "path": "automation/scripts/material_query/validation.py",
+      "sha256": "d3ad15ed025ab3c676eb1351504c02eab7991556d913be6ac66e0c2cd0c82453"
+    },
+    {
+      "path": "automation/scripts/material_query/wire.py",
+      "sha256": "9bb1054f8021e27e5122352b74c120b43a370485d4aabe05b9b11f93b72b5571"
+    },
+    {
+      "path": "automation/scripts/material_query/writer.py",
+      "sha256": "89f5405306c63e563f709e39d69f1cb2b02700bb0eedf57ef2a9aa11730716c9"
+    },
+    {
+      "path": "automation/setup.ps1",
+      "sha256": "6b523df4e654106285e43488151aa8966992c416498f3c7d779bb1e9f09a9be0"
+    },
+    {
+      "path": "automation/tests/test_deployment_workbench.py",
+      "sha256": "393b01ec58b58973c9cc0bbf733c5ed978f720a39913ae1e845a9cf9301657ca"
+    },
+    {
+      "path": "automation/tests/upgrade_fixture.py",
+      "sha256": "dbc9f73f0a2d53b991a886cdb2f4e7da3eda98593c27eccdb6fa056ed5e010f4"
+    },
+    {
+      "path": "automation/ui/workbench-assets/asset-manifest.json",
+      "sha256": "614b5849c0f10fac7637427a1ff127eb51f369a90152f0c65011fbc3e367567b"
+    },
+    {
+      "path": "automation/workflows/association-exploration/SKILL.md",
+      "sha256": "a20782780616c28f767c49db84f004f295015210b4d46b29f81fe864eaa7ee8d"
+    },
+    {
+      "path": "automation/workflows/material-query/SKILL.md",
+      "sha256": "6832ec791e07be0ff858071272a6d5dea838b673a5903d7538de1f7e64273ca0"
+    },
+    {
+      "path": "automation/workflows/semantic-maintenance/SKILL.md",
+      "sha256": "c6dc4dd876d2af3261b3ce346fd92a4cb54857393ec19bb532b9ff0e86097bec"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/RUNTIME_STATUS.md",
+      "sha256": "9fc299cb31b2b4290f81043333a5a969164a854b0083d3c1bb3e7795fd49a61f"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/baseline-v0.1/source-manifest.json",
+      "sha256": "41d7833485ac383a968a0706d5980b11b1434f3b18f946e718fc1b07eb7f2979"
+    },
+    {
+      "path": "docs/design/representation-query-v0.2/inheritance-map.json",
+      "sha256": "c10d2f4473eda59c5521217e72b6b54ce88725b0c5774a0432351ed06f173e12"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/baseline-fingerprints.json",
+      "sha256": "5ceac9c201aa43461ebaf2db69760e3c89e02a441ddef685a2ae704cdc613a04"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/baseline-git-status.txt",
+      "sha256": "4a1edcdb9fdd4b7df53f8bcc34c9b3f91e307ee854dccd08d61a19a032e6107b"
+    },
+    {
+      "path": "services/qdrant/model-manifest.json",
+      "sha256": "8bd7a882766c881dd29766c89e7bacfba32deb98308b5d69cee4b3e453c5476f"
+    },
+    {
+      "path": "services/qdrant/requirements.lock.txt",
+      "sha256": "5bc0ebab661be8031755b4852953ae9dc054f451ab18def291f5eed078d3d1e4"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "owner": {
+    "schema_version": 1,
+    "owner_id": "RES-F3-TANK",
+    "owner_type": "research",
+    "native_ref": {
+      "id_field": "research_id",
+      "id_value": "RES-F3-TANK",
+      "path": "research/tank/research.json"
+    },
+    "memory_home": "research/tank/memory",
+    "adapter_version": 1,
+    "temporary": false,
+    "persisted": true,
+    "title": "SYNTHETIC F3 tank",
+    "fingerprint": "52adfc2af72e6d3ec184ea08041a271b7d349a726eabebb839b8c8a833c9f200",
+    "native_data": {
+      "research_id": "RES-F3-TANK",
+      "title": "SYNTHETIC F3 tank",
+      "status": "active",
+      "claims": [],
+      "dependencies": [],
+      "sensitivity": "internal"
+    },
+    "created_at": "2026-09-09T21:01:04.942894Z",
+    "created_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    }
+  },
+  "record": {
+    "body_markdown": "",
+    "change_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+    "content_hash": "33159a663977dbdc5aeb48761c469cbce037fed21e7c9d07f8a27ee75dc7e411",
+    "created_at": "2026-09-09T21:16:41.903848Z",
+    "created_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    },
+    "discovery": "workspace_summary",
+    "keywords": [
+      "SYNTHETIC",
+      "F3",
+      "水箱"
+    ],
+    "kind": "document_section",
+    "level": null,
+    "owner_id": "RES-F3-TANK",
+    "payload": {
+      "blocks": [
+        {
+          "evidence_refs": [
+            {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+              "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+              "target_kind": "record"
+            },
+            {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+              "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+              "target_kind": "record"
+            }
+          ],
+          "markdown": "旧r1依据仅说明：在给定连续、无延迟且全过程未饱和的合成模型中，液位误差指数衰减。该结论不能推广到饱和泵或现实系统；尚需检查目标所需流量与泵容量。新输入尚未融合到这份显式基线，本文不确认新参数下可达。",
+          "type": "prose"
+        }
+      ],
+      "missing_refs": [],
+      "role": "conclusion",
+      "section_key": "brief",
+      "title": "水箱结论与边界（旧依据基线）",
+      "watch_refs": []
+    },
+    "previous_revision": null,
+    "provenance_gap": null,
+    "record_hash": "a8a611af0cbe69d15adcdcd816cc2a70309817ae205abc2cb474d7bab0a9e1c6",
+    "record_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+    "record_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+    "revision": 1,
+    "schema_version": 3,
+    "sensitivity": "internal",
+    "sources": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      }
+    ],
+    "title": "SYNTHETIC F3 水箱结论与边界（旧依据基线）",
+    "updated_at": "2026-09-09T21:16:41.903848Z",
+    "updated_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    }
+  }
+}
+

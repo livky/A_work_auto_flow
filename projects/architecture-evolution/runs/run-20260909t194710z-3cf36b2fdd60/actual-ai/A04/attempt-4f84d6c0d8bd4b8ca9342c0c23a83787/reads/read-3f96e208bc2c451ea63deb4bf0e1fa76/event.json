@@ -1,0 +1,11 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "actual-browser-screenshot",
+  "capture_path": "capture.png",
+  "locator": "1440×1000 简报首章截图",
+  "coverage": "full",
+  "observation": "目录三章、当前结果及失败/补测表可读；三个 scope 句重复是编辑冗余，不影响含义。",
+  "recorded_at": "2026-09-09T22:44:34.440625Z",
+  "capture_sha256": "d84442715bb40ed9b53263a6dc389ee1d1a86896fa176b9787c138a4cd35d2c6",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

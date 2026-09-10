@@ -1,0 +1,65 @@
+{
+  "records": {
+    "unit": {
+      "target_kind": "record",
+      "target_id": "MEM-3d6097e5-9028-5e74-b2ca-196db59ed90c",
+      "revision": 1,
+      "sha256": "7df972e0d2deb3b3c9db2350dfc22bec3d550ec1a9250ed70f2effa577e41a42",
+      "locator": "完整固定正文",
+      "relation": "references"
+    },
+    "event": {
+      "target_kind": "record",
+      "target_id": "MEM-aa53d44d-104d-5266-8cf6-c456c76f70e1",
+      "revision": 1,
+      "sha256": "b23b19a9d2a65bf8433690881f5e01adcc0d47e3304e3d1673960414df6654a6",
+      "locator": "完整固定正文",
+      "relation": "references"
+    }
+  },
+  "sections": {
+    "process": {
+      "target_kind": "record",
+      "target_id": "MEM-66d460ce-e086-5dd4-b261-50884640483a",
+      "revision": 1,
+      "sha256": "42aeabcdb2be08078b97d08e56ffee314dba922a87bf924b68ea37d70499d55e",
+      "locator": "完整固定正文",
+      "relation": "references"
+    },
+    "brief": {
+      "target_kind": "record",
+      "target_id": "MEM-4bbfdd98-b72a-53a0-b812-3e0b3e0b1166",
+      "revision": 1,
+      "sha256": "80e72dab11cf69b64efb0d333c02becfca5ab2f92a6074f9f75d87e861fe0af4",
+      "locator": "完整固定正文",
+      "relation": "references"
+    }
+  },
+  "documents": {
+    "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b": {
+      "target_kind": "record",
+      "target_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+      "revision": 7,
+      "sha256": "ae5ea0f40e77cf3275aae691e102d93c7017d13d744426c816ce767baec43133",
+      "locator": "完整固定正文",
+      "relation": "references"
+    },
+    "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4": {
+      "target_kind": "record",
+      "target_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+      "revision": 7,
+      "sha256": "c42843f4743cdf43b488e1f7c7acce86b44ecc91a488910f728fe0df287c59ab",
+      "locator": "完整固定正文",
+      "relation": "references"
+    },
+    "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba": {
+      "target_kind": "record",
+      "target_id": "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba",
+      "revision": 7,
+      "sha256": "7bdb333ef646c7f174ba9ef8dfaa6ea8de3802d21e27f4ae6e86d2c593596768",
+      "locator": "完整固定正文",
+      "relation": "references"
+    }
+  },
+  "human_review": "pending"
+}

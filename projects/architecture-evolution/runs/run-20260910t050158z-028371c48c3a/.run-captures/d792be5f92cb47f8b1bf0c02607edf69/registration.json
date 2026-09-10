@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "run_path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/run.json",
+  "before": {
+    "schema_version": 1,
+    "run_id": "RUN-20260910T050158Z-028371C48C3A",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": null,
+    "title": "修复浮点研究章节读取与全局检索索引覆盖",
+    "keywords": [
+      "浮点",
+      "索引",
+      "文稿"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-10T05:01:58Z",
+    "started_at": "2026-09-10T05:01:58Z",
+    "ended_at": "2026-09-10T05:31:47.247740+00:00",
+    "owner": null,
+    "question": "当前浮点研究为何不可读、不可检索，数据库是否损坏？",
+    "hypotheses": [],
+    "inputs": [],
+    "parameters": {},
+    "code": {
+      "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+      "dirty": true
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "selected quick regression",
+        "status": "passed"
+      },
+      {
+        "check": "live floating documents and queries",
+        "status": "passed"
+      },
+      {
+        "check": "real setup expanded workspace preservation",
+        "status": "passed"
+      }
+    ],
+    "metrics": {},
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/README.md",
+        "sha256": "85489c6297280b4d304e4214a18990da83ccf47060b77227079e2a6fdf7d5051",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.751711Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/REPAIR_ANALYSIS.md",
+        "sha256": "6f2d8d07f30d6f08cf86a88dd3c88e38751bc75fd3a15e8a5e70f3cf17f45ebf",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.760978Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/testing/attempt-01/results.json",
+        "sha256": "fafb3f7cc48058f3b642c23d67c551601e3fe67a5d8898901a772766b7dfa25c",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.771155Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/verification-final.json",
+        "sha256": "f1a3002c24a8badf52c5977b25cae46665771458368b7becbadef05da8702001",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.780560Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/recording-verification.json",
+        "sha256": "47a0d4beab604da4a29d034bf08b5acc8b45949277b30179fe4716deafd3ba1e",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.790649Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/MODULE_IMPACT.snapshot",
+        "sha256": "c7b1036504066dab83b3c7f2877aa64ed0c1bc8c4dfab20b4c6aefe90045938c",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.800637Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/AI_REVIEW.md",
+        "sha256": "eca2d3f649635f4fd07abf1276d70826b8bad88f122c9a348feae4cbd724575a",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.810841Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/index-restored.json",
+        "sha256": "9b3ced9a33f7265e0b992559ec4ee8c65e9e7926592179e88bee5b84c6467935",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.819913Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "数据库完整性正常；修复缺失来源及旧Run路径映射，恢复双文稿和全文/向量索引，用户查询返回候选且无索引覆盖警告。",
+    "limitations": [
+      "本机Windows x64及合成研究；人工、第二物理机和科学复核未执行。",
+      "冻结导航details/README.md存在指纹差异，本轮未修改其字节或宣称隔离例子全套复现通过。"
+    ],
+    "parent_run_ids": [],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "before_bytes": "ew0KICAic2NoZW1hX3ZlcnNpb24iOiAxLA0KICAicnVuX2lkIjogIlJVTi0yMDI2MDkxMFQwNTAxNThaLTAyODM3MUM0OEMzQSIsDQogICJvd25lcl9pZCI6ICJQUkotQVJDSElURUNUVVJFLUVWT0xVVElPTiIsDQogICJwcm9qZWN0X2lkIjogbnVsbCwNCiAgInRpdGxlIjogIuS/ruWkjea1rueCueeglOeptueroOiKguivu+WPluS4juWFqOWxgOajgOe0oue0ouW8leimhuebliIsDQogICJrZXl3b3JkcyI6IFsNCiAgICAi5rWu54K5IiwNCiAgICAi57Si5byVIiwNCiAgICAi5paH56i/Ig0KICBdLA0KICAicmV2aWV3X2hpc3RvcnkiOiBbXSwNCiAgImNsYWltcyI6IFtdLA0KICAiZGVwZW5kZW5jaWVzIjogW10sDQogICJydW5fdHlwZSI6ICJhbmFseXNpcyIsDQogICJzdGF0dXMiOiAic3VjY2VlZGVkIiwNCiAgImNyZWF0ZWRfYXQiOiAiMjAyNi0wOS0xMFQwNTowMTo1OFoiLA0KICAic3RhcnRlZF9hdCI6ICIyMDI2LTA5LTEwVDA1OjAxOjU4WiIsDQogICJlbmRlZF9hdCI6ICIyMDI2LTA5LTEwVDA1OjMxOjQ3LjI0Nzc0MCswMDowMCIsDQogICJvd25lciI6IG51bGwsDQogICJxdWVzdGlvbiI6ICLlvZPliY3mta7ngrnnoJTnqbbkuLrkvZXkuI3lj6/or7vjgIHkuI3lj6/mo4DntKLvvIzmlbDmja7lupPmmK/lkKbmjZ/lnY/vvJ8iLA0KICAiaHlwb3RoZXNlcyI6IFtdLA0KICAiaW5wdXRzIjogW10sDQogICJwYXJhbWV0ZXJzIjoge30sDQogICJjb2RlIjogew0KICAgICJjb21taXQiOiAiNjQ3ZDc4NjIzMzFlMjgzNDM5ZDA2ZDQyZWMwMWQzODgyYTMyZDE2MyIsDQogICAgImRpcnR5IjogdHJ1ZQ0KICB9LA0KICAiZW52aXJvbm1lbnQiOiB7DQogICAgInB5dGhvbiI6ICIzLjEyLjEwIiwNCiAgICAicGxhdGZvcm0iOiAiV2luZG93cy0xMS0xMC4wLjIyNjMxLVNQMCIsDQogICAgImxvY2tfb3JfaW1hZ2VfZGlnZXN0IjogbnVsbA0KICB9LA0KICAicmFuZG9tX3NlZWRzIjogW10sDQogICJxdWFsaXR5X3Jlc3VsdHMiOiBbDQogICAgew0KICAgICAgImNoZWNrIjogInNlbGVjdGVkIHF1aWNrIHJlZ3Jlc3Npb24iLA0KICAgICAgInN0YXR1cyI6ICJwYXNzZWQiDQogICAgfSwNCiAgICB7DQogICAgICAiY2hlY2siOiAibGl2ZSBmbG9hdGluZyBkb2N1bWVudHMgYW5kIHF1ZXJpZXMiLA0KICAgICAgInN0YXR1cyI6ICJwYXNzZWQiDQogICAgfSwNCiAgICB7DQogICAgICAiY2hlY2siOiAicmVhbCBzZXR1cCBleHBhbmRlZCB3b3Jrc3BhY2UgcHJlc2VydmF0aW9uIiwNCiAgICAgICJzdGF0dXMiOiAicGFzc2VkIg0KICAgIH0NCiAgXSwNCiAgIm1ldHJpY3MiOiB7fSwNCiAgImFydGlmYWN0cyI6IFsNCiAgICB7DQogICAgICAicGF0aCI6ICJwcm9qZWN0cy9hcmNoaXRlY3R1cmUtZXZvbHV0aW9uL3J1bnMvcnVuLTIwMjYwOTEwdDA1MDE1OHotMDI4MzcxYzQ4YzNhL1JFQURNRS5tZCIsDQogICAgICAic2hhMjU2IjogIjg1NDg5YzYyOTcyODBiNGQzMDRlNDIxNGExODk5MGRhODNjY2Y0NzA2MGI3NzIyNzA3OWUyYTZmZGY3ZDUwNTEiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNTozMzo0Ni43NTE3MTFaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNTAxNTh6LTAyODM3MWM0OGMzYS9SRVBBSVJfQU5BTFlTSVMubWQiLA0KICAgICAgInNoYTI1NiI6ICI2ZjJkOGQwN2YzMGQ2ZjA4Y2Y4NmE4OGRkM2M4OGUzODc1MWJjNzVmZDNhMTVlOGE1ZTcwZjNjZjE3ZjQ1ZWJmIiwNCiAgICAgICJyb2xlIjogImFydGlmYWN0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMTBUMDU6MzM6NDYuNzYwOTc4WiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MTB0MDUwMTU4ei0wMjgzNzFjNDhjM2EvdGVzdGluZy9hdHRlbXB0LTAxL3Jlc3VsdHMuanNvbiIsDQogICAgICAic2hhMjU2IjogImZhZmIzZjdjYzQ4MDU4ZjNiNjQyYzIzZDY3YzU1MTYwMWUzZmU2N2E1ZDg4OTg5MDFhNzcyNzY2YjdkZmEyNWMiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNTozMzo0Ni43NzExNTVaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNTAxNTh6LTAyODM3MWM0OGMzYS92ZXJpZmljYXRpb24tZmluYWwuanNvbiIsDQogICAgICAic2hhMjU2IjogImYxYTMwMDJjMjRhOGJhZGY1MmM1OTc3YjI1Y2FlNDY2NjU3NzE0NTgzNjhiN2JlY2JhZGVmMDVkYTg3MDIwMDEiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNTozMzo0Ni43ODA1NjBaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNTAxNTh6LTAyODM3MWM0OGMzYS9yZWNvcmRpbmctdmVyaWZpY2F0aW9uLmpzb24iLA0KICAgICAgInNoYTI1NiI6ICI0N2EwZDRiZWFiNjA0ZGE0YTI5ZDAzNGJmMDhiNWFjYzhiNDU5NDkyNzdiMzAxNzlmZTQ3MTZkZWFmZDNiYTFlIiwNCiAgICAgICJyb2xlIjogImFydGlmYWN0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMTBUMDU6MzM6NDYuNzkwNjQ5WiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MTB0MDUwMTU4ei0wMjgzNzFjNDhjM2EvTU9EVUxFX0lNUEFDVC5zbmFwc2hvdCIsDQogICAgICAic2hhMjU2IjogImM3YjEwMzY1MDQwNjZkYWI4M2IzYzdmMjg3N2FhNjRlZDBjMWJjOGM0ZGZhYjIwYjRjNmFlZmU5MDA0NTkzOGMiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNTozMzo0Ni44MDA2MzdaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkxMHQwNTAxNTh6LTAyODM3MWM0OGMzYS9BSV9SRVZJRVcubWQiLA0KICAgICAgInNoYTI1NiI6ICJlY2EyZDNmNjQ5NjM1ZjRmZDA3YWJmMTI3NmQ3MDgyNmI4YmFkODhmMTIyYzlhMzQ4ZmVhZTRjYmQ3MjQ1NzVhIiwNCiAgICAgICJyb2xlIjogImFydGlmYWN0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMTBUMDU6MzM6NDYuODEwODQxWiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MTB0MDUwMTU4ei0wMjgzNzFjNDhjM2EvaW5kZXgtcmVzdG9yZWQuanNvbiIsDQogICAgICAic2hhMjU2IjogIjliM2NlZDlhMzNmNzI2NWUwYjk5MjU1OWVjNGVlOGM2NWU5ZTc5MjY1OTIxNzllODhiZWU1Yjg0YzY0Njc5MzUiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0xMFQwNTozMzo0Ni44MTk5MTNaIg0KICAgIH0NCiAgXSwNCiAgImxpbmVhZ2VfZXZlbnRzIjogImxpbmVhZ2UuanNvbmwiLA0KICAiY29uY2x1c2lvbiI6ICLmlbDmja7lupPlrozmlbTmgKfmraPluLjvvJvkv67lpI3nvLrlpLHmnaXmupDlj4rml6dSdW7ot6/lvoTmmKDlsITvvIzmgaLlpI3lj4zmlofnqL/lkozlhajmlocv5ZCR6YeP57Si5byV77yM55So5oi35p+l6K+i6L+U5Zue5YCZ6YCJ5LiU5peg57Si5byV6KaG55uW6K2m5ZGK44CCIiwNCiAgImxpbWl0YXRpb25zIjogWw0KICAgICLmnKzmnLpXaW5kb3dzIHg2NOWPiuWQiOaIkOeglOeptu+8m+S6uuW3peOAgeesrOS6jOeJqeeQhuacuuWSjOenkeWtpuWkjeaguOacquaJp+ihjOOAgiIsDQogICAgIuWGu+e7k+WvvOiIqmRldGFpbHMvUkVBRE1FLm1k5a2Y5Zyo5oyH57q55beu5byC77yM5pys6L2u5pyq5L+u5pS55YW25a2X6IqC5oiW5a6j56ew6ZqU56a75L6L5a2Q5YWo5aWX5aSN546w6YCa6L+H44CCIg0KICBdLA0KICAicGFyZW50X3J1bl9pZHMiOiBbXSwNCiAgInJlbGF0ZWRfbW9kdWxlX2lkcyI6IFtdLA0KICAicmVsYXRlZF9yZXNlYXJjaF9pZHMiOiBbXSwNCiAgInJlbGF0ZWRfZGF0YXNldF9pZHMiOiBbXSwNCiAgInJldmlldyI6IHsNCiAgICAic3RhdHVzIjogIm5vdC1yZXZpZXdlZCIsDQogICAgInJldmlld2VyIjogbnVsbCwNCiAgICAiZGF0ZSI6IG51bGwNCiAgfSwNCiAgInNlbnNpdGl2aXR5IjogImludGVybmFsIg0KfQ0K",
+  "after": {
+    "schema_version": 1,
+    "run_id": "RUN-20260910T050158Z-028371C48C3A",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": null,
+    "title": "修复浮点研究章节读取与全局检索索引覆盖",
+    "keywords": [
+      "浮点",
+      "索引",
+      "文稿"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-10T05:01:58Z",
+    "started_at": "2026-09-10T05:01:58Z",
+    "ended_at": "2026-09-10T05:31:47.247740+00:00",
+    "owner": null,
+    "question": "当前浮点研究为何不可读、不可检索，数据库是否损坏？",
+    "hypotheses": [],
+    "inputs": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/sources-before.json",
+        "sha256": "14480974dc741e120fe0ceea043e7598669fe8b31785d4286f019373017d729a",
+        "role": "input",
+        "registered_at": "2026-09-10T05:34:37.156060Z"
+      },
+      {
+        "path": "research/floating-point-summation/fixtures/restore-manifest.json",
+        "sha256": "9af46fea0e3115e21d8724a0fe4bcf96bde8fe2fd449b2ade333049f00e54592",
+        "role": "input",
+        "registered_at": "2026-09-10T05:34:37.169734Z"
+      }
+    ],
+    "parameters": {},
+    "code": {
+      "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+      "dirty": true
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "selected quick regression",
+        "status": "passed"
+      },
+      {
+        "check": "live floating documents and queries",
+        "status": "passed"
+      },
+      {
+        "check": "real setup expanded workspace preservation",
+        "status": "passed"
+      }
+    ],
+    "metrics": {},
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/README.md",
+        "sha256": "85489c6297280b4d304e4214a18990da83ccf47060b77227079e2a6fdf7d5051",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.751711Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/REPAIR_ANALYSIS.md",
+        "sha256": "6f2d8d07f30d6f08cf86a88dd3c88e38751bc75fd3a15e8a5e70f3cf17f45ebf",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.760978Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/testing/attempt-01/results.json",
+        "sha256": "fafb3f7cc48058f3b642c23d67c551601e3fe67a5d8898901a772766b7dfa25c",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.771155Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/verification-final.json",
+        "sha256": "f1a3002c24a8badf52c5977b25cae46665771458368b7becbadef05da8702001",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.780560Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/recording-verification.json",
+        "sha256": "47a0d4beab604da4a29d034bf08b5acc8b45949277b30179fe4716deafd3ba1e",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.790649Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/MODULE_IMPACT.snapshot",
+        "sha256": "c7b1036504066dab83b3c7f2877aa64ed0c1bc8c4dfab20b4c6aefe90045938c",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.800637Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/AI_REVIEW.md",
+        "sha256": "eca2d3f649635f4fd07abf1276d70826b8bad88f122c9a348feae4cbd724575a",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.810841Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/index-restored.json",
+        "sha256": "9b3ced9a33f7265e0b992559ec4ee8c65e9e7926592179e88bee5b84c6467935",
+        "role": "artifact",
+        "registered_at": "2026-09-10T05:33:46.819913Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "数据库完整性正常；修复缺失来源及旧Run路径映射，恢复双文稿和全文/向量索引，用户查询返回候选且无索引覆盖警告。",
+    "limitations": [
+      "本机Windows x64及合成研究；人工、第二物理机和科学复核未执行。",
+      "冻结导航details/README.md存在指纹差异，本轮未修改其字节或宣称隔离例子全套复现通过。"
+    ],
+    "parent_run_ids": [],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "created_at": "2026-09-10T05:34:37.190449Z"
+}

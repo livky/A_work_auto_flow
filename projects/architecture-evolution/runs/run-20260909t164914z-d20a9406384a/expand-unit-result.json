@@ -1,0 +1,91 @@
+{
+  "context_text": "### 核心接口与Project记录简版\r\n\r\n身份：MEM-192a48a9-191c-5018-8c58-bae968b45ae2 r1；归属：PRJ-ARCHITECTURE-EVOLUTION；角色：detail\r\n\r\n问题：\r\n用户怎样快速把握核心功能？\r\n\r\n方法：\r\n用七个重点功能与一次查询调用链压缩表述。\r\n\r\n主要发现：\r\n- 核心接口与Project记录简版已形成接口设计；除Project默认策略外，运行适配待实施。\r\n\r\n适用条件：\r\n- 当前AI研发工作区接口演进与本项目后续实施\r\n\r\n不适用条件：\r\n- 不能当作召回质量或生产性能的实测结论\r\n\r\n限制：\r\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。\r\n\r\n本单元保存设计与实际观察。接口定义不等于已运行接入；用户认可方向不等于科学复核。\r\n\r\n# 核心接口简版\r\n\r\n本版已把十二组功能落实为 **40 个领域方法、3 个共享执行控制方法和 72 个数据结构**。这是接口及实现路线设计，尚未切换现有检索算法。已实际修改的是 Project 默认记录策略，使其与 Research 一致。\r\n\r\n## 一次查询怎么表达\r\n\r\n调用方只需要说明五件事：范围、知识筛选、材料表示、检索方式、预算。例如：\r\n\r\n> 在本项目的失败经验中，先检索专题综合和单条摘要；不足时允许深入技术块与关联专题；最后返回方法、适用条件、失败边界和固定依据。\r\n\r\n来源通过 FixedRef 表达；知识角色、尝试结果、确信程度和适用条件通过 KnowledgeFacets 描述。复核与当前有效性由 EvidencePolicy 核验。筛选统一放入 CorpusScope/FacetFilter，不为“失败经验”“确定事实”分别新增搜索函数。\r\n\r\n## 重点功能\r\n\r\n| 功能 | 核心接口 | 返回什么 | 首期实现方式 |\r\n|---|---|---|---|\r\n| ③ 表示维护 | list / read / plan / build | 可用表示、来源版本、缺失状态、派生结果或新内容草案 | 复用技术单元/已有摘要；新解释走正式内容提交 |\r\n| ④ 索引维护 | read_changes / status / plan / execute | 增量或重建计划、实际水位、完成与待补偿项 | 从现有提交代次和索引补偿拆出独立端口 |\r\n| ⑤ 候选召回 | capabilities / recall | 候选、命中表示、通道分数、来源与续接位置 | 先接身份、FTS、Qdrant；稀疏和复杂图策略预留 |\r\n| ⑥ 排序 | rank；内部 deduplicate / fuse / rerank / select | 去重后的排名、排序依据、未选和降级原因 | 复用现有融合，再按需替换重排/多样性策略 |\r\n| ⑦ 关系导航 | neighbors / paths / suggest_links | 有类型邻居、固定路径、关联建议及不可迁移差异 | 先显式引用和已有关系，后续接结构类比 |\r\n| ⑧ 渐进编排 | search / resume / next_step | 实际步骤、已用预算、缺口、停止原因、续查游标 | 同时支持扩大语料和深入表示，保留原始排除 |\r\n| ⑨ 上下文组装 | build | 可直接使用的材料包、定义、条件、反例和固定引用 | 只展开已选候选；缺口交还编排器决定下一步 |\r\n\r\n表内 read_changes 对应精确方法 `ChangeReader.read`；同名 plan/read 属于各自端口，不是一个任意参数的大函数。完整方法签名见 [逐函数目录](FUNCTIONS.md)。\r\n\r\n## 主要调用链\r\n\r\n```mermaid\r\nflowchart LR\r\n    Q[问题与范围] --> S[⑧ 编排]\r\n    S --> P[③ 表示 / ④ 索引状态]\r\n    S --> R[⑤ 召回]\r\n    S --> G[⑦ 关系]\r\n    R --> K[⑥ 去重与排序]\r\n    G --> K\r\n    K --> C[⑨ 上下文]\r\n    C --> O[材料包与回执]\r\n    C -. 缺口 .-> S\r\n```\r\n\r\n所有阶段共用范围、证据规则和累计预算。召回不写知识；排序不决定真假；上下文不隐藏启动第二轮搜索。不同索引水位和部分失败保留在回执中。\r\n\r\n## 其余五组保留的边界\r\n\r\n①固定读取与引用解析；②分级内容、版本、历史与恢复；⑩完整/精简文稿及其他阅读视图；⑪按策略自动整理；⑫来源授权、复核、有效性及下游影响。\r\n\r\n自动整理可以正式修订知识，必须保留新旧版本、依据和恢复入口。新内容是否有效复核单独判断；已授权流程可以追加新复核。跨对象执行逐项记账，索引失败不重做内容提交。\r\n\r\n## Project 默认记录已调整\r\n\r\n- 程序默认：explore、fine、保留 L0–L4、建议总结；显式对象策略仍优先。\r\n- 每轮实质工作保存 L0 依据、L1 完整技术单元和 L2 实际事件/决策。\r\n- 阶段结束维护 L3 经验、L4 地图，以及完整过程与简版报告。\r\n- 没有可推广经验时记录缺口；简单查字段不凑层数；自动总结建议不等于后台任务。\r\n\r\n接口定义与调用图在 [SPEC.md](SPEC.md)，数据字段在 [DATATYPES.md](DATATYPES.md)，后续实施顺序及验收在 [IMPLEMENTATION.md](IMPLEMENTATION.md)。\r\n\r\n\r\n固定来源：\r\n```json\r\n[\r\n  {\r\n    \"locator\": \"完整已读取设计文件\",\r\n    \"relation\": \"input\",\r\n    \"revision\": null,\r\n    \"sha256\": \"b73659425f8af6ad3f1db0788c977b1de6600fa49ce4c25bcea9bd6d47bbab9a\",\r\n    \"target_id\": \"SRC-ARCH-INTERFACES-V01-CORE-MD\",\r\n    \"target_kind\": \"file\"\r\n  },\r\n  {\r\n    \"locator\": \"完整已读取设计文件\",\r\n    \"relation\": \"input\",\r\n    \"revision\": null,\r\n    \"sha256\": \"da4d6e0d3f447182dc2837ae674ef103377396e0c89a0184c6d6918bbd02a402\",\r\n    \"target_id\": \"SRC-ARCH-INTERFACES-V01-USER-STEERING-MD\",\r\n    \"target_kind\": \"file\"\r\n  }\r\n]\r\n```",
+  "manifest": {
+    "schema_version": 1,
+    "packet_id": "PKT-f91e32f3-7fcb-463b-ba77-0f33b98278c1",
+    "generated_at": "2026-09-09T17:19:23.074650Z",
+    "query": "",
+    "purpose": "exploration",
+    "scope": null,
+    "stage": "focus",
+    "expansion_count": 0,
+    "selection": {
+      "owner_id": null,
+      "owner_ids": [],
+      "owner_types": [],
+      "include_ids": [],
+      "full_ids": [],
+      "exclude_ids": []
+    },
+    "budget": {
+      "requested": 30000,
+      "hard_limit": 60000,
+      "effective": 30000,
+      "used": 2893
+    },
+    "items": [
+      {
+        "canonical_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "role": "detail",
+        "ref": {
+          "target_kind": "record",
+          "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+          "revision": 1,
+          "sha256": "c02a192f776612703c207c87281da52ee3d323ab2110c9f72ba4ad7129ca2fdd",
+          "relation": "references",
+          "locator": ""
+        },
+        "mode": "full",
+        "codepoints": 2893
+      }
+    ],
+    "omitted": [],
+    "missing": [],
+    "navigation_refs": [
+      {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-CORE-MD",
+        "revision": null,
+        "sha256": "b73659425f8af6ad3f1db0788c977b1de6600fa49ce4c25bcea9bd6d47bbab9a",
+        "relation": "input",
+        "locator": ""
+      },
+      {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-USER-STEERING-MD",
+        "revision": null,
+        "sha256": "da4d6e0d3f447182dc2837ae674ef103377396e0c89a0184c6d6918bbd02a402",
+        "relation": "input",
+        "locator": ""
+      }
+    ],
+    "required_not_full": [],
+    "basis_heads": {
+      "PRJ-ARCHITECTURE-EVOLUTION": "COM-5150e9bb-4bb1-47ee-b833-534dacd24545"
+    },
+    "status": "complete",
+    "snapshot_kind": "per_owner_verified_heads",
+    "execution_started": false,
+    "requested_refs": [
+      {
+        "target_kind": "record",
+        "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+        "revision": 1,
+        "sha256": "c02a192f776612703c207c87281da52ee3d323ab2110c9f72ba4ad7129ca2fdd",
+        "relation": "references",
+        "locator": ""
+      }
+    ],
+    "source_refs": [
+      {
+        "target_kind": "record",
+        "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+        "revision": 1,
+        "sha256": "c02a192f776612703c207c87281da52ee3d323ab2110c9f72ba4ad7129ca2fdd",
+        "relation": "references",
+        "locator": ""
+      }
+    ]
+  }
+}

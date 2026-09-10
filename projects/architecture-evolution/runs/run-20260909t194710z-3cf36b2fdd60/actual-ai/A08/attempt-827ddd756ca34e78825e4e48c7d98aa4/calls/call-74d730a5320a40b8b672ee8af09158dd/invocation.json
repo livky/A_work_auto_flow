@@ -1,0 +1,23 @@
+{
+  "call_id": "call-74d730a5320a40b8b672ee8af09158dd",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "--root",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+    "memory",
+    "reconcile",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\authored-requests\\navigation-reconcile.json"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "started_at": "2026-09-09T21:09:12.165422Z",
+  "timeout_seconds": 120,
+  "request": {
+    "original_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\authored-requests\\navigation-reconcile.json",
+    "path": "request.snapshot.txt",
+    "sha256": "a6efb3fbc33bd6c024f2dbf87d29740f7df6808ebb8a5fddb486833cf6820f80"
+  }
+}

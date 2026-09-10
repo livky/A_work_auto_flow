@@ -1,0 +1,10 @@
+[
+  {
+    "target_kind": "file",
+    "target_id": "SRC-ARCH-IMPLEMENTATION-PLAN-20260910",
+    "revision": null,
+    "sha256": "0294fd441ebda6c4f29eabd398899e78693bcbc4297fe427d958d10441e751b3",
+    "locator": "完整设计",
+    "relation": "input"
+  }
+]

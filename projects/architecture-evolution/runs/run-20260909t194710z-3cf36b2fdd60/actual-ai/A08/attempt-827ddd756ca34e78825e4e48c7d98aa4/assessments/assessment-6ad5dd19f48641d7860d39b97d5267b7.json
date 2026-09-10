@@ -1,0 +1,55 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "comparisons": [
+    {
+      "expectation_id": "A08-E1",
+      "status": "meets",
+      "observation": "分别通过公开full读取双方固定r1及水箱必要定义后比较：局部共性是观测后调整和限幅，决定性差异是连续液位守恒与离散失败流程；未凭共同指数术语或已有边推断同机制。",
+      "evidence_refs": [
+        "delivered/tank-full.md",
+        "delivered/retry-full.md",
+        "AI-ANALYSIS.md",
+        "reads"
+      ]
+    },
+    {
+      "expectation_id": "A08-E2",
+      "status": "meets",
+      "observation": "给出有条件的分段边界检查方法，限定幂等/错误分类/耗时；明确拒绝K与r参数迁移和由水箱推导API稳定/成功保证，列出应执行的事件序列与缺少服务端模型。未把建议验证冒充已执行。",
+      "evidence_refs": [
+        "AI-ANALYSIS.md",
+        "authored-requests/navigation-save.json"
+      ]
+    },
+    {
+      "expectation_id": "A08-E3",
+      "status": "meets",
+      "observation": "结构自动探索真实返回UNSUPPORTED/消耗0；实际AI另保存analogous_to candidate，公开回读AI身份和固定两端，未创建科学review。初次committed+INDEX_PENDING与后续文本indexed分别保留。",
+      "evidence_refs": [
+        "delivered/unconfigured-structural.md",
+        "NAVIGATION-RECEIPT.md",
+        "calls/call-a6adce6c15db429ea62b7665b263fef0/stdout.txt",
+        "calls/call-74d730a5320a40b8b672ee8af09158dd/stdout.txt",
+        "navigation-result.json"
+      ]
+    }
+  ],
+  "readable_artifacts": [
+    {
+      "title": "A08实际比较分析",
+      "path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A08/attempt-827ddd756ca34e78825e4e48c7d98aa4/AI-ANALYSIS.md"
+    },
+    {
+      "title": "导航草案保存及回读",
+      "path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A08/attempt-827ddd756ca34e78825e4e48c7d98aa4/NAVIGATION-RECEIPT.md"
+    }
+  ],
+  "limitations": [
+    "同一AI编写前提和完成比较，非盲测或独立现实验证。",
+    "本地未配置结构模型；这是对话AI实际阅读后的比较，不代表产品自动模型成功。",
+    "只保存候选导航；无实验运行，无科学review，人工作业待审。"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "recorded_at": "2026-09-09T21:12:56.249093Z"
+}

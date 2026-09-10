@@ -1,0 +1,38 @@
+{
+  "actor": "assistant",
+  "comparisons": [
+    {
+      "expectation_id": "A01-E1",
+      "status": "meets",
+      "observation": "11条作者字段逐项回读相等；抽读U07完整正文，明确Project归属、设计状态和适用边界。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t164914z-d20a9406384a\\layered-inspect.json"
+      ]
+    },
+    {
+      "expectation_id": "A01-E2",
+      "status": "meets",
+      "observation": "公开inspect后实际expand U07与CORE原来源，两者返回full、无missing/omitted。已读取U07正文及来源回执。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t164914z-d20a9406384a\\expand-unit-result.json"
+      ]
+    },
+    {
+      "expectation_id": "A01-E3",
+      "status": "meets",
+      "observation": "请求actor为ai，没有review操作；记录不借保存成功提升科学复核。首次decision_refs预检失败保留，补齐依据后新请求提交。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t164914z-d20a9406384a\\layered-v2-request.json"
+      ]
+    }
+  ],
+  "readable_artifacts": [],
+  "limitations": [
+    "同一连续任务内AI自查；未作为新上下文场景A02",
+    "人工意见待收集，科学结论未复核",
+    "页面视觉检查受浏览器限制未完成"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "recorded_at": "2026-09-09T17:20:33.685879Z"
+}

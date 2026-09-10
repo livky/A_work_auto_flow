@@ -1,0 +1,32 @@
+{
+  "call_id": "call-1fe074d2216e464eacb1e6802ef79f3d",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "memory",
+    "document",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t050158z-028371c48c3a\\project-brief-request.json"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow",
+  "started_at": "2026-09-10T05:27:58.858351Z",
+  "timeout_seconds": 180,
+  "request": {
+    "original_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t050158z-028371c48c3a\\project-brief-request.json",
+    "path": "request.snapshot.txt",
+    "sha256": "7375b422cd0f81604e279af2da8e5d28c1679b28318e55a25a3f5bb7b13f9b20"
+  },
+  "ended_at": "2026-09-10T05:27:59.739316Z",
+  "status": "completed",
+  "exit_code": 0,
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "16adf57975f41074ca3b582de0c3ce1126af6f60fee9c96eb00a882831848256"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending"
+}

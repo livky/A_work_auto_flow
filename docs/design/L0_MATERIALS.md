@@ -1,4 +1,9 @@
 # L0 原始材料统一入口
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：L0 统一材料投影设计与当时实现记录；Run 自动登记用法随后归入 RUN_CAPTURE 手册。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../ARCHITECTURE.md)、[研究记录标准](../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 写入端现提供 `run-execute` 自动登记新 Python 实验材料、`run-register` 登记明确已有文件及按回执恢复。用法与边界见[执行手册](../RUN_CAPTURE.md)。下方描述的是共同的只读投影；写入完成后无需再创建 source。
 

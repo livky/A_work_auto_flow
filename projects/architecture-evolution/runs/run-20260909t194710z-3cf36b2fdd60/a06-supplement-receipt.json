@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "scenario": "A06",
+  "attempt": "actual-ai/A06/attempt-ea028f7f2e4240568a002129064461fb",
+  "workspace": ".local/testing/material-query-f3-20260910-actual/workspace",
+  "assessment": "actual-ai/A06/attempt-ea028f7f2e4240568a002129064461fb/assessments/assessment-ca63ed7be8c7442a8ebfd9fe3a4394b9.json",
+  "assessment_sha256": "1a8fc2443f6802aa4a3de3bc9fab17530ab622b680377dc4e09e52825daef797",
+  "readable_result": "actual-ai/A06/attempt-ea028f7f2e4240568a002129064461fb/AI-ANALYSIS.md",
+  "actual_calls": 12,
+  "reading_events": 5,
+  "ai_expectations": {
+    "A06-E1": "meets_with_new_public_lexical_discovery_then_fixed_reading",
+    "A06-E2": "meets_with_actual_conditional_adoption_and_negative_boundary",
+    "A06-E3": "meets_with_public_save_readback_and_original_hash_preservation"
+  },
+  "raw_failed_call_preserved": "calls/call-9d7b6232a86d485f8b17877802229824",
+  "failure": "First request omitted required fields; rejected VALIDATION with zero consumption. Corrected request preserved the question and keywords.",
+  "discovery_had_prefilled_record_ids": false,
+  "discovery_had_include_refs": false,
+  "channel": "lexical",
+  "selected_records": 4,
+  "delivered_parts": 5,
+  "assembly_complete": true,
+  "new_candidate": {
+    "record_id": "MEM-1c372f0d-3afe-5a4b-96fb-867eff035115",
+    "revision": 1,
+    "sha256": "cd92874aed47cdfb48b734d1d3569221cd4b6913d6cf685161a9f34cb10bf4e7",
+    "owner_id": "RES-F3-RETRY",
+    "relation": "analogous_to",
+    "status": "candidate",
+    "actor_kind": "ai"
+  },
+  "owner_head_before": "COM-b98936d9-17a7-4a31-9016-4c12ea27ccaa",
+  "owner_head_after": "COM-d0ce2b58-4d09-49d5-87a2-05aa1e587187",
+  "save_status": "committed",
+  "save_exit_code": 3,
+  "initial_index_status": "pending",
+  "reconciled_text_index_status": "indexed",
+  "vector_status": "disabled",
+  "original_records_verified_same_hash_and_owner": 4,
+  "old_A08_navigation_hash_unchanged": true,
+  "original_source_files_verified_same_hash": 3,
+  "preservation_evidence": "actual-ai/A06/attempt-ea028f7f2e4240568a002129064461fb/readback-checks.json",
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "limitations": [
+    "Continuous previously informed context; not a blinded or fresh-context quality test.",
+    "Lexical discovery only; no semantic/vector/structural model execution.",
+    "Discovery and fixed expansion are separate CLI queries with separate identities and budgets.",
+    "Only one new synthetic F3 candidate was saved; no product code, real Project, original record or source was modified.",
+    "No real API experiment, performance claim, human acceptance or scientific review."
+  ]
+}

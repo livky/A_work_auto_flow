@@ -1,0 +1,34 @@
+{
+  "call_id": "call-026f93e98f3b4d729ecd55e4190c7bbd",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "material-query",
+    "maintenance-plan",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\authored-requests\\maintenance-plan.json"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "started_at": "2026-09-09T21:16:44.132950Z",
+  "timeout_seconds": 120,
+  "request": {
+    "original_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\authored-requests\\maintenance-plan.json",
+    "path": "request.snapshot.txt",
+    "sha256": "1dd07331a4ee4427596cab71e4d4ef1dafd6fbac028fa2d4a52174e1314f1635"
+  },
+  "ended_at": "2026-09-09T21:16:44.439762Z",
+  "status": "completed",
+  "exit_code": 2,
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "bc1aa0deb26325a020cab77de19f33e77d7f83fd548254b1c3ab9bd7a532a33d"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending"
+}

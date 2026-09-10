@@ -1,0 +1,228 @@
+{
+  "config": {
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "e2e/material-query.spec.ts"
+    ],
+    "configFile": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\playwright.config.ts",
+    "rootDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../../tmp/workbench-e2e.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "material-query.spec.ts",
+      "file": "material-query.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "材料查询真实HTTP组装四区、固定依据与来源映射",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2694,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:48:44.589Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-7de1a56ebcd8df7dd1e8",
+          "file": "material-query.spec.ts",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "维护任务包导出保留未审状态，改变条件使旧候选失效",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 31701,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('审查结果 JSON', { exact: true })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('审查结果 JSON', { exact: true }) with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('审查结果 JSON', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('审查结果 JSON', { exact: true })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('审查结果 JSON', { exact: true }) with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('审查结果 JSON', { exact: true })\u001b[22m\n\n    at D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:162:24",
+                    "location": {
+                      "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                      "column": 24,
+                      "line": 162
+                    },
+                    "snippet": "  160 |   await page.getByRole(\"button\", { name: /生成维护任务包/ }).click();\n  161 |   const editor = page.getByLabel(\"审查结果 JSON\", { exact: true });\n> 162 |   await expect(editor).toBeVisible();\n      |                        ^\n  163 |   const plan = JSON.parse(await editor.inputValue());\n  164 |   expect(plan.reviewed_refs).toEqual([]);\n  165 |   expect(plan.semantic_reviewer).toBeNull();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                        "column": 24,
+                        "line": 162
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('审查结果 JSON', { exact: true })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('审查结果 JSON', { exact: true }) with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('审查结果 JSON', { exact: true })\u001b[22m\n\n\n  160 |   await page.getByRole(\"button\", { name: /生成维护任务包/ }).click();\n  161 |   const editor = page.getByLabel(\"审查结果 JSON\", { exact: true });\n> 162 |   await expect(editor).toBeVisible();\n      |                        ^\n  163 |   const plan = JSON.parse(await editor.inputValue());\n  164 |   expect(plan.reviewed_refs).toEqual([]);\n  165 |   expect(plan.semantic_reviewer).toBeNull();\n    at D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:162:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:48:54.094Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visible-page",
+                      "contentType": "text/plain",
+                      "body": "56CUCueglOWPkeW3peS9nOWPsArmnZDmlpkgwrcg6K+B5o2uIMK3IOiBlOezuwril6sK5bel5L2c5Y+wCuKWpgrmnZDmlpnmn6Xor6IK4peHCuadkOaWmeWFs+ezuwrilqQK6K+B5o2u5LiO5b2x5ZONCuKWpQrns7vnu5/orrDlv4YK4pe3CuS7u+WKoeS4juebkea1iwrmnKzmnLrlt6XkvZzljLoK5Y6f5aeL6K6w5b2V5Y+v6L+95rqvCkFJIOeglOWPkeW3peS9nOWMugril4sg5oyJ6ZyA5YiG5p6QCuWQiOaIkOa1i+ivleaymeebkiDCtyDlhajpg6jmoLfkvovkuLromZrmnoTvvIzkuI3lsZ7kuo7mraPlvI/kuJrliqHor4Hmja4KCuWIhuWxguadkOaWmSAvIOWbuuWumuS+neaNrgoK5p2Q5paZ5p+l6K+iCgrlhYjpgInmi6nojIPlm7TvvIzlho3lr7vmib7mnZDmlpnjgILlhbPogZTlu7rorq7kuI7lvoXnu7TmiqTojYnmoYjkv53nlZnni6znq4vnirbmgIHjgIIKCuadkOaWmee7k+aehArnu5PmnoTop4blm74K6YC76L6R5YiG5bGCCueZu+iusOeahOWtmOWCqOi3r+W+hArlhajlsYDojrflh4bojIPlm7QKKwpTWU5USEVUSUMgT05MWTog5ZCI5oiQ5pWw5o2uCuW9kuWxnuWvueixoQorCui3qOeglOeptue7j+mqjArlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog5rWL6K+V5LiT55So5qCh5YeG5qih5Z6LCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDph4fpm4bnoJTnqbbogZrlkIgK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOi9r+S7tuWPr+mdoOaAp+iBmuWQiArlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog5ZCI5oiQ5oql5ZGKCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDmnaXmupDlj5jljJbkuI7pmYjml6fnvJPlrZgK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOespuWPt+ivhuWIq+S4juWOn+aWh+aguOWvuQrlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog6aKE6L295LiO6YeN5aSN5a6a5L2NCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDph43lpI3mnZDmlpnkuI7ni6znq4vor4Hmja4K5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOi2heaXtumHjeivleS4jumHjeWkjeWGmeWFpQrlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog6aKE54Ot5LiO6Zu254K55ryC56e7CuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDljZXkvY3ovazmjaLkuI7miqXlkYrmlbDlrZcK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOmHh+agt+mFjee9ruS4juS4jeWPr+i+qOivhue7k+aenArlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog5p2l5rqQ5Y+Y5YyW5LiO6ZmI5pen57yT5a2Y6aqM6K+BCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDnrKblj7for4bliKvkuI7ljp/mlofmoLjlr7npqozor4EK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOmihOi9veS4jumHjeWkjeWumuS9jemqjOivgQrlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog6YeN5aSN5p2Q5paZ5LiO54us56uL6K+B5o2u6aqM6K+BCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDotoXml7bph43or5XkuI7ph43lpI3lhpnlhaXpqozor4EK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOmihOeDreS4jumbtueCuea8guenu+mqjOivgQrlvZLlsZ7lr7nosaEKKwpTWU5USEVUSUMgT05MWTog5Y2V5L2N6L2s5o2i5LiO5oql5ZGK5pWw5a2X6aqM6K+BCuW9kuWxnuWvueixoQorClNZTlRIRVRJQyBPTkxZOiDph4fmoLfphY3nva7kuI7kuI3lj6/ovqjor4bnu5Pmnpzpqozor4EK5b2S5bGe5a+56LGhCisKU1lOVEhFVElDIE9OTFk6IOWQiOaIkOebruW9leW3peWFtwrlvZLlsZ7lr7nosaEK5p+l5om+5LiO57uE6KOFCgrmn6Xor6LojIPlm7TvvJrlhajlsYDojrflh4bojIPlm7QKCumXrumimArlhbPplK7or40K6KGo6L6+5b2i5byPCuWOn+Wni+adkOaWmQrlrozmlbTnoJTnqbblhoXlrrkK55u45YWz56ug6IqC5LiO5oqA5pyv5Z2XCuWNleWFg+aRmOimgQrkuLvpopjmnZDmlpkK6aKG5Z+f5p2Q5paZCuafpeivoueUqOmAlArmjqLntKIK5q2j5byP5L2/55SoCuWuoeiuoQoK5oqA5pyv5Y2V5YWD5YWo5paH5oiW56CU56m26L+H56iL5paH56i/77yM5L+d55WZ5a6a5LmJ5LiO6ZmQ5Yi2Cgrpq5jnuqfojIPlm7TkuI7mn6Xor6LnuqbmnZ8K5YWz6IGU6KGl5YWF5LiO6aKE566XCuW8gOWni+afpeivogrpg6jliIblrozmiJAKCuWBnOatouWOn+WboO+8mmV4aGF1c3RlZAoK6YOo5YiG5YCZ6YCJ5Zug6IyD5Zu044CB5p2l5rqQ5oiW54mI5pys5LiN5ruh6Laz6ICM55yB55WlCumihOeul+a2iOiAl+S4juWbuuWumuS+neaNrgrmn6Xor6LlgJnpgInvvIgx77yJCgrlm7rlrprmn6Xor6LmnInmlYjmnJ/oh7MgMjAyNi85LzEwIDA1OjAzOjU077yI5pys5py65pe26Ze077yJCgrpg6jliIblgJnpgInlm6DojIPlm7TjgIHmnaXmupDmiJbniYjmnKzkuI3mu6HotrPogIznnIHnlaUK55u05o6l5p2Q5paZClNZTlRIRVRJQyBMMSDorrrmloflvI/ov4fnqIvorrDlvZUKCiMjIOWPr+aguOmqjOeahOWxleekuuivtOaYjiDmnKzorrDlvZXnlKjkuo7nlYzpnaLpqozor4HvvIzkuI3lo7Dnp7Dlrp7pqozlt7LmiafooYzjgIIgfCDlhoXlrrkgfCDnirbmgIEgfCB8LS0tfC0tLXwgfCDlhazlvI8gfCDlkIjmiJDlsZXnpLogfCB8IOWbuuWumuWbvueJhyB8IOWPl+aOp+ivu+WPliB8Cgrnm7TmjqXlj6/nlKggwrcg5bCa5pyq5aSN5qC4Cgrlkb3kuK3mnaXmupDkuI7lm7rlrprlvJXnlKgK5b+F6KaB5LiK5LiL5paHCuWFs+iBlOW7uuiurgrnu4Too4XmiYDpgInmnZDmlpnvvIgx77yJCuayv+aJgOmAieadkOaWmea3seWMlgrmn6XnnIvlhbPogZTlu7rorq4K5p2Q5paZ5YyFCgrpgInmi6nlgJnpgInlkI7nu4Too4XjgILov5nph4zlsIbliIbliKvmmL7npLrmraPmlofjgIHlv4XopoHkuIrkuIvmlofjgIHlhbPogZTlu7rorq7lkoznvLrlj6PjgIIKCue7tOaKpOS7u+WKoeWMhQoK5Lul5omA6YCJ5p2Q5paZ5Li65Y+Y5YyW5YWl5Y+j77yM5pW055CG5L6d6LWW5b2x5ZON44CC5a+85Ye655qE5Lu75Yqh5YyF6ZyA6KaB5a6e6ZmF6ZiF6K+75LiO5a6h5p+l5ZCO5Zue5aGr77yb55Sf5oiQ6K6h5YiS5pys6Lqr5LiN5Luj6KGo5bey5aSN5qC444CCCgrnlJ/miJDnu7TmiqTku7vliqHljIXvvIgxIOS4quW8leeUqO+8iQrlr7zlh7rku7vliqHljIUgSlNPTgrlr7zlhaXlrqHmn6Xnu5PmnpwK5pys5qyh5Lqk5LuY55qE5a6h5p+l5p2Q5paZClNZTlRIRVRJQyBMMSDorrrmloflvI/ov4fnqIvorrDlvZUK5Y+v5qC46aqM55qE5bGV56S66K+05piOCgrmnKzorrDlvZXnlKjkuo7nlYzpnaLpqozor4HvvIzkuI3lo7Dnp7Dlrp7pqozlt7LmiafooYzjgIIKCuWGheWuuQnnirbmgIEK5YWs5byPCeWQiOaIkOWxleekugrlm7rlrprlm77niYcJ5Y+X5o6n6K+75Y+WCnsKICAib3duZXJfaWQiOiAiUkVTLVNZTi1USEVSTUFMIiwKICAia2luZCI6ICJkZXRhaWwiLAogICJsZXZlbCI6ICJMMSIsCiAgInRpdGxlIjogIlNZTlRIRVRJQyBMMSDorrrmloflvI/ov4fnqIvorrDlvZUiLAogICJrZXl3b3JkcyI6IFtdLAogICJwYXlsb2FkIjogewogICAgImZpZ3VyZXMiOiBbCiAgICAgIHsKICAgICAgICAiY2FwdGlvbiI6ICJTWU5USEVUSUMg5Zu65a6a5YOP57Sg5Zu+77yM5LuF6aqM6K+B5Zu+5YOP6K+75Y+WIiwKICAgICAgICAicmVmIjogewogICAgICAgICAgImxvY2F0b3IiOiAic3ludGhldGljIGZpZ3VyZSIsCiAgICAgICAgICAicmVsYXRpb24iOiAiaW5wdXQiLAogICAgICAgICAgInJldmlzaW9uIjogbnVsbCwKICAgICAgICAgICJzaGEyNTYiOiAiMDFkZDdmMDhmODRlY2EzNTM4NGZkNGU3ZDQ5ZjcwZTJjYzMzYzJkZDk5YTQ1YjE5OWJkZDIyOTdiZTViMDQ2MiIsCiAgICAgICAgICAidGFyZ2V0X2lkIjogIlNSQy1VSS1GSUdVUkUiLAogICAgICAgICAgInRhcmdldF9raW5kIjogImZpbGUiCiAgICAgICAgfQogICAgICB9CiAgICBdLAogICAgImZvcm11bGFzIjogWwogICAgICB7CiAgICAgICAgImxhdGV4IjogInM9XFxzdW1fe2k9MX1ee259eF9pIiwKICAgICAgICAidmFyaWFibGVzIjogWwogICAgICAgICAgewogICAgICAgICAgICAibWVhbmluZyI6ICLnpLrkvovmsYLlkoznu5PmnpwiLAogICAgICAgICAgICAic3ltYm9sIjogInMiLAogICAgICAgICAgICAidW5pdCI6ICIxIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfQogICAgXSwKICAgICJpbnB1dHMiOiBbCiAgICAgIHsKICAgICAgICAibG9jYXRvciI6ICJzeW50aGV0aWMgZmlndXJlIiwKICAgICAgICAicmVsYXRpb24iOiAiaW5wdXQiLAogICAgICAgICJyZXZpc2lvbiI6IG51bGwsCiAgICAgICAgInNoYTI1NiI6ICIwMWRkN2YwOGY4NGVjYTM1Mzg0ZmQ0ZTdkNDlmNzBlMmNjMzNjMmRkOTlhNDViMTk5YmRkMjI5N2JlNWIwNDYyIiwKICAgICAgICAidGFyZ2V0X2lkIjogIlNSQy1VSS1GSUdVUkUiLAogICAgICAgICJ0YXJnZXRfa2luZCI6ICJmaWxlIgogICAgICB9CiAgICBdLAogICAgImxpbWl0YXRpb25zIjogWwogICAgICAi5ZCI5oiQ6L6T5YWl77yM5LiN6IO95o2u5q2k5Yik5pat56eR5a2m566X5rOV5pyJ5pWI5oCnIgogICAgXSwKICAgICJtZXRob2QiOiAi5ZCI5oiQ57uT5p6E5YyW5paH56i/5riy5p+TIiwKICAgICJtaXNzaW5nX3JlZnMiOiBbXSwKICAgICJwYXJhbWV0ZXJzIjogWwogICAgICB7CiAgICAgICAgImRlc2NyaXB0aW9uIjogIuWQiOaIkOWPguaVsOeahOmhueaVsCIsCiAgICAgICAgIm5hbWUiOiAibiIsCiAgICAgICAgInVuaXQiOiAiMSIsCiAgICAgICAgInZhbHVlIjogMwogICAgICB9CiAgICBdLAogICAgInF1ZXN0aW9uIjogIueglOeptuatpemqpOWSjOWPguaVsOiDveWQpuWujOaVtOWRiOeOsCIsCiAgICAicmVzdWx0cyI6ICLku4Xmo4DpqozmlofnqL/lsZXnpLrvvJvkuI3lrqPnp7Dljp8gUnVuIOW3suaJp+ihjOOAgiIsCiAgICAicnVuX3JlZiI6IHsKICAgICAgImxvY2F0b3IiOiAibWV0YWRhdGEiLAogICAgICAicmVsYXRpb24iOiAiYmFja2dyb3VuZCIsCiAgICAgICJyZXZpc2lvbiI6IG51bGwsCiAgICAgICJzaGEyNTYiOiAiMDYzNTI5MWYxZjY4NDA0NDZmMzQxMWJiZGE3YzZmMTI5NjA5OTk4MTRiN2U0OTc3YWJhYmE1OWJiMGFjOTI0NiIsCiAgICAgICJ0YXJnZXRfaWQiOiAiUlVOLVNZTi1DQUNIRSIsCiAgICAgICJ0YXJnZXRfa2luZCI6ICJvd25lciIKICAgIH0sCiAgICAic3RlcHMiOiBbCiAgICAgICLmmL7npLrph43opoHlhaXlj4Llj4rljZXkvY0iLAogICAgICAi5pi+56S65YWs5byP44CB5Y+Y6YeP5ZKM5Y+X5o6n5Zu+54mHIgogICAgXQogIH0sCiAgInNvdXJjZXMiOiBbCiAgICB7CiAgICAgICJsb2NhdG9yIjogIm1ldGFkYXRhIiwKICAgICAgInJlbGF0aW9uIjogImJhY2tncm91bmQiLAogICAgICAicmV2aXNpb24iOiBudWxsLAogICAgICAic2hhMjU2IjogIjA2MzUyOTFmMWY2ODQwNDQ2ZjM0MTFiYmRhN2M2ZjEyOTYwOTk5ODE0YjdlNDk3N2FiYWJhNTliYjBhYzkyNDYiLAogICAgICAidGFyZ2V0X2lkIjogIlJVTi1TWU4tQ0FDSEUiLAogICAgICAidGFyZ2V0X2tpbmQiOiAib3duZXIiCiAgICB9LAogICAgewogICAgICAibG9jYXRvciI6ICJzeW50aGV0aWMgZmlndXJlIiwKICAgICAgInJlbGF0aW9uIjogImlucHV0IiwKICAgICAgInJldmlzaW9uIjogbnVsbCwKICAgICAgInNoYTI1NiI6ICIwMWRkN2YwOGY4NGVjYTM1Mzg0ZmQ0ZTdkNDlmNzBlMmNjMzNjMmRkOTlhNDViMTk5YmRkMjI5N2JlNWIwNDYyIiwKICAgICAgInRhcmdldF9pZCI6ICJTUkMtVUktRklHVVJFIiwKICAgICAgInRhcmdldF9raW5kIjogImZpbGUiCiAgICB9CiAgXSwKICAicHJvdmVuYW5jZV9nYXAiOiAi5LuF5Li655WM6Z2i5rWL6K+V77yM6Z2e56CU56m257uT6K66IiwKICAiZGlzY292ZXJ5IjogIndvcmtzcGFjZV9zdW1tYXJ5IiwKICAic2Vuc2l0aXZpdHkiOiAiaW50ZXJuYWwiCn0KCuadkOaWmeWbuuWumuW8leeUqAoK5Lqk5LuY5Zue5omn6K6w5b2V5bey5o+Q5L6b55qE5p2Q5paZ44CC5a6h5p+l6ICF6ZyA6KaB5Yik5pat5Y+Y5pu05Y+K5L6d5o2u77yM5LiN6IO95o2u5q2k6K6k5a6a56eR5a2m57uT6K665bey57uP6aqM6K+B44CCCgrlnKjmraTlrozmiJDkurrlt6XlrqHmn6UK5Lq65bel5a6h5p+l6Lqr5Lu95a6e6ZmF5a6h5p+l6K+05piO5oiR5bey5a6h5p+l5LiK5pa55YiX5Ye655qE5p2Q5paZ77yM5bm25aGr5YaZ5LqG5a6e6ZmF5Yik5patCuWuoeafpee7k+aenCBKU09OCk1FTS00MDc2MDBmMy1kZDQ5LTU0NTYtYTkzNC0wNmQwYTU4YWFiZmMgwrcg5pqC57yTCgrmnKzmrKHmmL7lvI/lj5jljJbmnaXmupDvvIznrYnlvoXpgJDpobnlrqHmn6UKCuWvvOWHuuaXtuiNieahiArml6DmraPmlofojYnmoYgK5Zue5aGr5ZCO6I2J5qGICuaXoOato+aWh+iNieahiArlvbHlk43lvJXnlKgKCuWuoeafpei6q+S7ve+8muWwmuacquWhq+WGmQoK5pyq5qOA5p+l6IyD5Zu077ya5bCa5pyq5omn6KGM6K+t5LmJ5Yik5pat77yb5Yid5aeL5Yqo5L2c5YWo6YOo5Li6ZGVmZXLvvJvmnKrosIPnlKjor63kuYnlkJHph4/jgIHmqKHlnovmiJbmnKrnmbvorrDml6dSdW7mnaXmupDvvJvkuI3og73mja7mraTlo7Dnp7Dopobnm5blhajpg6jlvbHlk43vvJvpg6jliIbnu7TmiqTlgJnpgInmnKrmu6HotrPojIPlm7TjgIHmnaXmupDmiJbniYjmnKzmnaHku7bvvIzlt7LnnIHnlaXvvJvnu7TmiqTku7vliqHljIXpppbmnJ/ku4XmjqXmlLbop4TojIPorrDlvZXlkozlt7LnmbvorrDljp/ku7bvvJvkuozov5vliLbljp/ku7blt7LmoLjpqozkvYblsJrmnKrkuqTku5jlj6/lrqHmn6XpooTop4jvvJvmtonlj4rlroPnmoTliKTmlq3pobvlu7blkI4KCuagoemqjOWbnuWhq+S4juWbuuWumuS+neaNrgrpg6jliIblrozmiJAK5bCa5pyq5omn6KGM6K+t5LmJ5Yik5pat77yb5Yid5aeL5Yqo5L2c5YWo6YOo5Li6ZGVmZXIK5pyq6LCD55So6K+t5LmJ5ZCR6YeP44CB5qih5Z6L5oiW5pyq55m76K6w5penUnVu5p2l5rqQ77yb5LiN6IO95o2u5q2k5aOw56ew6KaG55uW5YWo6YOo5b2x5ZONCumDqOWIhue7tOaKpOWAmemAieacqua7oei2s+iMg+WbtOOAgeadpea6kOaIlueJiOacrOadoeS7tu+8jOW3suecgeeVpQrnu7TmiqTku7vliqHljIXpppbmnJ/ku4XmjqXmlLbop4TojIPorrDlvZXlkozlt7LnmbvorrDljp/ku7YK5LqM6L+b5Yi25Y6f5Lu25bey5qC46aqM5L2G5bCa5pyq5Lqk5LuY5Y+v5a6h5p+l6aKE6KeI77yb5raJ5Y+K5a6D55qE5Yik5pat6aG75bu25ZCOCumihOeul+a2iOiAl+S4juWbuuWumuS+neaNrg=="
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\test-results\\material-query-维护任务包导出保留未审状态，改变条件使旧候选失效\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\test-results\\material-query-维护任务包导出保留未审状态，改变条件使旧候选失效\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                    "column": 24,
+                    "line": 162
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-80d2c40b458a95044cab",
+          "file": "material-query.spec.ts",
+          "line": 148,
+          "column": 1
+        },
+        {
+          "title": "真实预算耗尽显示停止原因并保留查询范围",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1938,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:49:26.996Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-5427513d154c2d506817",
+          "file": "material-query.spec.ts",
+          "line": 203,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-09T20:48:43.887Z",
+    "duration": 52695.531,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

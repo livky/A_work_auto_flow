@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "public memory document-impact on isolated final process r2",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "实际读到changes/affected_section_ids/uncovered_unit_ids均空，写入0，共同依据为定义r1、模型r2、饱和r1。",
+  "recorded_at": "2026-09-09T22:59:20.866745Z",
+  "capture_sha256": "f085ccdb3f930d7d072c3b0cc9a6f8f165bd1a27b97e2ed46bf80527eabf9537",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

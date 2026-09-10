@@ -2,6 +2,8 @@
 
 > 本文保留首批开发阶段的范围与示例。当前工作台、检索、迁移及回执处理请使用 [版本记忆使用指南](MEMORY_USAGE.md)；最终验收状态见 [执行状态](design/system-memory/STATUS.md)。下文“尚未交付”等表述描述当时阶段，不代表当前功能清单。
 
+> **历史定位，2026-09-09 核对：** 本页的 v1 契约、W06 尚未接入、首批请求与回执说明保持其当时含义，不能作为当前默认行为。现行记录默认 v3，L1 已扩展为技术单元，独立文稿使用 document/document_section，索引同步与补偿已接入；具体兼容条件和可执行请求见 [当前使用指南](MEMORY_USAGE.md)、[请求示例](MEMORY_REQUESTS.md) 与 [分层记录标准](RESEARCH_RECORDING.md)。当前模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)，后续文档同步见 [维护约定](DOCUMENTATION_MAINTENANCE.md)。
+
 2026-09-08 首批提供八类对象适配、草案预检、单对象版本保存、按 ID 读取和恢复检查。检索、正式复核、研究经过/续接、工作台页面和最终 AI Skill 尚未交付。这里是已实现 CLI 的开发用法；完整任务及后续顺序见[实施批次](design/system-memory/IMPLEMENTATION.md)。
 
 ## 对象、层级和版本

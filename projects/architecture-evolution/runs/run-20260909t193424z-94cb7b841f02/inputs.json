@@ -1,0 +1,72 @@
+[
+  {
+    "path": "docs/design/representation-query-v0.2/check_design.py",
+    "sha256": "e0e09c40beedb7af3119a49e81354bb48e5b1e4a4cb7705f1fc1dd7e825c12d8",
+    "snapshot": "check_design.py.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/CONTRACTS.md",
+    "sha256": "efe777ee17ccc3e42185060008ba81400221b7a0e99777a2f724db19ad61cf88",
+    "snapshot": "CONTRACTS.md.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/contracts.py",
+    "sha256": "ac8c2b35c5602cb424af4066aef54ee906bc6514c86ecaa5862862bd2ef8c5ec",
+    "snapshot": "contracts.py.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/development-files.json",
+    "sha256": "5549eb79ae8b1d1ed592bdc6a6961d53f63b8ad959865b1c0f7204c888931bb3",
+    "snapshot": "development-files.json.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/DEVELOPMENT_READINESS.md",
+    "sha256": "d404f2bad282ac92212b2f4915447379de0926f6413988be985ed1c749a015f6",
+    "snapshot": "DEVELOPMENT_READINESS.md.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/IMPLEMENTATION.md",
+    "sha256": "fc55adcf46e97c6b345ef5d610c6594613ecd8c46fc92a72cd7d03c38a450857",
+    "snapshot": "IMPLEMENTATION.md.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/README.md",
+    "sha256": "24a68979e87265b3136bc7a27e013e004264bfef66571f6bf692b9083554e0ba",
+    "snapshot": "README.md.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/test-cases.json",
+    "sha256": "7c2df489ae741846f98f24384e85023e01ce5c0b4428551c03644224f4153f48",
+    "snapshot": "test-cases.json.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/TEST_DESIGN.md",
+    "sha256": "659499dac02e4265250da745d5522e996f37dded27e84f672d3a4afa867a1f0b",
+    "snapshot": "TEST_DESIGN.md.snapshot"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/WORKBENCH.md",
+    "sha256": "0aebda00ca3cbb6f78dc2b50292cb703f6d967f86ef53395b2cb54e89b1b862a",
+    "snapshot": "WORKBENCH.md.snapshot"
+  },
+  {
+    "path": "context/NOW.md",
+    "sha256": "16be2d039799fd53f1326a6f11db34c52c9ebbd120f054ed3f51ccb1be0cab4b",
+    "snapshot": "NOW.md.snapshot"
+  },
+  {
+    "path": "README.md",
+    "sha256": "b49f7a3606bdd8ed127e9021f88bc467d98cb25fe2f6f4f41f038d4ccaf4ed65",
+    "snapshot": "README.md.snapshot"
+  },
+  {
+    "path": "projects/architecture-evolution/PLAN.md",
+    "sha256": "97809d3cc2b4bb48f39daa3ac4625cb59602529c2521c17d6d9293fbd426b173",
+    "snapshot": "PLAN.md.snapshot"
+  },
+  {
+    "path": "projects/architecture-evolution/plans/implementation-preparation.md",
+    "sha256": "15ea15db9cb11e717c67f1b10091abe678a32c19cbef94123245ec493e072f57",
+    "snapshot": "implementation-preparation.md.snapshot"
+  }
+]

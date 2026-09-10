@@ -1,0 +1,34 @@
+{
+  "verified": [
+    {
+      "record_id": "MEM-3d6097e5-9028-5e74-b2ca-196db59ed90c",
+      "revision": 1
+    },
+    {
+      "record_id": "MEM-aa53d44d-104d-5266-8cf6-c456c76f70e1",
+      "revision": 1
+    },
+    {
+      "record_id": "MEM-66d460ce-e086-5dd4-b261-50884640483a",
+      "revision": 1
+    },
+    {
+      "record_id": "MEM-4bbfdd98-b72a-53a0-b812-3e0b3e0b1166",
+      "revision": 1
+    },
+    {
+      "record_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+      "revision": 7
+    },
+    {
+      "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+      "revision": 7
+    },
+    {
+      "record_id": "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba",
+      "revision": 7
+    }
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-performed"
+}

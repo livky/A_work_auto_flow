@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query CLI",
+  "capture_path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A08/attempt-827ddd756ca34e78825e4e48c7d98aa4/delivered/tank-full.md",
+  "locator": "实际工具呈现的完整交付投影；coverage 描述所交付内容相对于材料的覆盖",
+  "coverage": "full",
+  "observation": "读完水箱完整章节，定义、连续质量守恒、比例控制、clip和未饱和误差解均在交付内容中。"
+}

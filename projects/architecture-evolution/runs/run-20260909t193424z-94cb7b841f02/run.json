@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T193424Z-94CB7B841F02",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "project_id": null,
+  "title": "正式开发计划完整性与文件对齐核对",
+  "keywords": [
+    "开发准备",
+    "文件清单",
+    "P0门槛",
+    "一致性核对"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "completed",
+  "created_at": "2026-09-09T19:34:24Z",
+  "started_at": null,
+  "ended_at": "2026-09-09T19:37:07.137417+00:00",
+  "owner": null,
+  "question": "现有正式开发计划是否齐全，涉及哪些文件，各入口是否对齐？",
+  "hypotheses": [],
+  "inputs": [],
+  "parameters": {},
+  "code": {
+    "commit": null,
+    "dirty": null
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [],
+  "metrics": {},
+  "artifacts": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/check_design.py.snapshot",
+      "sha256": "e0e09c40beedb7af3119a49e81354bb48e5b1e4a4cb7705f1fc1dd7e825c12d8",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.695393Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/CONTRACTS.md.snapshot",
+      "sha256": "efe777ee17ccc3e42185060008ba81400221b7a0e99777a2f724db19ad61cf88",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.699989Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/contracts.py.snapshot",
+      "sha256": "ac8c2b35c5602cb424af4066aef54ee906bc6514c86ecaa5862862bd2ef8c5ec",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.707009Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/design-check.json",
+      "sha256": "b8ba78b28b0f4ae9dc6d8cf5d4725cfa6d657d87624bedac006cb8525af68270",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.713122Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/development-files.json.snapshot",
+      "sha256": "5549eb79ae8b1d1ed592bdc6a6961d53f63b8ad959865b1c0f7204c888931bb3",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.718017Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/DEVELOPMENT_READINESS.md.snapshot",
+      "sha256": "d404f2bad282ac92212b2f4915447379de0926f6413988be985ed1c749a015f6",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.724305Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/implementation-preparation.md.snapshot",
+      "sha256": "15ea15db9cb11e717c67f1b10091abe678a32c19cbef94123245ec493e072f57",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.730418Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/IMPLEMENTATION.md.snapshot",
+      "sha256": "fc55adcf46e97c6b345ef5d610c6594613ecd8c46fc92a72cd7d03c38a450857",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.735429Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/inputs.json",
+      "sha256": "d85b6545086b55669ac6402413cf9309f564e9885ce9589c3cc98816460129d5",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.742428Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/NOW.md.snapshot",
+      "sha256": "16be2d039799fd53f1326a6f11db34c52c9ebbd120f054ed3f51ccb1be0cab4b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.748432Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/PLAN.md.snapshot",
+      "sha256": "97809d3cc2b4bb48f39daa3ac4625cb59602529c2521c17d6d9293fbd426b173",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.752953Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/README.md",
+      "sha256": "19ee6b9033c121c8dfaca82aed82cdf193bf907d53ca7753697623b9dfb34110",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.759416Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/README.md.snapshot",
+      "sha256": "b49f7a3606bdd8ed127e9021f88bc467d98cb25fe2f6f4f41f038d4ccaf4ed65",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.765418Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/test-cases.json.snapshot",
+      "sha256": "7c2df489ae741846f98f24384e85023e01ce5c0b4428551c03644224f4153f48",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.769423Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/TEST_DESIGN.md.snapshot",
+      "sha256": "659499dac02e4265250da745d5522e996f37dded27e84f672d3a4afa867a1f0b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.775187Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/WORKBENCH.md.snapshot",
+      "sha256": "0aebda00ca3cbb6f78dc2b50292cb703f6d967f86ef53395b2cb54e89b1b862a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T19:37:07.781181Z"
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "可启动P0；补齐逐文件清单并修正入口/计时/代理边界，明确未完成的工程基线。",
+  "limitations": [
+    "设计静态检查不证明产品实现",
+    "83现有/33拟新增是影响范围，不是全部必须修改",
+    "未执行产品/浏览器/升级/质量测试"
+  ],
+  "parent_run_ids": [
+    "RUN-20260909T190818Z-8ADA1DF3337B"
+  ],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  },
+  "sensitivity": "internal"
+}

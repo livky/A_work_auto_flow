@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/memory_review actual AI",
+  "origin": "public CLI readbacks and explicit hash comparison",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "已在本次工具输出实际呈现",
+  "coverage": "summary",
+  "observation": "读了基于公共inspect的4份原记录哈希与owner对照、旧A08导航哈希、3份原件前后哈希，均保持。此处为字段与哈希摘要阅读，不宣称重新逐字读完4份inspect。",
+  "recorded_at": "2026-09-09T23:04:03.374336Z",
+  "capture_sha256": "5a9990f2be48b3a73e8930b60419041d7980f0fe4a1353c377d0caaedb8e348f",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

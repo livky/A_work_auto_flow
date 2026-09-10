@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public memory CLI",
+  "capture_path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A08/attempt-827ddd756ca34e78825e4e48c7d98aa4/calls/call-4e81fbade77f45439ed142abb2d21ef4/stdout.txt",
+  "locator": "完整 stdout JSON，已在工具中实际呈现",
+  "coverage": "full",
+  "observation": "实际回执 save_status=committed、index_status=pending、INDEX_PENDING，保留退出码3，区分保存成功与索引待处理。"
+}

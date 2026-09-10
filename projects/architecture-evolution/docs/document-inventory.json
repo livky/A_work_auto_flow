@@ -1,0 +1,4414 @@
+{
+  "schema_version": 1,
+  "inventory_scope": "docs/ 下全部文件；不含本 Project 自身文档",
+  "snapshot_started_at_utc": "2026-09-09T15:30:03.218813+00:00",
+  "observed_at_utc": "2026-09-09T15:30:13.479008+00:00",
+  "git_head": "647d7862331e283439d06d42ec01d3882a32d163",
+  "git_working_tree_status_for_docs": [
+    {
+      "status": " M",
+      "path": "docs/DEPENDENCY_RELEASE.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/EVIDENCE_CONTROLS.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/EVIDENCE_VIEW_MONITOR.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/EXISTING_MATERIALS.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/MATERIAL_RELATIONS.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/MEMORY_DEVELOPMENT.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/MEMORY_REQUESTS.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/MEMORY_USAGE.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/OBJECT_RUN_STORAGE.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/RESEARCH_RECORDING.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/RETRIEVAL.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/RUN_CAPTURE.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/SETUP_WORKBENCH.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/TESTING.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/UPGRADE_TESTING.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/WINDOWS_PORTABILITY.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/WORKBENCH_DEVELOPMENT.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/L0_MATERIALS.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/RESEARCH_DOCUMENTS.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/adaptive-context-review-2026-09-06.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/ai-assisted-rd-workspace-practices.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/core-algorithms-rename-plan.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/dependency-release-plan.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/evidence-controls-plan.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/evidence-view-monitor-plan.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/local-retrieval-review-2026-09-06.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/materials-review-2026-09-06.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/setup-workbench-plan.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/01-data-contracts.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/02-services-algorithms.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/03-work-packages.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/04-acceptance.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/05-human-acceptance.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/IMPLEMENTATION.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/L0-L4-REFACTOR.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/RESEARCH-REPORT-COMPOSITION.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/system-memory/STATUS.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/windows-portability-plan.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/workbench-relations-plan.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/design/workflow-review-2026-09-06.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/系统记忆模块技术实现计划.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/系统记忆模块技术目标讨论稿.md"
+    },
+    {
+      "status": "??",
+      "path": "docs/DOCUMENTATION_MAINTENANCE.md"
+    },
+    {
+      "status": "??",
+      "path": "docs/系统记忆模块开发计划.md"
+    }
+  ],
+  "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+  "snapshot_semantics": "按本次工作树读取快照，不是独立提交或现行架构真源；后续编辑需重新盘点指纹",
+  "initial_inventory_semantics": "initial_inventory_sha256 采于文档盘点子任务初次读取阶段；部分现行文档当时已由其他并行工作修改，不能视为本轮总任务开始前或用户原始基线。该初始采集的精确时间未单独登记。",
+  "initial_inventory_observed_at_utc": null,
+  "date_semantics": "正文声明、Git提交、整理读取时间分开；不从文件修改时间或Run ID倒填实施日期",
+  "counts": {
+    "files": 74,
+    "markdown": 58,
+    "by_category": {
+      "当前手册": 18,
+      "验收记录": 6,
+      "历史设计": 21,
+      "合成fixture": 20,
+      "模板": 9
+    }
+  },
+  "fixture_bytes_unchanged_from_initial_inventory": true,
+  "fixture_changed_paths": [],
+  "frozen_fixture_manifest_check": {
+    "checked_files": 19,
+    "mismatches": [
+      "acceptance.json",
+      "records.json",
+      "work-packages.json"
+    ],
+    "details": [
+      {
+        "path": "docs/design/system-memory/fixtures/acceptance.json",
+        "manifest_sha256": "2cb2b64f2c3e1c443c37103be3ebedad2c947e8b305172abffd40d0ded136abf",
+        "actual_sha256": "9ae63a6af2a848929eab894493f2cb251ff70a7455f22dc0f0a57edb0904bea2",
+        "head_sha256": "9ae63a6af2a848929eab894493f2cb251ff70a7455f22dc0f0a57edb0904bea2",
+        "unchanged_from_head": true,
+        "interpretation": "已有冻结清单与文件不一致；不在本次文档整理中改字节或重算冻结清单"
+      },
+      {
+        "path": "docs/design/system-memory/fixtures/records.json",
+        "manifest_sha256": "4e6dae8460243100e89c96d8d8b19e41c0da4f216f4afc8c1d25c63d90d0d8d5",
+        "actual_sha256": "66a9c2948d794afa6d0aec82ab02eb53f878c9a2612389605e6fe8f2092807fd",
+        "head_sha256": "66a9c2948d794afa6d0aec82ab02eb53f878c9a2612389605e6fe8f2092807fd",
+        "unchanged_from_head": true,
+        "interpretation": "已有冻结清单与文件不一致；不在本次文档整理中改字节或重算冻结清单"
+      },
+      {
+        "path": "docs/design/system-memory/fixtures/work-packages.json",
+        "manifest_sha256": "4f8f01a3fe91e1d176bc2352b32845e3b71801bd1dc7b481891d8cee7eeef71f",
+        "actual_sha256": "d070d41026315e6c28610c5ce14b221d4d503cd639fa208f3ce8a31e8aeb0741",
+        "head_sha256": "d070d41026315e6c28610c5ce14b221d4d503cd639fa208f3ce8a31e8aeb0741",
+        "unchanged_from_head": true,
+        "interpretation": "已有冻结清单与文件不一致；不在本次文档整理中改字节或重算冻结清单"
+      }
+    ]
+  },
+  "entries": [
+    {
+      "path": "docs/DEPENDENCY_RELEASE.md",
+      "title": "依赖包与 Release",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 8410,
+      "sha256": "5420648bc3b36f1ceff8de555b807c23dc13625bdd87c7b0a2084e9d0129234f",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:03.221813+00:00",
+      "initial_inventory_sha256": "110408535762d81f7ae63c103fd4129780d180d216189adc36983ba8e7174da1",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "源码和运行依赖分开分发。源码包含 Python 程序、规则、模板和已构建的前端；依赖 ZIP 包含 Windows x64 CPU 环境。依赖未变化时可在多个源码版本间复用，安装器仍逐项核对锁定版本和模型清单。"
+        }
+      ],
+      "headings": [
+        "## 使用者：下载后一个命令",
+        "## 维护者：直接打包当前环境",
+        "## GitHub Release 分发",
+        "## 升级与恢复",
+        "## 验证"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/DEPENDENCY_RELEASE.md",
+        "first_commit": {
+          "commit": "5b37830d4d72f6902f1069a85f2bf5ac91b1326c",
+          "author_date": "2026-09-07T18:41:27+08:00",
+          "commit_date": "2026-09-07T18:41:27+08:00",
+          "subject": "feat: ship offline dependency bundles and migration standards"
+        },
+        "latest_commit": {
+          "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+          "author_date": "2026-09-09T22:25:49+08:00",
+          "commit_date": "2026-09-09T22:25:49+08:00",
+          "subject": "test: retain summation development example and exclude instances from releases"
+        },
+        "commit_count_for_path": 2
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/adaptive-context-review-2026-09-06.md",
+      "title": "分阶段上下文与工作区一致性审查",
+      "category": "验收记录",
+      "file_type": ".md",
+      "size_bytes": 4980,
+      "sha256": "d921fceb50d79a3015a16db2df138dff0780efb881d0411f35c2d4271bb87e4f",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:03.400672+00:00",
+      "initial_inventory_sha256": "2a77125bdf88ea90ec98aa657a4e30d0cceb644a646351ead312fcf669a49572",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "本记录是 2026-09-06 的后续实现阶段，覆盖当前工作区维护的规则、入口、手册、模板、工作流、检索/CLI 与测试。根目录规则和用户最新要求优先；以前的设计/审查是历史记录，不当成现行机制。第三方运行时通过已安装版本、校验清单和集成行为检查，不逐行改写第三方库。原始研究证据和业务原件未修改。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 3,
+          "text": "本记录是 2026-09-06 的后续实现阶段，覆盖当前工作区维护的规则、入口、手册、模板、工作流、检索/CLI 与测试。根目录规则和用户最新要求优先；以前的设计/审查是历史记录，不当成现行机制。第三方运行时通过已安装版本、校验清单和集成行为检查，不逐行改写第三方库。原始研究证据和业务原件未修改。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "本记录是 2026-09-06 的后续实现阶段，覆盖当前工作区维护的规则、入口、手册、模板、工作流、检索/CLI 与测试。根目录规则和用户最新要求优先；以前的设计/审查是历史记录，不当成现行机制。第三方运行时通过已安装版本、校验清单和集成行为检查，不逐行改写第三方库。原始研究证据和业务原件未修改。"
+        },
+        {
+          "original_line": 12,
+          "text": "| 长代码/Run 占满上下文 | Python 按函数边界读取；长 Run 首轮字段摘录；预算不足与不完整状态显式记录 |"
+        }
+      ],
+      "headings": [
+        "## 问题与修正",
+        "## 验证",
+        "## 能力边界"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/adaptive-context-review-2026-09-06.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "be246439e075ab8a01f7a582ccd1fce3988782a5",
+          "author_date": "2026-09-07T23:12:09+08:00",
+          "commit_date": "2026-09-07T23:12:09+08:00",
+          "subject": "fix: preserve expanded workspaces during validated upgrades"
+        },
+        "commit_count_for_path": 2
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/ai-assisted-rd-workspace-practices.md",
+      "title": "AI 辅助研发工作区：成熟实践与本地设计",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 7277,
+      "sha256": "bc1fb694288bca7a0f969d67e844591ee206ea4d3ed6696d12eaf83819877ea2",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:03.574429+00:00",
+      "initial_inventory_sha256": "582e9e41f4715bc44c28d28319a5155b871e532a56f96116cd6121e1296147d7",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-04",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 5,
+          "text": "日期：2026-09-04  "
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-04"
+          ],
+          "original_line": 5,
+          "text": "日期：2026-09-04  "
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 10,
+          "text": "适合本场景的不是一个巨型提示词，也不是一开始就上重型知识图谱，而是“可版本化的轻量控制平面 + 受控外部数据平面 + 可执行验证闭环”。根指令只负责稳定边界和路由；模块、数据、研究和报告拥有各自事实源；AI 通过索引和显式引用按需取上下文；重复流程逐步晋升为脚本、技能、契约与机械检查。"
+        }
+      ],
+      "headings": [
+        "## 直接结论",
+        "## 为什么根指令必须短小",
+        "## 为什么要渐进加载上下文",
+        "## 为什么大数据要留在共享盘",
+        "## 为什么要把每次分析固化为 Run",
+        "## 为什么历史问题要用 ADR 与无责复盘",
+        "## 为什么安全不能只靠提示词",
+        "## 实施顺序",
+        "## 限制与分歧"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/ai-assisted-rd-workspace-practices.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/core-algorithms-rename-plan.md",
+      "title": "核心算法分类与命名调整",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 3307,
+      "sha256": "f3852c671e924c8bde30d83750f3dec3b0478534a0c06ca63ddf8453532ee0a9",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:03.700180+00:00",
+      "initial_inventory_sha256": "24e44d4671c7c491522d45cdf07346fd36e91bf4d9695cb8960e86931537b919",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "日期：2026-09-06"
+        },
+        {
+          "date": "2026-09-07",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 5,
+          "text": "> 历史术语说明（2026-09-07）：本计划保留当时称谓。现行规则统一使用“核心算法”，括号中的领域对象仅为典型示例，不再作为固定名称；以 core-algorithms/AGENTS.md 为准。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 3,
+          "text": "日期：2026-09-06"
+        },
+        {
+          "dates": [
+            "2026-09-07"
+          ],
+          "original_line": 5,
+          "text": "> 历史术语说明（2026-09-07）：本计划保留当时称谓。现行规则统一使用“核心算法”，括号中的领域对象仅为典型示例，不再作为固定名称；以 core-algorithms/AGENTS.md 为准。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/core-algorithms-rename-plan.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "be246439e075ab8a01f7a582ccd1fce3988782a5",
+          "author_date": "2026-09-07T23:12:09+08:00",
+          "commit_date": "2026-09-07T23:12:09+08:00",
+          "subject": "fix: preserve expanded workspaces during validated upgrades"
+        },
+        "commit_count_for_path": 3
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/dependency-release-plan.md",
+      "title": "Windows 依赖分发与术语修订计划",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 3192,
+      "sha256": "593e630a3726f26fcc53bd9a318f95c5ebf6f3e4cd5d35d28d48f422a03642e4",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:03.810863+00:00",
+      "initial_inventory_sha256": "1cf4f67931c3a7fe6ce0fff0d4355584cbc4abc3d71f51d3e0dd4b256fa391b2",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 8,
+          "text": "- [x] S2 新增独立依赖打包器：按 Python 官方嵌入包、已锁定发行包 RECORD 与模型指纹清单取文件；排除工作数据、数据库、模型下载缓存及未登记文件。提供版本清单、文件 SHA-256、许可证和 ZIP 校验旁车。"
+        },
+        {
+          "original_line": 9,
+          "text": "- [x] S3 将打包、依赖导入与恢复接入 setup.cmd。PowerShell 在无 Python 时验证并解压依赖 ZIP；版本不匹配提前失败。依赖通过暂存、备份、切换安装，目标配置和业务数据保留，完整自检及索引成功才报告安装完成。"
+        },
+        {
+          "original_line": 10,
+          "text": "- [x] S4 增加损坏、越界、版本不匹配、恢复冲突、私有数据排除和真实 Windows 中文路径的部署回归；实际打包本地环境，并验证离线安装、升级及数据保留。"
+        },
+        {
+          "original_line": 11,
+          "text": "- [x] S5 更新 README、部署/迁移说明和状态，运行索引刷新与验证，记录固定 Run 的输入、检查及限制。"
+        }
+      ],
+      "headings": [
+        "## 执行步骤",
+        "## 分发与兼容边界",
+        "## 参考"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260907T094813Z-4EE938390289"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/dependency-release-plan.md",
+        "first_commit": {
+          "commit": "5b37830d4d72f6902f1069a85f2bf5ac91b1326c",
+          "author_date": "2026-09-07T18:41:27+08:00",
+          "commit_date": "2026-09-07T18:41:27+08:00",
+          "subject": "feat: ship offline dependency bundles and migration standards"
+        },
+        "latest_commit": {
+          "commit": "5b37830d4d72f6902f1069a85f2bf5ac91b1326c",
+          "author_date": "2026-09-07T18:41:27+08:00",
+          "commit_date": "2026-09-07T18:41:27+08:00",
+          "subject": "feat: ship offline dependency bundles and migration standards"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/evidence-controls-plan.md",
+      "title": "研发可靠性第一批实施计划",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 3683,
+      "sha256": "c18815cf55d4c7b338a556c8e2863d4ef823ae34e3ff0cec07f3b905243ca25a",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:03.934512+00:00",
+      "initial_inventory_sha256": "132f13e6f20355ca1584afdc8d48571072ca1d7c9e05362841da5d71512877c4",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "日期：2026-09-06。授权：用户同意按结构评审路线实施。范围限第一批：环境健康/严格验收、结论级记录与正式使用检查、跨文档失效传播、真实试点入口。保留当前目录、旧记录和检索默认探索行为；不引入调度平台或企业连接器。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 3,
+          "text": "日期：2026-09-06。授权：用户同意按结构评审路线实施。范围限第一批：环境健康/严格验收、结论级记录与正式使用检查、跨文档失效传播、真实试点入口。保留当前目录、旧记录和检索默认探索行为；不引入调度平台或企业连接器。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 9,
+          "text": "- 证据引用固定 target、sha256 和 locator；文件依据只允许工作区内或已逐文件登记的来源。对象指纹排除复核历史等动态记录，复核变化仍通过状态传播。"
+        },
+        {
+          "original_line": 10,
+          "text": "- 正式检查拒绝不完整、未复核、错 scope、版本变化、失效或循环依赖。探索模式显示风险；正式上下文只导出合格的结论条目，避免原文中未复核内容混入。"
+        }
+      ],
+      "headings": [
+        "## 数据与接口设计",
+        "## 工作清单",
+        "## 验证与限制",
+        "## 本批交付"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260906T140125Z-6DEFDCB569C4"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/evidence-controls-plan.md",
+        "first_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "latest_commit": {
+          "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+          "author_date": "2026-09-09T22:25:49+08:00",
+          "commit_date": "2026-09-09T22:25:49+08:00",
+          "subject": "test: retain summation development example and exclude instances from releases"
+        },
+        "commit_count_for_path": 2
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/evidence-view-monitor-plan.md",
+      "title": "证据查看与只读监测实施计划",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 2933,
+      "sha256": "d18c8ef290876bf93b0f7bd1427768f0eaee1f82a992065b3576c5ed2e453a9d",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:04.051127+00:00",
+      "initial_inventory_sha256": "7a954035ac47a820e0a52cca04b4e8cec8259b6aa6ee5d176279bab853dbfdcf",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "用户要求：先让证据为什么保存、依据、复核、失效及报告影响可见，再增加材料变化、实验完成和依赖失效的只读监测。自动整理只提出候选，重复出现或被引用不能提升可信状态。"
+        },
+        {
+          "original_line": 7,
+          "text": "- 复用 evidence.py；本地网页提供搜索、状态筛选、结论/对象详情、证据定位、复核历史与已登记的下游报告。无外部资源、无编辑/复核按钮，不依赖向量或 OCR。"
+        },
+        {
+          "original_line": 10,
+          "text": "- 监测状态保存于独立本机文件；原子写入、串行锁、失败不覆盖基线；观察时间与真实失效时间分开。不进行索引重建、实验执行、合并或状态晋升。"
+        },
+        {
+          "original_line": 11,
+          "text": "- 完全相同的结论或材料仅作为重复候选；维护候选可追溯到触发版本，失效/恢复不等于自动复核。"
+        }
+      ],
+      "headings": [
+        "## 范围与设计",
+        "## 工作清单",
+        "## 验证边界"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/evidence-view-monitor-plan.md",
+        "first_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "latest_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/L0_MATERIALS.md",
+      "title": "L0 原始材料统一入口",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 3676,
+      "sha256": "c148c47f12f92040f816e41f4d0a7a55d8b3d22cb1817b0f3ec72c93ae2db381",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:04.172464+00:00",
+      "initial_inventory_sha256": "2199a9e7e04bc18c06f89f79bf8acc05d1dee52ee76c8906a4c3c4e661368695",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 9,
+          "text": "`memory raw-materials` 接受 owner_id，返回只读条目、固定版本、来源 ID、使用对象/Run、缺口与快照标识。研究汇总 owner_id、related_research_ids 等显式字段和记忆引用指向的 Run；同物理路径及同固定 SHA 合并，不以相同内容哈希合并不同路径。原 source 的修订与说明保留为来源登记关联。"
+        },
+        {
+          "original_line": 11,
+          "text": "`memory raw-material` 接受 owner_id、material_id、max_chars，从当前合法登记重新定位，核对权限、路径和原 SHA，再返回有界文本或支持的固定图片。版本变化不替换原引用；没有固定哈希的材料仅列登记缺口。原始大文件不自动送入模型上下文，原始正文仍不加入常规知识检索。"
+        }
+      ],
+      "headings": [
+        "## 范围与接口",
+        "## 实施与验证"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260909T103018Z-E452A936D4C1"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/L0_MATERIALS.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "L0 统一材料投影设计与当时实现记录；Run 自动登记用法随后归入 RUN_CAPTURE 手册"
+    },
+    {
+      "path": "docs/design/local-retrieval-review-2026-09-06.md",
+      "title": "全局对象与本地检索审查记录",
+      "category": "验收记录",
+      "file_type": ".md",
+      "size_bytes": 4160,
+      "sha256": "5dae4f283792605b0012d66e0f0390dc92a060b64803641f20c2086f7328d590",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:04.303744+00:00",
+      "initial_inventory_sha256": "b74d6ece24d1bdab0cf0a2e80d0e9207c753dc42300e4e694f8e2576eba8c768",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "日期：2026-09-06。范围为当前工作区维护中的规则、入口、手册、模板、工作流、CLI 与测试；根目录规则及用户最新要求优先，历史设计/研究证据保留原记录。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 3,
+          "text": "日期：2026-09-06。范围为当前工作区维护中的规则、入口、手册、模板、工作流、CLI 与测试；根目录规则及用户最新要求优先，历史设计/研究证据保留原记录。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 已修正",
+        "## 验证证据",
+        "## 尚未证明或实现"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/local-retrieval-review-2026-09-06.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "be246439e075ab8a01f7a582ccd1fce3988782a5",
+          "author_date": "2026-09-07T23:12:09+08:00",
+          "commit_date": "2026-09-07T23:12:09+08:00",
+          "subject": "fix: preserve expanded workspaces during validated upgrades"
+        },
+        "commit_count_for_path": 2
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/materials-review-2026-09-06.md",
+      "title": "可读性与材料维护审查（2026-09-06）",
+      "category": "验收记录",
+      "file_type": ".md",
+      "size_bytes": 3803,
+      "sha256": "e40b2fcc0215638aaaaeb88bd38bd5aa0a9f19eb917de6547df10ed9c18a3b6c",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:04.414373+00:00",
+      "initial_inventory_sha256": "c666e07c714a59fd3274fd7d0405251e78644ba6f2867831bdc86278bf67bf12",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 1,
+          "text": "# 可读性与材料维护审查（2026-09-06）"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 1,
+          "text": "# 可读性与材料维护审查（2026-09-06）"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 10,
+          "text": "| 大量材料缺少可恢复阅读进度及融合约定 | 增加批次清单、阅读范围、关键词/别名、去重引用、版本链、冲突保留和检索抽查 |"
+        },
+        {
+          "original_line": 11,
+          "text": "| 模块卡缺少文档与代码分别版本化的对应关系 | 补多对多映射、符号、指纹、检查状态和影响记录；在 START_HERE 加问答检索路由 |"
+        }
+      ],
+      "headings": [
+        "## 发现与处理",
+        "## 验证与限制"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/materials-review-2026-09-06.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/RESEARCH_DOCUMENTS.md",
+      "title": "技术研究单元、独立章节与双文档：实现计划",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 8386,
+      "sha256": "77d4a7a47f1ad911f71622c99f509dcf0293b29dac678a5d3d49db9755ed6bbd",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:04.529635+00:00",
+      "initial_inventory_sha256": "0ab68b5dac007d6360507bc3ff5d4ca4f40f84fce971e74b2ae3c32d24063c54",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "日期：2026-09-09。用户要求先冻结可复用分级测试，再设计、分工并实施。本计划是当前任务的自包含入口；固定Run为RUN-20260909T055625Z-B13C2FC3994F（本地历史记录，未随源码分发：`../../projects/memory-layers-v2/runs/run-20260909t055625z-b13c2fc3994f/README.md`）。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "日期：2026-09-09。用户要求先冻结可复用分级测试，再设计、分工并实施。本计划是当前任务的自包含入口；固定Run为RUN-20260909T055625Z-B13C2FC3994F（本地历史记录，未随源码分发：`../../projects/memory-layers-v2/runs/run-20260909t055625z-b13c2fc3994f/README.md`）。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 用户目标",
+        "## 存储与契约",
+        "## 读取、上下文与影响",
+        "## 分工与实施顺序",
+        "## 本轮必要验收标准",
+        "## 当前进度与限制"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260909T055625Z-B13C2FC3994F"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/RESEARCH_DOCUMENTS.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "2026-09-09 的 v3 技术单元、独立章节和双文稿实现计划与当批结果"
+    },
+    {
+      "path": "docs/design/setup-workbench-plan.md",
+      "title": "Windows 一键部署、工作台与本机测试计划",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 2067,
+      "sha256": "2c15f87425589cdcbc8e34b83a2f4058a7f9792850ee310db59cdca8acc1a954",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:04.668683+00:00",
+      "initial_inventory_sha256": "593ddea2736c9c8ff94d0d559a2d110cd1440aee5867038854576f9bf54cdf79",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 7,
+          "text": "- [x] 聚合证据、监测、模块导航与能力状态；一键启动/停止。"
+        },
+        {
+          "original_line": 10,
+          "text": "- [x] 更新 README、迁移手册、状态与固定 Run，明确未测边界。"
+        },
+        {
+          "original_line": 12,
+          "text": "升级采用新版源码写入指定旧目录：只覆盖明确的框架程序/模板/手册；现有业务目录、配置、规则与技能保留，缺少的默认文件才补齐。备份记录每个被写入文件的原始版本与安装版本；恢复前核对安装后是否又有修改，冲突时拒绝覆盖。"
+        }
+      ],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260907T042941Z-D9E5F49FE803"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/setup-workbench-plan.md",
+        "first_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "latest_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/system-memory/01-data-contracts.md",
+      "title": "数据结构与存储契约 v1",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 17460,
+      "sha256": "26c6041b5ae3979ab879d974e768f7dae6282a6eb854fa07bb650ab02e9ce6ce",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:04.800530+00:00",
+      "initial_inventory_sha256": "b24db78d226439cbb600cd34ce8fb5a805144f3f4880a63207f9acbef5f790d1",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "本文件规定首版实现目标。表中“必需”指提交时必须提供或由服务端生成；空值必须有约定含义。实际 JSON Schema 在 W01 实现。本文件中的新目录和类型尚未实现。"
+        },
+        {
+          "original_line": 5,
+          "text": "契约真源为计划中的 automation/schemas/memory-v1.schema.json。为保持基础记录功能在 core 环境可用，后端采用标准库实现并测试本项目限定的 schema 子集：type、const、enum、required、properties、additionalProperties、items、minLength、minItems、oneOf、$defs 和本地 $ref。遇到未支持关键字或外部 $ref 明确拒绝，不能静默忽略。跨字段、引用解析和状态转换由具名领域校验函数完成。前端从同一 schema 生成结构类型，领域约束调用后端预检，不复制第二套状态机。该校验器不宣称实现完整通用 JSON Schema 标准，不新增运行依赖。"
+        }
+      ],
+      "headings": [
+        "## 1. 保留现有业务对象，新增统一入口",
+        "## 2. 每条记录的共同外壳",
+        "## 3. 专用结构、内容层与辅助实体",
+        "## 4. 引用与状态",
+        "## 5. 规范存储与事务边界",
+        "## 6. 派生数据库与历史边界",
+        "## 7. 兼容与规范写入约束"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/01-data-contracts.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "首版 L0–L3 数据契约设计；当前程序兼容 v1/v2/v3，不能把文中的“尚未实现”读作当前能力"
+    },
+    {
+      "path": "docs/design/system-memory/02-services-algorithms.md",
+      "title": "服务入口、算法与失败处理 v1",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 20050,
+      "sha256": "aeae360413eb96f24aca7ed0dfa735e614a0d31afef679f7039b118f9be408e3",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:04.945575+00:00",
+      "initial_inventory_sha256": "0316d6f36ce8d77fbeaeb261a63cd119f2472fc61c8e71599c98c6c5a9518d67",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 131,
+          "text": "2026-09-09 增加探索检索策略 `topic-evidence-tiers-v2`：在已回源且有权读取的候选中，找出查询明确提到的完整登记关键词。先融合具有这些主题关键词的具体记录；同一原生 Run 的匹配 claim 已出现时，把宽泛 Run 容器保留到后层，不合并或改写两者身份。其余匹配（包括缺少关键词、只由向量发现的记录）仍保留为后备候选。各层内继续使用上述等权 RRF；层号优先于层内分数，因此不能把不同层的分数当成全局相关性概率。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 131,
+          "text": "2026-09-09 增加探索检索策略 `topic-evidence-tiers-v2`：在已回源且有权读取的候选中，找出查询明确提到的完整登记关键词。先融合具有这些主题关键词的具体记录；同一原生 Run 的匹配 claim 已出现时，把宽泛 Run 容器保留到后层，不合并或改写两者身份。其余匹配（包括缺少关键词、只由向量发现的记录）仍保留为后备候选。各层内继续使用上述等权 RRF；层号优先于层内分数，因此不能把不同层的分数当成全局相关性概率。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 1. 入口清单",
+        "## 2. 请求与回执",
+        "## 3. 保存、幂等与恢复算法",
+        "## 4. 证据与派生失效",
+        "## 5. 索引、排名和相关性算法",
+        "## 6. 研究经过、上下文包与续接",
+        "## 7. 巩固与跨项目总结",
+        "## 8. HTTP 与工作台",
+        "## 9. 迁移接口边界"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/02-services-algorithms.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "首版服务/算法设计及后续排序修订说明；接口和默认策略须核对当前程序"
+    },
+    {
+      "path": "docs/design/system-memory/03-work-packages.md",
+      "title": "开发任务卡与依赖",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 21576,
+      "sha256": "689a7564c9862d7121c4a3534c0e42b882deff328855b38c9b58205c9a6feaea",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:05.061250+00:00",
+      "initial_inventory_sha256": "e424ea32ae7f64669ba61b3c572126978110f8f337cfb709f697a2e4656464f5",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "版本1.0。以下是待实现的代码交付物。测试材料准备不等于产品任务已通过。实际状态见[STATUS](STATUS.md)。"
+        },
+        {
+          "original_line": 7,
+          "text": "一次选一个满足依赖的任务，先固定输入/故障场景，再实现结构、函数和算法，运行关联测试。完成状态：planned→active→implemented→verified；受阻为blocked。缺必要测试、失败或skipped不得verified。"
+        },
+        {
+          "original_line": 9,
+          "text": "契约修改先更新01/02、schema与配方，再检查下游任务。每批在固定Run中汇总代码版本、配置、输入hash、结果和限制，不为每个小步骤建立新项目。"
+        }
+      ],
+      "headings": [
+        "## 使用方法",
+        "## 可并行部分",
+        "## W00 执行基线与合成测试材料",
+        "## W01 统一数据契约",
+        "## W02 版本存储与最小调用闭环",
+        "## W03 八类旧对象适配",
+        "## W04 结论复核与失效传播",
+        "## W05 问题、目标、路线与检查点",
+        "## W06 统一索引与多表示检索",
+        "## W07 跨对象相关性与关系记录",
+        "## W08 研究经过、检索包与AI续接",
+        "## W09 价值触发、巩固与跨项目总结",
+        "## W10 工作台与完整公共入口",
+        "## W11 迁移、保护清单与离线交付",
+        "## W12 正式调用指导与AI Skill",
+        "## W13 整体评价与交付核对",
+        "## 验证入口"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/03-work-packages.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "首版 W00–W13 任务定义；任务卡的待实施措辞不代表当前完成状态"
+    },
+    {
+      "path": "docs/design/system-memory/04-acceptance.md",
+      "title": "测试点与明确验收标准",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 79123,
+      "sha256": "0f1b0ad0e1d6443d5cef68ca1426e53d195e2ec1413e82884d788fd6cb261cc3",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:05.176653+00:00",
+      "initial_inventory_sha256": "006881a110a88ec95b1d5e00bfd1e399604efe348ae5ea2676b1761dab5c4dcd",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "版本1.0，共115个测试点。机器真源为[acceptance.json](fixtures/acceptance.json)，本文是同版阅读视图。**当前全部为not-run产品验收规格。**"
+        },
+        {
+          "original_line": 5,
+          "text": "版本1.1增补：保留本文技术测试，另加[18个人类可阅的整体评价与交付核对测试点](05-human-acceptance.md)。它们使用日常任务描述，要求AI通过Skill/正式产品取得真实结果、实际查阅并保存内容，最后由用户审查。整体计划现为115个技术测试＋18个使用验收，共133项；新增清单独立版本保存，不改原冻结配方。"
+        },
+        {
+          "original_line": 10,
+          "text": "- 前置状态固定：时钟、ID、原件内容、配置。每例执行前保存HEAD、规范ID/revision、受保护文件SHA-256和目录集合。"
+        },
+        {
+          "original_line": 11,
+          "text": "- 除步骤明确的新修订、状态事件或故障注入外，旧修订、原始材料、无关对象的字节指纹全部不变。"
+        }
+      ],
+      "headings": [
+        "## 执行约定",
+        "## 检索与质量指标",
+        "## 任务导航",
+        "## W00 执行基线与合成测试材料",
+        "## W01 统一数据契约",
+        "## W02 版本存储与最小调用闭环",
+        "## W03 八类旧对象适配",
+        "## W04 结论复核与失效传播",
+        "## W05 问题、目标、路线与检查点",
+        "## W06 统一索引与多表示检索",
+        "## W07 跨对象相关性与关系记录",
+        "## W08 研究经过、检索包与AI续接",
+        "## W09 价值触发、巩固与跨项目总结",
+        "## W10 工作台与完整公共入口",
+        "## W11 迁移、保护清单与离线交付",
+        "## W12 正式调用指导与AI Skill",
+        "## W13 整体评价与交付核对"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/04-acceptance.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "首版冻结技术验收规格；not-run 是配方状态，实际执行结果另存 Run，不能回写规格追认通过"
+    },
+    {
+      "path": "docs/design/system-memory/05-human-acceptance.md",
+      "title": "人类可阅的整体评价与交付核对",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 26380,
+      "sha256": "9597da96373d6e0a0366d420891e39c92c2534494985b07c8b318475fe822115",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:05.307987+00:00",
+      "initial_inventory_sha256": "401e5411206326cdd9489c7d4ac2835c4a1cd791a52c43035a69d74b8aaef7c4",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "版本1.1；归属W13。本组在原有115个技术测试点上，增加18个日常使用验收点H01–H18。当前只是验收计划，未执行真实产品操作，未产生实际使用结果。"
+        }
+      ],
+      "headings": [
+        "## 1. 用户如何阅读这份验收",
+        "## 2. 统一执行方式",
+        "## 3. 必须留下的查阅证据",
+        "## 4. 什么情况算通过",
+        "## 5. 日常使用验收清单",
+        "## 6. 给用户的最终审查包",
+        "## 7. 实施人员附录：记录格式与保存位置"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/05-human-acceptance.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "H01–H18 冻结使用验收计划；实际 AI 结果、用户意见和科学复核分别记录"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/acceptance.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 138935,
+      "sha256": "9ae63a6af2a848929eab894493f2cb251ff70a7455f22dc0f0a57edb0904bea2",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:05.441309+00:00",
+      "initial_inventory_sha256": "9ae63a6af2a848929eab894493f2cb251ff70a7455f22dc0f0a57edb0904bea2",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/ai-cases.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 6045,
+      "sha256": "cd7798b248470ae158da119e2d4dbcb471596d8f35c3cee50c1b1cc79f9e9df5",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:05.576278+00:00",
+      "initial_inventory_sha256": "cd7798b248470ae158da119e2d4dbcb471596d8f35c3cee50c1b1cc79f9e9df5",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/fixture-manifest.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 2024,
+      "sha256": "71eb48c547aab17ef4b4f3c314f27ef1e53454113946db06e5a6892783847f98",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:05.719116+00:00",
+      "initial_inventory_sha256": "71eb48c547aab17ef4b4f3c314f27ef1e53454113946db06e5a6892783847f98",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/negative-drafts.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 5010,
+      "sha256": "f3849dd4aee2b905b4333424e504cd697db735a98999857bc915b05f09fcfe9c",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:05.857948+00:00",
+      "initial_inventory_sha256": "f3849dd4aee2b905b4333424e504cd697db735a98999857bc915b05f09fcfe9c",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/queries.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 38748,
+      "sha256": "88ab36fde5597f40f87103404c16199c652d2a4debb5c94fec0433a766336692",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:06.005574+00:00",
+      "initial_inventory_sha256": "88ab36fde5597f40f87103404c16199c652d2a4debb5c94fec0433a766336692",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/README.md",
+      "title": "合成材料与验收配方",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 5063,
+      "sha256": "70ed5895fc123886175e6fc825df82bdea067af194443292e89d77849f51cd0f",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:06.158751+00:00",
+      "initial_inventory_sha256": "70ed5895fc123886175e6fc825df82bdea067af194443292e89d77849f51cd0f",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 11,
+          "text": "| negative-drafts.json | 16个反例：层级、类型、属性、状态、引用、权限、原件覆盖等 |"
+        }
+      ],
+      "headings": [
+        "## 已准备内容",
+        "## 配方与正式提交格式的区别",
+        "## 运行自检",
+        "## 评价纪律与限制"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/records.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 87071,
+      "sha256": "66a9c2948d794afa6d0aec82ab02eb53f878c9a2612389605e6fe8f2092807fd",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:06.361655+00:00",
+      "initial_inventory_sha256": "66a9c2948d794afa6d0aec82ab02eb53f878c9a2612389605e6fe8f2092807fd",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/scenarios.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 5688,
+      "sha256": "91f182a4002a497156b1b02f53600df622c31450ab18c45827c956ce42f46429",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:06.925020+00:00",
+      "initial_inventory_sha256": "91f182a4002a497156b1b02f53600df622c31450ab18c45827c956ce42f46429",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/cache.md",
+      "title": "SYNTHETIC ONLY：来源变化与陈旧缓存",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 485,
+      "sha256": "25228e8ce5f6fae102da3aa8228099c29d34a1d1cffc9fdf2f9d6b0df18c464d",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:07.053256+00:00",
+      "initial_inventory_sha256": "25228e8ce5f6fae102da3aa8228099c29d34a1d1cffc9fdf2f9d6b0df18c464d",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 9,
+          "text": "适用条件：来源有固定身份与版本；正式导出执行回源检查"
+        }
+      ],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/ocr.md",
+      "title": "SYNTHETIC ONLY：符号识别与原文核对",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 439,
+      "sha256": "60050cd8f7176af000c97b3810fae7832f287367561a267616437f4a4d683d3f",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:07.186041+00:00",
+      "initial_inventory_sha256": "60050cd8f7176af000c97b3810fae7832f287367561a267616437f4a4d683d3f",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/pressure.md",
+      "title": "SYNTHETIC ONLY：预载与重复定位",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 422,
+      "sha256": "704fabfc1458d523ee03dc8f3bab8a503ddcad22ad0192e0bc31d836f2695020",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:07.327679+00:00",
+      "initial_inventory_sha256": "704fabfc1458d523ee03dc8f3bab8a503ddcad22ad0192e0bc31d836f2695020",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/repeat.md",
+      "title": "SYNTHETIC ONLY：重复材料与独立证据",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 451,
+      "sha256": "8e40efdd192eae8d313a894e1d78846b29e730e219389b887af1e5b3a7eccdd2",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:07.479600+00:00",
+      "initial_inventory_sha256": "8e40efdd192eae8d313a894e1d78846b29e730e219389b887af1e5b3a7eccdd2",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/retry.md",
+      "title": "SYNTHETIC ONLY：超时重试与重复写入",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 479,
+      "sha256": "72038b814784a6e920aa239b785a1a0e73f1499b92464b94d9f2d288624fd17b",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:07.596870+00:00",
+      "initial_inventory_sha256": "72038b814784a6e920aa239b785a1a0e73f1499b92464b94d9f2d288624fd17b",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/thermal-v2.md",
+      "title": "SYNTHETIC ONLY：预热与零点漂移的冲突变体",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 406,
+      "sha256": "edc87ba17f5b22473859d49606d202cf16d4e3d3fbacbb9ee76e94014481469d",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:07.709618+00:00",
+      "initial_inventory_sha256": "edc87ba17f5b22473859d49606d202cf16d4e3d3fbacbb9ee76e94014481469d",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "这份材料由 AI 构造，仅供撤回、版本与依赖检查，不代表真实实验。"
+        },
+        {
+          "original_line": 9,
+          "text": "需要核对输入和测量版本；不得从本变体推断所有预热方法或其他样本均无效。"
+        }
+      ],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/thermal.md",
+      "title": "SYNTHETIC ONLY：预热与零点漂移",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 429,
+      "sha256": "e898b9ee7da829a3d92fdb2d442ba45b91a4a73b0cd3cd655fa88862bfd62bfa",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:07.825409+00:00",
+      "initial_inventory_sha256": "e898b9ee7da829a3d92fdb2d442ba45b91a4a73b0cd3cd655fa88862bfd62bfa",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/units.md",
+      "title": "SYNTHETIC ONLY：单位转换与报告数字",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 436,
+      "sha256": "97c9e77f70a07f4420e2b50789b886e778a33adcc8c3620550074ad363e7d474",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:07.954050+00:00",
+      "initial_inventory_sha256": "97c9e77f70a07f4420e2b50789b886e778a33adcc8c3620550074ad363e7d474",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/sources/vibration.md",
+      "title": "SYNTHETIC ONLY：采样配置与不可辨识结果",
+      "category": "合成fixture",
+      "file_type": ".md",
+      "size_bytes": 458,
+      "sha256": "e6fe55ac7afd7ceb57836824e895c92fd2346a77a1097152808a52e17f24addc",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:08.075327+00:00",
+      "initial_inventory_sha256": "e6fe55ac7afd7ceb57836824e895c92fd2346a77a1097152808a52e17f24addc",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 9,
+          "text": "适用条件：输入集合 X/Y；配置 S1/S2 的固定版本"
+        }
+      ],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/variants.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 4388,
+      "sha256": "fa7676c7925762c6c579bb40a23b40d5b9e4d7d6364ff3d8a66f9041d24c7b19",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:08.191153+00:00",
+      "initial_inventory_sha256": "fa7676c7925762c6c579bb40a23b40d5b9e4d7d6364ff3d8a66f9041d24c7b19",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/verify_plan.py",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".py",
+      "size_bytes": 15610,
+      "sha256": "7fa923e0789f9268580801242c8cbd9a509f96becc2bdbf8a066e616be7215ae",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:08.321691+00:00",
+      "initial_inventory_sha256": "7fa923e0789f9268580801242c8cbd9a509f96becc2bdbf8a066e616be7215ae",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/work-packages.json",
+      "title": null,
+      "category": "合成fixture",
+      "file_type": ".json",
+      "size_bytes": 13908,
+      "sha256": "d070d41026315e6c28610c5ce14b221d4d503cd639fa208f3ce8a31e8aeb0741",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:08.443052+00:00",
+      "initial_inventory_sha256": "d070d41026315e6c28610c5ce14b221d4d503cd639fa208f3ce8a31e8aeb0741",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/human-acceptance/cases.json",
+      "title": null,
+      "category": "模板",
+      "file_type": ".json",
+      "size_bytes": 26628,
+      "sha256": "6a18b833d50d42075f4d1ad1b9536b168cbbbb78bc99699c4533585e4e09f4a7",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:08.561758+00:00",
+      "initial_inventory_sha256": "6a18b833d50d42075f4d1ad1b9536b168cbbbb78bc99699c4533585e4e09f4a7",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/human-acceptance/plan-extension.json",
+      "title": null,
+      "category": "模板",
+      "file_type": ".json",
+      "size_bytes": 599,
+      "sha256": "aa2fa9d40b2b56e1492a193e3dc88c4336fc28903c463b7e15eb295ba9184112",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:08.702186+00:00",
+      "initial_inventory_sha256": "aa2fa9d40b2b56e1492a193e3dc88c4336fc28903c463b7e15eb295ba9184112",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/human-acceptance/read-event-template.json",
+      "title": null,
+      "category": "模板",
+      "file_type": ".json",
+      "size_bytes": 939,
+      "sha256": "7ee39c339ebf133e42b426181f51a2268c715806be9ff58320a1f4063bf2198d",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:08.858737+00:00",
+      "initial_inventory_sha256": "7ee39c339ebf133e42b426181f51a2268c715806be9ff58320a1f4063bf2198d",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/human-acceptance/result-template.json",
+      "title": null,
+      "category": "模板",
+      "file_type": ".json",
+      "size_bytes": 1183,
+      "sha256": "af8a2e3e1c6af0d9488cbaddf8b372b3a6e519218b8592549e3af3c17993c0ca",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:08.986822+00:00",
+      "initial_inventory_sha256": "af8a2e3e1c6af0d9488cbaddf8b372b3a6e519218b8592549e3af3c17993c0ca",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/human-acceptance/REVIEW_TEMPLATE.md",
+      "title": "单项使用结果审查页（空模板）",
+      "category": "模板",
+      "file_type": ".md",
+      "size_bytes": 1914,
+      "sha256": "15f041510637db7ead3eb50de3460f52ca543de47b8c19860a213b484acf87aa",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:09.111169+00:00",
+      "initial_inventory_sha256": "15f041510637db7ead3eb50de3460f52ca543de47b8c19860a213b484acf87aa",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "本页尚未执行任何场景。填写时只能引用真实产品返回和实际查阅内容，不能预填成功结果。"
+        },
+        {
+          "original_line": 10,
+          "text": "- 使用的产品功能或Skill及版本：待填写。"
+        }
+      ],
+      "headings": [
+        "## 这次让AI做什么",
+        "## 产品实际返回了什么",
+        "## AI实际打开和读到了什么",
+        "## 和预期对照",
+        "## 提交给用户的简短说明",
+        "## 用户最终审查"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/design/system-memory/IMPLEMENTATION.md",
+      "title": "系统记忆持续实施计划",
+      "category": "验收记录",
+      "file_type": ".md",
+      "size_bytes": 6905,
+      "sha256": "9ba25a3be06afaf0743eec9ab65bff375c98b146fa33f5f16bc903061a69d8e6",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:09.234699+00:00",
+      "initial_inventory_sha256": "bfa54bb331974985f05af820bfe633a6a1a10eb3495b50e6ceff4c2a2ab42705",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-08",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "开始：2026-09-08。用户已要求通读设计、分工并开始实施；主计划中上一轮“只交付计划”的范围说明不再约束本批开发。冻结素材和既有计划 Run 保留。"
+        },
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 7,
+          "text": "2026-09-09 用户要求“继续到底”后的本轮执行已收口：原36次独立AI槽位已全部执行：30次符合、6次不符合；原6次失败在修订指引后各以新上下文复测，6次均符合，原失败和各版本指纹保留。排序修订后的开发集Recall=0.953125、nDCG=0.917396；新独立题集原始Recall=0.642361、nDCG=0.698647，负例正确空结果0/3，整体检索质量仍未通过。独立标注的Run/CLM单位差异单独说明，不追改标签。 295项完整回归和最新18项真实setup通过，K02/K03/K06/Z02补验及最终归档完成。万条规模测试继续按授权暂缓，人工意见待审。当前结果以[STATUS](STATUS.md)为准。"
+        },
+        {
+          "date": "2026-09-08",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 9,
+          "text": "首批 W00–W03 已完成可调用闭环及局部验证。2026-09-08 用户追加要求持续完成所有可自主执行的开发；当前范围扩展为 W04–W13。人工验收先完成真实操作、阅读和证据归档，最终意见统一保持待用户审核，不在阶段间要求确认。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-08"
+          ],
+          "original_line": 3,
+          "text": "开始：2026-09-08。用户已要求通读设计、分工并开始实施；主计划中上一轮“只交付计划”的范围说明不再约束本批开发。冻结素材和既有计划 Run 保留。"
+        },
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 7,
+          "text": "2026-09-09 用户要求“继续到底”后的本轮执行已收口：原36次独立AI槽位已全部执行：30次符合、6次不符合；原6次失败在修订指引后各以新上下文复测，6次均符合，原失败和各版本指纹保留。排序修订后的开发集Recall=0.953125、nDCG=0.917396；新独立题集原始Recall=0.642361、nDCG=0.698647，负例正确空结果0/3，整体检索质量仍未通过。独立标注的Run/CLM单位差异单独说明，不追改标签。 295项完整回归和最新18项真实setup通过，K02/K03/K06/Z02补验及最终归档完成。万条规模测试继续按授权暂缓，人工意见待审。当前结果以[STATUS](STATUS.md)为准。"
+        },
+        {
+          "dates": [
+            "2026-09-08"
+          ],
+          "original_line": 9,
+          "text": "首批 W00–W03 已完成可调用闭环及局部验证。2026-09-08 用户追加要求持续完成所有可自主执行的开发；当前范围扩展为 W04–W13。人工验收先完成真实操作、阅读和证据归档，最终意见统一保持待用户审核，不在阶段间要求确认。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 7,
+          "text": "2026-09-09 用户要求“继续到底”后的本轮执行已收口：原36次独立AI槽位已全部执行：30次符合、6次不符合；原6次失败在修订指引后各以新上下文复测，6次均符合，原失败和各版本指纹保留。排序修订后的开发集Recall=0.953125、nDCG=0.917396；新独立题集原始Recall=0.642361、nDCG=0.698647，负例正确空结果0/3，整体检索质量仍未通过。独立标注的Run/CLM单位差异单独说明，不追改标签。 295项完整回归和最新18项真实setup通过，K02/K03/K06/Z02补验及最终归档完成。万条规模测试继续按授权暂缓，人工意见待审。当前结果以[STATUS](STATUS.md)为准。"
+        },
+        {
+          "original_line": 11,
+          "text": "后续按依赖推进：W04 证据、W05 研究状态、W06 检索并行；主代理统一事务与 CLI 集成。随后完成 W07 关系、W08 经过与续接、W09 巩固总结，再接 W10 工作台和 W11 迁移离线交付。底层接口完成后才更新 W12 Skill，最终 W13 执行留出评价、整体回归和 H01–H18 实际使用记录。缺少真实模型或外部环境时明确保留验证限制，继续其他可执行工作。"
+        }
+      ],
+      "headings": [
+        "## 本批交付范围",
+        "## 分工与接口",
+        "## 执行与验收顺序",
+        "## 本轮之前的状态记录（历史）"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260908T070901Z-78E951C8B9AF"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/IMPLEMENTATION.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "2026-09-08 至 09 的实施批次与历史验收摘要；此后的 L0–L4 和 v3 文稿改造另有计划"
+    },
+    {
+      "path": "docs/design/system-memory/L0-L4-REFACTOR.md",
+      "title": "对象内运行与 L0–L4 研究记录重构",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 7787,
+      "sha256": "3ebf6e5757ace0b6de4310e9f4d0fa29f447800c7b4b427c79563bffbbeea158",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:09.381768+00:00",
+      "initial_inventory_sha256": "e80a779c51813f997cf06e637a568d09e3fba84770d9eb676e339bc7e4707168",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "状态：2026-09-09，已进入代码审计与实施。本文覆盖本次用户验收反馈；旧 L0–L3 计划与历史验收保留为历史，不能作为本次实现状态。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "状态：2026-09-09，已进入代码审计与实施。本文覆盖本次用户验收反馈；旧 L0–L3 计划与历史验收保留为历史，不能作为本次实现状态。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "状态：2026-09-09，已进入代码审计与实施。本文覆盖本次用户验收反馈；旧 L0–L3 计划与历史验收保留为历史，不能作为本次实现状态。"
+        }
+      ],
+      "headings": [
+        "## 目标与边界",
+        "## 分层契约",
+        "## 已确认代码与行为缺口",
+        "## 兼容性与迁移原则",
+        "## 实施分工与顺序",
+        "## 继承并固化的测试点",
+        "## 最终验收顺序",
+        "## 执行记录"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/L0-L4-REFACTOR.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "2026-09-09 引入详细 L1 和对象内 Run 的重构计划；末尾“尚未完成”保留起始时点，后续状态见同目录 STATUS"
+    },
+    {
+      "path": "docs/design/system-memory/RESEARCH-REPORT-COMPOSITION.md",
+      "title": "连贯研究报告：实现与验收计划",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 8969,
+      "sha256": "c1be8e954cc4c34a6f89db8142c93f6f8de392a6921900bbffe2faded11202cc",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:09.530701+00:00",
+      "initial_inventory_sha256": "f593fecb47be4f58477fe84dfa268539153580c3f41b8cef64d131e1b9a5ad86",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 72,
+          "text": "2026-09-09实施完成，详见固定 RUN-20260909T042859Z-58ACB04C91A8（本地历史记录，未随源码分发：`../../../projects/memory-layers-v2/runs/run-20260909t042859z-58acb04c91a8/README.md`）。A/B/C按上述分工完成契约、页面和实际报告保存；Research Skill、README、记录与调用指南同步更新。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 72,
+          "text": "2026-09-09实施完成，详见固定 RUN-20260909T042859Z-58ACB04C91A8（本地历史记录，未随源码分发：`../../../projects/memory-layers-v2/runs/run-20260909t042859z-58acb04c91a8/README.md`）。A/B/C按上述分工完成契约、页面和实际报告保存；Research Skill、README、记录与调用指南同步更新。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 技术目标",
+        "## 技术落地",
+        "## 分工与接口",
+        "## 最少必要验收",
+        "## 执行记录"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260909T042859Z-58ACB04C91A8"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/RESEARCH-REPORT-COMPOSITION.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "2026-09-09 的 v2 map.report 连贯报告编排；后续 v3 改为独立章节和双文稿，旧格式保持兼容"
+    },
+    {
+      "path": "docs/design/system-memory/STATUS.md",
+      "title": "执行状态与续接入口",
+      "category": "验收记录",
+      "file_type": ".md",
+      "size_bytes": 10790,
+      "sha256": "3f499c49780622a93dc3da2f5492b8fcf3dd684e496ab53949cab6d9fd50c60b",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:09.669611+00:00",
+      "initial_inventory_sha256": "023682b2a44980ceac0bbeecec4f5e6645fe4c58b560c94dcdff684f259547e5",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 5,
+          "text": "2026-09-09 技术单元、独立章节、双文稿与可复用分级测试已实现。quick 69 项通过；最终 full 372 项通过（Python 347、组件 15、浏览器 9、类型 1），零跳过，包含真实 Windows 扩展旧工作区 setup 升级恢复。实际 AI A01–A06 已保存、回读和自查，人工待审；浮点完整过程 8 章/4 图、简版 4 章，原 96 文件及旧修订保持，未重跑实验。"
+        },
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 11,
+          "text": "2026-09-09完成[报告编排方案](RESEARCH-REPORT-COMPOSITION.md)：AI在L4 map中集中编写章节、论证衔接及综合段，固定引用L1实验正文，工作台按技术报告顺序阅读。浮点研究正式报告修订3已保存8章和4张图，AI内容及实际页面审核完成，用户人工审核待办。"
+        },
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 19,
+          "text": "更新：2026-09-09。本轮可执行检查已收口；检索质量门槛未通过，规模测试获准暂缓，人工审查待完成。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 5,
+          "text": "2026-09-09 技术单元、独立章节、双文稿与可复用分级测试已实现。quick 69 项通过；最终 full 372 项通过（Python 347、组件 15、浏览器 9、类型 1），零跳过，包含真实 Windows 扩展旧工作区 setup 升级恢复。实际 AI A01–A06 已保存、回读和自查，人工待审；浮点完整过程 8 章/4 图、简版 4 章，原 96 文件及旧修订保持，未重跑实验。"
+        },
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 11,
+          "text": "2026-09-09完成[报告编排方案](RESEARCH-REPORT-COMPOSITION.md)：AI在L4 map中集中编写章节、论证衔接及综合段，固定引用L1实验正文，工作台按技术报告顺序阅读。浮点研究正式报告修订3已保存8章和4张图，AI内容及实际页面审核完成，用户人工审核待办。"
+        },
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 19,
+          "text": "更新：2026-09-09。本轮可执行检查已收口；检索质量门槛未通过，规模测试获准暂缓，人工审查待完成。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 1,
+          "text": "# 执行状态与续接入口"
+        },
+        {
+          "original_line": 7,
+          "text": "固定 Run（本地历史记录，未随源码分发：`../../../projects/memory-layers-v2/runs/run-20260909t055625z-b13c2fc3994f/README.md`）保留全部失败与修复证据。历史检索质量未通过、规模暂缓及第二台机器未验收等限制仍保留；下文为各批执行时状态。"
+        }
+      ],
+      "headings": [
+        "## 最新：技术单元、双文稿与分级测试",
+        "## 最新：连贯研究报告",
+        "## 当前重构：对象内Run与L0–L4",
+        "## 当前结果与待审事项",
+        "## 首批W00–W03实施记录（历史）",
+        "## 上一轮计划交付记录（历史）",
+        "## 已确定的实施基线",
+        "## 本轮交付与验证",
+        "## 下一次开始开发",
+        "## 已知限制与交接重点"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260908T052707Z-542A7CF4FC40",
+        "RUN-20260908T070901Z-78E951C8B9AF"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/system-memory/STATUS.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "多个批次追加的历史状态；各段“最新”“当前”“下一步”仅对应该段的实施时点"
+    },
+    {
+      "path": "docs/design/windows-portability-plan.md",
+      "title": "Windows 迁移检查（2026-09-06）",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 2349,
+      "sha256": "8e317ff84c244d8406529a3e3a660636a51c4cca84c7e847c16f96167624c20e",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:09.810146+00:00",
+      "initial_inventory_sha256": "e0d27594cb2dd39e638b93ced31af892f92ad728708ddaa8de5f74cc40c59d50",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 1,
+          "text": "# Windows 迁移检查（2026-09-06）"
+        },
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 11,
+          "text": "验证证据（AI 执行，2026-09-06）："
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 1,
+          "text": "# Windows 迁移检查（2026-09-06）"
+        },
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 11,
+          "text": "验证证据（AI 执行，2026-09-06）："
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 9,
+          "text": "状态：实现与本机迁移验证完成。"
+        }
+      ],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/windows-portability-plan.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/workbench-relations-plan.md",
+      "title": "工作台重构与材料关联功能开发计划",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 13557,
+      "sha256": "229d37154631815ca262aa70a8369e2d753877be435ca4e2debaf084bab6d7a0",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:09.933659+00:00",
+      "initial_inventory_sha256": "da1b2d8852b5e5290bfd1aae6b45ec8b9c71405761d3bc665d4955120cd5f2e5",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-07",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "用户已确认，2026-09-07。本文件保存完整实施约定；进度单独追加，不以摘要替代计划。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-07"
+          ],
+          "original_line": 3,
+          "text": "用户已确认，2026-09-07。本文件保存完整实施约定；进度单独追加，不以摘要替代计划。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 1. 目标与架构",
+        "## 2. 分步开发与交付",
+        "## 3. 接口与状态约定",
+        "## 4. 验证与最终验收",
+        "## 实施进度（追加区）"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/workbench-relations-plan.md",
+        "first_commit": {
+          "commit": "47809c480f394b642a4a79d323d76a34546fc3c4",
+          "author_date": "2026-09-07T16:46:31+08:00",
+          "commit_date": "2026-09-07T16:46:31+08:00",
+          "subject": "chore: checkpoint unfinished material relations workbench"
+        },
+        "latest_commit": {
+          "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+          "author_date": "2026-09-09T22:25:49+08:00",
+          "commit_date": "2026-09-09T22:25:49+08:00",
+          "subject": "test: retain summation development example and exclude instances from releases"
+        },
+        "commit_count_for_path": 2
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/workflow-review-2026-09-06.md",
+      "title": "工作流框架审查与修订（2026-09-06）",
+      "category": "验收记录",
+      "file_type": ".md",
+      "size_bytes": 5644,
+      "sha256": "91e1293aef5862bad59e8f6478314d7170a15d8a063dd8b8b96f1c8c93bbee9c",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:10.085017+00:00",
+      "initial_inventory_sha256": "086389a76c23b1fd75344c894396e68ec7c6f7e0763a8fc982891adfa050d320",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 1,
+          "text": "# 工作流框架审查与修订（2026-09-06）"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 1,
+          "text": "# 工作流框架审查与修订（2026-09-06）"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 10,
+          "text": "| P1 | create_run 只有可覆盖的 review 字段，没有撤回历史或影响计算 | 新增 review-run，追加前后状态，传播已登记 parent_run_ids 的待复核信号 |"
+        }
+      ],
+      "headings": [
+        "## 修改前的发现",
+        "## 对五个问题的回答",
+        "## 已有能力、此次新增和仍需人工的部分",
+        "## 兼容性与恢复"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/design/workflow-review-2026-09-06.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/design/workspace-rules-reference.md",
+      "title": "按需工程检查参考",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 1508,
+      "sha256": "7a5b0726fa2f7e90aeff41edffb0ad5e278ca8f9a286e153f88a94b3b47b82fc",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:10.237088+00:00",
+      "initial_inventory_sha256": "7a5b0726fa2f7e90aeff41edffb0ad5e278ca8f9a286e153f88a94b3b47b82fc",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-06",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "此页是检查建议，不新增审批或固定流程。现行规则以根 `AGENTS.md` 为准，记录与纠错以 `context/MEMORY.md` 为准。2026-09-06 精简旧规则副本，避免重复入口中的旧措辞与当前规则冲突。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 3,
+          "text": "此页是检查建议，不新增审批或固定流程。现行规则以根 `AGENTS.md` 为准，记录与纠错以 `context/MEMORY.md` 为准。2026-09-06 精简旧规则副本，避免重复入口中的旧措辞与当前规则冲突。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 8,
+          "text": "| 数据分析 | 版本、标定、缺失/异常、重复、样本选择、只读输入 | [数据规则](../../data/AGENTS.md)、[Runbook](../../runs/RUNBOOK.md) |"
+        },
+        {
+          "original_line": 12,
+          "text": "| 批量材料与版本变化 | 阅读进度、关键词、来源版本、映射、影响范围 | [材料与维护手册](../EXISTING_MATERIALS.md) |"
+        }
+      ],
+      "headings": [],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/DOCUMENTATION_MAINTENANCE.md",
+      "title": "文档与模块影响维护",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 4797,
+      "sha256": "1c0bdab430d09269421ad0e00086117f2f8895241c95b4ef6f032bacce2e3be3",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:10.370964+00:00",
+      "initial_inventory_sha256": null,
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 一个概念维护在哪里",
+        "## 每次开发如何检查",
+        "## 区分当前说明与历史记录",
+        "## 本次典型影响路径"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": false,
+        "working_tree_status": "?? docs/DOCUMENTATION_MAINTENANCE.md",
+        "first_commit": null,
+        "latest_commit": null,
+        "commit_count_for_path": 0
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/EVIDENCE_CONTROLS.md",
+      "title": "结论准入、依赖失效与当前环境检查",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 11101,
+      "sha256": "3e5e6cb4fd4c8ffff9b56a62a4e6b9dcbcecde8066dd096bedf135d4116ae8c8",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:10.480051+00:00",
+      "initial_inventory_sha256": "759cfcf69360a24d15a2d452f0c09a39db020e9e03718edf3ec29c611982c62b",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。原业务对象证据与版本记忆都可承载独立 CLM；复核入口按记录归属选择，正式投影统一执行版本、授权、范围和依赖检查。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。原业务对象证据与版本记忆都可承载独立 CLM；复核入口按记录归属选择，正式投影统一执行版本、授权、范围和依赖检查。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。原业务对象证据与版本记忆都可承载独立 CLM；复核入口按记录归属选择，正式投影统一执行版本、授权、范围和依赖检查。"
+        },
+        {
+          "original_line": 7,
+          "text": "如需直接查看依据、复核历史、失效观察时间及报告影响，使用 [证据工作台与只读监测](EVIDENCE_VIEW_MONITOR.md)。查看和提出维护候选不会自动改变复核状态。"
+        }
+      ],
+      "headings": [
+        "## 先确认当前副本能力",
+        "## 在现有对象中记录结论",
+        "## 复核与纠错",
+        "## 正式 Run 检查与封存",
+        "## 从证据中提取正式结论",
+        "## 首批真实试点"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/EVIDENCE_CONTROLS.md",
+        "first_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "latest_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/EVIDENCE_VIEW_MONITOR.md",
+      "title": "证据查看与只读监测",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 8448,
+      "sha256": "711c57410802b179fc2093c478865e80c0abdf156c12e4f81928264f56d0971c",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:10.590838+00:00",
+      "initial_inventory_sha256": "b49f2677b9558394ed0add501dd0e637368d21ca5d9844caf615f077adc303ad",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。本页的 `evidence-view/evidence-monitor` 沿用原业务证据图；新版系统记忆、研究文稿和记忆关联还有各自的公共入口。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。本页的 `evidence-view/evidence-monitor` 沿用原业务证据图；新版系统记忆、研究文稿和记忆关联还有各自的公共入口。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 日常使用",
+        "## 页面怎么看",
+        "## 监测与候选的边界",
+        "## 持续任务",
+        "## 文件、备份与升级"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/EVIDENCE_VIEW_MONITOR.md",
+        "first_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "latest_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/EXISTING_MATERIALS.md",
+      "title": "材料导入、检索与变更维护手册",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 16303,
+      "sha256": "b6a05356edd65253ed009c9cdbbdd45a833b409f572caffab830c686510d361f",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:10.719672+00:00",
+      "initial_inventory_sha256": "e62ec79b4d0940f71b51517520e50566b875b550614a6d9fdc04001fd03e1def",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。文件登记、规范记忆、检索投影和研究文稿各有维护入口；导入成功不表示已经读完、完成索引或通过业务验证。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。文件登记、规范记忆、检索投影和研究文稿各有维护入口；导入成功不表示已经读完、完成索引或通过业务验证。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 5,
+          "text": "首次接入看“用户最少需要提供什么”和“批量导入”；日常使用看“可复制提示词”；版本变化看“算法与代码如何一起更新”。这些步骤由 AI 在任务中执行，不是后台服务。"
+        }
+      ],
+      "headings": [
+        "## 用户最少需要提供什么",
+        "## 助手实际整理出的样子",
+        "## 三种来源怎样处理",
+        "## 研究是否必须同时创建项目",
+        "## 批量导入：先建清单，再分批融合",
+        "## 问一个算法问题时，AI 怎么找上下文",
+        "## 算法与代码如何一起更新",
+        "## 可复制提示词"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/EXISTING_MATERIALS.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "5b37830d4d72f6902f1069a85f2bf5ac91b1326c",
+          "author_date": "2026-09-07T18:41:27+08:00",
+          "commit_date": "2026-09-07T18:41:27+08:00",
+          "subject": "feat: ship offline dependency bundles and migration standards"
+        },
+        "commit_count_for_path": 2
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/MATERIAL_RELATIONS.md",
+      "title": "材料关系工作台",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 8507,
+      "sha256": "3459326aca8c643dbbcb251f079ccc1c1fee4e67981a9e2f42d9fd59860efe70",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:10.827391+00:00",
+      "initial_inventory_sha256": "b2df058919f5acde30ba02426fe73c6c63c41fdbbc7bcf72c7c4afbb8338bda5",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。材料关系页、规范记忆关联与检索上下文是相互配合的入口，保存位置及扩展行为不同，不能把画布连接直接当作证据或默认召回结果。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。材料关系页、规范记忆关联与检索上下文是相互配合的入口，保存位置及扩展行为不同，不能把画布连接直接当作证据或默认召回结果。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 12,
+          "text": "3. 点击原始连线查看关系类型、原字段、方向、定位及版本。箭头表示起点引用或关联终点，不能据箭头认定因果。红色风险、执行状态、复核状态分别查看。"
+        }
+      ],
+      "headings": [
+        "## 浏览与分析",
+        "## 规范记忆关联与自动扩展",
+        "## AI 协作与候选",
+        "## CLI",
+        "## 状态、迁移与限制"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/MATERIAL_RELATIONS.md",
+        "first_commit": {
+          "commit": "47809c480f394b642a4a79d323d76a34546fc3c4",
+          "author_date": "2026-09-07T16:46:31+08:00",
+          "commit_date": "2026-09-07T16:46:31+08:00",
+          "subject": "chore: checkpoint unfinished material relations workbench"
+        },
+        "latest_commit": {
+          "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+          "author_date": "2026-09-09T22:25:49+08:00",
+          "commit_date": "2026-09-09T22:25:49+08:00",
+          "subject": "test: retain summation development example and exclude instances from releases"
+        },
+        "commit_count_for_path": 3
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/MEMORY_DEVELOPMENT.md",
+      "title": "系统记忆：首批开发入口",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 8242,
+      "sha256": "eba2723fca10fc57e870ba09dec5778e0326e386fe5e70e15157dd9547e20f6d",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:10.944244+00:00",
+      "initial_inventory_sha256": "eba2723fca10fc57e870ba09dec5778e0326e386fe5e70e15157dd9547e20f6d",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 5,
+          "text": "> **历史定位，2026-09-09 核对：** 本页的 v1 契约、W06 尚未接入、首批请求与回执说明保持其当时含义，不能作为当前默认行为。现行记录默认 v3，L1 已扩展为技术单元，独立文稿使用 document/document_section，索引同步与补偿已接入；具体兼容条件和可执行请求见 [当前使用指南](MEMORY_USAGE.md)、[请求示例](MEMORY_REQUESTS.md) 与 [分层记录标准](RESEARCH_RECORDING.md)。当前模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)，后续文档同步见 [维护约定](DOCUMENTATION_MAINTENANCE.md)。"
+        },
+        {
+          "date": "2026-09-08",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 7,
+          "text": "2026-09-08 首批提供八类对象适配、草案预检、单对象版本保存、按 ID 读取和恢复检查。检索、正式复核、研究经过/续接、工作台页面和最终 AI Skill 尚未交付。这里是已实现 CLI 的开发用法；完整任务及后续顺序见[实施批次](design/system-memory/IMPLEMENTATION.md)。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 5,
+          "text": "> **历史定位，2026-09-09 核对：** 本页的 v1 契约、W06 尚未接入、首批请求与回执说明保持其当时含义，不能作为当前默认行为。现行记录默认 v3，L1 已扩展为技术单元，独立文稿使用 document/document_section，索引同步与补偿已接入；具体兼容条件和可执行请求见 [当前使用指南](MEMORY_USAGE.md)、[请求示例](MEMORY_REQUESTS.md) 与 [分层记录标准](RESEARCH_RECORDING.md)。当前模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)，后续文档同步见 [维护约定](DOCUMENTATION_MAINTENANCE.md)。"
+        },
+        {
+          "dates": [
+            "2026-09-08"
+          ],
+          "original_line": 7,
+          "text": "2026-09-08 首批提供八类对象适配、草案预检、单对象版本保存、按 ID 读取和恢复检查。检索、正式复核、研究经过/续接、工作台页面和最终 AI Skill 尚未交付。这里是已实现 CLI 的开发用法；完整任务及后续顺序见[实施批次](design/system-memory/IMPLEMENTATION.md)。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "> 本文保留首批开发阶段的范围与示例。当前工作台、检索、迁移及回执处理请使用 [版本记忆使用指南](MEMORY_USAGE.md)；最终验收状态见 [执行状态](design/system-memory/STATUS.md)。下文“尚未交付”等表述描述当时阶段，不代表当前功能清单。"
+        },
+        {
+          "original_line": 5,
+          "text": "> **历史定位，2026-09-09 核对：** 本页的 v1 契约、W06 尚未接入、首批请求与回执说明保持其当时含义，不能作为当前默认行为。现行记录默认 v3，L1 已扩展为技术单元，独立文稿使用 document/document_section，索引同步与补偿已接入；具体兼容条件和可执行请求见 [当前使用指南](MEMORY_USAGE.md)、[请求示例](MEMORY_REQUESTS.md) 与 [分层记录标准](RESEARCH_RECORDING.md)。当前模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)，后续文档同步见 [维护约定](DOCUMENTATION_MAINTENANCE.md)。"
+        },
+        {
+          "original_line": 7,
+          "text": "2026-09-08 首批提供八类对象适配、草案预检、单对象版本保存、按 ID 读取和恢复检查。检索、正式复核、研究经过/续接、工作台页面和最终 AI Skill 尚未交付。这里是已实现 CLI 的开发用法；完整任务及后续顺序见[实施批次](design/system-memory/IMPLEMENTATION.md)。"
+        },
+        {
+          "original_line": 9,
+          "text": "## 对象、层级和版本"
+        }
+      ],
+      "headings": [
+        "## 对象、层级和版本",
+        "## 从已有材料开始",
+        "## 保存、读取和修订",
+        "## 回执和故障处理",
+        "## 开发维护与升级"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/MEMORY_DEVELOPMENT.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次"
+    },
+    {
+      "path": "docs/MEMORY_REQUESTS.md",
+      "title": "记忆请求示例：按任务读取",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 34151,
+      "sha256": "991a7785ffa7053616337ce132de6ca8a19c50b2c9aad5043722b4e59b0c9356",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:11.064689+00:00",
+      "initial_inventory_sha256": "e20aa5dbf324039dec424de8c578c0b161620c291687fd8a7c2a19227d9ce776",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "本页是 [版本记忆使用指南](MEMORY_USAGE.md) 的字段补充，按 2026-09-09 的 main 实现核对。只读当前任务需要的小节：保存记录看 1–3，研究续接看 4，材料包与总结看 5，复核纠错看 6，阶段巩固与使用反馈看 7–8，独立文稿与局部修改看 9。示例没有业务结论，也不是用户验收答案。修改请求字段时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、使用指南与 Skill。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "本页是 [版本记忆使用指南](MEMORY_USAGE.md) 的字段补充，按 2026-09-09 的 main 实现核对。只读当前任务需要的小节：保存记录看 1–3，研究续接看 4，材料包与总结看 5，复核纠错看 6，阶段巩固与使用反馈看 7–8，独立文稿与局部修改看 9。示例没有业务结论，也不是用户验收答案。修改请求字段时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、使用指南与 Skill。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "本页是 [版本记忆使用指南](MEMORY_USAGE.md) 的字段补充，按 2026-09-09 的 main 实现核对。只读当前任务需要的小节：保存记录看 1–3，研究续接看 4，材料包与总结看 5，复核纠错看 6，阶段巩固与使用反馈看 7–8，独立文稿与局部修改看 9。示例没有业务结论，也不是用户验收答案。修改请求字段时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、使用指南与 Skill。"
+        },
+        {
+          "original_line": 5,
+          "text": "所有“替换为…”、示例修订号和 UUID 都是占位值，不能照抄提交。ID、HEAD、来源版本和指纹必须来自当前工作区的真实回执；新逻辑请求生成新 UUID，重试原请求保留原 UUID 与内容。正文公式使用 LaTeX 并定义变量与单位。"
+        },
+        {
+          "original_line": 11,
+          "text": "从工作区根目录使用 UTF-8 JSON 请求文件。动作签名以 [api.py](../automation/scripts/memory/api.py)、[cli.py](../automation/scripts/memory/cli.py) 为准；当前字段见 [v3 schema](../automation/schemas/memory-v3.schema.json) 和 [contracts.py](../automation/scripts/memory/contracts.py)。新 draft 默认 v3；未显式指定版本的旧 detail 形状、含 `report` 的旧 map 按 v2 兼容。新记录建议显式指定 `draft.schema_version:3`；v1/v2 历史保持原字节，不靠改 level 或重新计算哈希迁移。"
+        }
+      ],
+      "headings": [
+        "## 1. 公共入口与 CommitRequest",
+        "## 2. 固定引用与来源指纹",
+        "## 3. 按记录类型填写 payload",
+        "## 4. 问题、目标、路线与续接",
+        "## 5. 材料包、阶段地图与跨对象总结",
+        "## 6. 复核、反证与影响检查",
+        "## 7. prepare → consolidate",
+        "## 8. 检索后的真实使用反馈",
+        "## 9. 独立文稿、章节与局部修改",
+        "## 10. 如何理解结果与失败"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/MEMORY_REQUESTS.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/MEMORY_USAGE.md",
+      "title": "版本记忆使用指南",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 18352,
+      "sha256": "926698a1f7f08fdbaa0cdf4f71e60d1aec324871a19ff0c98be991003a60b0f2",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:11.186511+00:00",
+      "initial_inventory_sha256": "926698a1f7f08fdbaa0cdf4f71e60d1aec324871a19ff0c98be991003a60b0f2",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "本指南按 2026-09-09 的 main 实现核对，对应 `automation/scripts/memory/api.py` 和 `memory/cli.py` 的实际入口。示例中的对象 ID、文件路径、请求 ID 和修订号需要替换为当前工作区的值；示例不是业务结论或验收记录。模块职责以 [ARCHITECTURE.md](../ARCHITECTURE.md) 为入口；修改功能时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 检查本指南、请求示例与 Skill 的同步范围。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "本指南按 2026-09-09 的 main 实现核对，对应 `automation/scripts/memory/api.py` 和 `memory/cli.py` 的实际入口。示例中的对象 ID、文件路径、请求 ID 和修订号需要替换为当前工作区的值；示例不是业务结论或验收记录。模块职责以 [ARCHITECTURE.md](../ARCHITECTURE.md) 为入口；修改功能时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 检查本指南、请求示例与 Skill 的同步范围。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 1,
+          "text": "# 版本记忆使用指南"
+        },
+        {
+          "original_line": 11,
+          "text": "**对象 HEAD**指向当前已提交快照。一个批次可以保存多条记录；发布 HEAD 后才成为可见的新版本。请求中的 `expected_head` 和记录的 `expected_revision` 用于拒绝覆盖他人的新修改。`request_id` 用于重试：同一逻辑提交重用原请求及其 ID，修改了内容后使用新的 ID。"
+        }
+      ],
+      "headings": [
+        "## 1. 先理解保存的对象",
+        "## 2. 日常操作",
+        "## 3. CLI：读取、预检与保存",
+        "## 4. 看懂回执与恢复",
+        "## 5. 导出和导入一个对象的历史",
+        "## 6. 从旧材料提取草案",
+        "## 7. 文件由谁维护"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/MEMORY_USAGE.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/OBJECT_RUN_STORAGE.md",
+      "title": "对象、Run 与执行回执：当前默认保存逻辑",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 11005,
+      "sha256": "ee8560c8447efb47204beee15d72658b7274214626c030215e02ac4ea201cfc0",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:11.313162+00:00",
+      "initial_inventory_sha256": "9b9ca6103c979ab090074569c94e846c630a13f083bc1a09c5892f26bdf3057f",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "核对日期：2026-09-09。本文描述当前实现，区分程序自动行为、AI 工作方法和未实现的自动化；对象已有策略或本次明确要求可以改变默认行为。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "核对日期：2026-09-09。本文描述当前实现，区分程序自动行为、AI 工作方法和未实现的自动化；对象已有策略或本次明确要求可以改变默认行为。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 9,
+          "text": "1. **大类型对象**：研究、项目、核心算法、Run、数据、工具、知识、报告。每个具体条目有自己的身份、原始卡片和可选版本记忆。"
+        },
+        {
+          "original_line": 10,
+          "text": "2. **对象内 Run**：某条目开展的一次可独立说明的分析、实验、变换或验证。它仍是同一种 Run，有独立 RUN-ID、run.json、输入、输出、执行状态和复核历史。"
+        }
+      ],
+      "headings": [
+        "## 三个概念",
+        "## 八类对象的保存位置",
+        "## 新 Run 内部统一保存什么",
+        "## L0–L4 保存和归属",
+        "## 默认策略与 Skill",
+        "## 已核对的实现入口"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/OBJECT_RUN_STORAGE.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/RESEARCH_RECORDING.md",
+      "title": "研究分层记录与阅读标准",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 14032,
+      "sha256": "80c879388179277aad4e9d2f111f439c5961df5185d3f3e3ef11957fe5d1038f",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:11.444397+00:00",
+      "initial_inventory_sha256": "31fb94a47a6963fcb18733b392c509fec561b9fc27042767080d3b8b9fde05d9",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "本页按 2026-09-09 的 main 实现定义 L0–L4 与 v3 文稿保存方式。适用于 Research，也适用于其他对象的实质分析；简单查字段不强制建立研究或五层记录。层级表达内容粒度，不表达可信程度。模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)，后续修改按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、操作文档和 Skill。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "本页按 2026-09-09 的 main 实现定义 L0–L4 与 v3 文稿保存方式。适用于 Research，也适用于其他对象的实质分析；简单查字段不强制建立研究或五层记录。层级表达内容粒度，不表达可信程度。模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)，后续修改按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、操作文档和 Skill。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 五层各自保存什么",
+        "## 文件归属",
+        "## 每轮 L1 应当如何写",
+        "## 保存、回读与完整性检查",
+        "## 连贯报告的编排",
+        "## 兼容与维护"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/RESEARCH_RECORDING.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/RETRIEVAL.md",
+      "title": "检索、上下文选择与反馈手册",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 19566,
+      "sha256": "52b425b0992ab0982577f4607f2eabfc7ab6acaef1379688404aa41a1c966946",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:11.600279+00:00",
+      "initial_inventory_sha256": "3420b23ec015fe0c7245c818e16913c9618eea784716104eea4cb8a9ff35ce1a",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。当前同时保留文件检索与版本记忆检索；它们复用部分基础设施，返回身份、默认选项和上下文包仍有区别。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。当前同时保留文件检索与版本记忆检索；它们复用部分基础设施，返回身份、默认选项和上下文包仍有区别。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。当前同时保留文件检索与版本记忆检索；它们复用部分基础设施，返回身份、默认选项和上下文包仍有区别。"
+        },
+        {
+          "original_line": 5,
+          "text": "正式结论导出使用 `purpose=formal` 并提供适用 `scope`，只装载通过版本、复核和依赖检查的结论。默认 exploration 可读取获准探索材料及风险提示。详细复核与封存入口见 [证据准入手册](EVIDENCE_CONTROLS.md)。"
+        }
+      ],
+      "headings": [
+        "## 先选择入口",
+        "## 文件检索常用操作",
+        "## 文件证据包的分阶段装载",
+        "## 文件查询的用户选择与自动扩展",
+        "## 持久偏好与来源角色",
+        "## 格式、范围与版本",
+        "## 记忆查询的排序、装载与关联",
+        "## 反馈与评估",
+        "## 文件维护与离线恢复"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/RETRIEVAL.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "5b37830d4d72f6902f1069a85f2bf5ac91b1326c",
+          "author_date": "2026-09-07T18:41:27+08:00",
+          "commit_date": "2026-09-07T18:41:27+08:00",
+          "subject": "feat: ship offline dependency bundles and migration standards"
+        },
+        "commit_count_for_path": 3
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/RUN_CAPTURE.md",
+      "title": "运行实验并自动保存 L0 材料",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 5349,
+      "sha256": "c78fa6538e8f5e1c8b3b547a5a6701d931ef7a68dfb0570f8b705fbb2bf39e43",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:11.721482+00:00",
+      "initial_inventory_sha256": "c78fa6538e8f5e1c8b3b547a5a6701d931ef7a68dfb0570f8b705fbb2bf39e43",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 5,
+          "text": "本页按 2026-09-09 的 main 执行入口核对。Run 与回执的归属见 [对象保存逻辑](OBJECT_RUN_STORAGE.md)，模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)；执行/登记规则变化时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步操作示例和 Skill。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 5,
+          "text": "本页按 2026-09-09 的 main 执行入口核对。Run 与回执的归属见 [对象保存逻辑](OBJECT_RUN_STORAGE.md)，模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)；执行/登记规则变化时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步操作示例和 Skill。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 新实验：运行后自动登记",
+        "## 已有材料与其他工具：一次登记后自动显示",
+        "## 恢复与维护"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/RUN_CAPTURE.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/SETUP_WORKBENCH.md",
+      "title": "一键安装、升级与研发工作台",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 12484,
+      "sha256": "8407e4edae092a081b2dd680ec08f0d05483c575830d95479f3628c21c468ac8",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:11.842636+00:00",
+      "initial_inventory_sha256": "e7316a4460e3fdf95177e240b1a9ba5ed1e34c0c92f8c9649c3c994dc06d3ebb",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-06"
+          ],
+          "original_line": 85,
+          "text": "例如旧版 `docs/design/adaptive-context-review-2026-09-06.md` 引用了 `services/qdrant/test-results.txt`。该日志以及 `services/qdrant/context-cli-verification.json`、`tmp/core-algorithms-before.zip` 是 Git 明确排除的本机历史产物，源码包不携带这些附件。现行文档保留其原路径，明确标注附件不可用，不再提供失效下载链接；这不代表历史证据已恢复或重新复核。新版源码升级会更新这些框架文档。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 最常用的三条命令",
+        "## 选项",
+        "## 升级如何保留旧数据",
+        "## 排查升级校验错误",
+        "## 命令注册如何避免累积",
+        "## 工作台中的操作",
+        "## 本机测试数据"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/SETUP_WORKBENCH.md",
+        "first_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "latest_commit": {
+          "commit": "be246439e075ab8a01f7a582ccd1fce3988782a5",
+          "author_date": "2026-09-07T23:12:09+08:00",
+          "commit_date": "2026-09-07T23:12:09+08:00",
+          "subject": "fix: preserve expanded workspaces during validated upgrades"
+        },
+        "commit_count_for_path": 4
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/templates/CLAIM_TEMPLATE.json",
+      "title": null,
+      "category": "模板",
+      "file_type": ".json",
+      "size_bytes": 311,
+      "sha256": "b486e6511cd7d33a7684526cb9ed935f453ac3710e4e0f36b69cd082e7ed2350",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:11.952263+00:00",
+      "initial_inventory_sha256": "b486e6511cd7d33a7684526cb9ed935f453ac3710e4e0f36b69cd082e7ed2350",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "latest_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/templates/CORE_ALGORITHM_CARD_TEMPLATE.md",
+      "title": "核心算法卡：<核心算法名称>",
+      "category": "模板",
+      "file_type": ".md",
+      "size_bytes": 3351,
+      "sha256": "8195c4f43094e78df8d6a644009e3471c49a8f0d7eaec2d0f9027bf3c9c29776",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:12.059802+00:00",
+      "initial_inventory_sha256": "8195c4f43094e78df8d6a644009e3471c49a8f0d7eaec2d0f9027bf3c9c29776",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 4,
+          "text": "- 版本：`0.1.0`"
+        },
+        {
+          "original_line": 5,
+          "text": "- 状态：`draft / validated / deprecated`"
+        },
+        {
+          "original_line": 12,
+          "text": "仅用于公司算法/模块文档定义的关键模型算法。填写公司文档名称/编号或受控路径、版本/章节、实际阅读范围，以及工程目标和子系统协同关系。没有明确文档依据的候选先留在 inbox/research；工具、编排、IO、绘图和普通辅助函数不独立建卡。"
+        }
+      ],
+      "headings": [
+        "## 收录依据",
+        "## 检索与文档/代码对应",
+        "## 目标与适用域",
+        "## 接口",
+        "## 算法与公式",
+        "## 假设与参数来源",
+        "## 数值实现",
+        "## Verification",
+        "## Validation",
+        "## Uncertainty Quantification",
+        "## 已知失效模式",
+        "## 证据与依赖",
+        "## 变更记录"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "5b37830d4d72f6902f1069a85f2bf5ac91b1326c",
+          "author_date": "2026-09-07T18:41:27+08:00",
+          "commit_date": "2026-09-07T18:41:27+08:00",
+          "subject": "feat: ship offline dependency bundles and migration standards"
+        },
+        "commit_count_for_path": 2
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/templates/EVIDENCE_TEMPLATE.json",
+      "title": null,
+      "category": "模板",
+      "file_type": ".json",
+      "size_bytes": 135,
+      "sha256": "2d1d94e7c7c0c91ccc97f89c6849f61eaf8383c11762bf0aab8b9422ad7b88e3",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:12.170177+00:00",
+      "initial_inventory_sha256": "2d1d94e7c7c0c91ccc97f89c6849f61eaf8383c11762bf0aab8b9422ad7b88e3",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [],
+      "reading_scope": "文件类型、字节指纹及所处模板/配方用途盘点，未逐项核验业务内容",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "latest_commit": {
+          "commit": "27c9ba89501426cd0b4182d25d8ef1aac5953855",
+          "author_date": "2026-09-07T12:55:42+08:00",
+          "commit_date": "2026-09-07T12:55:42+08:00",
+          "subject": "feat: add evidence workbench and one-command Windows deployment"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/templates/INTERFACE_CONTRACT_TEMPLATE.md",
+      "title": "接口契约：<接口名称>",
+      "category": "模板",
+      "file_type": ".md",
+      "size_bytes": 717,
+      "sha256": "4712dd1e6a1313f4525b43bf47a11ea3adda3d358b73cb840cafaae5a3ecc162",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:12.282359+00:00",
+      "initial_inventory_sha256": "4712dd1e6a1313f4525b43bf47a11ea3adda3d358b73cb840cafaae5a3ecc162",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 4,
+          "text": "- 版本：`0.1.0`"
+        }
+      ],
+      "headings": [
+        "## 结构",
+        "## 时间与性能",
+        "## 错误与兼容性",
+        "## 验证"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "clean",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/TESTING.md",
+      "title": "可复用分级测试与实际AI验收",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 11073,
+      "sha256": "22eda3afb6128e0aa50bd23e6b6d6e4b97acf56f67f98dc34a3ef9679c57db76",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:12.391989+00:00",
+      "initial_inventory_sha256": "2599b0b7f9e13a80718d6abdc5b16fd177a2e2ad60af9c6730bb4a6bf4d69129",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 50,
+          "text": "2026-09-09 技术文稿批次：本规范先于技术单元与独立文档实现冻结；catalog、任务选择器、执行器与实际 AI 审查工具已实现，下方给出可调用命令。该批开发范围见[设计记录](design/RESEARCH_DOCUMENTS.md)，执行结果、原失败及复验见固定 Run（本地历史记录，未随源码分发：`../projects/memory-layers-v2/runs/run-20260909t055625z-b13c2fc3994f/README.md`）。该批实际 AI 已完成 A01–A06，人工意见待审；后续开发须引用各自的实际 Run，不把本段作为新一轮通过记录。"
+        },
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 95,
+          "text": "2026-09-09 回执可靠性补充：组件执行按冻结的文件/测试标题与 `assertionResults` 对账；Vitest 未选中的过滤项单列 `filtered_out`，不当作已选测试跳过。真正选中但跳过的测试仍为 `incomplete`。Windows 回执原子替换仅对明确的 WinError 5/32/33 做有界重试，冲突保存在 `*.write-events.jsonl`；重试耗尽保留 pending 内容，最终主回执仍被占用时另存不可覆盖的 `results-failed-*.json`，命令返回其路径。未启动阶段明确标为失败/未执行。相关专用测试现为 10 项通过，旧失败执行不改写。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 50,
+          "text": "2026-09-09 技术文稿批次：本规范先于技术单元与独立文档实现冻结；catalog、任务选择器、执行器与实际 AI 审查工具已实现，下方给出可调用命令。该批开发范围见[设计记录](design/RESEARCH_DOCUMENTS.md)，执行结果、原失败及复验见固定 Run（本地历史记录，未随源码分发：`../projects/memory-layers-v2/runs/run-20260909t055625z-b13c2fc3994f/README.md`）。该批实际 AI 已完成 A01–A06，人工意见待审；后续开发须引用各自的实际 Run，不把本段作为新一轮通过记录。"
+        },
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 95,
+          "text": "2026-09-09 回执可靠性补充：组件执行按冻结的文件/测试标题与 `assertionResults` 对账；Vitest 未选中的过滤项单列 `filtered_out`，不当作已选测试跳过。真正选中但跳过的测试仍为 `incomplete`。Windows 回执原子替换仅对明确的 WinError 5/32/33 做有界重试，冲突保存在 `*.write-events.jsonl`；重试耗尽保留 pending 内容，最终主回执仍被占用时另存不可覆盖的 `results-failed-*.json`，命令返回其路径。未启动阶段明确标为失败/未执行。相关专用测试现为 10 项通过，旧失败执行不改写。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 11,
+          "text": "| quick：核心简要回归 | 日常快速迭代 | 核心保存/版本/依据/预算边界的代表场景，加本次受影响能力的必要测试；按风险追加真实setup或浏览器，不以快速为由省略 |"
+        }
+      ],
+      "headings": [
+        "## 三类验证",
+        "## 每次开发前的选择",
+        "## 风险触发的必测",
+        "## 可复用实际AI场景",
+        "## 实现与历史执行记录",
+        "## 已实现的测试命令"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/TESTING.md",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/UPGRADE_TESTING.md",
+      "title": "已有工作区升级测试",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 5083,
+      "sha256": "cfd47dd0a0a32bc143488f4ed3b4378085756cfe6fa1696f0a2c4c2f7b602008",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:12.529601+00:00",
+      "initial_inventory_sha256": "102e9dd954150569c377a54631231992cd3db61891d197bdbd2f0eecab1a2b69",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 共享场景",
+        "## 按变更选择验证",
+        "## 从故障补用例"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/UPGRADE_TESTING.md",
+        "first_commit": {
+          "commit": "be246439e075ab8a01f7a582ccd1fce3988782a5",
+          "author_date": "2026-09-07T23:12:09+08:00",
+          "commit_date": "2026-09-07T23:12:09+08:00",
+          "subject": "fix: preserve expanded workspaces during validated upgrades"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 2
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/WINDOWS_PORTABILITY.md",
+      "title": "Windows 迁移与运行环境复用",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 7786,
+      "sha256": "6e05924cc601d84d280c9425b3bc767cbce86bcb7fdb5d0ed7caaf127b0fd953",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:12.658136+00:00",
+      "initial_inventory_sha256": "5e273e4132c9b3d8b35b29d1207d72be3aadc1e70a1fa1c7757afe94515ffe5f",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 分发方式选择",
+        "## 排查：核对旧完整副本的运行环境",
+        "## 发出前",
+        "## 收到后"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/WINDOWS_PORTABILITY.md",
+        "first_commit": {
+          "commit": "07a55b4990306d36a2583cd8b81d5ea2a44ec661",
+          "author_date": "2026-09-06T20:30:59+08:00",
+          "commit_date": "2026-09-06T20:30:59+08:00",
+          "subject": "Initial release: core algorithm R&D workspace"
+        },
+        "latest_commit": {
+          "commit": "5b37830d4d72f6902f1069a85f2bf5ac91b1326c",
+          "author_date": "2026-09-07T18:41:27+08:00",
+          "commit_date": "2026-09-07T18:41:27+08:00",
+          "subject": "feat: ship offline dependency bundles and migration standards"
+        },
+        "commit_count_for_path": 4
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/WORKBENCH_DEVELOPMENT.md",
+      "title": "工作台开发与扩展",
+      "category": "当前手册",
+      "file_type": ".md",
+      "size_bytes": 7963,
+      "sha256": "901479c49820eae6967973281ce5b1edb587b6b6b7b211d263ebb0f0064a0364",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:12.772657+00:00",
+      "initial_inventory_sha256": "c9dc898273ec25cca5db90d3813116a359059a661ba03efc5e01a8d72cd29492",
+      "historical_body_preserved": null,
+      "timepoint_notice_added": false,
+      "declared_dates": [
+        {
+          "date": "2026-09-09",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。主要维护面已包含材料关系、原业务证据和版本记忆/研究文稿；全局数据流见 [架构说明](../ARCHITECTURE.md)，同步范围见 [文档维护手册](DOCUMENTATION_MAINTENANCE.md)。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-09"
+          ],
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。主要维护面已包含材料关系、原业务证据和版本记忆/研究文稿；全局数据流见 [架构说明](../ARCHITECTURE.md)，同步范围见 [文档维护手册](DOCUMENTATION_MAINTENANCE.md)。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "现行说明核对日期：2026-09-09。主要维护面已包含材料关系、原业务证据和版本记忆/研究文稿；全局数据流见 [架构说明](../ARCHITECTURE.md)，同步范围见 [文档维护手册](DOCUMENTATION_MAINTENANCE.md)。"
+        },
+        {
+          "original_line": 11,
+          "text": "| `automation/frontend/src/App.tsx` | 应用外壳、静态页面注册、导航与任务状态 |"
+        },
+        {
+          "original_line": 12,
+          "text": "| `src/Relations.tsx`、`src/Evidence.tsx` | 材料关系、证据页面及交互状态 |"
+        }
+      ],
+      "headings": [
+        "## 代码边界",
+        "## 开发命令",
+        "## 增加页面",
+        "## 增加材料适配器",
+        "## 增加计算任务",
+        "## 契约、资源与发布"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M docs/WORKBENCH_DEVELOPMENT.md",
+        "first_commit": {
+          "commit": "47809c480f394b642a4a79d323d76a34546fc3c4",
+          "author_date": "2026-09-07T16:46:31+08:00",
+          "commit_date": "2026-09-07T16:46:31+08:00",
+          "subject": "chore: checkpoint unfinished material relations workbench"
+        },
+        "latest_commit": {
+          "commit": "47809c480f394b642a4a79d323d76a34546fc3c4",
+          "author_date": "2026-09-07T16:46:31+08:00",
+          "commit_date": "2026-09-07T16:46:31+08:00",
+          "subject": "chore: checkpoint unfinished material relations workbench"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间"
+    },
+    {
+      "path": "docs/系统记忆模块开发计划.md",
+      "title": "AI 研发工作区：持续研究、分层记忆与问题驱动检索开发方案",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 37996,
+      "sha256": "9f51b958e45ea83d9af616bcc8bc23953d364b3f99320f2712f91bd9aa335f05",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:12.930223+00:00",
+      "initial_inventory_sha256": "9a25c521b5fb6c9eed9df283a70853f1338e323e63bea29095da790e22230a76",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [],
+      "date_mentions": [],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [],
+      "headings": [
+        "## 一、目标与已经确定的边界",
+        "## 二、对象关系与存储设计",
+        "## 三、记录契约、可信度和自动整理规则",
+        "## 四、问题驱动检索与跨研究关联",
+        "## 五、持续研究、Skill、CLI 与工作台",
+        "## 六、开源复用与依赖策略",
+        "## 七、逐批开发与执行顺序",
+        "## 八、验收测试矩阵",
+        "## 九、迁移、交付与完成标准"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": false,
+        "working_tree_status": "?? \"docs/\\347\\263\\273\\347\\273\\237\\350\\256\\260\\345\\277\\206\\346\\250\\241\\345\\235\\227\\345\\274\\200\\345\\217\\221\\350\\256\\241\\345\\210\\222.md\"",
+        "first_commit": null,
+        "latest_commit": null,
+        "commit_count_for_path": 0
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "未声明原始日期的早期 L0–L3 分析方案；2026-09-08 讨论稿曾引用它，但不能据此倒填其创建时间"
+    },
+    {
+      "path": "docs/系统记忆模块技术实现计划.md",
+      "title": "系统记忆模块技术实现计划",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 9264,
+      "sha256": "d28a29607e5aab11542113cff92bfb92262b9adf4c04e3c1e9b0a3ad258ce81c",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:13.052295+00:00",
+      "initial_inventory_sha256": "f673357852c952eff7cf0f85d75f13d7d9c7e3a0f0a713ac3b70d2aa4bf2c8ce",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-08",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "版本：1.2；日期：2026-09-08；状态：首批底层功能已开始实施，完整产品分批开发。保留115个技术测试，新增18个人类可阅使用验收点，共133项；实际结果另存固定Run，不覆写冻结配方。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-08"
+          ],
+          "original_line": 3,
+          "text": "版本：1.2；日期：2026-09-08；状态：首批底层功能已开始实施，完整产品分批开发。保留115个技术测试，新增18个人类可阅使用验收点，共133项；实际结果另存固定Run，不覆写冻结配方。"
+        },
+        {
+          "dates": [
+            "2026-09-08"
+          ],
+          "original_line": 30,
+          "text": "- 上一轮交付计划、合成材料及计划自检工具。2026-09-08用户已要求分工并开始实施；首批范围与分工见[实施批次](design/system-memory/IMPLEMENTATION.md)，真实进度见STATUS。最终Skill及Release仍按后续任务与授权交付。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "版本：1.2；日期：2026-09-08；状态：首批底层功能已开始实施，完整产品分批开发。保留115个技术测试，新增18个人类可阅使用验收点，共133项；实际结果另存固定Run，不覆写冻结配方。"
+        },
+        {
+          "original_line": 8,
+          "text": "让当前协作 AI 通过统一入口，把文本、结构化内容和获准来源引用保存为可追溯记录；程序负责正确存储、版本与状态约束、检索、影响计算和视图组装。AI 负责价值判断、内容提取、总结及有依据的修订。保存成功、执行成功、科学结论已复核分别表达。"
+        }
+      ],
+      "headings": [
+        "## 1. 技术目标",
+        "## 2. 阅读顺序与交付物",
+        "## 3. 实施路线",
+        "## 4. 验收原则",
+        "## 5. 开始下一批"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [
+        "RUN-20260908T052707Z-542A7CF4FC40"
+      ],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M \"docs/\\347\\263\\273\\347\\273\\237\\350\\256\\260\\345\\277\\206\\346\\250\\241\\345\\235\\227\\346\\212\\200\\346\\234\\257\\345\\256\\236\\347\\216\\260\\350\\256\\241\\345\\210\\222.md\"",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "2026-09-08 的 v1.2 实施计划和 115+18 项冻结验收规格；后续 L0–L4 与 v3 文稿方案另行演进"
+    },
+    {
+      "path": "docs/系统记忆模块技术目标讨论稿.md",
+      "title": "系统记忆模块：技术目标讨论稿",
+      "category": "历史设计",
+      "file_type": ".md",
+      "size_bytes": 26513,
+      "sha256": "5123b4a70496a5f665ed710aafa9db16f4b088182b8590cdc081f9ff367e6b5b",
+      "sha256_scope": "本次读取时完整文件字节，含时点提示",
+      "read_at_utc": "2026-09-09T15:30:13.201405+00:00",
+      "initial_inventory_sha256": "212286f57721109b7e41658cb113c87f0064ce4d0a47db4425135b9f2e93fa5b",
+      "historical_body_preserved": true,
+      "timepoint_notice_added": true,
+      "declared_dates": [
+        {
+          "date": "2026-09-08",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 3,
+          "text": "日期：2026-09-08。状态：供讨论，尚未确定技术落地方案，不是可直接执行的开发排期。"
+        },
+        {
+          "date": "2026-09-08",
+          "basis": "正文声明，非实施时间保证",
+          "original_line": 9,
+          "text": "已确认（用户，2026-09-08）：L4 为误写，不建立该层级；记忆保留 L0–L3。跨项目索引、跨项目总结和相关性联系分析作为独立功能，不增加记忆层级。本确认不代表其他架构建议已经定稿。"
+        }
+      ],
+      "date_mentions": [
+        {
+          "dates": [
+            "2026-09-08"
+          ],
+          "original_line": 3,
+          "text": "日期：2026-09-08。状态：供讨论，尚未确定技术落地方案，不是可直接执行的开发排期。"
+        },
+        {
+          "dates": [
+            "2026-09-08"
+          ],
+          "original_line": 9,
+          "text": "已确认（用户，2026-09-08）：L4 为误写，不建立该层级；记忆保留 L0–L3。跨项目索引、跨项目总结和相关性联系分析作为独立功能，不增加记忆层级。本确认不代表其他架构建议已经定稿。"
+        }
+      ],
+      "original_created_at": null,
+      "implementation_completed_at": null,
+      "declared_status_excerpt": [
+        {
+          "original_line": 3,
+          "text": "日期：2026-09-08。状态：供讨论，尚未确定技术落地方案，不是可直接执行的开发排期。"
+        }
+      ],
+      "headings": [
+        "## 一、建议确立的总目标",
+        "## 二、当前项目可以复用什么",
+        "## 三、统一的是对象访问方式，不是把所有内容塞进一个大对象",
+        "## 四、L0–L3：先确定内容职责，再选择格式",
+        "## 五、属性、子结构与独立对象应如何区分",
+        "## 六、需要明确交付的功能目标",
+        "## 七、正式开发计划如何做到可以准确开发和验收",
+        "## 八、已确认事项与后续讨论"
+      ],
+      "reading_scope": "已读标题、日期/状态、章节提纲；演进相关正文已按需核读",
+      "referenced_run_ids": [],
+      "git": {
+        "tracked": true,
+        "working_tree_status": "M \"docs/\\347\\263\\273\\347\\273\\237\\350\\256\\260\\345\\277\\206\\346\\250\\241\\345\\235\\227\\346\\212\\200\\346\\234\\257\\347\\233\\256\\346\\240\\207\\350\\256\\250\\350\\256\\272\\347\\250\\277.md\"",
+        "first_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "latest_commit": {
+          "commit": "5e97aee8a03093124b95d294abaecfa36b1a2df8",
+          "author_date": "2026-09-09T21:52:42+08:00",
+          "commit_date": "2026-09-09T21:52:42+08:00",
+          "subject": "feat: ship research memory and L0 capture source without local run artifacts"
+        },
+        "commit_count_for_path": 1
+      },
+      "date_limit": "未明确声明的原始创建/实施完成时间留空；Git author/commit 日期仅表示版本记录时间",
+      "historical_scope": "2026-09-08 的目标讨论与 L0–L3 确认；2026-09-09 后续重构已引入新的 L1，形成 L0–L4"
+    }
+  ]
+}

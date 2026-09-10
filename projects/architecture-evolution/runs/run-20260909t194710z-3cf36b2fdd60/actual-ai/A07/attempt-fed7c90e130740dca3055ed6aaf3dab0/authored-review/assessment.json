@@ -1,0 +1,54 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "comparisons": [
+    {
+      "expectation_id": "A07-E1",
+      "status": "meets",
+      "observation": "按相关性判断选择unit_digest，再为公式/变量核对选择full；六次公开调用均保留真实请求与组包结果，未调用自动语义生成。",
+      "evidence_refs": [
+        "delivered/definitions.md",
+        "calls/call-4a61ae9bb3cb49749cf45fdf4fca376d/result.json",
+        "calls/call-a4d7f5b72bfd41cfbef26cb843c0f5e3/result.json",
+        "AI-ANALYSIS.md"
+      ]
+    },
+    {
+      "expectation_id": "A07-E2",
+      "status": "meets",
+      "observation": "摘要完整只相对摘要配方成立；正文与必要定义均在full中实际读到。章节摘要候选needs_generation且组包partial，排除定义使整个依赖章节省略，未伪称得到直接块。",
+      "evidence_refs": [
+        "delivered/tank-summary.md",
+        "delivered/tank-full.md",
+        "calls/call-0651848342b546c6ac2b7715b52ac1bd/stdout.txt",
+        "delivered/tank-excluded-definition.md",
+        "AI-ANALYSIS.md"
+      ]
+    },
+    {
+      "expectation_id": "A07-E3",
+      "status": "meets",
+      "observation": "排除同时写入scope和scope_ceiling；固定r1及SHA记录。250输出预算仅交付31字符引言且省略完整块，没有扩预算。实际阅读按summary/partial/full分别声明并存快照。",
+      "evidence_refs": [
+        "authored-requests/tank-excluded-definition.json",
+        "authored-requests/tank-small-budget.json",
+        "delivered/tank-small-budget.md",
+        "reads",
+        "AI-ANALYSIS.md"
+      ]
+    }
+  ],
+  "readable_artifacts": [
+    {
+      "title": "A07实际阅读分析",
+      "path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A07/attempt-fed7c90e130740dca3055ed6aaf3dab0/AI-ANALYSIS.md"
+    }
+  ],
+  "limitations": [
+    "同一AI编写合成前提并执行，连续上下文；非盲测或独立题集。",
+    "排除后返回保守的零候选和概括缺口，未返回细化依赖原因。",
+    "预算组包stop_reason为null，须综合warnings/gaps/complete判断。",
+    "仅本机合成文本；未做现实实验或科学复核，人工待审。"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed"
+}

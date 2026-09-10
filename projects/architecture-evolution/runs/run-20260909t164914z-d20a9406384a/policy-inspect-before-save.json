@@ -1,0 +1,99 @@
+{
+  "owner": {
+    "schema_version": 1,
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "owner_type": "project",
+    "native_ref": {
+      "path": "projects/architecture-evolution/project.json",
+      "id_field": "project_id",
+      "id_value": "PRJ-ARCHITECTURE-EVOLUTION"
+    },
+    "memory_home": "projects/architecture-evolution/memory",
+    "adapter_version": 1,
+    "temporary": false,
+    "persisted": false,
+    "title": "框架架构演进与文档一致性",
+    "fingerprint": "b96fb0dc6a43c3a4cd4defce7ee2224920a1ec9d57de46fdf183d58be8edecbe",
+    "native_data": {
+      "schema_version": 1,
+      "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "slug": "architecture-evolution",
+      "title": "框架架构演进与文档一致性",
+      "status": "active",
+      "lifecycle_stage": "develop",
+      "created_at": "2026-09-09",
+      "updated_at": "2026-09-10",
+      "owners": [],
+      "domain_tags": [
+        "framework-architecture",
+        "documentation-consistency",
+        "memory",
+        "retrieval"
+      ],
+      "sensitivity": "internal",
+      "objectives": [
+        "按实际代码和明确时间核对现行文档",
+        "维护模块职责及变更影响图",
+        "默认按研究标准保存项目L0-L4及完整/精简文稿",
+        "定义检索、存储与自动整理的可替换接口契约"
+      ],
+      "non_goals": [
+        "本轮不切换检索算法或存储引擎",
+        "不直接改写历史Run、规范记忆和合成fixture；新增内容走公共提交",
+        "不把框架软件模块登记成公司核心算法",
+        "不启动后台同步、规模测试或对外发布"
+      ],
+      "module_ids": [],
+      "dataset_ids": [],
+      "active_research_ids": [],
+      "active_plan": "plans/interface-contracts.md",
+      "open_questions": [
+        "怎样以小步适配落实本轮契约，并保持已有固定引用和用户入口？",
+        "如何以固定问题集验证候选召回、误联想、延迟和上下文成本？"
+      ]
+    }
+  },
+  "head": null,
+  "manifest": null,
+  "records": {},
+  "policy": {
+    "values": {
+      "mode": "explore",
+      "retain": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "granularity": "fine",
+      "auto_summary": true,
+      "discovery": "owner_only",
+      "auto_deepen": false,
+      "checkpoint": true
+    },
+    "sources": {
+      "mode": "type",
+      "retain": "type",
+      "granularity": "type",
+      "auto_summary": "type",
+      "discovery": "workspace",
+      "auto_deepen": "workspace",
+      "checkpoint": "workspace"
+    }
+  },
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "generation": 0,
+  "index_status": "pending",
+  "index_details": {
+    "fts": "not_created",
+    "vector": "not_created",
+    "indexed_generation": null,
+    "vector_generation": null,
+    "reason": "派生索引尚未建立；规范记录仍从 HEAD 可读"
+  },
+  "claim_states": {},
+  "omitted": [],
+  "warnings": []
+}
+

@@ -7,10 +7,40 @@ import unittest
 from unittest.mock import patch
 
 from memory_fixture import (FIXTURES, REPOSITORY, FixedClock, FixedIds, FaultInjector,
-                            materialize, snapshot, workspace_cli, build_verified_legacy, evidence)
+                            materialize, snapshot, workspace_cli, build_verified_legacy, evidence, _rename_generated)
 
 
 class MemoryFixtureTests(unittest.TestCase):
+    def test_windows_transient_rename_is_bounded_and_keeps_target_protection(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source, target = root / "新建 中文", root / "目标 中文"
+            source.mkdir()
+            failure = PermissionError("synthetic sharing violation")
+            failure.winerror = 32
+            real_rename = Path.rename
+            attempts = []
+
+            def sharing(path, destination):
+                attempts.append(path)
+                if len(attempts) < 3:
+                    raise failure
+                return real_rename(path, destination)
+
+            with patch.object(Path, "rename", sharing), patch("memory_fixture.time.sleep"):
+                _rename_generated(source, target, root)
+            self.assertEqual(len(attempts), 3)
+            self.assertTrue(target.is_dir())
+            source.mkdir()
+            with self.assertRaises(FileExistsError):
+                _rename_generated(source, target, root)
+            with self.assertRaises(ValueError):
+                _rename_generated(source, root.parent / "outside", root)
+            with patch.object(Path, "rename", side_effect=failure) as rename, patch("memory_fixture.time.sleep"):
+                with self.assertRaises(PermissionError):
+                    _rename_generated(source, root / "仍占用", root)
+                self.assertEqual(rename.call_count, 4)
+
     def test_b01_frozen_plan_self_test_leaves_assets_unchanged(self):
         """直接执行冻结计划的正反例自检；不以此冒充产品验收。"""
         before = snapshot(FIXTURES)

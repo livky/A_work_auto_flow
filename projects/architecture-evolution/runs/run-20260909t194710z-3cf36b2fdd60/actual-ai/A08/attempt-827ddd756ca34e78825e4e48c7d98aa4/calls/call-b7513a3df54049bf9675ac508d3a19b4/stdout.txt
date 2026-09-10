@@ -1,0 +1,257 @@
+{
+  "search": {
+    "status": "ok",
+    "value": {
+      "query_id": "MQ-39a73614-ef1f-467b-9369-c6bd97258dd0",
+      "request_digest": "0edb933f9bf566a22c0f3fad59e32041aa3360dee9849ed88fd106aafec63f26",
+      "candidates": [
+        {
+          "candidate_id": "C-02dc9e700eb771f27f87b429",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+              "revision": 1,
+              "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+              "locator": null
+            }
+          ],
+          "title": "SYNTHETIC F3 水箱模型完整章节",
+          "excerpt": "",
+          "channels": [
+            "identity"
+          ],
+          "score": 0.01639344262295082,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+                "revision": 1,
+                "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+                "locator": null
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "direct",
+          "hits": [
+            {
+              "channel": "identity",
+              "provider": "identity",
+              "provider_version": "1",
+              "rank": 1,
+              "raw_score": null,
+              "score_meaning": "精确身份匹配",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+                  "revision": 1,
+                  "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+                  "locator": null
+                }
+              ]
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": []
+        }
+      ],
+      "next_cursor": null,
+      "expires_at": "2026-09-09T21:19:42.489232Z",
+      "gaps": []
+    },
+    "code": null,
+    "warnings": [],
+    "consumed": {
+      "wall_ms": 77,
+      "read_bytes": 14441,
+      "output_chars": 0,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "exhausted",
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+          "revision": 1,
+          "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+          "locator": ""
+        }
+      ],
+      "owner_heads": [
+        [
+          "RES-F3-TANK",
+          "COM-667f328f-45bf-4ab3-af97-937e78ed45c0"
+        ]
+      ],
+      "index_watermarks": [
+        [
+          "RES-F3-TANK",
+          "3"
+        ]
+      ],
+      "consistency": "fixed_refs"
+    }
+  },
+  "assembly": {
+    "status": "ok",
+    "value": {
+      "packet_id": "PKT-010682ae-46c4-4e8e-b6ae-4440a35f535e",
+      "query_id": "MQ-39a73614-ef1f-467b-9369-c6bd97258dd0",
+      "definition": {
+        "key": "full",
+        "version": "1"
+      },
+      "parts": [
+        {
+          "group": "direct",
+          "heading": "SYNTHETIC F3 水箱完整模型：定义、推导与边界",
+          "markdown": "本章需要同时阅读变量定义与线性段推导；排除定义会留下解释缺口。",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+              "revision": 1,
+              "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+              "locator": null
+            }
+          ],
+          "selectors": [
+            "document_section.blocks"
+          ],
+          "omitted": []
+        },
+        {
+          "group": "required_context",
+          "heading": "SYNTHETIC F3 水箱必要变量定义",
+          "markdown": "## 必要变量与单位\n\n设水箱横截面积 $A=2\\,\\mathrm{m^2}$，液位 $h(t)$ 与常值目标 $h_r$ 的单位为 $\\mathrm{m}$，时间 $t$ 单位为 $\\mathrm{s}$。入流量 $q(t)$ 单位为 $\\mathrm{m^3/s}$；出流量采用线性假设 $q_{out}=c h$，其中 $c=0.1\\,\\mathrm{m^2/s}$。误差定义为 $e=h_r-h$。比例增益 $K\\geq0$ 的单位为 $\\mathrm{m^2/s}$，使 $K e$ 与流量同量纲。$q_c$ 是未限幅命令，$q_{max}>0$ 是泵的流量上限，二者单位均为 $\\mathrm{m^3/s}$。\n\n操作函数 $\\operatorname{clip}(x,0,q_{max})=\\min(q_{max},\\max(0,x))$。初值 $h(0)=h_0\\geq0$。传感器、泵在此材料中假设连续、无延迟；未加入噪声、泄漏变化或积分控制。\n",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+              "revision": 1,
+              "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+              "locator": ""
+            }
+          ],
+          "selectors": [
+            "detail.blocks"
+          ],
+          "omitted": []
+        },
+        {
+          "group": "required_context",
+          "heading": "SYNTHETIC F3 水箱线性段误差分析",
+          "markdown": "## 水箱负反馈的线性段\n\n质量守恒与控制律为\n\n$$\nA\\frac{dh}{dt}=q-ch,\\qquad q_c=c h_r+K(h_r-h),\\qquad q=\\operatorname{clip}(q_c,0,q_{max}).\n$$\n\n在整个讨论区间保持 $0<q_c<q_{max}$ 时，可代入 $q=q_c$；目标不变，故\n\n$$\n\\frac{de}{dt}=-\\frac{c+K}{A}e,\\qquad e(t)=e(0)\\exp\\left(-\\frac{c+K}{A}t\\right).\n$$\n\n这是给定合成连续线性模型的代数推导，未做现实实验。若 $A>0,c>0,K\\geq0$ 且不触发饱和，误差按该模型指数衰减。时间常数 $\\tau=A/(c+K)$，单位为秒。\n\n## 边界\n\n上述指数解只属于未饱和区间；更大目标或初始误差可能使泵触顶或关闭，此时必须返回带 clip 的分段动力学。材料未提供普遍“增益越大越好”的现实结论。尚未测量延迟、噪声与出流非线性，也未验证目标流量是否可达。\n",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+              "revision": 1,
+              "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+              "locator": ""
+            }
+          ],
+          "selectors": [
+            "detail.blocks"
+          ],
+          "omitted": []
+        }
+      ],
+      "contributors": [
+        {
+          "kind": "record",
+          "id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+          "revision": 1,
+          "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+          "locator": null
+        },
+        {
+          "kind": "record",
+          "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "locator": ""
+        },
+        {
+          "kind": "record",
+          "id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+          "revision": 1,
+          "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+          "locator": ""
+        }
+      ],
+      "complete": true,
+      "canonical": false
+    },
+    "code": null,
+    "warnings": [],
+    "consumed": {
+      "wall_ms": 155,
+      "read_bytes": 28574,
+      "output_chars": 921,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": null,
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+          "revision": 1,
+          "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+          "locator": null
+        },
+        {
+          "kind": "record",
+          "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "locator": ""
+        },
+        {
+          "kind": "record",
+          "id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+          "revision": 1,
+          "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+          "locator": ""
+        }
+      ],
+      "owner_heads": [
+        [
+          "RES-F3-TANK",
+          "COM-667f328f-45bf-4ab3-af97-937e78ed45c0"
+        ]
+      ],
+      "index_watermarks": [],
+      "consistency": "fixed_refs"
+    }
+  }
+}
+

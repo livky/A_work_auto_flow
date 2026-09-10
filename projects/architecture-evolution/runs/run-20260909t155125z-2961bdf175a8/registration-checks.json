@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T155125Z-2961BDF175A8",
+  "checked_at": "2026-09-09T16:08:24.766930+00:00",
+  "status": "passed",
+  "run_query_found": true,
+  "query_command": "workspace.ps1 search-runs RUN-20260909T155125Z-2961BDF175A8 --project architecture-evolution --limit 5",
+  "registered_inputs_checked": 22,
+  "registered_artifacts_checked": 11,
+  "fingerprint_failures": [],
+  "scope": "Registration at this point; excludes this receipt and the query output subsequently registered.",
+  "observation": "Initial queries supplied the full PRJ ID to --project and returned empty; source inspection confirmed this option requires a project slug/name. Corrected to architecture-evolution and the Run was found."
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "owner_id": "RES-F3-TANK",
+  "document": {
+    "record_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+    "revision": 1,
+    "title": "SYNTHETIC F3 水箱完整过程（旧依据基线）",
+    "document_type": "research_process",
+    "purpose": "SYNTHETIC F3固定双文稿维护检查",
+    "audience": "合成检查执行者",
+    "scope": "旧r1依据基线；新饱和输入尚未融合，不据此认可新参数下的结论",
+    "common_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+        "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "changes": [
+    {
+      "code": "NEW_REVISION",
+      "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+      "section_ids": [
+        "MEM-59e96850-644f-5a1a-9817-000499466692"
+      ],
+      "path": [
+        "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+        "MEM-2810407a-91e3-5114-b909-9a737b5e7885"
+      ],
+      "before_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "relation": "references"
+      },
+      "after_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "revision": 2,
+        "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+        "relation": "references"
+      },
+      "relation_type": "evidence",
+      "requires_review": true,
+      "message": "固定依据已有新修订，原稿未自动替换"
+    },
+    {
+      "code": "NEW_REVISION",
+      "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+      "section_ids": [
+        "MEM-59e96850-644f-5a1a-9817-000499466692"
+      ],
+      "path": [
+        "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+        "MEM-59e96850-644f-5a1a-9817-000499466692",
+        "MEM-2810407a-91e3-5114-b909-9a737b5e7885"
+      ],
+      "before_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "relation": "references"
+      },
+      "after_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "revision": 2,
+        "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+        "relation": "references"
+      },
+      "relation_type": "evidence",
+      "requires_review": true,
+      "message": "固定依据已有新修订，原稿未自动替换"
+    }
+  ],
+  "affected_section_ids": [
+    "MEM-59e96850-644f-5a1a-9817-000499466692"
+  ],
+  "uncovered_unit_ids": [],
+  "scientific_review": "not_evaluated",
+  "basis_heads": {
+    "RES-F3-TANK": "COM-525a8d2a-122a-44fb-a5c0-01a3e1cfd3fe"
+  },
+  "metrics": {
+    "elapsed_ms": 62.38,
+    "inventory_owners": 3,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 6,
+    "resolved_sections": 2
+  },
+  "writes": 0
+}
+

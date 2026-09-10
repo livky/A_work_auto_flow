@@ -1,0 +1,529 @@
+{
+  "schema_version": 1,
+  "owner_id": "RES-FLOATING-POINT-SUMMATION",
+  "title": "浮点求和的数值稳定性：顺序、补偿与抵消",
+  "document_source": "independent",
+  "document": {
+    "record_id": "MEM-21132a5c-2477-50ea-ad28-2244de823f4f",
+    "revision": 1,
+    "title": "浮点求和的数值稳定性：简版研究报告",
+    "document_type": "research_report",
+    "purpose": "概括方法、核心结果、适用边界和下一步",
+    "audience": "希望快速理解研究结论与限制的读者",
+    "scope": "三个已保存构造输入实验和既有独立复核；未重跑实验，未人工科学复核",
+    "common_refs": [
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+        "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "31ed0e139359476e864e38fc1cb6d72f2e30de591acda72ea71b1bc4add38f5f",
+        "target_id": "MEM-711bb712-5e0d-5ad3-8d69-9fb6f8fa90b7",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "34677de051dacc5622334d984831598c4fd40e2e0c113afda04423aedef88324",
+        "target_id": "MEM-bcc64166-73f5-5ba9-a8ea-29e41568cd3f",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "5fa9dafa5e248417d83829bd879c4a288ce6337e09c569c0db4f3182b6bd9b0b",
+        "target_id": "MEM-64aac7b4-acfe-58dd-bcf0-cce8ce3db1f7",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "c71f4c7597f60480b93c8f2adcaa8ed3f5b419f682c8e11f80a38b2408a5d63f",
+        "target_id": "MEM-ad8e3c7b-83e7-5d33-81bd-90742262ec9f",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "report": {
+    "version": 1,
+    "record_id": "MEM-21132a5c-2477-50ea-ad28-2244de823f4f",
+    "revision": 1,
+    "title": "浮点求和的数值稳定性：简版研究报告",
+    "sections": [
+      {
+        "section_id": "MEM-711bb712-5e0d-5ad3-8d69-9fb6f8fa90b7",
+        "section_key": "brief-methods",
+        "title": "研究问题与方法",
+        "role": "methods",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "31ed0e139359476e864e38fc1cb6d72f2e30de591acda72ea71b1bc4add38f5f",
+          "target_id": "MEM-711bb712-5e0d-5ad3-8d69-9fb6f8fa90b7",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "本研究检验输入顺序如何影响有限精度求和，以及补偿算法能否避免所选抵消结构中的小量损失。三轮均使用人为构造的无量纲整数浮点输入；结果相对于实际binary64输入的精确有理数和核对。“精确命中”表示绝对误差恰为0，不使用浮点容差。\n\n比较方法为保存脚本中的显式逐项累加、Kahan、Neumaier及math.fsum。第一轮只比较逐项累加和math.fsum；后两轮比较四种方法。独立方法章节给出变量、递推、基准和方法边界，完整研究过程保留输入、逐步状态、完整结果和图表。",
+            "type": "prose",
+            "source_issues": []
+          },
+          {
+            "block_ids": [
+              "reference"
+            ],
+            "ref": {
+              "locator": "完整正文与固定依据",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+              "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": {
+              "id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+              "level": "L1",
+              "record": {
+                "body_markdown": "",
+                "change_reason": "按已审稿的独立技术单元和双文档结构保存可读研究内容",
+                "content_hash": "b2fe52003261bfb269394f072f34a47bbb3517b9987b7e7c73904da7cf1cfcf6",
+                "created_at": "2026-09-09T06:28:10.010613Z",
+                "created_by": {
+                  "id": "codex-approved-v3-report-author",
+                  "kind": "ai"
+                },
+                "discovery": "workspace_summary",
+                "keywords": [
+                  "浮点求和",
+                  "顺序敏感",
+                  "补偿",
+                  "有限构造输入"
+                ],
+                "kind": "detail",
+                "level": "L1",
+                "owner_id": "RES-FLOATING-POINT-SUMMATION",
+                "payload": {
+                  "blocks": [
+                    {
+                      "block_id": "definitions",
+                      "markdown": "## 定义与范围\n\n本技术单元说明既有浮点求和研究采用的计算方法。它是对已保存实现与结果的整理，不是一次新的实验。输入为程序实际收到的有限binary64数列 $x_1,\\ldots,x_n$，所有数值无量纲。$n$表示项数，$s_i$表示处理第$i$项后的累加值，$\\operatorname{fl}$表示脚本实际执行一次浮点运算后的舍入。原复核环境为CPython 3.12.10、Windows 11 x64，有效位53位；本研究未切换舍入模式或验证其他平台。",
+                      "requires_block_ids": [],
+                      "role": "definitions"
+                    },
+                    {
+                      "block_id": "reference",
+                      "markdown": "## 精确基准与误差\n\n对实际浮点值逐项转换为精确有理数，再求参考和：\n\n$$\nS_{\\mathrm{ref}}=\\sum_{i=1}^{n}\\operatorname{Fraction}(x_i),\\qquad\ne_{\\mathrm{abs}}=\\left|\\operatorname{Fraction}(\\widehat S)-S_{\\mathrm{ref}}\\right|.\n$$\n\n$\\widehat S$为被测方法的实际返回值。精确命中指$e_{\\mathrm{abs}}=0$，不使用容差；绝对误差不需要除以参考和，因此也适用于零和。这个基准衡量求和运算相对已表示输入的误差，不衡量十进制原始文本转换为binary64时的误差。三轮构造整数和另用于交叉核对。",
+                      "requires_block_ids": [
+                        "definitions"
+                      ],
+                      "role": "methods"
+                    },
+                    {
+                      "block_id": "sequential",
+                      "markdown": "## 显式逐项累加\n\n$$s_0=0,\\qquad s_i=\\operatorname{fl}(s_{i-1}+x_i),\\qquad\\widehat S=s_n.$$\n\n每一项按给定顺序进入累加器。小量若在大数处被舍入掉，后续抵消不保证能恢复它。这里特指保存脚本中的显式循环，不能把结果直接推广为其他库、编译器或并行归约的行为。",
+                      "requires_block_ids": [
+                        "definitions"
+                      ],
+                      "role": "methods"
+                    },
+                    {
+                      "block_id": "kahan",
+                      "markdown": "## Kahan补偿\n\n初值$s_0=c_0=0$，按照保存实现递推：\n\n$$\ny_i=\\operatorname{fl}(x_i-c_{i-1}),\\qquad\nt_i=\\operatorname{fl}(s_{i-1}+y_i),\n$$\n$$\nc_i=\\operatorname{fl}\\!\\left(\\operatorname{fl}(t_i-s_{i-1})-y_i\\right),\\qquad s_i=t_i,\n\\qquad\\widehat S=s_n.\n$$\n\n$c_i$为下一步将减去的补偿值，$y_i$为补偿后的输入。补偿变量存在不等于最终结果无误差；第二轮固定轨迹显示，小量对应的补偿在下一步仍可能被舍入。该技术单元不据一次反例推断Kahan对所有输入都无效。",
+                      "requires_block_ids": [
+                        "definitions"
+                      ],
+                      "role": "methods"
+                    },
+                    {
+                      "block_id": "neumaier",
+                      "markdown": "## Neumaier校正\n\n同样以$s_0=c_0=0$开始，先计算$t_i=\\operatorname{fl}(s_{i-1}+x_i)$，再按幅值选择本步校正量$\\delta_i$：\n\n$$\n\\delta_i=\\begin{cases}\n\\operatorname{fl}\\!\\left(\\operatorname{fl}(s_{i-1}-t_i)+x_i\\right),&|s_{i-1}|\\ge|x_i|,\\\\\n\\operatorname{fl}\\!\\left(\\operatorname{fl}(x_i-t_i)+s_{i-1}\\right),&|s_{i-1}|<|x_i|,\n\\end{cases}\n\\quad c_i=\\operatorname{fl}(c_{i-1}+\\delta_i),\\quad s_i=t_i.\n$$\n\n分支右侧的加减严格按保存脚本的浮点操作顺序计算；最终返回$\\widehat S=\\operatorname{fl}(s_n+c_n)$。这里$c_i$累积校正，和Kahan中下一步减去的补偿含义不同，不能互换符号或递推式。第二轮三项抵消输入的固定轨迹解释了该实现如何在最后保留小量，但不构成任意序列精确性的证明。",
+                      "requires_block_ids": [
+                        "definitions"
+                      ],
+                      "role": "methods"
+                    },
+                    {
+                      "block_id": "scope",
+                      "markdown": "## 对照方法与可迁移边界\n\nmath.fsum仅作为实际输出对照，本研究没有观测它的内部部分和，不能为其编写伪造的逐步轨迹。各方法的具体观察必须回到对应实验的固定输入与结果。\n\n精确基准、记录排列和比较误差的方法可为类似有限浮点求和任务提供验证思路；已测命中率只属于三轮构造输入，不是实际业务误差概率。本研究未检验非整数输入、极端指数、跨平台表现或运行时间，也未覆盖NaN、无穷值或溢出行为。研究仍为not-reviewed。",
+                      "requires_block_ids": [
+                        "definitions"
+                      ],
+                      "role": "limitations"
+                    }
+                  ],
+                  "evidence_refs": [
+                    {
+                      "locator": "全文",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "bf89c9889ac3795214b21b6a3d19557750da1304fc60fb58d63d119784e7ceed",
+                      "target_id": "SRC-SUMMATION-REPORT-V2-METHODS",
+                      "target_kind": "file"
+                    },
+                    {
+                      "locator": "全文",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "70b04d20e8973083af0f7a99a27c8715d97791bf051fbbd1a5f8d3b3c410df0a",
+                      "target_id": "SRC-SUMMATION-REPORT-V2-ROUND-02",
+                      "target_kind": "file"
+                    },
+                    {
+                      "locator": "全文",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "739d2ce2c6922dc7ce74dfea9ac22d987dd6b8d353484e70c615fc96d2f22074",
+                      "target_id": "SRC-SUMMATION-TRACE-VERIFY",
+                      "target_kind": "file"
+                    }
+                  ],
+                  "figures": [],
+                  "missing_refs": [],
+                  "retrieval_description": {
+                    "applicable": [
+                      "保存脚本与有限构造浮点输入的解释、误差核对和反例分析。"
+                    ],
+                    "key_findings": [
+                      "精确命中针对已表示binary64输入，不混入十进制转换误差。",
+                      "补偿变量含义和舍入顺序不同，有限样本精确不能证明普适正确。"
+                    ],
+                    "limitations": [
+                      "非整数、极端指数、跨平台、性能及非有限值未验证；未人工科学复核。"
+                    ],
+                    "method": "精确有理数基准、显式逐项累加、Kahan与Neumaier递推及实际输出对照。",
+                    "not_applicable": [
+                      "任意输入精确性保证、业务误差概率和性能排名。"
+                    ],
+                    "question": "如何对实际浮点输入建立精确求和基准，并解释不同补偿方法的操作与边界？"
+                  },
+                  "run_ref": null,
+                  "unit_type": "method"
+                },
+                "previous_revision": null,
+                "provenance_gap": "基于已保存构造输入整理，未重跑实验，未人工科学复核",
+                "record_hash": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+                "record_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "record_reason": "按已审稿的独立技术单元和双文档结构保存可读研究内容",
+                "revision": 1,
+                "schema_version": 3,
+                "sensitivity": "internal",
+                "sources": [
+                  {
+                    "locator": "全文",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "bf89c9889ac3795214b21b6a3d19557750da1304fc60fb58d63d119784e7ceed",
+                    "target_id": "SRC-SUMMATION-REPORT-V2-METHODS",
+                    "target_kind": "file"
+                  },
+                  {
+                    "locator": "全文",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "70b04d20e8973083af0f7a99a27c8715d97791bf051fbbd1a5f8d3b3c410df0a",
+                    "target_id": "SRC-SUMMATION-REPORT-V2-ROUND-02",
+                    "target_kind": "file"
+                  },
+                  {
+                    "locator": "全文",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "739d2ce2c6922dc7ce74dfea9ac22d987dd6b8d353484e70c615fc96d2f22074",
+                    "target_id": "SRC-SUMMATION-TRACE-VERIFY",
+                    "target_kind": "file"
+                  }
+                ],
+                "title": "浮点求和方法：精确基准、递推与适用条件",
+                "updated_at": "2026-09-09T06:28:10.010613Z",
+                "updated_by": {
+                  "id": "codex-approved-v3-report-author",
+                  "kind": "ai"
+                }
+              },
+              "source_issues": [],
+              "formal_eligibility": "not_evaluated"
+            },
+            "resolved_blocks": [
+              {
+                "block_id": "definitions",
+                "markdown": "## 定义与范围\n\n本技术单元说明既有浮点求和研究采用的计算方法。它是对已保存实现与结果的整理，不是一次新的实验。输入为程序实际收到的有限binary64数列 $x_1,\\ldots,x_n$，所有数值无量纲。$n$表示项数，$s_i$表示处理第$i$项后的累加值，$\\operatorname{fl}$表示脚本实际执行一次浮点运算后的舍入。原复核环境为CPython 3.12.10、Windows 11 x64，有效位53位；本研究未切换舍入模式或验证其他平台。",
+                "requires_block_ids": [],
+                "role": "definitions"
+              },
+              {
+                "block_id": "reference",
+                "markdown": "## 精确基准与误差\n\n对实际浮点值逐项转换为精确有理数，再求参考和：\n\n$$\nS_{\\mathrm{ref}}=\\sum_{i=1}^{n}\\operatorname{Fraction}(x_i),\\qquad\ne_{\\mathrm{abs}}=\\left|\\operatorname{Fraction}(\\widehat S)-S_{\\mathrm{ref}}\\right|.\n$$\n\n$\\widehat S$为被测方法的实际返回值。精确命中指$e_{\\mathrm{abs}}=0$，不使用容差；绝对误差不需要除以参考和，因此也适用于零和。这个基准衡量求和运算相对已表示输入的误差，不衡量十进制原始文本转换为binary64时的误差。三轮构造整数和另用于交叉核对。",
+                "requires_block_ids": [
+                  "definitions"
+                ],
+                "role": "methods"
+              }
+            ],
+            "required_block_ids": [
+              "definitions"
+            ],
+            "source_issues": []
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-bcc64166-73f5-5ba9-a8ea-29e41568cd3f",
+        "section_key": "brief-results",
+        "title": "核心结果",
+        "role": "experiment",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "34677de051dacc5622334d984831598c4fd40e2e0c113afda04423aedef88324",
+          "target_id": "MEM-bcc64166-73f5-5ba9-a8ea-29e41568cd3f",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "| 构造场景 | 显式逐项累加 | Kahan | Neumaier | math.fsum |\n|---|---:|---:|---:|---:|\n| 第一轮：3种顺序 | 1/3 | 未比较 | 未比较 | 3/3 |\n| 第二轮：三项输入全部6种排列 | 2/6 | 2/6 | 6/6 | 6/6 |\n| 第三轮：30项输入的30种排列 | 0/30 | 5/30 | 30/30 | 30/30 |\n\n表中为精确命中数/已测试样本数。逐项累加的最大绝对误差在三轮分别为1000、1和10；Kahan在第二、三轮均出现误差，最大值分别为1和10。Neumaier及math.fsum在其对应已测试输入中均与精确基准一致。\n\n第二轮$[10^{16},1,-10^{16}]$的Kahan轨迹表明：第二步补偿值已记录为$-1$，但第三步修正输入时再次舍入，最终返回0而精确和为1。因此，问题并非“补偿没有发生”，而是这个具体实现与输入中补偿仍可能丢失。该反例也不能推出Kahan在所有场景无效。",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-64aac7b4-acfe-58dd-bcf0-cce8ce3db1f7",
+        "section_key": "brief-scope",
+        "title": "解释与适用边界",
+        "role": "discussion",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "5fa9dafa5e248417d83829bd879c4a288ce6337e09c569c0db4f3182b6bd9b0b",
+          "target_id": "MEM-64aac7b4-acfe-58dd-bcf0-cce8ce3db1f7",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "三轮形成从顺序影响、最小补偿反例到更多排列复验的连续证据。Neumaier与math.fsum的精确命中说明它们在这批固定输入上的表现；有限样本不证明任意浮点输入准确，也不提供业务误差概率或运行速度排名。\n\n现有结论适用于保存的数组、实现及本机环境。非整数输入、极端指数、跨平台、性能、非有限值及溢出行为仍缺验证。若工程任务需要选择默认方法，应先取得该任务的真实范围和固定输入，再设计独立验证。",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-ad8e3c7b-83e7-5d33-81bd-90742262ec9f",
+        "section_key": "brief-next",
+        "title": "后续与证据入口",
+        "role": "conclusion",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "c71f4c7597f60480b93c8f2adcaa8ed3f5b419f682c8e11f80a38b2408a5d63f",
+          "target_id": "MEM-ad8e3c7b-83e7-5d33-81bd-90742262ec9f",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "完整研究过程包含独立方法章、三轮完整实验和复核附录；各章节固定到技术单元修订，技术单元继续指向原Run、输入、输出及图表。后续独立复核核对150个方法输出及精确误差，并保留111组显式算法轨迹；首次绘图环境失败与后续成功分别保存。\n\n本次仅把既有证据整理为独立章节和双文档，没有重跑原实验。原记录、旧文稿及修订继续保留，研究状态仍为not-reviewed，人工审阅待完成。",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      }
+    ],
+    "complete": true
+  },
+  "items": [],
+  "missing": [],
+  "generated_at": "2026-09-10T06:35:47.438826Z",
+  "report_candidates": [
+    {
+      "record_id": "MEM-ab9db095-2545-594c-9e94-f72bab43c464",
+      "revision": 1,
+      "title": "浮点求和的数值稳定性：完整研究过程",
+      "updated_at": "2026-09-09T06:34:59.979537Z",
+      "document_type": "research_process"
+    },
+    {
+      "record_id": "MEM-21132a5c-2477-50ea-ad28-2244de823f4f",
+      "revision": 1,
+      "title": "浮点求和的数值稳定性：简版研究报告",
+      "updated_at": "2026-09-09T06:34:59.979537Z",
+      "document_type": "research_report"
+    }
+  ],
+  "report_coverage": {
+    "included_detail_ids": [
+      "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+      "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+      "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+      "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50"
+    ],
+    "uncovered_detail_ids": []
+  },
+  "report_version_hints": [],
+  "basis_heads": {
+    "RES-FLOATING-POINT-SUMMATION": "COM-abddae26-f26e-4c76-8b28-fe0b98a29d05"
+  },
+  "metrics": {
+    "elapsed_ms": 1769.09,
+    "inventory_owners": 20,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 27,
+    "resolved_sections": 4
+  },
+  "writes": 0
+}

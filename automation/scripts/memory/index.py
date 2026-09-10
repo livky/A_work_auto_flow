@@ -473,7 +473,7 @@ def _save_state(db, owner_id, generation, **changes):
     return value
 
 
-def _sync_fts(db, projected, *, fault=lambda _point: None):
+def _sync_fts(db, projected, *, fault=lambda _point: None, force=False):
     """一笔 SQLite 事务同时更新内容与 FTS 水位，异常不会留下假成功水位。"""
     import retrieval
     oid = projected["owner"]["owner_id"]
@@ -483,7 +483,7 @@ def _sync_fts(db, projected, *, fault=lambda _point: None):
         JOIN memory_entries e ON e.entry_id=f.entry_id WHERE e.owner_id=? GROUP BY f.entry_id""", (oid,))}
     expected_entries = {row["entry_id"] for row in projected["entries"]}
     physical_ready = set(fts_counts) == expected_entries and all(count == 1 for count in fts_counts.values())
-    if (old and old["indexed_generation"] == projected["generation"] and old["dependency_signature"] == projected["dependency_signature"]
+    if (not force and old and old["indexed_generation"] == projected["generation"] and old["dependency_signature"] == projected["dependency_signature"]
             and old.get("projection_version") == PROJECTION_VERSION
             and old["fts_status"] == "indexed" and physical_ready):
         return {"changed_entries": 0, "removed_entries": 0, "unchanged": True}
@@ -495,7 +495,9 @@ def _sync_fts(db, projected, *, fault=lambda _point: None):
         previous = {row["entry_id"]: dict(row) for row in db.execute("SELECT * FROM memory_entries WHERE owner_id=?", (oid,))}
         current = {row["entry_id"]: row for row in projected["entries"]}
         removed = set(previous) - set(current)
-        changed = [row for key, row in current.items() if key not in previous or previous[key]["signature"] != row["signature"] or fts_counts.get(key) != 1]
+        # Explicit repair restores text even if IDs/generation look current,
+        # inside this transaction so no half-built generation becomes visible.
+        changed = [row for key, row in current.items() if force or key not in previous or previous[key]["signature"] != row["signature"] or fts_counts.get(key) != 1]
         for key in removed | {row["entry_id"] for row in changed}:
             db.execute("DELETE FROM memory_fts WHERE entry_id=?", (key,))
             db.execute("DELETE FROM memory_entries WHERE entry_id=?", (key,))

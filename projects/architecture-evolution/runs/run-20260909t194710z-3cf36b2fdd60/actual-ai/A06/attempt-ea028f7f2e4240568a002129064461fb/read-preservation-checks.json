@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/memory_review actual AI",
+  "origin": "public CLI readbacks and explicit hash comparison",
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\readback-checks.json",
+  "locator": "已在本次工具输出实际呈现",
+  "coverage": "summary",
+  "observation": "读了基于公共inspect的4份原记录哈希与owner对照、旧A08导航哈希、3份原件前后哈希，均保持。此处为字段与哈希摘要阅读，不宣称重新逐字读完4份inspect。"
+}

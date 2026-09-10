@@ -1,5 +1,7 @@
 # 工作流精简与记忆机制审查
 
+> 历史执行记录：以下正文保留 2026-09-06 起的阶段目标、能力和实际结果，其中“当前/续作”均指对应时点，不代表现行实现。当前架构见 [ARCHITECTURE.md](ARCHITECTURE.md)，现行使用见 [README](README.md)；本工作区的新一轮计划位于 `projects/architecture-evolution/PLAN.md`（Project 实例不随公共源码包分发）。维护方法见 [文档与模块影响维护](docs/DOCUMENTATION_MAINTENANCE.md)。本次仅补导航，不改旧记录。
+
 日期：2026-09-06
 
 目标：用更少的常驻指令，明确历史记录、检索、确认、纠错和用户操作；保留可复现证据与权限边界。

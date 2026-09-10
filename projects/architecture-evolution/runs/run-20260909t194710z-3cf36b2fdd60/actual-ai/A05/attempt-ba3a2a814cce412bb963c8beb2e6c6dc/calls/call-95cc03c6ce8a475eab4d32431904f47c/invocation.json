@@ -1,0 +1,16 @@
+{
+  "call_id": "call-95cc03c6ce8a475eab4d32431904f47c",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "--root",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\a05-followup-10a1d20f283742e8947da848225d89d2\\workspace",
+    "memory",
+    "inspect",
+    "RES-F3-TANK"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\a05-followup-10a1d20f283742e8947da848225d89d2\\workspace",
+  "started_at": "2026-09-09T23:00:58.703167Z",
+  "timeout_seconds": 90,
+  "request": null
+}

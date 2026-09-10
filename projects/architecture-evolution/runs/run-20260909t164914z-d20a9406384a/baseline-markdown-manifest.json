@@ -1,0 +1,52 @@
+[
+  {
+    "original_path": "AGENTS.md",
+    "snapshot": "baseline/AGENTS.md.snapshot",
+    "sha256": "8e93f7d6b98f5cd26314bee6b354d5d6344d819b5002e1db51055fd12ab2cc03"
+  },
+  {
+    "original_path": "automation/workflows/context-maintenance/SKILL.md",
+    "snapshot": "baseline/automation/workflows/context-maintenance/SKILL.md.snapshot",
+    "sha256": "480676c1114422ebaa6029ca16d86f49e40d300eb23157ffaf74f994a7dd694b"
+  },
+  {
+    "original_path": "automation/workflows/research-loop/SKILL.md",
+    "snapshot": "baseline/automation/workflows/research-loop/SKILL.md.snapshot",
+    "sha256": "9b9bb0b8a571f48d46554dfc013f5cb15c67b41105a3c9f1fe8d019294cf9ab3"
+  },
+  {
+    "original_path": "context/MEMORY.md",
+    "snapshot": "baseline/context/MEMORY.md.snapshot",
+    "sha256": "ab950796e60537d4b6a182065d9330217ee3433ef5e0bfbb3a1f8432a37544b1"
+  },
+  {
+    "original_path": "docs/RESEARCH_RECORDING.md",
+    "snapshot": "baseline/docs/RESEARCH_RECORDING.md.snapshot",
+    "sha256": "80c879388179277aad4e9d2f111f439c5961df5185d3f3e3ef11957fe5d1038f"
+  },
+  {
+    "original_path": "projects/_template/AGENTS.md",
+    "snapshot": "baseline/projects/_template/AGENTS.md.snapshot",
+    "sha256": "2c07265c055cafea0420cf8d22359341e20f243c0f80ef5ee0269d09b9ba5ee4"
+  },
+  {
+    "original_path": "projects/_template/README.md",
+    "snapshot": "baseline/projects/_template/README.md.snapshot",
+    "sha256": "63470e83cbb3b9cdfb62962fcd724210eb240480b2dabb106c4546e44306bce4"
+  },
+  {
+    "original_path": "projects/AGENTS.md",
+    "snapshot": "baseline/projects/AGENTS.md.snapshot",
+    "sha256": "27fa5696c0b36ad38b872b9b4f8277b5d1ec00540115f0db3912b730d86a1bda"
+  },
+  {
+    "original_path": "projects/README.md",
+    "snapshot": "baseline/projects/README.md.snapshot",
+    "sha256": "6779829d9d3ec062ef812e5d7ef26c79f06d529cb20908ea4cf5dd08ecd3c452"
+  },
+  {
+    "original_path": "README.md",
+    "snapshot": "baseline/README.md.snapshot",
+    "sha256": "386999226396e16d0e766685cdaace568648782dd05cc5da54559e6886ec32fc"
+  }
+]

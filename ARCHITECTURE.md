@@ -1,59 +1,91 @@
 # 工作区架构
 
-## 全局对象，不按项目分割算法
+本页描述当前代码已经实现的职责与边界。主要实现基线为 2026-09-09 合入的版本记忆与研究文稿代码；功能定义以 schema 和实际服务核对，历史计划只用于解释演进理由。使用方式见 [README](README.md)，文档维护见 [维护手册](docs/DOCUMENTATION_MAINTENANCE.md)。
 
-核心算法、研究、工具和项目通过稳定 ID 与文件引用关联。新 Run 保存到开展工作的对象内部；根 `runs/` 保留无归属轻任务及历史记录，一次 Run 可关联多个核心算法和研究。项目是系统级或大型交付的聚合，同一算法不因参与不同项目而复制。
+## 1. 对象、技术内容和文稿是不同概念
 
-核心算法的身份来自公司算法/模块文档定义的关键模型算法，具体收录条件见 [核心算法规则](core-algorithms/AGENTS.md)。函数、类和脚本功能的模块化组织不产生新的核心算法对象。
+Research、Run、Project、核心算法、数据、工具、知识和报告是八类可拥有记忆的业务对象。原生 manifest 或已采用的稳定入口决定对象身份；记忆附着其上，不复制等价对象。Project 聚合目标、里程碑和引用，不拥有独立算法副本。公司核心算法的准入见 [core-algorithms/AGENTS.md](core-algorithms/AGENTS.md)，框架软件模块不因此获得 MOD 身份。
+
+新 Run 优先保存到开展工作的对象内，通过 `owner_id` 指定唯一归属；可同时关联多个研究、算法或数据。无归属轻任务落根 `runs/`，旧根 Run 与旧项目布局继续兼容。细节见 [对象与 Run 保存](docs/OBJECT_RUN_STORAGE.md)。
+
+内容层级与文稿结构分别表达：
+
+| 类型 | 当前职责 | 关键边界 |
+|---|---|---|
+| L0 原始材料 | Run 已登记输入、脚本、产物、日志及获准来源的统一追溯视图 | 不是再复制一份原始数据；缺原件和指纹变化显式报告 |
+| L1 `detail` | 实验、方法、推导或分析技术单元；包含检索说明和稳定完整正文块 | 只有实验单元必须绑定实际 Run；方法/推导不虚构执行 |
+| L2 `event` | 观察、选择、跨 Run 决策、失败和重试前提 | 不把同一次实验重复登记成另一场实验 |
+| L3 `experience` | 有条件可复用的经验、适用与禁止迁移范围 | 未复核经验保持候选身份 |
+| L4 `map` | 研究问题、证据结构、未决事项与导航 | 当前不承担独立文稿的主存储职责 |
+| `document_section` | 固定技术块引用、章节衔接和必要定义 | `level=null`，不是新记忆层 |
+| `document` | `research_process` 完整研究过程、`research_report` 精简研究报告 | `level=null`；两份文稿共享固定依据、各自维护结构和范围 |
+
+目标、路线、问题、检查点、关联、表示和反馈等也有明确记录类型；层级不是可信等级。详细定义集中在 [研究记录标准](docs/RESEARCH_RECORDING.md)，机器契约见 [memory-v3.schema.json](automation/schemas/memory-v3.schema.json)。
+
+## 2. 权威数据与派生状态
+
+| 数据 | 权威位置与维护者 | 可重建或恢复边界 |
+|---|---|---|
+| 原始来源与实际执行 | 获准原件、对象 manifest、Run 的 `run.json` 和执行回执 | 原件不被索引替代；登记只固定当时可取得的版本 |
+| 规范记忆 | 对象内或旁置 `memory_home`；`owner.json`、不可变 commits、`HEAD.json` | MemoryStore 维护单对象提交与恢复；旧修订不改写 |
+| 结论和复核 | 原生 claims/证据旁文件，或规范记忆中的 claim 与 review 记录 | 执行、保存、复核分别记录；检查固定版本、scope 和依赖 |
+| 全文与向量投影 | `retrieval/generated/search.sqlite3` 的旧表与 `memory_*` 表；Qdrant 集合 | 可从获准来源重建；模型、编码版本、FTS/向量水位分别记录 |
+| 查询、反馈与材料包 | Q/CTX/CF 或 QMEM/PKT 等对应回执 | 是某次查询/选择的历史，不是当前事实或可随意删除的索引 |
+| 可视化与观察 | `.local/workbench` 的视图/候选，`context/monitor` 的基线与观察 | 不改变规范证据；候选、布局和观察各有自己的用途 |
+
+保存入口经过 schema、来源和领域规则检查，以 `expected_head` / `expected_revision` 拒绝覆盖新修改，以 `request_id` 保证重试身份。单 Owner 写锁内先准备不可变提交，再原子发布 HEAD；之后同步派生索引。HEAD 已发布而索引失败时返回已保存身份与 `INDEX_PENDING`，通过 reconcile 补偿，不能再造业务记录。实现见 [service.py](automation/scripts/memory/service.py) 与 [store.py](automation/scripts/memory/store.py)。
+
+当前保证单 Owner 的提交可见性，不承诺跨对象原子事务。文稿或材料包固定参与对象的 HEAD/引用，结束前复查依据；这是显式水位检查，不是全库数据库快照。Qdrant local 仍受同一存储的进程排他限制。
+
+## 3. 从技术单元到两份文稿
 
 ```mermaid
 flowchart LR
-    P[可选项目视图] --> M[全局核心算法]
-    P --> S[研究主题]
-    M <--> S
-    M --> R[所属对象内 Run]
-    S --> R
-    T[工具与外部代码引用] --> R
-    D[数据卡与版本] --> R
-    R --> K[经验与报告]
+    R[Run 与获准来源] --> U[L1 技术单元]
+    U --> D[供检索的说明]
+    U --> B[完整正文块与必要定义]
+    B --> S[独立章节]
+    S --> P[完整研究过程]
+    S --> Q[精简研究报告]
+    U --> M[L4 研究地图与导航]
 ```
 
-箭头是显式 ID/文件关系。检索已实现按阶段的一至两跳有界扩展，尚无通用知识图谱或自动验证全部语义关系。
+箭头表示固定来源或组织关系，不代表保存后自动生成。AI 负责写说明、完整正文、论证衔接、结论与边界；服务负责验证引用、检查块依赖、组装可读文稿和报告缺口，读取时不调用模型改写结果。
 
-## 检索执行链
+`document` 默认读取 `research_process`；可按 `document_id` 和修订读取固定版本。`outline` 给目录，`section-context` 按章节与字符预算展开，`document-impact` 给出新修订、新单元或变化关注可能影响的章节。影响提示只要求复查，不自动更新章节、不把旧引用替换成最新版本，也不自动撤回业务结论。章节输出有界并不表示底层文件只读取一个章节。实现见 [documents.py](automation/scripts/memory/documents.py) 与 [technical_units.py](automation/scripts/memory/technical_units.py)。
 
-1. 扫描获准业务目录和逐文件登记的外部来源，计算 SHA-256。
-2. 文本/代码保留正文；PPT、PDF、图片和表格转可定位单元，图片做本地 OCR 并保存可重建资产。
-3. SQLite 保存当前正文、元数据、片段、FTS5 词项及历史指纹；Qdrant local 保存本地模型生成的片段向量。
-4. 查询也在本地编码，全文与向量候选用排名融合；按文件去重，回查当前指纹与 Run/跨文档证据风险。
-5. context_engine 按目标算法基线、来源角色和用户选择规划阅读；focus/investigate/wide 扩展一至两跳关联。输出全文、Run 字段摘录或片段及完整选择清单。AI 读取后作答。
-6. 查询、CTX 调查链、解决/未解决/冲突反馈、单源反馈与固定问题评估形成维护闭环。未解决反馈触发下一阶段，最多两次；不训练模型或自动修改基础模型权重。
+当前记录契约为 v3；v1 旧层级只在读取时映射到现行语义，v2 `detail` 与 `map.payload.report` 保留兼容。旧 map 报告读取属于兼容路径，不应再作为新双文稿的默认设计；旧版本的正文和指纹保持不变。
 
-正式用途另走逐结论准入：`--purpose formal --scope` 保留到后续扩展，只导出已复核且版本、适用范围和依赖仍有效的 claim。Run 还须通过记录检查并封存；正式读取重新检查输入/产物文件。此机制控制 CLI 生成的证据包，不能代替领域验收或阻止外部工具自行写报告。见 [证据准入手册](docs/EVIDENCE_CONTROLS.md)。
+## 4. 两条检索路径及共同边界
 
-## 版本记忆与报告阅读
+其上的材料查询应用由 `automation/scripts/material_query/` 编排，复用规范记录与SQLite投影。它将表示定义、固定材料的实际可用性和临时材料包分开；范围/硬上限、局部证据准入、累计账本贯穿查询、组包、加深与维护。六种字段模板不自动生成新知识，结构联想和反证判断由实际AI/人工完成，Writer通过原memory事务写回。底层读取、索引计划和预算控制的实际映射见[运行状态](docs/design/representation-query-v0.2/RUNTIME_STATUS.md)，操作见[材料查询手册](docs/MATERIAL_QUERY.md)。
 
-规范记忆随业务对象存储，服务维护不可变提交、HEAD、修订和回执；全文/向量索引可以从规范记录重建。L0保留原始证据，L1是详细研究说明，L2记录过程与决策，L3保存可复用经验，L4组织研究地图与综合。旧v1记录原字节保留，以有效层级投影呈现；普通知识召回使用L1以上，L0按固定引用追溯。
+| 入口 | 实际处理对象与流程 | 上下文及回执 |
+|---|---|---|
+| `search-knowledge` / `retrieve-context` | 获准材料扫描、指纹、多格式抽取；SQLite FTS + 本地向量；按文件身份去重 | `context_engine` 按算法基线、角色和阶段选择全文/字段摘录/片段；Q、CTX、CF |
+| `memory search` | 规范记录、Run/claim 及有效检索表示；FTS/向量排名融合、规范身份折叠、回源核验 | QMEM，保留固定 Ref、命中理由、缺口和降级；默认 `vector=auto` |
+| `memory context` / `expand` | 从规范候选或显式固定 Ref 组装材料；受范围、权限和预算约束 | PKT，保存选择、basis_heads、遗漏及必需未完整项；context 未指定时使用 `vector=off` |
+| `memory document` / `section-context` | 按固定文稿和章节引用组织技术块 | 文稿/章节结果；与搜索候选及完整原始材料追溯不同 |
 
-报告编排保存在v2 map的可选 `payload.report`。AI集中编写引言、共享方法、衔接与综合，按固定修订引用L1正文；读取服务只验证和组装，不临时调用模型改写研究。前端按编排顺序展示完整报告，将层级、结构字段和原始来源放在追溯区。来源失效、未覆盖实验和旧版本引用明确显示，不能无提示换成最新结果。详见[分层与报告规范](docs/RESEARCH_RECORDING.md)。
+两条检索共用 SQLite 文件但使用不同表、索引状态和查询策略，尚未统一为一个查询引擎。新路径中的旧全文适配只覆盖已映射的原生 Run 材料，不表示所有自由文档都已变成 MEM 记录。详见 [检索手册](docs/RETRIEVAL.md) 与 [记忆使用指南](docs/MEMORY_USAGE.md)。
 
-## 实现与恢复边界
+新记忆的 `knowledge` 模式检索技术单元说明、事件、经验等知识内容；L1 完整块不作为第二份正文全部塞入普通索引。`documents` 模式用于文稿/章节；L0 正文默认排除，只在 `trace` 及实际固定选择下追溯。历史修订、用户 exclude、来源撤权和正式证据门槛继续适用。
 
-| 部分 | 当前实现 |
-|---|---|
-| 业务事实 | 文件为主；Run 复核、纠错和已登记依赖影响可追溯 |
-| 结论与失效 | evidence.py；Run/研究/算法 claims 与知识/报告旁文件；按 supports/input 传播，复核历史与版本绑定 |
-| 能力验收 | health.py；doctor 分组件检查，verify full 要求向量/OCR 实测且无 skipped；业务验证另行进行 |
-| 证据查看 | evidence_view.py + automation/ui/evidence.html；本机只读 HTTP 或离线快照，按记录/结论查看依据与报告影响 |
-| 只读监测 | evidence_observer.py；复用获准来源及证据图，context/monitor 保存原子基线、观察事件与维护候选；不执行实验或晋升可信状态 |
-| 文本索引 | automation/scripts/retrieval.py，SQLite FTS5，增量更新/移除 |
-| 语义索引 | qdrant_backend.py，Qdrant Python local 持久化，CPU FastEmbed 离线推理 |
-| 上下文选择 | context_engine.py，角色/长度/预算、用户偏好、受限扩展；是否解决由 AI/用户判断 |
-| 多格式解析 | material_extract.py，PPTX/PDF 页与图像、CSV/XLSX 行段 |
-| 服务部署 | services/qdrant 内的 Windows x64 便携运行时；Qdrant 无 HTTP 服务、Docker 或外部账号；证据查看可另启 127.0.0.1 只读页面 |
-| 并发 | 本地数据库单进程访问；当前不支持多个任务同时访问同一库 |
-| 大批量材料 | 查询时扫描哈希，按变化增量编码；未做大型公司语料性能验收 |
-| 视觉理解 | OCR/替代文字可检索；图形含义和复杂公式需另行视觉核对 |
-| 旧布局 | 兼容根 runs 与旧 project analysis/runs；新建使用对象归属，历史路径与固定引用不自动改写 |
+`purpose=exploration` 返回线索和缺口；`formal` 必须给 scope，逐 claim 检查复核、版本和依赖，不因排序高就授予正式资格。focus→investigate→wide 是上下文调查阶段，与 L0–L4 无关；反馈扩展最多两次且保留用途、排除和预算。是否已足够回答由 AI/用户判断，程序不自动证明答案正确。
 
-原件及 Run/反馈不可用缓存替代；索引可重建，但历史原文需获批备份或版本控制保存。迁移路径后重建索引，不能依靠绝对路径派生的旧来源 ID 不变。操作与配置见 [检索手册](docs/RETRIEVAL.md)。
+## 5. 关联、证据与 AI 控制
+
+文件材料关系、工作台候选和规范记忆 association 是不同机制。规范关联带固定端点、共享结构、迁移限制和采纳状态；相似、accepted 导航与科学支持分别表达。相关性服务拒绝将建议直接写成 `supports` / `input`。
+
+`memory/associations.py` 已有有界邻接扩展函数；当前完整图扩展由 `memory/evaluation.py` 的完整评估方案调用，默认新记忆 context 主要返回导航引用，不会自动运行该完整方案。旧材料上下文的按阶段关联扩展仍在其自身路径运行。不能由关系图展示推断默认问答已执行多跳联想。[材料关系手册](docs/MATERIAL_RELATIONS.md)
+
+AI 根据 Skill 和本轮任务选择查询、研究、整理、复核或续接；CLI/HTTP 通过共同动作路由和服务执行请求。`policy` 提供有效记录策略与来源说明：Research 与 Project 默认 explore/fine、保留 L0–L4，显式对象策略仍优先。auto_summary 是整理建议，不会自行调用模型生成报告。监测只保存观察与候选，不执行实验或晋升复核。
+
+## 6. 当前实现限制与维护入口
+
+- 事实与索引在数据权威上分开，但服务与索引仍存在具体实现互调。`retrieval_interfaces.py` 是接口设计意图，尚未成为统一后端装配边界。
+- 一些查询和证据检查会扫描全部记录/对象快照；语义关联会重新编码可见正文；新向量候选可能按窗口总量取回。不能用最终 Top-K 推断底层查询工作量固定。
+- 本地多语言 MiniLM、Qdrant 和 OCR 支持离线推理；复杂图形和公式仍需原件核对。当前模型迁移只覆盖约定名称、路径和兼容 384 维边界。
+- 软件功能回归、检索质量、性能、实际 AI 使用、人工复核与第二台物理机验收分别记录。历史检索质量未通过和规模暂缓见 [状态台账](docs/design/system-memory/STATUS.md)，文档修正不改变原结果。
+
+每次开发按 [文档与模块影响维护](docs/DOCUMENTATION_MAINTENANCE.md) 检查接口、状态、投影、文稿、入口、Skill、测试和迁移。本完整工作区的模块影响图维护在 `projects/architecture-evolution/context/MODULE_IMPACT.md`，Project 实例不随公共源码包分发；发行仍携带本架构说明和通用维护手册。

@@ -1,0 +1,41 @@
+{
+  "actor": "Codex主任务助手",
+  "comparisons": [
+    {
+      "expectation_id": "A04-E1",
+      "status": "meets",
+      "observation": "两种浮点文稿和Project双文稿公开回读均complete=true；新增章节顺序和正文已核对。",
+      "evidence_refs": [
+        "recording-verification.json",
+        "project-brief-final.json",
+        "floating-process-final.json"
+      ]
+    },
+    {
+      "expectation_id": "A04-E2",
+      "status": "meets",
+      "observation": "新增完整章节和简报引用同一个固定技术单元，简报保留本机/合成数据/人工和科学未审限制。",
+      "evidence_refs": [
+        "repair-sections-request.json",
+        "project-brief-final.json"
+      ]
+    },
+    {
+      "expectation_id": "A04-E3",
+      "status": "cannot-assess",
+      "observation": "工作台实际看到8章目录、公式、正文和查询组包；本次未对所有历史图示及链接逐项做视觉复核，因此不把整项判为满足。",
+      "evidence_refs": [
+        "AI_REVIEW.md"
+      ]
+    }
+  ],
+  "readable_artifacts": [
+    "AI_REVIEW.md",
+    "README.md"
+  ],
+  "limitations": [
+    "实际用户故障路径已复测；完整历史图示视觉验收、人工及第二物理机未执行。"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed"
+}

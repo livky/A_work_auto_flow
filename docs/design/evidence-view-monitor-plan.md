@@ -1,4 +1,9 @@
 # 证据查看与只读监测实施计划
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../ARCHITECTURE.md)、[研究记录标准](../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 用户要求：先让证据为什么保存、依据、复核、失效及报告影响可见，再增加材料变化、实验完成和依赖失效的只读监测。自动整理只提出候选，重复出现或被引用不能提升可信状态。
 

@@ -1,0 +1,415 @@
+[
+  {
+    "id": "query-original",
+    "input": {
+      "definition": {
+        "key": "original",
+        "version": "1"
+      },
+      "question": "查找合成反馈方法及不能迁移的条件",
+      "keywords": [
+        "反馈",
+        "时延"
+      ],
+      "scope": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "scope_ceiling": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "purpose": "exploration",
+      "association": {
+        "mode": "off",
+        "strategy": "existing-v1",
+        "strategy_version": "1",
+        "max_items": 2,
+        "output_share": 0.15,
+        "supplement_scope": null
+      },
+      "budget": {
+        "wall_ms": 10000,
+        "read_bytes": 2097152,
+        "output_chars": 12000,
+        "candidates": 100,
+        "graph_nodes": 50,
+        "graph_edges": 100,
+        "graph_hops": 2,
+        "model_tokens": 0
+      },
+      "freshness": "fixed",
+      "result_limit": 8,
+      "missing_policy": "skip",
+      "fallback_definitions": [],
+      "applicability": ""
+    }
+  },
+  {
+    "id": "query-full",
+    "input": {
+      "definition": {
+        "key": "full",
+        "version": "1"
+      },
+      "question": "查找合成反馈方法及不能迁移的条件",
+      "keywords": [
+        "反馈",
+        "时延"
+      ],
+      "scope": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "scope_ceiling": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "purpose": "formal",
+      "association": {
+        "mode": "off",
+        "strategy": "existing-v1",
+        "strategy_version": "1",
+        "max_items": 2,
+        "output_share": 0.15,
+        "supplement_scope": null
+      },
+      "budget": {
+        "wall_ms": 10000,
+        "read_bytes": 2097152,
+        "output_chars": 12000,
+        "candidates": 100,
+        "graph_nodes": 50,
+        "graph_edges": 100,
+        "graph_hops": 2,
+        "model_tokens": 0
+      },
+      "freshness": "fixed",
+      "result_limit": 8,
+      "missing_policy": "skip",
+      "fallback_definitions": [],
+      "applicability": "synthetic:material-query-only"
+    }
+  },
+  {
+    "id": "query-section",
+    "input": {
+      "definition": {
+        "key": "section",
+        "version": "1"
+      },
+      "question": "查找合成反馈方法及不能迁移的条件",
+      "keywords": [
+        "反馈",
+        "时延"
+      ],
+      "scope": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null,
+        "include_refs": [
+          {
+            "kind": "record",
+            "id": "MEM-P0-SYNTHETIC",
+            "revision": 1,
+            "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "block:m"
+          }
+        ]
+      },
+      "scope_ceiling": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "purpose": "exploration",
+      "association": {
+        "mode": "off",
+        "strategy": "existing-v1",
+        "strategy_version": "1",
+        "max_items": 2,
+        "output_share": 0.15,
+        "supplement_scope": null
+      },
+      "budget": {
+        "wall_ms": 10000,
+        "read_bytes": 2097152,
+        "output_chars": 12000,
+        "candidates": 100,
+        "graph_nodes": 50,
+        "graph_edges": 100,
+        "graph_hops": 2,
+        "model_tokens": 0
+      },
+      "freshness": "fixed",
+      "result_limit": 8,
+      "missing_policy": "skip",
+      "fallback_definitions": [],
+      "applicability": ""
+    }
+  },
+  {
+    "id": "query-unit_digest",
+    "input": {
+      "definition": {
+        "key": "unit_digest",
+        "version": "1"
+      },
+      "question": "查找合成反馈方法及不能迁移的条件",
+      "keywords": [
+        "反馈",
+        "时延"
+      ],
+      "scope": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "scope_ceiling": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "purpose": "exploration",
+      "association": {
+        "mode": "off",
+        "strategy": "existing-v1",
+        "strategy_version": "1",
+        "max_items": 2,
+        "output_share": 0.15,
+        "supplement_scope": null
+      },
+      "budget": {
+        "wall_ms": 10000,
+        "read_bytes": 2097152,
+        "output_chars": 12000,
+        "candidates": 100,
+        "graph_nodes": 50,
+        "graph_edges": 100,
+        "graph_hops": 2,
+        "model_tokens": 0
+      },
+      "freshness": "fixed",
+      "result_limit": 8,
+      "missing_policy": "skip",
+      "fallback_definitions": [],
+      "applicability": ""
+    }
+  },
+  {
+    "id": "query-topic",
+    "input": {
+      "definition": {
+        "key": "topic",
+        "version": "1"
+      },
+      "question": "查找合成反馈方法及不能迁移的条件",
+      "keywords": [
+        "反馈",
+        "时延"
+      ],
+      "scope": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "scope_ceiling": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "purpose": "exploration",
+      "association": {
+        "mode": "off",
+        "strategy": "existing-v1",
+        "strategy_version": "1",
+        "max_items": 2,
+        "output_share": 0.15,
+        "supplement_scope": null
+      },
+      "budget": {
+        "wall_ms": 10000,
+        "read_bytes": 2097152,
+        "output_chars": 12000,
+        "candidates": 100,
+        "graph_nodes": 50,
+        "graph_edges": 100,
+        "graph_hops": 2,
+        "model_tokens": 0
+      },
+      "freshness": "fixed",
+      "result_limit": 8,
+      "missing_policy": "fallback",
+      "fallback_definitions": [
+        {
+          "key": "unit_digest",
+          "version": "1"
+        }
+      ],
+      "applicability": ""
+    }
+  },
+  {
+    "id": "query-domain",
+    "input": {
+      "definition": {
+        "key": "domain",
+        "version": "1"
+      },
+      "question": "查找合成反馈方法及不能迁移的条件",
+      "keywords": [
+        "反馈",
+        "时延"
+      ],
+      "scope": {
+        "owner_ids": [
+          "RES-MQ-A",
+          "PRJ-MQ-B"
+        ],
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "scope_ceiling": {
+        "owner_ids": null,
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null
+      },
+      "purpose": "exploration",
+      "association": {
+        "mode": "off",
+        "strategy": "existing-v1",
+        "strategy_version": "1",
+        "max_items": 2,
+        "output_share": 0.15,
+        "supplement_scope": null
+      },
+      "budget": {
+        "wall_ms": 10000,
+        "read_bytes": 2097152,
+        "output_chars": 12000,
+        "candidates": 100,
+        "graph_nodes": 50,
+        "graph_edges": 100,
+        "graph_hops": 2,
+        "model_tokens": 0
+      },
+      "freshness": "fixed",
+      "result_limit": 8,
+      "missing_policy": "skip",
+      "fallback_definitions": [],
+      "applicability": ""
+    }
+  }
+]

@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "source_contract_version": "0.1",
+  "status": "preserved_design_baseline_not_runtime",
+  "copied_at_utc": "2026-09-09T19:51:47Z",
+  "implementation_run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "source_directory": "projects/architecture-evolution/design/interfaces-v0.1",
+  "files": [
+    {
+      "name": "check_contracts.py",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/check_contracts.py",
+      "source_sha256": "c1290dc9c42cbf308710f5b13c933645e1a22e378b7cc4caa1ccbd2ddb09e0db",
+      "public_sha256": "c1290dc9c42cbf308710f5b13c933645e1a22e378b7cc4caa1ccbd2ddb09e0db",
+      "navigation_edits": [],
+      "semantic_changes": false
+    },
+    {
+      "name": "contract_ports.py",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/contract_ports.py",
+      "source_sha256": "28b8545586d969771360ec995223c0a69842bca4c3895daa5b7b80b79495e0c0",
+      "public_sha256": "28b8545586d969771360ec995223c0a69842bca4c3895daa5b7b80b79495e0c0",
+      "navigation_edits": [],
+      "semantic_changes": false
+    },
+    {
+      "name": "contract_types.py",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/contract_types.py",
+      "source_sha256": "881707ca58c07d2ddb7a9a12fff7f70c1af9e011b96fbeadc7149165dd4b6937",
+      "public_sha256": "881707ca58c07d2ddb7a9a12fff7f70c1af9e011b96fbeadc7149165dd4b6937",
+      "navigation_edits": [],
+      "semantic_changes": false
+    },
+    {
+      "name": "CORE.md",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/CORE.md",
+      "source_sha256": "9124be3ceb6765696ce0c32d1add285b30547c13d18cf5036e84be1aba0b04cb",
+      "public_sha256": "87eda16a35e2b41395c309138267a30ee7f5ed9a4656ca5c1aa440e2274a3448",
+      "navigation_edits": [
+        {
+          "before": "../../../../docs/design/representation-query-v0.2/README.md",
+          "after": "../README.md",
+          "reason": "公共副本的v0.2导航重定位"
+        }
+      ],
+      "semantic_changes": false
+    },
+    {
+      "name": "DATATYPES.md",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/DATATYPES.md",
+      "source_sha256": "b5cd5cf2af6b13d62dfbb5e1b002be0afe25988152be69588c78da03786a0d4c",
+      "public_sha256": "b5cd5cf2af6b13d62dfbb5e1b002be0afe25988152be69588c78da03786a0d4c",
+      "navigation_edits": [],
+      "semantic_changes": false
+    },
+    {
+      "name": "function-catalog.json",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/function-catalog.json",
+      "source_sha256": "922f0523853bbba05d4b911f2efb3034a6710da2555085dcbd617b271591925c",
+      "public_sha256": "922f0523853bbba05d4b911f2efb3034a6710da2555085dcbd617b271591925c",
+      "navigation_edits": [],
+      "semantic_changes": false
+    },
+    {
+      "name": "FUNCTIONS.md",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/FUNCTIONS.md",
+      "source_sha256": "4b34d5a2bba0630d212613a4a64277f41287ee3fa19371801f6037878cabc9c5",
+      "public_sha256": "4b34d5a2bba0630d212613a4a64277f41287ee3fa19371801f6037878cabc9c5",
+      "navigation_edits": [],
+      "semantic_changes": false
+    },
+    {
+      "name": "IMPLEMENTATION.md",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/IMPLEMENTATION.md",
+      "source_sha256": "7d588abe25340b1fca44b4f5a2cc910bdcdbc7c20eef814510561ffc831e4e7d",
+      "public_sha256": "d3626506fd7118cc3a3151de032bea4ad96093665d69921a826b02272005008f",
+      "navigation_edits": [
+        {
+          "before": "../../../../docs/design/representation-query-v0.2/README.md",
+          "after": "../README.md",
+          "reason": "公共副本的v0.2导航重定位"
+        },
+        {
+          "before": "../../runs/run-20260909t155125z-2961bdf175a8/sources.json",
+          "after": "PUBLIC_BASELINE.md#未随公共包分发的研究回执",
+          "reason": "原Run不分发；转向明确缺失说明，保留原Run身份"
+        },
+        {
+          "before": "../../runs/run-20260909t155125z-2961bdf175a8/DISCUSSION.md",
+          "after": "PUBLIC_BASELINE.md#未随公共包分发的研究回执",
+          "reason": "原Run不分发；转向明确缺失说明，保留原Run身份"
+        }
+      ],
+      "semantic_changes": false
+    },
+    {
+      "name": "README.md",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/README.md",
+      "source_sha256": "ca1067058e770a10d8469a717abef5bedbf19a4d61f1f1b51fa9d07a8d5611e5",
+      "public_sha256": "77a97c2b05fdd1e89e10ea5a5d7f653ebb30f35a93e283b7371897e2d5f4ee90",
+      "navigation_edits": [
+        {
+          "before": "../../../../docs/design/representation-query-v0.2/README.md",
+          "after": "../README.md",
+          "reason": "公共副本的v0.2导航重定位"
+        },
+        {
+          "before": "projects/architecture-evolution/design/interfaces-v0.1/check_contracts.py",
+          "after": "docs/design/representation-query-v0.2/baseline-v0.1/check_contracts.py",
+          "reason": "公共包内检查命令可执行"
+        }
+      ],
+      "semantic_changes": false
+    },
+    {
+      "name": "REPRESENTATION_AND_GRAPH.md",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/REPRESENTATION_AND_GRAPH.md",
+      "source_sha256": "62de336e10a4d905f5b2ff37b877da98c4bb6a5dd47cca8d7d070718b11e7a79",
+      "public_sha256": "63c3734cc24f7a57cfbc3e356a99063bae92e5206496ceaa3caef8dc8cd0fb00",
+      "navigation_edits": [
+        {
+          "before": "../../../../docs/design/representation-query-v0.2/README.md",
+          "after": "../README.md",
+          "reason": "公共副本的v0.2导航重定位"
+        }
+      ],
+      "semantic_changes": false
+    },
+    {
+      "name": "request-examples.json",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/request-examples.json",
+      "source_sha256": "9f9f42419ab0d1b43a8462cb05963ae7ab39b62f6fe70fe77613c801036362b4",
+      "public_sha256": "9f9f42419ab0d1b43a8462cb05963ae7ab39b62f6fe70fe77613c801036362b4",
+      "navigation_edits": [],
+      "semantic_changes": false
+    },
+    {
+      "name": "SPEC.md",
+      "source_path": "projects/architecture-evolution/design/interfaces-v0.1/SPEC.md",
+      "source_sha256": "8858496d8ce1e4ab7f47941df41d38c99768928da2fa0c8b29724082ec453e31",
+      "public_sha256": "2e2d69f6af288f1d9e3e74cb10f13e5811b08155b366983e99f7218b6857f793",
+      "navigation_edits": [
+        {
+          "before": "../../../../docs/design/representation-query-v0.2/README.md",
+          "after": "../README.md",
+          "reason": "公共副本的v0.2导航重定位"
+        }
+      ],
+      "semantic_changes": false
+    }
+  ]
+}

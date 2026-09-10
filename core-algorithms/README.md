@@ -7,3 +7,5 @@ new-module 保留为兼容命令，执行相同的文档来源检查。module.js
 核心算法代码可在核心算法内 code/，也可保留在原仓库。文档和代码通过 retrieval/sources.json 的 module_ids/related 关联；核心算法之间也可用 related_module_ids 表达关系。
 
 创建只生成 module.json 与 README 两个入口。需要深入设计时参考 [详细核心算法卡](../docs/templates/CORE_ALGORITHM_CARD_TEMPLATE.md) 和 [接口契约](../docs/templates/INTERFACE_CONTRACT_TEMPLATE.md)，按需合并到核心算法，不重复维护摘要。
+
+本算法的实际分析可用 `new-run --owner MOD-ID` 保存到算法对象的 `runs/`，跨研究引用保持同一 RUN-ID。需要版本记忆时按需保存 L1 技术单元、事件、经验和地图；新研究文稿单独编排，不改写算法原文或旧 Run。算法文档/代码使用文件检索，记忆记录使用 `memory search`，入口和默认行为见 [检索手册](../docs/RETRIEVAL.md)。

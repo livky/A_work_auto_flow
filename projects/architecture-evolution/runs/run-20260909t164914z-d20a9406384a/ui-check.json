@@ -1,0 +1,9 @@
+{
+  "attempted": true,
+  "url": "http://127.0.0.1:52763",
+  "tool": "cua.createBrowserTab",
+  "result": "Browser Use cannot open the local URL; net::ERR_BLOCKED_BY_CLIENT",
+  "page_read": false,
+  "screenshot": null,
+  "scope": "两种文稿的实际页面目录、公式、图和链接尚未验证；未绕过浏览器限制。"
+}

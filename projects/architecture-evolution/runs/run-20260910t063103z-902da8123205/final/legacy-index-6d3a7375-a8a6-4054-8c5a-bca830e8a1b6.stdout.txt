@@ -1,0 +1,28 @@
+{
+  "updated": 3,
+  "unchanged": 104,
+  "unavailable": [
+    {
+      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\research\\floating-point-summation\\fixtures\\original-documents\\details\\round-01.md.snapshot",
+      "reason": "不支持的格式；请提供保留来源定位的文本导出"
+    },
+    {
+      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\research\\floating-point-summation\\fixtures\\original-documents\\details\\round-02.md.snapshot",
+      "reason": "不支持的格式；请提供保留来源定位的文本导出"
+    },
+    {
+      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\research\\floating-point-summation\\fixtures\\original-documents\\details\\round-03.md.snapshot",
+      "reason": "不支持的格式；请提供保留来源定位的文本导出"
+    }
+  ],
+  "removed": 0,
+  "qdrant": {
+    "enabled": true,
+    "updated_sources": 3,
+    "unchanged_sources": 104,
+    "removed_sources": 0,
+    "collection": "workspace_6916d3bf4f7a",
+    "points": 1049
+  }
+}
+

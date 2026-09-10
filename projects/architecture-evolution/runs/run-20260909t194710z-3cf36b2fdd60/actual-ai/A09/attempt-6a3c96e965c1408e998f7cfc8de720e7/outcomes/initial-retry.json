@@ -1,0 +1,387 @@
+{
+  "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\calls\\call-78dc40f5c5e34e3ea78e69dec6c6e49f",
+  "exit_code": 0,
+  "result": {
+    "owner": {
+      "schema_version": 1,
+      "owner_id": "RES-F3-RETRY",
+      "owner_type": "research",
+      "native_ref": {
+        "id_field": "research_id",
+        "id_value": "RES-F3-RETRY",
+        "path": "research/retry/research.json"
+      },
+      "memory_home": "research/retry/memory",
+      "adapter_version": 1,
+      "temporary": false,
+      "persisted": true,
+      "title": "SYNTHETIC F3 retry",
+      "fingerprint": "30126a569a80473ab8dd4f980c11d3949c56892434f7ab44bf2c8b2253cd0076",
+      "native_data": {
+        "research_id": "RES-F3-RETRY",
+        "title": "SYNTHETIC F3 retry",
+        "status": "active",
+        "claims": [],
+        "dependencies": [],
+        "sensitivity": "internal"
+      },
+      "created_at": "2026-09-09T21:02:12.154985Z",
+      "created_by": {
+        "id": "Codex actual-AI F3 setup",
+        "kind": "ai"
+      }
+    },
+    "head": {
+      "commit_id": "COM-b98936d9-17a7-4a31-9016-4c12ea27ccaa",
+      "generation": 2,
+      "manifest_hash": "9ad1f1244203dce8bd50849d3b5f773b8dcb0c6783b77bed725991c3fc08c496"
+    },
+    "manifest": {
+      "changed_ids": [
+        "MEM-bab0426e-0012-5106-9124-4b5fba49a65f"
+      ],
+      "commit_id": "COM-b98936d9-17a7-4a31-9016-4c12ea27ccaa",
+      "generation": 2,
+      "index_pending": {
+        "fts": true,
+        "generation": 2,
+        "vector": true
+      },
+      "owner_id": "RES-F3-RETRY",
+      "parent_commit_id": "COM-b18654cc-36f8-4cc5-9743-726c1d770d59",
+      "parent_manifest_hash": "cfeaaafc4b85df8bce57c8d9d4efa851c4fa5a543cfd6de6de6299ecb9b15f15",
+      "pointers": {
+        "checkpoint": null,
+        "goal": null,
+        "policy": null
+      },
+      "record_heads": {
+        "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4": {
+          "commit_id": "COM-b18654cc-36f8-4cc5-9743-726c1d770d59",
+          "path": "commits/COM-b18654cc-36f8-4cc5-9743-726c1d770d59/records/MEM-1749e71c-ee06-5f04-9c40-03228706f4f4.json",
+          "record_hash": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+          "revision": 1
+        },
+        "MEM-bab0426e-0012-5106-9124-4b5fba49a65f": {
+          "commit_id": "COM-b98936d9-17a7-4a31-9016-4c12ea27ccaa",
+          "path": "commits/COM-b98936d9-17a7-4a31-9016-4c12ea27ccaa/records/MEM-bab0426e-0012-5106-9124-4b5fba49a65f.json",
+          "record_hash": "2f319ec12299920fc1c24c3310dda7aded06a448c439ff96db79f78ced50b6b1",
+          "revision": 1
+        }
+      },
+      "request_ledger": {
+        "562c9380-6753-4324-b660-97d08e569eee": {
+          "commit_id": "COM-b98936d9-17a7-4a31-9016-4c12ea27ccaa",
+          "receipt_hash": "4f1820b18620ffd4971d2665877e6ee31801438cb84e9c5c1cc6ff1f09c0757f",
+          "request_hash": "f86e7e0eaed570b3eb10839bc547576bacb62d76277a776a5b01218802300219"
+        },
+        "f421f781-462e-4908-964d-c5a4f65fa8cb": {
+          "commit_id": "COM-b18654cc-36f8-4cc5-9743-726c1d770d59",
+          "receipt_hash": "d13e1a39a2eec70e1463f205a7ac358c08636d1c150e7fc1fa355a9b19c7732d",
+          "request_hash": "23955d0b08a28687d0abffd574b21fb78b483381aaf31c17f01748a683cc7434"
+        }
+      },
+      "schema_version": 1,
+      "source_checks": [
+        {
+          "kind": "owner_access",
+          "owner_id": "RES-F3-RETRY"
+        },
+        {
+          "head": {
+            "commit_id": "COM-667f328f-45bf-4ab3-af97-937e78ed45c0",
+            "generation": 3,
+            "manifest_hash": "0151240706a918ca444d848403022f6d139c6df1f22ade47bb5ed8884a48c0b2"
+          },
+          "kind": "head",
+          "owner_id": "RES-F3-TANK"
+        },
+        {
+          "head": {
+            "commit_id": "COM-b18654cc-36f8-4cc5-9743-726c1d770d59",
+            "generation": 1,
+            "manifest_hash": "cfeaaafc4b85df8bce57c8d9d4efa851c4fa5a543cfd6de6de6299ecb9b15f15"
+          },
+          "kind": "head",
+          "owner_id": "RES-F3-RETRY"
+        },
+        {
+          "head": {
+            "commit_id": "COM-667f328f-45bf-4ab3-af97-937e78ed45c0",
+            "generation": 3,
+            "manifest_hash": "0151240706a918ca444d848403022f6d139c6df1f22ade47bb5ed8884a48c0b2"
+          },
+          "kind": "head",
+          "owner_id": "RES-F3-TANK"
+        },
+        {
+          "head": {
+            "commit_id": "COM-667f328f-45bf-4ab3-af97-937e78ed45c0",
+            "generation": 3,
+            "manifest_hash": "0151240706a918ca444d848403022f6d139c6df1f22ade47bb5ed8884a48c0b2"
+          },
+          "kind": "head",
+          "owner_id": "RES-F3-TANK"
+        }
+      ]
+    },
+    "records": {
+      "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4": {
+        "body_markdown": "",
+        "change_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+        "content_hash": "3d2acacc0b97fe948bde83abdb1807f2d310fd83cdb5c267e59c105a1bb8862f",
+        "created_at": "2026-09-09T21:02:12.187220Z",
+        "created_by": {
+          "id": "Codex actual-AI F3 setup",
+          "kind": "ai"
+        },
+        "discovery": "workspace_summary",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "API 退避重试策略"
+        ],
+        "kind": "detail",
+        "level": "L1",
+        "owner_id": "RES-F3-RETRY",
+        "payload": {
+          "blocks": [
+            {
+              "block_id": "body",
+              "markdown": "# SYNTHETIC F3 API 退避与重试\n\n本材料是独立的软件策略前提，没有服务端负载测量、生产日志或成功率试验。\n\n## 变量与机制\n\n$k\\in\\{0,1,\\ldots,N-1\\}$ 为当前连续失败后的重试序号；$N=5$ 是总重试上限。$b=0.2\\,\\mathrm{s}$ 是初始等待，倍率 $r=2$ 无量纲，$d_{max}=3.2\\,\\mathrm{s}$ 是等待上限。等待策略为\n\n$$\nd_k=\\min(d_{max},b r^k).\n$$\n\n一次请求失败后等待 $d_k$ 再重试，成功后结束本次流程，达到 $N$ 次则停止并返回失败。响应仅有成功/可重试失败/不可重试失败三类，不可重试失败立即停止。本前提没有目标误差 $e$、服务端队列长度、连续流量或物理守恒方程。\n\n## 适用边界\n\n只有具备幂等性或明确去重语义的操作可按此策略重复；必须给超时和最大总耗时单独设限。固定倍率与上限不证明服务端稳定、请求最终成功或最优吞吐。多个客户端同步重试可能同时唤醒；本前提未定义抖动、服务端容量、到达率、成功概率与响应延迟分布。\n",
+              "requires_block_ids": [],
+              "role": "methods"
+            }
+          ],
+          "evidence_refs": [
+            {
+              "locator": "完整合成输入",
+              "relation": "input",
+              "revision": null,
+              "sha256": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+              "target_id": "SRC-F3-RETRY",
+              "target_kind": "file"
+            }
+          ],
+          "figures": [],
+          "missing_refs": [],
+          "retrieval_description": {
+            "applicable": [
+              "本文明确的合成条件"
+            ],
+            "key_findings": [
+              "此输入没有真实执行结果"
+            ],
+            "limitations": [
+              "缺少实测与科学复核"
+            ],
+            "method": "读取独立合成前提并保留变量、公式和限制",
+            "not_applicable": [
+              "现实系统的稳定或性能结论"
+            ],
+            "question": "API 退避重试策略的机制与约束"
+          },
+          "run_ref": null,
+          "unit_type": "analysis"
+        },
+        "previous_revision": null,
+        "provenance_gap": null,
+        "record_hash": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+        "record_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+        "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+        "revision": 1,
+        "schema_version": 3,
+        "sensitivity": "internal",
+        "sources": [
+          {
+            "locator": "完整合成输入",
+            "relation": "input",
+            "revision": null,
+            "sha256": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+            "target_id": "SRC-F3-RETRY",
+            "target_kind": "file"
+          }
+        ],
+        "title": "SYNTHETIC F3 API 退避重试策略",
+        "updated_at": "2026-09-09T21:02:12.187220Z",
+        "updated_by": {
+          "id": "Codex actual-AI F3 setup",
+          "kind": "ai"
+        }
+      },
+      "MEM-bab0426e-0012-5106-9124-4b5fba49a65f": {
+        "body_markdown": "实际 AI 阅读后判断：可参考按未受限/受限区间分别检查边界的方法；不能把水箱比例增益与重试倍率相等，也不能用连续误差衰减证明 API 稳定或最终成功。API 缺少服务端状态转移和负载模型。下一步须独立检查幂等性、错误分类、超时、次数/总耗时与同步重试情形。未执行该验证；此记录仅为 candidate 导航。",
+        "change_reason": "实际阅读固定双方全文后保存导航草案；不是科学支持，人工待审",
+        "content_hash": "d52e9ab518beecd568a5be9ba5c65be6b1ca2ebc277de09e4dff1bd22d7eb51d",
+        "created_at": "2026-09-09T21:09:11.452588Z",
+        "created_by": {
+          "id": "Codex /root/retrieval_review actual AI",
+          "kind": "ai"
+        },
+        "discovery": "workspace_summary",
+        "keywords": [],
+        "kind": "association",
+        "level": null,
+        "owner_id": "RES-F3-RETRY",
+        "payload": {
+          "basis_refs": [
+            {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+              "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+              "target_kind": "record"
+            },
+            {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+              "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+              "target_kind": "record"
+            },
+            {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+              "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+              "target_kind": "record"
+            },
+            {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+              "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+              "target_kind": "record"
+            }
+          ],
+          "explanation": "条件参考：对动作封顶前后分别检查边界行为。不可推广：水箱连续误差方程不能证明 API 重试的稳定、吞吐或成功保证。",
+          "from": {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+            "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+            "target_kind": "record"
+          },
+          "missing_refs": [],
+          "relation": "analogous_to",
+          "shared_structure": "观测后采取调整动作，并区分动作尚未受限与已受限的状态；这一局部结构不建立相同动力学。",
+          "status": "candidate",
+          "to": {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+            "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+            "target_kind": "record"
+          },
+          "transfer_limits": [
+            "水箱状态是有单位的液位误差，API 状态是失败序号；没有统一状态方程，不能将 K 与 r 或其数值互换。",
+            "只有明确幂等/去重、可重试错误分类、超时和总耗时边界后，才可参考分段检查方法。",
+            "须以独立事件序列验证封顶、立即成功、连续失败、不可重试失败和同步重试；本次未运行该实验。",
+            "缺少到达率、服务能力、响应延迟与并发策略时，不推断服务端稳定或最优吞吐；导航候选不提供科学支持。"
+          ]
+        },
+        "previous_revision": null,
+        "provenance_gap": null,
+        "record_hash": "2f319ec12299920fc1c24c3310dda7aded06a448c439ff96db79f78ced50b6b1",
+        "record_id": "MEM-bab0426e-0012-5106-9124-4b5fba49a65f",
+        "record_reason": "实际阅读固定双方全文后保存导航草案；不是科学支持，人工待审",
+        "revision": 1,
+        "schema_version": 3,
+        "sensitivity": "internal",
+        "sources": [
+          {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+            "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+            "target_kind": "record"
+          },
+          {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+            "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+            "target_kind": "record"
+          },
+          {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+            "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+            "target_kind": "record"
+          },
+          {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+            "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+            "target_kind": "record"
+          }
+        ],
+        "title": "SYNTHETIC F3 有界动作的条件参考：水箱与重试",
+        "updated_at": "2026-09-09T21:09:11.452588Z",
+        "updated_by": {
+          "id": "Codex /root/retrieval_review actual AI",
+          "kind": "ai"
+        }
+      }
+    },
+    "policy": {
+      "values": {
+        "mode": "explore",
+        "retain": [
+          "L0",
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        "granularity": "fine",
+        "auto_summary": true,
+        "discovery": "owner_only",
+        "auto_deepen": false,
+        "checkpoint": true
+      },
+      "sources": {
+        "mode": "type",
+        "retain": "type",
+        "granularity": "type",
+        "auto_summary": "type",
+        "discovery": "workspace",
+        "auto_deepen": "workspace",
+        "checkpoint": "workspace"
+      }
+    },
+    "owner_id": "RES-F3-RETRY",
+    "generation": 2,
+    "index_status": "indexed",
+    "index_details": {
+      "fts": "indexed",
+      "vector": "disabled",
+      "indexed_generation": 2,
+      "vector_generation": null,
+      "target_generation": 2,
+      "encoder_version": null,
+      "collection": null,
+      "error": {
+        "code": "CAPABILITY_UNAVAILABLE",
+        "details": {},
+        "errors": [],
+        "message": "未配置本地向量后端"
+      }
+    },
+    "claim_states": {},
+    "omitted": [],
+    "warnings": []
+  }
+}

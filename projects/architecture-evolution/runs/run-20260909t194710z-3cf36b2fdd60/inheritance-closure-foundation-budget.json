@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "execution_owner": "frontier_review",
+  "recorded_at": "2026-09-09T22:04:02.614252Z",
+  "groups": [
+    {
+      "module": "test_material_foundation",
+      "total": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 62.69,
+      "observed_session_id": 40127,
+      "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_foundation.py -v",
+      "test_source_sha256": "861e016c965f562f56cfdc23663ccd2448454c2ea79cbf567373ef016d77260a",
+      "tests": [
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_all_43_methods_have_honest_runtime_ownership",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_cached_page_rechecks_source_revocation",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_claim_resolver_uses_canonical_container_after_index_loss",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_cross_owner_batch_and_hidden_owner_do_not_escape_scope",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_dedup_and_selection_keep_original_evidence_status",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_describe_and_resolve_keep_fixed_revision_and_relation",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_direct_source_read_respects_original_scope_and_formal_purpose",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_fixed_history_cursor_does_not_shift_when_head_advances",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_formal_candidate_operations_recheck_withdrawn_review",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_full_rebuild_uses_manifest_contents_after_index_loss",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_index_failure_retries_plan_without_second_content_commit",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_index_plan_requires_contiguous_complete_input_pages",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_legacy_definition_aliases_are_versioned_pure_and_usable_by_query",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_manifest_content_page_survives_missing_search_index",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_missing_index_claim_dependency_uses_ceiling_beyond_primary_scope",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_paths_are_ordered_fixed_and_target_constrained",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_public_reservation_settlement_is_bound_and_allowed_after_cancel",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_repair_rebuild_replace_corrupt_fts_text_without_content_write",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_rerank_cancellation_preserves_completed_scores_and_releases_hold",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_rerank_only_uses_provided_fixed_slices_and_preserves_evidence",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_rerank_reports_missing_text_provider_failure_and_zero_budget",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_restore_creates_new_revision_and_rejects_later_changes",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_source_read_and_representation_build_are_read_only",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_validate_apply_binding_cas_and_idempotency",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "module": "test_material_budget",
+      "total": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 0.005,
+      "observed_session_id": null,
+      "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_budget.py -v",
+      "test_source_sha256": "e8dd79fe1bc1f6388fef3d0dae6a779e6c3336b1e2bd305f793bd648dab3b49f",
+      "tests": [
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_cancelled_provider_can_still_settle_actual_cost",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_competing_providers_cannot_reserve_same_remaining_capacity",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_external_overrun_is_recorded_and_stops_new_work",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_invalid_units_and_settled_provider_reuse_are_rejected",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_model_call_limit_can_exhaust_before_input_output_and_total",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_model_input_limit_can_exhaust_before_output_calls_and_total",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_model_output_limit_can_exhaust_before_input_calls_and_total",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_model_total_limit_can_exhaust_before_input_output_and_calls",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_parallel_provider_wall_cost_is_one_observed_active_interval",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_parent_settlement_does_not_repeat_child_charges",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_provider_over_ceiling_is_rejected_before_next_unit_of_work",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_reservation_identity_and_ceiling_are_bound_to_original_ledger",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_settlement_cannot_understate_already_observed_usage",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_unreserved_work_cannot_take_another_provider_hold",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_budget.MaterialBudgetReservationTests.test_zero_usage_releases_unused_hold",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "本机真实固定 F1 / 共享账本；不代表实际 tokenizer 或模型执行。",
+    "共享契约/分类修复仍在整合，最终冻结后的 quick/full 是完整版本回归依据。"
+  ]
+}

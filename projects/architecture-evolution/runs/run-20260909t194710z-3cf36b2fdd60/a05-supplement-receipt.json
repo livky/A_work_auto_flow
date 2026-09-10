@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "scenario": "A05",
+  "attempt": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A05\\attempt-ba3a2a814cce412bb963c8beb2e6c6dc",
+  "workspace": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\a05-followup-10a1d20f283742e8947da848225d89d2\\workspace",
+  "assessment": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A05\\attempt-ba3a2a814cce412bb963c8beb2e6c6dc\\assessments\\assessment-932282d7471c4604aa1941b865831603.json",
+  "human_report": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\reports\\report-d37db93ed1f144acb55a4c418b1dfb9f\\REVIEW.md",
+  "actual_calls": 10,
+  "reading_events": 10,
+  "ai_expectations": {
+    "A05-E1": "meets_by_explicit_A09_reuse_and_current_inspection",
+    "A05-E2": "meets_by_explicit_A09_reuse_and_current_inspection",
+    "A05-E3": "meets_by_new_isolated_public_execution"
+  },
+  "raw_failed_call_preserved": "calls/call-e9bacd169f1841c5aafa619ea01259fb",
+  "canonical_content_writes": 0,
+  "canonical_files_verified_unchanged": 55,
+  "source_missing_observed": "SOURCE_MISSING",
+  "source_bytes_restored": true,
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "fingerprints": [
+    {
+      "path": "actual-ai/A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/manifest.json",
+      "sha256": "9067fcfb690dfd63662928ff14d81c0c10274e471aed3287c387f64a2135b356"
+    },
+    {
+      "path": "actual-ai/A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/AI-ANALYSIS.md",
+      "sha256": "577d15c416da8da1f0260879f2fdc1ec4a6280a2fe471788c41b81d13360db9f"
+    },
+    {
+      "path": "actual-ai/A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/assessments/assessment-932282d7471c4604aa1941b865831603.json",
+      "sha256": "410c3a74d52ad08ea3333618de51a8effaa7f3e7a8f0fb7facf936da49ee7289"
+    },
+    {
+      "path": "actual-ai/A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/mechanical-verification.json",
+      "sha256": "8574690cfd36ede7cf8b81fc88b9fdefdf9e9d13ab1b2884acda415e5793b469"
+    },
+    {
+      "path": "actual-ai/A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/outcomes/no-change-apply.json",
+      "sha256": "fb22b6483f5e45dfd08eb0dc16299e96453ad967832ae6e769a49a467befde5c"
+    },
+    {
+      "path": "actual-ai/A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/outcomes/missing-saturation-plan.json",
+      "sha256": "50a69e0bbfb06c573b6cc9e43b1886b9f3f095b58d5431177e583132ddb3ca01"
+    },
+    {
+      "path": "actual-ai/A05/attempt-ba3a2a814cce412bb963c8beb2e6c6dc/outcomes/missing-saturation-plan-restoration.json",
+      "sha256": "0a8fdd39524e71d7dc71cfab7a7ba8c2c97f2fff7e8c3005a29c4211450f3c17"
+    }
+  ]
+}

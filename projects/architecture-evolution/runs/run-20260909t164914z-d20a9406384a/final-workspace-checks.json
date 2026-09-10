@@ -1,0 +1,17 @@
+[
+  {
+    "check": "final-refresh",
+    "exit_code": 0,
+    "output": "已刷新索引：D:\\共享桌面\\A_work\\A_work_auto_flow\\context\\generated\\workspace-index.md\n"
+  },
+  {
+    "check": "final-validate",
+    "exit_code": 0,
+    "output": "校验通过：0 个错误，0 个警告。\n"
+  },
+  {
+    "check": "diff_check",
+    "exit_code": 0,
+    "output": ""
+  }
+]

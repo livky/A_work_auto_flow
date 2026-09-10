@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "request_id": "8d93d740-9113-4245-b0df-970d0b569924",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex /root/retrieval_review actual AI"
+  },
+  "owner_id": "RES-F3-TANK",
+  "expected_head": "COM-ff817f4c-f903-431b-961b-3af9faf07f4b",
+  "operations": [
+    {
+      "op": "put_record",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RES-F3-TANK",
+        "kind": "document_section",
+        "title": "SYNTHETIC F3 水箱结论与饱和边界",
+        "body_markdown": "",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "水箱"
+        ],
+        "payload": {
+          "blocks": [
+            {
+              "type": "prose",
+              "evidence_refs": [
+                {
+                  "revision": 1,
+                  "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                  "locator": "",
+                  "target_kind": "record",
+                  "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                  "relation": "references"
+                },
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+                  "revision": 2,
+                  "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+                  "locator": "",
+                  "relation": "references"
+                },
+                {
+                  "revision": 1,
+                  "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+                  "locator": "",
+                  "target_kind": "record",
+                  "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+                  "relation": "references"
+                }
+              ],
+              "markdown": "原未饱和、无延迟模型的误差指数衰减结论保留其适用条件。新固定输入给出目标 $h_r=2\\,\\mathrm{m}$、出流系数 $c=0.1\\,\\mathrm{m^2/s}$、泵流量上限 $q_{max}=0.15\\,\\mathrm{m^3/s}$。所需流量 $q_{req}=ch_r=0.20\\,\\mathrm{m^3/s}>q_{max}$，目标无法维持；持续饱和平衡 $h_{sat}=q_{max}/c=1.5\\,\\mathrm{m}$。$q_{req}$ 为目标所需流量，$h_{sat}$ 为持续最大流量的平衡液位。仅增大增益不能突破泵上限。应先检查可达性，再在相应分段模型中分析；其他目标、延迟、噪声和非线性仍需独立验证。本报告只保存合成代数分析，无实验或科学认可。"
+            }
+          ],
+          "missing_refs": [],
+          "role": "conclusion",
+          "section_key": "brief",
+          "title": "水箱结论与饱和边界",
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "revision": 1,
+            "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+            "revision": 2,
+            "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+            "locator": "",
+            "relation": "references"
+          },
+          {
+            "revision": 1,
+            "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "change_reason": "实际阅读新饱和约束、模型r2和公开文稿影响后，局部同步固定章节与适用边界；保留旧r1"
+      },
+      "record_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+      "expected_revision": 1
+    }
+  ]
+}

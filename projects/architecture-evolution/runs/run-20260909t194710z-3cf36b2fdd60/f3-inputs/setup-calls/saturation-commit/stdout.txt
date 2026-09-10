@@ -1,0 +1,41 @@
+{
+  "request_id": "2f11c367-b201-48d3-b3fc-2b2a45c7bfab",
+  "owner_id": "RES-F3-SATURATION",
+  "commit_id": "COM-4a163fb0-43b8-45b1-b946-50faa4d66659",
+  "generation": 1,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": "saturation",
+      "record_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+      "revision": 1,
+      "content_hash": "536bdaa828a9750eac59c5fe37215502fadccb83118cfca21c42b7fb90787a93",
+      "status": "created"
+    }
+  ],
+  "index_status": "pending",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "pending",
+    "indexed_generation": 1,
+    "vector_generation": null,
+    "target_generation": 1,
+    "encoder_version": null,
+    "collection": null,
+    "error": {
+      "code": "CAPABILITY_UNAVAILABLE",
+      "details": {},
+      "errors": [],
+      "message": "未配置本地向量后端"
+    }
+  },
+  "warnings": [
+    "运行 memory reconcile 可继续索引，不要重复业务记录"
+  ],
+  "error": {
+    "code": "INDEX_PENDING",
+    "message": "记录已保存；索引待补偿"
+  },
+  "recovery_ref": null
+}
+

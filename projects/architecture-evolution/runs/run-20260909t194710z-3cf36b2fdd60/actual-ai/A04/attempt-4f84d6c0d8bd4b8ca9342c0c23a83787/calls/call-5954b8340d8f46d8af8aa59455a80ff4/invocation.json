@@ -1,0 +1,19 @@
+{
+  "call_id": "call-5954b8340d8f46d8af8aa59455a80ff4",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "memory",
+    "document",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b-document-request.json"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow",
+  "started_at": "2026-09-09T22:39:56.366596Z",
+  "timeout_seconds": 180,
+  "request": {
+    "original_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b-document-request.json",
+    "path": "request.snapshot.txt",
+    "sha256": "f2893f8ade40b0576e78921ccb060074b373662a75e6f3e7332b45dc845eddce"
+  }
+}

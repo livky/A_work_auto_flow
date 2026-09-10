@@ -1,0 +1,45 @@
+{
+  "index_status": "indexed",
+  "owners": [
+    {
+      "owner_id": "RES-F3-RETRY",
+      "generation": 2,
+      "index_status": "indexed",
+      "fts": {
+        "status": "indexed",
+        "indexed_generation": 2,
+        "changed_entries": 0,
+        "removed_entries": 0,
+        "unchanged": true
+      },
+      "vector": {
+        "status": "disabled",
+        "indexed_generation": null,
+        "reason": "调用方显式关闭向量"
+      },
+      "state": {
+        "owner_id": "RES-F3-RETRY",
+        "indexed_generation": 2,
+        "vector_generation": null,
+        "target_generation": 2,
+        "fts_status": "indexed",
+        "vector_status": "disabled",
+        "encoder_version": null,
+        "vector_collection": null,
+        "native_fingerprint": "30126a569a80473ab8dd4f980c11d3949c56892434f7ab44bf2c8b2253cd0076",
+        "dependency_signature": "bc8dc76cc551b31cbcca15d5327c98d5ac3d809f83755f89b750e74164d07bc4",
+        "vector_signature": null,
+        "error": "{\"code\":\"CAPABILITY_UNAVAILABLE\",\"details\":{},\"errors\":[],\"message\":\"未配置本地向量后端\"}",
+        "updated_at": "2026-09-09T21:09:12.360279Z",
+        "projection_version": "memory-v3-technical-description-documents"
+      },
+      "missing": [],
+      "error": null,
+      "elapsed_seconds": 0.008965300003183074
+    }
+  ],
+  "removed_owners": [],
+  "pending_removals": [],
+  "canonical_writes": 0
+}
+

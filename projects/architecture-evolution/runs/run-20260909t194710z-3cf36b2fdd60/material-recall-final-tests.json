@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "recorded_at": "2026-09-09 22:27:44 UTC",
+  "recording_kind": "archive_of_previously_observed_execution",
+  "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_recall.py -v",
+  "working_directory": "D:/共享桌面/A_work/A_work_auto_flow",
+  "result": {
+    "status": "passed",
+    "tests_run": 13,
+    "tests_passed": 13,
+    "elapsed_seconds": 37.907,
+    "exit_code": 0,
+    "summary": "Ran 13 tests in 37.907s; OK"
+  },
+  "execution_started_at": null,
+  "execution_finished_at": null,
+  "execution_time_note": "The exact wall-clock start/end were not captured. The unittest duration was observed in the completed tool result. The following source-fingerprint command printed the post-success freeze time shown below; this is not a reconstructed execution start/end.",
+  "post_execution_freeze_at": "2026-09-09T22:08:08.449847+00:00",
+  "observed_process": {
+    "session_id": 73076,
+    "completion_chunk_id": "861971",
+    "exit_code": 0
+  },
+  "tests": [
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_cancelled_resume_does_not_read_unvisited_candidates",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_candidate_budget_is_cumulative_across_pages",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_current_resume_skips_changed_fixed_candidate_without_switching_revision",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_final_one_reads_only_first_canonical_body_and_resume_reads_next",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_formal_representation_fragment_is_null_without_claim_approval",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_lexical_iterator_failure_keeps_its_completed_prefix",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_missing_owner_watermark_is_partial_even_when_fts_rows_exist",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_multiple_representations_keep_individual_raw_scores_and_fixed_refs",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_read_budget_exhausted_after_first_page_cannot_open_next_body",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_rejected_first_candidate_is_refilled_before_final_k",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_repeated_resume_reuses_paid_page_without_second_candidate_charge",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_resume_retains_frozen_revision_after_real_commit_and_reindex",
+      "status": "passed"
+    },
+    {
+      "id": "test_material_recall.MaterialRecallTests.test_sqlite_and_oserror_lexical_failures_preserve_completed_identity",
+      "status": "passed"
+    }
+  ],
+  "source_fingerprints": [
+    {
+      "path": "automation/tests/test_material_recall.py",
+      "at_execution_start_sha256": null,
+      "post_execution_sha256": "dca5bf764e6c410187a365994fbcc00b23263d6a67ca1881a64dde6507550016"
+    },
+    {
+      "path": "automation/scripts/material_query/coordinator.py",
+      "at_execution_start_sha256": null,
+      "post_execution_sha256": "10de04e2f77080dfd1f57e4febf0848355d437777f99109577ce88a7406323cc"
+    },
+    {
+      "path": "automation/scripts/material_query/state.py",
+      "at_execution_start_sha256": null,
+      "post_execution_sha256": "a3a8ec2f1cd285916ad8fd06bd8ddfe41a6462da7607983736a2455fbae418e0"
+    }
+  ],
+  "fingerprint_note": "These hashes were actually measured by the post-execution freeze command at the recorded freeze time. No separately captured at-start hashes exist; those fields are intentionally null.",
+  "coverage": [
+    "C05: independent representation raw scores, fixed representation identities, actual matched fragments, projection version, fragment output budget and noninflated RRF; formal unapproved representation prose is null with a gap",
+    "C12: missing owner watermark row is reported while existing FTS rows remain queryable",
+    "C13: final K=1 incremental canonical body reads, rejection refill, cumulative candidate/read/output budgets, original window and fixed revisions, repeated page and cancellation",
+    "C14: real SQLite/OSError and iterator-prefix fault injection preserve completed channels; the resulting assembled packet stays partial and incomplete"
+  ],
+  "verification_boundary": "Real isolated F1 canonical storage and FTS, with pass-through body probes and narrow channel fault injection. This receipt does not infer any later full-regression result or certify code changed after these post-execution fingerprints.",
+  "rerun_for_this_archive": false
+}

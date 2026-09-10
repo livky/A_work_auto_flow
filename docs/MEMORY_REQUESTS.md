@@ -1,14 +1,16 @@
 # 记忆请求示例：按任务读取
 
-本页是 [版本记忆使用指南](MEMORY_USAGE.md) 的字段补充。只读当前任务需要的小节：保存记录看 1–3，研究续接看 4，材料包与总结看 5，复核纠错看 6，阶段巩固与使用反馈看 7–8。示例没有业务结论，也不是用户验收答案。
+本页是 [版本记忆使用指南](MEMORY_USAGE.md) 的字段补充，按 2026-09-09 的 main 实现核对。只读当前任务需要的小节：保存记录看 1–3，研究续接看 4，材料包与总结看 5，复核纠错看 6，阶段巩固与使用反馈看 7–8，独立文稿与局部修改看 9。示例没有业务结论，也不是用户验收答案。修改请求字段时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、使用指南与 Skill。
 
 所有“替换为…”、示例修订号和 UUID 都是占位值，不能照抄提交。ID、HEAD、来源版本和指纹必须来自当前工作区的真实回执；新逻辑请求生成新 UUID，重试原请求保留原 UUID 与内容。正文公式使用 LaTeX 并定义变量与单位。
 
-`target_kind: "record"` 的引用必须固定 `revision`；可选 `sha256` 留空或填写该修订的 `record_hash`。`content_hash` 用于内容去重及复核绑定，不是完整记录引用的指纹。其他目标类型按对应来源/结论指纹填写。
+普通 `target_kind: "record"` 引用必须固定 `revision`，`sha256` 可为 null 或该修订的 `record_hash`；v3 技术单元的 evidence_refs、文稿的章节/技术块及 prose 依据要求实际 SHA-256，不能沿用 null。`content_hash` 用于内容去重及复核绑定，不是完整记录引用的指纹。其他目标类型按对应来源/结论指纹填写。
 
 ## 1. 公共入口与 CommitRequest
 
-从工作区根目录使用 UTF-8 JSON 请求文件。动作签名以 [api.py](../automation/scripts/memory/api.py)、[cli.py](../automation/scripts/memory/cli.py) 为准；完整字段见 [v2 schema](../automation/schemas/memory-v2.schema.json)。新draft默认v2；显式v1按旧四层解释，不能只把旧level数字改为新数字。
+从工作区根目录使用 UTF-8 JSON 请求文件。动作签名以 [api.py](../automation/scripts/memory/api.py)、[cli.py](../automation/scripts/memory/cli.py) 为准；当前字段见 [v3 schema](../automation/schemas/memory-v3.schema.json) 和 [contracts.py](../automation/scripts/memory/contracts.py)。新 draft 默认 v3；未显式指定版本的旧 detail 形状、含 `report` 的旧 map 按 v2 兼容。新记录建议显式指定 `draft.schema_version:3`；v1/v2 历史保持原字节，不靠改 level 或重新计算哈希迁移。
+
+提交封套的 `schema_version` 当前接受 1/2/3，与每条 draft 的记录版本分别校验。下面封套使用 3；旧封套可兼容，不会因此把旧正文改成 v3 技术块。
 
 ```powershell
 .\workbench.cmd memory list-owners
@@ -22,7 +24,7 @@
 
 ```json
 {
-  "schema_version": 1,
+  "schema_version": 3,
   "request_id": "11111111-1111-4111-8111-111111111111",
   "actor": {
     "kind": "ai",
@@ -35,6 +37,7 @@
       "op": "put_record",
       "client_key": "local-experience",
       "draft": {
+        "schema_version": 3,
         "owner_id": "RES-替换为实际对象ID",
         "kind": "experience",
         "title": "替换为本次记录标题",
@@ -78,7 +81,7 @@
 
 ## 2. 固定引用与来源指纹
 
-每个 Ref 都有下列六个字段。MEM 固定正整数 revision，通常 sha256=null；这不是缺失依据，而是规范记录的版本身份。
+每个 Ref 都有下列六个字段。普通 MEM 引用固定正整数 revision，可以使用 sha256=null；这是规范记录的版本身份。第 3 节 v3 技术单元依据和第 9 节文稿引用另要求真实 record_hash。
 
 ```json
 {
@@ -138,11 +141,47 @@ next_refs = packet["manifest"]["navigation_refs"]
 
 示例 source_ref 需换为实际原文 Ref。original_link 只记录原文链接；verbatim_export 要提供准确 lines:/chars: 定位并逐字校验正文；excerpt 表示受控摘录；摘要写 experience，不能称为逐字原文。OCR 结果需如实记录获取方式和缺口，不能添加不存在的 acquisition 枚举。completeness 保留完整、部分或未知的真实情况，acquired_at 未知可为 null。
 
-### detail：一轮详细研究说明（L1）
+### detail：完整技术单元（L1）
 
-完整可解析模板见 [v2 detail请求](../automation/schemas/memory-detail-v2.example.json)。必须替换对象、UUID、HEAD、Run/来源ID及哈希，正文不能照抄占位内容。字段包括 `run_ref`、`question`、`method`、`steps`、`inputs`、`parameters`、`formulas`、`figures`、`results`、`limitations`、`missing_refs`；参数有name/value/unit/description，公式有latex与variables，图有caption及固定file Ref。
+新写作使用 `schema_version:3`、`kind:"detail"`、`level:"L1"`、`body_markdown:""`，正文只保存在 payload.blocks。`unit_type` 区分 experiment/method/derivation/analysis。下面是尚无实验结果的方法草案 payload；放入第 1 节完整 draft 时，应同步标题、保存原因和真实 sources，若目前没有依据则显式填写 provenance_gap。
 
-`run_ref` 的 owner SHA使用证据对象规范fingerprint；文件Ref使用实际字节SHA，不能混用。实际图表必须对应已保存Run产物。L1正文直接写关键参数、计算步骤、公式与结果，不能只给原始日志链接。完整写作与回读标准见[研究分层记录](RESEARCH_RECORDING.md)。
+```json
+{
+  "unit_type": "method",
+  "retrieval_description": {
+    "question": "替换为该方法需要回答的问题",
+    "method": "替换为实际方法和选择理由",
+    "key_findings": ["尚无经过实验核验的发现；此处仅示范请求结构"],
+    "applicable": ["替换为已知的适用条件；未知时明确待核对"],
+    "not_applicable": ["不能把本草案当作已执行实验的结果"],
+    "limitations": ["尚需补齐实际依据与适用性验证"]
+  },
+  "run_ref": null,
+  "evidence_refs": [],
+  "blocks": [
+    {
+      "block_id": "definitions",
+      "role": "definitions",
+      "markdown": "## 定义与前提\n替换为真实变量、单位、适用假设和固定依据。",
+      "requires_block_ids": []
+    },
+    {
+      "block_id": "method",
+      "role": "methods",
+      "markdown": "## 方法\n说明可核验的方法步骤、选择原因和限制；未执行时不补造数值结果。",
+      "requires_block_ids": ["definitions"]
+    }
+  ],
+  "figures": [],
+  "missing_refs": []
+}
+```
+
+`retrieval_description` 的六项必须明确填写，用于发现候选；不能代替完整正文。block_id 在同一单元内唯一、无 `#`，修改时保持稳定；requires_block_ids 只引用同单元必需块，不重复、不成环。块的 role 可为 introduction/definitions/methods/inputs/derivation/results/discussion/limitations/appendix。完整正文保留参数、公式、可核验步骤、结果和限制，不只给日志链接。
+
+实验 `unit_type:"experiment"` 必须提供真实 `run_ref`；方法、推导和分析没有执行时可为 null，但须有固定依据或显式来源缺口。`run_ref` 使用原生 Run 的 owner Ref 和证据对象规范指纹，不使用 list-owners 的原文件 fingerprint。evidence_refs 每项必须带真实 SHA；记录引用还固定 revision。图表使用已登记附件及 `payload.figures`，正文 `![图注](figure:0)` 对应该单元第一个图示，不能借占位符声称已取得图像。
+
+[v2 detail 请求](../automation/schemas/memory-detail-v2.example.json) 仅供维护旧记录：其 question/method/steps/inputs/parameters/formulas/results 等字段与 body_markdown 继续按 v2 校验；它不是当前新技术单元模板。完整写作、兼容和回读标准见 [研究分层记录](RESEARCH_RECORDING.md)。
 
 ### experience：经验与迁移边界（L3）
 
@@ -169,7 +208,7 @@ next_refs = packet["manifest"]["navigation_refs"]
 
 ### event：决策、事件与失败
 
-以下 payload 配合v2 `kind="event"`、`level="L2"`。跨 Run 决策将比较观察写入 observation、选择与理由写入 decision，并在 run_refs/sources 固定参与 Run 或经验；无失败时 failure=null。它记录本次决策，不复制原 Run 的完整输入输出，也不表示再次执行原实验。
+以下 payload 配合当前 `kind="event"`、`level="L2"`，v2 历史形状也兼容。跨 Run 决策将比较观察写入 observation、选择与理由写入 decision，并在 run_refs/sources 固定参与 Run 或经验；无失败时 failure=null。它记录本次决策，不复制原 Run 的完整输入输出，也不表示再次执行原实验。
 
 ```json
 {
@@ -565,38 +604,111 @@ decisions 只能处置 basis.changed/affected/remaining 中的固定对象，act
 
 label 为 missing/irrelevant/invalid_analogy/lost_boundary/stale/adopted/outcome；outcome 必须用 adopted_in 引用实际后续 Run 或 event，不能用计划代替执行。反馈记录不改 CLM 复核状态。
 
-## 9. 连贯研究报告
+## 9. 独立文稿、章节与局部修改
 
-`map.payload.report` 保存集中编排。L1 先通过普通 `commit` 保存并 `inspect` 回读；下面的 `detail` 指实际回读记录，不能用示例 ID 或空指纹代替。将此编排放入原 map 的新修订，其他必需字段继续按 map 契约填写：
+新文稿用 `document` 和 `document_section`，两者 `schema_version:3`、`level:null`、`body_markdown:""`。L4 map 保持知识地图；`map.payload.report` 只保留旧编排兼容，不用于新文稿。完整过程为 `research_process`，精简报告为 `research_report`，分别维护目的、读者、范围与有序章节，共用固定证据。
+
+### 先保存单元，再保存章节和文稿
+
+L1 通过普通 `commit` 保存并 `inspect` 回读。下面的 `unit`、`section_record` 是实际回读记录，`owner_id` 是真实归属；片段展示 draft 构造，不是额外的 CLI 动作。将每个 draft 分别放入第 1 节 CommitRequest，使用当前 HEAD 提交，回读后再固定引用下一层，不能用空 SHA 连接未保存的草案。
 
 ```python
-# 使用记录哈希绑定整条固定修订，而不是正文文件哈希。
-fixed_detail = {
-    "target_kind": "record", "target_id": detail["record_id"],
-    "revision": detail["revision"], "sha256": detail["record_hash"],
-    "locator": "完整实验说明", "relation": "references",
+# unit 来自 inspect.record；完整 record_hash 固定整条修订与来源。
+fixed_unit = {
+    "target_kind": "record", "target_id": unit["record_id"],
+    "revision": unit["revision"], "sha256": unit["record_hash"],
+    "locator": "完整技术单元", "relation": "references",
 }
-report = {
-    "version": 1, "title": "实际研究报告题名",
-    "sections": [
-        {"section_id": "experiment", "title": "本轮需要回答的问题",
-         "role": "experiment", "blocks": [
-             {"type": "prose", "markdown": "根据实际前一轮发现，说明本轮为何这样设计。",
-              "evidence_refs": [fixed_detail]},
-             {"type": "detail", "ref": fixed_detail},
-         ]},
-        {"section_id": "conclusion", "title": "结论与边界",
-         "role": "conclusion", "blocks": [
-             {"type": "prose", "markdown": "写出本次证据实际支持的结论和仍未验证的范围。",
-              "evidence_refs": [fixed_detail]},
-         ]},
-    ],
+section_draft = {
+    "schema_version": 3, "owner_id": owner_id,
+    "kind": "document_section", "level": None,
+    "title": "替换为实际章节标题", "body_markdown": "", "keywords": [],
+    "payload": {
+        "section_key": "method", "title": "替换为实际章节标题", "role": "methods",
+        "blocks": [
+            {"type": "prose", "markdown": "替换为实际背景、选择理由及与相邻章节的衔接。",
+             "evidence_refs": [fixed_unit]},
+            # 省略 block_ids 读取该固定单元的全部正文；按需可选真实块 ID。
+            {"type": "unit", "ref": fixed_unit},
+        ],
+        "watch_refs": [], "missing_refs": [],
+    },
+    "sources": [fixed_unit], "provenance_gap": None,
+    "record_reason": "替换为编排本章的实际原因",
+    "discovery": "owner_only", "sensitivity": "internal",
 }
 ```
 
-上面的文字是待替换的写作提示，不是可当作已完成研究提交的正文。完整报告通常还包含问题与共同方法。章节顺序显式保存，不能把结论放到实验前，也不能重复插入同一 detail。prose 中实际引用同样需要固定 SHA；记录引用还要带修订。
+章节 block 只能为 prose 或 unit。unit 省略 block_ids 表示读取固定单元全部正文；对 v3 单元显式给非空 block_ids 时，按原顺序返回所选块和 requires_block_ids 的前提闭包。空数组、重复 ID、缺失块或循环依赖会被拒绝；v2 detail 没有稳定块，省略选择字段读取原正文。同一章节不能重复插入同一个单元修订，合并其所选块即可。
 
-回读请求为 `{"owner_id":"实际归属ID"}`，通过 `memory document --request 文件` 调用。需要选择具体编排时加 `report_record_id`。检查 `report.complete`、`report_coverage`、`report_version_hints` 和各块 `source_issues`，并实际通读正文。详细写作与图示规范见[报告编排](RESEARCH_RECORDING.md#连贯报告的编排)。
+```python
+# section_record 是上一步已保存并回读的章节；不可从章节标题猜 ID。
+fixed_section = {
+    "target_kind": "record", "target_id": section_record["record_id"],
+    "revision": section_record["revision"], "sha256": section_record["record_hash"],
+    "locator": "完整章节", "relation": "references",
+}
+document_draft = {
+    "schema_version": 3, "owner_id": owner_id,
+    "kind": "document", "level": None,
+    "title": "替换为实际研究过程题名", "body_markdown": "", "keywords": [],
+    "payload": {
+        "document_type": "research_process",
+        "purpose": "替换为本文要解释的问题和用途",
+        "audience": "替换为目标读者", "scope": "替换为证据覆盖范围",
+        "common_refs": [], "section_refs": [fixed_section],
+        "watch_refs": [], "missing_refs": [],
+    },
+    "sources": [fixed_section], "provenance_gap": None,
+    "record_reason": "替换为保存本次文稿的实际原因",
+    "discovery": "owner_only", "sensitivity": "internal",
+}
+```
+
+一章仅示范结构；实际文稿按问题、方法、技术单元、讨论、结论组织。section_key 在同一文稿内唯一，section_refs 不重复；实验章节位于 discussion/conclusion 之前。精简报告另存 `document_type:"research_report"` 并编写适合其读者的章节，不能只改名称。prose、common_refs、section_refs 与 unit Ref 都固定真实 SHA；缺失事实不能用占位段落充当完成。
+
+### 回读、目录与章节材料包
+
+`document` 和 `outline` 的请求可用下面的形状；省略 document_type 时默认 research_process。同类型多份文稿按最近更新时间选择，确定修改目标后用实际 document_id 固定它；需要历史时再加正整数 revision，revision 必须与 document_id 同用。
+
+```json
+{"owner_id":"RES-实际归属ID","document_type":"research_process"}
+```
+
+```powershell
+.\workbench.cmd memory document --request .local/document-request.json
+.\workbench.cmd memory outline --request .local/document-request.json
+```
+
+下例中的 section_id 取 outline.sections 返回的章节记录 ID，不是 section_key 或标题。该动作 budget 使用 max_chars 对象；普通 context/expand 的 budget 仍为整数。
+
+```json
+{
+  "owner_id": "RES-实际归属ID",
+  "document_id": "MEM-实际文稿ID",
+  "section_id": "MEM-实际章节ID",
+  "selection": {"include_ids": [], "full_ids": [], "exclude_ids": []},
+  "budget": {"max_chars": 20000}
+}
+```
+
+```powershell
+.\workbench.cmd memory section-context --request .local/section-request.json
+```
+
+读取 context_text，并检查 manifest.read_refs、omitted、missing、required_not_full、budget 和 basis_heads。选择规则保留排除项与必要定义；预算按输出字符计算，不证明底层仅解析一个章节。默认 max_chars=20000，可设 1–1000000；它不是 token 数量。
+
+### 变化关注、影响与兼容
+
+`document-impact` 请求使用真实 owner_id，可带 document_id/revision 或 document_type。它比较固定引用、watch_refs 和两类文稿所用版本；返回 changes、affected_section_ids、uncovered_unit_ids，scientific_review 为 not_evaluated。新修订提示不等于旧结论错误，新增单元也不自动进入文稿。
+
+watch_refs 可为 revision（record_id、baseline_revision、baseline_record_hash）或 new_unit（owner_id、baseline_head、baseline_unit_ids）。所有基线必须来自实际观察；可从 outline.watch_baseline 取得当前对象 HEAD 与单元集合。它们是变化关注，不能当作 supports/input 证据边或读取授权。
+
+修改时先 outline → section-context → document-impact，按实际影响修订必要章节，再修订文稿的 section_refs。两类文稿可以共享单元，但同时引用同一单元的不同修订会出现 DOCUMENT_BASIS_MISMATCH；核对后局部更新，不自动换成最新来源。
+
+保存后用 document 通读，检查 document_source、report.complete、report_coverage、report_version_hints 与 source_issues。complete 只表示本次组装的来源检查，没有替代科学复核或读者验收。include_records:true 可显式附加规范记录卡，默认不重复加入全文。
+
+缺少独立过程文稿时，document 可回退到旧 `map.payload.report`，report_record_id 仅供该回退路径选择旧地图；它不覆盖已选中的独立文稿。缺少独立 research_report 时返回未编排及 DOCUMENT_MISSING，不把旧长文当简报。v1/v2 历史、旧地图和固定哈希原样保留。详细写作与图示规范见 [报告编排](RESEARCH_RECORDING.md#连贯报告的编排)。
 
 ## 10. 如何理解结果与失败
 

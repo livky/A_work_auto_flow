@@ -1,4 +1,9 @@
 # 数据结构与存储契约 v1
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：首版 L0–L3 数据契约设计；当前程序兼容 v1/v2/v3，不能把文中的“尚未实现”读作当前能力。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../../ARCHITECTURE.md)、[研究记录标准](../../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 本文件规定首版实现目标。表中“必需”指提交时必须提供或由服务端生成；空值必须有约定含义。实际 JSON Schema 在 W01 实现。本文件中的新目录和类型尚未实现。
 

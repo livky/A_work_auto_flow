@@ -1,0 +1,29 @@
+{
+  "valid": true,
+  "errors": [],
+  "dry_run": true,
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "head": {
+    "commit_id": "COM-537f9c0f-ea60-425c-aab2-580c8fa7a3df",
+    "generation": 13,
+    "manifest_hash": "2c52583df773366d2af174ef8ac63302515eab8e52e6f71ea303186c4fb584de"
+  },
+  "record_results": [
+    {
+      "client_key": "IMPL-EVENT",
+      "record_id": "MEM-ecbf9eb0-e493-56e1-afc1-150345e70be3",
+      "revision": 1,
+      "content_hash": "ddc7f7815c3f400863ce7935df6dfd53ca7101ecc357378dd11ce8de35025bbe",
+      "status": "would_create"
+    },
+    {
+      "client_key": "IMPL-EXPERIENCE",
+      "record_id": "MEM-44b626d2-a9de-5b59-95cf-7b7fd817aaee",
+      "revision": 1,
+      "content_hash": "fc594b7433bd6147575bec4b9ed1c198086766fd5619648a10e8a978e8b77233",
+      "status": "would_create"
+    }
+  ],
+  "writes": 0
+}
+

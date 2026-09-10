@@ -1,8 +1,12 @@
 # 证据查看与只读监测
 
+现行说明核对日期：2026-09-09。本页的 `evidence-view/evidence-monitor` 沿用原业务证据图；新版系统记忆、研究文稿和记忆关联还有各自的公共入口。
+
 统一入口：运行 `workbench.cmd`（注册后 `rdwork`），一键进入证据、单次检查、持续监测和环境检查。合成数据演示使用 `workbench.cmd workbench --demo`。安装、迁移与命令注册见 [一键部署手册](SETUP_WORKBENCH.md)。本页保留独立 CLI 和证据语义说明。
 
 “证据工作台”用浏览器展示当前记录，回答为什么保存、依据在哪里、谁确认过、何时发现失效，以及哪些报告引用它。它读取现有文件，既不需要安装前端依赖，也不需要向量模型或 OCR。
+
+原 Run、研究、算法和文档证据通过本页查看；规范 MEM/CLM 的原文、修订与沿袭使用系统记忆页或 `memory inspect/history/source-lineage/impact`。完整过程与简版文稿由 `memory document` 读取，变更关注用 `document-impact`；L4 地图是独立知识结构。旧证据页不是所有记忆记录的统一浏览器，监测候选也不会自动写成对象记忆或完成文稿更新。入口对照见 [记忆指南](MEMORY_USAGE.md)。
 
 ## 日常使用
 
@@ -45,7 +49,7 @@
 
 ## 监测与候选的边界
 
-监测复用 retrieval/config.json 的有界来源目录和 retrieval/sources.json 的逐文件登记，并检查证据图中已声明的输入/产物及来源引用；不会递归企业共享盘。来源无法读取、扫描超限或证据图不完整时返回非零，保留上一份基线。单个文件扫描时变化会报错，快照不保证多个文件的事务一致性。
+监测复用 retrieval/config.json 的有界来源目录、retrieval/sources.json 的逐文件登记及当前文件发现规则，并检查原业务证据图中已声明的输入/产物与来源引用；不会递归企业共享盘。对象内 Run 与旧根 Run 按登记身份发现，规范 memory 提交目录不会作为普通文件正文扫描。不要据这份观察清单推断所有 MEM 修订或文稿影响都已检查。来源无法读取、扫描超限或证据图不完整时返回非零，保留上一份基线。单个文件扫描时变化会报错，快照不保证多个文件的事务一致性。
 
 第一轮只建立基线，不把历史 succeeded 记录误报成新完成。后续记录新增/变化/移出清单、Run 执行终态变化、复核变化、依赖风险变化。重复扫描同一状态不会反复追加同一变化事件。
 
@@ -69,15 +73,14 @@
 - `context/monitor/state.json`：本机基线、观察事件和候选。它是独立观察历史，不是业务事实源；有锁且原子替换，不自动清空历史。
 - `context/generated/evidence-view.html`：可重建快照。它与监测状态可能含内部内容，已从 Git 发布排除；完整获准离线包可包含观察历史。
 
-旧业务记录不需要批量改写；新字段可选，没有 monitor 状态时首次运行自动建基线。更新框架时保留 core-algorithms、runs、research、knowledge、reports、data、来源配置与本机监测历史。监测的工作区内路径为相对路径，已用中文/空格目录迁移测试；外部路径与调度器的绝对工作目录需在新环境重新核对。
+旧业务记录不需要批量改写；新字段可选，没有 monitor 状态时首次运行自动建基线。更新框架时保留业务目录、对象内与历史 Run、规范记忆、来源配置及本机监测历史。监测的工作区内路径为相对路径；历史中文/空格目录测试只代表相应版本的合成检查，外部路径与调度器的绝对工作目录仍需在新环境重新核对。
 
-Git 管理的旧工作区可以在保存本地修改后用 `git pull --ff-only` 获取已发布的新版本；有冲突时 Git 会停止，不能用强制覆盖解决。随后运行以下初始化与检查命令（不改写旧业务对象）：
+升级统一使用独立新版源码和匹配依赖包：从新版目录执行 `setup.cmd --target "旧工作区路径" --register --open`，完成后继续使用旧目录。先关闭目标工作台、索引和实验进程；细节见 [部署手册](SETUP_WORKBENCH.md)。Git 拉取不是含备份、依赖与恢复的安装升级流程。升级后按需要检查（不改写旧业务对象）：
 
 ```powershell
-.\automation\python.ps1 automation/scripts/install_workspace_skills.py --name evidence-inspection --apply
 .\automation\workspace.ps1 refresh-index
 .\automation\workspace.ps1 validate
 .\automation\workspace.ps1 evidence-monitor --dry-run
 ```
 
-本批界面和监测不改变索引格式，无需为了它们重建向量库。完整模型/运行环境的迁移另见 [Windows 迁移指南](WINDOWS_PORTABILITY.md)。不同版本的监测状态或损坏 JSON 会拒绝覆盖，需保留原文件后明确选择恢复或新基线；不会自动删除。
+单独查看或轮询监测不要求重建向量库；框架/模型升级的索引处理以对应版本部署说明为准。完整模型和运行环境迁移另见 [Windows 迁移指南](WINDOWS_PORTABILITY.md)。不同版本的监测状态或损坏 JSON 会拒绝覆盖，需保留原文件后明确选择恢复或新基线；不会自动删除。

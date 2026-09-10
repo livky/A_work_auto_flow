@@ -1,0 +1,278 @@
+[
+  {
+    "id": "ok-unknown-wrapper",
+    "input": {
+      "status": "ok",
+      "value": {
+        "query_id": "QMAT-P0",
+        "request_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "candidates": [
+          {
+            "candidate_id": "CAND-P0",
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-P0-SYNTHETIC",
+                "revision": 1,
+                "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "locator": "block:m"
+              }
+            ],
+            "title": "SYNTHETIC ONLY 合成候选",
+            "excerpt": "已有短说明及适用限制。",
+            "channels": [
+              "lexical"
+            ],
+            "score": 0.5,
+            "realization": {
+              "definition": {
+                "key": "unit_digest",
+                "version": "1"
+              },
+              "refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-P0-SYNTHETIC",
+                  "revision": 1,
+                  "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "locator": "block:m"
+                }
+              ],
+              "state": "assemblable",
+              "missing_selectors": [],
+              "generator_version": null
+            },
+            "evidence_status": "not-reviewed",
+            "group": "direct"
+          }
+        ],
+        "next_cursor": null,
+        "expires_at": "2026-09-10T00:15:00Z",
+        "gaps": []
+      },
+      "code": null,
+      "warnings": [],
+      "consumed": {
+        "wall_ms": 2,
+        "read_bytes": 80,
+        "output_chars": 40,
+        "candidates": 1,
+        "graph_nodes": 0,
+        "graph_edges": 0,
+        "graph_hops": 0,
+        "model_tokens": 0
+      },
+      "stop_reason": "complete",
+      "basis": {
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-P0-SYNTHETIC",
+            "revision": 1,
+            "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "block:m"
+          }
+        ],
+        "owner_heads": [
+          [
+            "RES-MQ-A",
+            "COM-P0"
+          ]
+        ],
+        "index_watermarks": [
+          [
+            "RES-MQ-A",
+            "1"
+          ]
+        ],
+        "consistency": "cross_owner_optimistic"
+      },
+      "debug_secret": "UNTRUSTED_RESULT_FIELD"
+    },
+    "expected_code": "VALIDATION"
+  },
+  {
+    "id": "partial-malformed-value",
+    "input": {
+      "status": "partial",
+      "value": {
+        "query_id": "QMAT-P0",
+        "hidden_payload": "MALFORMED_TYPED_VALUE"
+      },
+      "code": "UNSUPPORTED",
+      "warnings": [
+        "dense_unavailable"
+      ],
+      "consumed": {
+        "wall_ms": 2,
+        "read_bytes": 80,
+        "output_chars": 0,
+        "candidates": 1,
+        "graph_nodes": 0,
+        "graph_edges": 0,
+        "graph_hops": 0,
+        "model_tokens": 0
+      },
+      "stop_reason": "channel_unavailable",
+      "basis": {
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-P0-SYNTHETIC",
+            "revision": 1,
+            "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "block:m"
+          }
+        ],
+        "owner_heads": [
+          [
+            "RES-MQ-A",
+            "COM-P0"
+          ]
+        ],
+        "index_watermarks": [
+          [
+            "RES-MQ-A",
+            "1"
+          ]
+        ],
+        "consistency": "cross_owner_optimistic"
+      }
+    },
+    "expected_code": "VALIDATION"
+  },
+  {
+    "id": "rejected-nonarray-warnings",
+    "input": {
+      "status": "rejected",
+      "value": null,
+      "code": "DENIED",
+      "warnings": "not-an-array",
+      "consumed": {
+        "wall_ms": 0,
+        "read_bytes": 0,
+        "output_chars": 0,
+        "candidates": 0,
+        "graph_nodes": 0,
+        "graph_edges": 0,
+        "graph_hops": 0,
+        "model_tokens": 0
+      },
+      "stop_reason": "access_denied",
+      "basis": null
+    },
+    "expected_code": "VALIDATION"
+  },
+  {
+    "id": "cancelled-bool-consumption",
+    "input": {
+      "status": "cancelled",
+      "value": {
+        "query_id": "QMAT-P0",
+        "request_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "candidates": [
+          {
+            "candidate_id": "CAND-P0",
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-P0-SYNTHETIC",
+                "revision": 1,
+                "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "locator": "block:m"
+              }
+            ],
+            "title": "SYNTHETIC ONLY 合成候选",
+            "excerpt": "已有短说明及适用限制。",
+            "channels": [
+              "lexical"
+            ],
+            "score": 0.5,
+            "realization": {
+              "definition": {
+                "key": "unit_digest",
+                "version": "1"
+              },
+              "refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-P0-SYNTHETIC",
+                  "revision": 1,
+                  "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "locator": "block:m"
+                }
+              ],
+              "state": "assemblable",
+              "missing_selectors": [],
+              "generator_version": null
+            },
+            "evidence_status": "not-reviewed",
+            "group": "direct"
+          }
+        ],
+        "next_cursor": null,
+        "expires_at": "2026-09-10T00:15:00Z",
+        "gaps": []
+      },
+      "code": "CANCELLED",
+      "warnings": [],
+      "consumed": {
+        "wall_ms": 2,
+        "read_bytes": 80,
+        "output_chars": 0,
+        "candidates": 1,
+        "graph_nodes": true,
+        "graph_edges": 0,
+        "graph_hops": 0,
+        "model_tokens": 0
+      },
+      "stop_reason": "cancelled",
+      "basis": {
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-P0-SYNTHETIC",
+            "revision": 1,
+            "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "block:m"
+          }
+        ],
+        "owner_heads": [
+          [
+            "RES-MQ-A",
+            "COM-P0"
+          ]
+        ],
+        "index_watermarks": [
+          [
+            "RES-MQ-A",
+            "1"
+          ]
+        ],
+        "consistency": "cross_owner_optimistic"
+      }
+    },
+    "expected_code": "VALIDATION"
+  },
+  {
+    "id": "failed-missing-basis",
+    "input": {
+      "status": "failed",
+      "value": null,
+      "code": "INTERNAL",
+      "warnings": [],
+      "consumed": {
+        "wall_ms": 2,
+        "read_bytes": 80,
+        "output_chars": 0,
+        "candidates": 0,
+        "graph_nodes": 0,
+        "graph_edges": 0,
+        "graph_hops": 0,
+        "model_tokens": 0
+      },
+      "stop_reason": "provider_failed"
+    },
+    "expected_code": "VALIDATION"
+  }
+]

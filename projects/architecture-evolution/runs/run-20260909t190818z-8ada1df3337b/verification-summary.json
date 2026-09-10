@@ -1,0 +1,18 @@
+{
+  "design_structure": "passed",
+  "designed_cases": 70,
+  "protocol_methods": 14,
+  "skill_metadata": {
+    "material-query": "passed",
+    "association-exploration": "passed",
+    "semantic-maintenance": "passed"
+  },
+  "workspace_validate": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "legacy_v01_structure": "passed",
+  "product_tests_executed": 0,
+  "human_review": "pending",
+  "second_machine": "not_run"
+}

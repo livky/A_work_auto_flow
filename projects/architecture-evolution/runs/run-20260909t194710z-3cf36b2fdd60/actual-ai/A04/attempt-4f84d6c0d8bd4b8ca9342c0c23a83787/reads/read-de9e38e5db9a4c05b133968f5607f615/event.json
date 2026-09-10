@@ -1,0 +1,11 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "actual-browser-screenshot",
+  "capture_path": "capture.png",
+  "locator": "1440×1000 过程稿第9章截图",
+  "coverage": "full",
+  "observation": "实际看到目录跳到第9章，集合交集/排除公式和累计资源求和公式排版完整，正文及必要定义可读。",
+  "recorded_at": "2026-09-09T22:44:34.437671Z",
+  "capture_sha256": "02258d868123527e80da4ac113f7a8953688069acd8c81c01c64728637e47074",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

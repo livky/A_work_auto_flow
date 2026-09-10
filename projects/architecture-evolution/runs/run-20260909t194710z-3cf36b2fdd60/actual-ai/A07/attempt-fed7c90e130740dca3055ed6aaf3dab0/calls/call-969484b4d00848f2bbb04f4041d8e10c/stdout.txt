@@ -1,0 +1,44 @@
+{
+  "status": "partial",
+  "value": {
+    "query_id": "MQ-b7af4f0d-af95-4f3a-923c-bc8f2d9c0cb3",
+    "request_digest": "fd905a962712dc859175895d1af17134b8b3619a2b109cb716d2c69473444976",
+    "candidates": [],
+    "next_cursor": null,
+    "expires_at": "2026-09-09T21:19:41.361496Z",
+    "gaps": [
+      "部分候选因范围、来源或版本不满足而省略"
+    ]
+  },
+  "code": null,
+  "warnings": [
+    "部分候选因范围、来源或版本不满足而省略"
+  ],
+  "consumed": {
+    "wall_ms": 15,
+    "read_bytes": 5478,
+    "output_chars": 0,
+    "candidates": 1,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "graph_hops": 0,
+    "model_tokens": 0,
+    "model_calls": 0,
+    "model_input_tokens": 0,
+    "model_output_tokens": 0,
+    "rerank_items": 0
+  },
+  "stop_reason": "exhausted",
+  "basis": {
+    "refs": [],
+    "owner_heads": [],
+    "index_watermarks": [
+      [
+        "RES-F3-TANK",
+        "3"
+      ]
+    ],
+    "consistency": "fixed_refs"
+  }
+}
+

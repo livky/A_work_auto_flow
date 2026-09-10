@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-09-09T22:41:44.030Z",
+  "errors": [],
+  "captures": [
+    {
+      "name": "process-desktop",
+      "overflow": false,
+      "formula_count": 2,
+      "section_count": 11
+    },
+    {
+      "name": "process-formula",
+      "overflow": false,
+      "formula_count": 2,
+      "section_count": 11
+    },
+    {
+      "name": "brief-desktop",
+      "overflow": false,
+      "formula_count": 0,
+      "section_count": 3
+    },
+    {
+      "name": "brief-mobile",
+      "overflow": false,
+      "formula_count": 0,
+      "section_count": 3
+    }
+  ],
+  "documents": [],
+  "selected_section_text": "9. 表示查询运行实现：契约、范围和累计资源\n读取本章写作上下文\n\n本章记录实际实现；前面的设计章节保留为历史时点。\n\n本单元记录本次软件实现。变量与单位在正文定义；功能回归、实际AI自查、人工/科学复核分别报告。\n\n表示查询运行实现：契约、范围和累计资源\n\n本轮在既有版本记忆之上增加材料查询应用。类型定义说明如何组织材料；候选指向已固定的规范记录；组包按用户选择组合正文，不产生第二套规范正文。原始、全文、章节、单元概览、专题和领域六种定义由同一注册表提供。字段缺失返回真实可用性；只有请求允许时才按注册的回退顺序换用表示。\n\n范围与固定身份\n\n设可信授权为 \n𝐴\nA，请求硬上限为 \n𝐶\nC，当前选择为 \n𝑆\nS，显式排除为 \n𝐸\nE。可输出集合为：\n\n𝑂\n=\n(\n𝐴\n∩\n𝐶\n∩\n𝑆\n)\n∖\n𝐸\n.\nO=(A∩C∩S)∖E.\n\n其中空集合表示无结果，null 表示该维度不限。必需来源可以位于当前选择以外，但必须位于 \n𝐴\n∩\n𝐶\nA∩C 且未被排除；正文读取之前核验这一边界。进入材料包时仍检查当前输出范围。这样可以识别“来源存在但不可输出”的缺口，同时避免由派生材料越界读取原件。\n\n记录引用包含修订号和 SHA256；历史读取保持旧版字节，当前查询另行核对真实 HEAD。显式 block: 定位沿候选、选择和组包保留；找不到相关块时报告缺失，不能把第一块当作回答。完整块的 requires_block_ids 决定所需定义，公式和定义不从中间截断。读取依据记录固定引用、owner HEAD、索引水位、观察时间与依据身份；跨 owner 是乐观观察，不能冒充全局事务快照。\n\n资源与状态\n\n对资源种类 \n𝑟\nr，各阶段共享总额度 \n𝐵\n𝑟\nB\nr\n\t​\n\n。第 \n𝑖\ni 阶段消耗为 \n𝑐\n𝑖\n,\n𝑟\nc\ni,r\n\t​\n\n，下一次操作之前要求：\n\n∑\n𝑖\n𝑐\n𝑖\n,\n𝑟\n+\n𝑐\nn\ne\nx\nt\n,\n𝑟\n≤\n𝐵\n𝑟\n.\ni\n∑\n\t​\n\nc\ni,r\n\t​\n\n+c\nnext,r\n\t​\n\n≤B\nr\n\t​\n\n.\n\n读字节以实际 UTF-8/文件字节计；输出以字符计；候选、节点、边、跳数、模型调用及输入输出 token 分开计量。活动墙钟按阶段并集累计，用户等待不扣活动时间；查询 TTL 独立。保留已完成消耗，取消或预算耗尽不能清零重试。提供器预留和结算使用同一账本；真实超额会阻止新工作，不能把消耗截断成上限制造达标。\n\n查询后显式选择候选再组包。正式模式按 claim 检查适用域和当前依据，一篇记录仅一个 claim 获准时不会带入其余结论；旧复核记录仍可读取，但不因此继续有效。材料包显示来源、补充定义和缺口。结构化 Issue 保留错误码、恢复条件及已授权固定引用；未知或拒绝对象不附带身份信息。\n\n实现入口是 automation/scripts/material_query/，公共用法见 docs/MATERIAL_QUERY.md。与旧基础能力逐项对应的映射和验收证据见本 Run 的 INHERITANCE_ACCEPTANCE.md，最终软件结果见 FINAL_VALIDATION.md。本单元是软件实现说明，不证明检索质量、模型有效性或未执行策略。\n\n表示查询首期软件验证固定记录\n\nRun：RUN-20260909T194710Z-3CF36B2FDD60，本机 Windows 11 x64、Python 3.12.10、Node 22.11.0。验证时源码含既有未提交修改，未创建新 Git 提交。本文件固定软件验证时点；后续项目文稿保存和 AI 页面审查另附回执，不据此预先宣布通过。\n\n实际执行\n层级\t原始结果\t固定依据\nquick v2\t517 项：516 通过，1 项既有 B01 失败；其中 Python 473、类型 1、组件 29、Edge 14\ttesting/quick-attempt-01/results.json；这是较早集成版本，不能替代最终 full\nfull v4\t599 项：596 通过，2 失败、1 错误，无跳过；Python 555（552 通过），类型 1、组件 29、真实 Edge 14 均通过\ttesting/full-attempt-01/results.json 及原始日志；整体状态保留 failed\nC17 补测\t测试夹具误用不存在 owner C；按真实 A/B 端点修正后 1/1 通过\tinheritance-closure-final.json；full 载入旧测试形成的 KeyError 原样保留\n结构类型补测\t关联 differences 字段未同步到 memory-v3.d.ts；用正式生成器同步后 11/11 契约检查通过\ttesting/memory-contracts-supplement-final.log\n最终工作台构建\t契约生成、前端契约、类型检查、Vite 构建 4 步通过\ttesting/build-attempt-03/results.json 与资源指纹；先前 EPERM 失败回执保留\n定向继承反例\t范围、局部证据、召回、图、维护、复核和资源等按实际回执逐项映射\tINHERITANCE_ACCEPTANCE.md；方法存在不等于全部旧 DTO 或可选策略完成\n六种表示成本\t6/6 查询并组包 complete；累计读取 45,845–57,635 字节，输出 223–746 字符，模型调用 0\tcost-attempt-02/results.json、COST_REVIEW.md；合成小例，非独立性能基准\n\nfull 的程序、测试、schema、选择和资源指纹在原回执中冻结。补测只关闭对应问题，不改写 full 的原始结果，也不重复计算成 599 项全部通过。生成声明的更新不改变运行逻辑；最后一次工作台构建已含匹配的 JSON schema。\n\n保留的故障与边界\n\nB01 test_b01_frozen_plan_self_test_leaves_assets_unchanged 仍失败：历史冻结 fixture 的现有指纹差异与基线一致。没有更新冻结清单来制造通过，需另行追溯历史输入。当前不能将整个回归层宣布全绿。\n\n真实 setup.cmd 扩展旧工作区测试已在 quick/full 执行，覆盖预览、升级、重复升级、恢复及损坏业务元数据/真实缺失工具拒绝。共享 fixture 包含多层目录、中文/空格、空目录、自定义工具/Skill、缓存边界及持久维护计划；按完整保护清单检查哈希与目录。该结果限本机隔离合成目录，第二台物理机尚未验收。\n\nPython 锁和标准模型指纹未变，前端增加的 @types/node、undici-types 是开发依赖。使用端仍随源码接收预构建资源，升级入口为独立新版目录的 setup.cmd --target \"旧工作区路径\" --register --open。依赖/模型更新仍须配套离线 ZIP；本次没有生成或发布新依赖包。清单审查见 PORTABILITY_REVIEW.md，当前业务来源登记不得带入公共发行。\n\n实际 AI 与人工\n\nA07–A09 已有真实公开调用、材料阅读、逐项 AI 自查及失败尝试，分别验证表示缺口、结构类比与新反证维护；见 actual-ai/ 和 browser/partial-status/AI_UI_REVIEW.md。这是合成案例中的实际 AI 使用，不是企业材料准确度结论。项目实现章节、完整过程稿和简报的当前回读及界面检查将在本文件冻结后单独登记。\n\n人工验收、科学复核、独立检索质量题集、第二物理机及万条规模实验未因软件结果获得通过。未配置的模型/分词器、向量或其他可选策略仍按能力表显式不可用或降级；不能承诺任意后端/模型一键替换。未执行对外发布、企业连接或原始材料修改。",
+  "status": "completed",
+  "ended_at": "2026-09-09T22:41:45.797Z"
+}

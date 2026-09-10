@@ -1,0 +1,80 @@
+{
+  "total": 12,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "tests": [
+    {
+      "id": "test_context_engine.ContextEngineTests.test_expansion_searches_cross_module_but_keeps_budget_and_stops",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.281
+    },
+    {
+      "id": "test_deployment_workbench.DeploymentWorkbenchTests.test_windows_zip_upgrade_entry_and_rollback_preserve_data",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 93.453
+    },
+    {
+      "id": "test_evidence.EvidenceTests.test_retracted_run_propagates_to_research_then_report",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.219
+    },
+    {
+      "id": "test_memory_http.MemoryHttpTests.test_U01_real_review_and_subprocess_stdout_match_public_http",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 1.437
+    },
+    {
+      "id": "test_memory_index.MemoryIndexTests.test_I05_I07_source_revocation_and_missing_original_remove_cached_text",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.453
+    },
+    {
+      "id": "test_memory_index.MemoryIndexTests.test_S09_fts_and_vector_failures_reconcile_without_business_revision",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.313
+    },
+    {
+      "id": "test_memory_packets.PacketTests.test_p02_resume_keeps_new_goal_old_checkpoint_and_real_pause",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 2.969
+    },
+    {
+      "id": "test_memory_store.MemoryStoreTests.test_S01_S02_save_read_and_immutable_revision",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.39
+    },
+    {
+      "id": "test_owned_runs.OwnedRunsTests.test_all_owner_types_and_legacy_paths_share_discovery",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.907
+    },
+    {
+      "id": "test_retrieval.RetrievalTests.test_incremental_update_removal_and_stale_pack",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.156
+    },
+    {
+      "id": "test_retrieval_layers.RetrievalLayerTests.test_nested_run_raw_artifacts_and_transactions_do_not_enter_index",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.094
+    },
+    {
+      "id": "test_workspace_cli.WorkspaceCliTests.test_tool_registry_accepts_files_and_directories_but_rejects_missing_paths",
+      "status": "passed",
+      "reason": "",
+      "elapsed_seconds": 0.187
+    }
+  ]
+}

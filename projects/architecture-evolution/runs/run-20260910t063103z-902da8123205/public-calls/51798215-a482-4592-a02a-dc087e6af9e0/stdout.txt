@@ -1,0 +1,38 @@
+{
+  "request_id": "b59b49cc-6967-4953-9b9e-02bc5664a7a7",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "commit_id": "COM-ea4447a9-b10a-477b-bc62-237d9d825517",
+  "generation": 21,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": "process",
+      "record_id": "MEM-66d460ce-e086-5dd4-b261-50884640483a",
+      "revision": 1,
+      "content_hash": "f9866466bee132f4879a3b4a0702029f2389959d0c6ed0b820f128d672f8af00",
+      "status": "created"
+    },
+    {
+      "client_key": "brief",
+      "record_id": "MEM-4bbfdd98-b72a-53a0-b812-3e0b3e0b1166",
+      "revision": 1,
+      "content_hash": "1ecf778a11bc5dfc1aeaa9186d61084577b3da13267f363e548c525d43e9c1c1",
+      "status": "created"
+    }
+  ],
+  "index_status": "indexed",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "indexed",
+    "indexed_generation": 21,
+    "vector_generation": 21,
+    "target_generation": 21,
+    "encoder_version": "memory-record-representation-v3-technical-description",
+    "collection": "memory_v1_662ca1e31184",
+    "error": null
+  },
+  "warnings": [],
+  "error": null,
+  "recovery_ref": null
+}
+

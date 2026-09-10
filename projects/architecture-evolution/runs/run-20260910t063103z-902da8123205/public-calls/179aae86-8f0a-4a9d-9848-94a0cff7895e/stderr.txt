@@ -1,0 +1,2 @@
+D:\共享桌面\A_work\A_work_auto_flow\automation\scripts\qdrant_backend.py:48: UserWarning: The model sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 now uses mean pooling instead of CLS embedding. In order to preserve the previous behaviour, consider either pinning fastembed version to 0.5.1 or using `add_custom_model` functionality.
+  model = TextEmbedding(model_name=model_name, specific_model_path=str(path),

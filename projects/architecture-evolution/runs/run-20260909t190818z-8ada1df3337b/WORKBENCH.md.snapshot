@@ -1,0 +1,65 @@
+# 工作台交互与 HTTP 契约
+
+这是待实现设计。现有入口仍使用 `automation/frontend/src/api.ts` 的相对 `api/v1/` 前缀、`automation/scripts/workbench_app/` 路由、`memory/api.py` 和 CLI。不得拼接绝对主机地址绕过工作台随机前缀与既有访问控制。
+
+## 页面与可见结构
+
+在现有工作台新增“材料查询”入口；保留既有材料、记忆、文稿与关系查看入口。页面为三栏，窄屏按“结构→查询→结果→预览”顺序切换，键盘可达、选中状态可读。
+
+| 区域 | 内容 | 用户动作与响应 |
+|---|---|---|
+| 左：存储结构 | 全局对象→Project/Research/核心算法等→L0–L4；独立文稿→章节；Run→登记输入/产物 | 分页展开，显示类型、版本、复核、可用性；点选对象可设查询范围；点击文件仅打开已授权登记来源 |
+| 左：切换“物理存储” | 规范记录、原件引用、索引投影、临时材料包四种职责与已登记位置 | 看清数据在哪里、哪些可重建；不开放任意磁盘浏览；缓存不会混入知识召回 |
+| 中：查询条件 | 六种表示、问题/关键词、范围、用途、联想、预算 | 表示旁显示组合说明；范围默认当前对象，可明确选全局；用途默认探索；显示最终有效范围和排除 |
+| 中：候选结果 | 标题、相关摘录、类型/可组合状态、固定来源、复核、命中原因 | 勾选实际材料，再点“组合所选”；同源多通道合并；直接材料与联想分组 |
+| 右：组合预览 | 主材料、必要上下文、联想补充、缺口；每段来源与省略原因 | 展开来源、查看原文、加深、复制/导出；组包前显示空态，不伪造正文 |
+| 右：执行信息 | 消耗/上限、索引覆盖水位、降级、停止原因 | 在详情抽屉查看，关键缺失/过期始终可见；可取消、显式续查 |
+
+结构树展示逻辑归属而非复制多份原件。同一材料出现在主题与文稿下时保留同一个固定身份。L0 是来源视图，不假设每个 owner 目录有 L0 文件夹。看不到的对象不返回数量提示。physical view 仅为已登记存储位置的解释，不能获取未知路径或把内部数据库当可编辑文稿。
+
+## 条件与状态
+
+范围支持 owner、层级、记录类型、知识角色、结果、复核、有效性、时间、排除和未知值策略；默认折叠高级条件，始终显示生效条件摘要。范围树中的“取消全部”传空数组；“不限”传 null。用途为正式时解释候选可能因复核/适用范围被剔除。联想开关打开后选择“已有联系”或“探索结构联系”；无代理时后者禁用并说明原因；可单独设联想范围但不可突破全局上限与排除。
+
+预算显示可读预设并可展开八个上限。高于服务器能力上限时拒绝并给出可用上限，不静默改参数。输入改变将结果标为“来自上一次查询”，清除本次选择；旧响应按 request sequence/query_id 隔离，不能覆盖新查询。搜索中可取消，部分结果保留；空结果同时显示范围、覆盖缺口与停止原因，不能等同“没有该知识”。
+
+状态机：idle → searching → results/partial/empty/error；results → assembling → packet/partial/error；results/packet → deepening → results/partial/error；任一执行态可 cancelling → cancelled。失败保留输入与已完成候选。过期 query_id 显示“查询已到期，重新搜索”，重新搜索是新预算。selection 的提交携带 request digest，防止旧页面把选择套到新条件。
+
+“加深”分别提供：查看来源位置、沿已有关系展开、探索新联系。显示方向/关系及预算余额，不只是切换“摘要/全文”标签。联想卡展示共同结构、不同之处、可迁移条件、验证建议；“保留为导航”和“不是有效联系”各需理由，可回读记录；这不是科学结论确认按钮。
+
+“维护待办”展示变化来源、已检查/未检查范围、逐项动作、旧新正文差异、语义审查身份、固定依据和预计提交对象。计划可修改后重新预检；执行后逐对象显示保存/索引/复核状态。页面不自动生成语义判断；调用可用 AI Skill 或导出输入包给当前助手，返回草案再预检。没有 AI 的环境可模板整理或人工审查。
+
+## 拟新增路由
+
+下列路径均相对于 `api/v1/`，是设计接口，当前不可调用。除 definitions 为 GET 外均 POST JSON；返回 `Result<T>`，错误遵循 CONTRACTS。业务动作在 memory 应用适配层实现，HTTP 和以后 CLI 共用，不把逻辑只写在 React。
+
+| 路由 | 请求（类型或字段） | 响应 value / 方法 |
+|---|---|---|
+| GET representations/definitions | 无 | RepresentationDefinition[] / Definitions.list |
+| representations/definition | DefinitionRef | RepresentationDefinition / Definitions.get |
+| representations/inspect | refs, definition | Realization[] / Realizations.inspect |
+| materials/structure | TreeRequest | TreePage / StructureView.list_page |
+| materials/search | QueryRequest | SearchReceipt / QueryCoordinator.search |
+| materials/assemble | AssembleRequest | MaterialPacket / QueryCoordinator.assemble |
+| materials/resume | query_id, cursor | SearchReceipt / QueryCoordinator.resume |
+| materials/cancel | query_id | null / QueryCoordinator.cancel |
+| materials/associations | AssociationRequest | AssociationProposal[] / AssociationStrategy.discover |
+| materials/association-decision | query_id, proposal_id, decision, reason, request_id | AssociationProposal / AssociationStrategy.decide |
+| materials/deepen | DeepenRequest | DeepenReceipt / DeepeningStrategy.deepen |
+| materials/maintenance-plan | MaintenanceRequest | MaintenancePlan / SemanticMaintenance.plan |
+| materials/maintenance-review | plan, expected_digest | MaintenancePlan / SemanticMaintenance.review |
+| materials/maintenance-apply | plan_id, expected_digest, request_id | MaintenanceReceipt / SemanticMaintenance.apply |
+
+Context 不接受为请求字段，由路由注入。查询身份和计划身份绑定当前会话/授权上下文；权限收紧时重检。响应 JSON 以 dataclass 字段命名，tuple 编码数组，Result.consumed 必填。持久化草案写入仍走原 memory-v3 schema。后续实现生成 TS 类型和校验器，不手工维护两套枚举。
+
+## 同一数据的操作示例
+
+合成主题“累计误差”：A 是含定义/推导/失败实验的 L1，B 是具有相似误差反馈结构但业务不同的 L3，C 是主题地图及简报。
+
+1. 选 unit_digest，问“为什么累加会丢失小量”，scope=A，探索、联想关闭：返回 A 的检索说明；选 A 后按问题/方法/结果/限制组包，原公式通过固定块可展开。
+2. 改 section，范围仍 A：返回有关块；组合时补必要变量定义，若预算不足就显示缺口，不截断成完整推导。
+3. 选 topic、范围 A/C：地图和简报相关章节组合，C 缺某摘要字段时按注册规则组合已有内容，显示 assemblable。
+4. 开 existing_only：仅当 A/B 有有效关系时返回 B；改 explore_structural 可在没有边时提出 B，但展示业务差异与验证建议。
+5. 改 formal：未经有效复核的 B 不能作为正式支持；仍可在明确隔离的“未验证联想”区作为待验证线索，主材料证据标识不受影响。
+
+这些是验收预期，不是当前截图或已经观察到的召回质量。

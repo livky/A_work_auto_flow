@@ -1,0 +1,100 @@
+{
+  "request_id": "ae11dd73-dfb8-4ae6-899f-923f39ff93d4",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "commit_id": "COM-b3661e1a-de38-49a1-b93d-2d70081fad3d",
+  "generation": 1,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": "U00",
+      "record_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+      "revision": 1,
+      "content_hash": "3c4d81a0688859a811f299c3ba77fd3ec2dc86127b70aa5fcbabcde330284b82",
+      "status": "created"
+    },
+    {
+      "client_key": "U01",
+      "record_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+      "revision": 1,
+      "content_hash": "f2d323cd58ac9ac3d855daa02f7c0080501a2fefdc21313d5f7a1db66ec4cdb5",
+      "status": "created"
+    },
+    {
+      "client_key": "U02",
+      "record_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+      "revision": 1,
+      "content_hash": "5e48089afae43128def28a1fd1fba728eacb9e1c17273cefa00899e89e420b9f",
+      "status": "created"
+    },
+    {
+      "client_key": "U03",
+      "record_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+      "revision": 1,
+      "content_hash": "26d18f0efc807a7041dce8988d5432c1487ec56cbb5978a3196bb60b0929a200",
+      "status": "created"
+    },
+    {
+      "client_key": "U04",
+      "record_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+      "revision": 1,
+      "content_hash": "78bcbd2e6a2c4d7030e9bb1c307689b5356fac90977623a14ff3d88a6b946acc",
+      "status": "created"
+    },
+    {
+      "client_key": "U05",
+      "record_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+      "revision": 1,
+      "content_hash": "542a10176ff07c3c961c34259c4a1fcde8604636e1c3e7dcb1cba7cfe6f4fd6a",
+      "status": "created"
+    },
+    {
+      "client_key": "U06",
+      "record_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+      "revision": 1,
+      "content_hash": "2124284f43d0368113451060a0cafd107fb40bd8f2f5f21874c01b190368a89c",
+      "status": "created"
+    },
+    {
+      "client_key": "U07",
+      "record_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+      "revision": 1,
+      "content_hash": "8388f88521e49de81ad17688e36cac9e70b481cf5079c0d359def7061790f3ea",
+      "status": "created"
+    },
+    {
+      "client_key": "E01",
+      "record_id": "MEM-67d394cb-8fdd-547c-ae13-1143da4ab3ef",
+      "revision": 1,
+      "content_hash": "e5e73aeb3b034e5c626f59e5e8943eaeb6563603fd593602752ab69904703ffd",
+      "status": "created"
+    },
+    {
+      "client_key": "E02",
+      "record_id": "MEM-fb9a8171-f66f-5765-a55d-c03825f05d24",
+      "revision": 1,
+      "content_hash": "a1bf9f1481475ea988c060107a4b0d007b4a34d6ab5bca132d7c8fe456a0967a",
+      "status": "created"
+    },
+    {
+      "client_key": "X01",
+      "record_id": "MEM-68e92ced-610a-58a3-bd05-a0f8055f0a71",
+      "revision": 1,
+      "content_hash": "5639d322f853ca9f8be6928c9d89357b1307d561fdf5c2ac8997a9102bd87d40",
+      "status": "created"
+    }
+  ],
+  "index_status": "indexed",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "indexed",
+    "indexed_generation": 1,
+    "vector_generation": 1,
+    "target_generation": 1,
+    "encoder_version": "memory-record-representation-v3-technical-description",
+    "collection": "memory_v1_662ca1e31184",
+    "error": null
+  },
+  "warnings": [],
+  "error": null,
+  "recovery_ref": null
+}

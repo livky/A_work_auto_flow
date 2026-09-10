@@ -20,8 +20,12 @@ class Service:
         self.graph = self.store.read('projection')
         self.guard = threading.RLock()
         self.freshness_result = None
+        # Persist query identities and cumulative budgets across HTTP requests.
+        from material_query.coordinator import Coordinator
+        self.materials = Coordinator(self.root)
 
     def close(self):
+        self.materials.close()
         if self.jobs:
             self.jobs.close()
 

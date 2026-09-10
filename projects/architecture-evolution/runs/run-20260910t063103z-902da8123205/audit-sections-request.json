@@ -1,0 +1,122 @@
+{
+  "schema_version": 3,
+  "request_id": "b59b49cc-6967-4953-9b9e-02bc5664a7a7",
+  "actor": {
+    "kind": "ai",
+    "id": "assistant"
+  },
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "expected_head": "COM-501c1ce7-136c-4ed1-a55b-43ded9e187d2",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "process",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document_section",
+        "level": null,
+        "title": "本地覆盖审计与人工验收安排",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-3d6097e5-9028-5e74-b2ca-196db59ed90c",
+            "revision": 1,
+            "sha256": "7df972e0d2deb3b3c9db2350dfc22bec3d550ec1a9250ed70f2effa577e41a42",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "payload": {
+          "section_key": "local-audit-process",
+          "title": "本地覆盖审计与人工验收安排",
+          "role": "discussion",
+          "blocks": [
+            {
+              "type": "unit",
+              "ref": {
+                "target_kind": "record",
+                "target_id": "MEM-3d6097e5-9028-5e74-b2ca-196db59ed90c",
+                "revision": 1,
+                "sha256": "7df972e0d2deb3b3c9db2350dfc22bec3d550ec1a9250ed70f2effa577e41a42",
+                "locator": "完整固定正文",
+                "relation": "references"
+              },
+              "block_ids": [
+                "audit"
+              ]
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        }
+      }
+    },
+    {
+      "op": "put_record",
+      "client_key": "brief",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document_section",
+        "level": null,
+        "title": "本地覆盖审计与人工验收安排",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-3d6097e5-9028-5e74-b2ca-196db59ed90c",
+            "revision": 1,
+            "sha256": "7df972e0d2deb3b3c9db2350dfc22bec3d550ec1a9250ed70f2effa577e41a42",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "payload": {
+          "section_key": "local-audit-brief",
+          "title": "本地覆盖审计与人工验收安排",
+          "role": "discussion",
+          "blocks": [
+            {
+              "type": "prose",
+              "markdown": "本地审计确认主体和四份文稿可读；保留历史源码指纹变化、两项旧Run缺失及三份snapshot旧解析缺口。人工验收分真实区阅读、演示区交互和实际AI旅程，所有人工判断待审。",
+              "evidence_refs": [
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-3d6097e5-9028-5e74-b2ca-196db59ed90c",
+                  "revision": 1,
+                  "sha256": "7df972e0d2deb3b3c9db2350dfc22bec3d550ec1a9250ed70f2effa577e41a42",
+                  "locator": "完整固定正文",
+                  "relation": "references"
+                }
+              ]
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        }
+      }
+    }
+  ]
+}

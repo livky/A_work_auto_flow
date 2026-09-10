@@ -1,0 +1,115 @@
+{
+  "owner": {
+    "schema_version": 1,
+    "owner_id": "RES-F3-RETRY",
+    "owner_type": "research",
+    "native_ref": {
+      "id_field": "research_id",
+      "id_value": "RES-F3-RETRY",
+      "path": "research/retry/research.json"
+    },
+    "memory_home": "research/retry/memory",
+    "adapter_version": 1,
+    "temporary": false,
+    "persisted": true,
+    "title": "SYNTHETIC F3 retry",
+    "fingerprint": "30126a569a80473ab8dd4f980c11d3949c56892434f7ab44bf2c8b2253cd0076",
+    "native_data": {
+      "research_id": "RES-F3-RETRY",
+      "title": "SYNTHETIC F3 retry",
+      "status": "active",
+      "claims": [],
+      "dependencies": [],
+      "sensitivity": "internal"
+    },
+    "created_at": "2026-09-09T21:02:12.154985Z",
+    "created_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    }
+  },
+  "record": {
+    "body_markdown": "",
+    "change_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+    "content_hash": "3d2acacc0b97fe948bde83abdb1807f2d310fd83cdb5c267e59c105a1bb8862f",
+    "created_at": "2026-09-09T21:02:12.187220Z",
+    "created_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    },
+    "discovery": "workspace_summary",
+    "keywords": [
+      "SYNTHETIC",
+      "F3",
+      "API 退避重试策略"
+    ],
+    "kind": "detail",
+    "level": "L1",
+    "owner_id": "RES-F3-RETRY",
+    "payload": {
+      "blocks": [
+        {
+          "block_id": "body",
+          "markdown": "# SYNTHETIC F3 API 退避与重试\n\n本材料是独立的软件策略前提，没有服务端负载测量、生产日志或成功率试验。\n\n## 变量与机制\n\n$k\\in\\{0,1,\\ldots,N-1\\}$ 为当前连续失败后的重试序号；$N=5$ 是总重试上限。$b=0.2\\,\\mathrm{s}$ 是初始等待，倍率 $r=2$ 无量纲，$d_{max}=3.2\\,\\mathrm{s}$ 是等待上限。等待策略为\n\n$$\nd_k=\\min(d_{max},b r^k).\n$$\n\n一次请求失败后等待 $d_k$ 再重试，成功后结束本次流程，达到 $N$ 次则停止并返回失败。响应仅有成功/可重试失败/不可重试失败三类，不可重试失败立即停止。本前提没有目标误差 $e$、服务端队列长度、连续流量或物理守恒方程。\n\n## 适用边界\n\n只有具备幂等性或明确去重语义的操作可按此策略重复；必须给超时和最大总耗时单独设限。固定倍率与上限不证明服务端稳定、请求最终成功或最优吞吐。多个客户端同步重试可能同时唤醒；本前提未定义抖动、服务端容量、到达率、成功概率与响应延迟分布。\n",
+          "requires_block_ids": [],
+          "role": "methods"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "locator": "完整合成输入",
+          "relation": "input",
+          "revision": null,
+          "sha256": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+          "target_id": "SRC-F3-RETRY",
+          "target_kind": "file"
+        }
+      ],
+      "figures": [],
+      "missing_refs": [],
+      "retrieval_description": {
+        "applicable": [
+          "本文明确的合成条件"
+        ],
+        "key_findings": [
+          "此输入没有真实执行结果"
+        ],
+        "limitations": [
+          "缺少实测与科学复核"
+        ],
+        "method": "读取独立合成前提并保留变量、公式和限制",
+        "not_applicable": [
+          "现实系统的稳定或性能结论"
+        ],
+        "question": "API 退避重试策略的机制与约束"
+      },
+      "run_ref": null,
+      "unit_type": "analysis"
+    },
+    "previous_revision": null,
+    "provenance_gap": null,
+    "record_hash": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+    "record_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+    "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+    "revision": 1,
+    "schema_version": 3,
+    "sensitivity": "internal",
+    "sources": [
+      {
+        "locator": "完整合成输入",
+        "relation": "input",
+        "revision": null,
+        "sha256": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+        "target_id": "SRC-F3-RETRY",
+        "target_kind": "file"
+      }
+    ],
+    "title": "SYNTHETIC F3 API 退避重试策略",
+    "updated_at": "2026-09-09T21:02:12.187220Z",
+    "updated_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    }
+  }
+}
+

@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T184202Z-6E13D341B986",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "title": "表示组合、经验联想与AI和图维护分工设计",
+  "keywords": [
+    "表示类型",
+    "经验联想",
+    "图维护"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "succeeded",
+  "created_at": "2026-09-09T18:42:02Z",
+  "started_at": null,
+  "ended_at": "2026-09-09T18:48:14.782068Z",
+  "owner": "assistant",
+  "question": "表示怎样组合现有层与文稿，怎样增加经验联想，AI和工具如何维护内容及关系图？",
+  "hypotheses": [],
+  "inputs": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/CORE-before.md.snapshot",
+      "sha256": "d0d9d55912c5bfbebe50410e61964c70498f14822be9f4212a3f18848f0a6737",
+      "role": "input",
+      "registered_at": "2026-09-09T18:48:15.205006Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/SPEC-before.md.snapshot",
+      "sha256": "6334aae4caeca173c9d6bf792316244b7b79d6bef6eda6b6b2efd35178166965",
+      "role": "input",
+      "registered_at": "2026-09-09T18:48:15.794104Z"
+    }
+  ],
+  "parameters": {
+    "scope": "design proposal and canonical documentation only",
+    "runtime_changes": false
+  },
+  "code": {
+    "commit": null,
+    "dirty": null
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [
+    {
+      "check": "existing_contract_structure",
+      "status": "passed",
+      "evidence": "contract-checks.json",
+      "details": "仅现有未改类型与12合成请求；不验证新字段提案",
+      "required": true
+    },
+    {
+      "check": "canonical_roundtrip_and_old_revision",
+      "status": "passed",
+      "evidence": "readback-checks.json",
+      "required": true
+    },
+    {
+      "check": "workspace",
+      "status": "passed",
+      "evidence": "workspace-checks.json",
+      "required": true
+    },
+    {
+      "check": "human_review",
+      "status": "not-run",
+      "evidence": "AI_REVIEW.json",
+      "required": false
+    }
+  ],
+  "metrics": {
+    "new_events": 1,
+    "revised_records": 7,
+    "document_revision": 3,
+    "official_sources": 4,
+    "existing_contract_cases": 12
+  },
+  "artifacts": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/AI_REVIEW.json",
+      "sha256": "53cb50fe87d3173358c63f87b8ae40d02897838e7104f852ee46e062a4242da7",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.209998Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/before.json",
+      "sha256": "47d29df6533438b2fa0ce2b8f5cea19cdc39b97c52a00ebb287566b2cedffe59",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.215999Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/brief-old-read.json",
+      "sha256": "b7dc9846a3e17755dc7b883a28b0c338e1392ac90bc2c9980bf7bd901c691e92",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.221005Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/brief-old-request.json",
+      "sha256": "145cb0174f64c442a8dd68f1456520ce5e9320905027676906ba5e096561b4d0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.226005Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/brief-read-request.json",
+      "sha256": "d50d252488a650e294c0e95eba94bafbf4ced717fec94c7f97374189b3c382bd",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.231004Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/brief-read.json",
+      "sha256": "1fb726e076eb33ec60bad4f347f30c89991b36358c8fdc3134fe4a0a443a3b94",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.236523Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/chapters-inspect.json",
+      "sha256": "bbac32befc2163965a39026e5bf88607debcdbec77a86af8d10528cd33b20cbb",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.242522Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/chapters-receipt.json",
+      "sha256": "522f0579bace0f446dc5d346f11c86c8ea45235e202a41621b810a099b80d85a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.246515Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/chapters-request.json",
+      "sha256": "1469e0b75ce1558e3f88d51fc2ccb0a07f01bb1a46494862c4c16f7c653be322",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.252514Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/chapters-validation.json",
+      "sha256": "d84248ec939c587ce4cdbca43ed8b6037647d0129e0e0fc8fa320cc2ebb1a271",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.258515Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/contract-checks.json",
+      "sha256": "eb2f2cec949a6d71ef8bccb9620ae95abe11ccab10290fc3f01db47e387517ab",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.264517Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/CORE-expanded.md.snapshot",
+      "sha256": "3f91a72a08f558e42c35d995240acf7b5fd90038dfe1482b34b8ad0052a385af",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.269514Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.274513Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/documents-map-inspect.json",
+      "sha256": "cdb38af3cdad6279b9854f43a603856b31364648a19595e4f3ce84666d1233d7",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.283515Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/documents-map-receipt.json",
+      "sha256": "3b0bc467351201bc0e0d2a0a05b7bebddd4f962f9f88f79d770dc044aaa4bb1b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.290850Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/documents-map-request.json",
+      "sha256": "409ee777935be48abebc47d798095089711a344e137620fc7faac64618151c49",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.800103Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/documents-map-validation.json",
+      "sha256": "28bf97718917d3475b4ab2b692d9965cf312a3bad7d72bab992450bb2bb5f8f3",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.805105Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/fixed-sources.json",
+      "sha256": "3d80858ad50fe44f4d89801893f55b8b309258e6e82c94c0a419aae7317bc386",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.811104Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/process-old-read.json",
+      "sha256": "a7e002a5689cd5a21b1cdb8832fb60307b93a14a2169952584002d877afeb9bc",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.817105Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/process-old-request.json",
+      "sha256": "e09fe08c85101f4eeca36c7846dd3ccd2b330ad4569ddff23839eac08d6942b4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.822911Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/process-read-request.json",
+      "sha256": "14324aa6e6d99f5102b5a54a0aa880fa0585169f1f03f463196c90b22792fac1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.828206Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/process-read.json",
+      "sha256": "bd145d5c827bacae1e55af3ca1940b9bedf5b16faf22823e4807c9ce6734d5bf",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.833557Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/readback-checks.json",
+      "sha256": "f83e2e120c6d9dda83290d6ab87f195be63d36689fb73889a58e54db73288192",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.838610Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/README.md",
+      "sha256": "3bb03eb8c004432c191b1b84a9e13c0907d9c30858303db913cff95d40ffb264",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.843887Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/REPRESENTATION_AND_GRAPH.md.snapshot",
+      "sha256": "477b95e62b454ebbac611cb3c7f109ef1adade49c715e6a69325870ad790dada",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.849163Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/sources.json",
+      "sha256": "4ed1518bfc6afdbeb59d6d5f101449f9e7fe79a84b2c603081221b1e07e4645b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.855445Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/unit-event-inspect.json",
+      "sha256": "511f651b99a6f2f28855c2741bcf975baafdb1be9b12460f4a08521dbb59fdba",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.861765Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/unit-event-receipt.json",
+      "sha256": "a30332089207f916789dfc6a3841f56139a7729d338717f71d6d3c904b6f7154",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.867567Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/unit-event-request.json",
+      "sha256": "3180fb0050251c50c2c5c7ce31906c35e568d574e1f60ec6e9d89d9301148516",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.873658Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/unit-event-validation.json",
+      "sha256": "619d9a297262dddbfdd641b32255139175b2774293ade3eb0ed2aa5177bf3497",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:15.878948Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/update_design.py",
+      "sha256": "29dfdedcf173f3c54db3024a6b6f81eb83344a4caf3b09eb891f197cd5946939",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:16.387239Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/user-feedback.txt",
+      "sha256": "e5570de6080a5b73a1c0f5852029a90b573c1ffed5167705a0a5afdad439b2ca",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:16.392227Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/workspace-checks.json",
+      "sha256": "598b8714a85a18f3f44a02ce264dc399afdc270ff715d397220482f46aa0788f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:16.398233Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/workspace-validation.txt",
+      "sha256": "8010bf11c642fe652a2456440d50ef662a95451c685d7e53d067532dbe1c934a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:48:16.404232Z"
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "形成类型/实例/组合、联想通道、AI分工和图生命周期提案，同步核心L1、3章、地图及双文稿r3；新字段待下一版契约。",
+  "limitations": [
+    "新定义注册、组合和联想字段未进入v0.1 Python契约或运行实现。",
+    "无联想质量、现实语义正确性、规模、页面或第二台机器实验；人工反馈待收集。"
+  ],
+  "parent_run_ids": [
+    "RUN-20260909T175530Z-40721B975BDB"
+  ],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  },
+  "sensitivity": "internal"
+}

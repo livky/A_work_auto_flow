@@ -980,6 +980,8 @@ def build_parser() -> argparse.ArgumentParser:
     relations_cli.add_commands(subparsers)
     from memory import cli as memory_cli
     memory_cli.add_commands(subparsers)
+    from material_query import cli as material_cli
+    material_cli.add_commands(subparsers)
     testing = subparsers.add_parser("testing", help="可复用分级测试：目录、任务选择、执行与验收")
     testing.add_argument("testing_args", nargs=argparse.REMAINDER)
 
@@ -1138,6 +1140,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command == "memory":
             from memory import cli as memory_cli
             result, exit_code = memory_cli.execute(root, args.memory_args)
+            print(dump_json(result))
+            return exit_code
+
+        if args.command == "material-query":
+            from material_query import cli as material_cli
+            result, exit_code = material_cli.execute(root, args)
             print(dump_json(result))
             return exit_code
 

@@ -1,4 +1,9 @@
 # 研发可靠性第一批实施计划
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../ARCHITECTURE.md)、[研究记录标准](../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 日期：2026-09-06。授权：用户同意按结构评审路线实施。范围限第一批：环境健康/严格验收、结论级记录与正式使用检查、跨文档失效传播、真实试点入口。保留当前目录、旧记录和检索默认探索行为；不引入调度平台或企业连接器。
 

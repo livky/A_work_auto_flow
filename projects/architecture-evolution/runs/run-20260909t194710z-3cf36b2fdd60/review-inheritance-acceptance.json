@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "acceptance_id": "C24",
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "status": "passed_limited",
+  "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_review_inheritance.py -v",
+  "test_ids": [
+    "test_material_review_inheritance.MaterialReviewInheritanceTests.test_new_review_revalidates_changed_claim_and_preserves_old_review_owner_scope"
+  ],
+  "tests": 1,
+  "seconds": 36.187,
+  "exit_code": 0,
+  "log": "testing/review-inheritance-final-20260910.log",
+  "source_fingerprints": [
+    {
+      "path": "automation/tests/test_material_review_inheritance.py",
+      "sha256": "758fbf274691d96e7da0aa4fc2a2cc77b7fcb1cb6017dccba2981482f9da228c"
+    }
+  ],
+  "production_code_changed_by_this_C24_subtask": false,
+  "assertions": [
+    "公开提交与旧accepted review后，修订claim正文；旧review仍accepted历史，但新claim未准入",
+    "错误owner、不同适用域、旧content hash、空inputs均拒绝且A/B两个HEAD不变",
+    "新review通过公开memory review绑定新content_hash、新claim SHA、原适用域、固定inputs",
+    "新claim正式Evidence.project返回新正文；不同适用域和被拒owner不得借用新review",
+    "旧claim固定SHA不能被新版review重新认可；旧review与旧记录固定读回完全保持原字节语义"
+  ],
+  "limitations": [
+    "Windows x64 本机隔离合成F1软件行为；不代表现实结论通过复核",
+    "未执行全面回归、真实setup、人工或第二台物理机验收，主任务统一记录"
+  ]
+}

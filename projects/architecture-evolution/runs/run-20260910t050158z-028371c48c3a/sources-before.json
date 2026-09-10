@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-README-MD",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/README.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-CORE-MD",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/CORE.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-SPEC-MD",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/SPEC.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-IMPLEMENTATION-MD",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/IMPLEMENTATION.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-FUNCTIONS-MD",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/FUNCTIONS.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-DATATYPES-MD",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/DATATYPES.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-CONTRACT_TYPES-PY",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/contract_types.py.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-CONTRACT_PORTS-PY",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/contract_ports.py.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-FUNCTION-CATALOG-JSON",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/function-catalog.json.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-REQUEST-EXAMPLES-JSON",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/request-examples.json.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-CHECK_CONTRACTS-PY",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/check_contracts.py.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-PROJECT-POLICY-REVIEW-MD",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/project-policy-review.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-USER-STEERING-MD",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/user-steering.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-CONTRACT-CHECKS-JSON",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/contract-checks.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-PRIOR-DISCUSSION",
+      "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/DISCUSSION.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-INTERFACES-V01-PRIOR-SOURCES",
+      "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/sources.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-CORE-EXPLAIN-20260910-CORE",
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/CORE-expanded.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-CORE-EXPLAIN-20260910-FEEDBACK",
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/user-feedback.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-REP-GRAPH-20260910-CORE",
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/CORE-expanded.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-REP-GRAPH-20260910-DETAIL",
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/REPRESENTATION_AND_GRAPH.md.snapshot",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-REP-GRAPH-20260910-FEEDBACK",
+      "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/user-feedback.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-IMPLEMENTATION-PLAN-20260910",
+      "path": "projects/architecture-evolution/runs/run-20260909t190818z-8ada1df3337b/implementation-design.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-IMPLEMENTATION-20260910-1",
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/IMPLEMENTATION_CONTENT.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-IMPLEMENTATION-20260910-2",
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/EVIDENCE_MAINTENANCE_CONTENT.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-IMPLEMENTATION-20260910-3",
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/WORKBENCH_VALIDATION_CONTENT.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    },
+    {
+      "source_id": "SRC-ARCH-IMPLEMENTATION-20260910-4",
+      "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/FINAL_VALIDATION.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "context_role": "project"
+    }
+  ]
+}

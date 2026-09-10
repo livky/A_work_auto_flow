@@ -1,0 +1,13 @@
+{
+  "refs": [
+    {
+      "target_kind": "record",
+      "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+      "revision": 1,
+      "sha256": "c02a192f776612703c207c87281da52ee3d323ab2110c9f72ba4ad7129ca2fdd",
+      "locator": "完整固定正文",
+      "relation": "references"
+    }
+  ],
+  "budget": 30000
+}

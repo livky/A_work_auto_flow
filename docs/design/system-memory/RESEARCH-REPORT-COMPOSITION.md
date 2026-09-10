@@ -1,4 +1,9 @@
 # 连贯研究报告：实现与验收计划
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：2026-09-09 的 v2 map.report 连贯报告编排；后续 v3 改为独立章节和双文稿，旧格式保持兼容。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../../ARCHITECTURE.md)、[研究记录标准](../../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 本轮根据用户对“研究经过”拼凑感的反馈实施。上一版虽然保留了 L1–L4 正文，却直接按存储层级拼成页面，并在正文前后再次显示结构化字段，产生重复、缺少衔接和层级导航抢占阅读顺序。目标是读者无需理解记忆系统也能阅读一份完整技术报告。
 

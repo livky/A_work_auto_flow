@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "request_id": "093a3290-25e0-4f6b-9b73-c957434315a4",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex /root/retrieval_review actual AI"
+  },
+  "owner_id": "RES-F3-TANK",
+  "expected_head": "COM-983b6bd1-a703-4ef7-98ef-76c774695329",
+  "operations": [
+    {
+      "op": "put_record",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RES-F3-TANK",
+        "kind": "document",
+        "title": "SYNTHETIC F3 水箱完整过程",
+        "body_markdown": "",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "水箱"
+        ],
+        "payload": {
+          "audience": "合成检查执行者",
+          "common_refs": [
+            {
+              "revision": 1,
+              "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+              "locator": "",
+              "target_kind": "record",
+              "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+              "revision": 2,
+              "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+              "locator": "",
+              "relation": "references"
+            },
+            {
+              "revision": 1,
+              "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+              "locator": "",
+              "target_kind": "record",
+              "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+              "relation": "references"
+            }
+          ],
+          "document_type": "research_process",
+          "missing_refs": [],
+          "purpose": "SYNTHETIC F3固定双文稿维护检查",
+          "scope": "固定模型r2、定义r1与饱和输入r1；仅合成参数下的代数分析，人工与科学验收未完成",
+          "section_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+              "revision": 2,
+              "sha256": "34ecafeff6026b5a5784518f154c5558f135a1b93128ff42aa7731596f650399",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "revision": 1,
+            "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+            "revision": 2,
+            "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+            "locator": "",
+            "relation": "references"
+          },
+          {
+            "revision": 1,
+            "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "A09显式创建旧r1依据的合成文稿基线；不是恢复真实历史",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "change_reason": "实际阅读新饱和约束、模型r2和公开文稿影响后，局部同步固定章节与适用边界；保留旧r1"
+      },
+      "record_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+      "expected_revision": 1
+    }
+  ]
+}

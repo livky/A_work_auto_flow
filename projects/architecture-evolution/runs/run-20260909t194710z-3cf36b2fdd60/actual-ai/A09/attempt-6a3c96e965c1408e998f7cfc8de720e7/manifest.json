@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "scenario": {
+    "id": "A09",
+    "title": "无旧边新反证与维护",
+    "task": "对一份没有旧关系边的新反证生成维护计划，实际阅读正文与受影响材料，逐项决定保留、修订、重综合、撤回或暂缓。通过review/apply保存并回读，保留历史与未检查区域。",
+    "human_priority": "core",
+    "expectations": [
+      {
+        "id": "A09-E1",
+        "text": "未把缺少旧边误判成没有影响，并核对实际上下文交付"
+      },
+      {
+        "id": "A09-E2",
+        "text": "AI填写真实身份、阅读与理由，不冒领人工或科学确认"
+      },
+      {
+        "id": "A09-E3",
+        "text": "固定计划依据、CAS和幂等生效，保存/索引/复核及待办分别回读"
+      }
+    ],
+    "initial_status": "not-run"
+  },
+  "created_at": "2026-09-09T21:14:54.900823Z",
+  "attempt_id": "attempt-6a3c96e965c1408e998f7cfc8de720e7",
+  "parent_attempt": null,
+  "task": {
+    "path": "task.txt",
+    "sha256": "c8c3ca3f0032d01a1cc98808ae1f208d418b0e57912dcf813e196fc03af18319"
+  },
+  "template_sha256": "08e4f243c5ff6c4a4889967323e1e62af2c55c8ebc5879d78f4fcb6ddb71cb77",
+  "actor": "Codex /root/retrieval_review actual AI",
+  "model": null,
+  "context_mode": "continuous",
+  "input_environment": {
+    "fixture": {
+      "fixture": "F3-independent-actual-AI-v1",
+      "root": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+      "owners": {
+        "tank": "RES-F3-TANK",
+        "retry": "RES-F3-RETRY",
+        "saturation": "RES-F3-SATURATION"
+      },
+      "sources": {
+        "tank": {
+          "source_id": "SRC-F3-TANK",
+          "path": "research/tank/data/合成 输入.md",
+          "enabled": true,
+          "sensitivity": "internal",
+          "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7"
+        },
+        "retry": {
+          "source_id": "SRC-F3-RETRY",
+          "path": "research/retry/data/合成 输入.md",
+          "enabled": true,
+          "sensitivity": "internal",
+          "sha256": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f"
+        },
+        "saturation": {
+          "source_id": "SRC-F3-SATURATION",
+          "path": "research/saturation/data/合成 输入.md",
+          "enabled": true,
+          "sensitivity": "internal",
+          "sha256": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f"
+        }
+      },
+      "refs": {
+        "tank_definitions": {
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "locator": "",
+          "kind": "record",
+          "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a"
+        },
+        "tank_model": {
+          "revision": 1,
+          "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+          "locator": "",
+          "kind": "record",
+          "id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885"
+        },
+        "tank_section": {
+          "revision": 1,
+          "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+          "locator": "",
+          "kind": "record",
+          "id": "MEM-59e96850-644f-5a1a-9817-000499466692"
+        },
+        "retry": {
+          "revision": 1,
+          "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+          "locator": "",
+          "kind": "record",
+          "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4"
+        },
+        "saturation": {
+          "revision": 1,
+          "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+          "locator": "",
+          "kind": "record",
+          "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef"
+        }
+      },
+      "legacy_refs": {
+        "tank_definitions": {
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "locator": "",
+          "target_kind": "record",
+          "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "relation": "references"
+        },
+        "tank_model": {
+          "revision": 1,
+          "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+          "locator": "",
+          "target_kind": "record",
+          "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+          "relation": "references"
+        },
+        "tank_section": {
+          "revision": 1,
+          "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+          "locator": "",
+          "target_kind": "record",
+          "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+          "relation": "references"
+        },
+        "retry": {
+          "revision": 1,
+          "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+          "locator": "",
+          "target_kind": "record",
+          "target_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+          "relation": "references"
+        },
+        "saturation": {
+          "revision": 1,
+          "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+          "locator": "",
+          "target_kind": "record",
+          "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+          "relation": "references"
+        }
+      },
+      "record_owners": {
+        "tank_definitions": "RES-F3-TANK",
+        "tank_model": "RES-F3-TANK",
+        "tank_section": "RES-F3-TANK",
+        "retry": "RES-F3-RETRY",
+        "saturation": "RES-F3-SATURATION"
+      },
+      "index_result": {
+        "index_status": "indexed",
+        "owners": [
+          {
+            "owner_id": "RES-F3-RETRY",
+            "generation": 1,
+            "index_status": "indexed",
+            "fts": {
+              "status": "indexed",
+              "indexed_generation": 1,
+              "changed_entries": 0,
+              "removed_entries": 0,
+              "unchanged": true
+            },
+            "vector": {
+              "status": "disabled",
+              "indexed_generation": null,
+              "reason": "调用方显式关闭向量"
+            },
+            "state": {
+              "owner_id": "RES-F3-RETRY",
+              "indexed_generation": 1,
+              "vector_generation": null,
+              "target_generation": 1,
+              "fts_status": "indexed",
+              "vector_status": "disabled",
+              "encoder_version": null,
+              "vector_collection": null,
+              "native_fingerprint": "30126a569a80473ab8dd4f980c11d3949c56892434f7ab44bf2c8b2253cd0076",
+              "dependency_signature": "1f8ffbf316a763aa6eb8374691a70aa67804fc1e03438ae24931e21e8adc275f",
+              "vector_signature": null,
+              "error": "{\"code\":\"CAPABILITY_UNAVAILABLE\",\"details\":{},\"errors\":[],\"message\":\"未配置本地向量后端\"}",
+              "updated_at": "2026-09-09T21:02:13.499631Z",
+              "projection_version": "memory-v3-technical-description-documents"
+            },
+            "missing": [],
+            "error": null,
+            "elapsed_seconds": 0.011384400000679307
+          },
+          {
+            "owner_id": "RES-F3-SATURATION",
+            "generation": 1,
+            "index_status": "indexed",
+            "fts": {
+              "status": "indexed",
+              "indexed_generation": 1,
+              "changed_entries": 0,
+              "removed_entries": 0,
+              "unchanged": true
+            },
+            "vector": {
+              "status": "disabled",
+              "indexed_generation": null,
+              "reason": "调用方显式关闭向量"
+            },
+            "state": {
+              "owner_id": "RES-F3-SATURATION",
+              "indexed_generation": 1,
+              "vector_generation": null,
+              "target_generation": 1,
+              "fts_status": "indexed",
+              "vector_status": "disabled",
+              "encoder_version": null,
+              "vector_collection": null,
+              "native_fingerprint": "1251acc280b3db3ab12f3b0d97039feb33f7e9625cedb52f8c4ab19211c896c6",
+              "dependency_signature": "8cfa32b3e2caeb8b49a3cf82eb53b6d595c430ed1a7f5ddbaa28bd0b4bf5069e",
+              "vector_signature": null,
+              "error": "{\"code\":\"CAPABILITY_UNAVAILABLE\",\"details\":{},\"errors\":[],\"message\":\"未配置本地向量后端\"}",
+              "updated_at": "2026-09-09T21:02:13.515898Z",
+              "projection_version": "memory-v3-technical-description-documents"
+            },
+            "missing": [],
+            "error": null,
+            "elapsed_seconds": 0.007868900007451884
+          },
+          {
+            "owner_id": "RES-F3-TANK",
+            "generation": 3,
+            "index_status": "indexed",
+            "fts": {
+              "status": "indexed",
+              "indexed_generation": 3,
+              "changed_entries": 0,
+              "removed_entries": 0,
+              "unchanged": true
+            },
+            "vector": {
+              "status": "disabled",
+              "indexed_generation": null,
+              "reason": "调用方显式关闭向量"
+            },
+            "state": {
+              "owner_id": "RES-F3-TANK",
+              "indexed_generation": 3,
+              "vector_generation": null,
+              "target_generation": 3,
+              "fts_status": "indexed",
+              "vector_status": "disabled",
+              "encoder_version": null,
+              "vector_collection": null,
+              "native_fingerprint": "52adfc2af72e6d3ec184ea08041a271b7d349a726eabebb839b8c8a833c9f200",
+              "dependency_signature": "13dca9b32ee770d877f0080a83154fbb9e16533ae163bb6fbf6a96cd24b0b5d9",
+              "vector_signature": null,
+              "error": "{\"code\":\"CAPABILITY_UNAVAILABLE\",\"details\":{},\"errors\":[],\"message\":\"未配置本地向量后端\"}",
+              "updated_at": "2026-09-09T21:02:13.539394Z",
+              "projection_version": "memory-v3-technical-description-documents"
+            },
+            "missing": [],
+            "error": null,
+            "elapsed_seconds": 0.008455899995169602
+          }
+        ],
+        "removed_owners": [],
+        "pending_removals": [],
+        "canonical_writes": 0
+      },
+      "source_markers": "SYNTHETIC F3",
+      "canonical_api": "workspace_cli.py --root TARGET memory validate-draft/commit/inspect",
+      "initial_associations": [],
+      "initial_scientific_reviews": [],
+      "execution": "synthetic inputs saved, no physical experiment"
+    },
+    "source_generation": "Independent AI-authored SYNTHETIC premises; no F1 labels imported",
+    "context": "continuous; same executing AI authored premises; not a blinded or fresh-context test",
+    "source_fingerprints": {
+      "automation\\scripts\\workspace_cli.py": "7ac41817fa1b11740c90731da8f5b3cf0c5b28654f7f0cffdebc865152630128",
+      "automation\\scripts\\material_query\\coordinator.py": "52a814e8d0defb8624b29c84096eb3dfba44a9ab406b78ab26b67593a22723c0",
+      "automation\\scripts\\material_query\\assembly.py": "6ce1a9078a1daf54b5b9b5435decd9351fffe535b7715067d91886c6814717dd",
+      "automation\\testing\\ai_review.py": "03a7ebae9eba2926b99ede36e32bc5995882066b65e2708ffd7e6c99b08ee2c2"
+    }
+  },
+  "execution": "not-run",
+  "mechanical_checks": "not-run",
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "note": "Initial states are immutable; subsequent evidence is in uniquely named events."
+}

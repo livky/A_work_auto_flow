@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query and memory CLI",
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\delivered\\historical-process.md",
+  "locator": "完整公开返回投影，已在工具输出中实际呈现并阅读",
+  "coverage": "full",
+  "observation": "读完历史完整过程 r1 投影，确认旧正文和旧引用保留，仅额外提示已有新修订，没有静默更新历史。"
+}

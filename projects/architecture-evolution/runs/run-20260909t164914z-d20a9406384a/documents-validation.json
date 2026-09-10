@@ -1,0 +1,28 @@
+{
+  "valid": true,
+  "errors": [],
+  "dry_run": true,
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "head": {
+    "commit_id": "COM-cea3b468-185a-4d1a-8fcd-26b553deb1dc",
+    "generation": 2,
+    "manifest_hash": "ba3682ad948f70c9ea6ceb0346b1fce2e5000c08130856e5bc6ef0ad968fb956"
+  },
+  "record_results": [
+    {
+      "client_key": "PROCESS",
+      "record_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+      "revision": 1,
+      "content_hash": "9852f26da758176cd48f73bac8724fc8d27f1070b85dad7d7324036542307e59",
+      "status": "would_create"
+    },
+    {
+      "client_key": "BRIEF",
+      "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+      "revision": 1,
+      "content_hash": "57e72d21ec19a17948da08849e67354ee42f2920b32dde5f54b99eb4a95f243c",
+      "status": "would_create"
+    }
+  ],
+  "writes": 0
+}

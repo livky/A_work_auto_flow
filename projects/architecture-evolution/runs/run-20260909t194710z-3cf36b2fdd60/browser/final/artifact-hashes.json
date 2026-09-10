@@ -1,0 +1,32 @@
+[
+  {
+    "file": "asset-manifest.json",
+    "sha256": "74874066efbc0c3a117c001bd4cffe4ec4488bd4d832fce3710c6dc4088c52b7",
+    "bytes": 11891
+  },
+  {
+    "file": "component-tests.json",
+    "sha256": "28394e416c605784e86b72f6c16b3662a4b2eb41e3803802eacfe44c72ef943d",
+    "bytes": 4422
+  },
+  {
+    "file": "material-query-desktop.png",
+    "sha256": "b7e752dbcd86957f764a21bf7c70d22af3de7e887aa57a4aef421610cfb99bfd",
+    "bytes": 117830
+  },
+  {
+    "file": "material-query-narrow.png",
+    "sha256": "36d8e9a90c5252d68feee9cef12dc908809efd3b4b96f5326d8921db150bfea6",
+    "bytes": 46522
+  },
+  {
+    "file": "material-query-storage.png",
+    "sha256": "4d352fdcb7c9a761f48a1064da6af34b7aee9894e0b78ad339692971872e7f40",
+    "bytes": 99413
+  },
+  {
+    "file": "playwright.json",
+    "sha256": "5fe9d7daf394d1e40b7a4415b96e7f59afa68897e92e39f0498dcc1c3231c1c1",
+    "bytes": 5212
+  }
+]

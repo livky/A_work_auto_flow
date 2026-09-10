@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T155125Z-2961BDF175A8",
+  "scope": "图、关联与逐步检索对抽象能力边界的启示；设计推论尚未经本地实验验证。",
+  "retrieved_at_utc": "2026-09-09T15:54:44Z",
+  "selection_limit": 6,
+  "local_experiments_executed": false,
+  "sources": [
+    {
+      "source_id": "GRAPH-S1",
+      "title": "From RAG to Memory: Non-Parametric Continual Learning for Large Language Models",
+      "authors": [
+        "Bernal Jiménez Gutiérrez",
+        "Yiheng Shu",
+        "Weijian Qi",
+        "Sizhe Zhou",
+        "Yu Su"
+      ],
+      "publication_date": "2025-07",
+      "publication_date_note": "ICML proceedings date range: 2025-07-13 to 2025-07-19.",
+      "examined_version": "arXiv 2502.14802v2, 2025-06-19",
+      "source_type": "primary_conference_paper",
+      "url": "https://proceedings.mlr.press/v267/gutierrez25a.html",
+      "supporting_urls": [
+        "https://arxiv.org/html/2502.14802v2"
+      ],
+      "sections_examined": [
+        "Methods",
+        "Retrieval evaluation",
+        "Error analysis",
+        "Table 12",
+        "Appendix G"
+      ],
+      "summary_en": "HippoRAG 2 combines phrase and passage seeds for graph propagation and retrieves original passages. Its reported retrieval gains are benchmark and model dependent, with indexing costs above dense retrieval. The method suggests interchangeable seeding and graph ranking behind stable provenance and budget controls; a ranking score does not establish truth.",
+      "local_status": "method_and_reported_results_inspected; not_reproduced",
+      "summary_word_count": 50
+    },
+    {
+      "source_id": "GRAPH-S2",
+      "title": "LightRAG: Simple and Fast Retrieval-Augmented Generation",
+      "authors": [
+        "Zirui Guo",
+        "Lianghao Xia",
+        "Yanhua Yu",
+        "Tu Ao",
+        "Chao Huang"
+      ],
+      "publication_date": "2025-11",
+      "publication_date_note": "Findings of EMNLP 2025, pages 10746–10761; no day specified.",
+      "examined_version": "ACL Anthology 2025.findings-emnlp.568",
+      "source_type": "primary_conference_paper",
+      "url": "https://aclanthology.org/2025.findings-emnlp.568/",
+      "supporting_urls": [
+        "https://aclanthology.org/2025.findings-emnlp.568.pdf"
+      ],
+      "sections_examined": [
+        "Dual-level retrieval",
+        "Evaluation",
+        "Table 1",
+        "Ablations"
+      ],
+      "summary_en": "LightRAG combines entity-oriented and higher-level relational retrieval. The published evaluation uses judged answer preferences across four datasets and does not uniformly beat GraphRAG. These results motivate selectable representations and retrieval routes, but do not demonstrate source recall, factual validity, or universal superiority. Material abstraction must remain separate from review status.",
+      "local_status": "method_and_reported_results_inspected; not_reproduced",
+      "summary_word_count": 50
+    },
+    {
+      "source_id": "GRAPH-S3",
+      "title": "LightRAG — QueryParam (lightrag/base.py)",
+      "authors": [
+        "HKUDS/LightRAG contributors"
+      ],
+      "publication_date": null,
+      "publication_date_note": "Rolling repository file; no fixed publication date asserted.",
+      "examined_version": "main branch observed 2026-09-09 UTC; commit not pinned",
+      "source_type": "official_source_code",
+      "url": "https://github.com/HKUDS/LightRAG/blob/main/lightrag/base.py",
+      "supporting_urls": [
+        "https://raw.githubusercontent.com/HKUDS/LightRAG/main/lightrag/base.py"
+      ],
+      "sections_examined": [
+        "QueryParam"
+      ],
+      "summary_en": "The current query configuration exposes retrieval modes, entity and chunk limits, context token allocations, optional reranking, and context-only responses. This provides a concrete example of separating retrieval controls from answer generation. These settings are implementation observations rather than a stable upstream contract or evidence of an enforced request-wide execution budget.",
+      "local_status": "source_inspection_only; rolling_version",
+      "summary_word_count": 50
+    },
+    {
+      "source_id": "GRAPH-S4",
+      "title": "Introducing DRIFT Search: Combining global and local search methods to improve quality and efficiency",
+      "authors": [
+        "Julian Whiting",
+        "Zachary Hills",
+        "Alonso Guevara Fernández",
+        "Ha Trinh",
+        "Adam Bradley",
+        "Jonathan Larson"
+      ],
+      "publication_date": "2024-10-31",
+      "examined_version": "Microsoft Research release article",
+      "source_type": "official_primary_technical_report",
+      "url": "https://www.microsoft.com/en-us/research/blog/introducing-drift-search-combining-global-and-local-search-methods-to-improve-quality-and-efficiency/",
+      "supporting_urls": [],
+      "sections_examined": [
+        "Step-by-step process",
+        "Benchmarking",
+        "Future research directions"
+      ],
+      "summary_en": "DRIFT starts from community reports and refines answers through local follow-up questions. The reported experiment compares judged comprehensiveness and diversity on fifty questions over an AP news collection. Its two-iteration setting belongs to the 2024 report, not an enduring API requirement. This evaluation does not establish factual accuracy or authorization isolation.",
+      "local_status": "official_report_inspected; not_reproduced",
+      "summary_word_count": 51
+    },
+    {
+      "source_id": "GRAPH-S5",
+      "title": "DRIFT Search — GraphRAG documentation",
+      "authors": [
+        "Microsoft GraphRAG maintainers"
+      ],
+      "publication_date": null,
+      "publication_date_note": "Individual page publication date not disclosed.",
+      "examined_version": "Official documentation observed 2026-09-09 UTC",
+      "source_type": "official_documentation",
+      "url": "https://microsoft.github.io/graphrag/query/drift_search/",
+      "supporting_urls": [],
+      "sections_examined": [
+        "Methodology",
+        "Configuration"
+      ],
+      "summary_en": "The official documentation describes a primer, follow-up expansion, and an output hierarchy. It identifies query state, a context builder, and a tokenizer among configurable components. This supports treating iterative retrieval as an explicit stateful process, while leaving the choice of expansion policy and representation order replaceable.",
+      "local_status": "documentation_inspection_only",
+      "summary_word_count": 46
+    },
+    {
+      "source_id": "GRAPH-S6",
+      "title": "DRIFTSearch — search.py",
+      "authors": [
+        "Microsoft GraphRAG contributors"
+      ],
+      "publication_date": null,
+      "publication_date_note": "Rolling repository file; no fixed publication date asserted.",
+      "examined_version": "main branch observed 2026-09-09 UTC; commit not pinned",
+      "source_type": "official_source_code",
+      "url": "https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/drift_search/search.py",
+      "supporting_urls": [
+        "https://raw.githubusercontent.com/microsoft/graphrag/main/packages/graphrag/graphrag/query/structured_search/drift_search/search.py"
+      ],
+      "sections_examined": [
+        "search loop",
+        "Query state serialization",
+        "SearchResult usage accounting"
+      ],
+      "summary_en": "The inspected search loop is bounded by configured depth, selects a limited set of incomplete actions, and exits when no actions remain. It serializes query state and aggregates model calls and tokens. Consumption accounting should not be mistaken for a hard request-wide budget checked before every operation.",
+      "local_status": "source_inspection_only; rolling_version",
+      "summary_word_count": 47
+    }
+  ]
+}

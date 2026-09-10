@@ -3,6 +3,7 @@ import { api, type Job, type Capabilities } from "./api";
 import { Relations } from "./Relations";
 import { Evidence } from "./Evidence";
 import { Memory } from "./Memory";
+import { MaterialQuery } from "./MaterialQuery";
 import { Modal } from "./components";
 type Status = {
   root: string;
@@ -17,6 +18,7 @@ type Status = {
 // 功能注册是编译时确定的导航；添加页面不需要动态执行第三方插件。
 export const pages = [
   { id: "home", title: "工作台", icon: "◫" },
+  { id: "materials", title: "材料查询", icon: "▦" },
   { id: "relations", title: "材料关系", icon: "◇" },
   { id: "evidence", title: "证据与影响", icon: "▤" },
   { id: "memory", title: "系统记忆", icon: "▥" },
@@ -195,7 +197,9 @@ export default function App() {
               </button>
             </div>
           )}
-          {page === "memory" ? (
+          {page === "materials" ? (
+            <MaterialQuery />
+          ) : page === "memory" ? (
             <Memory />
           ) : page === "relations" ? (
             <Relations revision={revision} error={setMessage} launch={launch} />

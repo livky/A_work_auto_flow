@@ -1,0 +1,18 @@
+{
+  "valid": true,
+  "errors": [],
+  "dry_run": true,
+  "owner_id": "RES-F3-TANK",
+  "head": null,
+  "record_results": [
+    {
+      "client_key": "tank-definitions",
+      "record_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+      "revision": 1,
+      "content_hash": "cd5734f455619944ab212df1481de905501591758e356a19df38c11a1fcca75f",
+      "status": "would_create"
+    }
+  ],
+  "writes": 0
+}
+

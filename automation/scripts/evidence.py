@@ -84,6 +84,35 @@ def reference_path(root, target):
     # legacy path reference must not bypass a newer source-registration denial.
     if any(not item.get("enabled", True) or item.get("sensitivity") == "restricted" for item in entries):
         raise ValueError("证据来源登记已禁用或限制访问")
+    # A moved historical Run keeps its original bytes, including file locators.
+    # Resolve only an explicit per-file registration when that original is
+    # absent. Never guess by basename, replace an existing original, or follow
+    # a chain of redirects. The pinned digest makes this a location repair,
+    # rather than silently accepting different evidence under an old name.
+    if not path.exists() and registry.is_file():
+        moved = [item for item in read(registry).get("sources", [])
+                 if item.get("relocated_from") == target]
+        if moved:
+            if len(moved) != 1:
+                raise ValueError("历史来源迁移登记不唯一")
+            item = moved[0]
+            if not item.get("enabled", True) or item.get("sensitivity") == "restricted":
+                raise ValueError("历史来源迁移登记已禁用或限制访问")
+            pinned = item.get("sha256")
+            if not isinstance(pinned, str) or not HASH.fullmatch(pinned):
+                raise ValueError("历史来源迁移登记缺少固定指纹")
+            destination = (root / item["path"]).absolute()
+            if any(parent.is_symlink() or (parent.exists() and getattr(parent.lstat(), "st_file_attributes", 0) & 0x400)
+                   for parent in [destination, *destination.parents]):
+                raise ValueError("历史来源迁移目标含符号链接或联接")
+            destination = destination.resolve()
+            destinations = [entry for entry in read(registry).get("sources", [])
+                            if (root / entry["path"]).resolve() == destination]
+            if any(not entry.get("enabled", True) or entry.get("sensitivity") == "restricted" for entry in destinations):
+                raise ValueError("历史来源迁移目标已禁用或限制访问")
+            if not destination.is_file() or sha256(destination) != pinned:
+                raise ValueError("历史来源迁移目标缺失或固定指纹不匹配")
+            return destination
     if path.is_relative_to(root.resolve()):
         return path
     if len(entries) != 1:

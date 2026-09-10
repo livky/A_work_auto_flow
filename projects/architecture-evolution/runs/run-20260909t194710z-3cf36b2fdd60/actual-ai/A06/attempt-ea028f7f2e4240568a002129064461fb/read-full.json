@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/memory_review actual AI",
+  "origin": "public material-query search --assemble",
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-47b56f1236744402a0d66f61a6eabce2\\stdout.txt",
+  "locator": "assembly 全部五个内容部分，四个独立固定记录",
+  "coverage": "full",
+  "observation": "已在工具输出实际读完水箱模型r2（原线性推导和新增饱和边界）、必要定义r1、APIr1、饱和输入r1；定义作为直接与必要上下文重复出现，不算独立证据。核对变量单位、API缺少状态方程、幂等/超时限制及水箱特定参数不可达。组包ok、complete=true；无现实试验。"
+}

@@ -1,0 +1,191 @@
+{
+  "config": {
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "e2e/material-query.spec.ts",
+      "--grep",
+      "材料查询真实HTTP|真实预算耗尽"
+    ],
+    "configFile": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\playwright.config.ts",
+    "rootDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/共享桌面/A_work/A_work_auto_flow/automation/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../../tmp/workbench-e2e.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "material-query.spec.ts",
+      "file": "material-query.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "材料查询真实HTTP组装四区、固定依据与来源映射",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: 材料查询沙盒退出 1：Traceback (most recent call last):\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\serve_memory_test.py\", line 94, in <module>\r\n    main()\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\serve_memory_test.py\", line 23, in main\r\n    fixture = materialize(Path(temporary)/\"���� ����ɳ��\", isolation_root=temporary)\r\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\memory_fixture.py\", line 247, in materialize\r\n    generated.rename(path.parent)\r\n  File \"pathlib.py\", line 1363, in rename\r\nPermissionError: [WinError 5] �ܾ����ʡ�: 'D:\\\\��������\\\\A_work\\\\A_work_auto_flow\\\\.local\\\\memory-browser-qtuav7tt\\\\���� ����ɳ��\\\\core-algorithms\\\\synthetic-18' -> 'D:\\\\��������\\\\A_work\\\\A_work_auto_flow\\\\.local\\\\memory-browser-qtuav7tt\\\\���� ����ɳ��\\\\core-algorithms\\\\�ϳ��㷨'\r\n",
+                    "stack": "Error: 材料查询沙盒退出 1：Traceback (most recent call last):\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\serve_memory_test.py\", line 94, in <module>\r\n    main()\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\serve_memory_test.py\", line 23, in main\r\n    fixture = materialize(Path(temporary)/\"���� ����ɳ��\", isolation_root=temporary)\r\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\memory_fixture.py\", line 247, in materialize\r\n    generated.rename(path.parent)\r\n  File \"pathlib.py\", line 1363, in rename\r\nPermissionError: [WinError 5] �ܾ����ʡ�: 'D:\\\\��������\\\\A_work\\\\A_work_auto_flow\\\\.local\\\\memory-browser-qtuav7tt\\\\���� ����ɳ��\\\\core-algorithms\\\\synthetic-18' -> 'D:\\\\��������\\\\A_work\\\\A_work_auto_flow\\\\.local\\\\memory-browser-qtuav7tt\\\\���� ����ɳ��\\\\core-algorithms\\\\�ϳ��㷨'\r\n\n    at ChildProcess.<anonymous> (D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:45:12)",
+                    "location": {
+                      "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                      "column": 12,
+                      "line": 45
+                    },
+                    "snippet": "  43 |     process.on(\"exit\", (code) => {\n  44 |       clearTimeout(timeout);\n> 45 |       fail(Error(`材料查询沙盒退出 ${code}：${output}`));\n     |            ^\n  46 |     });\n  47 |   });\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                        "column": 12,
+                        "line": 45
+                      },
+                      "message": "Error: 材料查询沙盒退出 1：Traceback (most recent call last):\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\serve_memory_test.py\", line 94, in <module>\r\n    main()\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\serve_memory_test.py\", line 23, in main\r\n    fixture = materialize(Path(temporary)/\"���� ����ɳ��\", isolation_root=temporary)\r\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"D:\\��������\\A_work\\A_work_auto_flow\\automation\\tests\\memory_fixture.py\", line 247, in materialize\r\n    generated.rename(path.parent)\r\n  File \"pathlib.py\", line 1363, in rename\r\nPermissionError: [WinError 5] �ܾ����ʡ�: 'D:\\\\��������\\\\A_work\\\\A_work_auto_flow\\\\.local\\\\memory-browser-qtuav7tt\\\\���� ����ɳ��\\\\core-algorithms\\\\synthetic-18' -> 'D:\\\\��������\\\\A_work\\\\A_work_auto_flow\\\\.local\\\\memory-browser-qtuav7tt\\\\���� ����ɳ��\\\\core-algorithms\\\\�ϳ��㷨'\r\n\n\n  43 |     process.on(\"exit\", (code) => {\n  44 |       clearTimeout(timeout);\n> 45 |       fail(Error(`材料查询沙盒退出 ${code}：${output}`));\n     |            ^\n  46 |     });\n  47 |   });\n  48 | });\n    at ChildProcess.<anonymous> (D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts:45:12)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:37:41.324Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\test-results\\material-query-材料查询真实HTTP组装四区、固定依据与来源映射\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\test-results\\material-query-材料查询真实HTTP组装四区、固定依据与来源映射\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend\\e2e\\material-query.spec.ts",
+                    "column": 12,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-7de1a56ebcd8df7dd1e8",
+          "file": "material-query.spec.ts",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "真实预算耗尽显示停止原因并保留查询范围",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-09T20:37:42.473Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "f737e0768dc6528311c1-5427513d154c2d506817",
+          "file": "material-query.spec.ts",
+          "line": 181,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-09T20:37:40.490Z",
+    "duration": 2002.359,
+    "expected": 0,
+    "skipped": 1,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

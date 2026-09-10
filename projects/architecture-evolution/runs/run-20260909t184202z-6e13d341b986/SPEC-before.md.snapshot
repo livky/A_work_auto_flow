@@ -1,0 +1,204 @@
+# 抽象接口契约 v0.1
+
+本版将已讨论的十二组功能转成方法签名、字段、状态和调用规则。编号沿用用户本轮引用的⑤–⑨：G03 表示、G04 索引、G05 召回、G06 排序、G07 关系、G08 编排、G09 上下文。旧讨论表格的行序不作为接口 ID。
+
+状态：**设计定义完成，运行适配待实施**。`contract_types.py` 与 `contract_ports.py` 可导入检查，但产品未调用这些新 Protocol。当前实际程序改动是 Project 默认记录策略与 Research 对齐。完整来源和实际验证固定于 `RUN-20260909T164914Z-D20A9406384A`。
+
+阅读入口：[核心简版](CORE.md)、[逐函数目录](FUNCTIONS.md)、[数据类型目录](DATATYPES.md)、[实现与验收](IMPLEMENTATION.md)。Python 签名是字段类型来源，本页是行为语义来源；新版本需一起核对，不允许只改某一份。
+
+## 1. 输入来源与知识属性
+
+**来源**是原件、Run、规范记录/claim、技术块或表示的固定引用。**知识属性**描述内容属于什么、曾有什么结果、如何判断适用性。它们不是同一种“输入类型”，也不需要为每种属性建立独立存储或搜索函数。
+
+| 类型 | 所有者与最小语义 | 不能从中推断什么 |
+|---|---|---|
+| FixedRef / EvidenceLink | 固定目标/版本/指纹/定位；另标 input、supports、contradicts 等关系 | hash 正确不等于结论正确；同源多表示不构成独立证据 |
+| KnowledgeFacets | 角色、实际尝试、适用条件、反例、确信评估及分类依据 | unknown 不变成成功；失败不意味着来源无价值 |
+| EvidenceAssessment | 证据服务按当前时点、用途与适用域计算；列出已评估/未解决 claim | 历史 accepted 不自动覆盖新正文、其他 claim 或其他工况 |
+| CorpusScope | owner、kind、L0–L4、来源、时间、属性、包含/排除 | 项目归属不自动是语料过滤；语料范围不授予权限 |
+| RepresentationSpec | 请求表示、允许的回退顺序和缺失处理 | 摘要不一定更快；缺少摘要不能把截断正文改名冒充 |
+| ReadBasis | 实际 owner HEAD、来源固定引用和读取时点/一致性 | 多个 HEAD 不等于全库事务快照 |
+
+角色可多选。第一性原理用 `role=principle` 加 `principle_kind`，区分定义、数学前提、已推导不变量、物理规律模型和工程假设，保留证明或适用依据。确信程度绑定具体目标、评估者和方法；数值概率必须给校准依据。未实施评估时可用 unknown，不把排序分数放到概率字段。
+
+`FacetFilter` 的不同字段取 AND，同一字段取 OR；例如 failure + experience + valid 表示这三个条件都满足。字段为 null 表示不限制，空数组表示空集合，不能被适配器当成“搜索全部”。启用某个过滤且值未知时默认不匹配，只有显式 include_unknown 才纳入并标注。结构角色和尝试结果使用实际分类依据；复核、当前有效性与正式准入由 G12 再计算，索引只负责可下推的候选过滤。
+
+“非常确定的事实”等 UI 预设展开为有版本的 FacetFilter + 用途/适用域，不新增混合等级枚举。涉及多个 claim 的记录不能因其中一个 accepted 就整体成为确定事实；按匹配 claim 返回或明确列出未评估部分。
+
+## 2. 共同调用约定
+
+所有端口接收可信应用装配的 `CallContext`，携带访问、累计预算和取消句柄。actor 名称、网页文本、模型结果或用户提交的字段本身不等于授权凭据。句柄不是新的数据库；同进程内可以是注册对象键，传输适配器负责绑定真实上下文。
+
+有效范围遵守：
+
+\[
+S_{\mathrm{effective}}=(S_{\mathrm{request}}\cap S_{\mathrm{ceiling}}\cap S_{\mathrm{authorized}})\setminus E_{\mathrm{persistent}}.
+\]
+
+其中三个集合分别为当前请求范围、起始允许扩展上限、实际授权范围；\(E_{\mathrm{persistent}}\) 是全程保留的排除集合。主动扩大 owners/time 等维度只能在 QuerySpec.expansion_axes 中获允许的方向进行，角色/结果等硬筛选不随扩展自动取消。显式包含也不能覆盖排除或授权拒绝。
+
+`Outcome[T]` 统一表达 ok / partial / rejected / failed。ok 必须有值；partial 必须有已完成值和具体 Issue；rejected 不返回业务值；failed 可在诊断中说明最后确定的状态，但不能捏造成功回执。业务缺口通过有类型字段返回，异常堆栈不作为公共错误协议。诊断不得泄漏调用方不可见对象的信息。
+
+批量只读操作可以部分返回，逐项说明缺失；单 owner 内容事务不能以 partial 表示“部分提交”。跨 owner 整理可以 partial，列出真正完成的提交和待办对象。截止时间、取消、索引落后和无候选是不同状态。
+
+序列化规定：UTF-8 JSON；tuple 对应数组；UTC 使用 RFC 3339 `Z`；bytes 不直接外传；NewType 在 JSON 中为字符串，SHA 为 64 位小写十六进制；禁止 NaN/Infinity，bool 不能充当整数。新增可选字段需声明兼容版本；新增必填字段、语义或枚举变更需新契约版本。表示名采用注册键，可预留而未实现；未注册键报 UNSUPPORTED，不能任意解释为路径、模型或 SQL。
+
+## 3. G03 表示维护
+
+六种基础表示为 original/full/section/unit_digest/topic_synthesis/domain_synthesis；lexical_card 可用于召回特征，relation_graph、research_process、research_report 由视图或关系端口呈现。它们与 L0–L4 的内容职责独立。
+
+1. `RepresentationCatalog.list` 按固定内容与请求键返回 available/stale/missing/unsupported。缺失项没有虚构 FixedRef。
+2. `read` 读取已有表示及真实来源。所有贡献来源必须在本次范围和授权内；跨范围综合不能只检查综合文件自己的标签。
+3. `RepresentationBuilder.plan` 固定源版本、生成器版本、表示选择和范围，估计工作是否在预算内。
+4. `build` 执行固定计划，返回纯派生表示或内容草案。新解释、综合与正式摘要由 G02 保存为新内容版本，之后才可以进入索引；构建器不自行改写正式知识。
+
+已有 L1 检索说明、规范 representation、summary.save 的 L3/L4 和研究文稿属于版本内容；它们的索引行才是可重建投影。纯机械关键词摘取、分词、向量和邻接加速可重建，但须保留生成器与来源指纹。可重建不等于可以绕过源权限。
+
+## 4. G04 变化与索引生命周期
+
+`ChangeReader.read` 有界返回提交变化和游标，不加载全部正文。`IndexLifecycle.status` 只检查水位；`plan/execute` 统一增量、重建和补偿三种工作。
+
+- 增量使用 changes 页；全量重建使用 ContentReader 的 contents 页，不能假定历史变化流永久保存了所有对象。repair 可以使用其中一种明确输入；同时缺失或同时提供报 INVALID_ARGUMENT。
+- 计划绑定 IndexKey（通道、表示、模型/编码器/分词版本及维度）、输入版本和下一页位置；只更新派生后端，不能删除原件或规范内容。
+- 每页可重试，按 plan_id 与事件身份幂等。失败项未完成前不能把全页水位推进为完整；回执列出 completed/pending 和续接入口。全量重建先形成完整的新代次再切换，不用半成品代替当前完整索引。
+- 内容提交回执和索引回执分别保存。索引失败走原计划补偿，不重复执行业务提交。当前内容可固定回读，不代表其新版本已经被索引召回。
+- 固定历史查询不静默切换最新版；要求 current 而索引不能满足时，按显式补偿预算修复或返回 STALE/partial。最终回源只验证已找到候选，不能据此证明未召回的新记录已经覆盖。
+
+首期基于现有提交代次与待补偿信息实现拉取，不先引入消息队列。索引覆盖描述依赖真实源集合，不将单个整数 generation 当作所有后端的共同水位。当前兼容模型与 384 维升级边界不因这里存在 dimension 字段而改变。
+
+## 5. G05 候选召回
+
+`RecallProvider.capabilities` 声明支持的通道、表示、过滤、语法、新鲜度与取消能力；`recall(RecallRequest)` 返回 CandidateBatch。
+
+算法输入是 QuerySpec 的当前范围/表示与本通道候选上限。输出至少包含规范内容 FixedRef、真正命中的表示 FixedRef、通道/策略版本、原始分数及含义、匹配片段、来源水位和续接游标。身份、词法、稠密、稀疏、图召回共用这个结果边界。
+
+尽量先下推范围、权限和元数据过滤。无法下推但能在预算内通过适配器满足时，回执说明额外读取；否则拒绝硬约束。缺少全文表示不能把当前 retrieval_description 的 FTS 当作全文实现。没有命中、通道不可用和预算耗尽分别表达。
+
+首期绑定现有身份、SQLite FTS 与 Qdrant 召回，暂不引入新模型。稀疏、多向量与图传播算法通过注册能力预留；未实现返回 UNSUPPORTED，不提供空跑成功。
+
+## 6. G06 去重、融合与排序
+
+`RankingPipeline.rank` 是应用入口；内部四个窄策略分别变化：
+
+1. `deduplicate` 按固定规范身份合并多表示命中，同时保留全部 ChannelHit。同名不合并，不同版本不合并；哈希相同但出处不同也要保留沿袭关系。
+2. `fuse` 合并多路候选相关性，保留原分数及方法版本。RRF 可以作为首期基线，权重/融合方法由注册策略替换。
+3. `rerank` 使用调用方明确提供的有界 TextSlice 进行昂贵重排；不得隐藏启动新的召回。模型调用和文本量纳入共享预算。
+4. `select` 按最终数量和多样性规则选择，保留未选与缺失原因。相似度、多样性或排序分数不修改任何复核状态。
+
+正式用途由 G12 在最终截断前准入；合格项不足时由 G08 决定补召回。不能先取 K 个，再把不合格项过滤光，最后宣称语料没有答案。排序策略本身不写规范内容，也不决定“结论是否真实”。
+
+## 7. G07 关系导航
+
+`neighbors` 返回有界邻居；`paths` 查找种子与目标之间的有界路径；`suggest_links` 只返回 proposed 关联。采纳或正式支持关系通过 G02/G12 保存。
+
+GraphSlice 包含节点、关系类型、方向、固定两端、路径 edge_id、依据和差异。accepted_navigation 表示已采纳导航，不等于 verified_claim；结构相似必须说明不可迁移之处。图浏览和图候选召回复用该端口，遍历使用不同策略即可。
+
+每次展开前检查节点及聚合表示的实际可读性；来源撤销、失效或版本变化标记缺口。图跳数按起始种子累计，不能通过嵌套调用或续查重置。原文直接可答时不强制走图。
+
+## 8. G08 渐进检索编排
+
+`search` 初始化请求，`ExpansionPolicy.next_step` 根据 SearchProgress 返回 recall/navigate/deepen/stop；`resume` 验证已保存游标后继续。游标是不透明状态引用，绑定原请求、范围、排除、版本、策略和预算账本，不能由调用方自行拼装。
+
+建议首期执行步骤：
+
+```text
+规范化输入，核验 scope 与能力，建立累计预算和读取依据
+while 未停止:
+    由 ExpansionPolicy 返回下一动作及理由
+    申请本动作额度；不足则保留已完成结果并停止
+    召回 / 关系导航 / 读取更详细表示
+    核验候选证据准入，去重、融合、按需重排
+    保存已访问版本、真实消耗、水位和缺口
+    满足输出需求或无新增证据时停止；否则在允许方向继续
+对已选固定候选构建上下文，保存完整回执与可续接状态
+```
+
+两个独立方向是扩大语料与深入表示。角色、失败结果等筛选保持不变，除非另起显式修改后的查询。切换到当前源版本应形成新的读取依据；keep_fixed 失败时明确报告，restart_on_current 保留原查询作为前序记录。新增预算须显式授权并在原账本记入，不能以新请求 ID 获得隐式无限额度。
+
+StopReason 区分 sufficient/exhausted/no_gain/budget/cancelled/missing_source/stale/unsupported/denied/error。sufficient 是策略在当前任务下的判定，不是科学证明。记录可审计动作、子问题和缺口即可，不依赖模型私有思维过程。
+
+## 9. G09 上下文组装
+
+`ContextBuilder.build` 只接收已经选择的 FixedRef、ReadBasis、用途、范围及 ContextOptions。
+
+先复核来源与当前可读性，再读取指定表示。展开技术块时自动补齐 requires_block_ids 定义，消除同源重复，保留条件、反例和限制，按预算输出。必要定义被排除或预算不足时，返回缺口，不将不完整结果标为完整。
+
+ContextPacket 返回实际文字、来源、所用版本、遗漏和字符数；字符预算约束真正输出的正文。若模型参与压缩，则其输入/输出 token 另入账，且压缩解释不得冒充原文。组装器不另起隐蔽搜索；发现不足交还 G08。
+
+## 10. 其他必要端口
+
+- G01 批量元数据、固定读取、分页、旧 Ref 解析。拒绝版本漂移和未登记原件；同一范围不会因入口不同被丢弃。
+- G02 分级校验、单 owner 提交、历史与恢复。DraftDocument 委托已注册 v3 schema 校验，避免复制现有业务 payload；验证凭据绑定完整批次哈希/依据，提交仍重新核验授权和 CAS。恢复生成新修订。撤回、替代、归档是 ChangeBatch 动作，不另建十几个 delete 函数。
+- G10 列出和呈现已有全文/分层/摘要/文稿/图视图。研究过程和简版报告引用相同固定技术单元，组织方式独立；读取不隐式研究或生成新结论。
+- G11 整理计划与执行/状态。策略可授权正式修订，实际新引用从 CommitReceipt.changes 的 client_key 映射取得，再执行新复核与索引维护。跨 owner 每项独立提交，partial 精确列出完成与待办；recover 模式新建恢复计划，不倒退 HEAD。
+- G12 授权范围、有效性评估、追加复核与下游影响。复核绑定具体新内容/claim、适用域及依据；来源的 accepted 不自动传给新推论。校验通过、执行成功和结论复核分别记录。
+
+## 11. 调用与状态所有权
+
+```mermaid
+flowchart TD
+    UI[现有工作台 / CLI / AI] --> APP[应用入口与依赖装配]
+    APP --> S[G08 查询编排]
+    APP --> V[G10 阅读视图]
+    APP --> M[G11 策略整理]
+    APP --> C[G02 内容命令]
+    APP --> P[G03 表示维护]
+    APP --> I[G04 索引维护]
+    S --> E[G12 证据与范围]
+    S --> R[G05 候选召回]
+    S --> K[G06 排序]
+    S --> G[G07 关系导航]
+    S --> B[G09 上下文]
+    S --> P
+    S --> I
+    R --> IX[派生索引后端]
+    G --> IX
+    B --> F[G01 固定读取]
+    B --> E
+    V --> F
+    V --> G
+    V --> E
+    M --> F
+    M --> C
+    M --> E
+    M --> P
+    M --> I
+    P --> F
+    P --> E
+    I --> F
+    I --> CH[G04 变化读取]
+    I --> IX
+    C --> E
+    C --> DB[G02 版本存储]
+    F --> DB
+    CH --> DB
+```
+
+图是运行调用，不代表模块互相导入具体实现。领域规则依赖 Protocol，文件/SQLite/Qdrant 等适配器实现 Protocol，启动入口完成装配。G08 只有在请求允许按预算补偿/构建时才调用 G03/G04；新解释草案交回应用或 G11/G02 保存，不由搜索暗中提交。
+
+| 状态 | 唯一维护者 | 读者 |
+|---|---|---|
+| 内容、修订、HEAD、单 owner 原子性 | G02 RevisionStore | G01、G04 变化读取、G12 |
+| 新解释是否提交、类型规则 | G02 ContentCommands | 应用、G11 |
+| 派生表示生成版本与依赖 | G03 | G04、G05、G09 |
+| 索引代次、水位和待补偿项 | G04 | G05、G08、应用 |
+| 查询计划、续接、原始排除 | G08 | 调用方、评估与反馈 |
+| 实际授权与复核/有效性 | G12 | 所有读写入口 |
+| 整理计划、跨 owner 完成与恢复步骤 | G11 | 应用、人工审查 |
+| 累计预算、预约、取消 | ExecutionControl | 每个执行端口 |
+
+`ExecutionControl.reserve/settle/check_cancelled` 是共享控制，不是第十三个业务功能。每个耗时/模型/IO 阶段执行前预约上界，执行后结算真实消耗并释放未用额度。elapsed_ms 为计时信息，额度主要受 deadline 控制；不将各并行阶段耗时相加冒充端到端延迟。底层无法强制取消时，必须声明能力并按更保守的调用上界执行或拒绝严格请求。
+
+## 12. 错误、兼容与未实现行为
+
+| 公共错误 | 必要处理 |
+|---|---|
+| INVALID_ARGUMENT / INVALID_SCHEMA | 返回字段位置，未执行写入；空集合不当无限范围 |
+| NOT_FOUND / SOURCE_MISSING / ACCESS_DENIED | 显式缺口；不改读其他版本或通过摘要绕过 |
+| VERSION_MISMATCH / BASIS_CHANGED / CONFLICT | 保留原计划，重新准备；不得覆盖新修改 |
+| UNSUPPORTED / INDEX_STALE | 声明实际能力；只有明确允许才回退或补偿 |
+| BUDGET_EXHAUSTED / CANCELLED | 返回已完成结果、消耗与停止位置，续接不重置预算 |
+| INDEX_PENDING / PARTIAL_FAILURE | 内容或部分步骤已完成，重试原索引/整理计划，不重复内容提交 |
+| IDEMPOTENCY_MISMATCH | 相同 request_id 对应不同语义，拒绝执行 |
+
+v0.1 的既有入口适配先保留 Q/CTX/QMEM/PKT 及六字段 Ref，稳定字段通过转换映射，未知硬字段返回错误。层、表示、语料范围和 applicability_scope 不混用。此版本不改写历史 record_hash、不强制迁移现有数据，也不承诺任意数据库或模型可直接替换。实现落点和可验证标准见 [IMPLEMENTATION.md](IMPLEMENTATION.md)。

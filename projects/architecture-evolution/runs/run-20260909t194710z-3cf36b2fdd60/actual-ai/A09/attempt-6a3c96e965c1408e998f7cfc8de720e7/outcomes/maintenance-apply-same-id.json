@@ -1,0 +1,88 @@
+{
+  "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\calls\\call-55abd190b5af4644ba16ed54f00c0c55",
+  "exit_code": 2,
+  "result": {
+    "status": "partial",
+    "value": {
+      "commits": [
+        [
+          "RES-F3-TANK",
+          "COM-525a8d2a-122a-44fb-a5c0-01a3e1cfd3fe"
+        ]
+      ],
+      "pending_items": [],
+      "index_status": "pending",
+      "recovery_receipt": ".local/material-query/plans/MP-1c92d2ce-1cb4-44ea-b4ec-c3f882bec6c7/apply/d9b6718f-ee70-4d97-a9b8-380e2689c9de/start.json"
+    },
+    "code": null,
+    "warnings": [
+      "规范内容已保存，索引尚待补偿；使用memory reconcile重试投影，不重复业务写入"
+    ],
+    "consumed": {
+      "wall_ms": 109,
+      "read_bytes": 32552,
+      "output_chars": 0,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": null,
+    "basis": {
+      "consistency": "cross_owner_optimistic",
+      "index_watermarks": [],
+      "owner_heads": [
+        [
+          "RES-F3-SATURATION",
+          "COM-4a163fb0-43b8-45b1-b946-50faa4d66659"
+        ],
+        [
+          "RES-F3-TANK",
+          "COM-2e6ae517-4db7-4b0a-a914-6aa0e02d6785"
+        ]
+      ],
+      "refs": [
+        {
+          "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+          "kind": "record",
+          "locator": "",
+          "revision": 1,
+          "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada"
+        },
+        {
+          "id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+          "kind": "record",
+          "locator": null,
+          "revision": 1,
+          "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc"
+        },
+        {
+          "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "kind": "record",
+          "locator": null,
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d"
+        },
+        {
+          "id": "SRC-F3-SATURATION",
+          "kind": "file",
+          "locator": "完整合成输入",
+          "revision": null,
+          "sha256": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f"
+        },
+        {
+          "id": "SRC-F3-TANK",
+          "kind": "file",
+          "locator": "完整合成输入",
+          "revision": null,
+          "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7"
+        }
+      ]
+    }
+  }
+}

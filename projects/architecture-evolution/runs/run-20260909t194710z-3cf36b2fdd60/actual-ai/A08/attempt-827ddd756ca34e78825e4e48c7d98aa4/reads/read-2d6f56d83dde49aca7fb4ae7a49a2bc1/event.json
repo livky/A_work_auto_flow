@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query CLI",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "实际工具呈现的完整交付投影；coverage 描述所交付内容相对于材料的覆盖",
+  "coverage": "full",
+  "observation": "读完水箱完整章节，定义、连续质量守恒、比例控制、clip和未饱和误差解均在交付内容中。",
+  "recorded_at": "2026-09-09T21:12:56.246430Z",
+  "capture_sha256": "b7a5e1a1ac8ddc3d345054d13a7fcf03993b688963c0f14e09fd5f49ad370aa8",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

@@ -1,0 +1,16 @@
+{
+  "error": {
+    "code": "INVALID_SCHEMA",
+    "message": "记忆草案验证失败",
+    "details": {},
+    "errors": [
+      {
+        "code": "INVALID_SCHEMA",
+        "path": "/payload/blocks/0/role",
+        "message": "Value is outside enum"
+      }
+    ]
+  },
+  "save_status": "not_committed"
+}
+

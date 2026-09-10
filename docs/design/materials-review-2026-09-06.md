@@ -1,4 +1,9 @@
 # 可读性与材料维护审查（2026-09-06）
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../ARCHITECTURE.md)、[研究记录标准](../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 范围：当前工作区根目录及全部子目录的规则、文档、配置、模板、五份工作流源、CLI、PowerShell 包装器和测试；历史研究底稿作为来源记录保留。未访问或导入外部业务材料，未修改个人技能目录。根目录约定优先用于解决工作区规则冲突，不用于判定算法事实真伪。
 

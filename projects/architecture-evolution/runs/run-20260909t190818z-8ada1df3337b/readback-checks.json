@@ -1,0 +1,18 @@
+{
+  "PROCESS": {
+    "revision": 4,
+    "complete": true,
+    "missing": []
+  },
+  "BRIEF": {
+    "revision": 4,
+    "complete": true,
+    "missing": []
+  },
+  "head": {
+    "commit_id": "COM-52c496ee-ed2b-4d44-9d63-9933778f5dae",
+    "generation": 12,
+    "manifest_hash": "ea811c8ad3e1c2af4b9d82cfd4022285c7b2eae5a9a19201903b937b85a6a805"
+  },
+  "human_review": "pending"
+}

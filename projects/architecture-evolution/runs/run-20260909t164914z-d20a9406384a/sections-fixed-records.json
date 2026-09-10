@@ -1,0 +1,90 @@
+{
+  "MAP": {
+    "target_kind": "record",
+    "target_id": "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba",
+    "revision": 1,
+    "sha256": "107639da186fccf4d556927af9bc733921f7f569422b9e55c07518549dd82c36",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "P0": {
+    "target_kind": "record",
+    "target_id": "MEM-07f99619-3a8d-5bc8-8a4f-7cc26c68895b",
+    "revision": 1,
+    "sha256": "1c13f045d9661b7e46c085a801a467f6984d40cb2cd83e79b9d0fd2e9e5aa876",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "P1": {
+    "target_kind": "record",
+    "target_id": "MEM-0ea4cb73-8b6d-5a0a-9e18-25d8f8832389",
+    "revision": 1,
+    "sha256": "605063c592e11648da97b447e5f610400dfe91b9f95978dbb4736729fc06bc8a",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "P2": {
+    "target_kind": "record",
+    "target_id": "MEM-bfa85fc8-18bc-5d83-b17e-a4cfaa50f943",
+    "revision": 1,
+    "sha256": "23d0d79f5cf7f872b3599c683ba7ff8b620842e1e3d7245e3fd1fa37cd88772d",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "P3": {
+    "target_kind": "record",
+    "target_id": "MEM-de3fa8e3-8175-513e-9570-93f73d8fe2e1",
+    "revision": 1,
+    "sha256": "f6de9864145ed4def6f83a10b0dbf2f4d1d924a02cb9146717ac0a7b17de290b",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "P4": {
+    "target_kind": "record",
+    "target_id": "MEM-433a097e-6cf5-5ff3-baf5-1e0a47e7b9c5",
+    "revision": 1,
+    "sha256": "d656e5073cab9061bcdb3f147233937e1290c5a77859e70955e11f39d9330f15",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "P5": {
+    "target_kind": "record",
+    "target_id": "MEM-fd727af8-77a1-5900-918d-3bf0bc808a3a",
+    "revision": 1,
+    "sha256": "954b8ab94dda711c4e277551cdfd8d6aeb5b547b74b72e81d8042f20d01a2f6f",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "P6": {
+    "target_kind": "record",
+    "target_id": "MEM-2afc5e96-c1d0-5f3a-8ad1-484f39e6d27d",
+    "revision": 1,
+    "sha256": "5daa19a02daaeb4f6933c7d14a06c130354f70d7067561974e23f2444818a641",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "P7": {
+    "target_kind": "record",
+    "target_id": "MEM-12ab4fe8-bee3-5179-a3ef-e7ddaed461a2",
+    "revision": 1,
+    "sha256": "7097978cd3aa2797f21fb94e00aa22960ac2eab0e6876f6ac4afa067c9e709d4",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "B0": {
+    "target_kind": "record",
+    "target_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+    "revision": 1,
+    "sha256": "c54916f1e6d2a8fcf1f3197147b320a3b3c7f779eb2a80546caf96e431f3b5e3",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "B1": {
+    "target_kind": "record",
+    "target_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+    "revision": 1,
+    "sha256": "37636e55845600daaa1e67f3e1e1ec4cf328a23e28e461119fbfedb3a000a474",
+    "locator": "完整固定正文",
+    "relation": "references"
+  }
+}

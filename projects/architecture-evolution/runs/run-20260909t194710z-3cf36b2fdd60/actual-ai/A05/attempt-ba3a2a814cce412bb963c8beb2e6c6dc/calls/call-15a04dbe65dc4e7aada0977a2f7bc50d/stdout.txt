@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "owner_id": "RES-F3-TANK",
+  "document": {
+    "record_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+    "revision": 2,
+    "title": "SYNTHETIC F3 水箱完整过程",
+    "document_type": "research_process",
+    "purpose": "SYNTHETIC F3固定双文稿维护检查",
+    "audience": "合成检查执行者",
+    "scope": "固定模型r2、定义r1与饱和输入r1；仅合成参数下的代数分析，人工与科学验收未完成",
+    "common_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 2,
+        "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+        "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 2,
+        "sha256": "34ecafeff6026b5a5784518f154c5558f135a1b93128ff42aa7731596f650399",
+        "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "changes": [],
+  "affected_section_ids": [],
+  "uncovered_unit_ids": [],
+  "scientific_review": "not_evaluated",
+  "basis_heads": {
+    "RES-F3-TANK": "COM-7d0a2539-e2b6-4c77-b04a-d22956f47baf",
+    "RES-F3-SATURATION": "COM-4a163fb0-43b8-45b1-b946-50faa4d66659"
+  },
+  "metrics": {
+    "elapsed_ms": 34.89,
+    "inventory_owners": 3,
+    "read_memory_owners": 2,
+    "parsed_owner_records": 7,
+    "resolved_sections": 2
+  },
+  "writes": 0
+}
+

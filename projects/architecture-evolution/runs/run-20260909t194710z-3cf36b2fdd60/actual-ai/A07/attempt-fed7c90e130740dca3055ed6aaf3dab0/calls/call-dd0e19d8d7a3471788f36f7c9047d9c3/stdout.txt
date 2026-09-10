@@ -1,0 +1,192 @@
+{
+  "status": "ok",
+  "value": [
+    {
+      "ref": {
+        "key": "original",
+        "version": "1"
+      },
+      "title": "原始材料",
+      "purpose_description": "已登记L0原件或固定受控摘录",
+      "rules": [
+        {
+          "section_name": "原始材料",
+          "selectors": [
+            "source.content"
+          ],
+          "required": true,
+          "relations": [
+            "contains",
+            "depends_on"
+          ]
+        }
+      ],
+      "output_sections": [
+        "原始材料",
+        "来源与缺口"
+      ],
+      "generation": "never"
+    },
+    {
+      "ref": {
+        "key": "full",
+        "version": "1"
+      },
+      "title": "完整研究内容",
+      "purpose_description": "技术单元全文或研究过程文稿，保留定义与限制",
+      "rules": [
+        {
+          "section_name": "完整正文",
+          "selectors": [
+            "detail.blocks",
+            "document.sections"
+          ],
+          "required": true,
+          "relations": [
+            "contains",
+            "depends_on"
+          ]
+        }
+      ],
+      "output_sections": [
+        "完整正文",
+        "必要上下文",
+        "来源与缺口"
+      ],
+      "generation": "never"
+    },
+    {
+      "ref": {
+        "key": "section",
+        "version": "1"
+      },
+      "title": "相关章节与技术块",
+      "purpose_description": "选定章节/技术块及其必需定义",
+      "rules": [
+        {
+          "section_name": "相关内容",
+          "selectors": [
+            "detail.blocks",
+            "document_section.content"
+          ],
+          "required": true,
+          "relations": [
+            "contains",
+            "depends_on"
+          ]
+        }
+      ],
+      "output_sections": [
+        "相关内容",
+        "必要定义",
+        "来源与缺口"
+      ],
+      "generation": "never"
+    },
+    {
+      "ref": {
+        "key": "unit_digest",
+        "version": "1"
+      },
+      "title": "单元摘要",
+      "purpose_description": "已有检索说明或经验结构字段的模板组合",
+      "rules": [
+        {
+          "section_name": "问题",
+          "selectors": [
+            "detail.retrieval_description",
+            "experience.recommendation",
+            "experience.applicability"
+          ],
+          "required": true,
+          "relations": [
+            "contains",
+            "depends_on"
+          ]
+        }
+      ],
+      "output_sections": [
+        "问题",
+        "方法与结果",
+        "限制",
+        "来源与缺口"
+      ],
+      "generation": "never"
+    },
+    {
+      "ref": {
+        "key": "topic",
+        "version": "1"
+      },
+      "title": "主题材料",
+      "purpose_description": "主题地图、已有简报与明确关联的限制/反证",
+      "rules": [
+        {
+          "section_name": "主题内容",
+          "selectors": [
+            "map",
+            "document.sections"
+          ],
+          "required": true,
+          "relations": [
+            "contains",
+            "depends_on"
+          ]
+        }
+      ],
+      "output_sections": [
+        "主题内容",
+        "差异与限制",
+        "来源与缺口"
+      ],
+      "generation": "draft_only"
+    },
+    {
+      "ref": {
+        "key": "domain",
+        "version": "1"
+      },
+      "title": "领域材料",
+      "purpose_description": "选定主题并列组合；新的统一解释需要审查",
+      "rules": [
+        {
+          "section_name": "逐主题材料",
+          "selectors": [
+            "map",
+            "document.sections"
+          ],
+          "required": true,
+          "relations": [
+            "contains",
+            "depends_on"
+          ]
+        }
+      ],
+      "output_sections": [
+        "逐主题材料",
+        "差异与限制",
+        "来源与缺口"
+      ],
+      "generation": "draft_only"
+    }
+  ],
+  "code": null,
+  "warnings": [],
+  "consumed": {
+    "wall_ms": 0,
+    "read_bytes": 0,
+    "output_chars": 0,
+    "candidates": 0,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "graph_hops": 0,
+    "model_tokens": 0,
+    "model_calls": 0,
+    "model_input_tokens": 0,
+    "model_output_tokens": 0,
+    "rerank_items": 0
+  },
+  "stop_reason": null,
+  "basis": null
+}
+

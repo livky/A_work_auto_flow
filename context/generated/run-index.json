@@ -1,5 +1,258 @@
 [
   {
+    "run_id": "RUN-20260909T151004Z-A68FBA9F176D",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "按实现核对文档演进并建立模块影响图",
+    "created_at": "2026-09-09T15:10:04Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "架构演进",
+      "文档一致性",
+      "技术单元",
+      "影响图"
+    ],
+    "question": "底层记忆已演进到v3技术单元与独立双文稿，哪些现行文档仍沿用历史说明；如何维护模块变化到文档、检索、工作流、测试和迁移的影响？",
+    "conclusion": "按当前代码完成文档和导航同步，保存八模块影响图v1、全量时间盘点及维护规则。文档任务执行完成；quick整体不完整，历史fixture三项差异与人工待审保留，不代表产品或业务全面验收。",
+    "parent_run_ids": [],
+    "path": "projects/architecture-evolution/runs/run-20260909t151004z-a68fba9f176d/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260909T155125Z-2961BDF175A8",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "检索与存储抽象能力讨论及前沿证据调研",
+    "created_at": "2026-09-09T15:51:25Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "接口边界",
+      "检索",
+      "版本存储",
+      "自动整理",
+      "架构设计"
+    ],
+    "question": "如何建立检索、版本存储、视图和自动整理的稳定抽象功能，并为讨论后的接口、数据结构与调用关系设计确定边界？",
+    "conclusion": "完成检索、版本存储、表示、视图和策略整理的功能讨论稿，给出六种材料表示、十二组能力及候选结构和调用关系；正式接口定稿与产品实现待后续讨论。",
+    "parent_run_ids": [],
+    "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "抽象接口契约设计与Project分层记录默认规则",
+    "created_at": "2026-09-09T16:49:14Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "接口契约",
+      "分层记录",
+      "表示索引",
+      "检索编排"
+    ],
+    "question": "如何定义十二组解耦契约，并让所有Project默认按研究标准保存实质工作与文稿？",
+    "conclusion": "完成十二组接口/字段/调用设计、Project默认策略调整及24条规范分层/文稿保存回读；检索运行适配未实施。",
+    "parent_run_ids": [
+      "RUN-20260909T155125Z-2961BDF175A8"
+    ],
+    "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260909T175530Z-40721B975BDB",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "扩充核心接口说明：概念定义、存储维护与查询闭环",
+    "created_at": "2026-09-09T17:55:30Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "接口说明",
+      "表示维护",
+      "索引维护"
+    ],
+    "question": "怎样让CORE解释清楚材料表示、索引维护和有明确输入输出的完整闭环？",
+    "conclusion": "完成CORE扩写与受影响规范正文、章节、地图和双文稿r2同步；r1回读不变。",
+    "parent_run_ids": [
+      "RUN-20260909T164914Z-D20A9406384A"
+    ],
+    "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260909T184202Z-6E13D341B986",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "表示组合、经验联想与AI和图维护分工设计",
+    "created_at": "2026-09-09T18:42:02Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "表示类型",
+      "经验联想",
+      "图维护"
+    ],
+    "question": "表示怎样组合现有层与文稿，怎样增加经验联想，AI和工具如何维护内容及关系图？",
+    "conclusion": "形成类型/实例/组合、联想通道、AI分工和图生命周期提案，同步核心L1、3章、地图及双文稿r3；新字段待下一版契约。",
+    "parent_run_ids": [
+      "RUN-20260909T175530Z-40721B975BDB"
+    ],
+    "path": "projects/architecture-evolution/runs/run-20260909t184202z-6e13d341b986/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260909T190818Z-8ADA1DF3337B",
+    "project_id": null,
+    "title": "表示查询接口与工作台首期实施及测试设计",
+    "created_at": "2026-09-09T19:08:18Z",
+    "status": "completed",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "接口契约",
+      "工作台",
+      "表示类型",
+      "联想",
+      "语义维护",
+      "测试设计"
+    ],
+    "question": "如何将表示查询、联想加深、语义维护和工作台收敛为可实施接口及完整测试计划？",
+    "conclusion": "完成v0.2实施准备和70项待执行用例；产品实现未开始。",
+    "parent_run_ids": [
+      "RUN-20260909T184202Z-6E13D341B986"
+    ],
+    "path": "projects/architecture-evolution/runs/run-20260909t190818z-8ada1df3337b/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260909T193424Z-94CB7B841F02",
+    "project_id": null,
+    "title": "正式开发计划完整性与文件对齐核对",
+    "created_at": "2026-09-09T19:34:24Z",
+    "status": "completed",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "开发准备",
+      "文件清单",
+      "P0门槛",
+      "一致性核对"
+    ],
+    "question": "现有正式开发计划是否齐全，涉及哪些文件，各入口是否对齐？",
+    "conclusion": "可启动P0；补齐逐文件清单并修正入口/计时/代理边界，明确未完成的工程基线。",
+    "parent_run_ids": [
+      "RUN-20260909T190818Z-8ADA1DF3337B"
+    ],
+    "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+    "project_id": null,
+    "title": "表示查询与语义维护首期正式开发",
+    "created_at": "2026-09-09T19:47:10Z",
+    "status": "completed",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "表示查询",
+      "固定引用",
+      "范围硬上限",
+      "累计预算",
+      "局部证据",
+      "语义维护",
+      "Windows升级",
+      "双文稿"
+    ],
+    "question": "怎样实现表示查询与语义维护首期，并按继承行为、实际AI使用和旧工作区升级分别验证？",
+    "conclusion": "P0-P6首期实现和整合执行完成。full原始596/599通过，两项补测关闭；既有B01指纹故障保留。双文稿r5公开回读完整并完成实际UI自查。",
+    "parent_run_ids": [],
+    "path": "projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260910T050158Z-028371C48C3A",
+    "project_id": null,
+    "title": "修复浮点研究章节读取与全局检索索引覆盖",
+    "created_at": "2026-09-10T05:01:58Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "浮点",
+      "索引",
+      "文稿"
+    ],
+    "question": "当前浮点研究为何不可读、不可检索，数据库是否损坏？",
+    "conclusion": "数据库完整性正常；修复缺失来源及旧Run路径映射，恢复双文稿和全文/向量索引，用户查询返回候选且无索引覆盖警告。",
+    "parent_run_ids": [],
+    "path": "projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260910T063103Z-902DA8123205",
+    "project_id": null,
+    "title": "本地登记与索引覆盖全面审计及工作台人工验收安排",
+    "created_at": "2026-09-10T06:31:03Z",
+    "status": "succeeded",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "登记",
+      "索引覆盖",
+      "人工验收"
+    ],
+    "question": "核对本地登记与索引覆盖，并安排工作台及实际AI人工验收。",
+    "conclusion": "完成只读覆盖审计和人工验收准备；历史缺口、权限排除与旧snapshot解析缺口显式保留。",
+    "parent_run_ids": [],
+    "path": "projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
     "run_id": "RUN-20260908T201214Z-D0AB308F66AD",
     "project_id": null,
     "title": "求和探索01：大数与小增量的顺序影响",

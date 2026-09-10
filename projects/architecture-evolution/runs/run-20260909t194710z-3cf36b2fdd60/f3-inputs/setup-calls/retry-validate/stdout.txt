@@ -1,0 +1,18 @@
+{
+  "valid": true,
+  "errors": [],
+  "dry_run": true,
+  "owner_id": "RES-F3-RETRY",
+  "head": null,
+  "record_results": [
+    {
+      "client_key": "retry",
+      "record_id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+      "revision": 1,
+      "content_hash": "3d2acacc0b97fe948bde83abdb1807f2d310fd83cdb5c267e59c105a1bb8862f",
+      "status": "would_create"
+    }
+  ],
+  "writes": 0
+}
+

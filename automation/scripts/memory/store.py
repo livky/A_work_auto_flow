@@ -333,8 +333,14 @@ class MemoryStore:
                               "receipt": receipt if committed else None, "recovery_ref": recovery_ref}) from exc
         finally:
             # Only remove our exact lock. A different token must remain intact.
+            # Bounded adapters reserve a small cleanup allowance so cancellation
+            # cannot prevent ownership verification and strand our own lock.
             try:
-                if self.read_json(lock_path) == lock:
+                if self.read_lock_for_cleanup(lock_path) == lock:
                     lock_path.unlink()
             except (MemoryError, OSError):
                 pass
+
+    def read_lock_for_cleanup(self, path):
+        """Cleanup hook; normal callers keep the original verified JSON read."""
+        return self.read_json(path)

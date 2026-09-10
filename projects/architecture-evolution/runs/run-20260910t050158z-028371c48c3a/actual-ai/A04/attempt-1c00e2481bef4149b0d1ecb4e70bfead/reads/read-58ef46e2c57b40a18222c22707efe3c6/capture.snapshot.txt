@@ -1,0 +1,81 @@
+{
+  "batches": {
+    "repair-units": [
+      {
+        "record_id": "MEM-2c7941ed-b272-573c-ad70-2c7739ccac99",
+        "revision": 1,
+        "sha256": "b2423bd7037468bb6f57e64bea17b37ffef80c92cb41c52a10e282108b67f6d3"
+      },
+      {
+        "record_id": "MEM-26530097-97fa-53bd-a5cc-cbe9ce73ec19",
+        "revision": 1,
+        "sha256": "8dae88fd6de4c8750f342a3b6e8191217d2efb5e1a4bd7b7bf5b7a4c560865d5"
+      },
+      {
+        "record_id": "MEM-7928b224-07c3-5b29-afa5-88af44b98607",
+        "revision": 1,
+        "sha256": "89ca27397f14f2e390b57133e80fcd3662a38d4537adbfc8db1ca72783dd4b5a"
+      }
+    ],
+    "repair-sections": [
+      {
+        "record_id": "MEM-a23c4417-10d8-59a0-8967-1314131c5e28",
+        "revision": 1,
+        "sha256": "5419442bf9b4932c36a7399f6c57e103bca191810ad42bfb18ddcd51896b656e"
+      },
+      {
+        "record_id": "MEM-07d8a202-977c-50ed-b88b-01ea1e7b651d",
+        "revision": 1,
+        "sha256": "bf5e06a7664c6915671d08a5a0ef43de825b141fc6c223e2a823aa72c8141177"
+      }
+    ],
+    "repair-documents-map": [
+      {
+        "record_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+        "revision": 6,
+        "sha256": "5724ca79ae87fede77fd121969d1f690849e4bb1b1e5772923e896077d932945"
+      },
+      {
+        "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+        "revision": 6,
+        "sha256": "81db4674a642b9f6471445bf5923cfecc333b85627dbd6a6d4ef459c96b8008c"
+      },
+      {
+        "record_id": "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba",
+        "revision": 6,
+        "sha256": "49a39d96774db826444488a6b87dbb6c6b5dcc78736847bcb037fa5c78e04f27"
+      }
+    ]
+  },
+  "documents": {
+    "floating-process-final": {
+      "complete": true,
+      "missing": 0,
+      "sections": 8
+    },
+    "floating-report-final": {
+      "complete": true,
+      "missing": 0,
+      "sections": 4
+    },
+    "project-process-final": {
+      "complete": true,
+      "missing": 0,
+      "sections": 12
+    },
+    "project-brief-final": {
+      "complete": true,
+      "missing": 0,
+      "sections": 4
+    }
+  },
+  "frozen_files": 152,
+  "fixture_mismatches": [
+    {
+      "source": "details/README.md",
+      "expected": "2e601360f7322303db589c7d09e231e5f25d8215d23bde21a8e48be97888ac59",
+      "actual": "f707bbf3f17a74af7b1898ca05d0c065483664b1e75f71eac5460d3258b74b69"
+    }
+  ],
+  "tested_program_bytes_match": true
+}

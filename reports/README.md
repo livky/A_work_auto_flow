@@ -20,3 +20,5 @@ reports/
 ```
 
 首次获得公司 PPT/Word 模板后，使用对应文档/演示技能建立经过渲染验证的模板，而不是仅复制主题色。
+
+研究对象内的“完整过程”和“简版报告”由规范 document/document_section 编排，固定引用 L1 技术单元；L4 仍保存知识地图。它们是研究阅读与局部修订入口，输出 PPT/PDF/Word 等交付件时仍需本目录的 brief、manifest、固定证据和视觉检查。旧 map.report 保留兼容，新文稿维护方法见 [分层记录标准](../docs/RESEARCH_RECORDING.md#连贯报告的编排)。

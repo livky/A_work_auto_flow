@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "public material-query maintenance-apply",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "完整阅读公开应用结果：ok、commits为空、pending_items为空、indexed；实际read_bytes非零，保留原固定basis与owner_heads。",
+  "recorded_at": "2026-09-09T23:04:35.651393Z",
+  "capture_sha256": "fb22b6483f5e45dfd08eb0dc16299e96453ad967832ae6e769a49a467befde5c",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

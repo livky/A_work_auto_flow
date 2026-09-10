@@ -1,10 +1,26 @@
 # 检索、上下文选择与反馈手册
 
-正式结论导出新增 `retrieve-context --purpose formal --scope "适用范围"`，只装载通过版本/复核/依赖检查的结论，purpose/scope 在扩展链保持。默认 exploration 继续读取原材料并显示跨文档风险。详细格式、复核与封存入口见 [证据准入手册](EVIDENCE_CONTROLS.md)。
+现行说明核对日期：2026-09-09。当前同时保留文件检索与版本记忆检索；它们复用部分基础设施，返回身份、默认选项和上下文包仍有区别。
 
-检索找候选，上下文策略决定实际读多少。原理和概念见 [README 附录](../README.md#附录检索和向量化到底怎样工作)；本页集中说明命令、配置与恢复。
+正式结论导出使用 `purpose=formal` 并提供适用 `scope`，只装载通过版本、复核和依赖检查的结论。默认 exploration 可读取获准探索材料及风险提示。详细复核与封存入口见 [证据准入手册](EVIDENCE_CONTROLS.md)。
 
-## 常用操作
+检索找候选，上下文策略决定实际读多少。整体数据流与模块边界见 [架构说明](../ARCHITECTURE.md)；本页集中说明命令、配置与恢复。
+
+## 先选择入口
+
+| 需要查什么 | 入口与身份 | 当前边界 |
+|---|---|---|
+| 已登记算法文档、代码和其他可索引文件 | `search-knowledge` 返回 `Q-*` / `SRC-*`；`retrieve-context` 返回 `CTX-*` 和文件清单 | 文件级召回与角色策略；默认刷新文件索引，向量是否启用由配置决定 |
+| L1 技术单元、事件、经验、地图及既有 Run/CLM | `memory search --request 文件` 返回 `QMEM-*` 与规范 ID | 默认 `vector=auto`；向量不可用可明确降级，`required` 则报错；不会将全部旧自由文件自动转成记忆 |
+| 给 AI 按预算装载记忆 | `memory context --request 文件` 返回 `PKT-*` manifest 与 `context_text` | 查询缺省 `vector=off`；默认 16000 Unicode 码点，受配置硬上限约束；内部查询不另存 QMEM 回执 |
+| 原始输入、结果、日志和脚本 | `memory raw-materials` / `raw-material`，或固定来源引用 | L0 追溯入口；常规知识检索不召回原始大日志与记忆事务 |
+| 完整过程或精简研究报告 | `memory document`；局部编辑用 `outline` / `section-context` | 新文稿是独立 `document` / `document_section`，不等同于 L4 地图；文稿导航检索显式使用 `retrieval_mode=documents` |
+
+记忆请求写法见 [版本记忆指南](MEMORY_USAGE.md) 和 [请求示例](MEMORY_REQUESTS.md)。L1 v3 技术单元用检索说明发现问题、方法和适用边界，完整正文按稳定块读取；实验单元固定 Run，方法、推导和分析不要求虚构一次运行。文稿不进入默认知识排名，明确选中或文稿导航模式才读取。详见 [分层记录标准](RESEARCH_RECORDING.md)。
+
+两套全文表共存于 `retrieval/generated/search.sqlite3`：旧 `docs/chunks/terms` 与新 `memory_*`。向量分别使用按模型、编码版本隔离的 `workspace_*` 和 `memory_v1_*` 集合；集合前缀不是当前记录契约版本。新检索只适配已有 Run 文件命中到原 RUN 身份，并保留独立 CLM；未适配的文件仍走文件检索。共用数据库和模型不表示查询策略已完全合并。
+
+## 文件检索常用操作
 
 ```powershell
 # 预览范围，不读取正文或创建索引。
@@ -21,7 +37,9 @@ ID 和文件名是示例，不代表已存在业务对象。不确定核心算�
 
 读取返回的 Markdown 和 manifest。算法问答可用 `$workspace-context`；普通创建操作不必每次调用技能。`search-runs` 是 Run 元数据 AND 检索，`build-context` 是规则/导航快照，两者不替代材料检索。
 
-## 分阶段装载
+## 文件证据包的分阶段装载
+
+本节表格描述 `retrieve-context` / `context-feedback`，不是 `memory context` 的默认预算表。
 
 | 设置 | focus | investigate | wide |
 |---|---:|---:|---:|
@@ -41,7 +59,7 @@ ID 和文件名是示例，不代表已存在业务对象。不确定核心算�
 
 候选预览最多 40 项，完整清单在 candidate_inventory_path；先读预览，避免大核心算法的文件清单占满上下文。manifest.candidates 给出候选角色、原文长度、选入/延后/排除原因；sources 给出实际 full/brief/excerpt/omitted、指纹、位置与 Run 风险。required_not_full 非空表示有算法基线未全文装载，包括用户排除和预算不足，必须明确说明。候选清单不代表全部已读。
 
-## 用户选择与自动扩展
+## 文件查询的用户选择与自动扩展
 
 ```powershell
 # 路径可以换成已检索的 SRC-ID。include 保证参与选择，full 请求全文。
@@ -103,11 +121,31 @@ path/related 以工作区根为基准，也接受绝对文件路径。related �
 
 默认 10000 个来源、每文件 50 MiB；每份最多 40 个视觉资产，图片缩至 2000×2000 内用于 OCR。超限/失败留原因；默认跳过的格式需对照导入清单检查。默认扫描配置内业务目录；inbox、archive、generated、模板和运行时不自动进入检索。
 
-来源 ID 由规范化绝对路径派生，内容用 SHA-256 标识。查询前刷新，装载前再检查；缺失/禁用/损坏来源停止旧内容召回。保留历史指纹和查询，不保留完整旧原文快照，也不会自动决定并存版本哪个正确。旧 Run 复用前检查输入、适用域和复核状态，正常升级不意味着旧结论错误。
+文件来源 ID 由规范化绝对路径派生，内容用 SHA-256 标识。文件查询默认刷新，装载前再检查；缺失/禁用/损坏来源停止旧内容召回。文件索引保留历史指纹和查询，不保留完整旧原文快照，也不会自动决定并存版本哪个正确。规范记忆则保留不可变提交及旧修订，不能把两种历史能力混为一谈。旧 Run 复用前检查输入、适用域和复核状态，正常升级不意味着旧结论错误。
+
+当前知识索引排除 L0 原始材料、Run 的原始脚本/产物、规范记忆提交文件等；材料保持登记并不表示正文会进入排名。Run 可以保存在归属对象的 `runs/`，旧根目录及旧项目路径仍可定位；不要按“所有 Run 都在根 runs”维护来源。
+
+## 记忆查询的排序、装载与关联
+
+记忆检索使用中文双字词及英文标识符分词、SQLite FTS5 BM25、本地多表示向量和规范 ID 精确命中。各通道先按同一规范身份折叠，再使用等权 Reciprocal Rank Fusion：
+
+\[
+s(d)=\sum_{c\in C_d}\frac{1}{60+r_c(d)}.
+\]
+
+其中 \(d\) 是规范记录，\(C_d\) 为命中它的通道，\(r_c(d)\) 是该通道折叠后的名次，从 1 开始。探索问题明确命中已登记主题关键词时，先列主题记录，再列其余候选；具体结论可先于包含它的宽泛 Run。相关分数不是可信概率。当前没有已接入的神经重排器；`retrieval_interfaces.py` 中的替换契约尚未驱动具体后端组合。
+
+`memory search` 不默认全量重建索引；索引缺失或投影版本旧时可补建，普通内容修订依靠提交后的索引同步及 `reconcile`。候选返回前核对当前来源和版本，旧索引命中可以被剔除并报告 `index_stale`；这不保证未同步的新内容已经可召回。`off/auto/required`、FTS/向量水位和降级原因均应读取回执，不以“有结果”推断全部通道就绪。
+
+记忆材料包保留 `include/full/exclude`、purpose/scope、原预算和两次扩展上限。`full` 无法完整放入时记录 `required_not_full`，不会静默截掉限定条件。普通 `memory context` 只对检索选中的固定引用组包，并输出一跳导航引用；不会自动把所有已接受的相似关联两跳装入正文。关联提议、处理及版本变化见 [材料关系手册](MATERIAL_RELATIONS.md)。评估代码中的 `complete_graph_context` 额外执行关联扩展，不能视作默认生产上下文行为。
+
+返回数量与正文预算目前不等于计算成本上限：记忆查询仍读取全表元数据、完整 FTS 候选及全部获准向量窗口，证据快照还会读取各对象当前记录。现有实现有规范去重和回源检查，但尚不能据 Top-K 或预算值承诺大型语料延迟。后续同步规则见 [文档维护手册](DOCUMENTATION_MAINTENANCE.md)。
 
 ## 反馈与评估
 
 context-feedback 保存一次调查是否解决及缺口；retrieval-feedback 保存单份来源是否相关、漏检或版本错误。两者互不替代，不改变 Run 复核状态，也不自动训练模型。
+
+以上反馈分别接收文件查询的 `CTX-*` 和 `Q-*`。记忆查询的 `QMEM-*` 使用 `memory feedback`，固定目标 Ref 并保存为对象内反馈记录；不能把 QMEM 传给旧反馈命令。`memory context` 返回的 PKT 不是持久查询回执，需要记录检索使用反馈时先通过 `memory search` 保存查询。所有反馈都不自动修改全局排名策略或将 AI 观察升级为人工复核。
 
 ```powershell
 .\automation\workspace.ps1 retrieval-feedback Q-ID SRC-ID --label relevant --actor assistant-observation --note "提供了实现入口"
@@ -129,17 +167,20 @@ context-feedback 保存一次调查是否解决及缺口；retrieval-feedback �
 
 评估输出文件级 Recall@K 和 MRR，空集返回 unavailable，不伪报满分。评估不写真实查询日志。它尚不衡量答案正确率、版本正确率或上下文是否充分；需结合调查反馈和人工/适用验证，保留未用于调参的问题。
 
+记忆评价另由 `automation/scripts/memory/evaluation.py` 按规范 ID 计算 Recall、nDCG、重复率、必需边界丢失与正式禁用结果，包含真实通道消融和额外图扩展方案。合成标注、功能测试与现实业务有效性分开报告。当前记录的独立题集质量未过门槛、万条规模暂缓，见 [执行状态](design/system-memory/STATUS.md)；其中历史固定 Run 未随 main 源码分发，不能仅凭文档摘要声称已重新核验原始测量。
+
 ## 文件维护与离线恢复
 
 | 位置 | 内容 | 是否可当缓存清理 |
 |---|---|---|
 | config.json、context-policy.json、sources.json、eval.json | 检索/上下文策略、来源、真实评估集 | 否 |
 | generated/ | SQLite、提取资产、证据包 | 可重建，但旧包精确复现需保留原版本 |
-| queries/、feedback/、sessions/、context-feedback/、strategies/ | Q 查询、单源反馈、CTX 调查、扩展反馈、策略历史 | 否，按获批方式备份 |
+| queries/、feedback/、sessions/、context-feedback/、strategies/ | Q/QMEM 查询、文件单源反馈、CTX 调查、扩展反馈、策略历史 | 否，按获批方式备份 |
+| 各对象的规范 memory 目录 | 记忆正文、修订、QMEM 使用反馈及处理记录；HEAD 是当前提交入口 | 否；通过公共记忆服务维护，不手工删除或改写哈希 |
 | services/qdrant/storage/ | Qdrant local 向量库 | 可重建，先关闭检索进程 |
 | services/qdrant/runtime/、models/、wheelhouse/、downloads/ | 便携解释器、模型与离线恢复包 | 离线搬迁需要完整复制 |
 
-已装 Python 3.12.10 Windows x64、Qdrant client 1.19.0、FastEmbed 0.8.0、多语言 MiniLM 384 维、pypdf 6.17.0、RapidOCR 1.4.4。模型文件加载时校验 SHA-256，集合身份包含模型清单及编码库版本；升级产生新集合，旧集合不自动删除。
+当前锁定环境为 Python 3.12.10 Windows x64、Qdrant client 1.19.0、FastEmbed 0.8.0、多语言 MiniLM 384 维、pypdf 6.17.0、RapidOCR 1.4.4；当前副本是否完整安装以 `doctor` 实测为准。模型文件加载时校验 SHA-256，集合身份包含模型清单及编码库版本；升级产生新集合，旧集合不自动删除。
 
 ```powershell
 .\automation\python.ps1 services/qdrant/install.py

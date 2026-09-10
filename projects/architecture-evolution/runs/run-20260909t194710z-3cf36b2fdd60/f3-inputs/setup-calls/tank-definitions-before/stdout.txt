@@ -1,0 +1,69 @@
+{
+  "owner": {
+    "schema_version": 1,
+    "owner_id": "RES-F3-TANK",
+    "owner_type": "research",
+    "native_ref": {
+      "path": "research/tank/research.json",
+      "id_field": "research_id",
+      "id_value": "RES-F3-TANK"
+    },
+    "memory_home": "research/tank/memory",
+    "adapter_version": 1,
+    "temporary": false,
+    "persisted": false,
+    "title": "SYNTHETIC F3 tank",
+    "fingerprint": "52adfc2af72e6d3ec184ea08041a271b7d349a726eabebb839b8c8a833c9f200",
+    "native_data": {
+      "research_id": "RES-F3-TANK",
+      "title": "SYNTHETIC F3 tank",
+      "status": "active",
+      "claims": [],
+      "dependencies": [],
+      "sensitivity": "internal"
+    }
+  },
+  "head": null,
+  "manifest": null,
+  "records": {},
+  "policy": {
+    "values": {
+      "mode": "explore",
+      "retain": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "granularity": "fine",
+      "auto_summary": true,
+      "discovery": "owner_only",
+      "auto_deepen": false,
+      "checkpoint": true
+    },
+    "sources": {
+      "mode": "type",
+      "retain": "type",
+      "granularity": "type",
+      "auto_summary": "type",
+      "discovery": "workspace",
+      "auto_deepen": "workspace",
+      "checkpoint": "workspace"
+    }
+  },
+  "owner_id": "RES-F3-TANK",
+  "generation": 0,
+  "index_status": "pending",
+  "index_details": {
+    "fts": "not_created",
+    "vector": "not_created",
+    "indexed_generation": null,
+    "vector_generation": null,
+    "reason": "派生索引尚未建立；规范记录仍从 HEAD 可读"
+  },
+  "claim_states": {},
+  "omitted": [],
+  "warnings": []
+}
+

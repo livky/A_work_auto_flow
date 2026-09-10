@@ -125,19 +125,26 @@ class OwnerTests(unittest.TestCase):
         self.assertTrue(result['values']['checkpoint'])
         self.assertEqual(result['sources']['auto_summary'], 'owner')
         self.assertEqual(result['sources']['checkpoint'], 'request')
-        self.assertEqual(policy.resolve({'owner_type': 'research'})['values']['mode'], 'explore')
-        research_policy = policy.resolve({'owner_type': 'research'})
-        self.assertEqual(research_policy['values']['retain'], ['L0', 'L1', 'L2', 'L3', 'L4'])
-        self.assertEqual(research_policy['values']['granularity'], 'fine')
-        self.assertTrue(research_policy['values']['auto_summary'])
-        self.assertEqual(research_policy['sources']['retain'], 'type')
-        # Explicit scope always overrides defaults; the policy advises the AI,
-        # never grants permission to run experiments or accept conclusions.
-        overridden = policy.resolve({'owner_type': 'research'}, {'retain': ['L1'], 'auto_summary': False})
-        self.assertEqual(overridden['values']['retain'], ['L1'])
-        self.assertFalse(overridden['values']['auto_summary'])
-        for kind in ['run', 'project']:
-            self.assertEqual(policy.resolve({'owner_type': kind})['values']['mode'], 'basic')
+        for kind in ['research', 'project']:
+            with self.subTest(owner_type=kind):
+                research_policy = policy.resolve({'owner_type': kind})
+                self.assertEqual(research_policy['values']['mode'], 'explore')
+                self.assertEqual(research_policy['values']['retain'], ['L0', 'L1', 'L2', 'L3', 'L4'])
+                self.assertEqual(research_policy['values']['granularity'], 'fine')
+                self.assertTrue(research_policy['values']['auto_summary'])
+                self.assertEqual(research_policy['sources']['retain'], 'type')
+                # A new default must not override an owner's deliberate policy,
+                # including false and an empty retain list; requests still win.
+                explicit = policy.resolve({'owner_type': kind, 'policy': {
+                    'mode': 'basic', 'overrides': {'retain': [], 'auto_summary': False}}})
+                self.assertEqual(explicit['values']['mode'], 'basic')
+                self.assertEqual(explicit['values']['retain'], [])
+                self.assertFalse(explicit['values']['auto_summary'])
+                self.assertEqual(explicit['sources']['retain'], 'owner')
+                overridden = policy.resolve({'owner_type': kind}, {'retain': ['L1'], 'auto_summary': False})
+                self.assertEqual(overridden['values']['retain'], ['L1'])
+                self.assertFalse(overridden['values']['auto_summary'])
+        self.assertEqual(policy.resolve({'owner_type': 'run'})['values']['mode'], 'basic')
         with self.assertRaises(MemoryError):
             policy.resolve(owner, {'auto_deepen': 'false'})
         for override in ({'retain': True}, {'granularity': 'key_events'}, {'retain': [False]}, []):

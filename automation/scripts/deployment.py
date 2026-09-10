@@ -38,11 +38,25 @@ def framework_files(source):
              'automation/schemas/memory-v1.schema.json', 'automation/schemas/memory-v1.d.ts',
              'automation/schemas/memory-v2.schema.json', 'automation/schemas/memory-v2.d.ts',
              'automation/schemas/memory-v3.schema.json', 'automation/schemas/memory-v3.d.ts',
+             'automation/schemas/material-query.schema.json',
              'automation/testing/catalog.json',
              'automation/schemas/memory-detail-v2.example.json']
     patterns = ['docs/templates/**/*', 'docs/design/*.md', 'docs/*.md',
                 'services/qdrant/*.py']
     names = set(fixed)
+    # Public query contracts and frozen inheritance references are controlled
+    # release inputs. Do not glob arbitrary JSON or executed local receipts.
+    query_docs = 'docs/design/representation-query-v0.2/'
+    names.update(query_docs + name for name in (
+        'README.md', 'CONTRACTS.md', 'DEVELOPMENT_READINESS.md', 'IMPLEMENTATION.md', 'TEST_DESIGN.md', 'WORKBENCH.md',
+        'contracts.py', 'check_design.py', 'test-cases.json', 'development-files.json', 'INHERITANCE.md', 'inheritance-map.json', 'RUNTIME_STATUS.md',
+        'baseline-v0.1/README.md', 'baseline-v0.1/CORE.md', 'baseline-v0.1/DATATYPES.md', 'baseline-v0.1/FUNCTIONS.md',
+        'baseline-v0.1/IMPLEMENTATION.md', 'baseline-v0.1/PUBLIC_BASELINE.md', 'baseline-v0.1/REPRESENTATION_AND_GRAPH.md',
+        'baseline-v0.1/SPEC.md', 'baseline-v0.1/check_contracts.py', 'baseline-v0.1/check_inheritance.py',
+        'baseline-v0.1/contract_ports.py', 'baseline-v0.1/contract_types.py', 'baseline-v0.1/function-catalog.json',
+        'baseline-v0.1/request-examples.json', 'baseline-v0.1/source-manifest.json'))
+    names.update('automation/tests/fixtures/material-query/' + name for name in (
+        'query-valid.json', 'query-invalid.json', 'result-valid.json', 'result-invalid.json', 'fixed-refs.json'))
     # Only version-controlled acceptance templates travel with framework code;
     # executed AI requests and reports remain in their owner Run.
     names.update(p.relative_to(source).as_posix() for p in (source / 'automation/testing/templates').glob('*.json'))

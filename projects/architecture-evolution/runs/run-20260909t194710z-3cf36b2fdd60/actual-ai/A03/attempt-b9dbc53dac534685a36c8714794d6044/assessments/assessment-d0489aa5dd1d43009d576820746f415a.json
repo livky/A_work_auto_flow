@@ -1,0 +1,37 @@
+{
+  "actor": "Codex主任务助手",
+  "comparisons": [
+    {
+      "expectation_id": "A03-E1",
+      "status": "meets",
+      "observation": "技术描述明确方法、发现、适用与禁用范围，完整块独立保存。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A03\\attempt-b9dbc53dac534685a36c8714794d6044\\reads\\read-2ef438bdd22b41a5b98ff52e0cb75fcb"
+      ]
+    },
+    {
+      "expectation_id": "A03-E2",
+      "status": "meets",
+      "observation": "实际 section-context 读出所选 implementation、validation 和必需 scope；公式及变量定义完整。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A03\\attempt-b9dbc53dac534685a36c8714794d6044\\reads\\read-2ef438bdd22b41a5b98ff52e0cb75fcb"
+      ]
+    },
+    {
+      "expectation_id": "A03-E3",
+      "status": "meets",
+      "observation": "run_ref=null，未把软件说明伪造为实验；record r1/SHA 和来源指纹可回读。",
+      "evidence_refs": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A03\\attempt-b9dbc53dac534685a36c8714794d6044\\reads\\read-2ef438bdd22b41a5b98ff52e0cb75fcb"
+      ]
+    }
+  ],
+  "limitations": [
+    "真实调用和AI自查；人工仍待审。",
+    "UI用实际Project字节相同副本；原工作区既有工作台未被中断。",
+    "读取声明按所见范围记录，历史全部章节未重新逐字审查。"
+  ],
+  "recorded_at": "2026-09-09T22:44:34.446817Z",
+  "human_review": "pending",
+  "scientific_review": "not-reviewed"
+}

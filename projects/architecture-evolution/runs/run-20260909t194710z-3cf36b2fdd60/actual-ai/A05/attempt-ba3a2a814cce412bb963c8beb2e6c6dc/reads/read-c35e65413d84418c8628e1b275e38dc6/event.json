@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "exact-byte restoration of the isolated synthetic original",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "完整阅读恢复回执，原件恢复前后同SHA且bytes_restored=true；仅A05副本发生临时移动。",
+  "recorded_at": "2026-09-09T23:04:35.655909Z",
+  "capture_sha256": "0a8fdd39524e71d7dc71cfab7a7ba8c2c97f2fff7e8c3005a29c4211450f3c17",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

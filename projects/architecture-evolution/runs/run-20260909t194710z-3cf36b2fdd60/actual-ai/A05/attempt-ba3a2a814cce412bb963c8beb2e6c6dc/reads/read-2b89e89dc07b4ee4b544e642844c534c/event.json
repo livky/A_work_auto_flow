@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "existing A09 fixed dual-document execution receipt; cross-reference only",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "完整阅读两文稿r2和各自SHA、历史r1仍完整、changes_after为空及scientific_review未评估；此事实属于原A09执行。",
+  "recorded_at": "2026-09-09T23:04:35.662321Z",
+  "capture_sha256": "2082fd9ff1e32f8e2575f22ab7b0aa23244eb4f645398d586ec35311c3f3d8b8",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

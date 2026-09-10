@@ -1,0 +1,193 @@
+{
+  "search": {
+    "status": "ok",
+    "value": {
+      "query_id": "MQ-fa2d0760-e6d1-4e48-af42-831a6af39184",
+      "request_digest": "44c89323ec75ea3af65b8ab72a01e70f089b44cba0889d7793987ccfc23864ba",
+      "candidates": [
+        {
+          "candidate_id": "C-266614c660116128a7a522ce",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+              "revision": 1,
+              "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+              "locator": null
+            }
+          ],
+          "title": "SYNTHETIC F3 API 退避重试策略",
+          "excerpt": "问题：\nAPI 退避重试策略的机制与约束\n\n方法：\n读取独立合成前提并保留变量、公式和限制\n\n主要发现：\n- 此输入没有真实执行结果\n\n适用条件：\n- 本文明确的合成条件\n\n不适用条件：\n- 现实系统的稳定或性能结论\n\n限制：\n- 缺少实测与科学复核",
+          "channels": [
+            "identity"
+          ],
+          "score": 0.01639344262295082,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+                "revision": 1,
+                "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+                "locator": null
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "direct",
+          "hits": [
+            {
+              "channel": "identity",
+              "provider": "identity",
+              "provider_version": "1",
+              "rank": 1,
+              "raw_score": null,
+              "score_meaning": "精确身份匹配",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+                  "revision": 1,
+                  "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+                  "locator": null
+                }
+              ]
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": []
+        }
+      ],
+      "next_cursor": null,
+      "expires_at": "2026-09-09T21:19:42.832813Z",
+      "gaps": []
+    },
+    "code": null,
+    "warnings": [],
+    "consumed": {
+      "wall_ms": 31,
+      "read_bytes": 5525,
+      "output_chars": 125,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "exhausted",
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+          "revision": 1,
+          "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+          "locator": ""
+        }
+      ],
+      "owner_heads": [
+        [
+          "RES-F3-RETRY",
+          "COM-b18654cc-36f8-4cc5-9743-726c1d770d59"
+        ]
+      ],
+      "index_watermarks": [
+        [
+          "RES-F3-RETRY",
+          "1"
+        ]
+      ],
+      "consistency": "fixed_refs"
+    }
+  },
+  "assembly": {
+    "status": "ok",
+    "value": {
+      "packet_id": "PKT-a5f6448d-016d-4084-9306-73c79d1b0b77",
+      "query_id": "MQ-fa2d0760-e6d1-4e48-af42-831a6af39184",
+      "definition": {
+        "key": "full",
+        "version": "1"
+      },
+      "parts": [
+        {
+          "group": "direct",
+          "heading": "SYNTHETIC F3 API 退避重试策略",
+          "markdown": "# SYNTHETIC F3 API 退避与重试\n\n本材料是独立的软件策略前提，没有服务端负载测量、生产日志或成功率试验。\n\n## 变量与机制\n\n$k\\in\\{0,1,\\ldots,N-1\\}$ 为当前连续失败后的重试序号；$N=5$ 是总重试上限。$b=0.2\\,\\mathrm{s}$ 是初始等待，倍率 $r=2$ 无量纲，$d_{max}=3.2\\,\\mathrm{s}$ 是等待上限。等待策略为\n\n$$\nd_k=\\min(d_{max},b r^k).\n$$\n\n一次请求失败后等待 $d_k$ 再重试，成功后结束本次流程，达到 $N$ 次则停止并返回失败。响应仅有成功/可重试失败/不可重试失败三类，不可重试失败立即停止。本前提没有目标误差 $e$、服务端队列长度、连续流量或物理守恒方程。\n\n## 适用边界\n\n只有具备幂等性或明确去重语义的操作可按此策略重复；必须给超时和最大总耗时单独设限。固定倍率与上限不证明服务端稳定、请求最终成功或最优吞吐。多个客户端同步重试可能同时唤醒；本前提未定义抖动、服务端容量、到达率、成功概率与响应延迟分布。\n",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+              "revision": 1,
+              "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+              "locator": null
+            }
+          ],
+          "selectors": [
+            "detail.blocks"
+          ],
+          "omitted": []
+        }
+      ],
+      "contributors": [
+        {
+          "kind": "record",
+          "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+          "revision": 1,
+          "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+          "locator": null
+        }
+      ],
+      "complete": true,
+      "canonical": false
+    },
+    "code": null,
+    "warnings": [],
+    "consumed": {
+      "wall_ms": 61,
+      "read_bytes": 10434,
+      "output_chars": 602,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": null,
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+          "revision": 1,
+          "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+          "locator": null
+        }
+      ],
+      "owner_heads": [
+        [
+          "RES-F3-RETRY",
+          "COM-b18654cc-36f8-4cc5-9743-726c1d770d59"
+        ]
+      ],
+      "index_watermarks": [],
+      "consistency": "fixed_refs"
+    }
+  }
+}
+

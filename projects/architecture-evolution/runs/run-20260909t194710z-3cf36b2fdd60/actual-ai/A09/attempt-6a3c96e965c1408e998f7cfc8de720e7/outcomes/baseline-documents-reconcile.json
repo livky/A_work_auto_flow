@@ -1,0 +1,48 @@
+{
+  "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\calls\\call-88c5219ce25f47d08f2306e9673e1829",
+  "exit_code": 0,
+  "result": {
+    "index_status": "indexed",
+    "owners": [
+      {
+        "owner_id": "RES-F3-TANK",
+        "generation": 6,
+        "index_status": "indexed",
+        "fts": {
+          "status": "indexed",
+          "indexed_generation": 6,
+          "changed_entries": 0,
+          "removed_entries": 0,
+          "unchanged": true
+        },
+        "vector": {
+          "status": "disabled",
+          "indexed_generation": null,
+          "reason": "调用方显式关闭向量"
+        },
+        "state": {
+          "owner_id": "RES-F3-TANK",
+          "indexed_generation": 6,
+          "vector_generation": null,
+          "target_generation": 6,
+          "fts_status": "indexed",
+          "vector_status": "disabled",
+          "encoder_version": null,
+          "vector_collection": null,
+          "native_fingerprint": "52adfc2af72e6d3ec184ea08041a271b7d349a726eabebb839b8c8a833c9f200",
+          "dependency_signature": "ba77ce784bc85e57f278762188260dcc550638a702f177c33ab79df0f4da5c59",
+          "vector_signature": null,
+          "error": "{\"code\":\"CAPABILITY_UNAVAILABLE\",\"details\":{},\"errors\":[],\"message\":\"未配置本地向量后端\"}",
+          "updated_at": "2026-09-09T21:16:44.105350Z",
+          "projection_version": "memory-v3-technical-description-documents"
+        },
+        "missing": [],
+        "error": null,
+        "elapsed_seconds": 0.0110934999975143
+      }
+    ],
+    "removed_owners": [],
+    "pending_removals": [],
+    "canonical_writes": 0
+  }
+}

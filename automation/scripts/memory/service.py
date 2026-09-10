@@ -16,6 +16,23 @@ class MemoryService:
         self.store = MemoryStore(root, clock=clock, id_factory=id_factory, fault=fault)
         self.clock = clock
 
+    def _read_bytes(self, path):
+        """Read hook for bounded application adapters; defaults keep old I/O.
+
+        An adapter can reserve byte budget before this read without replacing
+        transaction/CAS logic or monkey-patching global Path methods.
+        """
+        return path.read_bytes()
+
+    def _evidence_adapter(self):
+        """Allow a bounded application to supply the same evidence contract.
+
+        The default adapter and review transaction stay unchanged. A specialized
+        writer can localize evidence reads without copying trusted CAS logic.
+        """
+        from .evidence_adapter import EvidenceAdapter
+        return EvidenceAdapter(self)
+
     def inspect(self, owner_id, revision=None, *, record_id=None):
         owner = owners.resolve_owner(self.root, owner_id)
         if owner["native_data"].get("sensitivity") == "restricted":
@@ -135,7 +152,7 @@ class MemoryService:
             return value
         if ref["target_kind"] == "file":
             path, metadata = self._file(ref)
-            actual = hashlib.sha256(path.read_bytes()).hexdigest()
+            actual = hashlib.sha256(self._read_bytes(path)).hexdigest()
             source_checks.append({"kind": "file", "ref": deepcopy(ref), "hash": actual})
             value = {"sha256": actual, "sensitivity": metadata.get("sensitivity", "internal")}
         elif ref["target_kind"] == "owner":
@@ -153,7 +170,7 @@ class MemoryService:
             source_checks.append({"kind": "ref", "ref": deepcopy(ref), "hash": actual})
         elif ref["target_kind"] == "claim":
             from .evidence_adapter import EvidenceAdapter
-            value = EvidenceAdapter(self).resolve_claim(target)
+            value = self._evidence_adapter().resolve_claim(target)
             if value["sha256"] != ref["sha256"]:
                 raise MemoryError("STALE_BASIS", "结论指纹已变化", {"target_id": target})
             source_checks.append({"kind": "ref", "ref": deepcopy(ref), "hash": value["sha256"]})
@@ -231,7 +248,7 @@ class MemoryService:
 
         def read_source(ref):
             path, _metadata = self._file(ref)
-            raw = path.read_bytes()
+            raw = self._read_bytes(path)
             if hashlib.sha256(raw).hexdigest() != ref["sha256"]:
                 raise MemoryError("STALE_BASIS", "逐字来源读取时发生变化")
             return raw.decode("utf-8-sig")
@@ -330,7 +347,7 @@ class MemoryService:
                 owners.require_readable_owner(owners.resolve_owner(self.root, check["owner_id"]))
             elif check["kind"] == "legacy_file":
                 path = owners.safe_path(self.root, check["path"])
-                if hashlib.sha256(path.read_bytes()).hexdigest() != check["hash"]:
+                if hashlib.sha256(self._read_bytes(path)).hexdigest() != check["hash"]:
                     raise MemoryError("STALE_BASIS", "旧证据复核文件在提交期间变化")
             elif check["kind"] == "head":
                 current = self.store.read_snapshot(owners.resolve_owner(self.root, check["owner_id"]))["head"]
@@ -438,7 +455,7 @@ class MemoryService:
         errors = contracts.validate_schema(request.get("actor"), contracts.SCHEMA["$defs"]["Actor"], contracts.SCHEMA["$defs"])
         if errors:
             raise MemoryError("INVALID_SCHEMA", "复核执行者不符合契约", errors=errors)
-        adapter = EvidenceAdapter(self)
+        adapter = self._evidence_adapter()
         value = adapter.resolve_claim(request.get("target_claim_id"))
         if value.get("legacy"):
             adapter.prepare_review(request)  # Validate the public field allowlist.
@@ -459,7 +476,7 @@ class MemoryService:
                 return self._indexed_receipt(prior, sync=False)
         checks = []
         def prepare(current):
-            prepared = EvidenceAdapter(self).prepare_review(request)
+            prepared = self._evidence_adapter().prepare_review(request)
             operation = {"op": "put_record", "draft": prepared["draft"]}
             if prepared["record_id"]:
                 operation.update(record_id=prepared["record_id"], expected_revision=prepared["expected_revision"])

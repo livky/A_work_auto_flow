@@ -1,0 +1,902 @@
+{
+  "schema_version": 1,
+  "contract_version": "0.1",
+  "status": "design_only",
+  "run_id": "RUN-20260909T164914Z-D20A9406384A",
+  "groups": [
+    {
+      "id": "G01",
+      "title": "固定读取与引用解析",
+      "implementation_anchor": "automation/scripts/memory/store.py; automation/scripts/memory/service.py; automation/scripts/memory/raw_materials.py",
+      "invariant": "保持固定版本，批量读取有上界；不依赖召回器。"
+    },
+    {
+      "id": "G02",
+      "title": "分级CRUD、版本与恢复",
+      "implementation_anchor": "automation/scripts/memory/service.py; automation/scripts/memory/store.py; automation/scripts/memory/contracts.py",
+      "invariant": "一个批次一个owner，CAS与幂等；新修订保留旧版。"
+    },
+    {
+      "id": "G03",
+      "title": "表示维护",
+      "implementation_anchor": "automation/scripts/memory/index.py; automation/scripts/memory/summaries.py; automation/scripts/memory/technical_units.py",
+      "invariant": "规范内容和派生表示分开；贡献来源闭包与生成版本可查。"
+    },
+    {
+      "id": "G04",
+      "title": "变化与索引维护",
+      "implementation_anchor": "automation/scripts/memory/store.py; automation/scripts/memory/index.py",
+      "invariant": "内容提交与索引水位分离，增量/重建/补偿可重试。"
+    },
+    {
+      "id": "G05",
+      "title": "候选召回",
+      "implementation_anchor": "automation/scripts/memory/search.py; automation/scripts/retrieval.py; automation/scripts/qdrant_backend.py",
+      "invariant": "实际范围、命中表示和通道诊断贯穿回执。"
+    },
+    {
+      "id": "G06",
+      "title": "去重、融合与排序",
+      "implementation_anchor": "automation/scripts/memory/search.py; automation/scripts/retrieval_interfaces.py",
+      "invariant": "相关性不替代证据准入；输入正文有界、无隐藏召回。"
+    },
+    {
+      "id": "G07",
+      "title": "关系导航",
+      "implementation_anchor": "automation/scripts/memory/associations.py; automation/scripts/memory/lineage.py",
+      "invariant": "导航采纳与科学支持分开，路径固定且展开有界。"
+    },
+    {
+      "id": "G08",
+      "title": "渐进检索编排",
+      "implementation_anchor": "automation/scripts/memory/search.py; automation/scripts/memory/packets.py; automation/scripts/context_engine.py",
+      "invariant": "拥有计划和续接状态，范围、排除及预算不丢失。"
+    },
+    {
+      "id": "G09",
+      "title": "上下文组装",
+      "implementation_anchor": "automation/scripts/memory/packets.py; automation/scripts/memory/technical_units.py",
+      "invariant": "展开固定候选、补定义和边界，缺口交还编排器。"
+    },
+    {
+      "id": "G10",
+      "title": "阅读视图",
+      "implementation_anchor": "automation/scripts/memory/documents.py; automation/scripts/memory/document.py; automation/scripts/memory/raw_materials.py",
+      "invariant": "读取已有正文和结构，不隐式生成新结论。"
+    },
+    {
+      "id": "G11",
+      "title": "策略整理",
+      "implementation_anchor": "automation/scripts/memory/consolidation.py; automation/scripts/memory/summaries.py",
+      "invariant": "按策略正式修订；提交、复核、索引和恢复分别记账。"
+    },
+    {
+      "id": "G12",
+      "title": "证据、复核与影响",
+      "implementation_anchor": "automation/scripts/memory/evidence_adapter.py; automation/scripts/memory/impact.py; automation/scripts/evidence.py",
+      "invariant": "实际授权和读时有效性由专门规则判定。"
+    },
+    {
+      "id": "X01",
+      "title": "共享执行控制",
+      "implementation_anchor": "new internal execution control adapter",
+      "invariant": "实际执行方预订/结算，父流水线不重复扣费；不构成第十三组业务功能。"
+    }
+  ],
+  "functions": [
+    {
+      "group": "G01",
+      "method": "ContentReader.describe",
+      "decision": "keep",
+      "reason": "保留：排序/导航只需元数据时避免读取全文",
+      "precondition": "固定Ref可解析且来源获准",
+      "postcondition": "逐项返回真实身份、属性和标题；缺项显式说明",
+      "calls": [
+        "G12.authorize"
+      ],
+      "errors": [
+        "NOT_FOUND",
+        "VERSION_MISMATCH",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G01",
+      "method": "ContentReader.read",
+      "decision": "keep",
+      "reason": "保留：多入口共用固定正文读取",
+      "precondition": "请求范围、表示、版本和预算均明确",
+      "postcondition": "返回实际正文、完整性、固定依据与缺口",
+      "calls": [
+        "ReferenceResolver.resolve",
+        "G12.authorize"
+      ],
+      "errors": [
+        "SOURCE_MISSING",
+        "VERSION_MISMATCH",
+        "UNSUPPORTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G01",
+      "method": "ContentReader.list_page",
+      "decision": "keep",
+      "reason": "保留：避免枚举全库才能取前K项",
+      "precondition": "limit为正；cursor与原范围一致",
+      "postcondition": "仅一页轻量元数据和有界续接位置",
+      "calls": [
+        "G12.authorize",
+        "RevisionStore.history"
+      ],
+      "errors": [
+        "INVALID_ARGUMENT",
+        "BASIS_CHANGED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G01",
+      "method": "ReferenceResolver.resolve",
+      "decision": "keep",
+      "reason": "保留：兼容旧六字段Ref，集中验证版本",
+      "precondition": "原始引用真实存在；不猜测SHA或身份",
+      "postcondition": "保留关系语义并返回经回源核验的FixedRef",
+      "calls": [
+        "G12.authorize"
+      ],
+      "errors": [
+        "NOT_FOUND",
+        "VERSION_MISMATCH",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G02",
+      "method": "ContentCommands.validate",
+      "decision": "keep",
+      "reason": "保留：提交前提供准确可审查问题",
+      "precondition": "单owner批次、注册schema、预期HEAD及来源可核验",
+      "postcondition": "验证凭据绑定批次SHA与依据；不写正式内容",
+      "calls": [
+        "G12.authorize",
+        "G12.assess",
+        "G01.read"
+      ],
+      "errors": [
+        "INVALID_SCHEMA",
+        "BASIS_CHANGED",
+        "CONFLICT"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G02",
+      "method": "ContentCommands.commit",
+      "decision": "keep",
+      "reason": "保留：统一类型规则与幂等用例入口",
+      "precondition": "相同请求ID绑定同一完整语义；提交前再核验权限/CAS",
+      "postcondition": "单owner全部提交或不提交；client_key映射真实新Ref",
+      "calls": [
+        "ContentCommands.validate",
+        "RevisionStore.apply"
+      ],
+      "errors": [
+        "IDEMPOTENCY_MISMATCH",
+        "CONFLICT",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G02",
+      "method": "ContentCommands.restore",
+      "decision": "keep",
+      "reason": "保留：恢复是明确业务动作",
+      "precondition": "旧Ref固定，当前HEAD与预期相同",
+      "postcondition": "创建恢复修订并保留后续历史；不倒退HEAD",
+      "calls": [
+        "G01.read",
+        "ContentCommands.commit"
+      ],
+      "errors": [
+        "VERSION_MISMATCH",
+        "CONFLICT"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G02",
+      "method": "RevisionStore.apply",
+      "decision": "keep",
+      "reason": "保留：隔离物理事务和内容规则",
+      "precondition": "内部验证凭据匹配批次、规则与依据",
+      "postcondition": "原子生成提交/变化记录；不调用索引或模型",
+      "calls": [
+        "G12.authorize"
+      ],
+      "errors": [
+        "CONFLICT",
+        "IDEMPOTENCY_MISMATCH"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G02",
+      "method": "RevisionStore.history",
+      "decision": "keep",
+      "reason": "保留：固定历史和恢复需要分页读版本",
+      "precondition": "owner与cursor有效且可读",
+      "postcondition": "按固定历史链返回一页，不改变当前HEAD",
+      "calls": [
+        "G12.authorize"
+      ],
+      "errors": [
+        "NOT_FOUND",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G03",
+      "method": "RepresentationCatalog.list",
+      "decision": "keep",
+      "reason": "保留：让调用方发现缺失和未实现层次",
+      "precondition": "固定内容与请求键明确",
+      "postcondition": "逐项available/stale/missing/unsupported；不虚构引用",
+      "calls": [
+        "G01.describe",
+        "G12.authorize"
+      ],
+      "errors": [
+        "NOT_FOUND",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G03",
+      "method": "RepresentationCatalog.read",
+      "decision": "keep",
+      "reason": "保留：复用已有表示而不重新生成",
+      "precondition": "表示Ref及全部贡献来源满足范围和授权",
+      "postcondition": "返回固定正文与实际来源，过期状态可见",
+      "calls": [
+        "G01.read",
+        "G12.authorize"
+      ],
+      "errors": [
+        "SOURCE_MISSING",
+        "VERSION_MISMATCH",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G03",
+      "method": "RepresentationBuilder.plan",
+      "decision": "keep",
+      "reason": "保留：生成前冻结依赖和策略",
+      "precondition": "源版本、请求表示与builder能力已核验",
+      "postcondition": "计划给出固定basis、生成器和范围",
+      "calls": [
+        "G01.describe",
+        "RepresentationCatalog.list"
+      ],
+      "errors": [
+        "UNSUPPORTED",
+        "BUDGET_EXHAUSTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G03",
+      "method": "RepresentationBuilder.build",
+      "decision": "keep",
+      "reason": "保留：替换提炼/投影算法",
+      "precondition": "计划输入未漂移且取得预算额度",
+      "postcondition": "纯派生表示或新内容草案；不暗中提交新解释",
+      "calls": [
+        "G01.read",
+        "ExecutionControl.reserve"
+      ],
+      "errors": [
+        "BASIS_CHANGED",
+        "BUDGET_EXHAUSTED",
+        "PARTIAL_FAILURE"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G04",
+      "method": "ChangeReader.read",
+      "decision": "keep",
+      "reason": "保留：增量维护无需扫描所有正文",
+      "precondition": "分页范围和变化游标有效",
+      "postcondition": "有界变化页与读取basis，可重放",
+      "calls": [
+        "RevisionStore.history"
+      ],
+      "errors": [
+        "BASIS_CHANGED",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G04",
+      "method": "IndexLifecycle.status",
+      "decision": "keep",
+      "reason": "保留：查询前确认索引覆盖",
+      "precondition": "索引键与范围已注册",
+      "postcondition": "返回每后端水位；读取状态不隐式修复",
+      "calls": [
+        "G12.authorize"
+      ],
+      "errors": [
+        "UNSUPPORTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G04",
+      "method": "IndexLifecycle.plan",
+      "decision": "keep",
+      "reason": "保留：三种维护共享计划契约",
+      "precondition": "增量changes或全量contents恰有一种有效输入",
+      "postcondition": "固定IndexKey、源版本、工作项和续扫位置",
+      "calls": [
+        "ChangeReader.read",
+        "G01.list_page",
+        "G03.list"
+      ],
+      "errors": [
+        "INVALID_ARGUMENT",
+        "BASIS_CHANGED",
+        "UNSUPPORTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G04",
+      "method": "IndexLifecycle.execute",
+      "decision": "keep",
+      "reason": "保留：索引可重试并隔离内容事务",
+      "precondition": "固定计划未变，后端能力兼容",
+      "postcondition": "逐项完成/待办，未完成页不发布完整水位",
+      "calls": [
+        "G03.read",
+        "index adapters",
+        "ExecutionControl.reserve"
+      ],
+      "errors": [
+        "INDEX_PENDING",
+        "BASIS_CHANGED",
+        "PARTIAL_FAILURE"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G05",
+      "method": "RecallProvider.capabilities",
+      "decision": "keep",
+      "reason": "保留：支持部分能力的后端可被发现",
+      "precondition": "装配的provider身份/版本存在",
+      "postcondition": "真实通道、表示、过滤、语法和取消能力",
+      "calls": [
+        "configured backend"
+      ],
+      "errors": [
+        "UNSUPPORTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G05",
+      "method": "RecallProvider.recall",
+      "decision": "keep",
+      "reason": "保留：词法/向量/图召回统一边界",
+      "precondition": "硬过滤可满足，candidate_limit不超本阶段额度",
+      "postcondition": "候选保留内容/表示双身份、分数含义、水位与续页",
+      "calls": [
+        "G04.status",
+        "backend",
+        "G12.authorize"
+      ],
+      "errors": [
+        "UNSUPPORTED",
+        "INDEX_STALE",
+        "BUDGET_EXHAUSTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G06",
+      "method": "CandidateDeduplicator.deduplicate",
+      "decision": "keep",
+      "reason": "保留：同源多表示需要归并",
+      "precondition": "输入固定身份和哈希一致；不能用标题代替身份",
+      "postcondition": "合并同版命中并保留所有通道依据、遗漏和水位",
+      "calls": [
+        "no recall or writes"
+      ],
+      "errors": [
+        "VERSION_MISMATCH",
+        "INVALID_ARGUMENT"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G06",
+      "method": "FusionStrategy.fuse",
+      "decision": "keep",
+      "reason": "保留：融合方法和参数需要替换",
+      "precondition": "去重候选及排名/分数含义可用",
+      "postcondition": "输出融合排名并保留候选来源",
+      "calls": [
+        "no source writes"
+      ],
+      "errors": [
+        "INVALID_ARGUMENT",
+        "UNSUPPORTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G06",
+      "method": "Reranker.rerank",
+      "decision": "keep",
+      "reason": "保留：昂贵相关性模型可替换",
+      "precondition": "明确提供所需TextSlice，模型额度足够",
+      "postcondition": "仅在输入候选中重排；模型失败与缺正文可见",
+      "calls": [
+        "ExecutionControl.reserve",
+        "configured model"
+      ],
+      "errors": [
+        "BUDGET_EXHAUSTED",
+        "PARTIAL_FAILURE",
+        "UNSUPPORTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G06",
+      "method": "DiversitySelector.select",
+      "decision": "keep",
+      "reason": "保留：最终数量与覆盖偏好独立",
+      "precondition": "limit不超请求，输入已满足当前准入要求",
+      "postcondition": "选择输入子集，保留次序依据和未选原因",
+      "calls": [
+        "no recall or writes"
+      ],
+      "errors": [
+        "INVALID_ARGUMENT"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G06",
+      "method": "RankingPipeline.rank",
+      "decision": "keep",
+      "reason": "保留：上层一次调用排序流程",
+      "precondition": "批次和文本固定，ranking策略已注册",
+      "postcondition": "去重/融合/重排/多样性结果和阶段缺口不丢失",
+      "calls": [
+        "CandidateDeduplicator.deduplicate",
+        "FusionStrategy.fuse",
+        "Reranker.rerank",
+        "DiversitySelector.select"
+      ],
+      "errors": [
+        "UNSUPPORTED",
+        "BUDGET_EXHAUSTED",
+        "PARTIAL_FAILURE"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G07",
+      "method": "RelationNavigator.neighbors",
+      "decision": "keep",
+      "reason": "保留：图浏览和图召回复用有界邻居",
+      "precondition": "种子可见，方向/关系类型/节点边数上限明确",
+      "postcondition": "有类型邻居和固定来源，未遍历部分显式返回",
+      "calls": [
+        "G12.authorize",
+        "graph adapter"
+      ],
+      "errors": [
+        "ACCESS_DENIED",
+        "BUDGET_EXHAUSTED",
+        "INDEX_STALE"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G07",
+      "method": "RelationNavigator.paths",
+      "decision": "keep",
+      "reason": "保留：解释为何关联到某条知识",
+      "precondition": "种子和目标均可读；累计跳数不重置",
+      "postcondition": "返回可回读的有序边路径和差异/缺口",
+      "calls": [
+        "RelationNavigator.neighbors"
+      ],
+      "errors": [
+        "NOT_FOUND",
+        "BUDGET_EXHAUSTED",
+        "INDEX_STALE"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G07",
+      "method": "RelationNavigator.suggest_links",
+      "decision": "keep",
+      "reason": "保留：类比策略可替换且不直接采纳",
+      "precondition": "固定两端与策略版本可用",
+      "postcondition": "所有新建议保持proposed，科学支持不由相似度创建",
+      "calls": [
+        "G01.read",
+        "RelationNavigator.neighbors",
+        "ExecutionControl.reserve"
+      ],
+      "errors": [
+        "UNSUPPORTED",
+        "BUDGET_EXHAUSTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G08",
+      "method": "ExpansionPolicy.next_step",
+      "decision": "keep",
+      "reason": "保留：扩展策略与执行编排分离",
+      "precondition": "已执行步骤/缺口/预算真实；原始上限不变",
+      "postcondition": "返回一个可审查动作或明确停止原因",
+      "calls": [
+        "capability descriptions only"
+      ],
+      "errors": [
+        "UNSUPPORTED",
+        "BUDGET_EXHAUSTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G08",
+      "method": "SearchCoordinator.search",
+      "decision": "keep",
+      "reason": "保留：单一查询入口保留约束和诊断",
+      "precondition": "规范请求、授权、策略和额度可用",
+      "postcondition": "保存实际步骤/水位/停止原因及可续接状态",
+      "calls": [
+        "G12",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G09",
+        "ExpansionPolicy.next_step"
+      ],
+      "errors": [
+        "INVALID_ARGUMENT",
+        "UNSUPPORTED",
+        "BUDGET_EXHAUSTED",
+        "PARTIAL_FAILURE"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G08",
+      "method": "SearchCoordinator.resume",
+      "decision": "keep",
+      "reason": "保留：真正续查而非重新开始扩大limit",
+      "precondition": "游标绑定原请求/范围/预算；当前授权再次通过",
+      "postcondition": "继承排除与已花费额度；换版本或追加预算显式记录",
+      "calls": [
+        "saved search state",
+        "SearchCoordinator.search"
+      ],
+      "errors": [
+        "BASIS_CHANGED",
+        "ACCESS_DENIED",
+        "IDEMPOTENCY_MISMATCH"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G09",
+      "method": "ContextBuilder.build",
+      "decision": "keep",
+      "reason": "保留：召回与实际材料包生成分离",
+      "precondition": "选择的Ref固定，预算/用途/表示明确",
+      "postcondition": "补齐必要定义，保留限制与遗漏，不隐藏二次召回",
+      "calls": [
+        "G01.read",
+        "G03.read",
+        "G12.assess"
+      ],
+      "errors": [
+        "SOURCE_MISSING",
+        "VERSION_MISMATCH",
+        "BUDGET_EXHAUSTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G10",
+      "method": "ReadViewService.list",
+      "decision": "keep",
+      "reason": "保留：发现已有文稿/视图",
+      "precondition": "scope与分页明确",
+      "postcondition": "列出已有可读视图及版本，不生成新文稿",
+      "calls": [
+        "G01.list_page",
+        "G12.authorize"
+      ],
+      "errors": [
+        "ACCESS_DENIED",
+        "BASIS_CHANGED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G10",
+      "method": "ReadViewService.render",
+      "decision": "keep",
+      "reason": "保留：多阅读方式统一固定依据",
+      "precondition": "视图类型受支持，来源范围可读",
+      "postcondition": "返回已有正文/图结构及缺口，生成新解释另走整理",
+      "calls": [
+        "G01.read",
+        "G07.neighbors",
+        "G12.assess"
+      ],
+      "errors": [
+        "UNSUPPORTED",
+        "SOURCE_MISSING",
+        "BUDGET_EXHAUSTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G11",
+      "method": "MaintenancePlanner.plan",
+      "decision": "keep",
+      "reason": "保留：正式修改先形成具体计划",
+      "precondition": "策略版本、允许动作、依据和目标范围明确",
+      "postcondition": "按owner拆分固定批次与影响/复核/恢复要求",
+      "calls": [
+        "G01",
+        "G12",
+        "ImpactAnalyzer.affected"
+      ],
+      "errors": [
+        "ACCESS_DENIED",
+        "BASIS_CHANGED",
+        "UNSUPPORTED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G11",
+      "method": "MaintenanceExecutor.execute",
+      "decision": "keep",
+      "reason": "保留：有状态、有恢复的正式整理",
+      "precondition": "计划获准且输入未变，重试沿用计划/请求身份",
+      "postcondition": "逐owner记录提交、新复核、索引及待办；部分成功不冒充原子性",
+      "calls": [
+        "G02",
+        "G03",
+        "G04",
+        "G12",
+        "saved maintenance state"
+      ],
+      "errors": [
+        "CONFLICT",
+        "PARTIAL_FAILURE",
+        "IDEMPOTENCY_MISMATCH"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G11",
+      "method": "MaintenanceExecutor.status",
+      "decision": "keep",
+      "reason": "保留：续接先查看确实完成的工作",
+      "precondition": "plan_id可访问",
+      "postcondition": "返回已保存状态，不自行执行下一步",
+      "calls": [
+        "saved maintenance state"
+      ],
+      "errors": [
+        "NOT_FOUND",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G12",
+      "method": "EvidencePolicy.authorize",
+      "decision": "keep",
+      "reason": "保留：可信范围不能由下游自行决定",
+      "precondition": "可信调用上下文存在，动作明确",
+      "postcondition": "得到授权范围交集，未知权限按拒绝处理",
+      "calls": [
+        "trusted access adapter"
+      ],
+      "errors": [
+        "ACCESS_DENIED",
+        "INVALID_ARGUMENT"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G12",
+      "method": "EvidencePolicy.assess",
+      "decision": "keep",
+      "reason": "保留：复核/有效性与相似性排序分离",
+      "precondition": "目标固定，用途/适用域和读取basis明确",
+      "postcondition": "返回逐目标/claim读时评估及未解决部分",
+      "calls": [
+        "G01.read",
+        "evidence adapter"
+      ],
+      "errors": [
+        "SOURCE_MISSING",
+        "VERSION_MISMATCH",
+        "BASIS_CHANGED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G12",
+      "method": "ReviewService.append_review",
+      "decision": "keep",
+      "reason": "保留：新内容需要新复核历史",
+      "precondition": "目标与owner HEAD未变，方法与依据满足实际规则",
+      "postcondition": "追加真实复核并返回状态，不覆写旧review",
+      "calls": [
+        "G02.commit",
+        "G12.assess"
+      ],
+      "errors": [
+        "CONFLICT",
+        "INVALID_SCHEMA",
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "G12",
+      "method": "ImpactAnalyzer.affected",
+      "decision": "keep",
+      "reason": "保留：更改后找已登记下游",
+      "precondition": "变化Ref与可读范围固定",
+      "postcondition": "分页返回已知依赖，未登记关系不宣称不存在",
+      "calls": [
+        "G01",
+        "registered relation adapter"
+      ],
+      "errors": [
+        "SOURCE_MISSING",
+        "BASIS_CHANGED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "X01",
+      "method": "ExecutionControl.reserve",
+      "decision": "keep",
+      "reason": "保留：工作开始前防止预算超支",
+      "precondition": "成本上界非负，使用原操作账本",
+      "postcondition": "原子预约额度；无法保证上界时拒绝",
+      "calls": [
+        "shared execution ledger"
+      ],
+      "errors": [
+        "BUDGET_EXHAUSTED",
+        "CANCELLED"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "X01",
+      "method": "ExecutionControl.settle",
+      "decision": "keep",
+      "reason": "保留：真实消耗与未用额度分别处理",
+      "precondition": "预约身份与原账本匹配，结算幂等",
+      "postcondition": "累计真实消耗并释放余额，父子层不重复扣费",
+      "calls": [
+        "shared execution ledger"
+      ],
+      "errors": [
+        "INVALID_ARGUMENT",
+        "IDEMPOTENCY_MISMATCH"
+      ],
+      "implementation_status": "not_wired"
+    },
+    {
+      "group": "X01",
+      "method": "ExecutionControl.check_cancelled",
+      "decision": "keep",
+      "reason": "保留：统一取消检查而非各引擎猜测",
+      "precondition": "取消句柄绑定原操作",
+      "postcondition": "返回当前取消标志，不能宣称不支持的强制终止已完成",
+      "calls": [
+        "shared cancellation token"
+      ],
+      "errors": [
+        "ACCESS_DENIED"
+      ],
+      "implementation_status": "not_wired"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "search_success_experience / search_certain_fact",
+      "decision": "merge",
+      "reason": "归入 QuerySpec.scope.facets；避免每个标签新增一个函数。"
+    },
+    {
+      "name": "search_L0 / search_L1 / search_L4",
+      "decision": "merge",
+      "reason": "层级由 CorpusScope.layers，表示由 RepresentationSpec 选择。"
+    },
+    {
+      "name": "fast_search / slow_search",
+      "decision": "reject",
+      "reason": "材料抽象程度与速度没有固定等价关系，预算及实际耗时单独表达。"
+    },
+    {
+      "name": "get_one / get_many 两套读取",
+      "decision": "merge",
+      "reason": "只保留批量 read/describe；单条是长度为1的批次。"
+    },
+    {
+      "name": "rebuild_index / retry_index 多套结果类型",
+      "decision": "merge",
+      "reason": "G04 plan.mode 区分，统一执行回执及水位。"
+    },
+    {
+      "name": "delete_everything / 删除原件",
+      "decision": "reject",
+      "reason": "普通分级CRUD不授予原始数据删除权，规范撤回/归档用明确动作。"
+    },
+    {
+      "name": "auto_accept_from_similarity",
+      "decision": "reject",
+      "reason": "关联或排名不能代替证据复核。"
+    },
+    {
+      "name": "summarize_inside_read",
+      "decision": "reject",
+      "reason": "新解释通过 G11/G02 保存；纯读取不隐藏调用模型写正式内容。"
+    },
+    {
+      "name": "one_repository_per_L_level",
+      "decision": "reject",
+      "reason": "重复身份、事务与版本维护，层级差异由内容schema与规则表达。"
+    },
+    {
+      "name": "distributed_global_transaction",
+      "decision": "reserve",
+      "reason": "当前单owner原子性；跨owner显式部分完成，未实现全局事务不返回成功。"
+    },
+    {
+      "name": "sparse / multi_vector / temporal_graph implementations",
+      "decision": "reserve",
+      "reason": "通过能力、策略和IndexKey预留；具体后端尚待评测与适配。"
+    },
+    {
+      "name": "frontend_refresh_interfaces",
+      "decision": "reuse",
+      "reason": "沿用现有工作台动作，由应用适配新契约；本轮不更改页面。"
+    }
+  ]
+}

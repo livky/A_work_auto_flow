@@ -1,0 +1,65 @@
+{
+  "documents": {
+    "process": {
+      "ref": {
+        "target_kind": "record",
+        "target_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+        "revision": 2,
+        "sha256": "c7ccfc356fa372121b304b49adf19d4beca480301ae55ece68be3eea39074997",
+        "locator": "",
+        "relation": "references"
+      },
+      "current_complete": true,
+      "historical_complete": true,
+      "historical_revision": 1,
+      "changes_after": [],
+      "scientific_review": "not_evaluated"
+    },
+    "report": {
+      "ref": {
+        "target_kind": "record",
+        "target_id": "MEM-35305be1-6956-5547-8457-b07b06b3b29d",
+        "revision": 2,
+        "sha256": "8d8b83d87e24d72068fa89a4d41dd27a59615b6faad6b96eae998bf18f7caa34",
+        "locator": "",
+        "relation": "references"
+      },
+      "current_complete": true,
+      "historical_complete": true,
+      "historical_revision": 1,
+      "changes_after": [],
+      "scientific_review": "not_evaluated"
+    }
+  },
+  "sections": {
+    "full": {
+      "target_kind": "record",
+      "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+      "revision": 2,
+      "sha256": "34ecafeff6026b5a5784518f154c5558f135a1b93128ff42aa7731596f650399",
+      "locator": "",
+      "relation": "references"
+    },
+    "brief": {
+      "target_kind": "record",
+      "target_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+      "revision": 2,
+      "sha256": "89c35f26d30d3631b2de614b63a345dc70729cc21a053fff90575a15a3efff69",
+      "locator": "",
+      "relation": "references"
+    }
+  },
+  "original_source_hashes_after": {
+    "tank": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+    "retry": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+    "saturation": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f"
+  },
+  "navigation_stale": true,
+  "navigation_changed_endpoints": [
+    {
+      "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+      "reason": "revision_changed",
+      "current_revision": 2
+    }
+  ]
+}

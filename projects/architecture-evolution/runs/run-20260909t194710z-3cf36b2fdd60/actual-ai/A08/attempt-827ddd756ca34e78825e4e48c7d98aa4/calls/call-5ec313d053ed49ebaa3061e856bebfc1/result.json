@@ -1,0 +1,35 @@
+{
+  "call_id": "call-5ec313d053ed49ebaa3061e856bebfc1",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "material-query",
+    "search",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\authored-requests\\unconfigured-structural.json",
+    "--assemble"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "started_at": "2026-09-09T21:04:42.913086Z",
+  "timeout_seconds": 120,
+  "request": {
+    "original_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A08\\attempt-827ddd756ca34e78825e4e48c7d98aa4\\authored-requests\\unconfigured-structural.json",
+    "path": "request.snapshot.txt",
+    "sha256": "49281805e92b92a72af0d7855f1244c2dc61015803f7ad96358dd3871ae3ffe0"
+  },
+  "ended_at": "2026-09-09T21:04:43.087714Z",
+  "status": "completed",
+  "exit_code": 2,
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "823e4a7c5991b87add2dccd455f5bd0421c9742e876e11916267cc540880c232"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending"
+}

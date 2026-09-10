@@ -1,0 +1,19 @@
+{
+  "actor": "assistant",
+  "read": [
+    "CORE概念定义、保存维护表和完整查询流程",
+    "brief-read.json的两章实际返回正文"
+  ],
+  "observations": [
+    "表示是内容形式，索引是查找辅助数据，L0-L4是记录职责，已区分。",
+    "③④逐接口输入、动作和输出齐全；增量、重建、补做及进度通过具体例子解释。",
+    "保存与查询流程含失败、缺口、停止及新证据回到版本维护。",
+    "规范r2和r1均回读，旧report逐字段相等；相同来源集合覆盖8个单元。"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "visual_review": "not-run",
+  "limitations": [
+    "本次为说明修订，不验证运行算法效果；契约检查不代表人工可读性认可。"
+  ]
+}

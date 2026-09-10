@@ -1,0 +1,18 @@
+{
+  "PROCESS": {
+    "target_kind": "record",
+    "target_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+    "revision": 1,
+    "sha256": "11476b9c36a7227f69d26715964f10c72c0e4bd2ef25ed70ce5ed72f8f1ac969",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "BRIEF": {
+    "target_kind": "record",
+    "target_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+    "revision": 1,
+    "sha256": "7b0561f0c277defc939f4d0012906c0ef0897f395e75adefb85731271e01f358",
+    "locator": "完整固定正文",
+    "relation": "references"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "actual-browser-screenshot",
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\project-ui-attempt-01\\brief-desktop.png",
+  "locator": "1440×1000 简报首章截图",
+  "coverage": "full",
+  "observation": "目录三章、当前结果及失败/补测表可读；三个 scope 句重复是编辑冗余，不影响含义。"
+}

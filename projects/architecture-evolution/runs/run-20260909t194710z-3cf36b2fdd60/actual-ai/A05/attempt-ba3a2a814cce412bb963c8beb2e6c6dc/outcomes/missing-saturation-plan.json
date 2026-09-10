@@ -1,0 +1,36 @@
+{
+  "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A05\\attempt-ba3a2a814cce412bb963c8beb2e6c6dc\\calls\\call-c92e4c00fdf24462b6c09bfd64b7d11d",
+  "exit_code": 2,
+  "result": {
+    "status": "rejected",
+    "value": null,
+    "code": "SOURCE_MISSING",
+    "warnings": [
+      "固定来源不可用"
+    ],
+    "issues": [
+      {
+        "code": "SOURCE_MISSING",
+        "message": "固定来源不可用",
+        "affected_refs": [],
+        "retry": "after_external_change"
+      }
+    ],
+    "consumed": {
+      "wall_ms": 14,
+      "read_bytes": 4709,
+      "output_chars": 0,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "source_missing",
+    "basis": null
+  }
+}

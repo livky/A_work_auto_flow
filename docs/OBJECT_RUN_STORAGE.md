@@ -1,6 +1,8 @@
 # 对象、Run 与执行回执：当前默认保存逻辑
 
-核对日期：2026-09-09。本文描述当前实现，区分程序自动行为、AI 工作方法和未实现的自动化；对象已有策略或本次明确要求可以改变默认行为。
+核对日期：2026-09-10。本文描述当前实现，区分程序自动行为、AI 工作方法和未实现的自动化；对象已有策略或本次明确要求可以改变默认行为。
+
+当前模块职责以 [ARCHITECTURE.md](../ARCHITECTURE.md) 为入口；保存/归属规则变化时，按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步本页、执行手册与对应 Skill。
 
 ## 三个概念
 
@@ -59,12 +61,14 @@
 | 层次 | 默认内容 | 谁负责生成 |
 |---|---|---|
 | L0 | 原始输入、脚本、输出、日志和固定文件引用的统一视图 | 执行/登记命令写材料登记，L0 自动投影 |
-| L1 detail | 完整技术说明，含方法、参数、公式、结果、限制 | AI 阅读真实证据后写入，不由日志自动生成 |
+| L1 detail | v3 实验、方法、推导或分析技术单元；检索说明与稳定完整正文块 | AI 阅读真实证据后写入，不由日志自动生成 |
 | L2 event | 实际观察、失败、决定及依据、后续行动 | AI 按重要事件保存 |
 | L3 experience | 有适用边界的经验和不可迁移范围 | AI 在证据支持时提炼，不为凑层数制造结论 |
 | L4 map | 问题、证据结构、未决事项和导航 | AI 随研究阶段维护 |
 
-独立章节、研究过程文稿/精简报告、目标、路线、检查点等是辅助类型，level 为 null。L1 的实验说明固定引用 Run；说明文档不会再算一次实验。每条记忆只有一个 owner_id，存入该 owner 的 memory_home，通过公共记忆提交保存历史修订，不在父子对象两边复制正文。
+独立 `document_section` 章节、`document` 研究过程文稿/精简报告、目标、路线、检查点等是辅助类型，level 为 null。两类文稿分别使用 `research_process` / `research_report`，通过固定章节引用组织同一批技术单元，L4 仍是知识地图。L1 的实验说明固定引用 Run；方法、推导和分析可以没有实际执行的 Run，须明确依据或缺口。说明文档不会再算一次实验。每条记忆只有一个 owner_id，存入该 owner 的 memory_home，通过公共记忆提交保存历史修订，不在父子对象两边复制正文。
+
+新记录默认 v3；v1 层级按现行语义投影，v2 detail 和旧 map 编排保留兼容，不改旧字节与固定引用。当前记录与检索模式见 [记忆使用指南](MEMORY_USAGE.md)，不要从文件夹名称或旧模板推断记录版本。
 
 跨对象引用可复用同一 Run 或技术单元。程序不替 AI 决定所有 L1 应写父研究还是子 Run；按内容归属显式指定 owner_id。研究整体文稿、研究目标和阶段综合通常归研究，某次运行独有的记录可归 Run，以固定引用组织。
 
@@ -77,9 +81,9 @@
 
 ## 默认策略与 Skill
 
-程序默认策略为 basic、normal 粒度、owner_only 发现范围、auto_summary=false、auto_deepen=false、checkpoint=true。Research 类型改为 explore、fine、retain=L0–L4、auto_summary=true。其他七类当前沿用基础默认，其中 Run、Project 显式设 basic。
+程序基础策略为 basic、normal 粒度、owner_only 发现范围、auto_summary=false、auto_deepen=false、checkpoint=true。Research 与 Project 类型均为 explore、fine、retain=L0–L4、auto_summary=true；其他六类沿用基础默认，其中 Run 显式设 basic。该 Project 默认自 2026-09-10 起采用，已有显式对象策略保持原意。
 
-这些是记录/整理策略，不是后台 AI 调度开关。Research 的 auto_summary=true 不表示保存文件后系统就自行调用模型写报告；仍需 AI 执行准备、编写、提交和回读。策略按“工作区 → 类型 → 对象 → 支持覆盖的本次请求”合并；子 Run 不因目录在研究下就自动继承研究对象的 explore 策略。
+这些是记录/整理策略，不是后台 AI 调度开关。Research/Project 的 auto_summary=true 不表示保存文件后系统就自行调用模型写报告；仍需 AI 执行准备、编写、提交和回读。当前公共服务读取内置工作区/类型默认值和对象 HEAD 指向的 policy；保存对象策略后通过 inspect 查看有效值及逐字段来源。纯 Python `policy.resolve` 支持“工作区 → 类型 → 对象 → 请求”的覆盖顺序，但当前 CommitRequest 没有自由的 request_overrides 字段，不能把解析器能力当作已接入的 CLI 配置。子 Run 不因目录在研究或项目下就自动继承父对象的 explore 策略。
 
 Skill 由 AI 按本轮任务选择，不由对象目录自动触发。多项工作可以组合 Skill，不要求每次全套执行。
 
@@ -101,4 +105,4 @@ Skill 由 AI 按本轮任务选择，不由对象目录自动触发。多项工�
 - [基础与研究策略](../automation/scripts/memory/policy.py)、[L0 聚合](../automation/scripts/memory/raw_materials.py)、[执行自动登记](../automation/scripts/run_capture.py)。
 - [分层记录标准](RESEARCH_RECORDING.md)、[历史与复核](../context/MEMORY.md)、[执行手册](RUN_CAPTURE.md)。
 
-本轮仅核对和整理现状，并纠正核心算法局部规则中“全部 Run 放根目录”的过时表述；没有新增父子递归聚合或策略继承行为。
+本页记录现行归属和保存方式；父子递归聚合、后台自动总结和策略继承不能由目录结构推断，具体边界见上文。

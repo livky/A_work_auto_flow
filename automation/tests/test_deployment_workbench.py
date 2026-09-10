@@ -250,6 +250,15 @@ class DeploymentWorkbenchTests(unittest.TestCase):
 
     def test_memory_release_inputs_are_explicit_and_importable(self):
         names = set(deploy.framework_files(ROOT))
+        self.assertTrue({
+            'automation/schemas/material-query.schema.json',
+            'docs/design/representation-query-v0.2/RUNTIME_STATUS.md',
+            'docs/design/representation-query-v0.2/inheritance-map.json',
+            'automation/workflows/material-query/SKILL.md',
+            'automation/workflows/association-exploration/SKILL.md',
+            'automation/workflows/semantic-maintenance/SKILL.md',
+            'automation/tests/fixtures/material-query/query-valid.json',
+        }.issubset(names))
         self.assertTrue({'automation/schemas/memory-v1.schema.json', 'automation/schemas/memory-v1.d.ts',
                          'docs/design/system-memory/01-data-contracts.md',
                          'docs/design/system-memory/fixtures/records.json',
@@ -264,7 +273,7 @@ class DeploymentWorkbenchTests(unittest.TestCase):
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / name, destination)
         # -I 排除当前源码路径；确保是接收目录自己的 schema 支持 import。
-        code = "import sys;sys.path.insert(0,sys.argv[1]);from memory.service import MemoryService;from memory.contracts import SCHEMA;assert 'OwnerDescriptor' in SCHEMA['$defs'];print('memory-schema-ok')"
+        code = "import sys;sys.path.insert(0,sys.argv[1]);from memory.service import MemoryService;from memory.contracts import SCHEMA;from material_query.foundation import METHOD_MAP;from material_query.definitions import listing;assert 'OwnerDescriptor' in SCHEMA['$defs'];assert len(METHOD_MAP)==43;assert len(listing())==6;print('memory-schema-ok')"
         result = subprocess.run([sys.executable, '-I', '-c', code, str(isolated / 'automation/scripts')],
                                 cwd=isolated, capture_output=True, text=True, timeout=30)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)

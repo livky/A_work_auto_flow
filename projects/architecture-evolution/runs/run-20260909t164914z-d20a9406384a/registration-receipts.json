@@ -1,0 +1,68 @@
+[
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/c34bea8a98d5486cb89a034c504b258e/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/d569be3d66194065b537662eeab4531e/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/b9cf492f85ab418c97991e0c4d78d0ca/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/9234775a41974805b560a3bc3c2940db/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/ff85f37e1e564faa8469a4ad44015b67/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/0f26a1a6453748b09d58f0a5b1e62473/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/dad5b6d66e594d1ca9d6f8f67973b5bc/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/ed67bfa71eb6466398edf12efcdb97a4/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/3c3bfc33abcd44f781f236ba01e50293/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/1962cee3f91f47f39cd298e40c12aab4/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  },
+  {
+    "status": "registered",
+    "receipt": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/.run-captures/445c5518b4ad44c79dad3515f85ba832/registration.json",
+    "run_id": "RUN-20260909T164914Z-D20A9406384A",
+    "scientific_review": "unchanged"
+  }
+]

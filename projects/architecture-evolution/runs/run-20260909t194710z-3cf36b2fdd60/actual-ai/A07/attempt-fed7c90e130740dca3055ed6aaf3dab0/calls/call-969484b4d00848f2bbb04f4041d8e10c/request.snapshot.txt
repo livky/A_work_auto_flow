@@ -1,0 +1,101 @@
+{
+  "definition": {
+    "key": "full",
+    "version": "1"
+  },
+  "question": "MEM-59e96850-644f-5a1a-9817-000499466692",
+  "keywords": [],
+  "scope": {
+    "owner_ids": [
+      "RES-F3-TANK"
+    ],
+    "levels": null,
+    "kinds": null,
+    "roles": null,
+    "outcomes": null,
+    "review_states": null,
+    "validities": null,
+    "include_unknown": false,
+    "excluded_refs": [
+      {
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "locator": "",
+        "kind": "record",
+        "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a"
+      }
+    ],
+    "excluded_owner_ids": [],
+    "recorded_from": null,
+    "recorded_before": null,
+    "include_refs": [
+      {
+        "revision": 1,
+        "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+        "locator": "",
+        "kind": "record",
+        "id": "MEM-59e96850-644f-5a1a-9817-000499466692"
+      }
+    ]
+  },
+  "scope_ceiling": {
+    "owner_ids": [
+      "RES-F3-TANK"
+    ],
+    "levels": null,
+    "kinds": null,
+    "roles": null,
+    "outcomes": null,
+    "review_states": null,
+    "validities": null,
+    "include_unknown": false,
+    "excluded_refs": [
+      {
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "locator": "",
+        "kind": "record",
+        "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a"
+      }
+    ],
+    "excluded_owner_ids": [],
+    "recorded_from": null,
+    "recorded_before": null,
+    "include_refs": [
+      {
+        "revision": 1,
+        "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+        "locator": "",
+        "kind": "record",
+        "id": "MEM-59e96850-644f-5a1a-9817-000499466692"
+      }
+    ]
+  },
+  "purpose": "exploration",
+  "association": {
+    "mode": "off",
+    "strategy": "existing-relations",
+    "strategy_version": "1",
+    "max_items": 5,
+    "output_share": 0.2,
+    "supplement_scope": null
+  },
+  "budget": {
+    "wall_ms": 10000,
+    "read_bytes": 2097152,
+    "output_chars": 12000,
+    "candidates": 100,
+    "graph_nodes": 50,
+    "graph_edges": 100,
+    "graph_hops": 2,
+    "model_tokens": 0
+  },
+  "freshness": "fixed",
+  "result_limit": 8,
+  "missing_policy": "reject",
+  "fallback_definitions": [],
+  "applicability": "SYNTHETIC F3 only",
+  "channels": [
+    "identity"
+  ]
+}

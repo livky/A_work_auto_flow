@@ -1,0 +1,2090 @@
+{
+  "schema_version": 1,
+  "owner_id": "RES-FLOATING-POINT-SUMMATION",
+  "title": "浮点求和的数值稳定性：顺序、补偿与抵消",
+  "document_source": "independent",
+  "document": {
+    "record_id": "MEM-ab9db095-2545-594c-9e94-f72bab43c464",
+    "revision": 1,
+    "title": "依据不可用的文档",
+    "document_type": "research_process",
+    "purpose": "",
+    "audience": "",
+    "scope": "",
+    "common_refs": [
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+        "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "4279d30832ef69987ae536f981837693cafa7555d790b44b59fb4efeaab2122a",
+        "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "e73d93cd8e625924ae01ddd9ae80476c3652311335ecbfcfd47c914d8fa9be41",
+        "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "69d5019c8d87a6a02e9ad457c0c6cb71792ad280084148c4d4b0136ad368ecff",
+        "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "d015c4c7e9930ae652f29413e6a77b4a025b73bd533395ed5adcaffabfcf18d7",
+        "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "0b05701fa827acc71891a471ec5ff2963c5194c9129fbeba2302e3def6269cfe",
+        "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "08de0d1069403c63354dc158e8db2cdda5be6fb1eebfe60ebda8a6ce7b4ddcd6",
+        "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "6cfaa8c91b6758704abee4dd729496169a7a5f6f813b1fc2ce90fd26e76b528a",
+        "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+        "target_kind": "record"
+      },
+      {
+        "locator": "完整正文与固定依据",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "5160ebafb3fc95a14cc3e973a1cab15994ac412eed87062269c73e723c113eb7",
+        "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "report": {
+    "version": 1,
+    "record_id": "MEM-ab9db095-2545-594c-9e94-f72bab43c464",
+    "revision": 1,
+    "title": "依据不可用的文档",
+    "sections": [
+      {
+        "section_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+        "section_key": "",
+        "title": "不可读取的章节",
+        "role": "appendix",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "4279d30832ef69987ae536f981837693cafa7555d790b44b59fb4efeaab2122a",
+          "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+          "target_kind": "record"
+        },
+        "source_issues": [
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+            "code": "UNRESOLVED_REFERENCE"
+          }
+        ],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "",
+            "type": "prose",
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+        "section_key": "",
+        "title": "不可读取的章节",
+        "role": "appendix",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "e73d93cd8e625924ae01ddd9ae80476c3652311335ecbfcfd47c914d8fa9be41",
+          "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+          "target_kind": "record"
+        },
+        "source_issues": [
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          }
+        ],
+        "blocks": [
+          {
+            "ref": {
+              "locator": "完整正文与固定依据",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "ba12342c6ca8afa0a1760dc517fd7bff2d1b60c7f082ee9113e419572834df51",
+              "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": null,
+            "resolved_blocks": [],
+            "required_block_ids": [],
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+        "section_key": "",
+        "title": "不可读取的章节",
+        "role": "appendix",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "69d5019c8d87a6a02e9ad457c0c6cb71792ad280084148c4d4b0136ad368ecff",
+          "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+          "target_kind": "record"
+        },
+        "source_issues": [
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+            "code": "UNRESOLVED_REFERENCE"
+          }
+        ],
+        "blocks": [
+          {
+            "ref": {
+              "locator": "完整正文与固定依据",
+              "relation": "references",
+              "revision": 3,
+              "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+              "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": null,
+            "resolved_blocks": [],
+            "required_block_ids": [],
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+        "section_key": "",
+        "title": "不可读取的章节",
+        "role": "appendix",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "d015c4c7e9930ae652f29413e6a77b4a025b73bd533395ed5adcaffabfcf18d7",
+          "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+          "target_kind": "record"
+        },
+        "source_issues": [
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+            "code": "UNRESOLVED_REFERENCE"
+          }
+        ],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "",
+            "type": "prose",
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          },
+          {
+            "ref": {
+              "locator": "完整正文与固定依据",
+              "relation": "references",
+              "revision": 3,
+              "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+              "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": null,
+            "resolved_blocks": [],
+            "required_block_ids": [],
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+        "section_key": "",
+        "title": "不可读取的章节",
+        "role": "appendix",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "0b05701fa827acc71891a471ec5ff2963c5194c9129fbeba2302e3def6269cfe",
+          "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+          "target_kind": "record"
+        },
+        "source_issues": [
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+            "code": "UNRESOLVED_REFERENCE"
+          }
+        ],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "",
+            "type": "prose",
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          },
+          {
+            "ref": {
+              "locator": "完整正文与固定依据",
+              "relation": "references",
+              "revision": 3,
+              "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+              "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": null,
+            "resolved_blocks": [],
+            "required_block_ids": [],
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+        "section_key": "",
+        "title": "不可读取的章节",
+        "role": "appendix",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "08de0d1069403c63354dc158e8db2cdda5be6fb1eebfe60ebda8a6ce7b4ddcd6",
+          "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+          "target_kind": "record"
+        },
+        "source_issues": [
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+            "code": "UNRESOLVED_REFERENCE"
+          }
+        ],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "",
+            "type": "prose",
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+        "section_key": "",
+        "title": "不可读取的章节",
+        "role": "appendix",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "6cfaa8c91b6758704abee4dd729496169a7a5f6f813b1fc2ce90fd26e76b528a",
+          "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+          "target_kind": "record"
+        },
+        "source_issues": [
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+            "code": "UNRESOLVED_REFERENCE"
+          }
+        ],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "",
+            "type": "prose",
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+        "section_key": "",
+        "title": "不可读取的章节",
+        "role": "appendix",
+        "ref": {
+          "locator": "完整正文与固定依据",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "5160ebafb3fc95a14cc3e973a1cab15994ac412eed87062269c73e723c113eb7",
+          "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+          "target_kind": "record"
+        },
+        "source_issues": [
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+            "code": "UNRESOLVED_REFERENCE"
+          },
+          {
+            "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+            "code": "UNRESOLVED_REFERENCE"
+          }
+        ],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "c9ab320069397e5219eca068d85e33fd7636368db676026a7f9d3f1f68863c20",
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "f622c9730e82aa63f77c098592809f4aef8b601cfe747931c42974de741ad9cd",
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整正文与固定依据",
+                "relation": "references",
+                "revision": 3,
+                "sha256": "4e863128333d48e4bb228682a3664fbabd1155143bc92db2d6a1d1b50db6cf86",
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "",
+            "type": "prose",
+            "source_issues": [
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+                "code": "UNRESOLVED_REFERENCE"
+              },
+              {
+                "target_id": "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+                "code": "UNRESOLVED_REFERENCE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "complete": false
+  },
+  "items": [],
+  "missing": [
+    {
+      "target_id": "MEM-51cc78a8-53d2-5503-9d00-d6131d178a96",
+      "code": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "target_id": "MEM-240055fb-b318-5e3e-85a0-dadf88507a18",
+      "code": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "target_id": "MEM-eae18081-bb16-5920-b634-ac08669ae539",
+      "code": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "target_id": "MEM-abc1cfbf-3ed6-5123-a84c-f2b7fb0b5f8b",
+      "code": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "target_id": "MEM-346cdf38-a912-5e43-b17f-5b562f6ca8ba",
+      "code": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "target_id": "MEM-57f1ea79-42c2-57e7-b17b-b6968c23efeb",
+      "code": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "target_id": "MEM-5977e884-5a25-515d-b2cb-3e28c8418b06",
+      "code": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "target_id": "MEM-b2af4b7e-c542-5d09-950c-47661499e24b",
+      "code": "UNRESOLVED_REFERENCE"
+    },
+    {
+      "target_id": "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+      "code": "UNRESOLVED_REFERENCE"
+    }
+  ],
+  "generated_at": "2026-09-10T05:02:12.750017Z",
+  "report_candidates": [
+    {
+      "record_id": "MEM-ab9db095-2545-594c-9e94-f72bab43c464",
+      "revision": 1,
+      "title": "浮点求和的数值稳定性：完整研究过程",
+      "updated_at": "2026-09-09T06:34:59.979537Z",
+      "document_type": "research_process"
+    },
+    {
+      "record_id": "MEM-21132a5c-2477-50ea-ad28-2244de823f4f",
+      "revision": 1,
+      "title": "浮点求和的数值稳定性：简版研究报告",
+      "updated_at": "2026-09-09T06:34:59.979537Z",
+      "document_type": "research_report"
+    }
+  ],
+  "report_coverage": {
+    "included_detail_ids": [
+      "MEM-4acc73bb-59c7-560d-9415-fd42e9dcaa2d",
+      "MEM-96f79923-f023-509e-a002-40f2d5a4fca1",
+      "MEM-c4a61c00-1bf1-59b3-a65e-0fa4847db2e1",
+      "MEM-c52df8fb-ca9e-53a7-a49b-342592884a50"
+    ],
+    "uncovered_detail_ids": []
+  },
+  "report_version_hints": [],
+  "basis_heads": {
+    "RES-FLOATING-POINT-SUMMATION": "COM-abddae26-f26e-4c76-8b28-fe0b98a29d05"
+  },
+  "metrics": {
+    "elapsed_ms": 647.23,
+    "inventory_owners": 19,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 27,
+    "resolved_sections": 8
+  },
+  "writes": 0
+}
+

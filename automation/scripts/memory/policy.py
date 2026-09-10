@@ -7,10 +7,15 @@ from .errors import MemoryError
 WORKSPACE_DEFAULTS = {'mode': 'basic', 'retain': [], 'granularity': 'normal',
                       'auto_summary': False, 'discovery': 'owner_only',
                       'auto_deepen': False, 'checkpoint': True}
-TYPE_DEFAULTS = {'research': {'mode': 'explore', 'granularity': 'fine',
-                             'retain': ['L0', 'L1', 'L2', 'L3', 'L4'],
-                             'auto_summary': True}, 'run': {'mode': 'basic'},
-                 'project': {'mode': 'basic'}}
+# Project 自身的设计、分析和开发也是实质研究，默认保存同样的分层内容。
+# 这只是给调用方的记录建议：auto_summary 不启动后台模型，也不自动复核。
+# 两个类型分别持有副本，避免后续局部扩展配置时串改另一类型的保留列表。
+RESEARCH_RECORDING_DEFAULTS = {'mode': 'explore', 'granularity': 'fine',
+                              'retain': ['L0', 'L1', 'L2', 'L3', 'L4'],
+                              'auto_summary': True}
+TYPE_DEFAULTS = {'research': deepcopy(RESEARCH_RECORDING_DEFAULTS),
+                 'project': deepcopy(RESEARCH_RECORDING_DEFAULTS),
+                 'run': {'mode': 'basic'}}
 
 
 def _flatten(value):

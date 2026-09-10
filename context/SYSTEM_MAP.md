@@ -1,6 +1,8 @@
 # 系统地图
 
-这是全局算法与研究的高层地图。这里只记录稳定关系，不复制核心算法正文。
+这是全局算法与研究的领域导航；下面的设备/模型链路是可填写的领域示意，不代表框架软件实现。这里只记录稳定关系，不复制核心算法正文。
+
+框架当前实现见 [ARCHITECTURE.md](../ARCHITECTURE.md)。本完整工作区的跨模块变更影响图集中维护在 `projects/architecture-evolution/context/MODULE_IMPACT.md`，本页只提供入口，不复制第二份图。Project 实例不随公共源码包分发，缺少项目时按[维护手册](../docs/DOCUMENTATION_MAINTENANCE.md)检查。
 
 ## 核心算法与领域
 

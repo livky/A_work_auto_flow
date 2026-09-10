@@ -1,0 +1,16 @@
+{
+  "error": {
+    "code": "INVALID_SCHEMA",
+    "message": "记忆草案验证失败",
+    "details": {},
+    "errors": [
+      {
+        "code": "INVALID_SCHEMA",
+        "path": "/payload/decision_refs",
+        "message": "Decision requires evidence or an explicit provenance gap"
+      }
+    ]
+  },
+  "save_status": "not_committed"
+}
+

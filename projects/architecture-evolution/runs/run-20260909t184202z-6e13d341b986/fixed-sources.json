@@ -1,0 +1,26 @@
+[
+  {
+    "target_kind": "file",
+    "target_id": "SRC-ARCH-REP-GRAPH-20260910-CORE",
+    "revision": null,
+    "sha256": "3f91a72a08f558e42c35d995240acf7b5fd90038dfe1482b34b8ad0052a385af",
+    "locator": "完整文件",
+    "relation": "input"
+  },
+  {
+    "target_kind": "file",
+    "target_id": "SRC-ARCH-REP-GRAPH-20260910-DETAIL",
+    "revision": null,
+    "sha256": "477b95e62b454ebbac611cb3c7f109ef1adade49c715e6a69325870ad790dada",
+    "locator": "完整文件",
+    "relation": "input"
+  },
+  {
+    "target_kind": "file",
+    "target_id": "SRC-ARCH-REP-GRAPH-20260910-FEEDBACK",
+    "revision": null,
+    "sha256": "e5570de6080a5b73a1c0f5852029a90b573c1ffed5167705a0a5afdad439b2ca",
+    "locator": "完整文件",
+    "relation": "input"
+  }
+]

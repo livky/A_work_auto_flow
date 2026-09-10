@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "mechanical comparison of saved A05 snapshots and public outcomes",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "完整阅读55个规范/来源文件在retain后及恢复后相同、公开owner结果相等，恢复计划5部分与已读内容相同；不把原F3并发A06新增列入本断言。",
+  "recorded_at": "2026-09-09T23:04:35.657910Z",
+  "capture_sha256": "8574690cfd36ede7cf8b81fc88b9fdefdf9e9d13ab1b2884acda415e5793b469",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

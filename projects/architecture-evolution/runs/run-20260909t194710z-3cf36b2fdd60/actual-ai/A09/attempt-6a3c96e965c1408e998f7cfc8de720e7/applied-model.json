@@ -1,0 +1,156 @@
+{
+  "owner": {
+    "schema_version": 1,
+    "owner_id": "RES-F3-TANK",
+    "owner_type": "research",
+    "native_ref": {
+      "id_field": "research_id",
+      "id_value": "RES-F3-TANK",
+      "path": "research/tank/research.json"
+    },
+    "memory_home": "research/tank/memory",
+    "adapter_version": 1,
+    "temporary": false,
+    "persisted": true,
+    "title": "SYNTHETIC F3 tank",
+    "fingerprint": "52adfc2af72e6d3ec184ea08041a271b7d349a726eabebb839b8c8a833c9f200",
+    "native_data": {
+      "research_id": "RES-F3-TANK",
+      "title": "SYNTHETIC F3 tank",
+      "status": "active",
+      "claims": [],
+      "dependencies": [],
+      "sensitivity": "internal"
+    },
+    "created_at": "2026-09-09T21:01:04.942894Z",
+    "created_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    }
+  },
+  "record": {
+    "body_markdown": "",
+    "change_reason": "实际AI阅读无旧边新饱和输入后补充特定参数的不可达条件；保留原未饱和推导与旧修订",
+    "content_hash": "72f7bb9379d952f82ef0e6f8e5dbc72dd838b0c8ea021df7627ec473705fb00e",
+    "created_at": "2026-09-09T21:02:10.226996Z",
+    "created_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    },
+    "discovery": "workspace_summary",
+    "keywords": [
+      "SYNTHETIC",
+      "F3",
+      "水箱线性段误差分析"
+    ],
+    "kind": "detail",
+    "level": "L1",
+    "owner_id": "RES-F3-TANK",
+    "payload": {
+      "blocks": [
+        {
+          "block_id": "model",
+          "markdown": "## 水箱负反馈的线性段\n\n质量守恒与控制律为\n\n$$\nA\\frac{dh}{dt}=q-ch,\\qquad q_c=c h_r+K(h_r-h),\\qquad q=\\operatorname{clip}(q_c,0,q_{max}).\n$$\n\n在整个讨论区间保持 $0<q_c<q_{max}$ 时，可代入 $q=q_c$；目标不变，故\n\n$$\n\\frac{de}{dt}=-\\frac{c+K}{A}e,\\qquad e(t)=e(0)\\exp\\left(-\\frac{c+K}{A}t\\right).\n$$\n\n这是给定合成连续线性模型的代数推导，未做现实实验。若 $A>0,c>0,K\\geq0$ 且不触发饱和，误差按该模型指数衰减。时间常数 $\\tau=A/(c+K)$，单位为秒。\n\n## 边界\n\n上述指数解只属于未饱和区间；更大目标或初始误差可能使泵触顶或关闭，此时必须返回带 clip 的分段动力学。材料未提供普遍“增益越大越好”的现实结论。尚未测量延迟、噪声与出流非线性；本次新参数的目标可达性检查见后续边界块。\n",
+          "requires_block_ids": [],
+          "role": "methods"
+        },
+        {
+          "block_id": "saturation_boundary",
+          "markdown": "## 新饱和输入的目标可达性（合成代数检查）\n\n新固定输入给出 $q_{max}=0.15\\,\\mathrm{m^3/s}$、$h_r=2\\,\\mathrm{m}$，沿用 $c=0.1\\,\\mathrm{m^2/s}$ 与 $A=2\\,\\mathrm{m^2}$。目标平衡需要\n\n$$\nq_{req}=c h_r=0.20\\,\\mathrm{m^3/s}>q_{max}.\n$$\n\n因此该参数下不存在维持目标的可用入流。持续饱和分支的平衡为\n\n$$\nh_{sat}=\\frac{q_{max}}{c}=1.5\\,\\mathrm{m},\\qquad h_r-h_{sat}=0.5\\,\\mathrm{m}.\n$$\n\n$q_{req}$ 是维持目标所需流量，$h_{sat}$ 是持续最大流量时的合成平衡液位。仅增大 $K$ 不能突破泵上限；不能在该目标下沿用未饱和指数式来保证误差归零。原线性段推导保留其条件成立的适用范围，没有被整体撤回。\n\n这是基于新旧固定文字前提的代数分析，不是泵实测、仿真运行或科学复核。其他目标、泵能力、延迟和非线性条件仍需独立检查。\n",
+          "requires_block_ids": [
+            "model"
+          ],
+          "role": "limitations"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "locator": "完整合成输入",
+          "relation": "input",
+          "revision": null,
+          "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+          "target_id": "SRC-F3-TANK",
+          "target_kind": "file"
+        },
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "target_kind": "record"
+        },
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+          "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+          "target_kind": "record"
+        }
+      ],
+      "figures": [],
+      "missing_refs": [],
+      "retrieval_description": {
+        "applicable": [
+          "变量字典一致且全过程未饱和"
+        ],
+        "key_findings": [
+          "给定无延迟合成模型中，误差在未饱和区间指数衰减",
+          "新给定泵上限0.15 m³/s、目标2 m时，所需0.20 m³/s超出上限，不能保证目标误差归零"
+        ],
+        "limitations": [
+          "仅检查给定合成参数的代数可达性；其他目标、泵能力、延迟与非线性仍未验证；没有现实实验"
+        ],
+        "method": "代入质量守恒并在未饱和区间求解一阶误差方程",
+        "not_applicable": [
+          "执行器饱和、未知延迟或直接外推现实模型",
+          "不得把该线性段解用于新给定的不可达目标"
+        ],
+        "question": "未饱和水箱负反馈的误差怎样变化"
+      },
+      "run_ref": null,
+      "unit_type": "analysis"
+    },
+    "previous_revision": 1,
+    "provenance_gap": null,
+    "record_hash": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+    "record_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+    "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+    "revision": 2,
+    "schema_version": 3,
+    "sensitivity": "internal",
+    "sources": [
+      {
+        "locator": "完整合成输入",
+        "relation": "input",
+        "revision": null,
+        "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+        "target_id": "SRC-F3-TANK",
+        "target_kind": "file"
+      },
+      {
+        "locator": "",
+        "relation": "prerequisite",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+        "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+        "target_kind": "record"
+      }
+    ],
+    "title": "SYNTHETIC F3 水箱线性段误差分析",
+    "updated_at": "2026-09-09T21:19:33.708961Z",
+    "updated_by": {
+      "id": "Codex /root/retrieval_review actual AI",
+      "kind": "ai"
+    }
+  }
+}

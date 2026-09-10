@@ -1,0 +1,18 @@
+{
+  "valid": true,
+  "errors": [],
+  "dry_run": true,
+  "owner_id": "RES-F3-SATURATION",
+  "head": null,
+  "record_results": [
+    {
+      "client_key": "saturation",
+      "record_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+      "revision": 1,
+      "content_hash": "536bdaa828a9750eac59c5fe37215502fadccb83118cfca21c42b7fb90787a93",
+      "status": "would_create"
+    }
+  ],
+  "writes": 0
+}
+

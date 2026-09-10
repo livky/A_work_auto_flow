@@ -1,0 +1,11 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "public-cli",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "r5 当前实现简报及覆盖元数据",
+  "coverage": "partial",
+  "observation": "简报先显示实际实现和验证边界，再保留两章历史；与过程稿固定共同依据一致。",
+  "recorded_at": "2026-09-09T22:44:34.435628Z",
+  "capture_sha256": "68f9a196c650af818df0627b565b54cd16380d851a3385b790c64b609e43a482",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

@@ -1,0 +1,50 @@
+{
+  "PROCESS": {
+    "record_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+    "revision": 3,
+    "complete": true,
+    "missing": [],
+    "coverage": {
+      "included_detail_ids": [
+        "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+        "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+        "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+        "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+        "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+        "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+        "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+        "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d"
+      ],
+      "uncovered_detail_ids": []
+    },
+    "old_report_unchanged": true
+  },
+  "BRIEF": {
+    "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+    "revision": 3,
+    "complete": true,
+    "missing": [],
+    "coverage": {
+      "included_detail_ids": [
+        "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+        "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+        "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+        "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+        "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+        "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+        "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+        "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d"
+      ],
+      "uncovered_detail_ids": []
+    },
+    "old_report_unchanged": true
+  },
+  "same_common_refs": true,
+  "new_unit_revision": 3,
+  "head": {
+    "commit_id": "COM-c24f0993-f19a-4b09-a43e-39832ef42107",
+    "generation": 9,
+    "manifest_hash": "c53f737259914bc7293048f216ceccf7f35a9c039f10959e782d6ed3aafe6bbc"
+  },
+  "human_review": "pending"
+}

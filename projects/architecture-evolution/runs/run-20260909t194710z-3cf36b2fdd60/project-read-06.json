@@ -1,0 +1,8 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "actual-browser-screenshot",
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\project-ui-attempt-01\\process-formula.png",
+  "locator": "1440×1000 过程稿第9章截图",
+  "coverage": "full",
+  "observation": "实际看到目录跳到第9章，集合交集/排除公式和累计资源求和公式排版完整，正文及必要定义可读。"
+}

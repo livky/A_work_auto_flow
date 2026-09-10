@@ -11,9 +11,12 @@
 | PPT、Word、PDF、周报和正式汇报 | `report-production/SKILL.md` |
 | 分批导入材料、关键词索引、算法/代码映射更新、整理与交接 | `context-maintenance/SKILL.md` |
 | 查看结论依据、复核和报告影响；只读监测变化、维护候选 | `evidence-inspection/SKILL.md` |
+| 开发或修复框架、选择分级测试、保存实际 AI 自查与人工入口 | `development-checks/SKILL.md` |
 
-workspace-context 和 context-maintenance 已通过校验并安装到 .agents/skills；入口仅链接本目录方法源，避免两份规则漂移。新会话/重载后可使用 $workspace-context、$context-maintenance；当前未发现技能时可直接让 AI 读源文件。其他流程保留为按需方法，不安装全部技能。
+当前登记五个轻量 Skill 入口：workspace-context、context-maintenance、evidence-inspection、research-loop、development-checks。`.agents/skills` 入口只链接本目录方法源，避免两份规则漂移；新会话未发现时可直接让 AI 读源文件。其余流程仍按需使用，不安装全部方法。
 
-证据查看与只读监测新增 $evidence-inspection，已安装轻量入口。升级旧副本时可执行 `automation/python.ps1 automation/scripts/install_workspace_skills.py --name evidence-inspection --apply`，不覆盖其他技能的本地修改。
+安装器默认预览，`--apply` 才新建缺失入口，`--name` 可选择登记项；已有不同内容会保留并输出合并差异，不静默覆盖用户规则。框架升级使用根 `setup.cmd --target`，不要以单独安装一个 Skill 代替整套升级。
+
+方法中的“记录”须区分对象内 Run、不可变记忆与检索投影；文件 Q/CTX 与记忆 QMEM/PKT 分别使用对应入口。L1 技术单元、L4 地图和独立双文稿的最新格式见 [分层记录标准](../../docs/RESEARCH_RECORDING.md)，框架文档同步见 [维护手册](../../docs/DOCUMENTATION_MAINTENANCE.md)。
 
 工作流负责方法，`AGENTS.md` 负责稳定规则，确定性脚本负责机械动作，外部系统适配器负责权限受控的数据与工具访问。不要在三处复制同一长篇说明。

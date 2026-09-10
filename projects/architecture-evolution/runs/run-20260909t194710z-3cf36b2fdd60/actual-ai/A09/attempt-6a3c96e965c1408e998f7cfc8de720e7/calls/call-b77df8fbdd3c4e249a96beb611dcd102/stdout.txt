@@ -1,0 +1,25 @@
+{
+  "status": "rejected",
+  "value": null,
+  "code": "CONFLICT",
+  "warnings": [
+    "维护依据HEAD已变化，请重新形成计划"
+  ],
+  "consumed": {
+    "wall_ms": 62,
+    "read_bytes": 29780,
+    "output_chars": 0,
+    "candidates": 0,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "graph_hops": 0,
+    "model_tokens": 0,
+    "model_calls": 0,
+    "model_input_tokens": 0,
+    "model_output_tokens": 0,
+    "rerank_items": 0
+  },
+  "stop_reason": "conflict",
+  "basis": null
+}
+

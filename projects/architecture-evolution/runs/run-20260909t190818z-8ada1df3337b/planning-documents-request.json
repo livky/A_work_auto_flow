@@ -1,0 +1,669 @@
+{
+  "schema_version": 3,
+  "request_id": "265986e2-2868-4638-acd9-0254f56afab7",
+  "actor": {
+    "kind": "ai",
+    "id": "assistant"
+  },
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "expected_head": "COM-3fde04b6-ce66-439b-9418-e896fd6dd74a",
+  "operations": [
+    {
+      "op": "put_record",
+      "record_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+      "expected_revision": 3,
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document",
+        "title": "接口契约与Project记录：完整设计过程",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "payload": {
+          "audience": "框架开发者与评审者",
+          "common_refs": [
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+              "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+              "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+              "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+              "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+              "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+              "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+              "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+              "target_kind": "record"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+              "revision": 4,
+              "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+              "locator": "完整固定正文",
+              "relation": "references"
+            }
+          ],
+          "document_type": "research_process",
+          "missing_refs": [],
+          "purpose": "供设计复核和下一阶段实施使用",
+          "scope": "本项目接口契约v0.1；仅Project默认策略已实际修改，运行适配待实施。",
+          "section_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-07f99619-3a8d-5bc8-8a4f-7cc26c68895b",
+              "revision": 1,
+              "sha256": "1c13f045d9661b7e46c085a801a467f6984d40cb2cd83e79b9d0fd2e9e5aa876",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-0ea4cb73-8b6d-5a0a-9e18-25d8f8832389",
+              "revision": 1,
+              "sha256": "605063c592e11648da97b447e5f610400dfe91b9f95978dbb4736729fc06bc8a",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-bfa85fc8-18bc-5d83-b17e-a4cfaa50f943",
+              "revision": 1,
+              "sha256": "23d0d79f5cf7f872b3599c683ba7ff8b620842e1e3d7245e3fd1fa37cd88772d",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-de3fa8e3-8175-513e-9570-93f73d8fe2e1",
+              "revision": 1,
+              "sha256": "f6de9864145ed4def6f83a10b0dbf2f4d1d924a02cb9146717ac0a7b17de290b",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-433a097e-6cf5-5ff3-baf5-1e0a47e7b9c5",
+              "revision": 1,
+              "sha256": "d656e5073cab9061bcdb3f147233937e1290c5a77859e70955e11f39d9330f15",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-fd727af8-77a1-5900-918d-3bf0bc808a3a",
+              "revision": 1,
+              "sha256": "954b8ab94dda711c4e277551cdfd8d6aeb5b547b74b72e81d8042f20d01a2f6f",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-2afc5e96-c1d0-5f3a-8ad1-484f39e6d27d",
+              "revision": 1,
+              "sha256": "5daa19a02daaeb4f6933c7d14a06c130354f70d7067561974e23f2444818a641",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-12ab4fe8-bee3-5179-a3ef-e7ddaed461a2",
+              "revision": 4,
+              "sha256": "ab801ed6f748fcc4d15f12e84b394098fb61025d96ee40b694b5303b5a2fa684",
+              "locator": "完整固定正文",
+              "relation": "references"
+            }
+          ],
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-07f99619-3a8d-5bc8-8a4f-7cc26c68895b",
+            "revision": 1,
+            "sha256": "1c13f045d9661b7e46c085a801a467f6984d40cb2cd83e79b9d0fd2e9e5aa876",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-0ea4cb73-8b6d-5a0a-9e18-25d8f8832389",
+            "revision": 1,
+            "sha256": "605063c592e11648da97b447e5f610400dfe91b9f95978dbb4736729fc06bc8a",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-bfa85fc8-18bc-5d83-b17e-a4cfaa50f943",
+            "revision": 1,
+            "sha256": "23d0d79f5cf7f872b3599c683ba7ff8b620842e1e3d7245e3fd1fa37cd88772d",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-de3fa8e3-8175-513e-9570-93f73d8fe2e1",
+            "revision": 1,
+            "sha256": "f6de9864145ed4def6f83a10b0dbf2f4d1d924a02cb9146717ac0a7b17de290b",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-433a097e-6cf5-5ff3-baf5-1e0a47e7b9c5",
+            "revision": 1,
+            "sha256": "d656e5073cab9061bcdb3f147233937e1290c5a77859e70955e11f39d9330f15",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-fd727af8-77a1-5900-918d-3bf0bc808a3a",
+            "revision": 1,
+            "sha256": "954b8ab94dda711c4e277551cdfd8d6aeb5b547b74b72e81d8042f20d01a2f6f",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-2afc5e96-c1d0-5f3a-8ad1-484f39e6d27d",
+            "revision": 1,
+            "sha256": "5daa19a02daaeb4f6933c7d14a06c130354f70d7067561974e23f2444818a641",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-12ab4fe8-bee3-5179-a3ef-e7ddaed461a2",
+            "revision": 4,
+            "sha256": "ab801ed6f748fcc4d15f12e84b394098fb61025d96ee40b694b5303b5a2fa684",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "level": null,
+        "change_reason": "将表示提案落实为v0.2接口、工作台、Skill和实施/测试设计；产品实现待后续阶段。"
+      }
+    },
+    {
+      "op": "put_record",
+      "record_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+      "expected_revision": 3,
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "document",
+        "title": "接口契约与Project记录：核心简报",
+        "body_markdown": "",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "payload": {
+          "audience": "项目使用者与实施决策者",
+          "common_refs": [
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+              "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+              "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+              "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+              "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+              "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+              "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+              "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+              "target_kind": "record"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+              "revision": 4,
+              "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+              "locator": "完整固定正文",
+              "relation": "references"
+            }
+          ],
+          "document_type": "research_report",
+          "missing_refs": [],
+          "purpose": "快速了解核心接口、已完成变化和验证边界",
+          "scope": "本项目接口契约v0.1；仅Project默认策略已实际修改，运行适配待实施。",
+          "section_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+              "revision": 4,
+              "sha256": "ea1cf1091e9cf2a634af4ba8b052ba3523d04658a9e4783b69777b80f54ead70",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+              "revision": 4,
+              "sha256": "1306cb4ff426aa4b910f823391942393033109ed9bfe2653d931dad805a15122",
+              "locator": "完整固定正文",
+              "relation": "references"
+            }
+          ],
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+            "revision": 4,
+            "sha256": "ea1cf1091e9cf2a634af4ba8b052ba3523d04658a9e4783b69777b80f54ead70",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+            "revision": 4,
+            "sha256": "1306cb4ff426aa4b910f823391942393033109ed9bfe2653d931dad805a15122",
+            "locator": "完整固定正文",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "level": null,
+        "change_reason": "将表示提案落实为v0.2接口、工作台、Skill和实施/测试设计；产品实现待后续阶段。"
+      }
+    },
+    {
+      "op": "put_record",
+      "record_id": "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba",
+      "expected_revision": 3,
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+        "kind": "map",
+        "title": "接口契约v0.1与Project分层记录阶段地图",
+        "body_markdown": "完整设计与简版共用固定技术单元；已完成默认规则修改，检索接口运行适配待实施。",
+        "keywords": [
+          "接口契约",
+          "表示索引",
+          "检索编排",
+          "Project分层记录"
+        ],
+        "payload": {
+          "conflict_refs": [],
+          "coverage": {
+            "missing": [
+              "接口运行适配和检索性能实验未执行",
+              "1项既有冻结夹具失败、19项前端未运行",
+              "第二台物理机与人工验收待完成"
+            ],
+            "owner_ids": [
+              "PRJ-ARCHITECTURE-EVOLUTION"
+            ],
+            "source_versions": [
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+                "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+                "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+                "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+                "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+                "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+                "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+                "target_kind": "record"
+              },
+              {
+                "locator": "完整固定正文",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+                "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+                "target_kind": "record"
+              },
+              {
+                "target_kind": "record",
+                "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+                "revision": 4,
+                "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+                "locator": "完整固定正文",
+                "relation": "references"
+              }
+            ]
+          },
+          "goal_refs": [],
+          "missing_refs": [],
+          "next_steps": [
+            "按v0.2开发计划P0开始旧接口适配并冻结实际测试选择",
+            "P1-P6逐步接入工作台、联想、维护与升级验收",
+            "按根待开发计划的触发条件评估复杂策略"
+          ],
+          "question_refs": [],
+          "result_refs": [
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+              "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+              "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+              "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+              "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+              "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+              "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+              "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+              "target_kind": "record"
+            },
+            {
+              "target_kind": "record",
+              "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+              "revision": 4,
+              "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+              "locator": "完整固定正文",
+              "relation": "references"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "62784a388c8bb67bcd818e9af6362ee59952367f3e561adee40a1d6f61c878aa",
+              "target_id": "MEM-67d394cb-8fdd-547c-ae13-1143da4ab3ef",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "be96773a77958c40231e85211d7fd86d45648be1dfdacf7d6fa22cafd6ae707c",
+              "target_id": "MEM-fb9a8171-f66f-5765-a55d-c03825f05d24",
+              "target_kind": "record"
+            },
+            {
+              "locator": "完整固定正文",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "685b90dd69ffdf2514324f79c721eff5f4da784ac9e43acea2b2abbc96982788",
+              "target_id": "MEM-68e92ced-610a-58a3-bd05-a0f8055f0a71",
+              "target_kind": "record"
+            }
+          ],
+          "route_refs": [],
+          "topic": "接口契约v0.1与Project分层记录阶段地图"
+        },
+        "sources": [
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "86619fca5c43336d89513efab51ab2a608b1ee0dabde1a582847a26a3f3fce2e",
+            "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "365a3da5bae18d00d5697d3f9472fd778bcf6240de34a768b35a5e9ce0cf93cc",
+            "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "97c62250cc65885523c238a2acda2fdbfaa3554ea64f8c23ba4407127b10c9da",
+            "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "a525b9e0b27ed752f04dbb757fd4b00e4abaf15a06cbee21937ad1732c16ec5e",
+            "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "62f6509b42a7d2fe07c67841b7708c21f7ed7588a1d28dca4481048339af8160",
+            "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "7ba18b666408efb7b4bca3de831fb8d453262b25a082481eec9c7329d343e109",
+            "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "cbbc56e4ede64932783f63e764587d4a70026ab6b7c1998b419349a6870df933",
+            "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+            "target_kind": "record"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+            "revision": 4,
+            "sha256": "35835466cd32f0e8f617cc7467883f2d3053581c49f0e504b5df6fe05e04d9a0",
+            "locator": "完整固定正文",
+            "relation": "references"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "62784a388c8bb67bcd818e9af6362ee59952367f3e561adee40a1d6f61c878aa",
+            "target_id": "MEM-67d394cb-8fdd-547c-ae13-1143da4ab3ef",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "be96773a77958c40231e85211d7fd86d45648be1dfdacf7d6fa22cafd6ae707c",
+            "target_id": "MEM-fb9a8171-f66f-5765-a55d-c03825f05d24",
+            "target_kind": "record"
+          },
+          {
+            "locator": "完整固定正文",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "685b90dd69ffdf2514324f79c721eff5f4da784ac9e43acea2b2abbc96982788",
+            "target_id": "MEM-68e92ced-610a-58a3-bd05-a0f8055f0a71",
+            "target_kind": "record"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "按本轮明确要求保存完整设计、选择理由及实际验证边界，供后续实施和固定回读。",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "level": "L4",
+        "change_reason": "将表示提案落实为v0.2接口、工作台、Skill和实施/测试设计；产品实现待后续阶段。"
+      }
+    }
+  ]
+}

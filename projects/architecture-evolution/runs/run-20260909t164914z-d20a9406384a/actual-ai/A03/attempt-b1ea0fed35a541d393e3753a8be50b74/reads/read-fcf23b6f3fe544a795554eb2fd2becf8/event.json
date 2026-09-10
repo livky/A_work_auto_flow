@@ -1,0 +1,14 @@
+{
+  "actor": "assistant",
+  "origin": {
+    "fixed_ref": "definition-context.md"
+  },
+  "capture_path": "capture.snapshot.txt",
+  "locator": "开头至集合范围公式与变量说明；其余代码仅机械对比",
+  "coverage": "partial",
+  "observation": "范围公式、属性/证据区分、定义块补齐可从实际回读文本核对。",
+  "unread_or_missing": [],
+  "recorded_at": "2026-09-09T17:20:33.689801Z",
+  "capture_sha256": "7a4f6b36d9c06088e90cd144b289a6d32e14f34c9fac71c7ee642636a33797b3",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

@@ -1,0 +1,16 @@
+{
+  "actor": "assistant",
+  "origin": {
+    "fixed_ref": "brief-document-result.json"
+  },
+  "capture_path": "capture.snapshot.txt",
+  "locator": "report.sections的两个章节全文及共同引用",
+  "coverage": "partial",
+  "observation": "已读取两个章节正文和固定来源；未遍读回执每个重复引用元数据。",
+  "unread_or_missing": [
+    "工作台实际页面未读取"
+  ],
+  "recorded_at": "2026-09-09T17:20:33.695306Z",
+  "capture_sha256": "32fbb8ddb5eb6e7298d4a42e411233ccdcd6bbf6c0c16ecfbc7862fcf16ce739",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

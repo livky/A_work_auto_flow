@@ -1,0 +1,842 @@
+[
+  {
+    "id": "Q01",
+    "ports": [
+      "Definitions.list"
+    ],
+    "tier": "unit",
+    "requirement": "类型不绑定分析",
+    "fixture": "F1",
+    "action": "无owner调用list",
+    "expected": "返回六种注册类型，不扫描正文",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q02",
+    "ports": [
+      "Definitions.get"
+    ],
+    "tier": "unit",
+    "requirement": "类型版本明确",
+    "fixture": "F1",
+    "action": "get未知key或version",
+    "expected": "拒绝UNSUPPORTED，不降级为默认",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q03",
+    "ports": [
+      "Realizations.inspect"
+    ],
+    "tier": "unit",
+    "requirement": "摘要可组合",
+    "fixture": "F1",
+    "action": "L1仅有检索说明，无摘要文件",
+    "expected": "unit_digest为assemblable而不是缺失",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q04",
+    "ports": [
+      "Realizations.inspect"
+    ],
+    "tier": "unit",
+    "requirement": "五状态六类型矩阵",
+    "fixture": "F1",
+    "action": "参数化完整/缺字段/待生成/过期/无能力",
+    "expected": "状态与缺字段一致，不把待生成当现成正文",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q05",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "unit",
+    "requirement": "空输入校验",
+    "fixture": "F1",
+    "action": "问题和关键词均空",
+    "expected": "VALIDATION，无索引调用",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q06",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "范围空与不限",
+    "fixture": "F1",
+    "action": "owner_ids分别null和空数组",
+    "expected": "授权范围结果与零结果有区别",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q07",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "排除优先",
+    "fixture": "F1",
+    "action": "包含A同时排除A",
+    "expected": "所有通道无A，错误信息不泄露正文",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q08",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "未知独立筛选",
+    "fixture": "F1",
+    "action": "role/outcome/review/validity混合含unknown",
+    "expected": "按显式未知策略匹配，不混同状态",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q09",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "unit",
+    "requirement": "时间边界",
+    "fixture": "F1",
+    "action": "记录在from及before两端",
+    "expected": "左端包含右端排除，非法时区拒绝",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q10",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "范围上限",
+    "fixture": "F1",
+    "action": "请求包含不可访问X",
+    "expected": "无X标题/摘录/数量/路径，DENIED或裁剪有明确语义",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q11",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "正式证据粒度",
+    "fixture": "F1",
+    "action": "同记录两个claim仅一个复核",
+    "expected": "仅有效claim作支持，不整篇提升",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q12",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "正式准入补K",
+    "fixture": "F1",
+    "action": "前K候选被剔除，后续有合格项",
+    "expected": "剩余额度补取，否则列覆盖不足",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q13",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "多表示同源去重",
+    "fixture": "F1",
+    "action": "同记录词法/向量/摘要同时命中",
+    "expected": "保留来源通道，独立依据不重复计数",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q14",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "索引缺通道",
+    "fixture": "F1",
+    "action": "向量不可用，词法正常",
+    "expected": "partial及明确降级，不下载依赖",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q15",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "current水位",
+    "fixture": "F1",
+    "action": "索引落后于HEAD",
+    "expected": "补偿或明确STALE，不报完整当前覆盖",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q16",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "候选读取预算",
+    "fixture": "F1",
+    "action": "K很小且正文很大",
+    "expected": "计量reader证明未先读全部正文",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q17",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "unit",
+    "requirement": "候选绑定",
+    "fixture": "F1",
+    "action": "提交别的query候选ID",
+    "expected": "CONFLICT，不组包",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q18",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "unit",
+    "requirement": "输入摘要绑定",
+    "fixture": "F1",
+    "action": "请求digest不符",
+    "expected": "拒绝旧选择套新查询",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q19",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "integration",
+    "requirement": "六类型配方",
+    "fixture": "F1",
+    "action": "逐个类型选择相应固定材料",
+    "expected": "输出字段/顺序/必需补充符合类型定义",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q20",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "integration",
+    "requirement": "固定旧版本",
+    "fixture": "F1",
+    "action": "搜索r1后产生r2",
+    "expected": "仍读r1；SHA失配明确拒绝",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q21",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "integration",
+    "requirement": "重新鉴权",
+    "fixture": "F1",
+    "action": "搜索后撤销某来源权限",
+    "expected": "不泄露旧摘录/正文，列可公开缺口",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q22",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "integration",
+    "requirement": "必要定义",
+    "fixture": "F1",
+    "action": "方法块依赖d但d被排除",
+    "expected": "complete=false，不绕过排除",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q23",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "unit",
+    "requirement": "预算边界",
+    "fixture": "F1",
+    "action": "字节/字符为0、刚好、超1",
+    "expected": "绝不超限；省略定义则非完整",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q24",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "integration",
+    "requirement": "查询不写知识",
+    "fixture": "F1",
+    "action": "查询/选择/组包前后比较规范HEAD",
+    "expected": "HEAD不变，canonical=false",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q25",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "integration",
+    "requirement": "领域新语义",
+    "fixture": "F1",
+    "action": "跨主题需要新统一解释",
+    "expected": "模板并列或待审草案，不伪装原文",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q26",
+    "ports": [
+      "QueryCoordinator.resume"
+    ],
+    "tier": "integration",
+    "requirement": "累计预算",
+    "fixture": "F1",
+    "action": "多次续查及重放游标",
+    "expected": "账本不重置，不重复收费或重复候选",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q27",
+    "ports": [
+      "QueryCoordinator.resume"
+    ],
+    "tier": "unit",
+    "requirement": "到期与绑定",
+    "fixture": "F1",
+    "action": "伪造/过期/别会话游标",
+    "expected": "EXPIRED或DENIED，无越权恢复",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q28",
+    "ports": [
+      "QueryCoordinator.cancel"
+    ],
+    "tier": "integration",
+    "requirement": "取消部分结果",
+    "fixture": "F1",
+    "action": "读取中取消后重复cancel",
+    "expected": "保留完成部分，停止新工作，幂等",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q29",
+    "ports": [
+      "AssociationStrategy.discover"
+    ],
+    "tier": "unit",
+    "requirement": "联想关闭",
+    "fixture": "F1",
+    "action": "off请求调用discover",
+    "expected": "拒绝执行，无隐藏召回",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q30",
+    "ports": [
+      "AssociationStrategy.discover"
+    ],
+    "tier": "integration",
+    "requirement": "已有联系模式",
+    "fixture": "F1",
+    "action": "existing_only且无边",
+    "expected": "无新结构探索，结果明确无已有联系",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q31",
+    "ports": [
+      "AssociationStrategy.discover"
+    ],
+    "tier": "actual-ai",
+    "requirement": "无边结构联想",
+    "fixture": "F3",
+    "action": "启用explore，A和C无既存边",
+    "expected": "有来源共同结构/差异/迁移条件/验证建议",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q32",
+    "ports": [
+      "AssociationStrategy.discover"
+    ],
+    "tier": "actual-ai",
+    "requirement": "同词不同机制",
+    "fixture": "F3",
+    "action": "A和D关键词相同机制不同",
+    "expected": "淘汰或明确不能迁移，不强拉关系",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q33",
+    "ports": [
+      "AssociationStrategy.discover"
+    ],
+    "tier": "integration",
+    "requirement": "补充范围",
+    "fixture": "F1",
+    "action": "主查failure，补充success，原排除B",
+    "expected": "显式不同筛选但不越上限，B仍被排除",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q34",
+    "ports": [
+      "AssociationStrategy.discover"
+    ],
+    "tier": "unit",
+    "requirement": "联想预算",
+    "fixture": "F1",
+    "action": "候选超过max_items或output_share",
+    "expected": "截断联想并列省略，不挤掉必需定义",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q35",
+    "ports": [
+      "AssociationStrategy.discover"
+    ],
+    "tier": "integration",
+    "requirement": "无AI能力",
+    "fixture": "F1",
+    "action": "explore启用但无代理",
+    "expected": "UNSUPPORTED，不以空数组声称探索完成",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q36",
+    "ports": [
+      "AssociationStrategy.decide"
+    ],
+    "tier": "integration",
+    "requirement": "采纳不是科学复核",
+    "fixture": "F1",
+    "action": "accept_navigation提议",
+    "expected": "持久导航且不产生verified_claim",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q37",
+    "ports": [
+      "AssociationStrategy.decide"
+    ],
+    "tier": "integration",
+    "requirement": "反馈和幂等",
+    "fixture": "F1",
+    "action": "reject同请求重放，再同ID换正文",
+    "expected": "原拒绝有范围，重复幂等，换正文冲突",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q38",
+    "ports": [
+      "DeepeningStrategy.deepen"
+    ],
+    "tier": "integration",
+    "requirement": "精确回源",
+    "fixture": "F1",
+    "action": "从摘要段落source_mapping",
+    "expected": "定位到固定单元/块/原件，非只改标签",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q39",
+    "ports": [
+      "DeepeningStrategy.deepen"
+    ],
+    "tier": "unit",
+    "requirement": "图方向",
+    "fixture": "F1",
+    "action": "A depends_on B，分别forward/reverse",
+    "expected": "方向正确，反向影响可找A",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q40",
+    "ports": [
+      "DeepeningStrategy.deepen"
+    ],
+    "tier": "unit",
+    "requirement": "环与重复路径",
+    "fixture": "F1",
+    "action": "环/菱形，分页继续",
+    "expected": "visited固定身份去重，无无限循环",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q41",
+    "ports": [
+      "DeepeningStrategy.deepen"
+    ],
+    "tier": "unit",
+    "requirement": "图累计上限",
+    "fixture": "F1",
+    "action": "节点/边/跳数为0、刚好、超1",
+    "expected": "各上限遵守，续查不归零",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q42",
+    "ports": [
+      "DeepeningStrategy.deepen"
+    ],
+    "tier": "integration",
+    "requirement": "边版本失效",
+    "fixture": "F1",
+    "action": "旧边或目标无法核验",
+    "expected": "显示stale/缺口，不提升为当前依据",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q43",
+    "ports": [
+      "DeepeningStrategy.deepen"
+    ],
+    "tier": "integration",
+    "requirement": "策略替换",
+    "fixture": "F1",
+    "action": "相同请求换两个注册策略及未知策略",
+    "expected": "输出契约不变，未知拒绝；引用/预算恒定",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q44",
+    "ports": [
+      "SemanticMaintenance.plan"
+    ],
+    "tier": "integration",
+    "requirement": "反向依赖影响",
+    "fixture": "F1",
+    "action": "变更B源且A依赖B",
+    "expected": "列A及固定版本、未检查区域",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q45",
+    "ports": [
+      "SemanticMaintenance.plan"
+    ],
+    "tier": "actual-ai",
+    "requirement": "新反证无旧边",
+    "fixture": "F3",
+    "action": "加入主题相关反证，旧总结无引用边",
+    "expected": "候选检查旧总结，报告范围非全局完备",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q46",
+    "ports": [
+      "SemanticMaintenance.review"
+    ],
+    "tier": "actual-ai",
+    "requirement": "完整语义审查",
+    "fixture": "F3",
+    "action": "读取受影响完整章节并选动作",
+    "expected": "有实际阅读与保留/修订/重综合/撤回/延期理由",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q47",
+    "ports": [
+      "SemanticMaintenance.review"
+    ],
+    "tier": "integration",
+    "requirement": "计划版本CAS",
+    "fixture": "F1",
+    "action": "两个审查者使用旧digest",
+    "expected": "第二个冲突，新计划保留旧版本",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q48",
+    "ports": [
+      "SemanticMaintenance.apply"
+    ],
+    "tier": "integration",
+    "requirement": "提交冲突和幂等",
+    "fixture": "F1",
+    "action": "计划后HEAD改变或重复request_id",
+    "expected": "冲突不覆盖；同请求不重复修订",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q49",
+    "ports": [
+      "SemanticMaintenance.apply"
+    ],
+    "tier": "integration",
+    "requirement": "索引失败补偿",
+    "fixture": "F1",
+    "action": "内容提交后索引异常",
+    "expected": "保存成功索引失败分开；重试不再提交内容",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q50",
+    "ports": [
+      "SemanticMaintenance.apply"
+    ],
+    "tier": "integration",
+    "requirement": "跨对象恢复",
+    "fixture": "F1",
+    "action": "第二owner失败，第一owner有后续修改",
+    "expected": "逐对象回执，恢复拒绝覆盖新修改",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q51",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "actual-ai",
+    "requirement": "A07材料选择旅程",
+    "fixture": "F3",
+    "action": "只给目标、调用material-query并选实际材料",
+    "expected": "输入/Skill/读取/输出证据齐全，缺口真实",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q52",
+    "ports": [
+      "AssociationStrategy.discover"
+    ],
+    "tier": "actual-ai",
+    "requirement": "A08联想旅程",
+    "fixture": "F3",
+    "action": "隔离上下文读取Skill和正负例",
+    "expected": "真正AI判断与自查，脚本未预填答案",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q53",
+    "ports": [
+      "SemanticMaintenance.review"
+    ],
+    "tier": "actual-ai",
+    "requirement": "A09维护旅程",
+    "fixture": "F3",
+    "action": "调用维护Skill处理定义与新反证",
+    "expected": "全文连贯与限制被审查，草案实际公开预检",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q54",
+    "ports": [
+      "SemanticMaintenance.apply"
+    ],
+    "tier": "actual-ai",
+    "requirement": "双文稿回读",
+    "fixture": "F3",
+    "action": "实际保存修订并读旧/新文稿",
+    "expected": "同固定依据、旧版不变、人工/科学待审",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q55",
+    "ports": [
+      "StructureView.list_page"
+    ],
+    "tier": "integration",
+    "requirement": "逻辑物理结构",
+    "fixture": "F1",
+    "action": "展开owner/L0-L4/文稿/Run",
+    "expected": "层级与实际存储职责正确，无任意磁盘扫描",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q56",
+    "ports": [
+      "StructureView.list_page"
+    ],
+    "tier": "integration",
+    "requirement": "树分页与隐藏对象",
+    "fixture": "F1",
+    "action": "分页重复并含不可见X",
+    "expected": "不重复/漏已授权节点，不泄漏X存在性",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q57",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "ui",
+    "requirement": "表单编码",
+    "fixture": "F1",
+    "action": "切类型/范围/联想/预算",
+    "expected": "JSON正确区分null空数组，不发送Context",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q58",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "ui",
+    "requirement": "异步乱序",
+    "fixture": "F1",
+    "action": "旧请求慢于新请求",
+    "expected": "旧响应不覆盖新状态，选择失效明确",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q59",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "ui",
+    "requirement": "部分与空态",
+    "fixture": "F1",
+    "action": "无候选/缺字段/预算不足/过期",
+    "expected": "显示具体原因，保留条件，不伪造完整正文",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q60",
+    "ports": [
+      "DeepeningStrategy.deepen"
+    ],
+    "tier": "browser",
+    "requirement": "完整工作台旅程",
+    "fixture": "F1",
+    "action": "树选范围→搜索→选择→组包→来源/图",
+    "expected": "网络请求与UI一致，固定来源可读，旧入口可用",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q61",
+    "ports": [
+      "SemanticMaintenance.apply"
+    ],
+    "tier": "browser",
+    "requirement": "维护页面旅程",
+    "fixture": "F1",
+    "action": "差异→审查→预检→执行，模拟冲突",
+    "expected": "输入保留，逐对象状态和错误可见",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q62",
+    "ports": [
+      "StructureView.list_page"
+    ],
+    "tier": "browser",
+    "requirement": "可访问性与窄屏",
+    "fixture": "F1",
+    "action": "键盘操作和窄屏切换",
+    "expected": "可完成核心旅程，焦点/标签/错误可读",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q63",
+    "ports": [
+      "SemanticMaintenance.apply"
+    ],
+    "tier": "upgrade",
+    "requirement": "扩展旧工作区升级",
+    "fixture": "F2",
+    "action": "F2真实setup预览升级重复恢复",
+    "expected": "完整哈希/目录/自定义Skill/旧记录保留",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q64",
+    "ports": [
+      "Definitions.get"
+    ],
+    "tier": "upgrade",
+    "requirement": "旧定义和配置保留",
+    "fixture": "F2",
+    "action": "升级已有自定义配置与旧版本包",
+    "expected": "不覆盖用户设置；旧固定内容仍可读",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q65",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "quality",
+    "requirement": "同预算质量基线",
+    "fixture": "F1",
+    "action": "固定问题留出集比较原/新策略",
+    "expected": "记录覆盖/误联想/延迟/成本，不预设提升结果",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q66",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "旧API兼容",
+    "fixture": "F1",
+    "action": "相同旧请求经适配前后运行",
+    "expected": "字段语义/排除/固定引用一致，差异可解释",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q67",
+    "ports": [
+      "SemanticMaintenance.apply"
+    ],
+    "tier": "integration",
+    "requirement": "撤回历史与复核",
+    "fixture": "F1",
+    "action": "撤回或改变被复核claim",
+    "expected": "追加纠错保留旧版，新语义不继承复核",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q68",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "unit",
+    "requirement": "未知字段拒绝",
+    "fixture": "F1",
+    "action": "加入未知请求字段/策略/非法预算",
+    "expected": "VALIDATION或UNSUPPORTED，不静默忽略",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q69",
+    "ports": [
+      "QueryCoordinator.assemble"
+    ],
+    "tier": "integration",
+    "requirement": "跨owner一致性",
+    "fixture": "F1",
+    "action": "读取间另一owner更新",
+    "expected": "列各HEAD与乐观一致性，不宣称全局快照",
+    "status": "designed_not_run"
+  },
+  {
+    "id": "Q70",
+    "ports": [
+      "QueryCoordinator.search"
+    ],
+    "tier": "integration",
+    "requirement": "索引重建和事件缺口",
+    "fixture": "F1",
+    "action": "无变化流旧对象及中断重建",
+    "expected": "全量纳入，半成品不发布完整水位，重试幂等",
+    "status": "designed_not_run"
+  }
+]

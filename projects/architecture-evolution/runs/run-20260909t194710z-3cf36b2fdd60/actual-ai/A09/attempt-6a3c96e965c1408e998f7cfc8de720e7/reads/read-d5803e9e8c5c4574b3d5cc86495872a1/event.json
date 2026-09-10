@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query and memory CLI",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整公开返回投影，已在工具输出中实际呈现并阅读",
+  "coverage": "full",
+  "observation": "读完公开 full 返回的新约束全文，核对目标 2 m、c=0.1 m²/s、流量上限 0.15 m³/s 以及该输入没有旧记录边。",
+  "recorded_at": "2026-09-09T21:27:58.242286Z",
+  "capture_sha256": "9cc50b5cc803f700a2a521160567019b4c0bd651b1afff15dd4b5174d2f1bfa4",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

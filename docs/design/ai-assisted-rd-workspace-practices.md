@@ -1,4 +1,9 @@
 # AI 辅助研发工作区：成熟实践与本地设计
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：本页形成时的设计、审查或实施记录；文中的“当前”“已完成”“尚未”等只对应该批次。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../ARCHITECTURE.md)、[研究记录标准](../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 > 历史设计依据，描述当时参考的外部实践，不代表当前已实现功能或现行协作规则。当前用法以根 README、AGENTS 和 ARCHITECTURE 为准；外部产品信息保留原调研日期，不作为当前配置保证。
 

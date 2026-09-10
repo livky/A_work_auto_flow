@@ -1,0 +1,6 @@
+test_domain_two_owner_sources_are_rechecked_before_revoked_body_reads (test_material_domain_scope.MaterialDomainScopeTests.test_domain_two_owner_sources_are_rechecked_before_revoked_body_reads) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 30.368s
+
+OK

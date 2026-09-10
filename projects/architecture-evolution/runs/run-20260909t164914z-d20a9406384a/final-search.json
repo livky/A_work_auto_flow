@@ -1,0 +1,16 @@
+{
+  "error": {
+    "code": "INVALID_SCHEMA",
+    "message": "查询不符合公共契约",
+    "details": {},
+    "errors": [
+      {
+        "code": "INVALID_SCHEMA",
+        "path": "/purpose",
+        "message": "Required field is missing"
+      }
+    ]
+  },
+  "save_status": "not_committed"
+}
+

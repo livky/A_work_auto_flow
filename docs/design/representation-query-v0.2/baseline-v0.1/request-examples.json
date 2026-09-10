@@ -1,0 +1,1411 @@
+{
+  "schema_version": 1,
+  "contract_version": "0.1",
+  "scope": "SYNTHETIC ONLY: types and selected invariants; no real evidence refs, backend calls or scientific validation",
+  "cases": [
+    {
+      "id": "P01_failure_experience_query",
+      "type": "QuerySpec",
+      "expected_valid": true,
+      "value": {
+        "text": "寻找满足当前条件的失败经验",
+        "dialect": "plain",
+        "seeds": [],
+        "scope": {
+          "owner_ids": [
+            "PRJ-SYNTHETIC"
+          ],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "unit_digest",
+            "topic_synthesis"
+          ],
+          "fallback_order": [
+            "section"
+          ],
+          "missing": "fallback",
+          "allow_build": false
+        },
+        "channels": [
+          "lexical",
+          "dense"
+        ],
+        "purpose": "exploration",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": 100000,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": 10,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      }
+    },
+    {
+      "id": "P02_graph_seed_query",
+      "type": "QuerySpec",
+      "expected_valid": true,
+      "value": {
+        "text": "",
+        "dialect": "plain",
+        "seeds": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-SYNTHETIC-SEED",
+            "revision": 1,
+            "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "locator": "block:method"
+          }
+        ],
+        "scope": {
+          "owner_ids": [
+            "PRJ-SYNTHETIC"
+          ],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "unit_digest",
+            "topic_synthesis"
+          ],
+          "fallback_order": [
+            "section"
+          ],
+          "missing": "fallback",
+          "allow_build": false
+        },
+        "channels": [
+          "graph"
+        ],
+        "purpose": "exploration",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": 100000,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": 10,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      }
+    },
+    {
+      "id": "P03_empty_scope_is_empty_not_unbounded",
+      "type": "QuerySpec",
+      "expected_valid": true,
+      "value": {
+        "text": "寻找满足当前条件的失败经验",
+        "dialect": "plain",
+        "seeds": [],
+        "scope": {
+          "owner_ids": [],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "unit_digest",
+            "topic_synthesis"
+          ],
+          "fallback_order": [
+            "section"
+          ],
+          "missing": "fallback",
+          "allow_build": false
+        },
+        "channels": [
+          "lexical",
+          "dense"
+        ],
+        "purpose": "exploration",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": 100000,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": 10,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      }
+    },
+    {
+      "id": "P04_reserved_representation_schema",
+      "type": "QuerySpec",
+      "expected_valid": true,
+      "value": {
+        "text": "寻找满足当前条件的失败经验",
+        "dialect": "plain",
+        "seeds": [],
+        "scope": {
+          "owner_ids": [
+            "PRJ-SYNTHETIC"
+          ],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "domain_synthesis"
+          ],
+          "fallback_order": [],
+          "missing": "reject",
+          "allow_build": false
+        },
+        "channels": [
+          "lexical",
+          "dense"
+        ],
+        "purpose": "exploration",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": 100000,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": 10,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      },
+      "note": "结构允许预留表示；运行端没有能力时必须返回UNSUPPORTED，本检查不调用后端。"
+    },
+    {
+      "id": "N01_bool_is_not_integer",
+      "type": "QuerySpec",
+      "expected_valid": false,
+      "value": {
+        "text": "寻找满足当前条件的失败经验",
+        "dialect": "plain",
+        "seeds": [],
+        "scope": {
+          "owner_ids": [
+            "PRJ-SYNTHETIC"
+          ],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "unit_digest",
+            "topic_synthesis"
+          ],
+          "fallback_order": [
+            "section"
+          ],
+          "missing": "fallback",
+          "allow_build": false
+        },
+        "channels": [
+          "lexical",
+          "dense"
+        ],
+        "purpose": "exploration",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": 100000,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": true,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      }
+    },
+    {
+      "id": "N02_unknown_scope_field",
+      "type": "QuerySpec",
+      "expected_valid": false,
+      "value": {
+        "text": "寻找满足当前条件的失败经验",
+        "dialect": "plain",
+        "seeds": [],
+        "scope": {
+          "owner_ids": [
+            "PRJ-SYNTHETIC"
+          ],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ],
+          "unrestricted": true
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "unit_digest",
+            "topic_synthesis"
+          ],
+          "fallback_order": [
+            "section"
+          ],
+          "missing": "fallback",
+          "allow_build": false
+        },
+        "channels": [
+          "lexical",
+          "dense"
+        ],
+        "purpose": "exploration",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": 100000,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": 10,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      }
+    },
+    {
+      "id": "N03_negative_budget",
+      "type": "QuerySpec",
+      "expected_valid": false,
+      "value": {
+        "text": "寻找满足当前条件的失败经验",
+        "dialect": "plain",
+        "seeds": [],
+        "scope": {
+          "owner_ids": [
+            "PRJ-SYNTHETIC"
+          ],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "unit_digest",
+            "topic_synthesis"
+          ],
+          "fallback_order": [
+            "section"
+          ],
+          "missing": "fallback",
+          "allow_build": false
+        },
+        "channels": [
+          "lexical",
+          "dense"
+        ],
+        "purpose": "exploration",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": -1,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": 10,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      }
+    },
+    {
+      "id": "N04_formal_needs_applicability",
+      "type": "QuerySpec",
+      "expected_valid": false,
+      "value": {
+        "text": "寻找满足当前条件的失败经验",
+        "dialect": "plain",
+        "seeds": [],
+        "scope": {
+          "owner_ids": [
+            "PRJ-SYNTHETIC"
+          ],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "unit_digest",
+            "topic_synthesis"
+          ],
+          "fallback_order": [
+            "section"
+          ],
+          "missing": "fallback",
+          "allow_build": false
+        },
+        "channels": [
+          "lexical",
+          "dense"
+        ],
+        "purpose": "formal",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": 100000,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": 10,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      }
+    },
+    {
+      "id": "N05_unfixed_record_revision",
+      "type": "FixedRef",
+      "expected_valid": false,
+      "value": {
+        "target_kind": "record",
+        "target_id": "MEM-SYNTHETIC-SEED",
+        "revision": null,
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "locator": "block:method"
+      }
+    },
+    {
+      "id": "N06_invalid_hash",
+      "type": "FixedRef",
+      "expected_valid": false,
+      "value": {
+        "target_kind": "record",
+        "target_id": "MEM-SYNTHETIC-SEED",
+        "revision": 1,
+        "sha256": "not-a-hash",
+        "locator": "block:method"
+      }
+    },
+    {
+      "id": "N07_strategy_is_not_knowledge_role",
+      "type": "QuerySpec",
+      "expected_valid": false,
+      "value": {
+        "text": "寻找满足当前条件的失败经验",
+        "dialect": "plain",
+        "seeds": [],
+        "scope": {
+          "owner_ids": [
+            "PRJ-SYNTHETIC"
+          ],
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "large_association"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "scope_ceiling": {
+          "owner_ids": null,
+          "kinds": [
+            "detail"
+          ],
+          "layers": [
+            "L1",
+            "L3"
+          ],
+          "source_ids": null,
+          "time_window": null,
+          "facets": {
+            "roles": [
+              "experience"
+            ],
+            "outcomes": [
+              "failure"
+            ],
+            "review_states": null,
+            "validities": [
+              "valid"
+            ],
+            "confidence_levels": null,
+            "applicability": {
+              "description": "合成接口结构检查，不作为真实材料或性能结论",
+              "conditions": [
+                "固定合成版本"
+              ],
+              "exclusions": [
+                "真实业务复用"
+              ],
+              "valid_from": null,
+              "valid_until": null,
+              "subject_versions": []
+            },
+            "include_unknown": false
+          },
+          "include_refs": [],
+          "exclude_ids": [
+            "MEM-SYNTHETIC-EXCLUDED"
+          ]
+        },
+        "representations": {
+          "keys": [
+            "unit_digest",
+            "topic_synthesis"
+          ],
+          "fallback_order": [
+            "section"
+          ],
+          "missing": "fallback",
+          "allow_build": false
+        },
+        "channels": [
+          "lexical",
+          "dense"
+        ],
+        "purpose": "exploration",
+        "applicability": null,
+        "freshness": {
+          "mode": "current",
+          "allow_index_repair": false,
+          "max_staleness_seconds": null
+        },
+        "limits": {
+          "deadline": "2026-09-10T12:00:00Z",
+          "max_candidates": 100,
+          "max_rerank": 20,
+          "max_graph_nodes": 30,
+          "max_graph_edges": 60,
+          "max_hops": 2,
+          "max_read_bytes": 100000,
+          "max_model_calls": 2,
+          "max_model_input_tokens": 12000,
+          "max_model_output_tokens": 2000,
+          "max_context_chars": 12000,
+          "tokenizer": {
+            "name": "synthetic-rule",
+            "version": "0.1"
+          }
+        },
+        "planner": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "ranking": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "result_limit": 10,
+        "expansion_axes": [
+          "owners",
+          "representations",
+          "channels"
+        ]
+      }
+    },
+    {
+      "id": "N08_uncalibrated_probability",
+      "type": "ConfidenceAssessment",
+      "expected_valid": false,
+      "value": {
+        "target": {
+          "target_kind": "record",
+          "target_id": "MEM-SYNTHETIC-SEED",
+          "revision": 1,
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "locator": "block:method"
+        },
+        "level": "high",
+        "assessed_by": "synthetic-check",
+        "method": {
+          "name": "synthetic-rule",
+          "version": "0.1"
+        },
+        "basis": [],
+        "applicability": {
+          "description": "合成接口结构检查，不作为真实材料或性能结论",
+          "conditions": [
+            "固定合成版本"
+          ],
+          "exclusions": [
+            "真实业务复用"
+          ],
+          "valid_from": null,
+          "valid_until": null,
+          "subject_versions": []
+        },
+        "calibrated_probability": 0.95,
+        "calibration_ref": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "status": "existing_fixture_mismatch",
+  "files": [
+    {
+      "path": "docs/design/system-memory/fixtures/acceptance.json",
+      "current_sha256": "9ae63a6af2a848929eab894493f2cb251ff70a7455f22dc0f0a57edb0904bea2",
+      "same_as_HEAD": true
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/records.json",
+      "current_sha256": "66a9c2948d794afa6d0aec82ab02eb53f878c9a2612389605e6fe8f2092807fd",
+      "same_as_HEAD": true
+    },
+    {
+      "path": "docs/design/system-memory/fixtures/work-packages.json",
+      "current_sha256": "d070d41026315e6c28610c5ce14b221d4d503cd639fa208f3ce8a31e8aeb0741",
+      "same_as_HEAD": true
+    }
+  ],
+  "evidence": "Prior Run review-document-history.md recorded these three mismatches; current files still equal HEAD. No fixture or frozen manifest edited."
+}

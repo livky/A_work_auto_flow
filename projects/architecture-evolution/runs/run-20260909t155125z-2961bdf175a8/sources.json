@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T155125Z-2961BDF175A8",
+  "scope": "检索、存储、图和策略整理的抽象功能讨论；工程建议与来源结论分别表述。",
+  "source_count": 14,
+  "evidence_policy": "Primary sources only; no full-page archives; no local reproduction claimed.",
+  "sources": [
+    {
+      "source_id": "RET-S1",
+      "title": "SQLite FTS5 Extension — Column Filters",
+      "publisher_or_authors": "SQLite",
+      "publication_date": null,
+      "publication_date_note": "Page publication date not asserted",
+      "source_type": "official_documentation",
+      "url": "https://www.sqlite.org/fts5.html#fts5_column_filters",
+      "observed_date_utc": "2026-09-09",
+      "examined_version": "Rolling official page; no commit or release pinned",
+      "finding": "检索字段可以使用列过滤，与返回字段分别表达。",
+      "limitation": "不保证当前分词方式对任意中文术语的效果。",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "RET-S2",
+      "title": "Multi-Representation Search Across Titles, Abstracts, and Chunks",
+      "publisher_or_authors": "Qdrant",
+      "publication_date": null,
+      "publication_date_note": "Page publication date not asserted",
+      "source_type": "official_tutorial",
+      "url": "https://qdrant.tech/documentation/tutorials-search-engineering/multi-representation-search/",
+      "observed_date_utc": "2026-09-09",
+      "examined_version": "Rolling official page; no commit or release pinned",
+      "finding": "同一内容可有多个检索表示，召回后按内容身份聚合。",
+      "limitation": "示例包含摘要切片，不能冒充完整论文或当前离线环境的性能实测。",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "RET-S3",
+      "title": "Hybrid and Multi-Stage Queries",
+      "publisher_or_authors": "Qdrant",
+      "publication_date": null,
+      "publication_date_note": "Page publication date not asserted",
+      "source_type": "official_documentation",
+      "url": "https://qdrant.tech/documentation/search/hybrid-queries/",
+      "observed_date_utc": "2026-09-09",
+      "examined_version": "Rolling official page; no commit or release pinned",
+      "finding": "预取、融合和后续重排可组成多个查询阶段。",
+      "limitation": "各算子版本要求不同，当前安装版本兼容性尚未验证。",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "RET-S4",
+      "title": "Phased Ranking",
+      "publisher_or_authors": "Vespa",
+      "publication_date": null,
+      "publication_date_note": "Page publication date not asserted",
+      "source_type": "official_documentation",
+      "url": "https://docs.vespa.ai/en/ranking/phased-ranking.html",
+      "observed_date_utc": "2026-09-09",
+      "examined_version": "Rolling official page; no commit or release pinned",
+      "finding": "候选发现和较贵重排分阶段控制数量和成本。",
+      "limitation": "机制参考不等于本工作区已经支持 Vespa 或相同耗时。",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "RET-S5",
+      "title": "An Analysis of Fusion Functions for Hybrid Retrieval",
+      "publisher_or_authors": "Sebastian Bruch; Siyu Gai; Amir Ingber",
+      "publication_date": "2023-05-04",
+      "publication_date_note": "Revised arXiv v2 date",
+      "source_type": "primary_research_paper",
+      "url": "https://arxiv.org/abs/2210.11934v2",
+      "observed_date_utc": "2026-09-09",
+      "examined_version": "arXiv 2210.11934v2",
+      "finding": "论文比较条件下 RRF 参数敏感，调优凸组合有更优结果。",
+      "limitation": "并不证明一种融合方式对全部数据、问题和参数普遍最优。",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "RET-S6",
+      "title": "Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity",
+      "publisher_or_authors": "Soyeong Jeong et al.; NAACL / ACL Anthology",
+      "publication_date": "2024-06",
+      "publication_date_note": "Month precision only",
+      "source_type": "primary_conference_paper",
+      "url": "https://aclanthology.org/2024.naacl-long.389/",
+      "observed_date_utc": "2026-09-09",
+      "examined_version": "ACL Anthology 2024.naacl-long.389",
+      "finding": "使用问题复杂度选择不同检索路径，可启发可替换规划策略。",
+      "limitation": "开放域 QA 实验不授予本地证据任务绕过来源核验的权限。",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "STORE-S1",
+      "title": "Isolation In SQLite",
+      "publisher_or_authors": "SQLite",
+      "publication_date": null,
+      "publication_date_note": "Page publication date not asserted",
+      "source_type": "official_documentation",
+      "url": "https://www.sqlite.org/isolation.html",
+      "observed_date_utc": "2026-09-09",
+      "examined_version": "Rolling official page; no commit or release pinned",
+      "finding": "WAL 模式快照语义针对单个 SQLite 数据库。",
+      "limitation": "不能扩展解释为外部文件、Qdrant 与多个 owner 的原子快照。",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "STORE-S2",
+      "title": "Graphiti",
+      "publisher_or_authors": "Zep / Graphiti contributors",
+      "publication_date": null,
+      "publication_date_note": "Page publication date not asserted",
+      "source_type": "official_repository",
+      "url": "https://github.com/getzep/graphiti",
+      "observed_date_utc": "2026-09-09",
+      "examined_version": "Rolling official page; no commit or release pinned",
+      "finding": "时间关系建模区分事实有效时间与系统记录时间。",
+      "limitation": "滚动仓库未固定提交；关系失效策略不能直接代替科学结论复核。",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "GRAPH-S1",
+      "title": "From RAG to Memory: Non-Parametric Continual Learning for Large Language Models",
+      "authors": [
+        "Bernal Jiménez Gutiérrez",
+        "Yiheng Shu",
+        "Weijian Qi",
+        "Sizhe Zhou",
+        "Yu Su"
+      ],
+      "publication_date": "2025-07",
+      "publication_date_note": "ICML proceedings date range: 2025-07-13 to 2025-07-19.",
+      "examined_version": "arXiv 2502.14802v2, 2025-06-19",
+      "source_type": "primary_conference_paper",
+      "url": "https://proceedings.mlr.press/v267/gutierrez25a.html",
+      "supporting_urls": [
+        "https://arxiv.org/html/2502.14802v2"
+      ],
+      "sections_examined": [
+        "Methods",
+        "Retrieval evaluation",
+        "Error analysis",
+        "Table 12",
+        "Appendix G"
+      ],
+      "summary_en": "HippoRAG 2 combines phrase and passage seeds for graph propagation and retrieves original passages. Its reported retrieval gains are benchmark and model dependent, with indexing costs above dense retrieval. The method suggests interchangeable seeding and graph ranking behind stable provenance and budget controls; a ranking score does not establish truth.",
+      "local_status": "method_and_reported_results_inspected; not_reproduced",
+      "summary_word_count": 50,
+      "observed_date_utc": "2026-09-09",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "GRAPH-S2",
+      "title": "LightRAG: Simple and Fast Retrieval-Augmented Generation",
+      "authors": [
+        "Zirui Guo",
+        "Lianghao Xia",
+        "Yanhua Yu",
+        "Tu Ao",
+        "Chao Huang"
+      ],
+      "publication_date": "2025-11",
+      "publication_date_note": "Findings of EMNLP 2025, pages 10746–10761; no day specified.",
+      "examined_version": "ACL Anthology 2025.findings-emnlp.568",
+      "source_type": "primary_conference_paper",
+      "url": "https://aclanthology.org/2025.findings-emnlp.568/",
+      "supporting_urls": [
+        "https://aclanthology.org/2025.findings-emnlp.568.pdf"
+      ],
+      "sections_examined": [
+        "Dual-level retrieval",
+        "Evaluation",
+        "Table 1",
+        "Ablations"
+      ],
+      "summary_en": "LightRAG combines entity-oriented and higher-level relational retrieval. The published evaluation uses judged answer preferences across four datasets and does not uniformly beat GraphRAG. These results motivate selectable representations and retrieval routes, but do not demonstrate source recall, factual validity, or universal superiority. Material abstraction must remain separate from review status.",
+      "local_status": "method_and_reported_results_inspected; not_reproduced",
+      "summary_word_count": 50,
+      "observed_date_utc": "2026-09-09",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "GRAPH-S3",
+      "title": "LightRAG — QueryParam (lightrag/base.py)",
+      "authors": [
+        "HKUDS/LightRAG contributors"
+      ],
+      "publication_date": null,
+      "publication_date_note": "Rolling repository file; no fixed publication date asserted.",
+      "examined_version": "main branch observed 2026-09-09 UTC; commit not pinned",
+      "source_type": "official_source_code",
+      "url": "https://github.com/HKUDS/LightRAG/blob/main/lightrag/base.py",
+      "supporting_urls": [
+        "https://raw.githubusercontent.com/HKUDS/LightRAG/main/lightrag/base.py"
+      ],
+      "sections_examined": [
+        "QueryParam"
+      ],
+      "summary_en": "The current query configuration exposes retrieval modes, entity and chunk limits, context token allocations, optional reranking, and context-only responses. This provides a concrete example of separating retrieval controls from answer generation. These settings are implementation observations rather than a stable upstream contract or evidence of an enforced request-wide execution budget.",
+      "local_status": "source_inspection_only; rolling_version",
+      "summary_word_count": 50,
+      "observed_date_utc": "2026-09-09",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "GRAPH-S4",
+      "title": "Introducing DRIFT Search: Combining global and local search methods to improve quality and efficiency",
+      "authors": [
+        "Julian Whiting",
+        "Zachary Hills",
+        "Alonso Guevara Fernández",
+        "Ha Trinh",
+        "Adam Bradley",
+        "Jonathan Larson"
+      ],
+      "publication_date": "2024-10-31",
+      "examined_version": "Microsoft Research release article",
+      "source_type": "official_primary_technical_report",
+      "url": "https://www.microsoft.com/en-us/research/blog/introducing-drift-search-combining-global-and-local-search-methods-to-improve-quality-and-efficiency/",
+      "supporting_urls": [],
+      "sections_examined": [
+        "Step-by-step process",
+        "Benchmarking",
+        "Future research directions"
+      ],
+      "summary_en": "DRIFT starts from community reports and refines answers through local follow-up questions. The reported experiment compares judged comprehensiveness and diversity on fifty questions over an AP news collection. Its two-iteration setting belongs to the 2024 report, not an enduring API requirement. This evaluation does not establish factual accuracy or authorization isolation.",
+      "local_status": "official_report_inspected; not_reproduced",
+      "summary_word_count": 51,
+      "observed_date_utc": "2026-09-09",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "GRAPH-S5",
+      "title": "DRIFT Search — GraphRAG documentation",
+      "authors": [
+        "Microsoft GraphRAG maintainers"
+      ],
+      "publication_date": null,
+      "publication_date_note": "Individual page publication date not disclosed.",
+      "examined_version": "Official documentation observed 2026-09-09 UTC",
+      "source_type": "official_documentation",
+      "url": "https://microsoft.github.io/graphrag/query/drift_search/",
+      "supporting_urls": [],
+      "sections_examined": [
+        "Methodology",
+        "Configuration"
+      ],
+      "summary_en": "The official documentation describes a primer, follow-up expansion, and an output hierarchy. It identifies query state, a context builder, and a tokenizer among configurable components. This supports treating iterative retrieval as an explicit stateful process, while leaving the choice of expansion policy and representation order replaceable.",
+      "local_status": "documentation_inspection_only",
+      "summary_word_count": 46,
+      "observed_date_utc": "2026-09-09",
+      "local_experiment_executed": false
+    },
+    {
+      "source_id": "GRAPH-S6",
+      "title": "DRIFTSearch — search.py",
+      "authors": [
+        "Microsoft GraphRAG contributors"
+      ],
+      "publication_date": null,
+      "publication_date_note": "Rolling repository file; no fixed publication date asserted.",
+      "examined_version": "main branch observed 2026-09-09 UTC; commit not pinned",
+      "source_type": "official_source_code",
+      "url": "https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/drift_search/search.py",
+      "supporting_urls": [
+        "https://raw.githubusercontent.com/microsoft/graphrag/main/packages/graphrag/graphrag/query/structured_search/drift_search/search.py"
+      ],
+      "sections_examined": [
+        "search loop",
+        "Query state serialization",
+        "SearchResult usage accounting"
+      ],
+      "summary_en": "The inspected search loop is bounded by configured depth, selects a limited set of incomplete actions, and exits when no actions remain. It serializes query state and aggregates model calls and tokens. Consumption accounting should not be mistaken for a hard request-wide budget checked before every operation.",
+      "local_status": "source_inspection_only; rolling_version",
+      "summary_word_count": 47,
+      "observed_date_utc": "2026-09-09",
+      "local_experiment_executed": false
+    }
+  ]
+}

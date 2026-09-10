@@ -164,7 +164,9 @@ def create_server(root, port=0, controller=None):
             try:
                 route = url.path[len(prefix):]
                 if service is not None and route.startswith('api/v1/'):
-                    self.respond(200, json.dumps(app_web.get(service, route[7:], url.query), ensure_ascii=False))
+                    value = app_web.get(service, route[7:], url.query)
+                    from material_query.api import response_status as material_status
+                    self.respond(material_status(value) if route.startswith('api/v1/materials/') else 200, json.dumps(value, ensure_ascii=False))
                     return
                 if service is not None and route.startswith('assets/'):
                     raw, mime = app_web.asset(route)
@@ -233,6 +235,9 @@ def create_server(root, port=0, controller=None):
                     name = route[len(prefix + 'api/v1/'):]
                     value = app_web.post(service, name, payload)
                     status = response_status(value) if name.startswith('memory/') else (202 if name == 'jobs' else 200)
+                    if name.startswith('materials/') or name.startswith('representations/'):
+                        from material_query.api import response_status as material_status
+                        status = material_status(value)
                     self.respond(status, json.dumps(value, ensure_ascii=False))
                     return
                 if not isinstance(payload, dict) or set(payload) != {"action"}:

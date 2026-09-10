@@ -1,0 +1,37 @@
+{
+  "python": "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+  "python_version": "3.12.10",
+  "capabilities": {
+    "structure": {
+      "status": "ready",
+      "errors": [],
+      "warnings": []
+    },
+    "fts": {
+      "status": "ready",
+      "detail": "内存 FTS5 建表、写入与查询通过"
+    },
+    "vector": {
+      "status": "unverified",
+      "missing": []
+    },
+    "ocr": {
+      "status": "unverified",
+      "missing": []
+    },
+    "portable": {
+      "status": "unverified",
+      "detail": "完整迁移验收使用 portable.cmd check；系统 Python 不替代便携验证"
+    },
+    "business-eval": {
+      "status": "unavailable",
+      "cases": 0,
+      "detail": "存在问题不等于答案通过；需领域验收结果"
+    }
+  },
+  "required": [],
+  "unmet": [],
+  "eligible": true,
+  "note": "ready 仅指该组件指定探针通过；不证明业务答案正确"
+}
+

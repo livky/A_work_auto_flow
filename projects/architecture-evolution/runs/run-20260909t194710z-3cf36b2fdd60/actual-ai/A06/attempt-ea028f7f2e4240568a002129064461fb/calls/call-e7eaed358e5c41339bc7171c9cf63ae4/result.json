@@ -1,0 +1,36 @@
+{
+  "call_id": "call-e7eaed358e5c41339bc7171c9cf63ae4",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "--root",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+    "memory",
+    "associations-decide",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\authored-requests\\adoption-save.json"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "started_at": "2026-09-09T23:00:12.474721Z",
+  "timeout_seconds": 120,
+  "request": {
+    "original_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\authored-requests\\adoption-save.json",
+    "path": "request.snapshot.txt",
+    "sha256": "890baf8ec8ea561e1cb7de790db6c6bbd2d1680cb7747f3d549e6df1db898bb3"
+  },
+  "ended_at": "2026-09-09T23:00:13.235912Z",
+  "status": "completed",
+  "exit_code": 3,
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "14cf445b7b25ffa975b96b3bfdab7747ea64324923b742cb92244eb8f11e9e70"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending"
+}

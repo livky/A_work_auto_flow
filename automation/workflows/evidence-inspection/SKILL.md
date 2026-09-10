@@ -5,11 +5,15 @@ description: 在研发工作区查看结论的保存原因、依据、复核和�
 
 # 证据查看与只读监测
 
+核对框架保存或检索规则时，以 [ARCHITECTURE.md](../../../ARCHITECTURE.md) 和当前契约为入口；发现文档漂移按 [文档维护约定](../../../docs/DOCUMENTATION_MAINTENANCE.md) 定位需同步页面，历史验证结论不因文案更新而晋升。
+
 ## 版本记忆的依据与纠错
 
 已知归属时 `workbench.cmd memory inspect 对象ID` 查看记录、逐 CLM 状态与风险；已知 MEM 再加 `--record-id` 和可选 `--revision`，打开真实来源/产物。旧 Run 保留原生登记和一次执行身份。保存成功、执行 succeeded、claim accepted 是三个不同状态；复核需要看谁、何时、什么依据、适用范围与绑定的内容版本。
 
 默认知识检索查看L1–L4；L0是统一原始材料视图，含 Run 登记与独立来源。先用 `memory raw-materials` 指定 owner_id 看清单，再用 `memory raw-material` 指定 material_id 核验并有界读取；请求见[统一入口](../../../docs/design/L0_MATERIALS.md)。执行与登记回执的区别见[执行手册](../../../docs/RUN_CAPTURE.md)：文件已保存不代表脚本成功，退出码为零也不代表科学结论已复核。明确追溯某条来源也可使用固定引用展开，或search的 `retrieval_mode:"trace"` 配合实际ID选择，不能靠空查询遍历所有原始日志。旧v1记录读取时采用新有效层级，但核验仍使用原修订哈希；层级平移不代表结论重新验证。
+
+v3 L1 的检索说明不代替完整技术块，实验/方法/推导/分析按实际内容区分；v2 正文继续按原版本核验。研究过程 research_process 与精简报告 research_report 使用独立 document/document_section，level=null；查看时用 document/outline，局部核对用 section-context。用 document-impact 检查固定来源、变化关注和双文稿版本差异；其 requires_review 提示不自动撤回结论或改写章节，watch_refs 不是科学支持关系。当前请求与回读字段见 [请求示例第 9 节](../../../docs/MEMORY_REQUESTS.md)。
 
 需要判定正式可复用性时，以实际 `scope` 调用 `memory search` 或 `memory context`，请求设置 `purpose:"formal"`，阅读拒绝路径。导航关联被采纳、总结引用多次或来源计数变多都不构成新独立验证。`memory source-lineage` 返回实际可访问来源；scientific_support_count 未知时保持未知。
 

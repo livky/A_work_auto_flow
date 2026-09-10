@@ -2,9 +2,11 @@
 
 本目录定义 Qdrant Python local 持久化模式、CPU 多语言嵌入模型和 OCR 的便携环境。通过根 `setup.cmd` 安装；配套依赖包可离线导入。无需训练模型，不启动 HTTP 服务；同一数据库串行使用。
 
-从工作区根运行 `automation/workspace.ps1 index-knowledge` 或 `retrieve-context "问题"`。正常运行强制本地推理，缺模型报错，不自动联网。
+文件索引从工作区根运行 `automation/workspace.ps1 index-knowledge`，文件问答用 `retrieve-context "问题"`。规范记忆由 `memory commit` 后的索引同步或 `memory reconcile/rebuild` 维护。正常推理强制本地；文件入口已配置向量或记忆 vector=required 时缺模型报错，记忆 vector=auto 可明确降级，不自动联网。
 
-- runtime：便携 Python 3.12.10 Windows x64、Qdrant client 1.19.0、FastEmbed 0.8.0 等依赖。
+旧文件片段使用 `workspace_*` 集合，记忆表示使用 `memory_v1_*` 集合；后缀由模型清单和编码版本确定。前缀不代表当前记忆记录 schema，v3 技术单元仍沿用相应投影集合身份。两类集合共享本地存储与进程锁，但不混合向量点。当前替换模型仍受标准名称、路径和 384 维契约限制，不承诺任意模型直接替换。
+
+- runtime：锁定的便携 Python 3.12.10 Windows x64、Qdrant client 1.19.0、FastEmbed 0.8.0 等依赖；副本实际安装状态用 doctor 检查。
 - models：量化多语言 MiniLM（384 维），模型文件 SHA-256 记录于 model-manifest.json。
 - storage：可重建的 Qdrant 数据库。
 - downloads / wheelhouse：离线恢复安装包；checksums.json 校验完整性，requirements.lock.txt 记录依赖版本。

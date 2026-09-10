@@ -1,0 +1,39 @@
+{
+  "fixture_root": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "input": "Existing independent SYNTHETIC F3 after A09; no physical experiment",
+  "context": "continuous; reviewer already read A08/A09; discovery query has no fixed record IDs but is not blind",
+  "supplements": [
+    "A08/attempt-827ddd756ca34e78825e4e48c7d98aa4",
+    "A09/attempt-6a3c96e965c1408e998f7cfc8de720e7"
+  ],
+  "source_fingerprints": {
+    "automation\\scripts\\workspace_cli.py": "7ac41817fa1b11740c90731da8f5b3cf0c5b28654f7f0cffdebc865152630128",
+    "automation\\scripts\\material_query\\coordinator.py": "10de04e2f77080dfd1f57e4febf0848355d437777f99109577ce88a7406323cc",
+    "automation\\scripts\\material_query\\assembly.py": "271e1a7982c65b30081015863cc6eba12423866a0cec3a33ef954b22117dc900",
+    "automation\\workflows\\material-query\\SKILL.md": "6832ec791e07be0ff858071272a6d5dea838b673a5903d7538de1f7e64273ca0",
+    "automation\\workflows\\development-checks\\SKILL.md": "62cc3f1a13776aab0affb0502bd53ccedbfaf0def63bf6a57a6558ea2ab4c600",
+    "automation\\testing\\ai_review.py": "03a7ebae9eba2926b99ede36e32bc5995882066b65e2708ffd7e6c99b08ee2c2"
+  },
+  "initial_heads": {
+    "tank": {
+      "commit_id": "COM-7d0a2539-e2b6-4c77-b04a-d22956f47baf",
+      "generation": 11,
+      "manifest_hash": "63aa74fde4d9b45a67a4f2dd25699f8f73b2dcd68e1166dc833038b09d8b40c8"
+    },
+    "retry": {
+      "commit_id": "COM-b98936d9-17a7-4a31-9016-4c12ea27ccaa",
+      "generation": 2,
+      "manifest_hash": "9ad1f1244203dce8bd50849d3b5f773b8dcb0c6783b77bed725991c3fc08c496"
+    },
+    "saturation": {
+      "commit_id": "COM-4a163fb0-43b8-45b1-b946-50faa4d66659",
+      "generation": 1,
+      "manifest_hash": "1ef4499231aaa41aec9dcf85d6fb42bc833aeca0ad66fbc605142505abf83978"
+    }
+  },
+  "original_source_sha256": {
+    "tank": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+    "retry": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+    "saturation": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f"
+  }
+}

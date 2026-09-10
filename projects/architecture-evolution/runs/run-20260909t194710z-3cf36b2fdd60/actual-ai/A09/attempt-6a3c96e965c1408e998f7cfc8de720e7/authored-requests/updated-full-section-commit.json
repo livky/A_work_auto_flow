@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "request_id": "ca16a058-7bed-4eb0-9415-b4dad964d685",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex /root/retrieval_review actual AI"
+  },
+  "owner_id": "RES-F3-TANK",
+  "expected_head": "COM-525a8d2a-122a-44fb-a5c0-01a3e1cfd3fe",
+  "operations": [
+    {
+      "op": "put_record",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RES-F3-TANK",
+        "kind": "document_section",
+        "title": "SYNTHETIC F3 水箱模型完整章节",
+        "body_markdown": "",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "水箱模型完整章节"
+        ],
+        "payload": {
+          "blocks": [
+            {
+              "type": "prose",
+              "markdown": "本章保留变量定义与原未饱和推导，补入新饱和输入的目标可达性检查。给定目标2 m需要0.20 m³/s，大于泵上限0.15 m³/s；不能据原线性段解保证该目标误差归零。结论仅属于合成前提，未做现实验证。",
+              "evidence_refs": [
+                {
+                  "revision": 1,
+                  "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                  "locator": "",
+                  "target_kind": "record",
+                  "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                  "relation": "references"
+                },
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+                  "revision": 2,
+                  "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+                  "locator": "",
+                  "relation": "references"
+                },
+                {
+                  "revision": 1,
+                  "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+                  "locator": "",
+                  "target_kind": "record",
+                  "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+                  "relation": "references"
+                }
+              ]
+            },
+            {
+              "type": "unit",
+              "ref": {
+                "revision": 1,
+                "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                "locator": "",
+                "target_kind": "record",
+                "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                "relation": "references"
+              }
+            },
+            {
+              "type": "unit",
+              "ref": {
+                "target_kind": "record",
+                "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+                "revision": 2,
+                "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+                "locator": "",
+                "relation": "references"
+              }
+            }
+          ],
+          "missing_refs": [],
+          "role": "methods",
+          "section_key": "tank",
+          "title": "SYNTHETIC F3 水箱完整模型：定义、推导与边界",
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "revision": 1,
+            "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+            "relation": "references"
+          },
+          {
+            "target_kind": "record",
+            "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+            "revision": 2,
+            "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+            "locator": "",
+            "relation": "references"
+          },
+          {
+            "revision": 1,
+            "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+            "locator": "",
+            "target_kind": "record",
+            "target_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal",
+        "change_reason": "实际阅读新饱和约束、模型r2和公开文稿影响后，局部同步固定章节与适用边界；保留旧r1"
+      },
+      "record_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+      "expected_revision": 1
+    }
+  ]
+}

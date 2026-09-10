@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "scenario": {
+    "id": "A04",
+    "title": "完整过程与简版报告",
+    "task": "共享已保存证据，自行编写完整研究过程与简版报告，公开保存、分别回读并实际检查工作台两种文档。",
+    "human_priority": "new-feature",
+    "expectations": [
+      {
+        "id": "A04-E1",
+        "text": "两种文档独立且有序，正文真实可读"
+      },
+      {
+        "id": "A04-E2",
+        "text": "共同依据一致，简版保留关键限制"
+      },
+      {
+        "id": "A04-E3",
+        "text": "实际页面的目录、公式、图和链接可读"
+      }
+    ],
+    "initial_status": "not-run"
+  },
+  "created_at": "2026-09-10T05:25:10.223792Z",
+  "attempt_id": "attempt-1c00e2481bef4149b0d1ecb4e70bfead",
+  "parent_attempt": null,
+  "task": {
+    "path": "task.txt",
+    "sha256": "42bb317d9093f2b25481ff7910ff44278b856f4450a10fb05a3828f7373e6903"
+  },
+  "template_sha256": "08e4f243c5ff6c4a4889967323e1e62af2c55c8ebc5879d78f4fcb6ddb71cb77",
+  "actor": "Codex主任务助手",
+  "model": null,
+  "context_mode": "continuous",
+  "input_environment": {},
+  "execution": "not-run",
+  "mechanical_checks": "not-run",
+  "ai_assessment": "not-reviewed",
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "note": "Initial states are immutable; subsequent evidence is in uniquely named events."
+}

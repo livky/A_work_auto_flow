@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "acceptance_id": "C03",
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "status": "passed_limited",
+  "scope": "Windows x64 本机隔离合成 F1；公开 memory commit/review/inspect 与真实材料查询；不代表模型有效性、人工或第二台物理机验收",
+  "attempts": [
+    {
+      "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_facets.py -v",
+      "tests": 8,
+      "seconds": 48.587,
+      "exit_code": 0,
+      "note": "初轮，不含后续 unknown_facets 候选标注断言"
+    },
+    {
+      "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_facets.py -v",
+      "tests": 8,
+      "seconds": 48.262,
+      "exit_code": 0,
+      "log": "testing/facets-final-20260910.log",
+      "test_ids": [
+        "test_material_facets.MaterialFacetTests.test_applicability_uses_exact_structured_conditions_and_exclusions",
+        "test_material_facets.MaterialFacetTests.test_confidence_targets_exact_claim_and_never_promotes_review",
+        "test_material_facets.MaterialFacetTests.test_facet_basis_is_in_real_source_permission_and_revocation_closure",
+        "test_material_facets.MaterialFacetTests.test_legacy_v1_v2_save_and_fixed_read_need_no_backfill_or_new_field",
+        "test_material_facets.MaterialFacetTests.test_public_roundtrip_preserves_multiple_attempts_confidence_and_old_revision",
+        "test_material_facets.MaterialFacetTests.test_public_validation_rejects_unfixed_unbased_uncalibrated_and_invalid_facets",
+        "test_material_facets.MaterialFacetTests.test_role_multiple_outcomes_review_and_validity_intersect_independently",
+        "test_material_facets.MaterialFacetTests.test_unknown_is_explicit_and_empty_filters_never_become_unrestricted"
+      ]
+    }
+  ],
+  "related_checks": [
+    {
+      "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_memory_contracts.py -v",
+      "tests": 11,
+      "seconds": 0.048,
+      "exit_code": 0
+    },
+    {
+      "command": ".\\automation\\python.ps1 automation/scripts/memory/generate_types.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check (限定本子项已跟踪文件)",
+      "exit_code": 0
+    }
+  ],
+  "source_fingerprints": [
+    {
+      "path": "automation/scripts/memory/facets.py",
+      "sha256": "c4524341179769ba5f2a340a8824862a54d73cd924437ae60169f856d3c94df7"
+    },
+    {
+      "path": "automation/scripts/memory/contracts.py",
+      "sha256": "0b98ebcc7a758cf260df5a7693d868a36706ab6c782789a12a431276af589379"
+    },
+    {
+      "path": "automation/scripts/material_query/facets.py",
+      "sha256": "90ca300a1faf664bbc7ffaf85cced43bda8dd748e1193b52d77be94ffa29bfba"
+    },
+    {
+      "path": "automation/scripts/material_query/coordinator.py",
+      "sha256": "10de04e2f77080dfd1f57e4febf0848355d437777f99109577ce88a7406323cc"
+    },
+    {
+      "path": "automation/schemas/memory-v3.schema.json",
+      "sha256": "64397d49e987de4bb1c87f0d881bf0213e1209946524296c4c05b6b8c9332acb"
+    },
+    {
+      "path": "automation/schemas/memory-v3.d.ts",
+      "sha256": "fbf0549f61f91da17158ed5a218308437ebea5f0ce27784b93da7f225b8f64ae"
+    },
+    {
+      "path": "automation/tests/test_material_facets.py",
+      "sha256": "1a3ad90e7d9f90308d0ea5a417e8f5cdf5ec6208ddf628275f044c40bcb54ab5"
+    },
+    {
+      "path": "docs/KNOWLEDGE_FACETS.md",
+      "sha256": "ff4452f19281b542ac3322b144fee3509e7fe0df17d09cdc6eb9f4aa09a7401c"
+    },
+    {
+      "path": "docs/MATERIAL_QUERY.md",
+      "sha256": "77958370b5255490ceffe32e042f0ca90cc602ea37f65aeba621ca633147bead"
+    }
+  ],
+  "limitations": [
+    "仅六种知识内容 v3 payload 支持可选 knowledge_facets；其他系统记录未增加该字段",
+    "当前条件数组按明确标签匹配；旧完整 Applicability 请求 DTO 的业务时间和 subject_versions 约束尚未适配",
+    "真实 setup、完整回归、测试登记和最终发行由主任务统一执行，不能用本回执替代",
+    "科学复核与人工验收未由本测试认可"
+  ]
+}

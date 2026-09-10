@@ -1,0 +1,4 @@
+{
+  "owner_id": "RES-F3-RETRY",
+  "vector": "off"
+}

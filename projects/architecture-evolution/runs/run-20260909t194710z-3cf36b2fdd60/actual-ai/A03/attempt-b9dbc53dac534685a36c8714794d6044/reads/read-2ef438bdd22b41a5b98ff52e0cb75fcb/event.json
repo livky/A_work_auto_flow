@@ -1,0 +1,11 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "public-cli",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "所选实现章节、scope 必需定义、方法正文和 manifest",
+  "coverage": "partial",
+  "observation": "选块包含 scope 定义及两处完整公式；其余共同依据以描述补充，没有冒充全文。",
+  "recorded_at": "2026-09-09T22:44:34.430667Z",
+  "capture_sha256": "a49ac51b1e9b8881c63b48a22ae7856ff5a1acf8432524502064a62b003f701b",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

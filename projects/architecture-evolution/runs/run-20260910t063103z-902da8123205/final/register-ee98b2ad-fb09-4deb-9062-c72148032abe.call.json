@@ -1,0 +1,31 @@
+{
+  "command": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "run-register",
+    "RUN-20260910T063103Z-902DA8123205",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\README.md",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\AUDIT_REPORT.md",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\HUMAN_CHECKLIST.md",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\audit-20260910T063348Z.json",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\details-20260910T063550Z.json",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\raw-listings.json",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\recording-summary.json",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\recording-verification.json",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\index-knowledge-initial.log",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\relations-refresh-initial.json",
+    "--artifact",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260910t063103z-902da8123205\\doctor.json"
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "run_path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/run.json",
+  "before": {
+    "schema_version": 1,
+    "run_id": "RUN-20260909T193424Z-94CB7B841F02",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": null,
+    "title": "正式开发计划完整性与文件对齐核对",
+    "keywords": [
+      "开发准备",
+      "文件清单",
+      "P0门槛",
+      "一致性核对"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "completed",
+    "created_at": "2026-09-09T19:34:24Z",
+    "started_at": null,
+    "ended_at": "2026-09-09T19:37:07.137417+00:00",
+    "owner": null,
+    "question": "现有正式开发计划是否齐全，涉及哪些文件，各入口是否对齐？",
+    "hypotheses": [],
+    "inputs": [],
+    "parameters": {},
+    "code": {
+      "commit": null,
+      "dirty": null
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [],
+    "metrics": {},
+    "artifacts": [],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "可启动P0；补齐逐文件清单并修正入口/计时/代理边界，明确未完成的工程基线。",
+    "limitations": [
+      "设计静态检查不证明产品实现",
+      "83现有/33拟新增是影响范围，不是全部必须修改",
+      "未执行产品/浏览器/升级/质量测试"
+    ],
+    "parent_run_ids": [
+      "RUN-20260909T190818Z-8ADA1DF3337B"
+    ],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "before_bytes": "ew0KICAic2NoZW1hX3ZlcnNpb24iOiAxLA0KICAicnVuX2lkIjogIlJVTi0yMDI2MDkwOVQxOTM0MjRaLTk0Q0I3Qjg0MUYwMiIsDQogICJvd25lcl9pZCI6ICJQUkotQVJDSElURUNUVVJFLUVWT0xVVElPTiIsDQogICJwcm9qZWN0X2lkIjogbnVsbCwNCiAgInRpdGxlIjogIuato+W8j+W8gOWPkeiuoeWIkuWujOaVtOaAp+S4juaWh+S7tuWvuem9kOaguOWvuSIsDQogICJrZXl3b3JkcyI6IFsNCiAgICAi5byA5Y+R5YeG5aSHIiwNCiAgICAi5paH5Lu25riF5Y2VIiwNCiAgICAiUDDpl6jmp5siLA0KICAgICLkuIDoh7TmgKfmoLjlr7kiDQogIF0sDQogICJyZXZpZXdfaGlzdG9yeSI6IFtdLA0KICAiY2xhaW1zIjogW10sDQogICJkZXBlbmRlbmNpZXMiOiBbXSwNCiAgInJ1bl90eXBlIjogImFuYWx5c2lzIiwNCiAgInN0YXR1cyI6ICJjb21wbGV0ZWQiLA0KICAiY3JlYXRlZF9hdCI6ICIyMDI2LTA5LTA5VDE5OjM0OjI0WiIsDQogICJzdGFydGVkX2F0IjogbnVsbCwNCiAgImVuZGVkX2F0IjogIjIwMjYtMDktMDlUMTk6Mzc6MDcuMTM3NDE3KzAwOjAwIiwNCiAgIm93bmVyIjogbnVsbCwNCiAgInF1ZXN0aW9uIjogIueOsOacieato+W8j+W8gOWPkeiuoeWIkuaYr+WQpum9kOWFqO+8jOa2ieWPiuWTquS6m+aWh+S7tu+8jOWQhOWFpeWPo+aYr+WQpuWvuem9kO+8nyIsDQogICJoeXBvdGhlc2VzIjogW10sDQogICJpbnB1dHMiOiBbXSwNCiAgInBhcmFtZXRlcnMiOiB7fSwNCiAgImNvZGUiOiB7DQogICAgImNvbW1pdCI6IG51bGwsDQogICAgImRpcnR5IjogbnVsbA0KICB9LA0KICAiZW52aXJvbm1lbnQiOiB7DQogICAgInB5dGhvbiI6ICIzLjEyLjEwIiwNCiAgICAicGxhdGZvcm0iOiAiV2luZG93cy0xMS0xMC4wLjIyNjMxLVNQMCIsDQogICAgImxvY2tfb3JfaW1hZ2VfZGlnZXN0IjogbnVsbA0KICB9LA0KICAicmFuZG9tX3NlZWRzIjogW10sDQogICJxdWFsaXR5X3Jlc3VsdHMiOiBbXSwNCiAgIm1ldHJpY3MiOiB7fSwNCiAgImFydGlmYWN0cyI6IFtdLA0KICAibGluZWFnZV9ldmVudHMiOiAibGluZWFnZS5qc29ubCIsDQogICJjb25jbHVzaW9uIjogIuWPr+WQr+WKqFAw77yb6KGl6b2Q6YCQ5paH5Lu25riF5Y2V5bm25L+u5q2j5YWl5Y+jL+iuoeaXti/ku6PnkIbovrnnlYzvvIzmmI7noa7mnKrlrozmiJDnmoTlt6XnqIvln7rnur/jgIIiLA0KICAibGltaXRhdGlvbnMiOiBbDQogICAgIuiuvuiuoemdmeaAgeajgOafpeS4jeivgeaYjuS6p+WTgeWunueOsCIsDQogICAgIjgz546w5pyJLzMz5ouf5paw5aKe5piv5b2x5ZON6IyD5Zu077yM5LiN5piv5YWo6YOo5b+F6aG75L+u5pS5IiwNCiAgICAi5pyq5omn6KGM5Lqn5ZOBL+a1j+iniOWZqC/ljYfnuqcv6LSo6YeP5rWL6K+VIg0KICBdLA0KICAicGFyZW50X3J1bl9pZHMiOiBbDQogICAgIlJVTi0yMDI2MDkwOVQxOTA4MThaLThBREExREYzMzM3QiINCiAgXSwNCiAgInJlbGF0ZWRfbW9kdWxlX2lkcyI6IFtdLA0KICAicmVsYXRlZF9yZXNlYXJjaF9pZHMiOiBbXSwNCiAgInJlbGF0ZWRfZGF0YXNldF9pZHMiOiBbXSwNCiAgInJldmlldyI6IHsNCiAgICAic3RhdHVzIjogIm5vdC1yZXZpZXdlZCIsDQogICAgInJldmlld2VyIjogbnVsbCwNCiAgICAiZGF0ZSI6IG51bGwNCiAgfSwNCiAgInNlbnNpdGl2aXR5IjogImludGVybmFsIg0KfQ0K",
+  "after": {
+    "schema_version": 1,
+    "run_id": "RUN-20260909T193424Z-94CB7B841F02",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": null,
+    "title": "正式开发计划完整性与文件对齐核对",
+    "keywords": [
+      "开发准备",
+      "文件清单",
+      "P0门槛",
+      "一致性核对"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "completed",
+    "created_at": "2026-09-09T19:34:24Z",
+    "started_at": null,
+    "ended_at": "2026-09-09T19:37:07.137417+00:00",
+    "owner": null,
+    "question": "现有正式开发计划是否齐全，涉及哪些文件，各入口是否对齐？",
+    "hypotheses": [],
+    "inputs": [],
+    "parameters": {},
+    "code": {
+      "commit": null,
+      "dirty": null
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [],
+    "metrics": {},
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/check_design.py.snapshot",
+        "sha256": "e0e09c40beedb7af3119a49e81354bb48e5b1e4a4cb7705f1fc1dd7e825c12d8",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.695393Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/CONTRACTS.md.snapshot",
+        "sha256": "efe777ee17ccc3e42185060008ba81400221b7a0e99777a2f724db19ad61cf88",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.699989Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/contracts.py.snapshot",
+        "sha256": "ac8c2b35c5602cb424af4066aef54ee906bc6514c86ecaa5862862bd2ef8c5ec",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.707009Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/design-check.json",
+        "sha256": "b8ba78b28b0f4ae9dc6d8cf5d4725cfa6d657d87624bedac006cb8525af68270",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.713122Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/development-files.json.snapshot",
+        "sha256": "5549eb79ae8b1d1ed592bdc6a6961d53f63b8ad959865b1c0f7204c888931bb3",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.718017Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/DEVELOPMENT_READINESS.md.snapshot",
+        "sha256": "d404f2bad282ac92212b2f4915447379de0926f6413988be985ed1c749a015f6",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.724305Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/implementation-preparation.md.snapshot",
+        "sha256": "15ea15db9cb11e717c67f1b10091abe678a32c19cbef94123245ec493e072f57",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.730418Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/IMPLEMENTATION.md.snapshot",
+        "sha256": "fc55adcf46e97c6b345ef5d610c6594613ecd8c46fc92a72cd7d03c38a450857",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.735429Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/inputs.json",
+        "sha256": "d85b6545086b55669ac6402413cf9309f564e9885ce9589c3cc98816460129d5",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.742428Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/NOW.md.snapshot",
+        "sha256": "16be2d039799fd53f1326a6f11db34c52c9ebbd120f054ed3f51ccb1be0cab4b",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.748432Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/PLAN.md.snapshot",
+        "sha256": "97809d3cc2b4bb48f39daa3ac4625cb59602529c2521c17d6d9293fbd426b173",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.752953Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/README.md",
+        "sha256": "19ee6b9033c121c8dfaca82aed82cdf193bf907d53ca7753697623b9dfb34110",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.759416Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/README.md.snapshot",
+        "sha256": "b49f7a3606bdd8ed127e9021f88bc467d98cb25fe2f6f4f41f038d4ccaf4ed65",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.765418Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/test-cases.json.snapshot",
+        "sha256": "7c2df489ae741846f98f24384e85023e01ce5c0b4428551c03644224f4153f48",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.769423Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/TEST_DESIGN.md.snapshot",
+        "sha256": "659499dac02e4265250da745d5522e996f37dded27e84f672d3a4afa867a1f0b",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.775187Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t193424z-94cb7b841f02/WORKBENCH.md.snapshot",
+        "sha256": "0aebda00ca3cbb6f78dc2b50292cb703f6d967f86ef53395b2cb54e89b1b862a",
+        "role": "artifact",
+        "registered_at": "2026-09-09T19:37:07.781181Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "可启动P0；补齐逐文件清单并修正入口/计时/代理边界，明确未完成的工程基线。",
+    "limitations": [
+      "设计静态检查不证明产品实现",
+      "83现有/33拟新增是影响范围，不是全部必须修改",
+      "未执行产品/浏览器/升级/质量测试"
+    ],
+    "parent_run_ids": [
+      "RUN-20260909T190818Z-8ADA1DF3337B"
+    ],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "created_at": "2026-09-09T19:37:07.840824Z"
+}

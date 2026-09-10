@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "run_path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/run.json",
+  "before": {
+    "schema_version": 1,
+    "run_id": "RUN-20260909T175530Z-40721B975BDB",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "扩充核心接口说明：概念定义、存储维护与查询闭环",
+    "keywords": [
+      "接口说明",
+      "表示维护",
+      "索引维护"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-09T17:55:30Z",
+    "started_at": null,
+    "ended_at": "2026-09-09T18:02:57.553516Z",
+    "owner": "assistant",
+    "question": "怎样让CORE解释清楚材料表示、索引维护和有明确输入输出的完整闭环？",
+    "hypotheses": [],
+    "inputs": [],
+    "parameters": {
+      "scope": "explanatory documentation and canonical project records only",
+      "contract_changes": false
+    },
+    "code": {
+      "commit": null,
+      "dirty": null
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "contract_structure",
+        "status": "passed",
+        "evidence": "contract-checks.json",
+        "required": true
+      },
+      {
+        "check": "canonical_roundtrip_and_old_revision",
+        "status": "passed",
+        "evidence": "readback-checks.json",
+        "required": true
+      },
+      {
+        "check": "workspace",
+        "status": "passed",
+        "evidence": "workspace-checks.json",
+        "required": true
+      },
+      {
+        "check": "ai_readability_review",
+        "status": "passed",
+        "evidence": "AI_REVIEW.json",
+        "details": "AI文字自查，非人工或视觉验收",
+        "required": false
+      },
+      {
+        "check": "human_review",
+        "status": "not-run",
+        "evidence": "AI_REVIEW.json",
+        "required": false
+      }
+    ],
+    "metrics": {
+      "new_events": 1,
+      "revised_records": 7,
+      "document_revision": 2,
+      "contract_structure_cases": 12
+    },
+    "artifacts": [],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "完成CORE扩写与受影响规范正文、章节、地图和双文稿r2同步；r1回读不变。",
+    "limitations": [
+      "新接口尚未运行接入；本次示例为假想说明，不是实验结果。",
+      "人工可读性意见待收集；未重新执行页面视觉、全软件回归或第二台机器验收。"
+    ],
+    "parent_run_ids": [
+      "RUN-20260909T164914Z-D20A9406384A"
+    ],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "before_bytes": "ew0KICAic2NoZW1hX3ZlcnNpb24iOiAxLA0KICAicnVuX2lkIjogIlJVTi0yMDI2MDkwOVQxNzU1MzBaLTQwNzIxQjk3NUJEQiIsDQogICJvd25lcl9pZCI6ICJQUkotQVJDSElURUNUVVJFLUVWT0xVVElPTiIsDQogICJwcm9qZWN0X2lkIjogIlBSSi1BUkNISVRFQ1RVUkUtRVZPTFVUSU9OIiwNCiAgInRpdGxlIjogIuaJqeWFheaguOW/g+aOpeWPo+ivtOaYju+8muamguW/teWumuS5ieOAgeWtmOWCqOe7tOaKpOS4juafpeivoumXreeOryIsDQogICJrZXl3b3JkcyI6IFsNCiAgICAi5o6l5Y+j6K+05piOIiwNCiAgICAi6KGo56S657u05oqkIiwNCiAgICAi57Si5byV57u05oqkIg0KICBdLA0KICAicmV2aWV3X2hpc3RvcnkiOiBbXSwNCiAgImNsYWltcyI6IFtdLA0KICAiZGVwZW5kZW5jaWVzIjogW10sDQogICJydW5fdHlwZSI6ICJhbmFseXNpcyIsDQogICJzdGF0dXMiOiAic3VjY2VlZGVkIiwNCiAgImNyZWF0ZWRfYXQiOiAiMjAyNi0wOS0wOVQxNzo1NTozMFoiLA0KICAic3RhcnRlZF9hdCI6IG51bGwsDQogICJlbmRlZF9hdCI6ICIyMDI2LTA5LTA5VDE4OjAyOjU3LjU1MzUxNloiLA0KICAib3duZXIiOiAiYXNzaXN0YW50IiwNCiAgInF1ZXN0aW9uIjogIuaAjuagt+iuqUNPUkXop6Pph4rmuIXmpZrmnZDmlpnooajnpLrjgIHntKLlvJXnu7TmiqTlkozmnInmmI7noa7ovpPlhaXovpPlh7rnmoTlrozmlbTpl63njq/vvJ8iLA0KICAiaHlwb3RoZXNlcyI6IFtdLA0KICAiaW5wdXRzIjogW10sDQogICJwYXJhbWV0ZXJzIjogew0KICAgICJzY29wZSI6ICJleHBsYW5hdG9yeSBkb2N1bWVudGF0aW9uIGFuZCBjYW5vbmljYWwgcHJvamVjdCByZWNvcmRzIG9ubHkiLA0KICAgICJjb250cmFjdF9jaGFuZ2VzIjogZmFsc2UNCiAgfSwNCiAgImNvZGUiOiB7DQogICAgImNvbW1pdCI6IG51bGwsDQogICAgImRpcnR5IjogbnVsbA0KICB9LA0KICAiZW52aXJvbm1lbnQiOiB7DQogICAgInB5dGhvbiI6ICIzLjEyLjEwIiwNCiAgICAicGxhdGZvcm0iOiAiV2luZG93cy0xMS0xMC4wLjIyNjMxLVNQMCIsDQogICAgImxvY2tfb3JfaW1hZ2VfZGlnZXN0IjogbnVsbA0KICB9LA0KICAicmFuZG9tX3NlZWRzIjogW10sDQogICJxdWFsaXR5X3Jlc3VsdHMiOiBbDQogICAgew0KICAgICAgImNoZWNrIjogImNvbnRyYWN0X3N0cnVjdHVyZSIsDQogICAgICAic3RhdHVzIjogInBhc3NlZCIsDQogICAgICAiZXZpZGVuY2UiOiAiY29udHJhY3QtY2hlY2tzLmpzb24iLA0KICAgICAgInJlcXVpcmVkIjogdHJ1ZQ0KICAgIH0sDQogICAgew0KICAgICAgImNoZWNrIjogImNhbm9uaWNhbF9yb3VuZHRyaXBfYW5kX29sZF9yZXZpc2lvbiIsDQogICAgICAic3RhdHVzIjogInBhc3NlZCIsDQogICAgICAiZXZpZGVuY2UiOiAicmVhZGJhY2stY2hlY2tzLmpzb24iLA0KICAgICAgInJlcXVpcmVkIjogdHJ1ZQ0KICAgIH0sDQogICAgew0KICAgICAgImNoZWNrIjogIndvcmtzcGFjZSIsDQogICAgICAic3RhdHVzIjogInBhc3NlZCIsDQogICAgICAiZXZpZGVuY2UiOiAid29ya3NwYWNlLWNoZWNrcy5qc29uIiwNCiAgICAgICJyZXF1aXJlZCI6IHRydWUNCiAgICB9LA0KICAgIHsNCiAgICAgICJjaGVjayI6ICJhaV9yZWFkYWJpbGl0eV9yZXZpZXciLA0KICAgICAgInN0YXR1cyI6ICJwYXNzZWQiLA0KICAgICAgImV2aWRlbmNlIjogIkFJX1JFVklFVy5qc29uIiwNCiAgICAgICJkZXRhaWxzIjogIkFJ5paH5a2X6Ieq5p+l77yM6Z2e5Lq65bel5oiW6KeG6KeJ6aqM5pS2IiwNCiAgICAgICJyZXF1aXJlZCI6IGZhbHNlDQogICAgfSwNCiAgICB7DQogICAgICAiY2hlY2siOiAiaHVtYW5fcmV2aWV3IiwNCiAgICAgICJzdGF0dXMiOiAibm90LXJ1biIsDQogICAgICAiZXZpZGVuY2UiOiAiQUlfUkVWSUVXLmpzb24iLA0KICAgICAgInJlcXVpcmVkIjogZmFsc2UNCiAgICB9DQogIF0sDQogICJtZXRyaWNzIjogew0KICAgICJuZXdfZXZlbnRzIjogMSwNCiAgICAicmV2aXNlZF9yZWNvcmRzIjogNywNCiAgICAiZG9jdW1lbnRfcmV2aXNpb24iOiAyLA0KICAgICJjb250cmFjdF9zdHJ1Y3R1cmVfY2FzZXMiOiAxMg0KICB9LA0KICAiYXJ0aWZhY3RzIjogW10sDQogICJsaW5lYWdlX2V2ZW50cyI6ICJsaW5lYWdlLmpzb25sIiwNCiAgImNvbmNsdXNpb24iOiAi5a6M5oiQQ09SReaJqeWGmeS4juWPl+W9seWTjeinhOiMg+ato+aWh+OAgeeroOiKguOAgeWcsOWbvuWSjOWPjOaWh+eov3Iy5ZCM5q2l77ybcjHlm57or7vkuI3lj5jjgIIiLA0KICAibGltaXRhdGlvbnMiOiBbDQogICAgIuaWsOaOpeWPo+Wwmuacqui/kOihjOaOpeWFpe+8m+acrOasoeekuuS+i+S4uuWBh+aDs+ivtOaYju+8jOS4jeaYr+WunumqjOe7k+aenOOAgiIsDQogICAgIuS6uuW3peWPr+ivu+aAp+aEj+ingeW+heaUtumbhu+8m+acqumHjeaWsOaJp+ihjOmhtemdouinhuinieOAgeWFqOi9r+S7tuWbnuW9kuaIluesrOS6jOWPsOacuuWZqOmqjOaUtuOAgiINCiAgXSwNCiAgInBhcmVudF9ydW5faWRzIjogWw0KICAgICJSVU4tMjAyNjA5MDlUMTY0OTE0Wi1EMjBBOTQwNjM4NEEiDQogIF0sDQogICJyZWxhdGVkX21vZHVsZV9pZHMiOiBbXSwNCiAgInJlbGF0ZWRfcmVzZWFyY2hfaWRzIjogW10sDQogICJyZWxhdGVkX2RhdGFzZXRfaWRzIjogW10sDQogICJyZXZpZXciOiB7DQogICAgInN0YXR1cyI6ICJub3QtcmV2aWV3ZWQiLA0KICAgICJyZXZpZXdlciI6IG51bGwsDQogICAgImRhdGUiOiBudWxsDQogIH0sDQogICJzZW5zaXRpdml0eSI6ICJpbnRlcm5hbCINCn0NCg==",
+  "after": {
+    "schema_version": 1,
+    "run_id": "RUN-20260909T175530Z-40721B975BDB",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "扩充核心接口说明：概念定义、存储维护与查询闭环",
+    "keywords": [
+      "接口说明",
+      "表示维护",
+      "索引维护"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-09T17:55:30Z",
+    "started_at": null,
+    "ended_at": "2026-09-09T18:02:57.553516Z",
+    "owner": "assistant",
+    "question": "怎样让CORE解释清楚材料表示、索引维护和有明确输入输出的完整闭环？",
+    "hypotheses": [],
+    "inputs": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/CORE-before.md.snapshot",
+        "sha256": "b73659425f8af6ad3f1db0788c977b1de6600fa49ce4c25bcea9bd6d47bbab9a",
+        "role": "input",
+        "registered_at": "2026-09-09T18:02:57.926991Z"
+      }
+    ],
+    "parameters": {
+      "scope": "explanatory documentation and canonical project records only",
+      "contract_changes": false
+    },
+    "code": {
+      "commit": null,
+      "dirty": null
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "contract_structure",
+        "status": "passed",
+        "evidence": "contract-checks.json",
+        "required": true
+      },
+      {
+        "check": "canonical_roundtrip_and_old_revision",
+        "status": "passed",
+        "evidence": "readback-checks.json",
+        "required": true
+      },
+      {
+        "check": "workspace",
+        "status": "passed",
+        "evidence": "workspace-checks.json",
+        "required": true
+      },
+      {
+        "check": "ai_readability_review",
+        "status": "passed",
+        "evidence": "AI_REVIEW.json",
+        "details": "AI文字自查，非人工或视觉验收",
+        "required": false
+      },
+      {
+        "check": "human_review",
+        "status": "not-run",
+        "evidence": "AI_REVIEW.json",
+        "required": false
+      }
+    ],
+    "metrics": {
+      "new_events": 1,
+      "revised_records": 7,
+      "document_revision": 2,
+      "contract_structure_cases": 12
+    },
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/AI_REVIEW.json",
+        "sha256": "c030de2a41bd57f331ec1c8f7f84e5d7c18204a0b060495be36b2387bcb36e05",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.932214Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/before.json",
+        "sha256": "1357064965fbe46707e0402dbb556bf23ece9054c951db5f8c3a6b777a7e2f07",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.936197Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/brief-old-read.json",
+        "sha256": "475651a701736226fb5a333ff16912682d28c3ba6c2bd0a18b01959f0e2ffbc2",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.940200Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/brief-old-request.json",
+        "sha256": "55ffecb0487d44fead83d62ea902cb1631e6254203fe7893fb1ee09f3d9bb4cb",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.944194Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/brief-read-request.json",
+        "sha256": "145cb0174f64c442a8dd68f1456520ce5e9320905027676906ba5e096561b4d0",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.949572Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/brief-read.json",
+        "sha256": "6ff181789b95cf2783dd9d5a364e3aa131e758c1098f030d0586aa86d656aa9b",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.953992Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/chapters-inspect.json",
+        "sha256": "88174fd34c210a53df6bec9bc1c2e0083ec79cb57773dc4f195ecdbd44f54744",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.958601Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/chapters-receipt.json",
+        "sha256": "8b7d92bfff599210c0072320baa337362dfee3df395e6bad874566ab3a189f18",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.962478Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/chapters-request.json",
+        "sha256": "f723105b0b19293832f00c0d4e6badda4ed94f18ebb03ee1a7436d9eaf43c7aa",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.967532Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/chapters-validation.json",
+        "sha256": "88a75e234ce4d9d43798bd281b190382c30532ca9fbbf3ab3025e61b5421b5e7",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.971540Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/contract-checks.json",
+        "sha256": "6f8f82c25150a023799240f41059652fa9982a0b7b5b8389798c23b1ce3fb562",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.975535Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/CORE-expanded.md.snapshot",
+        "sha256": "d0d9d55912c5bfbebe50410e61964c70498f14822be9f4212a3f18848f0a6737",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.980066Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/diff-check.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.984337Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/documents-map-inspect.json",
+        "sha256": "47d29df6533438b2fa0ce2b8f5cea19cdc39b97c52a00ebb287566b2cedffe59",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.989340Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/documents-map-receipt.json",
+        "sha256": "cf8ca630f2116f0eae460fe9ce29f60d23c55c6b90340f6fd65938dad5407c01",
+        "role": "artifact",
+        "registered_at": "2026-09-09T18:02:57.993399Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "完成CORE扩写与受影响规范正文、章节、地图和双文稿r2同步；r1回读不变。",
+    "limitations": [
+      "新接口尚未运行接入；本次示例为假想说明，不是实验结果。",
+      "人工可读性意见待收集；未重新执行页面视觉、全软件回归或第二台机器验收。"
+    ],
+    "parent_run_ids": [
+      "RUN-20260909T164914Z-D20A9406384A"
+    ],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "created_at": "2026-09-09T18:02:58.035405Z"
+}

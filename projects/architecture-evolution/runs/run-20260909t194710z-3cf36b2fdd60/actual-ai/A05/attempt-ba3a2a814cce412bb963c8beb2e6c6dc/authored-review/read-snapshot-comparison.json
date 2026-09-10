@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "mechanical comparison of saved A05 snapshots and public outcomes",
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A05\\attempt-ba3a2a814cce412bb963c8beb2e6c6dc\\mechanical-verification.json",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "完整阅读55个规范/来源文件在retain后及恢复后相同、公开owner结果相等，恢复计划5部分与已读内容相同；不把原F3并发A06新增列入本断言。"
+}

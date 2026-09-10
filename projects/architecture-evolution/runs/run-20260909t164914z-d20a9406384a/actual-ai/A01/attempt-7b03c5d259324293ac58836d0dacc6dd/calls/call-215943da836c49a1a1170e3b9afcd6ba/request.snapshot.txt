@@ -1,0 +1,13 @@
+{
+  "refs": [
+    {
+      "target_kind": "file",
+      "target_id": "SRC-ARCH-INTERFACES-V01-CORE-MD",
+      "revision": null,
+      "sha256": "b73659425f8af6ad3f1db0788c977b1de6600fa49ce4c25bcea9bd6d47bbab9a",
+      "locator": "完整已读取设计文件",
+      "relation": "input"
+    }
+  ],
+  "budget": 30000
+}

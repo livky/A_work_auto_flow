@@ -1,0 +1,773 @@
+{
+  "query_id": "QMEM-89040b50-89c1-41f9-89e8-c1fe86f5d739",
+  "created_at": "2026-09-09T17:23:42.282582Z",
+  "query": "表示 索引",
+  "query_fingerprint": "71ca149d6ac870b99f7f6548b12093f7e46f58b8ff5ca830ce6e77b9c70a517e",
+  "scope": null,
+  "purpose": "exploration",
+  "retrieval_mode": "knowledge",
+  "selection": {
+    "include_ids": [],
+    "full_ids": [],
+    "exclude_ids": [],
+    "stage": "focus",
+    "budget": 16000
+  },
+  "source_heads": {
+    "PRJ-ARCHITECTURE-EVOLUTION": {
+      "commit_id": "COM-5150e9bb-4bb1-47ee-b833-534dacd24545",
+      "generation": 3,
+      "manifest_hash": "6bccf608e99f4bbf8edaab529a7709b1ef20dbfe8d647bca070532ca60ae7ded"
+    },
+    "RES-AGENT-WORKSPACE-REVIEW": null,
+    "RES-FLOATING-POINT-SUMMATION": {
+      "commit_id": "COM-abddae26-f26e-4c76-8b28-fe0b98a29d05",
+      "generation": 11,
+      "manifest_hash": "3faaa86dbfce2b3ab77fa1b5ad64b2fef674237a80705fc51b03c8dbf841bae1"
+    },
+    "RES-MATERIAL-RELATIONSHIP-VIEW": null,
+    "RUN-20260908T201214Z-D0AB308F66AD": null,
+    "RUN-20260908T201228Z-A0980824DC18": null,
+    "RUN-20260908T201240Z-90107A617CF8": null,
+    "RUN-20260908T214955Z-2273015D2CEF": null,
+    "RUN-20260908T215458Z-04C7D84D40D8": null,
+    "RUN-20260909T151004Z-A68FBA9F176D": null,
+    "RUN-20260909T155125Z-2961BDF175A8": null,
+    "RUN-20260909T164914Z-D20A9406384A": null,
+    "TOOL-WORKSPACE-001": null
+  },
+  "candidates": [
+    {
+      "canonical_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+      "score": 0.01639344262295082,
+      "rank_channels": {
+        "memory_fts": 1
+      },
+      "channel_matches": {
+        "memory_fts": [
+          {
+            "entry_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+            "representation_id": null,
+            "revision": 1
+          }
+        ]
+      },
+      "revision": 1,
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "record_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+      "kind": "detail",
+      "level": "L1",
+      "effective_level": "L1",
+      "stored_level": "L1",
+      "taxonomy_version": 2,
+      "title": "表示与索引生命周期接口",
+      "roles": [
+        "detail"
+      ],
+      "match_reason": {
+        "channels": [
+          "memory_fts"
+        ],
+        "terms": [
+          "表示",
+          "索引"
+        ],
+        "ranking_policy": "topic-evidence-tiers-v2",
+        "topic_terms": [],
+        "priority_tier": 0,
+        "representations": {
+          "memory_fts": [
+            {
+              "entry_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+              "representation_id": null,
+              "revision": 1
+            }
+          ]
+        },
+        "explicit_selection": false
+      },
+      "snippet": "问题：\n表示和索引如何独立维护且保持来源一致？\n\n方法：\n分别管理版本内容、派生表示、增量水位与补偿。\n\n主要发现：\n- 表示与索引生命周期接口已形成接口设计；除Project默认策略外，运行适配待实施。\n\n适用条件：\n- 当前AI研发工作区接口演进与本项目后续实施\n\n不适用条件：\n- 不能当作召回质量或生产性能的实测结论\n\n限制：\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。",
+      "boundaries": {
+        "applicable": [
+          "当前AI研发工作区接口演进与本项目后续实施"
+        ],
+        "prohibited": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "failure_modes": [],
+        "retry_conditions": [],
+        "constraints": [],
+        "not_applicable": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "limitations": [
+          "设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。"
+        ]
+      },
+      "source_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+        "revision": 1,
+        "sha256": null,
+        "locator": "record",
+        "relation": "references"
+      },
+      "content_hash": "5e48089afae43128def28a1fd1fba728eacb9e1c17273cefa00899e89e420b9f",
+      "review_state": "not-reviewed",
+      "effective_validity": false,
+      "risks": [],
+      "historical": false,
+      "expansion_paths": [
+        {
+          "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+          "record_id": "MEM-8933de07-288b-5782-ad81-67a05a133b19",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "canonical_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+      "score": 0.016129032258064516,
+      "rank_channels": {
+        "memory_fts": 2
+      },
+      "channel_matches": {
+        "memory_fts": [
+          {
+            "entry_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+            "representation_id": null,
+            "revision": 1
+          }
+        ]
+      },
+      "revision": 1,
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "record_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+      "kind": "detail",
+      "level": "L1",
+      "effective_level": "L1",
+      "stored_level": "L1",
+      "taxonomy_version": 2,
+      "title": "存储、视图、维护与证据边界",
+      "roles": [
+        "detail"
+      ],
+      "match_reason": {
+        "channels": [
+          "memory_fts"
+        ],
+        "terms": [
+          "表示",
+          "索引"
+        ],
+        "ranking_policy": "topic-evidence-tiers-v2",
+        "topic_terms": [],
+        "priority_tier": 0,
+        "representations": {
+          "memory_fts": [
+            {
+              "entry_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+              "representation_id": null,
+              "revision": 1
+            }
+          ]
+        },
+        "explicit_selection": false
+      },
+      "snippet": "问题：\n其余接口如何调用并管理状态？\n\n方法：\n固定单一状态所有者，区分内容提交、索引补偿和复核。\n\n主要发现：\n- 存储、视图、维护与证据边界已形成接口设计；除Project默认策略外，运行适配待实施。\n\n适用条件：\n- 当前AI研发工作区接口演进与本项目后续实施\n\n不适用条件：\n- 不能当作召回质量或生产性能的实测结论\n\n限制：\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。",
+      "boundaries": {
+        "applicable": [
+          "当前AI研发工作区接口演进与本项目后续实施"
+        ],
+        "prohibited": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "failure_modes": [],
+        "retry_conditions": [],
+        "constraints": [],
+        "not_applicable": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "limitations": [
+          "设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。"
+        ]
+      },
+      "source_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+        "revision": 1,
+        "sha256": null,
+        "locator": "record",
+        "relation": "references"
+      },
+      "content_hash": "542a10176ff07c3c961c34259c4a1fcde8604636e1c3e7dcb1cba7cfe6f4fd6a",
+      "review_state": "not-reviewed",
+      "effective_validity": false,
+      "risks": [],
+      "historical": false,
+      "expansion_paths": [
+        {
+          "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+          "record_id": "MEM-8d589423-c595-5a80-898d-23d974868c7c",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "canonical_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+      "score": 0.015873015873015872,
+      "rank_channels": {
+        "memory_fts": 3
+      },
+      "channel_matches": {
+        "memory_fts": [
+          {
+            "entry_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+            "representation_id": null,
+            "revision": 1
+          }
+        ]
+      },
+      "revision": 1,
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "record_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+      "kind": "detail",
+      "level": "L1",
+      "effective_level": "L1",
+      "stored_level": "L1",
+      "taxonomy_version": 2,
+      "title": "渐进编排与上下文组装接口",
+      "roles": [
+        "detail"
+      ],
+      "match_reason": {
+        "channels": [
+          "memory_fts"
+        ],
+        "terms": [
+          "表示",
+          "索引"
+        ],
+        "ranking_policy": "topic-evidence-tiers-v2",
+        "topic_terms": [],
+        "priority_tier": 0,
+        "representations": {
+          "memory_fts": [
+            {
+              "entry_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+              "representation_id": null,
+              "revision": 1
+            }
+          ]
+        },
+        "explicit_selection": false
+      },
+      "snippet": "问题：\n如何逐步扩展且保留定义、范围和预算？\n\n方法：\n扩大语料与深入表示分别规划，共享预算和不透明续接状态。\n\n主要发现：\n- 渐进编排与上下文组装接口已形成接口设计；除Project默认策略外，运行适配待实施。\n\n适用条件：\n- 当前AI研发工作区接口演进与本项目后续实施\n\n不适用条件：\n- 不能当作召回质量或生产性能的实测结论\n\n限制：\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。",
+      "boundaries": {
+        "applicable": [
+          "当前AI研发工作区接口演进与本项目后续实施"
+        ],
+        "prohibited": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "failure_modes": [],
+        "retry_conditions": [],
+        "constraints": [],
+        "not_applicable": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "limitations": [
+          "设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。"
+        ]
+      },
+      "source_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+        "revision": 1,
+        "sha256": null,
+        "locator": "record",
+        "relation": "references"
+      },
+      "content_hash": "78bcbd2e6a2c4d7030e9bb1c307689b5356fac90977623a14ff3d88a6b946acc",
+      "review_state": "not-reviewed",
+      "effective_validity": false,
+      "risks": [],
+      "historical": false,
+      "expansion_paths": [
+        {
+          "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+          "record_id": "MEM-7faf0c58-7e42-59db-9613-b29e6f7c39ca",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "canonical_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+      "score": 0.015625,
+      "rank_channels": {
+        "memory_fts": 4
+      },
+      "channel_matches": {
+        "memory_fts": [
+          {
+            "entry_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+            "representation_id": null,
+            "revision": 1
+          }
+        ]
+      },
+      "revision": 1,
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "record_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+      "kind": "detail",
+      "level": "L1",
+      "effective_level": "L1",
+      "stored_level": "L1",
+      "taxonomy_version": 2,
+      "title": "设计方向与原始讨论依据",
+      "roles": [
+        "detail"
+      ],
+      "match_reason": {
+        "channels": [
+          "memory_fts"
+        ],
+        "terms": [
+          "表示",
+          "索引"
+        ],
+        "ranking_policy": "topic-evidence-tiers-v2",
+        "topic_terms": [],
+        "priority_tier": 0,
+        "representations": {
+          "memory_fts": [
+            {
+              "entry_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+              "representation_id": null,
+              "revision": 1
+            }
+          ]
+        },
+        "explicit_selection": false
+      },
+      "snippet": "问题：\n为什么选择十二组边界？\n\n方法：\n本次日期回顾原讨论，保留原文及来源清单。\n\n主要发现：\n- 设计方向与原始讨论依据已形成接口设计；除Project默认策略外，运行适配待实施。\n\n适用条件：\n- 当前AI研发工作区接口演进与本项目后续实施\n\n不适用条件：\n- 不能当作召回质量或生产性能的实测结论\n\n限制：\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。",
+      "boundaries": {
+        "applicable": [
+          "当前AI研发工作区接口演进与本项目后续实施"
+        ],
+        "prohibited": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "failure_modes": [],
+        "retry_conditions": [],
+        "constraints": [],
+        "not_applicable": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "limitations": [
+          "设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。"
+        ]
+      },
+      "source_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+        "revision": 1,
+        "sha256": null,
+        "locator": "record",
+        "relation": "references"
+      },
+      "content_hash": "3c4d81a0688859a811f299c3ba77fd3ec2dc86127b70aa5fcbabcde330284b82",
+      "review_state": "not-reviewed",
+      "effective_validity": false,
+      "risks": [],
+      "historical": false,
+      "expansion_paths": [
+        {
+          "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+          "record_id": "MEM-ea9c08fd-4dc8-54f8-abf8-16c1869fb19d",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "canonical_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+      "score": 0.015384615384615385,
+      "rank_channels": {
+        "memory_fts": 5
+      },
+      "channel_matches": {
+        "memory_fts": [
+          {
+            "entry_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+            "representation_id": null,
+            "revision": 1
+          }
+        ]
+      },
+      "revision": 1,
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "record_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+      "kind": "detail",
+      "level": "L1",
+      "effective_level": "L1",
+      "stored_level": "L1",
+      "taxonomy_version": 2,
+      "title": "核心接口与Project记录简版",
+      "roles": [
+        "detail"
+      ],
+      "match_reason": {
+        "channels": [
+          "memory_fts"
+        ],
+        "terms": [
+          "表示",
+          "索引"
+        ],
+        "ranking_policy": "topic-evidence-tiers-v2",
+        "topic_terms": [],
+        "priority_tier": 0,
+        "representations": {
+          "memory_fts": [
+            {
+              "entry_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+              "representation_id": null,
+              "revision": 1
+            }
+          ]
+        },
+        "explicit_selection": false
+      },
+      "snippet": "问题：\n用户怎样快速把握核心功能？\n\n方法：\n用七个重点功能与一次查询调用链压缩表述。\n\n主要发现：\n- 核心接口与Project记录简版已形成接口设计；除Project默认策略外，运行适配待实施。\n\n适用条件：\n- 当前AI研发工作区接口演进与本项目后续实施\n\n不适用条件：\n- 不能当作召回质量或生产性能的实测结论\n\n限制：\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。",
+      "boundaries": {
+        "applicable": [
+          "当前AI研发工作区接口演进与本项目后续实施"
+        ],
+        "prohibited": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "failure_modes": [],
+        "retry_conditions": [],
+        "constraints": [],
+        "not_applicable": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "limitations": [
+          "设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。"
+        ]
+      },
+      "source_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+        "revision": 1,
+        "sha256": null,
+        "locator": "record",
+        "relation": "references"
+      },
+      "content_hash": "8388f88521e49de81ad17688e36cac9e70b481cf5079c0d359def7061790f3ea",
+      "review_state": "not-reviewed",
+      "effective_validity": false,
+      "risks": [],
+      "historical": false,
+      "expansion_paths": [
+        {
+          "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+          "record_id": "MEM-192a48a9-191c-5018-8c58-bae968b45ae2",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "canonical_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+      "score": 0.015151515151515152,
+      "rank_channels": {
+        "memory_fts": 6
+      },
+      "channel_matches": {
+        "memory_fts": [
+          {
+            "entry_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+            "representation_id": null,
+            "revision": 1
+          }
+        ]
+      },
+      "revision": 1,
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "record_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+      "kind": "detail",
+      "level": "L1",
+      "effective_level": "L1",
+      "stored_level": "L1",
+      "taxonomy_version": 2,
+      "title": "召回、排序与关系导航接口",
+      "roles": [
+        "detail"
+      ],
+      "match_reason": {
+        "channels": [
+          "memory_fts"
+        ],
+        "terms": [
+          "表示",
+          "索引"
+        ],
+        "ranking_policy": "topic-evidence-tiers-v2",
+        "topic_terms": [],
+        "priority_tier": 0,
+        "representations": {
+          "memory_fts": [
+            {
+              "entry_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+              "representation_id": null,
+              "revision": 1
+            }
+          ]
+        },
+        "explicit_selection": false
+      },
+      "snippet": "问题：\n如何召回、融合、排序并利用关系？\n\n方法：\n用统一候选边界连接可替换策略，正式准入在截断之前。\n\n主要发现：\n- 召回、排序与关系导航接口已形成接口设计；除Project默认策略外，运行适配待实施。\n\n适用条件：\n- 当前AI研发工作区接口演进与本项目后续实施\n\n不适用条件：\n- 不能当作召回质量或生产性能的实测结论\n\n限制：\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。",
+      "boundaries": {
+        "applicable": [
+          "当前AI研发工作区接口演进与本项目后续实施"
+        ],
+        "prohibited": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "failure_modes": [],
+        "retry_conditions": [],
+        "constraints": [],
+        "not_applicable": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "limitations": [
+          "设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。"
+        ]
+      },
+      "source_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+        "revision": 1,
+        "sha256": null,
+        "locator": "record",
+        "relation": "references"
+      },
+      "content_hash": "26d18f0efc807a7041dce8988d5432c1487ec56cbb5978a3196bb60b0929a200",
+      "review_state": "not-reviewed",
+      "effective_validity": false,
+      "risks": [],
+      "historical": false,
+      "expansion_paths": [
+        {
+          "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+          "record_id": "MEM-7fc816dc-2a9c-5189-82ad-1906b6a917e8",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "canonical_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+      "score": 0.014925373134328358,
+      "rank_channels": {
+        "memory_fts": 7
+      },
+      "channel_matches": {
+        "memory_fts": [
+          {
+            "entry_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+            "representation_id": null,
+            "revision": 1
+          }
+        ]
+      },
+      "revision": 1,
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "record_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+      "kind": "detail",
+      "level": "L1",
+      "effective_level": "L1",
+      "stored_level": "L1",
+      "taxonomy_version": 2,
+      "title": "实现落点、默认策略与真实验证",
+      "roles": [
+        "detail"
+      ],
+      "match_reason": {
+        "channels": [
+          "memory_fts"
+        ],
+        "terms": [
+          "表示",
+          "索引"
+        ],
+        "ranking_policy": "topic-evidence-tiers-v2",
+        "topic_terms": [],
+        "priority_tier": 0,
+        "representations": {
+          "memory_fts": [
+            {
+              "entry_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+              "representation_id": null,
+              "revision": 1
+            }
+          ]
+        },
+        "explicit_selection": false
+      },
+      "snippet": "问题：\n后续怎么实现、哪些结果已被验证？\n\n方法：\n固定代码映射、首期顺序、验收条件及实际失败/缺项。\n\n主要发现：\n- 实现落点、默认策略与真实验证已形成接口设计；除Project默认策略外，运行适配待实施。\n\n适用条件：\n- 当前AI研发工作区接口演进与本项目后续实施\n\n不适用条件：\n- 不能当作召回质量或生产性能的实测结论\n\n限制：\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。",
+      "boundaries": {
+        "applicable": [
+          "当前AI研发工作区接口演进与本项目后续实施"
+        ],
+        "prohibited": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "failure_modes": [],
+        "retry_conditions": [],
+        "constraints": [],
+        "not_applicable": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "limitations": [
+          "设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。"
+        ]
+      },
+      "source_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+        "revision": 1,
+        "sha256": null,
+        "locator": "record",
+        "relation": "references"
+      },
+      "content_hash": "2124284f43d0368113451060a0cafd107fb40bd8f2f5f21874c01b190368a89c",
+      "review_state": "not-reviewed",
+      "effective_validity": false,
+      "risks": [],
+      "historical": false,
+      "expansion_paths": [
+        {
+          "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+          "record_id": "MEM-0bb96a65-0ada-5001-80cb-14904ef684d1",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "canonical_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+      "score": 0.014705882352941176,
+      "rank_channels": {
+        "memory_fts": 8
+      },
+      "channel_matches": {
+        "memory_fts": [
+          {
+            "entry_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+            "representation_id": null,
+            "revision": 1
+          }
+        ]
+      },
+      "revision": 1,
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "record_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+      "kind": "detail",
+      "level": "L1",
+      "effective_level": "L1",
+      "stored_level": "L1",
+      "taxonomy_version": 2,
+      "title": "来源、知识属性与公共数据契约",
+      "roles": [
+        "detail"
+      ],
+      "match_reason": {
+        "channels": [
+          "memory_fts"
+        ],
+        "terms": [
+          "表示",
+          "索引"
+        ],
+        "ranking_policy": "topic-evidence-tiers-v2",
+        "topic_terms": [],
+        "priority_tier": 0,
+        "representations": {
+          "memory_fts": [
+            {
+              "entry_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+              "representation_id": null,
+              "revision": 1
+            }
+          ]
+        },
+        "explicit_selection": false
+      },
+      "snippet": "问题：\n如何表达输入范围、知识属性和共同约束？\n\n方法：\n拆分固定引用、属性、当前证据评估与范围，并定义有类型字段。\n\n主要发现：\n- 来源、知识属性与公共数据契约已形成接口设计；除Project默认策略外，运行适配待实施。\n\n适用条件：\n- 当前AI研发工作区接口演进与本项目后续实施\n\n不适用条件：\n- 不能当作召回质量或生产性能的实测结论\n\n限制：\n- 设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。",
+      "boundaries": {
+        "applicable": [
+          "当前AI研发工作区接口演进与本项目后续实施"
+        ],
+        "prohibited": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "failure_modes": [],
+        "retry_conditions": [],
+        "constraints": [],
+        "not_applicable": [
+          "不能当作召回质量或生产性能的实测结论"
+        ],
+        "limitations": [
+          "设计尚待运行适配与人工审查；测试结果边界见实现与验证单元。"
+        ]
+      },
+      "source_ref": {
+        "target_kind": "record",
+        "target_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+        "revision": 1,
+        "sha256": null,
+        "locator": "record",
+        "relation": "references"
+      },
+      "content_hash": "f2d323cd58ac9ac3d855daa02f7c0080501a2fefdc21313d5f7a1db66ec4cdb5",
+      "review_state": "not-reviewed",
+      "effective_validity": false,
+      "risks": [],
+      "historical": false,
+      "expansion_paths": [
+        {
+          "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+          "record_id": "MEM-76c2ed5f-d911-5435-9818-f5266bfc77e5",
+          "revision": 1
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "rejected": [],
+  "degradation": [],
+  "index_state": [
+    {
+      "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+      "indexed_generation": 3,
+      "vector_generation": 3,
+      "target_generation": 3,
+      "fts_status": "indexed",
+      "vector_status": "indexed",
+      "encoder_version": "memory-record-representation-v3-technical-description",
+      "vector_collection": "memory_v1_662ca1e31184",
+      "native_fingerprint": "b96fb0dc6a43c3a4cd4defce7ee2224920a1ec9d57de46fdf183d58be8edecbe",
+      "dependency_signature": "77ae0beb16befcd8b9c8ff59f78dc2b10cf045bfd915bab47fe31ab0e9d35157",
+      "vector_signature": "ea40937dd939a49eea7ee34048a5ae1f374989981c73ef8f042e954c8854eacf",
+      "error": null,
+      "updated_at": "2026-09-09T17:18:21.142850Z",
+      "projection_version": "memory-v3-technical-description-documents"
+    }
+  ],
+  "sync_result": null,
+  "vector_collection": null,
+  "timings": {
+    "total_seconds": 0.36643670000194106
+  },
+  "ranking_profile": "hybrid"
+}
+

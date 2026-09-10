@@ -1,0 +1,280 @@
+{
+  "applied": true,
+  "changes": [
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-cad4505cfe48c44f",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/README.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/README.md",
+      "sha256": "693548f1ed4e4448d25da861d18f9e680f241364c5008f5fea4bcf3a1ffb6741"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-21148afd8cbcbb0f",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/execution.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/execution.json",
+      "sha256": "9de7f8b212f5ee202706f243c03ea1a1b24f6ff6ed96dd3fe631ba15be87b440"
+    },
+    {
+      "source_id": "SRC-SUMMATION-INPUT-R01",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/inputs.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "sha256": "83d97bbfcf42bdbbe3780df71d202033bc8cede38f197913da5d0b77f5f7cf45",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/inputs.json"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-762ecf68603e5c7b",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/lineage.jsonl",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/lineage.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-87fe209f32e34e60",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/reproduce.py",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/reproduce.py",
+      "sha256": "8dc8cd86e17a2595b0217e9bcef712c5a61db1eec07828fb446ea556657f2284"
+    },
+    {
+      "source_id": "SRC-SUMMATION-R01",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/results.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "sha256": "cdb1f9e4f0580d5baaea4a09416f75801e6c5d01eab96c601ded00a28e31134d",
+      "note": "用户授权新研究的实际计算结果",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/results.json"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-1d776c92d3485151",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/run.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/run.json",
+      "sha256": "4ff223d25cd5ea92ee3b6d90546944ce94b4af7578cd1811f8325da1303ae858"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-413771b008737b33",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/stderr.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-a6cc6ad566232d8c",
+      "path": "research/floating-point-summation/runs/run-20260908t201214z-d0ab308f66ad/stdout.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201214z-d0ab308f66ad/stdout.txt",
+      "sha256": "20af7ea0ab47558a73435f9662827cb0e30365b8f6714f2d5aa07070a1dbc6c2"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-170a23df51104ce1",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/README.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/README.md",
+      "sha256": "08daa0b3fe39eae416aa485d014e6f4ade61ee1237c06071a7e7da7718210344"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-6d617cbb35e2f2f9",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/execution.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/execution.json",
+      "sha256": "1d693558847dc790efd19293b0176afa27176d0f1ee9ccfcb1f83e65c4edc496"
+    },
+    {
+      "source_id": "SRC-SUMMATION-INPUT-R02",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/inputs.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "sha256": "a48c045211280be1e1bb58524a8067598eea6d9d8e964a8b513b4b544e195cd6",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/inputs.json"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-dfa140cb338bd5a6",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/lineage.jsonl",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/lineage.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-df27dd52e290d0ba",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/reproduce.py",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/reproduce.py",
+      "sha256": "8dc8cd86e17a2595b0217e9bcef712c5a61db1eec07828fb446ea556657f2284"
+    },
+    {
+      "source_id": "SRC-SUMMATION-R02",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/results.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "sha256": "f5ef99109b146631abf1fc7256fc62287cbf125c6535ba097da4440570fc8247",
+      "note": "用户授权新研究的实际计算结果",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/results.json"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-0db04f3ad9b639bb",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/run.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/run.json",
+      "sha256": "ae3855924c5cb40057fec3ce21717c675477a3bc6738a997ffde7233c199de09"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-a3f611c5f64c1ddb",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/stderr.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-170b3b382d4e10cc",
+      "path": "research/floating-point-summation/runs/run-20260908t201228z-a0980824dc18/stdout.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201228z-a0980824dc18/stdout.txt",
+      "sha256": "e4dd92ed3dcbe33b4beff6efffa0b96abb2fea5e15a1009b3884b48ee50d3b43"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-f7ddf57f4874e1d5",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/README.md",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/README.md",
+      "sha256": "082783ec986a0a5b9f4a6bb1c26248033e6300522dec5764d08799abba3f01dc"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-14489a5cdcfe0776",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/execution.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/execution.json",
+      "sha256": "6ec8ecba6aebbac0609d5a89ca0e67028639d22c0356e9b34ffae71ad125d1ae"
+    },
+    {
+      "source_id": "SRC-SUMMATION-INPUT-R03",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/inputs.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "sha256": "9da1f46663a569680b3e61e842f164880d24c047e0ab13ac0471df6683d32561",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/inputs.json"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-f738d8388254fdb4",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/lineage.jsonl",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/lineage.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-d526bf0d36560844",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/reproduce.py",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/reproduce.py",
+      "sha256": "8dc8cd86e17a2595b0217e9bcef712c5a61db1eec07828fb446ea556657f2284"
+    },
+    {
+      "source_id": "SRC-SUMMATION-R03",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/results.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "sha256": "693058d77bb3ed61e94535369bbfa4d74b6a2ed7f406a8af0b5782a0dc4fa7ef",
+      "note": "用户授权新研究的实际计算结果",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/results.json"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-48add9231919e768",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/run.json",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/run.json",
+      "sha256": "64f82aaba34def6261c05a0c3e84e5b47ff3d99b2a6c6000897f622249429a47"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-44d287307b9dc1ab",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/stderr.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_id": "SRC-SUMMATION-RELOCATED-706baa3fc0953423",
+      "path": "research/floating-point-summation/runs/run-20260908t201240z-90107a617cf8/stdout.txt",
+      "enabled": true,
+      "sensitivity": "internal",
+      "memory_level": "L0",
+      "discovery": "trace_only",
+      "relocated_from": "runs/run-20260908t201240z-90107a617cf8/stdout.txt",
+      "sha256": "09526f84ed0a7d7e5d33f3ac3225235476ff7c835ab8584a60f93afc2ca73e0d"
+    }
+  ],
+  "before_sha256": "b4981d28ee5dc21cf529a8f5ab75771f57c245e871b18c89301d217d5522a41a",
+  "after_sha256": "fcbb8f9ffb2110b1899e53632b2094a05c219e9c2601e32f1a016a2a19a12654"
+}

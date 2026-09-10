@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "request_id": "f421f781-462e-4908-964d-c5a4f65fa8cb",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex actual-AI F3 setup"
+  },
+  "owner_id": "RES-F3-RETRY",
+  "expected_head": null,
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "retry",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RES-F3-RETRY",
+        "kind": "detail",
+        "title": "SYNTHETIC F3 API 退避重试策略",
+        "body_markdown": "",
+        "keywords": [
+          "SYNTHETIC",
+          "F3",
+          "API 退避重试策略"
+        ],
+        "payload": {
+          "unit_type": "analysis",
+          "retrieval_description": {
+            "question": "API 退避重试策略的机制与约束",
+            "method": "读取独立合成前提并保留变量、公式和限制",
+            "key_findings": [
+              "此输入没有真实执行结果"
+            ],
+            "applicable": [
+              "本文明确的合成条件"
+            ],
+            "not_applicable": [
+              "现实系统的稳定或性能结论"
+            ],
+            "limitations": [
+              "缺少实测与科学复核"
+            ]
+          },
+          "run_ref": null,
+          "evidence_refs": [
+            {
+              "target_kind": "file",
+              "target_id": "SRC-F3-RETRY",
+              "revision": null,
+              "sha256": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+              "locator": "完整合成输入",
+              "relation": "input"
+            }
+          ],
+          "blocks": [
+            {
+              "block_id": "body",
+              "role": "methods",
+              "markdown": "# SYNTHETIC F3 API 退避与重试\n\n本材料是独立的软件策略前提，没有服务端负载测量、生产日志或成功率试验。\n\n## 变量与机制\n\n$k\\in\\{0,1,\\ldots,N-1\\}$ 为当前连续失败后的重试序号；$N=5$ 是总重试上限。$b=0.2\\,\\mathrm{s}$ 是初始等待，倍率 $r=2$ 无量纲，$d_{max}=3.2\\,\\mathrm{s}$ 是等待上限。等待策略为\n\n$$\nd_k=\\min(d_{max},b r^k).\n$$\n\n一次请求失败后等待 $d_k$ 再重试，成功后结束本次流程，达到 $N$ 次则停止并返回失败。响应仅有成功/可重试失败/不可重试失败三类，不可重试失败立即停止。本前提没有目标误差 $e$、服务端队列长度、连续流量或物理守恒方程。\n\n## 适用边界\n\n只有具备幂等性或明确去重语义的操作可按此策略重复；必须给超时和最大总耗时单独设限。固定倍率与上限不证明服务端稳定、请求最终成功或最优吞吐。多个客户端同步重试可能同时唤醒；本前提未定义抖动、服务端容量、到达率、成功概率与响应延迟分布。\n",
+              "requires_block_ids": []
+            }
+          ],
+          "figures": [],
+          "missing_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "file",
+            "target_id": "SRC-F3-RETRY",
+            "revision": null,
+            "sha256": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+            "locator": "完整合成输入",
+            "relation": "input"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

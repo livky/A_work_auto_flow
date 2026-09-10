@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/memory_review actual AI",
+  "origin": "public material-query search CLI",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整查询返回；已在工具输出呈现并逐个阅读4个候选",
+  "coverage": "full",
+  "observation": "已读四个 lexical 候选：水箱模型r2、必要定义r1、API重试r1、新饱和约束r1。先看到模型含新参数不可达限制，选择四者以核对定义、共同分段方法与跨机制边界；不把排序当作有效性。初始请求无固定ID或include_refs；此处选择才使用返回refs。",
+  "recorded_at": "2026-09-09T22:58:10.737318Z",
+  "capture_sha256": "0c5b93ca54e5b6125a08ef3f9560738d2d3d96dcbb75739d9f771d33de35f56d",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

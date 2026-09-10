@@ -1,0 +1,229 @@
+{
+  "scope": "Fixed source registrations; no duplicate MEM source records",
+  "files": [
+    {
+      "key": "README.md",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/README.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/README.md.snapshot",
+      "sha256": "d49579d9ff3583c87d7c29bece39b406c479004ae5c095726934fbc04ef2b620",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-README-MD",
+        "revision": null,
+        "sha256": "d49579d9ff3583c87d7c29bece39b406c479004ae5c095726934fbc04ef2b620",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "CORE.md",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/CORE.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/CORE.md.snapshot",
+      "sha256": "b73659425f8af6ad3f1db0788c977b1de6600fa49ce4c25bcea9bd6d47bbab9a",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-CORE-MD",
+        "revision": null,
+        "sha256": "b73659425f8af6ad3f1db0788c977b1de6600fa49ce4c25bcea9bd6d47bbab9a",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "SPEC.md",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/SPEC.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/SPEC.md.snapshot",
+      "sha256": "6334aae4caeca173c9d6bf792316244b7b79d6bef6eda6b6b2efd35178166965",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-SPEC-MD",
+        "revision": null,
+        "sha256": "6334aae4caeca173c9d6bf792316244b7b79d6bef6eda6b6b2efd35178166965",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "IMPLEMENTATION.md",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/IMPLEMENTATION.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/IMPLEMENTATION.md.snapshot",
+      "sha256": "221a9e5960b4b4bfde7a644a090f2ff799166435aeea632da2d6a459afdd90be",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-IMPLEMENTATION-MD",
+        "revision": null,
+        "sha256": "221a9e5960b4b4bfde7a644a090f2ff799166435aeea632da2d6a459afdd90be",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "FUNCTIONS.md",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/FUNCTIONS.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/FUNCTIONS.md.snapshot",
+      "sha256": "4b34d5a2bba0630d212613a4a64277f41287ee3fa19371801f6037878cabc9c5",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-FUNCTIONS-MD",
+        "revision": null,
+        "sha256": "4b34d5a2bba0630d212613a4a64277f41287ee3fa19371801f6037878cabc9c5",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "DATATYPES.md",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/DATATYPES.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/DATATYPES.md.snapshot",
+      "sha256": "b5cd5cf2af6b13d62dfbb5e1b002be0afe25988152be69588c78da03786a0d4c",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-DATATYPES-MD",
+        "revision": null,
+        "sha256": "b5cd5cf2af6b13d62dfbb5e1b002be0afe25988152be69588c78da03786a0d4c",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "contract_types.py",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/contract_types.py",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/contract_types.py.snapshot",
+      "sha256": "881707ca58c07d2ddb7a9a12fff7f70c1af9e011b96fbeadc7149165dd4b6937",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-CONTRACT_TYPES-PY",
+        "revision": null,
+        "sha256": "881707ca58c07d2ddb7a9a12fff7f70c1af9e011b96fbeadc7149165dd4b6937",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "contract_ports.py",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/contract_ports.py",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/contract_ports.py.snapshot",
+      "sha256": "28b8545586d969771360ec995223c0a69842bca4c3895daa5b7b80b79495e0c0",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-CONTRACT_PORTS-PY",
+        "revision": null,
+        "sha256": "28b8545586d969771360ec995223c0a69842bca4c3895daa5b7b80b79495e0c0",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "function-catalog.json",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/function-catalog.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/function-catalog.json.snapshot",
+      "sha256": "922f0523853bbba05d4b911f2efb3034a6710da2555085dcbd617b271591925c",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-FUNCTION-CATALOG-JSON",
+        "revision": null,
+        "sha256": "922f0523853bbba05d4b911f2efb3034a6710da2555085dcbd617b271591925c",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "request-examples.json",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/request-examples.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/request-examples.json.snapshot",
+      "sha256": "9f9f42419ab0d1b43a8462cb05963ae7ab39b62f6fe70fe77613c801036362b4",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-REQUEST-EXAMPLES-JSON",
+        "revision": null,
+        "sha256": "9f9f42419ab0d1b43a8462cb05963ae7ab39b62f6fe70fe77613c801036362b4",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "check_contracts.py",
+      "original_path": "projects/architecture-evolution/design/interfaces-v0.1/check_contracts.py",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/check_contracts.py.snapshot",
+      "sha256": "c1290dc9c42cbf308710f5b13c933645e1a22e378b7cc4caa1ccbd2ddb09e0db",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-CHECK_CONTRACTS-PY",
+        "revision": null,
+        "sha256": "c1290dc9c42cbf308710f5b13c933645e1a22e378b7cc4caa1ccbd2ddb09e0db",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "project-policy-review.md",
+      "original_path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/project-policy-review.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/project-policy-review.md",
+      "sha256": "bcc9ede50cfce2681294eba192efc6822ecf098514d1b8b72bfda6ab52d8d5f9",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-PROJECT-POLICY-REVIEW-MD",
+        "revision": null,
+        "sha256": "bcc9ede50cfce2681294eba192efc6822ecf098514d1b8b72bfda6ab52d8d5f9",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "user-steering.md",
+      "original_path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/user-steering.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/user-steering.md",
+      "sha256": "da4d6e0d3f447182dc2837ae674ef103377396e0c89a0184c6d6918bbd02a402",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-USER-STEERING-MD",
+        "revision": null,
+        "sha256": "da4d6e0d3f447182dc2837ae674ef103377396e0c89a0184c6d6918bbd02a402",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "contract-checks.json",
+      "original_path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/contract-checks.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/contract-checks.json",
+      "sha256": "080464f5be9a113f37cc0fb251980453b93abf3344ddf031342cdf16f6aa07f7",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-CONTRACT-CHECKS-JSON",
+        "revision": null,
+        "sha256": "080464f5be9a113f37cc0fb251980453b93abf3344ddf031342cdf16f6aa07f7",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "prior-discussion",
+      "original_path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/DISCUSSION.md",
+      "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/DISCUSSION.md",
+      "sha256": "1b5c116d79d83a31ddb0f6c2c4954f731bccbdbd1f30ff08f4ffd7cf5b529194",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-PRIOR-DISCUSSION",
+        "revision": null,
+        "sha256": "1b5c116d79d83a31ddb0f6c2c4954f731bccbdbd1f30ff08f4ffd7cf5b529194",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    },
+    {
+      "key": "prior-sources",
+      "original_path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/sources.json",
+      "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/sources.json",
+      "sha256": "d5f274b78049535d74cd2b9277fdfa80d472604832ccaff74e4fa7e4df385b1a",
+      "ref": {
+        "target_kind": "file",
+        "target_id": "SRC-ARCH-INTERFACES-V01-PRIOR-SOURCES",
+        "revision": null,
+        "sha256": "d5f274b78049535d74cd2b9277fdfa80d472604832ccaff74e4fa7e4df385b1a",
+        "locator": "完整已读取设计文件",
+        "relation": "input"
+      }
+    }
+  ]
+}

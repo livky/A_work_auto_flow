@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "scope": "design_structure_only",
+  "designed_cases": 70,
+  "protocol_methods": 14,
+  "product_behavior_tests_executed": 0,
+  "errors": []
+}

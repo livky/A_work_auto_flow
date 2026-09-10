@@ -1,0 +1,18 @@
+[
+  {
+    "path": "docs\\design\\representation-query-v0.2\\contracts.py",
+    "sha256": "ac8c2b35c5602cb424af4066aef54ee906bc6514c86ecaa5862862bd2ef8c5ec"
+  },
+  {
+    "path": "docs\\design\\representation-query-v0.2\\CONTRACTS.md",
+    "sha256": "efe777ee17ccc3e42185060008ba81400221b7a0e99777a2f724db19ad61cf88"
+  },
+  {
+    "path": "docs\\design\\representation-query-v0.2\\test-cases.json",
+    "sha256": "7c2df489ae741846f98f24384e85023e01ce5c0b4428551c03644224f4153f48"
+  },
+  {
+    "path": "automation\\testing\\catalog.json",
+    "sha256": "237c514cb21c73d147b4f51e52afe38518f8964109abf1ec4963119ea5360b1b"
+  }
+]

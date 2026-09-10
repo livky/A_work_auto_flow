@@ -1,0 +1,11 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "public-cli",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "r5 目录、三个新增实现章节和覆盖元数据",
+  "coverage": "partial",
+  "observation": "过程稿按旧八章加新三章排列；共同依据 11 单元，缺失为空。",
+  "recorded_at": "2026-09-09T22:44:34.432629Z",
+  "capture_sha256": "f378652c8f4a96e0c4934a5ffb0bac0c8c4680eff1c1eabd7b7550e743376762",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

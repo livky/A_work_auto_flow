@@ -1,0 +1,1369 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T164914Z-D20A9406384A",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "title": "抽象接口契约设计与Project分层记录默认规则",
+  "keywords": [
+    "接口契约",
+    "分层记录",
+    "表示索引",
+    "检索编排"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "succeeded",
+  "created_at": "2026-09-09T16:49:14Z",
+  "started_at": "2026-09-09T16:50:50.654915Z",
+  "ended_at": "2026-09-09T17:23:03.103433Z",
+  "owner": "assistant",
+  "question": "如何定义十二组解耦契约，并让所有Project默认按研究标准保存实质工作与文稿？",
+  "hypotheses": [],
+  "inputs": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/AGENTS.md.snapshot",
+      "sha256": "8e93f7d6b98f5cd26314bee6b354d5d6344d819b5002e1db51055fd12ab2cc03",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:06.580899Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/automation/scripts/memory/policy.py",
+      "sha256": "955e9eecef54e5180caee765cffb1eb4f3d11c186afbba8e145e75e057b08348",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:06.585934Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/automation/testing/catalog.json",
+      "sha256": "a499ff9d5f8769a295f36c5b051e9fe0b188913fd9743a7e76826ca2f5f14d0c",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:06.590903Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/automation/tests/test_memory_owner_service.py",
+      "sha256": "82b04251668af981e3efad776455a23b0cecf5148260493ec19902669c7266f9",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.092540Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/automation/tests/test_memory_owners.py",
+      "sha256": "e3103286315e79ce68c2adecc1c6702af3aace6e12cecbe117ba48ee6910798a",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.098508Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/automation/workflows/context-maintenance/SKILL.md.snapshot",
+      "sha256": "480676c1114422ebaa6029ca16d86f49e40d300eb23157ffaf74f994a7dd694b",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.104543Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/automation/workflows/research-loop/SKILL.md.snapshot",
+      "sha256": "9b9bb0b8a571f48d46554dfc013f5cb15c67b41105a3c9f1fe8d019294cf9ab3",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.110546Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/context/MEMORY.md.snapshot",
+      "sha256": "ab950796e60537d4b6a182065d9330217ee3433ef5e0bfbb3a1f8432a37544b1",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.116546Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/docs/RESEARCH_RECORDING.md.snapshot",
+      "sha256": "80c879388179277aad4e9d2f111f439c5961df5185d3f3e3ef11957fe5d1038f",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.121540Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/projects/_template/AGENTS.md.snapshot",
+      "sha256": "2c07265c055cafea0420cf8d22359341e20f243c0f80ef5ee0269d09b9ba5ee4",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.126514Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/projects/_template/README.md.snapshot",
+      "sha256": "63470e83cbb3b9cdfb62962fcd724210eb240480b2dabb106c4546e44306bce4",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.132505Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/projects/AGENTS.md.snapshot",
+      "sha256": "27fa5696c0b36ad38b872b9b4f8277b5d1ec00540115f0db3912b730d86a1bda",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.138510Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/projects/README.md.snapshot",
+      "sha256": "6779829d9d3ec062ef812e5d7ef26c79f06d529cb20908ea4cf5dd08ecd3c452",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.143504Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/README.md.snapshot",
+      "sha256": "386999226396e16d0e766685cdaace568648782dd05cc5da54559e6886ec32fc",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.147484Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline/retrieval-sources.json.snapshot",
+      "sha256": "a22dedf6efbb8e2882d0ef055b93d2eb07d25119af346ef2379ec9d0349471ad",
+      "role": "input",
+      "registered_at": "2026-09-09T17:23:07.153496Z"
+    }
+  ],
+  "parameters": {
+    "design_scope": "v0.1 interface definitions, data structures, call relations and implementation mapping",
+    "product_change": "project recording policy defaults only",
+    "retrospective_policy": "new dated records from fixed prior evidence; old Run bytes preserved",
+    "workbench": "existing flows retained"
+  },
+  "code": {
+    "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+    "dirty": true
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [
+    {
+      "check": "contract_structure",
+      "status": "passed",
+      "evidence": "contract-checks.json",
+      "details": "40领域方法、3控制方法、72类型；12个合成结构用例",
+      "required": true
+    },
+    {
+      "check": "quick_regression",
+      "status": "failed",
+      "evidence": "testing/attempt-01/results.json",
+      "details": "135项Python通过、1项既有冻结夹具失败、19项前端未运行",
+      "required": true
+    },
+    {
+      "check": "expanded_old_workspace_setup",
+      "status": "passed",
+      "evidence": "testing/attempt-01/results.json",
+      "details": "真实setup预览、升级、重复升级、恢复；本地Windows x64隔离合成环境",
+      "required": true
+    },
+    {
+      "check": "canonical_readback",
+      "status": "passed",
+      "evidence": "memory-readback-checks.json",
+      "details": "24条作者字段相等；两文稿覆盖8个单元且无缺失，定义闭包正确",
+      "required": true
+    },
+    {
+      "check": "actual_ai",
+      "status": "incomplete",
+      "evidence": "actual-ai/reports/report-1eec22947e094b81a24f5f47a682683e/REVIEW.md",
+      "details": "A01/A03与A04正文自查完成；实际页面被ERR_BLOCKED_BY_CLIENT阻止",
+      "required": true
+    },
+    {
+      "check": "human_and_second_machine",
+      "status": "not-run",
+      "evidence": "README.md",
+      "details": "人工、科学复核和第二台物理机未验收",
+      "required": false
+    },
+    {
+      "check": "workspace_structure_and_final_readback",
+      "status": "passed",
+      "evidence": "final-workspace-checks.json",
+      "details": "refresh-index、validate、diff检查；194固定产物指纹一致，8个L1检索命中，原始材料无缺失。",
+      "required": true
+    }
+  ],
+  "metrics": {
+    "domain_methods": 40,
+    "execution_methods": 3,
+    "data_types": 72,
+    "contract_cases": 12,
+    "canonical_records": 24,
+    "technical_units": 8,
+    "documents": 2,
+    "python_passed": 135,
+    "python_failed": 1,
+    "frontend_not_run": 19
+  },
+  "artifacts": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/A01-assessment-input.json",
+      "sha256": "f529b6c6088c16407619182c42a76ff8ba77ccff63f9f42351519bbf3f12cea5",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.471582Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/A01-reading-input.json",
+      "sha256": "b517a2dc3080b222f56ad2f4ecf80804d5a489c83145b2eb4d6e2f4fdef08fa7",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.476576Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/A03-assessment-input.json",
+      "sha256": "af2204274e141c55331fe2de864986b4da77226e43ba79429f7a9caf06bf574f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.480583Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/A03-reading-input.json",
+      "sha256": "faa35fe25cca2f2571bfcbffe42584bc90108462c09fb9d3161285905efe9b2a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.485588Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/A04-assessment-input.json",
+      "sha256": "7c4ecc21c9c7290b2f3af0a9367bdf4616ad23ace9679dfe632593cf4186cc75",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.490554Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/A04-reading-input.json",
+      "sha256": "7f70a6c5c650e0ff70c67e46cf319ea7902ad6ae65e089b7e788ad26b9c3fa37",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.494565Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/assessments/assessment-4e21572301a148d28fd28bac09547a92.json",
+      "sha256": "c2c5eee0bf22d17d41c83acb9e989fedb13fb7463e58a3d38b26a312b8d5051b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.500550Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-0357760232a642cdb0951b15b99ed2cc/invocation.json",
+      "sha256": "bae10cb66ceed4d4e83c0a9bea0ff6957cccedda3d95273373787cebc8650179",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.505573Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-0357760232a642cdb0951b15b99ed2cc/request.snapshot.txt",
+      "sha256": "df1be96b7da23e350c34a499bc75a75dddbfca1e38e0d5c33353bff66fa1cfb9",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.511599Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-0357760232a642cdb0951b15b99ed2cc/result.json",
+      "sha256": "794171265852c2dd453abc12bf2a0d5b15dfbf239edff8c7004788ed9ff14bef",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.516542Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-0357760232a642cdb0951b15b99ed2cc/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.521546Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-0357760232a642cdb0951b15b99ed2cc/stdout.txt",
+      "sha256": "205691f3f8adb4d52722ea522a0598514bf0f5b3293986669e5074c77883071a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.527570Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-215943da836c49a1a1170e3b9afcd6ba/invocation.json",
+      "sha256": "618f0a0679e1422374c5d08f4301310cc00fa0e3002ecbedf2c16a19aa9080c2",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.534615Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-215943da836c49a1a1170e3b9afcd6ba/request.snapshot.txt",
+      "sha256": "3205628da08f5d2848c7f1cb5fac3a60d570792dc88494d2dff09e145ecbbcb8",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.539553Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-215943da836c49a1a1170e3b9afcd6ba/result.json",
+      "sha256": "871c0d131b9b97a09e322010b9179555eb5cf72c102790e395e923447ee0ecad",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.545561Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-215943da836c49a1a1170e3b9afcd6ba/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.550568Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-215943da836c49a1a1170e3b9afcd6ba/stdout.txt",
+      "sha256": "b8d478caee5d75c14abe00ac8d8ed580d2457791d7aeb2c69c36421e96faff63",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.555547Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-837a04a779b6444bb94bdb6c8ed9a980/invocation.json",
+      "sha256": "f0a15c21c4e96e66fb312355aa596c9d9193c1828c988ef4ef2309589e9091d1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.562178Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-837a04a779b6444bb94bdb6c8ed9a980/result.json",
+      "sha256": "c00ee26d963230be1adbdc580fb6c1e1c378c0ab46f0e5013d7b6e12e0bd1cf0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.969553Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-837a04a779b6444bb94bdb6c8ed9a980/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.974201Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-837a04a779b6444bb94bdb6c8ed9a980/stdout.txt",
+      "sha256": "9a0870a91f7a163590f74f1f70e9e7e774e24669d9d9502cfebb902b70259833",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.979712Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-90606334ee15490d98bf958174d7fe70/invocation.json",
+      "sha256": "94705b18d4872436985a3e1217da05275a1782f4d7cf551ac62c2ff849627916",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.985680Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-90606334ee15490d98bf958174d7fe70/request.snapshot.txt",
+      "sha256": "bc9d4aed3901089cb86359b0708e9a97bbbb03c9be9cd8fc27452893eaa898ec",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.990712Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-90606334ee15490d98bf958174d7fe70/result.json",
+      "sha256": "d13bd043dc3313e6f6863ad5670fa977d1966f453583bf567edf3b8c3b01b17a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:03.995714Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-90606334ee15490d98bf958174d7fe70/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.001714Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-90606334ee15490d98bf958174d7fe70/stdout.txt",
+      "sha256": "16757880d17ccd2a1afda9f2fdd906d46cfe8ed2f2837ccbcffb4be221a25d45",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.006726Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-a7fbfccc06bd4e418a0c34643e7f6e2e/invocation.json",
+      "sha256": "52d423d920bd8e79ebaa475779c45066d66003641b01eee5ed591a418701576a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.012809Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-a7fbfccc06bd4e418a0c34643e7f6e2e/request.snapshot.txt",
+      "sha256": "df3856dea40cdef7d67f9d37c9c18fa74ffb0406075775ea2de6b44ec5781a58",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.018797Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-a7fbfccc06bd4e418a0c34643e7f6e2e/result.json",
+      "sha256": "a6bd7316df5378a7e8771c308032baca279c5e1c80c14cd35ea322750c9e0dab",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.024715Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-a7fbfccc06bd4e418a0c34643e7f6e2e/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.029706Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-a7fbfccc06bd4e418a0c34643e7f6e2e/stdout.txt",
+      "sha256": "d6471c980a52f3dd2e14a9a47e9febd5c03ebaeb4a96e8a66d6061290a6deaca",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.034770Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-c32ea7f8c6e940d78955ed08e4972ca6/invocation.json",
+      "sha256": "5f0b558a0fa0a0d6e7378c61a130e80db00beb5f532dc3fa3eaa864c11eda6b0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.040908Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-c32ea7f8c6e940d78955ed08e4972ca6/request.snapshot.txt",
+      "sha256": "df3856dea40cdef7d67f9d37c9c18fa74ffb0406075775ea2de6b44ec5781a58",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.046801Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-c32ea7f8c6e940d78955ed08e4972ca6/result.json",
+      "sha256": "53be2099f9cb8625224e70fa5aa0a2b48c89839391e3e959092fd06874c8761b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.051739Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-c32ea7f8c6e940d78955ed08e4972ca6/stderr.txt",
+      "sha256": "8162ab5da682a285d93467539ec6984f37660c08c29fad8b62a94c8bbdc4152a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.057422Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/calls/call-c32ea7f8c6e940d78955ed08e4972ca6/stdout.txt",
+      "sha256": "8bd3850e113344e8ea53a47aa51c82a1a71a418da997289db846ccafd1abea6d",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.062205Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/manifest.json",
+      "sha256": "903a4db7b36fb510b9da73504eeae97f04d4ffbd9091edd105bc0e1e8e20d4c2",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.483537Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/reads/read-e0c07ab3f1a14fc69daa5a94ec7b218a/capture.snapshot.txt",
+      "sha256": "7e504af634fc007aa6af7f54507946fbf761103faa7ed3f7fa25e20af7e5e2dd",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.488548Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/reads/read-e0c07ab3f1a14fc69daa5a94ec7b218a/event.json",
+      "sha256": "6e071f8365f7908329878f8d8e01d6373bdea98fde9f8224f76aa504e111fa06",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.494417Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A01/attempt-7b03c5d259324293ac58836d0dacc6dd/task.txt",
+      "sha256": "9a727a775e42c3f34efcd4c702477e8d02939f01af8d7019fc47b9d5db6885e4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.499081Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/assessments/assessment-92887e410d154b70bf552c2cf430e754.json",
+      "sha256": "9ceadb081f1b428c19671d1cb8e8ae8162c3c98bff38130748155a4bce48756e",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.505090Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-12f96a3e3e454dc69e9239405f833daf/invocation.json",
+      "sha256": "738072a3f3c824ea16091a3c53fa9e75fac6d60020db6a04fd93716100115851",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.510043Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-12f96a3e3e454dc69e9239405f833daf/request.snapshot.txt",
+      "sha256": "aeed2443946290e46aa69e87c960466203461bb5a9f6a044cc9c5ea7dfba990e",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.517048Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-12f96a3e3e454dc69e9239405f833daf/result.json",
+      "sha256": "df9ffdfa0cf4c84e34696a998e3890d5db6b54d5c718bb77aadc8a31cee7ed6f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.523075Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-12f96a3e3e454dc69e9239405f833daf/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.528067Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-12f96a3e3e454dc69e9239405f833daf/stdout.txt",
+      "sha256": "fb0e7c4e60b62a1a1d4f1d8e6fdddbd2b47d90979da29aa3696ea99be7ef7674",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.533108Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-4dc11b6e9cf643c793367d5900f0c751/invocation.json",
+      "sha256": "561a7f44e18d3f2bb5dcdf2c7191653dfd30dbbe6a13f0264d5745bf9c435029",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.538067Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-4dc11b6e9cf643c793367d5900f0c751/result.json",
+      "sha256": "f2b320f3ff389d38e7a6b40e6aaa55de6ba741c7d73283918356eb3dd2a1b7b7",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.544073Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-4dc11b6e9cf643c793367d5900f0c751/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.549075Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-4dc11b6e9cf643c793367d5900f0c751/stdout.txt",
+      "sha256": "2661cda561154f09d81db68885f0ff94b70c6bee72f0c38bcc4ed26399a99e97",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.555057Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-8c4274c1753b46c1bccc092e46e1f2d1/invocation.json",
+      "sha256": "30303bbcf7455f5a8985e2788804752633e6aa15564233f973981c4b7e6fe2c6",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.560102Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-8c4274c1753b46c1bccc092e46e1f2d1/request.snapshot.txt",
+      "sha256": "a70734e1c324df9aa71799d0c0293fc4dd0a2d75255da67d3243ed827f3751f4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.566117Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-8c4274c1753b46c1bccc092e46e1f2d1/result.json",
+      "sha256": "a3cfa7cd6684f45e83af53b89b6af20f873d49dd085bd2cce961d726854d0c8b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.572649Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-8c4274c1753b46c1bccc092e46e1f2d1/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:04.577693Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-8c4274c1753b46c1bccc092e46e1f2d1/stdout.txt",
+      "sha256": "7e8d9746ccc74c8ab61e9649ca63ed5fac39933c026fa68dee346b238dfed8d2",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.000808Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-e34840e1660c48f59f55a4faaec06584/invocation.json",
+      "sha256": "86169a2f162ed266f32039b2d35687b7a7228a3a94ff5cdd43c147c0b8e82bb6",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.005844Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-e34840e1660c48f59f55a4faaec06584/request.snapshot.txt",
+      "sha256": "aeed2443946290e46aa69e87c960466203461bb5a9f6a044cc9c5ea7dfba990e",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.011814Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-e34840e1660c48f59f55a4faaec06584/result.json",
+      "sha256": "07beb1c5b0bbb7090db8ca396c0a0fabc76770d187c53f44f259651f4b152b06",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.016811Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-e34840e1660c48f59f55a4faaec06584/stderr.txt",
+      "sha256": "8162ab5da682a285d93467539ec6984f37660c08c29fad8b62a94c8bbdc4152a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.022800Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/calls/call-e34840e1660c48f59f55a4faaec06584/stdout.txt",
+      "sha256": "8916e99d34b5ba7f2e70bc46b2572b768a61a7ac11a6c6f8d194cd70ff3fbb6c",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.028714Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/manifest.json",
+      "sha256": "1f7c6920922eb27cd9ddef8bc5c5f1acd64d62ec95e47bd9857dd85ec30e7c77",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.033572Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/reads/read-fcf23b6f3fe544a795554eb2fd2becf8/capture.snapshot.txt",
+      "sha256": "7a4f6b36d9c06088e90cd144b289a6d32e14f34c9fac71c7ee642636a33797b3",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.039560Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/reads/read-fcf23b6f3fe544a795554eb2fd2becf8/event.json",
+      "sha256": "d70eff8eceb0f121cb5e258f9476be0a0eb6bb2aaca22b797f92d498b2d8d883",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.045230Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A03/attempt-b1ea0fed35a541d393e3753a8be50b74/task.txt",
+      "sha256": "9a727a775e42c3f34efcd4c702477e8d02939f01af8d7019fc47b9d5db6885e4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.050800Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/assessments/assessment-effce8f2ff15483ea854c62af43f1134.json",
+      "sha256": "6549311a1793cf0018568fdecdc364b34ad4f38f20e3c659adfd6ac461495cc0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.055450Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-47ce3777d0ec4821bc9d8e0882c4bb1a/invocation.json",
+      "sha256": "4d0fcd15bf38f7687dc45a569a715c337af72bd6aea2f10aa2d2836655a515ac",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.061459Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-47ce3777d0ec4821bc9d8e0882c4bb1a/request.snapshot.txt",
+      "sha256": "b68443ae1d45f50e630308a8e6092bf9736d962d705ae8503f6ea638ab06ffe1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.067522Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-47ce3777d0ec4821bc9d8e0882c4bb1a/result.json",
+      "sha256": "744dbf5ade150f85228e965b4b3fd7b6d27c3c275192993e2c9a179094084059",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.073089Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-47ce3777d0ec4821bc9d8e0882c4bb1a/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.080176Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-47ce3777d0ec4821bc9d8e0882c4bb1a/stdout.txt",
+      "sha256": "b95f62820d15ba64d6d6ea22aa2d89a8fbf1b5f7d6fef2db5392fbf54809680b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.086170Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5467cd9135974036a15a711b64ed95ba/invocation.json",
+      "sha256": "4886a734a35e457fa4e085dceba1d77ed6e6b0eeb0b9d95804686c0485e64973",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.092466Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5467cd9135974036a15a711b64ed95ba/result.json",
+      "sha256": "f70e7d0cd26195fe09ec53b051dfaa40c77406b25dea35fa659ba7fd7af30afd",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.097466Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5467cd9135974036a15a711b64ed95ba/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.554108Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5467cd9135974036a15a711b64ed95ba/stdout.txt",
+      "sha256": "1357064965fbe46707e0402dbb556bf23ece9054c951db5f8c3a6b777a7e2f07",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.560144Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5b64339232c34207adbf5239bb7885f4/invocation.json",
+      "sha256": "9390afca4047d8fc08ce455ee63e23d8fedb37e6d88104f4de517f71469b2243",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.566173Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5b64339232c34207adbf5239bb7885f4/request.snapshot.txt",
+      "sha256": "27eeefec8f060a61c766adb2b8926c83312fe6d5d3376af4fd0d0c3e462f0b36",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.572209Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5b64339232c34207adbf5239bb7885f4/result.json",
+      "sha256": "e380405e2734c2da4ef66c6e38cb9d1b2a224214a49fa760cb233761eb8793fd",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.577813Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5b64339232c34207adbf5239bb7885f4/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.583876Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-5b64339232c34207adbf5239bb7885f4/stdout.txt",
+      "sha256": "0851de85215cc28e00b5135ea6bca221787d7c3f5a75289b36e0d04dc1c0e282",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.589853Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-af5b32c497d5485c84eb0d4c45765ba1/invocation.json",
+      "sha256": "38c54955417b540a593d3398c559e0c8a630a75d20410ca84d682b18a76863e9",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.595856Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-af5b32c497d5485c84eb0d4c45765ba1/request.snapshot.txt",
+      "sha256": "27eeefec8f060a61c766adb2b8926c83312fe6d5d3376af4fd0d0c3e462f0b36",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.601984Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-af5b32c497d5485c84eb0d4c45765ba1/result.json",
+      "sha256": "7f997702807e1f42d5791862765ab056fa04d9f97269279dc61307a17c232cf5",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.606989Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-af5b32c497d5485c84eb0d4c45765ba1/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.611975Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-af5b32c497d5485c84eb0d4c45765ba1/stdout.txt",
+      "sha256": "4b28671cef92f68bda68197bc64c6d12c2abf2aba45b58c2fb7c7cc92ad9f6ab",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.619044Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-dc0d04c73cd647da8c587f3fa8a82a1e/invocation.json",
+      "sha256": "564b85b802cd988b02d0cb6973f9ab0dee4ed1b27fd4244eb6f757c87257ae7d",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.624977Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-dc0d04c73cd647da8c587f3fa8a82a1e/request.snapshot.txt",
+      "sha256": "55ffecb0487d44fead83d62ea902cb1631e6254203fe7893fb1ee09f3d9bb4cb",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.630934Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-dc0d04c73cd647da8c587f3fa8a82a1e/result.json",
+      "sha256": "0eb275e456fcb0c29459f7484f14564c5610751dd1c8edbf2e4a264a476c37ef",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.636932Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-dc0d04c73cd647da8c587f3fa8a82a1e/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.641934Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-dc0d04c73cd647da8c587f3fa8a82a1e/stdout.txt",
+      "sha256": "3970656ee0611fb5fdc49c04299a398dd1349926a3095eba97aea7ceb2527c4a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.648038Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-ed77c9cfdd3842889955561d0580285e/invocation.json",
+      "sha256": "02681948bf361740531b44f733fd7645fb84f8fbab512664e31148c1274d6bce",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:05.654197Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-ed77c9cfdd3842889955561d0580285e/request.snapshot.txt",
+      "sha256": "55ffecb0487d44fead83d62ea902cb1631e6254203fe7893fb1ee09f3d9bb4cb",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.075068Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-ed77c9cfdd3842889955561d0580285e/result.json",
+      "sha256": "8cd12354936ff530070884f48312d3778548541d81bd12079e3f439c90891f33",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.081250Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-ed77c9cfdd3842889955561d0580285e/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.086796Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-ed77c9cfdd3842889955561d0580285e/stdout.txt",
+      "sha256": "08b36c52c9fd64663b360b4c0619f05283735a3b2b5718e816b82b891961580b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.092838Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-f4193452a8e24c03a42ef2f4bf61826a/invocation.json",
+      "sha256": "90533fdf0b7610613c5dbd8ca327c9b232a44fd9950015eef75389a83cd7690d",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.098864Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-f4193452a8e24c03a42ef2f4bf61826a/request.snapshot.txt",
+      "sha256": "b68443ae1d45f50e630308a8e6092bf9736d962d705ae8503f6ea638ab06ffe1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.103862Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-f4193452a8e24c03a42ef2f4bf61826a/result.json",
+      "sha256": "5140f98b3b3e58c192c4475e956b9f880f4ec5e219bec58191a71e8564d74b80",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.109875Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-f4193452a8e24c03a42ef2f4bf61826a/stderr.txt",
+      "sha256": "8162ab5da682a285d93467539ec6984f37660c08c29fad8b62a94c8bbdc4152a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.115346Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/calls/call-f4193452a8e24c03a42ef2f4bf61826a/stdout.txt",
+      "sha256": "690e45659eb4eda769ebcefd674395be7423f5a49b5a61b5511961332b306e17",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.121378Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/manifest.json",
+      "sha256": "463bbc414132557210d47af450910104b9910d233638d5dfbcf3dbb247df6d4c",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.127309Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/reads/read-8124c4944333437085697e7527050a28/capture.snapshot.txt",
+      "sha256": "32fbb8ddb5eb6e7298d4a42e411233ccdcd6bbf6c0c16ecfbc7862fcf16ce739",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.132305Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/reads/read-8124c4944333437085697e7527050a28/event.json",
+      "sha256": "7935bd244c8a242ec10fdb9865884b25e06a9cc8c4e37cc338c3cbb842acc2c3",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.138352Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/A04/attempt-b693cc97bb534491b14d893a7c6a3649/task.txt",
+      "sha256": "9a727a775e42c3f34efcd4c702477e8d02939f01af8d7019fc47b9d5db6885e4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.143515Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/reports/report-1eec22947e094b81a24f5f47a682683e/A01-attempt-7b03c5d259324293ac58836d0dacc6dd.md",
+      "sha256": "16359e02e74fbcfed0ee5b88872496224cd6af72584e43d8019650021de30e77",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.148476Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/reports/report-1eec22947e094b81a24f5f47a682683e/A03-attempt-b1ea0fed35a541d393e3753a8be50b74.md",
+      "sha256": "a5a8f95b1d06582e8b225b468513217b2f3fe3d93b9ebe4f791fa2b25bed1975",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.153497Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/reports/report-1eec22947e094b81a24f5f47a682683e/A04-attempt-b693cc97bb534491b14d893a7c6a3649.md",
+      "sha256": "491be41d9916b41d4728e1f95e1aaa160d1daf011300d02dd615fe967c205d27",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.159597Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/actual-ai/reports/report-1eec22947e094b81a24f5f47a682683e/REVIEW.md",
+      "sha256": "07bc8d92574c93d06c2fb665c9f80368ebfa2b7c0dd24ca0b7b28808ff7bd5f4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.164604Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/ai-input-environment.json",
+      "sha256": "0212271cd4903e2da345e4fc25e53ca3d2a3a6ef0c8d1908869c942178469f41",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.168681Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/check_contracts.py.snapshot",
+      "sha256": "c1290dc9c42cbf308710f5b13c933645e1a22e378b7cc4caa1ccbd2ddb09e0db",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.595931Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/contract_ports.py.snapshot",
+      "sha256": "28b8545586d969771360ec995223c0a69842bca4c3895daa5b7b80b79495e0c0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.600896Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/contract_types.py.snapshot",
+      "sha256": "881707ca58c07d2ddb7a9a12fff7f70c1af9e011b96fbeadc7149165dd4b6937",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.605912Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/CORE.md.snapshot",
+      "sha256": "b73659425f8af6ad3f1db0788c977b1de6600fa49ce4c25bcea9bd6d47bbab9a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.611924Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/DATATYPES.md.snapshot",
+      "sha256": "b5cd5cf2af6b13d62dfbb5e1b002be0afe25988152be69588c78da03786a0d4c",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.616979Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/function-catalog.json.snapshot",
+      "sha256": "922f0523853bbba05d4b911f2efb3034a6710da2555085dcbd617b271591925c",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.620873Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/FUNCTIONS.md.snapshot",
+      "sha256": "4b34d5a2bba0630d212613a4a64277f41287ee3fa19371801f6037878cabc9c5",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.625869Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/IMPLEMENTATION.md.snapshot",
+      "sha256": "221a9e5960b4b4bfde7a644a090f2ff799166435aeea632da2d6a459afdd90be",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.630858Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/README.md.snapshot",
+      "sha256": "d49579d9ff3583c87d7c29bece39b406c479004ae5c095726934fbc04ef2b620",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.635837Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/request-examples.json.snapshot",
+      "sha256": "9f9f42419ab0d1b43a8462cb05963ae7ab39b62f6fe70fe77613c801036362b4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.640846Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/interfaces-v0.1/SPEC.md.snapshot",
+      "sha256": "6334aae4caeca173c9d6bf792316244b7b79d6bef6eda6b6b2efd35178166965",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.646781Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/program/automation/scripts/memory/policy.py.snapshot",
+      "sha256": "7d30051865f7f0f1d6c26afe1cdd5212e469f124ae07457bfc0d3740c6a6a1e4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.651781Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/program/automation/testing/catalog.json.snapshot",
+      "sha256": "237c514cb21c73d147b4f51e52afe38518f8964109abf1ec4963119ea5360b1b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.657798Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/program/automation/tests/test_memory_owner_service.py.snapshot",
+      "sha256": "0d4af6cd98df64a6d74154aa69d00ad763e29fce53c1333cbf21b5762cb0a810",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.662840Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/artifacts/program/automation/tests/test_memory_owners.py.snapshot",
+      "sha256": "957393942a073bf831b76b84fda0e4adde1cd72cc42ccb204a32571360743ef7",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:06.667858Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/baseline-markdown-manifest.json",
+      "sha256": "50d032fdda012bfc5de5904a2abaa30f643c813aeb94401476ea6fdac0139305",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.158497Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/brief-document-request.json",
+      "sha256": "55ffecb0487d44fead83d62ea902cb1631e6254203fe7893fb1ee09f3d9bb4cb",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.162604Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/brief-document-result.json",
+      "sha256": "32fbb8ddb5eb6e7298d4a42e411233ccdcd6bbf6c0c16ecfbc7862fcf16ce739",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.167558Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/brief-document.md",
+      "sha256": "a558e41bc951c83e916123bb4af2bfb422ee73de47eb412423018d2a09dea720",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.171575Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/brief-outline-request.json",
+      "sha256": "55ffecb0487d44fead83d62ea902cb1631e6254203fe7893fb1ee09f3d9bb4cb",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.177451Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/brief-outline-result.json",
+      "sha256": "0b7d39dff5ef5c075d02f5621bb271cc16ca5d7f018d2ec3603b7844c008e013",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.181479Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/contract-checks.json",
+      "sha256": "080464f5be9a113f37cc0fb251980453b93abf3344ddf031342cdf16f6aa07f7",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.613334Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/definition-context-request.json",
+      "sha256": "a70734e1c324df9aa71799d0c0293fc4dd0a2d75255da67d3243ed827f3751f4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.620585Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/definition-context-result.json",
+      "sha256": "e90ab5cee9e412a88116b54eca51f8d647bc013082aa3b6cdf95f991a6aaf0e8",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.625542Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/definition-context.md",
+      "sha256": "7a4f6b36d9c06088e90cd144b289a6d32e14f34c9fac71c7ee642636a33797b3",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.630481Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/documents-fixed-records.json",
+      "sha256": "6965ab26cc08d079d8383f0c56ce3a150a8204b1a838d5613e6ad4d787e191c4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.635007Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/documents-inspect.json",
+      "sha256": "d7978334d764ef0ae8bffcd7dedc17ac537400db8af81167aabe89cf37dde111",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.639955Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/documents-receipt.json",
+      "sha256": "1b3d38254587b177fb2926094a5eec5e26b6ec145b57f8ecce302f6ee36623dc",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.644970Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/documents-request.json",
+      "sha256": "b68443ae1d45f50e630308a8e6092bf9736d962d705ae8503f6ea638ab06ffe1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.648970Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/documents-validation.json",
+      "sha256": "691f73de10ac28a321794e2b565dca709061bfb79a94107d97f83704abf86e9a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.652972Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/expand-source-request.json",
+      "sha256": "3205628da08f5d2848c7f1cb5fac3a60d570792dc88494d2dff09e145ecbbcb8",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.658962Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/expand-source-result.json",
+      "sha256": "4b0aaf1b203b47be43fac2b815f8cf89510e355f216a3f261d5c1a80fd485db0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.663572Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/expand-source.md",
+      "sha256": "8e74ef0e08347d10cbea47dceec2326813c2915fb7edf32d02761002b17b20cd",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.667587Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/expand-unit-request.json",
+      "sha256": "bc9d4aed3901089cb86359b0708e9a97bbbb03c9be9cd8fc27452893eaa898ec",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.672572Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/expand-unit-result.json",
+      "sha256": "2dba82a8715bfe0c05e3ae0e6ad48ee129ced846a756c96b875ddc5cd3df1717",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.677129Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/expand-unit.md",
+      "sha256": "095c89b1a0fc60b955045dba24a394fc25039988eae5c29631484cd557a46ba3",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.681186Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/fixed-sources.json",
+      "sha256": "d7db07fd1b98f8abaa4c1d23faaafcd6f2c2c36bc5de0a6c161ae7a2e20683d4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.686203Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/fixture-diagnostic.json",
+      "sha256": "1b493e79f922073b224259452b406d1b075651bd6d8855236c1735121b5d296f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.691140Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/IMPACT_REVIEW.md",
+      "sha256": "5a10b030c52ce50184b6e16ac23deb722e4dc9582a728b5a7ec3b886ab6ea5c8",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:07.695227Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/layered-fixed-records.json",
+      "sha256": "f3200b01fb7912be76dd091fdbe05d753401eb7fde992a8c72e6f279067ba0de",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.096741Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/layered-inspect.json",
+      "sha256": "5cfef2fa8f9dedcdd3df1547ad4c3be91e16aec4753fcf202a9900a4bf2d3c12",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.100769Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/layered-request.json",
+      "sha256": "df1be96b7da23e350c34a499bc75a75dddbfca1e38e0d5c33353bff66fa1cfb9",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.106742Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/layered-v2-receipt.json",
+      "sha256": "29223f93dba0724e90b7712aa7b3cbff631982a8c172f612d1eadea66cb24a5b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.111719Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/layered-v2-request.json",
+      "sha256": "df3856dea40cdef7d67f9d37c9c18fa74ffb0406075775ea2de6b44ec5781a58",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.116719Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/layered-v2-validation.json",
+      "sha256": "b4960fe13084755d8a783f13f86f5e63318b819b0a482a324bb6dafd6e621c57",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.121675Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/memory-readback-checks.json",
+      "sha256": "5861fcaafecfb530dc84a9e6146eee0d48fce2a5cbd1ca5ff66737ab276f0d49",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.125898Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/policy-inspect-before-save.json",
+      "sha256": "b9c664daa5dceb91f85fe1de2a7526d6259b729b314dc1dcf9a8bfefc3355c0c",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.130669Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/process-document-request.json",
+      "sha256": "27eeefec8f060a61c766adb2b8926c83312fe6d5d3376af4fd0d0c3e462f0b36",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.135832Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/process-document-result.json",
+      "sha256": "5485e746c0350196ed8179c2c66aad5a3ee97ad43c9a601f9b16cd184dc2018a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.141116Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/process-document.md",
+      "sha256": "7c47e8696356ddee16265e88128166cdd76198697aefd4ceded0e3c38ee83fec",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.145701Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/process-outline-request.json",
+      "sha256": "27eeefec8f060a61c766adb2b8926c83312fe6d5d3376af4fd0d0c3e462f0b36",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.150387Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/process-outline-result.json",
+      "sha256": "b87f9ea462cb39fba1646202e5052ae1d6a0c8cb2b983391030daa9983c7b72e",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.156738Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/project-policy-review.md",
+      "sha256": "bcc9ede50cfce2681294eba192efc6822ecf098514d1b8b72bfda6ab52d8d5f9",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.161602Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/README.md",
+      "sha256": "c8e378cba1ae278a093787787c72951c33346cef7c839610bc31b2ddc04f33d8",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.166912Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/record_design.py",
+      "sha256": "fc9974a309077add9c7face315022ea27aa6c11a479c42cfe40ce39ccb09454d",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.171961Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/record_review.py",
+      "sha256": "a5fb6fbeba95ff1f7098e2ae7d581e150a868f8bce39c7a25358d3c936404141",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.176636Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/sections-fixed-records.json",
+      "sha256": "64da4bfa4259d477135507828c27fad51b9adc6032472454c91caddfb0c64b79",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.181163Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/sections-inspect.json",
+      "sha256": "4a3c70716da1c4b8baecececa03094ec38f68fd660edc5703e9780d67865986f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.615720Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/sections-receipt.json",
+      "sha256": "317ea11cc1c82a7dcc656455a2b7a328d994ab3f06fd657d8a6646625c2fe8d2",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.620706Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/sections-request.json",
+      "sha256": "aeed2443946290e46aa69e87c960466203461bb5a9f6a044cc9c5ea7dfba990e",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.625696Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/sections-validation.json",
+      "sha256": "05ada9b9733fb45e85a1222b97ddef53dd4937a7f6625bd0c6f75c53e4fa36d1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.631344Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/testing/attempt-01/01-python.ids.json",
+      "sha256": "7914ca06130601ca849275700f8d2bbfee26c4f5d58699266c4c564c64cece36",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.638346Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/testing/attempt-01/01-python.json",
+      "sha256": "d4a018214ce63f49afd45541a1f5e975e7a0cca5aade654d689ed846ac89281b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.643329Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/testing/attempt-01/01-python.log",
+      "sha256": "54b7ebe1352a110a50b1dc89314a3dc1881fa1a4c6b3f5bfc6e03a6968256517",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.649321Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/testing/attempt-01/README.md",
+      "sha256": "52cdd90c9dc5e169da14626f83e733ad5107bcf1995bbc0f937ef7612b44d05a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.654355Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/testing/attempt-01/results.json",
+      "sha256": "12a7937f43dd5a10208db5bf696378545c563d63c60adbc7ddd54e8b29c93eec",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.659337Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/testing/attempt-01/selection.json",
+      "sha256": "60dfee8017d11f894b91381276cb05485e85581ec79b850e3c319527a1fab9c1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.664248Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/testing/selection-v1.json",
+      "sha256": "b489db7e9cfd8aa07fe763982986961440ac0c76b0b976548fc20d97d4e623e8",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.669128Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/testing/selection-v2.json",
+      "sha256": "60dfee8017d11f894b91381276cb05485e85581ec79b850e3c319527a1fab9c1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.673544Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/ui-check.json",
+      "sha256": "65ef8681ae38c203563432c3ab3f95f8ef0a4002ebb47d8c261b62cb565cbbd0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.679074Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/user-steering.md",
+      "sha256": "da4d6e0d3f447182dc2837ae674ef103377396e0c89a0184c6d6918bbd02a402",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:23:08.684161Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.824180Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-raw-request.json",
+      "sha256": "6c0114bf6d52025dfa872baf74475e38ae129aab2508ea745a45da877c25796d",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.828716Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-raw.json",
+      "sha256": "1b78f2e07276176f3256cea1d3e1aa7417305cc328c51a89d0f550c705948868",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.834274Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-readback.json",
+      "sha256": "edf3a1ab645789a59c08e4910aa6f25cab5d41bf67a039128e53449b86afa129",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.838688Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-refresh.txt",
+      "sha256": "ccedcad3856aa364194ef6a0716e8294caaa2b41fa62d158b7e5500a122100ed",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.843433Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-run-query.json",
+      "sha256": "459bd2947caffc1dc29250ebd9a987798b9ebd0ec9ccece27ef5ddd5d734e617",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.848663Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-search-request.json",
+      "sha256": "aa8c924e05a5895c4caca0960caef81c30712cde22e12ec30028a9ea44f071c0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.854290Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-search-v2-request.json",
+      "sha256": "d11d40647aa5a76b41811bf925419a486bfe2dd0c337945973f508090f629f1f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.859318Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-search-v2.json",
+      "sha256": "f509f5506e3a367014f7df884f58f84e2bbbdb6273f21ea3b1b29af6bd8a99e1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.864992Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-search.json",
+      "sha256": "3abaccc8bf06db9b6c9058317e478a39fa5c0bd84bf0a63857e59f30f8f113ad",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.868993Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-validate.txt",
+      "sha256": "8010bf11c642fe652a2456440d50ef662a95451c685d7e53d067532dbe1c934a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.873538Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/final-workspace-checks.json",
+      "sha256": "969a95864605d11b42b29109ae8a4d69f7e1a423175f879ac77ccf6a4f140e2b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.878616Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t164914z-d20a9406384a/registration-receipts.json",
+      "sha256": "ff5198d1bbfe080c824d636c986a1575e4c6dfa6ac60f6f0419fba97b11cdca2",
+      "role": "artifact",
+      "registered_at": "2026-09-09T17:24:04.882621Z"
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "完成十二组接口/字段/调用设计、Project默认策略调整及24条规范分层/文稿保存回读；检索运行适配未实施。",
+  "limitations": [
+    "接口设计不等于召回、排序或图算法已经接入生产；本轮真实程序改动限于Project默认记录策略。",
+    "本次用户认可功能方向，不等于性能、科学结论或最终契约已经通过人工验收。",
+    "quick未全部通过；既有夹具失败保留，前端开发依赖缺失。",
+    "实际工作台页面访问被浏览器阻止，未进行视觉验收；未执行第二台物理机验收。"
+  ],
+  "parent_run_ids": [
+    "RUN-20260909T155125Z-2961BDF175A8"
+  ],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  },
+  "sensitivity": "internal"
+}

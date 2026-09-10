@@ -1,0 +1,29 @@
+{
+  "refs": [
+    {
+      "target_kind": "record",
+      "target_id": "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+      "revision": 1,
+      "sha256": "0d45da80e028fa231a8d24652df833373707737bf8d05bbcbe5cf421b4d2ba9c",
+      "locator": "完整固定正文",
+      "relation": "references"
+    },
+    {
+      "target_kind": "file",
+      "target_id": "SRC-ARCH-IMPLEMENTATION-20260910-1",
+      "revision": null,
+      "sha256": "fd3ec45fd3279cc3288dc58c506a12272b2218592046617c2b4d1b4d138d5cbf",
+      "locator": "完整固定报告",
+      "relation": "input"
+    }
+  ],
+  "selection": {
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "full_ids": [
+      "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+      "SRC-ARCH-IMPLEMENTATION-20260910-1"
+    ],
+    "purpose": "exploration",
+    "budget": 20000
+  }
+}

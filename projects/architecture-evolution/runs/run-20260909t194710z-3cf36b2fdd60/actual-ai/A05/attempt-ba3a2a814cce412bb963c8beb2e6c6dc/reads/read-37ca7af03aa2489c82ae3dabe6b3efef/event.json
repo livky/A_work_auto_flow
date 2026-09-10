@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "readonly independent review of existing A09 artifacts",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "完整阅读子代理对E1/E2的路径、旧/新SHA、双文稿一致、未变记录和幂等回执的交叉复审；这些是复用既有执行，不声称本次重演。",
+  "recorded_at": "2026-09-09T22:59:20.863696Z",
+  "capture_sha256": "088fab6aade981be9490503134ec3b70a3172d1d59a42460c68b580fbf49598c",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

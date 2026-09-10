@@ -1,0 +1,223 @@
+{
+  "owner": {
+    "schema_version": 1,
+    "owner_id": "RES-F3-SATURATION",
+    "owner_type": "research",
+    "native_ref": {
+      "id_field": "research_id",
+      "id_value": "RES-F3-SATURATION",
+      "path": "research/saturation/research.json"
+    },
+    "memory_home": "research/saturation/memory",
+    "adapter_version": 1,
+    "temporary": false,
+    "persisted": true,
+    "title": "SYNTHETIC F3 saturation",
+    "fingerprint": "1251acc280b3db3ab12f3b0d97039feb33f7e9625cedb52f8c4ab19211c896c6",
+    "native_data": {
+      "research_id": "RES-F3-SATURATION",
+      "title": "SYNTHETIC F3 saturation",
+      "status": "active",
+      "claims": [],
+      "dependencies": [],
+      "sensitivity": "internal"
+    },
+    "created_at": "2026-09-09T21:02:13.014665Z",
+    "created_by": {
+      "id": "Codex actual-AI F3 setup",
+      "kind": "ai"
+    }
+  },
+  "head": {
+    "commit_id": "COM-4a163fb0-43b8-45b1-b946-50faa4d66659",
+    "generation": 1,
+    "manifest_hash": "1ef4499231aaa41aec9dcf85d6fb42bc833aeca0ad66fbc605142505abf83978"
+  },
+  "manifest": {
+    "changed_ids": [
+      "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef"
+    ],
+    "commit_id": "COM-4a163fb0-43b8-45b1-b946-50faa4d66659",
+    "generation": 1,
+    "index_pending": {
+      "fts": true,
+      "generation": 1,
+      "vector": true
+    },
+    "owner_id": "RES-F3-SATURATION",
+    "parent_commit_id": null,
+    "parent_manifest_hash": null,
+    "pointers": {
+      "checkpoint": null,
+      "goal": null,
+      "policy": null
+    },
+    "record_heads": {
+      "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef": {
+        "commit_id": "COM-4a163fb0-43b8-45b1-b946-50faa4d66659",
+        "path": "commits/COM-4a163fb0-43b8-45b1-b946-50faa4d66659/records/MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef.json",
+        "record_hash": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+        "revision": 1
+      }
+    },
+    "request_ledger": {
+      "2f11c367-b201-48d3-b3fc-2b2a45c7bfab": {
+        "commit_id": "COM-4a163fb0-43b8-45b1-b946-50faa4d66659",
+        "receipt_hash": "07a629baaab4a62b6b1afe4c7e3f9570affa3828768cc02f576e185983391cab",
+        "request_hash": "1ed26eff131cf225933132cd9684be15fa52863eca40ed37273beea50e4defa0"
+      }
+    },
+    "schema_version": 1,
+    "source_checks": [
+      {
+        "kind": "owner_access",
+        "owner_id": "RES-F3-SATURATION"
+      },
+      {
+        "hash": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f",
+        "kind": "file",
+        "ref": {
+          "locator": "完整合成输入",
+          "relation": "input",
+          "revision": null,
+          "sha256": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f",
+          "target_id": "SRC-F3-SATURATION",
+          "target_kind": "file"
+        }
+      }
+    ]
+  },
+  "records": {
+    "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef": {
+      "body_markdown": "",
+      "change_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+      "content_hash": "536bdaa828a9750eac59c5fe37215502fadccb83118cfca21c42b7fb90787a93",
+      "created_at": "2026-09-09T21:02:13.047678Z",
+      "created_by": {
+        "id": "Codex actual-AI F3 setup",
+        "kind": "ai"
+      },
+      "discovery": "workspace_summary",
+      "keywords": [
+        "SYNTHETIC",
+        "F3",
+        "执行器饱和的新约束"
+      ],
+      "kind": "detail",
+      "level": "L1",
+      "owner_id": "RES-F3-SATURATION",
+      "payload": {
+        "blocks": [
+          {
+            "block_id": "body",
+            "markdown": "# SYNTHETIC F3 新材料：执行器饱和约束\n\n这是新收到的独立合成约束输入，没有旧材料 ID、引用或关联边，不是现实实验结果。\n\n## 变量与可达性\n\n水箱模型的面积 $A=2\\,\\mathrm{m^2}$，出流系数 $c=0.1\\,\\mathrm{m^2/s}$，液位 $h$ 与目标 $h_r$ 单位为米。新给定泵上限 $q_{max}=0.15\\,\\mathrm{m^3/s}$，目标 $h_r=2\\,\\mathrm{m}$。非负泵流量必须满足 $0\\leq q\\leq q_{max}$，状态方程为 $A\\dot h=q-ch$。\n\n在目标液位维持平衡需要 $q=c h_r=0.2\\,\\mathrm{m^3/s}$，超出给定泵上限。持续饱和时，平衡液位为 $h_{sat}=q_{max}/c=1.5\\,\\mathrm{m}$，低于目标。仅增大比例增益不能提高泵的物理上限。\n\n## 阅读边界\n\n本材料给出特定合成参数下的代数约束，足以要求重新检查“未饱和”的前提。它不是线性段指数推导错误的证明，也不含真实泵、传感器或延迟数据。对其他目标与流量上限必须重新判断可达性。\n",
+            "requires_block_ids": [],
+            "role": "methods"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "locator": "完整合成输入",
+            "relation": "input",
+            "revision": null,
+            "sha256": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f",
+            "target_id": "SRC-F3-SATURATION",
+            "target_kind": "file"
+          }
+        ],
+        "figures": [],
+        "missing_refs": [],
+        "retrieval_description": {
+          "applicable": [
+            "本文明确的合成条件"
+          ],
+          "key_findings": [
+            "此输入没有真实执行结果"
+          ],
+          "limitations": [
+            "缺少实测与科学复核"
+          ],
+          "method": "读取独立合成前提并保留变量、公式和限制",
+          "not_applicable": [
+            "现实系统的稳定或性能结论"
+          ],
+          "question": "执行器饱和的新约束的机制与约束"
+        },
+        "run_ref": null,
+        "unit_type": "analysis"
+      },
+      "previous_revision": null,
+      "provenance_gap": null,
+      "record_hash": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+      "record_id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+      "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+      "revision": 1,
+      "schema_version": 3,
+      "sensitivity": "internal",
+      "sources": [
+        {
+          "locator": "完整合成输入",
+          "relation": "input",
+          "revision": null,
+          "sha256": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f",
+          "target_id": "SRC-F3-SATURATION",
+          "target_kind": "file"
+        }
+      ],
+      "title": "SYNTHETIC F3 执行器饱和的新约束",
+      "updated_at": "2026-09-09T21:02:13.047678Z",
+      "updated_by": {
+        "id": "Codex actual-AI F3 setup",
+        "kind": "ai"
+      }
+    }
+  },
+  "policy": {
+    "values": {
+      "mode": "explore",
+      "retain": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "granularity": "fine",
+      "auto_summary": true,
+      "discovery": "owner_only",
+      "auto_deepen": false,
+      "checkpoint": true
+    },
+    "sources": {
+      "mode": "type",
+      "retain": "type",
+      "granularity": "type",
+      "auto_summary": "type",
+      "discovery": "workspace",
+      "auto_deepen": "workspace",
+      "checkpoint": "workspace"
+    }
+  },
+  "owner_id": "RES-F3-SATURATION",
+  "generation": 1,
+  "index_status": "indexed",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "disabled",
+    "indexed_generation": 1,
+    "vector_generation": null,
+    "target_generation": 1,
+    "encoder_version": null,
+    "collection": null,
+    "error": {
+      "code": "CAPABILITY_UNAVAILABLE",
+      "details": {},
+      "errors": [],
+      "message": "未配置本地向量后端"
+    }
+  },
+  "claim_states": {},
+  "omitted": [],
+  "warnings": []
+}
+

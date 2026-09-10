@@ -1,0 +1,18 @@
+{
+  "IMPL-EVENT": {
+    "target_kind": "record",
+    "target_id": "MEM-ecbf9eb0-e493-56e1-afc1-150345e70be3",
+    "revision": 1,
+    "sha256": "5960992bed33fba7549e0e5b04f1bf1ff66630642548254a98600cece1054028",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "IMPL-EXPERIENCE": {
+    "target_kind": "record",
+    "target_id": "MEM-44b626d2-a9de-5b59-95cf-7b7fd817aaee",
+    "revision": 1,
+    "sha256": "5c30f4d5af0ae86ad94a0c180bb91a753846513cd2158dc2534282ff9a9ed3c4",
+    "locator": "完整固定正文",
+    "relation": "references"
+  }
+}

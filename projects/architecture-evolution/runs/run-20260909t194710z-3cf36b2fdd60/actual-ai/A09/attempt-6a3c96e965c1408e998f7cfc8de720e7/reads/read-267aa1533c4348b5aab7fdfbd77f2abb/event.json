@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query and memory CLI",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整公开返回投影，已在工具输出中实际呈现并阅读",
+  "coverage": "full",
+  "observation": "读完历史完整过程 r1 投影，确认旧正文和旧引用保留，仅额外提示已有新修订，没有静默更新历史。",
+  "recorded_at": "2026-09-09T21:27:58.259693Z",
+  "capture_sha256": "dcd10cdbd95d0b3212fb9d7757a66707f329dc77c94ea35e1a0dfe13fff59451",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

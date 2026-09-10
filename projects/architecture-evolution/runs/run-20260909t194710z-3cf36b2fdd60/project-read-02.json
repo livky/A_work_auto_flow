@@ -1,0 +1,8 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "public-cli",
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A01\\attempt-837a1c9efeba420c9964954e8e6cc15b\\calls\\call-f4365f964f3744679e75c0e1e166f01f\\stdout.txt",
+  "locator": "context_text 中 U1 正文与 SRC-ARCH-IMPLEMENTATION-20260910-1 原文",
+  "coverage": "partial",
+  "observation": "真实展开包含完整范围公式、资源公式和固定来源指纹；manifest complete，缺失为空。"
+}

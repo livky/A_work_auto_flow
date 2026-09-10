@@ -1,0 +1,11 @@
+{
+  "actor": "Codex /root/frontier_review actual AI",
+  "origin": "existing A09 actual AI report; cross-reference only",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "完整文件",
+  "coverage": "full",
+  "observation": "完整阅读原A09对局部修订、retain输入/定义、文稿独立事务、旧版保留和幂等的分析及限制；这不是本次重演。",
+  "recorded_at": "2026-09-09T23:04:35.660311Z",
+  "capture_sha256": "b16b42c07271503b0234bd9a85bc1ad3c97c591e27ad7ca988d3946e391009f1",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

@@ -1,0 +1,13 @@
+# 表示查询实施准备
+
+状态：本轮只完成计划、接口、UI交互、Skill与测试设计；产品实现未开始。
+
+用户要求：对齐当前表示/联想/图/语义维护说明，明确AI Skill调用和工作台存储树及查询闭环，设计完整测试，在根目录保留首期取舍和后续探索。
+
+权威入口：[v0.2](../../../docs/design/representation-query-v0.2/README.md)、[开发计划](../../../docs/design/representation-query-v0.2/IMPLEMENTATION.md)、[待开发计划](../../../待开发计划.md)。Run：RUN-20260909T190818Z-8ADA1DF3337B。
+
+验收：类型可解析、每个公开端口有设计用例、Skill元数据和链接可读、refresh-index/validate；产品quick/full、浏览器及升级留到实现，不借用旧回执。
+
+下一步：按P0开始兼容适配，冻结实际测试选择；保留已有未提交修改与旧规范记录，不重写历史。
+
+完整性核对：阶段计划可供P0开工，运行校验、请求/响应样本、fixture构造器和真实测试ID/selection尚需P0完成，不能把设计检查称为产品验收。正式范围见[逐文件核对](../../../docs/design/representation-query-v0.2/DEVELOPMENT_READINESS.md)。

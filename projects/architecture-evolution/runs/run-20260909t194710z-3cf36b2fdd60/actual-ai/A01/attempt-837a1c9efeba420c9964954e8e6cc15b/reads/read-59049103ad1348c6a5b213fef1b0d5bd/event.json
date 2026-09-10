@@ -1,0 +1,11 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "public-cli",
+  "capture_path": "capture.snapshot.txt",
+  "locator": "context_text 中 U1 正文与 SRC-ARCH-IMPLEMENTATION-20260910-1 原文",
+  "coverage": "partial",
+  "observation": "真实展开包含完整范围公式、资源公式和固定来源指纹；manifest complete，缺失为空。",
+  "recorded_at": "2026-09-09T22:44:34.427421Z",
+  "capture_sha256": "c780ac959a8a44e8ac1ec053e3e8785f2dfe533bea1d10ac5daef336be939517",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

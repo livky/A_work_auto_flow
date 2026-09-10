@@ -1,0 +1,26 @@
+{
+  "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b": {
+    "target_kind": "record",
+    "target_id": "MEM-3264fce7-c63f-504e-bdb5-3aaa1169eb7b",
+    "revision": 5,
+    "sha256": "584b73d11aa0dd607504d3bfa2898a1282228a36c55ab17af6fbba609860ff5c",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4": {
+    "target_kind": "record",
+    "target_id": "MEM-ef137680-afa6-59b8-a263-f2bb33d256c4",
+    "revision": 5,
+    "sha256": "2588e415d2d995327634d035b6ae1a0608f37e21106da8aa3e412ad3357fa180",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba": {
+    "target_kind": "record",
+    "target_id": "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba",
+    "revision": 5,
+    "sha256": "452d2c4407f7efdbff1cb63353ffd811faac266bf6472700a3bd2f5a39ad2c9c",
+    "locator": "完整固定正文",
+    "relation": "references"
+  }
+}

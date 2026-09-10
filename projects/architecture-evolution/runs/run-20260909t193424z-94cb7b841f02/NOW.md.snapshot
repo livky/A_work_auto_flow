@@ -1,0 +1,40 @@
+# 当前状态
+
+更新日期：2026-09-10。本页只保留当前能力、限制与续接入口；实现细节见[架构说明](../ARCHITECTURE.md)。
+
+## 当前实现
+
+- 版本记忆已采用 v3：L1 为实验/方法/推导/分析技术单元，检索说明与完整正文块分离；`document_section` 和 `document` 独立保存章节、完整研究过程与精简研究报告，`level=null`。L4 继续是知识地图；v1/v2 历史按兼容方式读取。
+- Run 优先保存在实际所属对象内。`run-execute` / `run-register` 保存执行材料与当前指纹，L0 自动投影；不是后台捕获任意程序，也不会自动编写技术文稿。
+- 材料检索与规范记忆检索两条路径并存；共用 SQLite 文件但分表、分回执和部分策略。默认知识搜索排除 L0 正文；文稿与原始追溯使用对应模式。新记忆完整图扩展目前属于评估链路，不能推断默认 context 已自动执行。
+- 工作台提供材料关系、版本记忆、研究文稿与续接、证据查看和监测。监测需显式开启，仅生成观察和维护候选。
+- Windows 升级仍由新版源码中的 `setup.cmd --target` 更新旧工作区，保留业务对象、规范记忆、自定义 Skill 和可恢复回执。依赖/模型按配套包离线核验，当前自动模型迁移限于约定路径/名称与兼容 384 维。
+- 完整 checkout 保留浮点求和开发例子；公共 `git archive` 排除研究、项目和 Run 实例。原根 Run 的部分配套材料以冻结形式保存，准备脚本只在 `.local/examples/` 恢复旧路径。
+
+当前使用入口：[记忆指南](../docs/MEMORY_USAGE.md)、[研究记录标准](../docs/RESEARCH_RECORDING.md)、[Run 捕获](../docs/RUN_CAPTURE.md)、[检索手册](../docs/RETRIEVAL.md)。
+
+## 最近完成
+
+[表示查询 v0.2 实施准备](../docs/design/representation-query-v0.2/README.md)已定义类型/实例/组包、工作台交互、AI Skill与完整测试设计；下一步按P0实现。根[待开发计划](../待开发计划.md)记录首期简单策略和后续探索，产品尚未接入。Run：RUN-20260909T190818Z-8ADA1DF3337B。
+
+
+根据用户后续问题，[CORE说明](../projects/architecture-evolution/design/interfaces-v0.1/CORE.md)及[专项提案](../projects/architecture-evolution/design/interfaces-v0.1/REPRESENTATION_AND_GRAPH.md)区分表示类型、实例和查询组合，补齐L0–L4/双文稿配方、经验联想、AI与确定性维护分工、关系图字段和更新触发。`RUN-20260909T184202Z-6E13D341B986`保存提案和相关文稿r3，旧版保留；当时尚待下一版契约；现已收敛为v0.2草案，仍未接入运行算法。
+
+接口契约v0.1已形成[核心简版](../projects/architecture-evolution/design/interfaces-v0.1/CORE.md)、完整签名/数据结构与实施映射；所有未显式覆盖的Project默认采用Research同等explore/fine、L0–L4与总结建议。`RUN-20260909T164914Z-D20A9406384A`保存实际默认策略变化及24条分层/文稿记录的回读：两文稿均覆盖8个技术单元。quick为135项Python通过、1项既有冻结夹具失败、19项前端未运行；真实setup扩展旧工作区测试通过。页面检查受浏览器ERR_BLOCKED_BY_CLIENT限制，人工及第二台物理机验收仍待完成。
+
+框架文档与模块影响同步已完成，记录于 `PRJ-ARCHITECTURE-EVOLUTION`，目录为 `projects/architecture-evolution/`。本轮按 docs 的声明时间、合入时间及实际代码修正 README/AGENTS、手册和 Skill；现行影响图位于该项目的 `context/MODULE_IMPACT.md`，执行 Run 为 `RUN-20260909T151004Z-A68FBA9F176D`。74 文件时间盘点及本地链接/指纹检查通过；quick 的 12 项 Python 通过、12 项前端因缺开发依赖未执行，整体 incomplete。历史 fixture 清单的三个既有指纹差异保留待追溯。
+
+后续开发先按[文档与模块影响维护](../docs/DOCUMENTATION_MAINTENANCE.md)检查关联。Project 是本工作区的研发数据，公共源码包不携带该实例；发行仍保留通用维护入口。
+
+## 尚未完成的验收与风险
+
+- 历史检索独立题集质量未通过，万条规模测试按此前授权暂缓；没有真实公司材料上的准确度或大规模性能承诺。
+- 实际 AI 检查、人工意见和第二台物理机验收分别记录；软件回归不能替代。历史详情见[状态台账](../docs/design/system-memory/STATUS.md)。
+- 来源、旧修订与文稿引用不自动换成新版；已进入旧聊天的内容也不会撤回。
+- 当前没有自动远程备份、通用代码影响监听器或企业连接器。文件与自然语言规则不能替代备份、实际权限和审计。
+
+## 下一步
+
+下一阶段按[v0.2开发就绪清单](../docs/design/representation-query-v0.2/DEVELOPMENT_READINESS.md)启动P0：冻结运行契约、严格校验/请求样本、旧适配与实际测试基线，再进入P1–P6。v0.1保留继承设计，不作为独立活动计划。
+
+此前逐批 NOW 记录原样保存在本轮 Run 的 `baseline/NOW.md.snapshot`；docs 时间线位于 Project 的 `docs/DOCUMENT_HISTORY.md`，旧 Git 历史和未分发 Run 的缺失边界继续保留。不要把历史某批“当前/下一步/未发布”当成今天的能力状态。

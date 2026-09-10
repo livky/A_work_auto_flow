@@ -1,0 +1,58 @@
+[
+  {
+    "path": "AGENTS.md",
+    "sha256": "2bdd65b5fbe7df8e4219c37d55e4c2909f57aa723ae71604bd490aaf70ce0c75"
+  },
+  {
+    "path": "README.md",
+    "sha256": "cba3471bfa984e45d44cebc5ad62e654b3446f1c030636c70b93c7dd46ede992"
+  },
+  {
+    "path": "待开发计划.md",
+    "sha256": "ef940f6dac0a95e13e0f5d7fc1e3cce3d2c6be2b512dde962139028c5b8e9997"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/check_design.py",
+    "sha256": "e0e09c40beedb7af3119a49e81354bb48e5b1e4a4cb7705f1fc1dd7e825c12d8"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/CONTRACTS.md",
+    "sha256": "020a25cd330f4b0b7811fab6599db9e9910c82c8fc4a5bcb843a6f5c03be619e"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/contracts.py",
+    "sha256": "6ba6c84f6fe27a503f6b67ae1fce9f3bcc9db67f8f469b795d8a5b29a79cca73"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/IMPLEMENTATION.md",
+    "sha256": "7b63b595ae2a930d81acd62aaae31e8772c432e7dd8a42b1c6710b5588b35b3c"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/README.md",
+    "sha256": "ac1dac9558db4666864ac9e7709345ef54cd42a56171979d3029f3b300aeaf44"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/test-cases.json",
+    "sha256": "5e078fdc8729117dfc057d60cf135271829d90f0b4f6910f830d68c72bc37ee5"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/TEST_DESIGN.md",
+    "sha256": "659499dac02e4265250da745d5522e996f37dded27e84f672d3a4afa867a1f0b"
+  },
+  {
+    "path": "docs/design/representation-query-v0.2/WORKBENCH.md",
+    "sha256": "064c1ac4c475e38ca6a129629c23d59dc7d04613012404a2cb6b6b93fa9b3c27"
+  },
+  {
+    "path": "automation/workflows/material-query/SKILL.md",
+    "sha256": "28f687417eb1d526838112a4005937f3375bdb767d262b9dcc3f638f57741cc4"
+  },
+  {
+    "path": "automation/workflows/association-exploration/SKILL.md",
+    "sha256": "c4fe27134b5d3196ec646af5933afe7d8bff4d076f81cc3578497f156c31463a"
+  },
+  {
+    "path": "automation/workflows/semantic-maintenance/SKILL.md",
+    "sha256": "28facc1466a1dd603f68deda4bf4b8a1d22355221a447f46b793ad139989223e"
+  }
+]

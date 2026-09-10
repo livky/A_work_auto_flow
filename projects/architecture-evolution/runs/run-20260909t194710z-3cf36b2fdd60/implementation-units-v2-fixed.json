@@ -1,0 +1,26 @@
+{
+  "IMPL-U1": {
+    "target_kind": "record",
+    "target_id": "MEM-ecc8c6cc-b362-5450-bffc-da7418c2c745",
+    "revision": 1,
+    "sha256": "0d45da80e028fa231a8d24652df833373707737bf8d05bbcbe5cf421b4d2ba9c",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "IMPL-U2": {
+    "target_kind": "record",
+    "target_id": "MEM-4143f480-712a-5739-8044-3535ecaf1b0a",
+    "revision": 1,
+    "sha256": "cc35f69de2b5644362c977cd2885e2be0912d1ca8c2ec6d71d69c4f78a4494d9",
+    "locator": "完整固定正文",
+    "relation": "references"
+  },
+  "IMPL-U3": {
+    "target_kind": "record",
+    "target_id": "MEM-b0390c59-c458-5690-bc68-6dd030d32de0",
+    "revision": 1,
+    "sha256": "e164f67b43688a742e773a9c4bb025c118a30ca473a389ba62c79d4d8b7036ae",
+    "locator": "完整固定正文",
+    "relation": "references"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "actor": "assistant",
+  "origin": {
+    "fixed_ref": "expand-unit.md"
+  },
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t164914z-d20a9406384a\\expand-unit.md",
+  "locator": "全文",
+  "coverage": "full",
+  "observation": "已读取U07正文、七项功能、调用链、记录规则及固定来源。",
+  "unread_or_missing": []
+}

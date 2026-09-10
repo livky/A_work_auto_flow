@@ -1,0 +1,53 @@
+{
+  "started_at": "2026-09-09T22:13:27.104543+00:00",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+        "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\material_query\\generate_types.py"
+      ],
+      "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow",
+      "exit_code": 0,
+      "elapsed_seconds": 0.11,
+      "stdout": "01-stdout.txt",
+      "stderr": "01-stderr.txt"
+    },
+    {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "scripts/contracts.mjs"
+      ],
+      "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend",
+      "exit_code": 0,
+      "elapsed_seconds": 0.547,
+      "stdout": "02-stdout.txt",
+      "stderr": "02-stderr.txt"
+    },
+    {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend",
+      "exit_code": 0,
+      "elapsed_seconds": 3.032,
+      "stdout": "03-stdout.txt",
+      "stderr": "03-stderr.txt"
+    },
+    {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/vite/bin/vite.js",
+        "build"
+      ],
+      "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\frontend",
+      "exit_code": 0,
+      "elapsed_seconds": 4.875,
+      "stdout": "04-stdout.txt",
+      "stderr": "04-stderr.txt"
+    }
+  ],
+  "finished_at": "2026-09-09T22:13:35.678239+00:00"
+}

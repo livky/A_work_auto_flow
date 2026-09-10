@@ -1,0 +1,13 @@
+{
+  "actor": "assistant",
+  "origin": {
+    "fixed_ref": "brief-document-result.json"
+  },
+  "capture_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t164914z-d20a9406384a\\brief-document-result.json",
+  "locator": "report.sections的两个章节全文及共同引用",
+  "coverage": "partial",
+  "observation": "已读取两个章节正文和固定来源；未遍读回执每个重复引用元数据。",
+  "unread_or_missing": [
+    "工作台实际页面未读取"
+  ]
+}

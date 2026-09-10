@@ -1,0 +1,123 @@
+{
+  "calls": {
+    "text-reconcile": {
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-831fbf0fda3d454d91284dd19b888138",
+      "exit_code": 0
+    },
+    "saved-navigation-inspect": {
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-0260a9e2e8d54358ad6390f0ad2ac30a",
+      "exit_code": 0
+    },
+    "saved-navigation-view": {
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-96b7d94a507b45ae9e7fb71acfb42d21",
+      "exit_code": 0
+    },
+    "original-1": {
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-97a30eb4af464993807df69babf3463e",
+      "exit_code": 0
+    },
+    "original-2": {
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-fced9e66ec5b407da8476e5a868691e9",
+      "exit_code": 0
+    },
+    "original-3": {
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-fa4f1dd89bab4b64ae0646e029d5507f",
+      "exit_code": 0
+    },
+    "original-4": {
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-84c5b4578ff442b79b02ac9738dfc99d",
+      "exit_code": 0
+    },
+    "old-navigation-inspect": {
+      "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A06\\attempt-ea028f7f2e4240568a002129064461fb\\calls\\call-d7af0c7b1ac344d9a6b28194c06804b7",
+      "exit_code": 0
+    }
+  },
+  "new_navigation": {
+    "record_id": "MEM-1c372f0d-3afe-5a4b-96fb-867eff035115",
+    "record_hash": "cd92874aed47cdfb48b734d1d3569221cd4b6913d6cf685161a9f34cb10bf4e7",
+    "owner_id": "RES-F3-RETRY",
+    "status": "candidate",
+    "relation": "analogous_to"
+  },
+  "original_record_readbacks": [
+    {
+      "ref": {
+        "kind": "record",
+        "id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "revision": 2,
+        "sha256": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+        "locator": null
+      },
+      "returned_owner": "RES-F3-TANK",
+      "returned_hash": "a67f152795f1faaea2adfe8d786ada6ac2db796972570e25f3833c045ad725a2",
+      "same_hash": true,
+      "same_owner": true
+    },
+    {
+      "ref": {
+        "kind": "record",
+        "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "locator": null
+      },
+      "returned_owner": "RES-F3-TANK",
+      "returned_hash": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+      "same_hash": true,
+      "same_owner": true
+    },
+    {
+      "ref": {
+        "kind": "record",
+        "id": "MEM-1749e71c-ee06-5f04-9c40-03228706f4f4",
+        "revision": 1,
+        "sha256": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+        "locator": null
+      },
+      "returned_owner": "RES-F3-RETRY",
+      "returned_hash": "7a68515fb103ca5ab6d09179905763972ca1446196589561222310364c0d27da",
+      "same_hash": true,
+      "same_owner": true
+    },
+    {
+      "ref": {
+        "kind": "record",
+        "id": "MEM-6f7931dc-84bc-510e-b865-60a6d530e3ef",
+        "revision": 1,
+        "sha256": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+        "locator": null
+      },
+      "returned_owner": "RES-F3-SATURATION",
+      "returned_hash": "8780b85874388753acbc846a22c1b4d20d68234dac9040ab8b8d2c15627bdada",
+      "same_hash": true,
+      "same_owner": true
+    }
+  ],
+  "old_navigation_hash": "2f319ec12299920fc1c24c3310dda7aded06a448c439ff96db79f78ced50b6b1",
+  "old_navigation_unchanged": true,
+  "source_hashes_after": {
+    "tank": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+    "retry": "ab630d4e04347681657c76ad422e13a4b62bd39a40690bd29ba6be4b9cccd92f",
+    "saturation": "7bcb1b5e9e7791021701252d87d96473784146c883c648248fde7a86b40ff28f"
+  },
+  "source_bytes_unchanged": true,
+  "final_heads": {
+    "tank": {
+      "commit_id": "COM-7d0a2539-e2b6-4c77-b04a-d22956f47baf",
+      "generation": 11,
+      "manifest_hash": "63aa74fde4d9b45a67a4f2dd25699f8f73b2dcd68e1166dc833038b09d8b40c8"
+    },
+    "retry": {
+      "commit_id": "COM-d0ce2b58-4d09-49d5-87a2-05aa1e587187",
+      "generation": 3,
+      "manifest_hash": "c00e954d77fe4d7ef1ac1b6bc550415863b57999c65bfef61a099769aa634f0c"
+    },
+    "saturation": {
+      "commit_id": "COM-4a163fb0-43b8-45b1-b946-50faa4d66659",
+      "generation": 1,
+      "manifest_hash": "1ef4499231aaa41aec9dcf85d6fb42bc833aeca0ad66fbc605142505abf83978"
+    }
+  },
+  "note": "Hash/identity checks only; no scientific or human review assertion."
+}

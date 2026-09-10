@@ -1,0 +1,44 @@
+{
+  "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\calls\\call-33d69c9aebc74a54b9956f6760a0c344",
+  "exit_code": 3,
+  "result": {
+    "request_id": "8d93d740-9113-4245-b0df-970d0b569924",
+    "owner_id": "RES-F3-TANK",
+    "commit_id": "COM-983b6bd1-a703-4ef7-98ef-76c774695329",
+    "generation": 9,
+    "save_status": "committed",
+    "record_results": [
+      {
+        "client_key": null,
+        "record_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+        "revision": 2,
+        "content_hash": "030b025e919d722fd67907ffe8f2e1cc34e3b62592c3905f0f23ec41567e3c9f",
+        "status": "updated"
+      }
+    ],
+    "index_status": "pending",
+    "index_details": {
+      "fts": "indexed",
+      "vector": "pending",
+      "indexed_generation": 9,
+      "vector_generation": null,
+      "target_generation": 9,
+      "encoder_version": null,
+      "collection": null,
+      "error": {
+        "code": "CAPABILITY_UNAVAILABLE",
+        "details": {},
+        "errors": [],
+        "message": "未配置本地向量后端"
+      }
+    },
+    "warnings": [
+      "运行 memory reconcile 可继续索引，不要重复业务记录"
+    ],
+    "error": {
+      "code": "INDEX_PENDING",
+      "message": "记录已保存；索引待补偿"
+    },
+    "recovery_ref": null
+  }
+}

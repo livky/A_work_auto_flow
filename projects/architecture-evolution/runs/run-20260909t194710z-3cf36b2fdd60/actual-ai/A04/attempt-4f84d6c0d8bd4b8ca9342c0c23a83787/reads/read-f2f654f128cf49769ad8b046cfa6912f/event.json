@@ -1,0 +1,11 @@
+{
+  "actor": "Codex主任务助手",
+  "origin": "actual-browser-screenshot",
+  "capture_path": "capture.png",
+  "locator": "390×844 简报截图",
+  "coverage": "full",
+  "observation": "窄屏正常换行，侧栏收窄，正文不截断；没有本轮插图，未虚构图像验收。",
+  "recorded_at": "2026-09-09T22:44:34.443673Z",
+  "capture_sha256": "0fabd9c67d54c9c33bd517b6bdb92f6f6d6d642993395bc92cbb0ff934aac2ca",
+  "declaration": "Executor-declared actual reading; storage alone is not proof of reading."
+}

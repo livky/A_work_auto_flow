@@ -1,0 +1,48 @@
+{
+  "index_status": "indexed",
+  "owners": [
+    {
+      "owner_id": "RUN-20260910T063103Z-902DA8123205",
+      "generation": 0,
+      "index_status": "indexed",
+      "fts": {
+        "status": "indexed",
+        "indexed_generation": 0,
+        "changed_entries": 1,
+        "removed_entries": 0,
+        "unchanged": false
+      },
+      "vector": {
+        "status": "indexed",
+        "indexed_generation": 0,
+        "collection": "memory_v1_662ca1e31184",
+        "updated_entries": 1,
+        "removed_entries": 0,
+        "points": 1
+      },
+      "state": {
+        "owner_id": "RUN-20260910T063103Z-902DA8123205",
+        "indexed_generation": 0,
+        "vector_generation": 0,
+        "target_generation": 0,
+        "fts_status": "indexed",
+        "vector_status": "indexed",
+        "encoder_version": "memory-record-representation-v3-technical-description",
+        "vector_collection": "memory_v1_662ca1e31184",
+        "native_fingerprint": "8f10f1c3e9ef73d0a7fb669297989c453e0826caad0f46da0f796bd60b2da691",
+        "dependency_signature": "54fc8dcec9bcefd1c322554917d3b117d1b5d219758cbeffe0d96a42502a8f6a",
+        "vector_signature": "05bb1f3ee7d87180305793d8d232909d10dbdbd7ad797247eb5d01d195590dac",
+        "error": null,
+        "updated_at": "2026-09-10T07:03:20.029801Z",
+        "projection_version": "memory-v3-technical-description-documents"
+      },
+      "missing": [],
+      "error": null,
+      "elapsed_seconds": 3.9086366999836173
+    }
+  ],
+  "removed_owners": [],
+  "pending_removals": [],
+  "canonical_writes": 0
+}
+

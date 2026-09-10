@@ -1,0 +1,11 @@
+{
+  "original_l0_missing_count": 0,
+  "map_material_id": "RAW-3ca91f2d4016da01f6e8b203e66c5b98dc3ef09de852ec437c541614a7105c80",
+  "observed_at_utc": "2026-09-09T15:33:02.3220621Z",
+  "query_found": "RUN-20260909T151004Z-A68FBA9F176D",
+  "diff_check_exit_code": 0,
+  "refresh_index_exit_code": 0,
+  "raw_material_read_exit_code": 0,
+  "original_l0_listing_count": 40,
+  "validate_exit_code": 0
+}

@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T175530Z-40721B975BDB",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "title": "扩充核心接口说明：概念定义、存储维护与查询闭环",
+  "keywords": [
+    "接口说明",
+    "表示维护",
+    "索引维护"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "succeeded",
+  "created_at": "2026-09-09T17:55:30Z",
+  "started_at": null,
+  "ended_at": "2026-09-09T18:02:57.553516Z",
+  "owner": "assistant",
+  "question": "怎样让CORE解释清楚材料表示、索引维护和有明确输入输出的完整闭环？",
+  "hypotheses": [],
+  "inputs": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/CORE-before.md.snapshot",
+      "sha256": "b73659425f8af6ad3f1db0788c977b1de6600fa49ce4c25bcea9bd6d47bbab9a",
+      "role": "input",
+      "registered_at": "2026-09-09T18:02:57.926991Z"
+    }
+  ],
+  "parameters": {
+    "scope": "explanatory documentation and canonical project records only",
+    "contract_changes": false
+  },
+  "code": {
+    "commit": null,
+    "dirty": null
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [
+    {
+      "check": "contract_structure",
+      "status": "passed",
+      "evidence": "contract-checks.json",
+      "required": true
+    },
+    {
+      "check": "canonical_roundtrip_and_old_revision",
+      "status": "passed",
+      "evidence": "readback-checks.json",
+      "required": true
+    },
+    {
+      "check": "workspace",
+      "status": "passed",
+      "evidence": "workspace-checks.json",
+      "required": true
+    },
+    {
+      "check": "ai_readability_review",
+      "status": "passed",
+      "evidence": "AI_REVIEW.json",
+      "details": "AI文字自查，非人工或视觉验收",
+      "required": false
+    },
+    {
+      "check": "human_review",
+      "status": "not-run",
+      "evidence": "AI_REVIEW.json",
+      "required": false
+    }
+  ],
+  "metrics": {
+    "new_events": 1,
+    "revised_records": 7,
+    "document_revision": 2,
+    "contract_structure_cases": 12
+  },
+  "artifacts": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/AI_REVIEW.json",
+      "sha256": "c030de2a41bd57f331ec1c8f7f84e5d7c18204a0b060495be36b2387bcb36e05",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.932214Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/before.json",
+      "sha256": "1357064965fbe46707e0402dbb556bf23ece9054c951db5f8c3a6b777a7e2f07",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.936197Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/brief-old-read.json",
+      "sha256": "475651a701736226fb5a333ff16912682d28c3ba6c2bd0a18b01959f0e2ffbc2",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.940200Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/brief-old-request.json",
+      "sha256": "55ffecb0487d44fead83d62ea902cb1631e6254203fe7893fb1ee09f3d9bb4cb",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.944194Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/brief-read-request.json",
+      "sha256": "145cb0174f64c442a8dd68f1456520ce5e9320905027676906ba5e096561b4d0",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.949572Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/brief-read.json",
+      "sha256": "6ff181789b95cf2783dd9d5a364e3aa131e758c1098f030d0586aa86d656aa9b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.953992Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/chapters-inspect.json",
+      "sha256": "88174fd34c210a53df6bec9bc1c2e0083ec79cb57773dc4f195ecdbd44f54744",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.958601Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/chapters-receipt.json",
+      "sha256": "8b7d92bfff599210c0072320baa337362dfee3df395e6bad874566ab3a189f18",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.962478Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/chapters-request.json",
+      "sha256": "f723105b0b19293832f00c0d4e6badda4ed94f18ebb03ee1a7436d9eaf43c7aa",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.967532Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/chapters-validation.json",
+      "sha256": "88a75e234ce4d9d43798bd281b190382c30532ca9fbbf3ab3025e61b5421b5e7",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.971540Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/contract-checks.json",
+      "sha256": "6f8f82c25150a023799240f41059652fa9982a0b7b5b8389798c23b1ce3fb562",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.975535Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/CORE-expanded.md.snapshot",
+      "sha256": "d0d9d55912c5bfbebe50410e61964c70498f14822be9f4212a3f18848f0a6737",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.980066Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.984337Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/documents-map-inspect.json",
+      "sha256": "47d29df6533438b2fa0ce2b8f5cea19cdc39b97c52a00ebb287566b2cedffe59",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.989340Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/documents-map-receipt.json",
+      "sha256": "cf8ca630f2116f0eae460fe9ce29f60d23c55c6b90340f6fd65938dad5407c01",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:57.993399Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/documents-map-request.json",
+      "sha256": "6b8c2ef578488c1ff12ba381357cdf70a17bcf002a0f4777d8e5cd7da41ac484",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.434899Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/documents-map-validation.json",
+      "sha256": "a4e51890dda12044b893b5c2b09c4ef53d63be68e8d502db7c0b9bd9f7323ee9",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.439245Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/fixed-sources.json",
+      "sha256": "c6cbcfa67fdb12b49fa849b3f3939b2802c6fdf3241946e7a5318bf165da588c",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.443939Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/process-old-read.json",
+      "sha256": "3a639f1a09e825796f0d5d4be2cd6e17812ab1ba9035d1f87fd650c583d9f1f7",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.447960Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/process-old-request.json",
+      "sha256": "27eeefec8f060a61c766adb2b8926c83312fe6d5d3376af4fd0d0c3e462f0b36",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.453030Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/process-read-request.json",
+      "sha256": "e09fe08c85101f4eeca36c7846dd3ccd2b330ad4569ddff23839eac08d6942b4",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.457984Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/process-read.json",
+      "sha256": "fb973274e90c739cabc800b949d7551bfb651537096abfeb0ef05961a01d1a9d",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.462974Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/readback-checks.json",
+      "sha256": "9c4a9ec52dd4074cd40dc8d89b94fdeee7ab9ecf02fea2655a10a60b9390cb33",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.467998Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/README.md",
+      "sha256": "b30042a8633909bb40890b8df7393cf4375995d443fa86c55eb02be300b7298b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.473756Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/unit-event-inspect.json",
+      "sha256": "5b29468d223c7376bb66a85956e86a447502d830ea18e68802e4c2f943eb221b",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.478767Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/unit-event-receipt.json",
+      "sha256": "6becca6339c7a0f1cf7fab6488e6ddc4e327f5e185580879e019ca332eaceae6",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.483776Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/unit-event-request.json",
+      "sha256": "c59d4701c376b86def6fa78b93a893808485d086502008d307468b2a5f91935f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.488127Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/unit-event-validation.json",
+      "sha256": "f98de42aa529c2d894dc31b562d2ac79336353a7db124940ed98da5058be00bb",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.493132Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/update_explanation.py",
+      "sha256": "f8269f3e4f0fb896a69897d23b980064ac9a0c81367afde104c9157ea36c7144",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.497642Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/user-feedback.txt",
+      "sha256": "bcfabf9ff45bf0ed696a1bf002cbe3139dd4cce32b56ea42370ab3340b5ce7a1",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.501464Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/workspace-checks.json",
+      "sha256": "598b8714a85a18f3f44a02ce264dc399afdc270ff715d397220482f46aa0788f",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.506920Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260909t175530z-40721b975bdb/workspace-validation.txt",
+      "sha256": "8010bf11c642fe652a2456440d50ef662a95451c685d7e53d067532dbe1c934a",
+      "role": "artifact",
+      "registered_at": "2026-09-09T18:02:58.948443Z"
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "完成CORE扩写与受影响规范正文、章节、地图和双文稿r2同步；r1回读不变。",
+  "limitations": [
+    "新接口尚未运行接入；本次示例为假想说明，不是实验结果。",
+    "人工可读性意见待收集；未重新执行页面视觉、全软件回归或第二台机器验收。"
+  ],
+  "parent_run_ids": [
+    "RUN-20260909T164914Z-D20A9406384A"
+  ],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  },
+  "sensitivity": "internal"
+}

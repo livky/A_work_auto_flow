@@ -1,0 +1,18 @@
+[
+  {
+    "target_kind": "file",
+    "target_id": "SRC-ARCH-CORE-EXPLAIN-20260910-CORE",
+    "revision": null,
+    "sha256": "d0d9d55912c5bfbebe50410e61964c70498f14822be9f4212a3f18848f0a6737",
+    "locator": "完整文件",
+    "relation": "input"
+  },
+  {
+    "target_kind": "file",
+    "target_id": "SRC-ARCH-CORE-EXPLAIN-20260910-FEEDBACK",
+    "revision": null,
+    "sha256": "bcfabf9ff45bf0ed696a1bf002cbe3139dd4cce32b56ea42370ab3340b5ce7a1",
+    "locator": "完整文件",
+    "relation": "input"
+  }
+]

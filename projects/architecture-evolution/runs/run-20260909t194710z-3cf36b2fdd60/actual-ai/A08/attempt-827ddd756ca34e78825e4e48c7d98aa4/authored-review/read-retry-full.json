@@ -1,0 +1,8 @@
+{
+  "actor": "Codex /root/retrieval_review actual AI",
+  "origin": "public material-query CLI",
+  "capture_path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A08/attempt-827ddd756ca34e78825e4e48c7d98aa4/delivered/retry-full.md",
+  "locator": "实际工具呈现的完整交付投影；coverage 描述所交付内容相对于材料的覆盖",
+  "coverage": "full",
+  "observation": "读完API全文，k为失败序号、r无量纲、等待min公式、五次上限及幂等/超时等限制；没有服务端状态方程。"
+}

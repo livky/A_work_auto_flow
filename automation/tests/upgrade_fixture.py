@@ -183,6 +183,16 @@ def populate(root, branches=8):
     memory_files, memory_directories = populate_memory(root)
     names.extend(memory_files)
     directories.update(memory_directories)
+    # Preserve an explicit, fingerprint-pinned legacy locator after a research
+    # Run was moved. The old path remains absent throughout real setup cycles.
+    relocated = 'research/用户迁移 样例/历史运行/结果.txt'
+    write(relocated, 'SYNTHETIC ONLY frozen relocated evidence\n')
+    source_registry = root / 'retrieval/sources.json'
+    registered = json.loads(source_registry.read_text(encoding='utf-8'))
+    registered['sources'].append({'source_id': 'SRC-UPGRADE-RELOCATED', 'path': relocated,
+        'relocated_from': 'runs/旧布局/结果.txt', 'enabled': True, 'sensitivity': 'internal',
+        'sha256': hashlib.sha256((root / relocated).read_bytes()).hexdigest()})
+    source_registry.write_text(json.dumps(registered, ensure_ascii=False, indent=2), encoding='utf-8')
     # 各类真实 owner 的嵌套 Run、可读附件与空目录必须经过真实 setup 的
     # 全保护清单校验；不是只在任意深度放一个无身份文本来模拟业务对象。
     import workspace_cli
@@ -340,6 +350,30 @@ def populate(root, branches=8):
             directories.add(relative)
         elif path.is_file():
             names.append(relative)
+    # Maintenance plans are durable user work under .local, unlike rebuildable
+    # index caches. Create one through the actual public application so upgrades
+    # must preserve its real fixed context/read receipt and versioned plan bytes.
+    # This is an unreviewed software fixture, never a fabricated AI assessment.
+    from material_query.api import dispatch as material_dispatch
+    from material_query.contracts import Scope, MaintenanceRequest
+    from material_query.coordinator import Coordinator
+    from material_query.legacy_adapter import from_legacy
+    from material_query.wire import json_value
+    material_app = Coordinator(root)
+    try:
+        material_scope = Scope((v3_owner,), None, None, None, None, None, None, False, (), (), None, None)
+        request = MaintenanceRequest((from_legacy(unit_ref)[0],), material_scope, "dependency-review", "1")
+        planned = material_dispatch(material_app, "maintenance-plan", json_value(request))
+        assert planned.get('value') and planned['value']['plan_id'], planned
+    finally:
+        material_app.close()
+    plan_home = root / '.local/material-query/plans'
+    for path in [plan_home, *plan_home.rglob('*')]:
+        relative = path.relative_to(root).as_posix()
+        if path.is_dir():
+            directories.add(relative)
+        elif path.is_file():
+            names.append(relative)
     # Raw execution containers may contain files named run.json which are data,
     # not business manifests. Upgrade must retain all bytes and empty folders.
     capture = 'runs/自动登记 升级/.run-captures/attempt-01'
@@ -365,3 +399,8 @@ def assert_preserved(root, expected):
     for name in expected['directories']:
         if not (root / name).is_dir():
             raise AssertionError('Protected directory missing: ' + name)
+    if 'research/用户迁移 样例/历史运行/结果.txt' in expected['files']:
+        import evidence
+        resolved = evidence.reference_path(root, 'runs/旧布局/结果.txt')
+        if resolved != (root / 'research/用户迁移 样例/历史运行/结果.txt').resolve():
+            raise AssertionError('Pinned source relocation no longer resolves')

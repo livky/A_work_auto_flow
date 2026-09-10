@@ -1,0 +1,91 @@
+{
+  "valid": true,
+  "errors": [],
+  "dry_run": true,
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "head": {
+    "commit_id": "COM-b3661e1a-de38-49a1-b93d-2d70081fad3d",
+    "generation": 1,
+    "manifest_hash": "0545be28cd8c434a0a4dc6c55c5d0b3387c1845d30e482b3983b9cf3ae215469"
+  },
+  "record_results": [
+    {
+      "client_key": "MAP",
+      "record_id": "MEM-d17b92e3-e99d-563b-bec1-507552ac42ba",
+      "revision": 1,
+      "content_hash": "ec8a29c9c12cb8f72effcb66b697897f432e504e0b74fdae314edeec684a6010",
+      "status": "would_create"
+    },
+    {
+      "client_key": "P0",
+      "record_id": "MEM-07f99619-3a8d-5bc8-8a4f-7cc26c68895b",
+      "revision": 1,
+      "content_hash": "61796403185825c041efc4b27f0a7963f26fe50ad220beca687667556e905fa7",
+      "status": "would_create"
+    },
+    {
+      "client_key": "P1",
+      "record_id": "MEM-0ea4cb73-8b6d-5a0a-9e18-25d8f8832389",
+      "revision": 1,
+      "content_hash": "4846cd5a6b2d4e8d36e45901c6061e73617e3b5c8306f361b9258aa372c27f0c",
+      "status": "would_create"
+    },
+    {
+      "client_key": "P2",
+      "record_id": "MEM-bfa85fc8-18bc-5d83-b17e-a4cfaa50f943",
+      "revision": 1,
+      "content_hash": "4995648180e41fcfe6499bd195798fc68872590cd540f7d21fcdef87f5171887",
+      "status": "would_create"
+    },
+    {
+      "client_key": "P3",
+      "record_id": "MEM-de3fa8e3-8175-513e-9570-93f73d8fe2e1",
+      "revision": 1,
+      "content_hash": "273564062affe897709d69c3034b5cf9a3359620a33f0163134af64c2a712a09",
+      "status": "would_create"
+    },
+    {
+      "client_key": "P4",
+      "record_id": "MEM-433a097e-6cf5-5ff3-baf5-1e0a47e7b9c5",
+      "revision": 1,
+      "content_hash": "fa30937b2471ab7ef3e0602c0502cdff728037501015e1d553deeaabaa47f94b",
+      "status": "would_create"
+    },
+    {
+      "client_key": "P5",
+      "record_id": "MEM-fd727af8-77a1-5900-918d-3bf0bc808a3a",
+      "revision": 1,
+      "content_hash": "7f81c8a3f318af33da5bc9b887056fc779a626cbb0248284b29ff43e32e4b047",
+      "status": "would_create"
+    },
+    {
+      "client_key": "P6",
+      "record_id": "MEM-2afc5e96-c1d0-5f3a-8ad1-484f39e6d27d",
+      "revision": 1,
+      "content_hash": "332e69ded51bf35a2230f6a61a837e223d995edf89c70c1b0f9e421a5b0a69e2",
+      "status": "would_create"
+    },
+    {
+      "client_key": "P7",
+      "record_id": "MEM-12ab4fe8-bee3-5179-a3ef-e7ddaed461a2",
+      "revision": 1,
+      "content_hash": "10ac71f6bc5069324a64bd9663fbc040895eb7cb70a367bb04bf4b6c4067a234",
+      "status": "would_create"
+    },
+    {
+      "client_key": "B0",
+      "record_id": "MEM-f8a3205a-c835-5a26-9165-d4142ad25c6f",
+      "revision": 1,
+      "content_hash": "88d1e17eea2df94a346d40c00a5d1140b3cc8f6ce528ddf9b435e30be66545da",
+      "status": "would_create"
+    },
+    {
+      "client_key": "B1",
+      "record_id": "MEM-54e967cf-5f9e-5250-894d-ab3a56fe95ef",
+      "revision": 1,
+      "content_hash": "3c27463c81abb6ce5674a8fc9b617bf098e5f67716c82bd390456b1a7eaf84dd",
+      "status": "would_create"
+    }
+  ],
+  "writes": 0
+}

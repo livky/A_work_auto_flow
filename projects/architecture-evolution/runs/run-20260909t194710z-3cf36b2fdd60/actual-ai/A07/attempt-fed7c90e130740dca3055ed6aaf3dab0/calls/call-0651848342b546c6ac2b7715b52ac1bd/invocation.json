@@ -1,0 +1,22 @@
+{
+  "call_id": "call-0651848342b546c6ac2b7715b52ac1bd",
+  "argv": [
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\services\\qdrant\\runtime\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\automation\\scripts\\workspace_cli.py",
+    "material-query",
+    "search",
+    "--request",
+    "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\authored-requests\\section-summary-missing.json",
+    "--assemble"
+  ],
+  "cwd": "D:\\共享桌面\\A_work\\A_work_auto_flow\\.local\\testing\\material-query-f3-20260910-actual\\workspace",
+  "started_at": "2026-09-09T21:04:41.408476Z",
+  "timeout_seconds": 120,
+  "request": {
+    "original_path": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A07\\attempt-fed7c90e130740dca3055ed6aaf3dab0\\authored-requests\\section-summary-missing.json",
+    "path": "request.snapshot.txt",
+    "sha256": "4054f08f38ca7d66ea8fafd49db1e40b4e3a3812745f6b25eda52849476b8b47"
+  }
+}

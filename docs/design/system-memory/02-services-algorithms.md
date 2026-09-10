@@ -1,4 +1,9 @@
 # 服务入口、算法与失败处理 v1
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：首版服务/算法设计及后续排序修订说明；接口和默认策略须核对当前程序。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../../ARCHITECTURE.md)、[研究记录标准](../../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 本文件描述待实现的程序，不是已有命令手册。所有函数位于计划新增的 `automation/scripts/memory/` 包；公共入口由 MemoryService 调度。CLI 参数和 HTTP 都转换为同一请求对象。
 

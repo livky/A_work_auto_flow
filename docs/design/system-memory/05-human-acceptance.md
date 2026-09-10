@@ -1,4 +1,9 @@
 # 人类可阅的整体评价与交付核对
+<!-- architecture-evolution-timepoint:start -->
+> 时点说明（2026-09-09 整理）：H01–H18 冻结使用验收计划；实际 AI 结果、用户意见和科学复核分别记录。历史正文保留，不据本次整理重新判定功能或验收状态。
+> 现行入口：[架构总览](../../../ARCHITECTURE.md)、[研究记录标准](../../RESEARCH_RECORDING.md)。完整 checkout 中的[文档演进记录](../../../projects/architecture-evolution/docs/DOCUMENT_HISTORY.md)按时间串联各批次；公共源码包不含此 Project。
+> 未随源码分发的历史 Run/附件仅保留追溯线索，不能据当前源码包独立复核其结果。
+<!-- architecture-evolution-timepoint:end -->
 
 版本1.1；归属W13。本组在原有115个技术测试点上，增加18个日常使用验收点H01–H18。当前只是验收计划，未执行真实产品操作，未产生实际使用结果。
 

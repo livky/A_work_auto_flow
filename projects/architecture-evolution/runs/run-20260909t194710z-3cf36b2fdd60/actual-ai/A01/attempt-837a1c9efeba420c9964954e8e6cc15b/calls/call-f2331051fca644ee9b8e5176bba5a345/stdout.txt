@@ -1,0 +1,38 @@
+{
+  "request_id": "57538b1e-4fda-4b2d-9d0c-4110fc3e9dae",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "commit_id": "COM-e10f5024-437f-4914-bb9c-1ee9dbbff69d",
+  "generation": 14,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": "IMPL-EVENT",
+      "record_id": "MEM-ecbf9eb0-e493-56e1-afc1-150345e70be3",
+      "revision": 1,
+      "content_hash": "ddc7f7815c3f400863ce7935df6dfd53ca7101ecc357378dd11ce8de35025bbe",
+      "status": "created"
+    },
+    {
+      "client_key": "IMPL-EXPERIENCE",
+      "record_id": "MEM-44b626d2-a9de-5b59-95cf-7b7fd817aaee",
+      "revision": 1,
+      "content_hash": "fc594b7433bd6147575bec4b9ed1c198086766fd5619648a10e8a978e8b77233",
+      "status": "created"
+    }
+  ],
+  "index_status": "indexed",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "indexed",
+    "indexed_generation": 14,
+    "vector_generation": 14,
+    "target_generation": 14,
+    "encoder_version": "memory-record-representation-v3-technical-description",
+    "collection": "memory_v1_662ca1e31184",
+    "error": null
+  },
+  "warnings": [],
+  "error": null,
+  "recovery_ref": null
+}
+

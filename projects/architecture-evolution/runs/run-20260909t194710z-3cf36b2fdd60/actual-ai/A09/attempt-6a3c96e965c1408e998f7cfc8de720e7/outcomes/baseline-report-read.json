@@ -1,0 +1,134 @@
+{
+  "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\calls\\call-fefc9e35ef0440f5b0db3bdf7a247d04",
+  "exit_code": 0,
+  "result": {
+    "schema_version": 1,
+    "owner_id": "RES-F3-TANK",
+    "title": "SYNTHETIC F3 tank",
+    "document_source": "independent",
+    "document": {
+      "record_id": "MEM-35305be1-6956-5547-8457-b07b06b3b29d",
+      "revision": 1,
+      "title": "SYNTHETIC F3 水箱精简报告（旧依据基线）",
+      "document_type": "research_report",
+      "purpose": "SYNTHETIC F3固定双文稿维护检查",
+      "audience": "合成检查执行者",
+      "scope": "旧r1依据基线；新饱和输入尚未融合，不据此认可新参数下的结论",
+      "common_refs": [
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+          "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+          "target_kind": "record"
+        },
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+          "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+          "target_kind": "record"
+        }
+      ],
+      "section_refs": [
+        {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "a8a611af0cbe69d15adcdcd816cc2a70309817ae205abc2cb474d7bab0a9e1c6",
+          "target_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+          "target_kind": "record"
+        }
+      ]
+    },
+    "report": {
+      "version": 1,
+      "record_id": "MEM-35305be1-6956-5547-8457-b07b06b3b29d",
+      "revision": 1,
+      "title": "SYNTHETIC F3 水箱精简报告（旧依据基线）",
+      "sections": [
+        {
+          "section_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+          "section_key": "brief",
+          "title": "水箱结论与边界（旧依据基线）",
+          "role": "conclusion",
+          "ref": {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "a8a611af0cbe69d15adcdcd816cc2a70309817ae205abc2cb474d7bab0a9e1c6",
+            "target_id": "MEM-fdc54497-ca64-52d2-a9a2-48b3e188f6bb",
+            "target_kind": "record"
+          },
+          "source_issues": [],
+          "blocks": [
+            {
+              "evidence_refs": [
+                {
+                  "locator": "",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                  "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                  "target_kind": "record"
+                },
+                {
+                  "locator": "",
+                  "relation": "references",
+                  "revision": 1,
+                  "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+                  "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+                  "target_kind": "record"
+                }
+              ],
+              "markdown": "旧r1依据仅说明：在给定连续、无延迟且全过程未饱和的合成模型中，液位误差指数衰减。该结论不能推广到饱和泵或现实系统；尚需检查目标所需流量与泵容量。新输入尚未融合到这份显式基线，本文不确认新参数下可达。",
+              "type": "prose",
+              "source_issues": []
+            }
+          ]
+        }
+      ],
+      "complete": true
+    },
+    "items": [],
+    "missing": [],
+    "generated_at": "2026-09-09T21:16:43.895247Z",
+    "report_candidates": [
+      {
+        "record_id": "MEM-35305be1-6956-5547-8457-b07b06b3b29d",
+        "revision": 1,
+        "title": "SYNTHETIC F3 水箱精简报告（旧依据基线）",
+        "updated_at": "2026-09-09T21:16:43.111707Z",
+        "document_type": "research_report"
+      },
+      {
+        "record_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+        "revision": 1,
+        "title": "SYNTHETIC F3 水箱完整过程（旧依据基线）",
+        "updated_at": "2026-09-09T21:16:40.706538Z",
+        "document_type": "research_process"
+      }
+    ],
+    "report_coverage": {
+      "included_detail_ids": [
+        "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a"
+      ],
+      "uncovered_detail_ids": []
+    },
+    "report_version_hints": [],
+    "basis_heads": {
+      "RES-F3-TANK": "COM-2e6ae517-4db7-4b0a-a914-6aa0e02d6785"
+    },
+    "metrics": {
+      "elapsed_ms": 20.9,
+      "inventory_owners": 3,
+      "read_memory_owners": 1,
+      "parsed_owner_records": 6,
+      "resolved_sections": 1
+    },
+    "writes": 0
+  }
+}

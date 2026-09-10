@@ -1,0 +1,60 @@
+{
+  "actor": "Codex /root/memory_review actual AI",
+  "comparisons": [
+    {
+      "expectation_id": "A06-E1",
+      "status": "meets",
+      "observation": "实际以新自然语言问题和技术关键词经公共lexical查询发现4个候选，初始请求不带MEM ID/include_refs；实际读候选后才用返回refs固定展开，组包ok/complete=true。首次漏必填字段被VALIDATION拒绝且消耗0，失败保留。连续上下文已知材料，不是盲测或语义模型质量评估。",
+      "evidence_refs": [
+        "calls/call-9d7b6232a86d485f8b17877802229824/stdout.txt",
+        "calls/call-2eaaaa7e125a4b59b5cd13cab7c22294/request.snapshot.txt",
+        "calls/call-2eaaaa7e125a4b59b5cd13cab7c22294/stdout.txt",
+        "calls/call-47b56f1236744402a0d66f61a6eabce2/stdout.txt",
+        "reads",
+        "AI-ANALYSIS.md"
+      ]
+    },
+    {
+      "expectation_id": "A06-E2",
+      "status": "meets",
+      "observation": "实际读完模型r2、变量定义r1、APIr1及饱和约束r1，采用说明仅参考按适用前提和触顶状态分段检查的方法；要求幂等/去重、错误类别、超时和计数边界。明确不能互换K与r或推导API稳定/最终成功，指出服务端负载模型缺口，待执行验证未冒充实验。说明已公共保存并回读。",
+      "evidence_refs": [
+        "ADOPTION.md",
+        "delivered-full.md",
+        "calls/call-e7eaed358e5c41339bc7171c9cf63ae4/request.snapshot.txt",
+        "calls/call-0260a9e2e8d54358ad6390f0ad2ac30a/stdout.txt"
+      ]
+    },
+    {
+      "expectation_id": "A06-E3",
+      "status": "meets",
+      "observation": "新候选MEM-1c372f0d-3afe-5a4b-96fb-867eff035115 r1归属第二研究RES-F3-RETRY，analogous_to/candidate、created_by.kind=ai；固定4个来源。四份原记录公共inspect的哈希及owner均保持，原A08导航及三份原件哈希保持。保存committed/索引pending与后续文本indexed分别记录，未建实验或科学review。",
+      "evidence_refs": [
+        "calls/call-e7eaed358e5c41339bc7171c9cf63ae4/stdout.txt",
+        "calls/call-0260a9e2e8d54358ad6390f0ad2ac30a/stdout.txt",
+        "calls/call-96b7d94a507b45ae9e7fb71acfb42d21/stdout.txt",
+        "calls/call-831fbf0fda3d454d91284dd19b888138/stdout.txt",
+        "readback-checks.json"
+      ]
+    }
+  ],
+  "readable_artifacts": [
+    {
+      "title": "A06实际新问题检索、采用说明与回读",
+      "path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A06/attempt-ea028f7f2e4240568a002129064461fb/AI-ANALYSIS.md"
+    },
+    {
+      "title": "API分段检查的有条件采用正文",
+      "path": "D:/共享桌面/A_work/A_work_auto_flow/projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/actual-ai/A06/attempt-ea028f7f2e4240568a002129064461fb/ADOPTION.md"
+    }
+  ],
+  "limitations": [
+    "补充既有A08/A09；连续上下文已知材料，不是盲测。",
+    "新自然语言问题使用lexical词项通道，未运行语义/向量/结构模型；不证明检索质量或规模性能。",
+    "发现与固定全文展开为两个独立CLI查询，各自预算，不是跨进程续查。",
+    "首个请求漏必填字段被拒绝，原失败保留；有效请求只补齐字段，问题和关键词未改变。",
+    "只新增合成F3第二研究中的参考候选，未修改四份原记录、旧导航或真实Project；未执行现实试验、人工或科学验收。"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed"
+}

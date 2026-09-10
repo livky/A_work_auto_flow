@@ -1,0 +1,1325 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "status": "closure_audit_source_rows",
+  "rows": [
+    {
+      "id": "INH01",
+      "verdict": "partial_verified",
+      "verified_scope": "固定 record 修订/字节、旧六字段 relation、无索引 claim 定位与 owner 自身指纹已有运行适配。",
+      "tests": [
+        "F.test_describe_and_resolve_keep_fixed_revision_and_relation",
+        "F.test_claim_resolver_uses_canonical_container_after_index_loss",
+        "Q.test_fixed_old_revision_can_be_selected"
+      ],
+      "unresolved": "四类旧身份全字段往返和各自 SHA 冲突矩阵未闭合；独立旧 representation ID 与 owner/claim 直接正文读取仍明确不支持。",
+      "code": [
+        "automation/scripts/material_query/legacy_adapter.py",
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "INH02",
+      "verdict": "partial_verified",
+      "verified_scope": "规范 v3 可选 knowledge_facets 真实保存角色、多个尝试、逐目标 confidence、完整适用字段和固定分类依据；角色/多结果/review/validity 独立交叉，未知显式标注，空集不变不限，分类依据进入授权闭包；旧 v1/v2 固定读写不回填。",
+      "tests": [
+        "Q.test_empty_scope_is_empty_not_global",
+        "S.test_explicit_user_exclusions_deny_derived_parent_under_wide_ceiling",
+        "Q.test_retracted_review_filter_is_distinct_from_current_validity",
+        "V.test_public_roundtrip_preserves_multiple_attempts_confidence_and_old_revision",
+        "V.test_role_multiple_outcomes_review_and_validity_intersect_independently",
+        "V.test_confidence_targets_exact_claim_and_never_promotes_review",
+        "V.test_unknown_is_explicit_and_empty_filters_never_become_unrestricted",
+        "V.test_applicability_uses_exact_structured_conditions_and_exclusions",
+        "V.test_facet_basis_is_in_real_source_permission_and_revocation_closure",
+        "V.test_legacy_v1_v2_save_and_fixed_read_need_no_backfill_or_new_field"
+      ],
+      "unresolved": "旧完整 Applicability 请求 DTO 的业务时间和 subject_versions 条件尚未适配；现有请求以明确条件/排除数组精确匹配。不能把规范字段无损保存解释为旧请求全字段兼容，也不能把 confidence 当科学认可。",
+      "code": [
+        "automation/scripts/material_query/contracts.py",
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/memory/facets.py",
+        "automation/scripts/material_query/facets.py",
+        "automation/schemas/memory-v3.schema.json"
+      ],
+      "audit_findings": [
+        "H01"
+      ]
+    },
+    {
+      "id": "INH03",
+      "verdict": "partial_verified",
+      "verified_scope": "多表示保留各自固定身份、原分数、实际 matched_text 与真实 lexical 投影版本；RRF 不增加同通道投票；真实通道故障保留其他结果，缺水位明确降级，逐 claim 准入和最终包诊断已执行。",
+      "tests": [
+        "R.test_multiple_representations_keep_individual_raw_scores_and_fixed_refs",
+        "R.test_sqlite_and_oserror_lexical_failures_preserve_completed_identity",
+        "R.test_lexical_iterator_failure_keeps_its_completed_prefix",
+        "R.test_missing_owner_watermark_is_partial_even_when_fts_rows_exist",
+        "Q.test_formal_exact_claim_never_borrows_other_accepted_claim",
+        "Q.test_optional_channel_degradation_survives_packet",
+        "R.test_formal_representation_fragment_is_null_without_claim_approval"
+      ],
+      "unresolved": "未注册 dense/sparse 模型通道不计为实际运行；当前真实支持 identity/lexical 和既有关系导航，不伪造模型或编码版本。",
+      "code": [
+        "automation/scripts/material_query/contracts.py",
+        "automation/scripts/material_query/coordinator.py"
+      ],
+      "audit_findings": [
+        "H02",
+        "H04",
+        "S01"
+      ]
+    },
+    {
+      "id": "INH04",
+      "verdict": "partial_verified",
+      "verified_scope": "manifest 内容页、固定变化页、连续页计划、每 owner FTS 原子事务、故障重试和修复已有真实执行。",
+      "tests": [
+        "F.test_index_failure_retries_plan_without_second_content_commit",
+        "F.test_index_plan_requires_contiguous_complete_input_pages",
+        "F.test_full_rebuild_uses_manifest_contents_after_index_loss",
+        "F.test_repair_rebuild_replace_corrupt_fts_text_without_content_write"
+      ],
+      "unresolved": "仅 lexical/existing 和 existing_associations_only 图窄键；旧 Run/原生证据图、dense/custom encoder、筛选专用索引不支持。重建中断、无变化流 fixture、完整中间页缺口及多 owner 计划仍未专测。",
+      "code": [
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "INH05",
+      "verdict": "partial_verified",
+      "verified_scope": "两种真实融合和两种固定文本重排策略均可切换；重排不扩充候选，保留原身份和 evidence；缺文本/故障/取消如实返回。",
+      "tests": [
+        "Q.test_pluggable_ranking_keeps_fixed_identities",
+        "F.test_rerank_only_uses_provided_fixed_slices_and_preserves_evidence",
+        "F.test_rerank_reports_missing_text_provider_failure_and_zero_budget",
+        "R.test_rejected_first_candidate_is_refilled_before_final_k"
+      ],
+      "unresolved": "融合替换测试比较固定ID集合；重排比较原完整候选/evidence。尚未单独替换完整RankingPipeline后端；无模型提供器明确不支持。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "INH06",
+      "verdict": "partial_verified",
+      "verified_scope": "固定查询、筛选上限、受控补充范围、续查共享账本、取消/忙锁/TTL均有入口；非 plain、未知策略、查询内修复与按秒容忍明确拒绝。",
+      "tests": [
+        "Q.test_unregistered_repair_and_tolerance_are_not_ignored",
+        "Q.test_active_query_rejects_poll_and_resume_without_charging",
+        "D.test_existing_association_uses_explicit_supplement_scope_and_ceiling",
+        "D.test_unknown_strategy_and_foreign_cursor_are_rejected"
+      ],
+      "unresolved": "完整旧 QuerySpec/Resume DTO 不是原样兼容接口；旧 context 序列、audit 独立用途、planner/capability 下推及双扩展轴需完整适配验收。旧 additional_budget 明确被设计替换为新查询。",
+      "code": [
+        "automation/scripts/material_query/contracts.py",
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "INH07",
+      "verdict": "partial_verified",
+      "verified_scope": "固定历史游标在 HEAD 前进后不漂移；固定文稿/字段组合只读；A09 新文稿经正式提交并读回新旧版本。",
+      "tests": [
+        "F.test_fixed_history_cursor_does_not_shift_when_head_advances",
+        "F.test_source_read_and_representation_build_are_read_only",
+        "X.test_fixed_unit_and_documents_keep_old_bytes_after_r2"
+      ],
+      "unresolved": "独立旧 ReadView(view/text/graph/omitted) 全结构兼容和所有视图不写规范修订的组合断言未闭合；A09 是实际 AI 阅读/维护，不能替代全视图协议测试。",
+      "code": [
+        "automation/scripts/material_query/foundation.py"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "INH08",
+      "verdict": "partial_verified",
+      "verified_scope": "真实 CAS/幂等/固定 changes、逐 owner 提交待办、重启只读 status、恢复新修订、撤回 review 已测；变化后旧 review 不再准入，新适用 review 绑定新 claim/输入，正式投影恢复且旧 review 原样保留。",
+      "tests": [
+        "F.test_validate_apply_binding_cas_and_idempotency",
+        "M.test_cross_owner_failure_returns_committed_owner_and_retries_only_pending_owner",
+        "MS.test_applied_plan_reports_real_commit_fixed_changes_and_live_index_pending",
+        "M.test_retract_appends_real_review_and_preserves_claim_record",
+        "F.test_restore_creates_new_revision_and_rejects_later_changes",
+        "RV.test_new_review_revalidates_changed_claim_and_preserves_old_review_owner_scope"
+      ],
+      "unresolved": "正向 C24 集成使用公开 memory review 与实际 Evidence.project；旧 ReviewCommand/CommitReceipt 的所有字段 DTO 桥接仍需按原后端逐项验收。A09 本身没有应撤回的已复核 claim。",
+      "code": [
+        "automation/scripts/material_query/foundation.py",
+        "automation/scripts/material_query/maintenance.py",
+        "automation/scripts/material_query/evidence.py",
+        "automation/scripts/memory/service.py"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "INH09",
+      "verdict": "partial_verified",
+      "verified_scope": "12维账本/预约结算及并发已测；模型输入、输出、调用数、总tokens各自先耗尽和零额度四种边界分别执行；能力明确model_providers/tokenizers为空。",
+      "tests": [
+        "B.test_model_input_limit_can_exhaust_before_output_calls_and_total",
+        "B.test_model_output_limit_can_exhaust_before_input_calls_and_total",
+        "B.test_model_call_limit_can_exhaust_before_input_output_and_total",
+        "B.test_model_total_limit_can_exhaust_before_input_output_and_calls",
+        "B.test_competing_providers_cannot_reserve_same_remaining_capacity",
+        "B.test_parent_settlement_does_not_repeat_child_charges",
+        "B.test_parallel_provider_wall_cost_is_one_observed_active_interval"
+      ],
+      "unresolved": "模型/分词策略未注册，当前只有可计量硬资源边界；不宣称真实tokenizer、模型调用或任意编码器费用已验收。",
+      "code": [
+        "automation/scripts/material_query/contracts.py",
+        "automation/scripts/material_query/budget.py"
+      ],
+      "audit_findings": [
+        "H07"
+      ]
+    },
+    {
+      "id": "INH10",
+      "verdict": "partial_verified",
+      "verified_scope": "Issue(code/message/affected_refs/retry)与Basis(basis_id/observed_at)已补；重试类别/隐藏引用、稳定观察身份和真实missing材料包Issue已有直接执行。",
+      "tests": [
+        "C.test_basis_observation_is_stable_for_same_observation_and_changes_with_refs",
+        "C.test_structured_issue_retries_and_never_discloses_unobserved_refs",
+        "Q.test_missing_representation_never_silently_renders_another_type",
+        "F.test_index_failure_retries_plan_without_second_content_commit"
+      ],
+      "unresolved": "旧Outcome逐类/逐阶段无损转换仍需按具体原后端核验；当前warnings兼容保留，affected_refs仅使用已观察固定对象。早期A07预算stop_reason为空为历史回执事实。",
+      "code": [
+        "automation/scripts/material_query/contracts.py",
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/material_query/legacy_adapter.py"
+      ],
+      "actual_ai": [
+        "A07"
+      ],
+      "audit_findings": [
+        "H05"
+      ]
+    },
+    {
+      "id": "INH11",
+      "verdict": "partial_verified",
+      "verified_scope": "旧 references/input/same_entity/mentions 与同端点平行边保留原关系/证据关系；同名固定实体不合并。显式差异随获准路径返回；规范拒绝后缓存 stale，新查询仅返回有权诊断边，拒绝/旧边不能成为桥；ceiling/排除不泄露桥节点。",
+      "tests": [
+        "D.test_legacy_relations_keep_parallel_edges_and_explicit_evidence_links",
+        "D.test_same_title_fixed_entities_are_not_merged_by_navigation",
+        "D.test_unmapped_canonical_relation_is_a_gap_not_an_invented_dependency",
+        "F.test_paths_are_ordered_fixed_and_target_constrained",
+        "D.test_cycles_diamonds_and_cursor_share_unique_budget",
+        "D.test_decision_retries_are_idempotent_and_never_promote_review",
+        "F.test_rejected_wrong_connection_preserves_differences_without_becoming_a_path"
+      ],
+      "unresolved": "路径服务提供有界最短固定链，没有承诺或实现全部替代路径枚举；显式用户/AI 判错作为合成输入测试，导航认可不等于科学有效。未注册规范关系只报告缺口。",
+      "code": [
+        "automation/scripts/material_query/contracts.py",
+        "automation/scripts/material_query/associations.py",
+        "automation/scripts/material_query/deepening.py",
+        "automation/schemas/memory-v3.schema.json"
+      ],
+      "audit_findings": [
+        "H06"
+      ]
+    },
+    {
+      "id": "INH12",
+      "verdict": "partial_verified",
+      "verified_scope": "六类型及已有字段组合、missing/reject/skip/fallback/stale已测；纯foundation/definition-resolve按0.1与目标定义1显式映射旧topic_synthesis/domain_synthesis并实际用于查询。",
+      "tests": [
+        "F.test_legacy_definition_aliases_are_versioned_pure_and_usable_by_query",
+        "Q.test_missing_representation_never_silently_renders_another_type",
+        "F.test_source_read_and_representation_build_are_read_only",
+        "A.test_realization_inspection_reports_changed_original_as_stale",
+        "DS.test_domain_two_owner_sources_are_rechecked_before_revoked_body_reads"
+      ],
+      "unresolved": "多项 fallback 次序尚未专测；旧 topic_synthesis/domain_synthesis 通过显式版本映射可实际查询。领域多贡献来源撤权已有专测；新解释由外部 AI 维护草案→review→apply 取得新修订，自动 builder 只组合既有字段。",
+      "code": [
+        "automation/scripts/material_query/definitions.py",
+        "automation/scripts/material_query/representations.py",
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "C01",
+      "verdict": "partial_verified",
+      "verified_scope": "r1 固定修订、缺 SHA 补齐、relation 保留和固定正文 r1 字节已有直接断言。",
+      "tests": [
+        "F.test_describe_and_resolve_keep_fixed_revision_and_relation",
+        "F.test_source_read_and_representation_build_are_read_only",
+        "Q.test_fixed_old_revision_can_be_selected",
+        "E.test_bad_fixed_claim_hash_and_legacy_owner_are_explicitly_rejected"
+      ],
+      "unresolved": "四类旧 kind 全字段往返与 record/file/owner 各自 SHA 失配未完全覆盖；独立旧表示 ID、owner 正文不支持。",
+      "code": [
+        "automation/scripts/material_query/foundation.py",
+        "automation/scripts/material_query/legacy_adapter.py"
+      ]
+    },
+    {
+      "id": "C02",
+      "verdict": "partial_verified",
+      "verified_scope": "owner 空集返回空；包含与排除同 ref 时排除优先；来源 owner/ref/id 排除先于依赖正文。",
+      "tests": [
+        "Q.test_empty_scope_is_empty_not_global",
+        "Q.test_exclusion_dominates_include",
+        "S.test_explicit_user_exclusions_deny_derived_parent_under_wide_ceiling",
+        "S.test_owner_ceiling_rejects_parent_before_outside_dependency_body_read"
+      ],
+      "unresolved": "查询 owner_ids=null 对照、每个筛选维度 null/[] 和显式 include 与来源排除的全部组合未专测。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/material_query/reader.py"
+      ]
+    },
+    {
+      "id": "C03",
+      "verdict": "partial_verified",
+      "verified_scope": "规范 v3 可选 knowledge_facets 真实保存角色、多个尝试、逐目标 confidence、完整适用字段和固定分类依据；角色/多结果/review/validity 独立交叉，未知显式标注，空集不变不限，分类依据进入授权闭包；旧 v1/v2 固定读写不回填。",
+      "tests": [
+        "Q.test_retracted_review_filter_is_distinct_from_current_validity",
+        "E.test_wrong_scope_changed_content_and_old_revision_are_ineligible",
+        "E.test_retracted_and_superseded_reviews_remain_ineligible",
+        "V.test_public_roundtrip_preserves_multiple_attempts_confidence_and_old_revision",
+        "V.test_role_multiple_outcomes_review_and_validity_intersect_independently",
+        "V.test_confidence_targets_exact_claim_and_never_promotes_review",
+        "V.test_unknown_is_explicit_and_empty_filters_never_become_unrestricted",
+        "V.test_applicability_uses_exact_structured_conditions_and_exclusions",
+        "V.test_facet_basis_is_in_real_source_permission_and_revocation_closure",
+        "V.test_legacy_v1_v2_save_and_fixed_read_need_no_backfill_or_new_field"
+      ],
+      "unresolved": "旧完整 Applicability 请求 DTO 的业务时间和 subject_versions 条件尚未适配；现有请求以明确条件/排除数组精确匹配。不能把规范字段无损保存解释为旧请求全字段兼容，也不能把 confidence 当科学认可。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/memory/facets.py",
+        "automation/scripts/material_query/facets.py",
+        "automation/schemas/memory-v3.schema.json"
+      ],
+      "audit_findings": [
+        "H01"
+      ]
+    },
+    {
+      "id": "C04",
+      "verdict": "verified_in_scope",
+      "verified_scope": "两个 claim 仅一项获准时，正式投影/最终包不含另一项；精确未复核 claim 不借用同篇认可。",
+      "tests": [
+        "E.test_only_one_of_two_claims_is_effectively_accepted",
+        "E.test_project_returns_only_accepted_statement_and_exact_claim_selection",
+        "Q.test_formal_exact_claim_never_borrows_other_accepted_claim"
+      ],
+      "unresolved": "通过范围为真实 memory-v3 合成事件/claim；不连带证明旧 EvidenceAssessment 全字段及所有历史 kind。",
+      "code": [
+        "automation/scripts/material_query/evidence.py",
+        "automation/scripts/material_query/coordinator.py"
+      ]
+    },
+    {
+      "id": "C05",
+      "verdict": "verified_in_scope",
+      "verified_scope": "公开提交的两种可检索表示归为同一规范候选；原BM25不同分数与各表示固定ID/SHA保留；两个表示仍只投一份词法RRF票。",
+      "tests": [
+        "R.test_multiple_representations_keep_individual_raw_scores_and_fixed_refs",
+        "F.test_dedup_and_selection_keep_original_evidence_status"
+      ],
+      "unresolved": "已测真实两表示与身份通道；原关键词卡/摘要/全文三种存储槽完整历史组合不是本夹具；模型通道未运行。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py"
+      ],
+      "audit_findings": [
+        "H02"
+      ]
+    },
+    {
+      "id": "C06",
+      "verdict": "partial_verified",
+      "verified_scope": "缺摘要为 needs_generation；reject 不给替代正文、skip 省略；显式 full fallback 生效。",
+      "tests": [
+        "Q.test_missing_representation_never_silently_renders_another_type",
+        "Q.test_real_fts_digest_and_selected_assembly"
+      ],
+      "unresolved": "多项 fallback 顺序、未知 fallback 拒绝及各类型 generation 边界未全测；未登记 definition/version 明确 UNSUPPORTED。",
+      "code": [
+        "automation/scripts/material_query/definitions.py",
+        "automation/scripts/material_query/coordinator.py"
+      ]
+    },
+    {
+      "id": "C07",
+      "verdict": "verified_in_scope",
+      "verified_scope": "真实 domain map 同时引用 A/B 两 owner 的原件和必要单元；query→select→assemble 正常纳入双贡献。撤销 B 原件后首次/缓存组包都拒绝，B 单元正文与 B 原件打开次数均为零，且不泄露 B 正文。",
+      "tests": [
+        "S.test_owner_ceiling_rejects_parent_before_outside_dependency_body_read",
+        "S.test_explicit_user_exclusions_deny_derived_parent_under_wide_ceiling",
+        "Q.test_source_revocation_blocks_cached_search_and_assembly",
+        "DS.test_domain_two_owner_sources_are_rechecked_before_revoked_body_reads"
+      ],
+      "unresolved": "本机公开规范提交与来源登记的合成 domain 夹具；不代表真实业务综合质量，未覆盖任意模型生成内容。",
+      "code": [
+        "automation/scripts/material_query/reader.py",
+        "automation/scripts/material_query/assembly.py"
+      ]
+    },
+    {
+      "id": "C08",
+      "verdict": "partial_verified",
+      "verified_scope": "已有字段build canonical=false且HEAD不变；新解释走实际AI的maintenance-plan→draft_json→review（保存不可变草案计划）→apply（规范r2）→固定读回。",
+      "tests": [
+        "F.test_source_read_and_representation_build_are_read_only",
+        "M.test_review_saves_new_immutable_version_without_business_commit",
+        "M.test_apply_uses_real_cas_and_same_request_id_replays_without_new_revision"
+      ],
+      "unresolved": "A09实际路径适用于已有内容的外部AI修订/重新综合；Foundation自动builder仍content_proposals=[]。保留未实现的自动生成分支，不以UNSUPPORTED冒充这一路径通过。",
+      "code": [
+        "automation/scripts/material_query/foundation.py",
+        "automation/scripts/material_query/maintenance.py"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "C09",
+      "verdict": "verified_in_scope",
+      "verified_scope": "内容已提交而 FTS 事务故障时回滚索引；原计划重试及重复成功不产生第二内容修订，保留向量水位。",
+      "tests": [
+        "F.test_index_failure_retries_plan_without_second_content_commit"
+      ],
+      "unresolved": "仅 lexical/existing 单 owner 原事务；dense/custom encoder 和跨 owner 全局原子性不支持。",
+      "code": [
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "C10",
+      "verdict": "partial_verified",
+      "verified_scope": "索引丢失后由 manifest 全量内容页重建，纳入所有枚举记录，规范 HEAD 不变。",
+      "tests": [
+        "F.test_full_rebuild_uses_manifest_contents_after_index_loss",
+        "F.test_manifest_content_page_survives_missing_search_index"
+      ],
+      "unresolved": "真正无历史变化流 fixture、rebuild 中断时完整水位不发布未专测；incremental 故障不能替代此断言。",
+      "code": [
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "C11",
+      "verdict": "partial_verified",
+      "verified_scope": "拒绝只有首个未完页、漏首个页、错误页类型；同计划失败重试与成功重放已测。",
+      "tests": [
+        "F.test_index_plan_requires_contiguous_complete_input_pages",
+        "F.test_index_failure_retries_plan_without_second_content_commit"
+      ],
+      "unresolved": "缺完整多页的中间缺口、顺序倒置、重复事件和多 owner 部分完成；跨查询持久索引计划未证明支持。",
+      "code": [
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "C12",
+      "verdict": "verified_in_scope",
+      "verified_scope": "current 对真实HEAD超前和owner水位行丢失均明确降级；缺水位不再因FTS仍存在而伪装完整。",
+      "tests": [
+        "Q.test_equal_index_watermarks_do_not_hide_an_unindexed_head",
+        "R.test_missing_owner_watermark_is_partial_even_when_fts_rows_exist",
+        "Q.test_unregistered_repair_and_tolerance_are_not_ignored"
+      ],
+      "unresolved": "查询内修复及按秒容忍仍是明确UNSUPPORTED；内容/索引整体状态依实际FixedRef与水位判断。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py"
+      ],
+      "audit_findings": [
+        "S01"
+      ]
+    },
+    {
+      "id": "C13",
+      "verdict": "verified_in_scope",
+      "verified_scope": "result_limit=1 的真实正文探针只观察首个规范候选；resume再读下一项并累计候选/字节/输出成本；零字节预算阻止正文。",
+      "tests": [
+        "R.test_final_one_reads_only_first_canonical_body_and_resume_reads_next",
+        "Q.test_zero_read_budget_does_not_open_record_body",
+        "E.test_read_budget_zero_exact_and_one_less_than_measured_source_closure"
+      ],
+      "unresolved": "通过为本机词法/身份提供器的小型真实F1；未注册向量不计通过，万条/全库规模性能及第二台物理机另行验收。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py"
+      ],
+      "audit_findings": [
+        "H03"
+      ]
+    },
+    {
+      "id": "C14",
+      "verdict": "verified_in_scope",
+      "verified_scope": "SQLite/OSError 词法故障保留已完成 identity，词法迭代故障保留前缀；同一真实故障后的 assemble 保留 lexical warning、partial 和 complete=false。",
+      "tests": [
+        "R.test_sqlite_and_oserror_lexical_failures_preserve_completed_identity",
+        "R.test_lexical_iterator_failure_keeps_its_completed_prefix",
+        "Q.test_optional_channel_degradation_survives_packet"
+      ],
+      "unresolved": "未注册向量通道的实际故障不在本次可执行范围；可插拔故障隔离不是向量模型质量证明。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py"
+      ],
+      "audit_findings": [
+        "H04"
+      ]
+    },
+    {
+      "id": "C15",
+      "verdict": "partial_verified",
+      "verified_scope": "topic-evidence-v2 与 rrf 切换保留固定 ID 集；term-overlap 与 exact-phrase 重排保留候选/evidence/成本边界。",
+      "tests": [
+        "Q.test_pluggable_ranking_keeps_fixed_identities",
+        "F.test_rerank_only_uses_provided_fixed_slices_and_preserves_evidence"
+      ],
+      "unresolved": "融合替换测试只直接比較固定ID集合，候选/evidence保真由固定文本重排与多表示诊断回归分开验证；只限已登记确定性策略。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/material_query/foundation.py"
+      ],
+      "audit_findings": [
+        "H02"
+      ]
+    },
+    {
+      "id": "C16",
+      "verdict": "partial_verified",
+      "verified_scope": "实际第一候选被排除时，在剩余候选预算中补入下一项后才返回K；正式逐claim准入发生在K之前。",
+      "tests": [
+        "R.test_rejected_first_candidate_is_refilled_before_final_k",
+        "Q.test_formal_exact_claim_never_borrows_other_accepted_claim"
+      ],
+      "unresolved": "现直接补召回测试用排除反例；正式复核准入与增量K为同实现顺序，但未单独构造前K全无效、后K有效的组合夹具。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py"
+      ]
+    },
+    {
+      "id": "C17",
+      "verdict": "partial_verified",
+      "verified_scope": "旧 references/input/same_entity/mentions 与同端点平行边保留原关系/证据关系；同名固定实体不合并。显式差异随获准路径返回；规范拒绝后缓存 stale，新查询仅返回有权诊断边，拒绝/旧边不能成为桥；ceiling/排除不泄露桥节点。",
+      "tests": [
+        "D.test_legacy_relations_keep_parallel_edges_and_explicit_evidence_links",
+        "D.test_same_title_fixed_entities_are_not_merged_by_navigation",
+        "D.test_unmapped_canonical_relation_is_a_gap_not_an_invented_dependency",
+        "F.test_paths_are_ordered_fixed_and_target_constrained",
+        "D.test_stale_existing_edge_is_gap_and_not_reused",
+        "F.test_rejected_wrong_connection_preserves_differences_without_becoming_a_path"
+      ],
+      "unresolved": "路径服务提供有界最短固定链，没有承诺或实现全部替代路径枚举；显式用户/AI 判错作为合成输入测试，导航认可不等于科学有效。未注册规范关系只报告缺口。",
+      "code": [
+        "automation/scripts/material_query/contracts.py",
+        "automation/scripts/material_query/deepening.py",
+        "automation/scripts/material_query/foundation.py",
+        "automation/scripts/material_query/associations.py",
+        "automation/schemas/memory-v3.schema.json"
+      ],
+      "audit_findings": [
+        "H06"
+      ]
+    },
+    {
+      "id": "C18",
+      "verdict": "verified_in_scope",
+      "verified_scope": "accept_navigation 调用真实 decide_association；claim_states 前后相等，重复请求幂等且冲突拒绝。",
+      "tests": [
+        "D.test_decision_retries_are_idempotent_and_never_promote_review"
+      ],
+      "unresolved": "通过范围为既有固定关联；不证明生成模型发现质量或科学有效性。",
+      "code": [
+        "automation/scripts/material_query/associations.py"
+      ],
+      "actual_ai": [
+        "A08"
+      ]
+    },
+    {
+      "id": "C19",
+      "verdict": "partial_verified",
+      "verified_scope": "显式 supplement_scope 受 ceiling/排除控制；深化沿用查询范围，隐藏节点不能成为桥或进入 basis。",
+      "tests": [
+        "D.test_existing_association_uses_explicit_supplement_scope_and_ceiling",
+        "D.test_excluded_node_is_not_a_bridge_or_a_basis_entry",
+        "D.test_ceiling_filters_graph_content_and_basis"
+      ],
+      "unresolved": "一般语料扩大轴、表示加深独立选择及原 role/outcome 硬筛选全组合未专测；主筛选变更要求新查询。",
+      "code": [
+        "automation/scripts/material_query/deepening.py",
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "C20",
+      "verdict": "partial_verified",
+      "verified_scope": "循环/菱形共享唯一节点/边额度；新种子不归零累计 hop；撤权旧游标拒绝；忙操作不计费；预约/结算幂等。",
+      "tests": [
+        "D.test_cycles_diamonds_and_cursor_share_unique_budget",
+        "D.test_new_seed_does_not_reset_cumulative_hop_boundary",
+        "D.test_source_revocation_blocks_cached_cursor_and_hidden_details",
+        "Q.test_active_query_rejects_poll_and_resume_without_charging",
+        "R.test_repeated_resume_reuses_paid_page_without_second_candidate_charge",
+        "R.test_resume_retains_frozen_revision_after_real_commit_and_reindex",
+        "R.test_current_resume_skips_changed_fixed_candidate_without_switching_revision",
+        "R.test_candidate_budget_is_cumulative_across_pages",
+        "R.test_read_budget_exhausted_after_first_page_cannot_open_next_body"
+      ],
+      "unresolved": "旧 additional_budget 按明确替换 S03 不支持同查询增加；改为新 query/账本。没有把全部旧 resume DTO 兼容或持久重启游标计作通过。",
+      "code": [
+        "automation/scripts/material_query/state.py",
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/material_query/budget.py"
+      ]
+    },
+    {
+      "id": "C21",
+      "verdict": "partial_verified",
+      "verified_scope": "重排取消保留一个已完成分数和真实 rerank_items，释放余量；取消后结算、预算实际消耗不归零已测。",
+      "tests": [
+        "F.test_rerank_cancellation_preserves_completed_scores_and_releases_hold",
+        "B.test_cancelled_provider_can_still_settle_actual_cost",
+        "L.test_q28_cancellation_preserves_completed_cost_and_stops_next_charge"
+      ],
+      "unresolved": "尚未覆盖每个搜索/组包阶段停止时已完成部分和结构化位置；A07 预算包 stop_reason=null，必须结合 warnings/gaps/complete。",
+      "code": [
+        "automation/scripts/material_query/coordinator.py",
+        "automation/scripts/material_query/foundation.py"
+      ],
+      "actual_ai": [
+        "A07"
+      ]
+    },
+    {
+      "id": "C22",
+      "verdict": "verified_in_scope",
+      "verified_scope": "方法块需要的定义实际补齐；定义被 primary scope 排除则 complete=false，合法两层范围允许则包含；小预算不截碎完整块。",
+      "tests": [
+        "S.test_primary_scope_limits_output_but_ceiling_allows_source_authorization",
+        "S.test_both_scopes_allow_required_fixed_content_and_complete_packet",
+        "Q.test_explicit_block_locator_survives_selection_and_keeps_required_definition"
+      ],
+      "unresolved": "通过范围为现有完整块/定义和 A07 合成文本；不证明任意公式解析或自动语义生成正确性。",
+      "code": [
+        "automation/scripts/material_query/assembly.py"
+      ],
+      "actual_ai": [
+        "A07"
+      ]
+    },
+    {
+      "id": "C23",
+      "verdict": "partial_verified",
+      "verified_scope": "固定表示 read/build 不写 HEAD；固定双文稿读取保留旧 bytes；A09 新解释和新文稿经显式 commit。",
+      "tests": [
+        "F.test_source_read_and_representation_build_are_read_only",
+        "X.test_fixed_unit_and_documents_keep_old_bytes_after_r2"
+      ],
+      "unresolved": "独立 graph render 与所有旧 ReadView 结构组合的无规范写入断言未完整执行；A09 连续 AI 上下文不是盲测。",
+      "code": [
+        "automation/scripts/material_query/foundation.py"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "C24",
+      "verdict": "verified_in_scope",
+      "verified_scope": "真实 claim 修订后旧 accepted review 保留历史但不准入；公开追加新 accepted review 绑定新 SHA/content hash/固定 inputs/适用域，Evidence.project 只正式呈现新 claim。错 owner/域/旧 hash/空 inputs 拒绝，旧 review 与旧记录固定读回不变。",
+      "tests": [
+        "E.test_wrong_scope_changed_content_and_old_revision_are_ineligible",
+        "E.test_historical_claim_hash_resolves_without_revalidating_changed_claim",
+        "M.test_retract_appends_real_review_and_preserves_claim_record",
+        "RV.test_new_review_revalidates_changed_claim_and_preserves_old_review_owner_scope"
+      ],
+      "unresolved": "验收的是适用授权流程和软件证据门控，不代表现实结论已获人工或科学复核；A09 单独记录，不作为这项正向集成的替代证据。",
+      "code": [
+        "automation/scripts/material_query/foundation.py",
+        "automation/scripts/material_query/maintenance.py"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "C25",
+      "verdict": "verified_in_scope",
+      "verified_scope": "跨 owner 首项真提交后故障列明已完成和 pending，仅重试未完成；恢复创建新修订并拒绝覆盖后来的修订。",
+      "tests": [
+        "M.test_cross_owner_failure_returns_committed_owner_and_retries_only_pending_owner",
+        "MS.test_partial_cross_owner_failure_is_observed_without_resuming_second_owner",
+        "F.test_restore_creates_new_revision_and_rejects_later_changes"
+      ],
+      "unresolved": "通过为本机隔离 fixture 的顺序多 owner 事务与显式恢复；不支持跨 owner 全局原子提交，也未完成真实业务人工验收。",
+      "code": [
+        "automation/scripts/material_query/maintenance.py",
+        "automation/scripts/material_query/foundation.py"
+      ]
+    },
+    {
+      "id": "C26",
+      "verdict": "partial_verified",
+      "verified_scope": "严格 DTO 拒未知字段，未登记修复/容忍/排序明确拒绝；两个融合/重排可保持调用结构与固定 ID。",
+      "tests": [
+        "Q.test_unregistered_repair_and_tolerance_are_not_ignored",
+        "Q.test_pluggable_ranking_keeps_fixed_identities",
+        "F.test_rerank_only_uses_provided_fixed_slices_and_preserves_evidence",
+        "A.test_capabilities_definitions_and_unknown_control_fields"
+      ],
+      "unresolved": "读取/索引/召回/存储每类替换两种真实后端未执行；H01–H07 的本次具体问题已补受限实现或明示能力边界，仍不能以 43 方法映射关闭完整旧协议和未注册后端义务。",
+      "code": [
+        "automation/scripts/material_query/foundation.py",
+        "automation/scripts/material_query/coordinator.py"
+      ]
+    }
+  ],
+  "original_audit_rows": [
+    {
+      "id": "INH01",
+      "verdict": "partial_verified",
+      "verified_scope": "固定 record 修订/字节、旧六字段 relation、无索引 claim 定位与 owner 自身指纹已有运行适配。",
+      "tests": [
+        "F.test_describe_and_resolve_keep_fixed_revision_and_relation",
+        "F.test_claim_resolver_uses_canonical_container_after_index_loss",
+        "Q.test_fixed_old_revision_can_be_selected"
+      ],
+      "unresolved": "四类旧身份全字段往返和各自 SHA 冲突矩阵未闭合；独立旧 representation ID 与 owner/claim 直接正文读取仍明确不支持。",
+      "code": [
+        "legacy_adapter.py:13",
+        "foundation.py:308",
+        "foundation.py:377"
+      ]
+    },
+    {
+      "id": "INH02",
+      "verdict": "hard_gap",
+      "verified_scope": "owner 空集、显式包含/排除优先、可信 ceiling/来源闭包、逐 claim 复核与有效性已有真实测试。",
+      "tests": [
+        "Q.test_empty_scope_is_empty_not_global",
+        "S.test_explicit_user_exclusions_deny_derived_parent_under_wide_ceiling",
+        "Q.test_retracted_review_filter_is_distinct_from_current_validity"
+      ],
+      "unresolved": "旧 KnowledgeFacets.attempts 多值尝试和 confidence 数组无完整规范数据映射；角色/多结果/unknown/结构化 applicability 的完整交叉筛选未验证。",
+      "code": [
+        "contracts.py:38",
+        "coordinator.py:64"
+      ],
+      "hard_gaps": [
+        "H01"
+      ]
+    },
+    {
+      "id": "INH03",
+      "verdict": "hard_gap",
+      "verified_scope": "候选保留固定 refs、精确 claim 准入；未实现 sparse 的缺口贯穿最终材料包。",
+      "tests": [
+        "Q.test_formal_exact_claim_never_borrows_other_accepted_claim",
+        "Q.test_optional_channel_degradation_survives_packet",
+        "F.test_dedup_and_selection_keep_original_evidence_status"
+      ],
+      "unresolved": "多表示各自原始分数、片段/实例/模型版本没有完整保真；真实 provider 故障未隔离；缺水位行需故障验证。",
+      "code": [
+        "contracts.py:183",
+        "coordinator.py:309",
+        "coordinator.py:432"
+      ],
+      "hard_gaps": [
+        "H02",
+        "H04"
+      ],
+      "static_candidates": [
+        "S01"
+      ]
+    },
+    {
+      "id": "INH04",
+      "verdict": "partial_verified",
+      "verified_scope": "manifest 内容页、固定变化页、连续页计划、每 owner FTS 原子事务、故障重试和修复已有真实执行。",
+      "tests": [
+        "F.test_index_failure_retries_plan_without_second_content_commit",
+        "F.test_index_plan_requires_contiguous_complete_input_pages",
+        "F.test_full_rebuild_uses_manifest_contents_after_index_loss",
+        "F.test_repair_rebuild_replace_corrupt_fts_text_without_content_write"
+      ],
+      "unresolved": "仅 lexical/existing 和 existing_associations_only 图窄键；旧 Run/原生证据图、dense/custom encoder、筛选专用索引不支持。重建中断、无变化流 fixture、完整中间页缺口及多 owner 计划仍未专测。",
+      "code": [
+        "foundation.py:668",
+        "foundation.py:707",
+        "foundation.py:755"
+      ]
+    },
+    {
+      "id": "INH05",
+      "verdict": "partial_verified",
+      "verified_scope": "两种真实融合和两种固定文本重排策略均可切换；重排不扩充候选，保留原身份和 evidence；缺文本/故障/取消如实返回。",
+      "tests": [
+        "Q.test_pluggable_ranking_keeps_fixed_identities",
+        "F.test_rerank_only_uses_provided_fixed_slices_and_preserves_evidence",
+        "F.test_rerank_reports_missing_text_provider_failure_and_zero_budget"
+      ],
+      "unresolved": "融合测试只比较固定 ID 集合，未直接断言 evidence/全通道诊断无损；小 K 增量补召回与替换完整排序管道尚无专测。无模型提供器明确不支持。",
+      "code": [
+        "coordinator.py:137",
+        "foundation.py:925"
+      ]
+    },
+    {
+      "id": "INH06",
+      "verdict": "partial_verified",
+      "verified_scope": "固定查询、筛选上限、受控补充范围、续查共享账本、取消/忙锁/TTL均有入口；非 plain、未知策略、查询内修复与按秒容忍明确拒绝。",
+      "tests": [
+        "Q.test_unregistered_repair_and_tolerance_are_not_ignored",
+        "Q.test_active_query_rejects_poll_and_resume_without_charging",
+        "D.test_existing_association_uses_explicit_supplement_scope_and_ceiling",
+        "D.test_unknown_strategy_and_foreign_cursor_are_rejected"
+      ],
+      "unresolved": "完整旧 QuerySpec/Resume DTO 不是原样兼容接口；旧 context 序列、audit 独立用途、planner/capability 下推及双扩展轴需完整适配验收。旧 additional_budget 明确被设计替换为新查询。",
+      "code": [
+        "contracts.py:161",
+        "coordinator.py:164",
+        "foundation.py:998"
+      ]
+    },
+    {
+      "id": "INH07",
+      "verdict": "partial_verified",
+      "verified_scope": "固定历史游标在 HEAD 前进后不漂移；固定文稿/字段组合只读；A09 新文稿经正式提交并读回新旧版本。",
+      "tests": [
+        "F.test_fixed_history_cursor_does_not_shift_when_head_advances",
+        "F.test_source_read_and_representation_build_are_read_only",
+        "X.test_fixed_unit_and_documents_keep_old_bytes_after_r2"
+      ],
+      "unresolved": "独立旧 ReadView(view/text/graph/omitted) 全结构兼容和所有视图不写规范修订的组合断言未闭合；A09 是实际 AI 阅读/维护，不能替代全视图协议测试。",
+      "code": [
+        "foundation.py:467",
+        "foundation.py:496",
+        "foundation.py:326"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "INH08",
+      "verdict": "partial_verified",
+      "verified_scope": "真实 CAS、幂等、固定 changes、逐 owner 提交/待办、重启 status 只读、恢复新修订与撤回 review 已测；A09 实际审查并提交模型 r2。",
+      "tests": [
+        "F.test_validate_apply_binding_cas_and_idempotency",
+        "M.test_cross_owner_failure_returns_committed_owner_and_retries_only_pending_owner",
+        "MS.test_applied_plan_reports_real_commit_fixed_changes_and_live_index_pending",
+        "M.test_retract_appends_real_review_and_preserves_claim_record",
+        "F.test_restore_creates_new_revision_and_rejects_later_changes"
+      ],
+      "unresolved": "新 claim 经适用授权流程追加 accepted 新 review 且保留旧 review 的正向集成未执行；A09 明确没有应撤回的已复核 claim，不能用于冲销此断言。",
+      "code": [
+        "foundation.py:600",
+        "foundation.py:624",
+        "foundation.py:660",
+        "maintenance.py:667"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "INH09",
+      "verdict": "partial_verified",
+      "verified_scope": "12 维账本、预约/结算身份、并发竞争、父子不重复计费、取消后结算和活动墙钟并集已有直接测试。",
+      "tests": [
+        "B.test_competing_providers_cannot_reserve_same_remaining_capacity",
+        "B.test_parent_settlement_does_not_repeat_child_charges",
+        "B.test_parallel_provider_wall_cost_is_one_observed_active_interval",
+        "B.test_cancelled_provider_can_still_settle_actual_cost"
+      ],
+      "unresolved": "tokenizer(name,version) 尚无公开契约/运行提供器；四种模型维度分别先耗尽的提供器边界未测。通用计数器存在不等于模型费用计量通过。",
+      "code": [
+        "contracts.py:58",
+        "budget.py:18"
+      ],
+      "hard_gaps": [
+        "H07"
+      ]
+    },
+    {
+      "id": "INH10",
+      "verdict": "hard_gap",
+      "verified_scope": "公共错误码、partial/拒绝值、真实 consumed、提交与索引 pending 分离、隐藏资料诊断过滤已有测试。",
+      "tests": [
+        "Q.test_optional_channel_degradation_survives_packet",
+        "F.test_index_failure_retries_plan_without_second_content_commit",
+        "MS.test_source_revocation_after_restart_rejects_status_without_leaking_receipts",
+        "F.test_rerank_cancellation_preserves_completed_scores_and_releases_hold"
+      ],
+      "unresolved": "Result 没有 Issue(code,message,affected_refs,retry)；Basis 没有 basis_id/observed_at。通用 warnings 不能无损承载旧诊断、阶段与重试动作；A07 小预算组包 stop_reason=null 亦被实际 AI 记录。",
+      "code": [
+        "contracts.py:89",
+        "coordinator.py:32",
+        "legacy_adapter.py:36"
+      ],
+      "hard_gaps": [
+        "H05"
+      ],
+      "actual_ai": [
+        "A07"
+      ]
+    },
+    {
+      "id": "INH11",
+      "verdict": "hard_gap",
+      "verified_scope": "固定有序路径、目标约束、方向、循环/菱形累计预算、旧边 stale 和导航不升格科学复核已有执行。",
+      "tests": [
+        "F.test_paths_are_ordered_fixed_and_target_constrained",
+        "D.test_relation_filter_and_direction_do_not_add_reverse_edge",
+        "D.test_cycles_diamonds_and_cursor_share_unique_budget",
+        "D.test_decision_retries_are_idempotent_and_never_promote_review"
+      ],
+      "unresolved": "RelationKind 未注册 references/input/same_entity/mentions；input 改为 depends_on，sources 中未映射关系被跳过。旧关系无损/同名实体/错误边路径差异未闭合。",
+      "code": [
+        "contracts.py:17",
+        "associations.py:25",
+        "deepening.py:23"
+      ],
+      "hard_gaps": [
+        "H06"
+      ]
+    },
+    {
+      "id": "INH12",
+      "verdict": "partial_verified",
+      "verified_scope": "六种定义、现有字段临时组合、missing/reject/skip/full fallback、stale/unknown 明确状态已有执行。",
+      "tests": [
+        "Q.test_missing_representation_never_silently_renders_another_type",
+        "F.test_source_read_and_representation_build_are_read_only",
+        "A.test_realization_inspection_reports_changed_original_as_stale"
+      ],
+      "unresolved": "多项 fallback 顺序、旧别名跨版本、领域多贡献来源撤权完整链与生成草案提交链未执行；未登记定义与实际语义生成明确不支持。",
+      "code": [
+        "definitions.py:1",
+        "representations.py:1",
+        "foundation.py:832"
+      ]
+    },
+    {
+      "id": "C01",
+      "verdict": "partial_verified",
+      "verified_scope": "r1 固定修订、缺 SHA 补齐、relation 保留和固定正文 r1 字节已有直接断言。",
+      "tests": [
+        "F.test_describe_and_resolve_keep_fixed_revision_and_relation",
+        "F.test_source_read_and_representation_build_are_read_only",
+        "Q.test_fixed_old_revision_can_be_selected",
+        "E.test_bad_fixed_claim_hash_and_legacy_owner_are_explicitly_rejected"
+      ],
+      "unresolved": "四类旧 kind 全字段往返与 record/file/owner 各自 SHA 失配未完全覆盖；独立旧表示 ID、owner 正文不支持。",
+      "code": [
+        "foundation.py:377",
+        "legacy_adapter.py:13"
+      ]
+    },
+    {
+      "id": "C02",
+      "verdict": "partial_verified",
+      "verified_scope": "owner 空集返回空；包含与排除同 ref 时排除优先；来源 owner/ref/id 排除先于依赖正文。",
+      "tests": [
+        "Q.test_empty_scope_is_empty_not_global",
+        "Q.test_exclusion_dominates_include",
+        "S.test_explicit_user_exclusions_deny_derived_parent_under_wide_ceiling",
+        "S.test_owner_ceiling_rejects_parent_before_outside_dependency_body_read"
+      ],
+      "unresolved": "查询 owner_ids=null 对照、每个筛选维度 null/[] 和显式 include 与来源排除的全部组合未专测。",
+      "code": [
+        "coordinator.py:64",
+        "reader.py:1"
+      ]
+    },
+    {
+      "id": "C03",
+      "verdict": "hard_gap",
+      "verified_scope": "retracted 与 invalid 分开；accepted 但依据改变不自动有效；正式状态逐 claim 计算。",
+      "tests": [
+        "Q.test_retracted_review_filter_is_distinct_from_current_validity",
+        "E.test_wrong_scope_changed_content_and_old_revision_are_ineligible",
+        "E.test_retracted_and_superseded_reviews_remain_ineligible"
+      ],
+      "unresolved": "failure/role/review/validity 四维交叉与 include_unknown 未验证；旧 attempts 多尝试和 confidence 数组没有完整真实数据映射。",
+      "code": [
+        "coordinator.py:85"
+      ],
+      "hard_gaps": [
+        "H01"
+      ]
+    },
+    {
+      "id": "C04",
+      "verdict": "verified_in_scope",
+      "verified_scope": "两个 claim 仅一项获准时，正式投影/最终包不含另一项；精确未复核 claim 不借用同篇认可。",
+      "tests": [
+        "E.test_only_one_of_two_claims_is_effectively_accepted",
+        "E.test_project_returns_only_accepted_statement_and_exact_claim_selection",
+        "Q.test_formal_exact_claim_never_borrows_other_accepted_claim"
+      ],
+      "unresolved": "通过范围为真实 memory-v3 合成事件/claim；不连带证明旧 EvidenceAssessment 全字段及所有历史 kind。",
+      "code": [
+        "evidence.py:1",
+        "coordinator.py:432"
+      ]
+    },
+    {
+      "id": "C05",
+      "verdict": "hard_gap",
+      "verified_scope": "相同候选去重，select 保留输入已有 hits/evidence_status。",
+      "tests": [
+        "F.test_dedup_and_selection_keep_original_evidence_status"
+      ],
+      "unresolved": "测试只重复同一个 candidate_id；没有关键词卡/摘要/全文三表示的独立支持数断言。实现丢失同 canonical 的其他表示行和独立 hit 分数/片段。",
+      "code": [
+        "coordinator.py:362",
+        "coordinator.py:469"
+      ],
+      "hard_gaps": [
+        "H02"
+      ]
+    },
+    {
+      "id": "C06",
+      "verdict": "partial_verified",
+      "verified_scope": "缺摘要为 needs_generation；reject 不给替代正文、skip 省略；显式 full fallback 生效。",
+      "tests": [
+        "Q.test_missing_representation_never_silently_renders_another_type",
+        "Q.test_real_fts_digest_and_selected_assembly"
+      ],
+      "unresolved": "多项 fallback 顺序、未知 fallback 拒绝及各类型 generation 边界未全测；未登记 definition/version 明确 UNSUPPORTED。",
+      "code": [
+        "definitions.py:1",
+        "coordinator.py:432"
+      ]
+    },
+    {
+      "id": "C07",
+      "verdict": "partial_verified",
+      "verified_scope": "普通派生内容的跨 owner 来源闭包、排除和撤权控制已测。",
+      "tests": [
+        "S.test_owner_ceiling_rejects_parent_before_outside_dependency_body_read",
+        "S.test_explicit_user_exclusions_deny_derived_parent_under_wide_ceiling",
+        "Q.test_source_revocation_blocks_cached_search_and_assembly"
+      ],
+      "unresolved": "缺领域综合多个贡献来源中一项撤权的 query→select→assemble 专用断言。",
+      "code": [
+        "reader.py:1",
+        "assembly.py:1"
+      ]
+    },
+    {
+      "id": "C08",
+      "verdict": "partial_verified",
+      "verified_scope": "已有字段组合返回临时内容 canonical=false 且 HEAD 不变；实际 AI 维护新解释经正式提交获得 r2。",
+      "tests": [
+        "F.test_source_read_and_representation_build_are_read_only",
+        "Q.test_real_fts_digest_and_selected_assembly"
+      ],
+      "unresolved": "查询内新语义生成明确不支持；没有新解释生成草案→提交取得固定身份的完整生成器链测试。A09 为外部 AI 维护路径。",
+      "code": [
+        "foundation.py:832",
+        "maintenance.py:1"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "C09",
+      "verdict": "verified_in_scope",
+      "verified_scope": "内容已提交而 FTS 事务故障时回滚索引；原计划重试及重复成功不产生第二内容修订，保留向量水位。",
+      "tests": [
+        "F.test_index_failure_retries_plan_without_second_content_commit"
+      ],
+      "unresolved": "仅 lexical/existing 单 owner 原事务；dense/custom encoder 和跨 owner 全局原子性不支持。",
+      "code": [
+        "foundation.py:755"
+      ]
+    },
+    {
+      "id": "C10",
+      "verdict": "partial_verified",
+      "verified_scope": "索引丢失后由 manifest 全量内容页重建，纳入所有枚举记录，规范 HEAD 不变。",
+      "tests": [
+        "F.test_full_rebuild_uses_manifest_contents_after_index_loss",
+        "F.test_manifest_content_page_survives_missing_search_index"
+      ],
+      "unresolved": "真正无历史变化流 fixture、rebuild 中断时完整水位不发布未专测；incremental 故障不能替代此断言。",
+      "code": [
+        "foundation.py:467",
+        "foundation.py:755"
+      ]
+    },
+    {
+      "id": "C11",
+      "verdict": "partial_verified",
+      "verified_scope": "拒绝只有首个未完页、漏首个页、错误页类型；同计划失败重试与成功重放已测。",
+      "tests": [
+        "F.test_index_plan_requires_contiguous_complete_input_pages",
+        "F.test_index_failure_retries_plan_without_second_content_commit"
+      ],
+      "unresolved": "缺完整多页的中间缺口、顺序倒置、重复事件和多 owner 部分完成；跨查询持久索引计划未证明支持。",
+      "code": [
+        "foundation.py:707"
+      ]
+    },
+    {
+      "id": "C12",
+      "verdict": "partial_verified",
+      "verified_scope": "索引两个存储水位相等但实际 HEAD 已前进时明确 partial；查询内修复和按秒容忍明确拒绝。",
+      "tests": [
+        "Q.test_equal_index_watermarks_do_not_hide_an_unindexed_head",
+        "Q.test_unregistered_repair_and_tolerance_are_not_ignored"
+      ],
+      "unresolved": "allowed owner 的水位行缺失而 FTS 仍有内容时可能缺警告，尚未运行故障探针；allow_index_repair/max_staleness_seconds 为 UNSUPPORTED。",
+      "code": [
+        "coordinator.py:412"
+      ],
+      "static_candidates": [
+        "S01"
+      ]
+    },
+    {
+      "id": "C13",
+      "verdict": "hard_gap",
+      "verified_scope": "零读取预算不打开候选正文；局部证据来源闭包的实际读取字节与零/恰好/少一字节边界已测。",
+      "tests": [
+        "Q.test_zero_read_budget_does_not_open_record_body",
+        "E.test_read_budget_zero_exact_and_one_less_than_measured_source_closure",
+        "E.test_does_not_construct_global_adapter_or_read_unrelated_record_bodies"
+      ],
+      "unresolved": "先读 candidates 窗口的全部匹配正文，再按 result_limit 截断；没有小 result_limit 对比实际读数探针。向量通道当前不支持。",
+      "code": [
+        "coordinator.py:330",
+        "coordinator.py:367",
+        "coordinator.py:286"
+      ],
+      "hard_gaps": [
+        "H03"
+      ]
+    },
+    {
+      "id": "C14",
+      "verdict": "hard_gap",
+      "verified_scope": "未支持 sparse 的降级贯穿搜索及最终包，保留已召回材料，complete=false。",
+      "tests": [
+        "Q.test_optional_channel_degradation_survives_packet"
+      ],
+      "unresolved": "真实 lexical provider 故障未独立隔离，可能整次 failed/value=null；未测真实 provider/向量故障，不能由 unsupported 降级代替。",
+      "code": [
+        "coordinator.py:336",
+        "coordinator.py:299"
+      ],
+      "hard_gaps": [
+        "H04"
+      ]
+    },
+    {
+      "id": "C15",
+      "verdict": "partial_verified",
+      "verified_scope": "topic-evidence-v2 与 rrf 切换保留固定 ID 集；term-overlap 与 exact-phrase 重排保留候选/evidence/成本边界。",
+      "tests": [
+        "Q.test_pluggable_ranking_keeps_fixed_identities",
+        "F.test_rerank_only_uses_provided_fixed_slices_and_preserves_evidence"
+      ],
+      "unresolved": "融合替换测试未直接比较复核状态和全 hit 保真；H02 阻止整体诊断无损结论。只限已登记确定性策略。",
+      "code": [
+        "coordinator.py:137",
+        "foundation.py:925"
+      ],
+      "hard_gaps": [
+        "H02"
+      ]
+    },
+    {
+      "id": "C16",
+      "verdict": "partial_verified",
+      "verified_scope": "正式准入先于最终 K；候选预算窗口截断会报告覆盖不足；精确 claim 不能借用同篇认可。",
+      "tests": [
+        "Q.test_formal_exact_claim_never_borrows_other_accepted_claim",
+        "Q.test_zero_read_budget_does_not_open_record_body"
+      ],
+      "unresolved": "缺前 K 均不合格而后续合格时在余量中补召回/明确不足的专门测试；当前只在固定 candidates 窗口准备后截断。",
+      "code": [
+        "coordinator.py:367",
+        "coordinator.py:410",
+        "coordinator.py:286"
+      ]
+    },
+    {
+      "id": "C17",
+      "verdict": "hard_gap",
+      "verified_scope": "固定有序路径/目标、关系过滤方向和旧边 stale 缺口已有断言。",
+      "tests": [
+        "F.test_paths_are_ordered_fixed_and_target_constrained",
+        "D.test_stale_existing_edge_is_gap_and_not_reused",
+        "D.test_relation_filter_and_direction_do_not_add_reverse_edge"
+      ],
+      "unresolved": "同名不同实体/错误连接路径差异未专测；旧 same_entity/mentions/references 未注册，路径只回有界最短链，不能声称保留全部差异路径。",
+      "code": [
+        "contracts.py:17",
+        "deepening.py:23",
+        "foundation.py:1024"
+      ],
+      "hard_gaps": [
+        "H06"
+      ]
+    },
+    {
+      "id": "C18",
+      "verdict": "verified_in_scope",
+      "verified_scope": "accept_navigation 调用真实 decide_association；claim_states 前后相等，重复请求幂等且冲突拒绝。",
+      "tests": [
+        "D.test_decision_retries_are_idempotent_and_never_promote_review"
+      ],
+      "unresolved": "通过范围为既有固定关联；不证明生成模型发现质量或科学有效性。",
+      "code": [
+        "associations.py:1"
+      ],
+      "actual_ai": [
+        "A08"
+      ]
+    },
+    {
+      "id": "C19",
+      "verdict": "partial_verified",
+      "verified_scope": "显式 supplement_scope 受 ceiling/排除控制；深化沿用查询范围，隐藏节点不能成为桥或进入 basis。",
+      "tests": [
+        "D.test_existing_association_uses_explicit_supplement_scope_and_ceiling",
+        "D.test_excluded_node_is_not_a_bridge_or_a_basis_entry",
+        "D.test_ceiling_filters_graph_content_and_basis"
+      ],
+      "unresolved": "一般语料扩大轴、表示加深独立选择及原 role/outcome 硬筛选全组合未专测；主筛选变更要求新查询。",
+      "code": [
+        "deepening.py:1",
+        "foundation.py:998"
+      ]
+    },
+    {
+      "id": "C20",
+      "verdict": "partial_verified",
+      "verified_scope": "循环/菱形共享唯一节点/边额度；新种子不归零累计 hop；撤权旧游标拒绝；忙操作不计费；预约/结算幂等。",
+      "tests": [
+        "D.test_cycles_diamonds_and_cursor_share_unique_budget",
+        "D.test_new_seed_does_not_reset_cumulative_hop_boundary",
+        "D.test_source_revocation_blocks_cached_cursor_and_hidden_details",
+        "Q.test_active_query_rejects_poll_and_resume_without_charging"
+      ],
+      "unresolved": "旧 additional_budget 按明确替换 S03 不支持同查询增加；改为新 query/账本。没有把全部旧 resume DTO 兼容或持久重启游标计作通过。",
+      "code": [
+        "state.py:1",
+        "coordinator.py:484",
+        "budget.py:18"
+      ]
+    },
+    {
+      "id": "C21",
+      "verdict": "partial_verified",
+      "verified_scope": "重排取消保留一个已完成分数和真实 rerank_items，释放余量；取消后结算、预算实际消耗不归零已测。",
+      "tests": [
+        "F.test_rerank_cancellation_preserves_completed_scores_and_releases_hold",
+        "B.test_cancelled_provider_can_still_settle_actual_cost",
+        "L.test_q28_cancellation_preserves_completed_cost_and_stops_next_charge"
+      ],
+      "unresolved": "尚未覆盖每个搜索/组包阶段停止时已完成部分和结构化位置；A07 预算包 stop_reason=null，必须结合 warnings/gaps/complete。",
+      "code": [
+        "coordinator.py:268",
+        "foundation.py:925"
+      ],
+      "actual_ai": [
+        "A07"
+      ]
+    },
+    {
+      "id": "C22",
+      "verdict": "verified_in_scope",
+      "verified_scope": "方法块需要的定义实际补齐；定义被 primary scope 排除则 complete=false，合法两层范围允许则包含；小预算不截碎完整块。",
+      "tests": [
+        "S.test_primary_scope_limits_output_but_ceiling_allows_source_authorization",
+        "S.test_both_scopes_allow_required_fixed_content_and_complete_packet",
+        "Q.test_explicit_block_locator_survives_selection_and_keeps_required_definition"
+      ],
+      "unresolved": "通过范围为现有完整块/定义和 A07 合成文本；不证明任意公式解析或自动语义生成正确性。",
+      "code": [
+        "assembly.py:1"
+      ],
+      "actual_ai": [
+        "A07"
+      ]
+    },
+    {
+      "id": "C23",
+      "verdict": "partial_verified",
+      "verified_scope": "固定表示 read/build 不写 HEAD；固定双文稿读取保留旧 bytes；A09 新解释和新文稿经显式 commit。",
+      "tests": [
+        "F.test_source_read_and_representation_build_are_read_only",
+        "X.test_fixed_unit_and_documents_keep_old_bytes_after_r2"
+      ],
+      "unresolved": "独立 graph render 与所有旧 ReadView 结构组合的无规范写入断言未完整执行；A09 连续 AI 上下文不是盲测。",
+      "code": [
+        "foundation.py:326",
+        "foundation.py:846"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "C24",
+      "verdict": "partial_verified",
+      "verified_scope": "变化后的 claim 不继承旧有效认可；retract 走真实 review 追加并保留 claim；A09 真实 AI 维护审查与内容提交。",
+      "tests": [
+        "E.test_wrong_scope_changed_content_and_old_revision_are_ineligible",
+        "E.test_historical_claim_hash_resolves_without_revalidating_changed_claim",
+        "M.test_retract_appends_real_review_and_preserves_claim_record"
+      ],
+      "unresolved": "新 claim 经适用授权流程追加 accepted 新 review 且保留旧 review 的正向集成未验证；A09 没有应撤回的已复核 claim，不能补足。",
+      "code": [
+        "foundation.py:660",
+        "maintenance.py:1"
+      ],
+      "actual_ai": [
+        "A09"
+      ]
+    },
+    {
+      "id": "C25",
+      "verdict": "verified_in_scope",
+      "verified_scope": "跨 owner 首项真提交后故障列明已完成和 pending，仅重试未完成；恢复创建新修订并拒绝覆盖后来的修订。",
+      "tests": [
+        "M.test_cross_owner_failure_returns_committed_owner_and_retries_only_pending_owner",
+        "MS.test_partial_cross_owner_failure_is_observed_without_resuming_second_owner",
+        "F.test_restore_creates_new_revision_and_rejects_later_changes"
+      ],
+      "unresolved": "通过为本机隔离 fixture 的顺序多 owner 事务与显式恢复；不支持跨 owner 全局原子提交，也未完成真实业务人工验收。",
+      "code": [
+        "maintenance.py:1",
+        "foundation.py:624"
+      ]
+    },
+    {
+      "id": "C26",
+      "verdict": "partial_verified",
+      "verified_scope": "严格 DTO 拒未知字段，未登记修复/容忍/排序明确拒绝；两个融合/重排可保持调用结构与固定 ID。",
+      "tests": [
+        "Q.test_unregistered_repair_and_tolerance_are_not_ignored",
+        "Q.test_pluggable_ranking_keeps_fixed_identities",
+        "F.test_rerank_only_uses_provided_fixed_slices_and_preserves_evidence",
+        "A.test_capabilities_definitions_and_unknown_control_fields"
+      ],
+      "unresolved": "读取/索引/召回/存储每类替换两种真实后端未执行；H01–H07 说明旧硬语义还未完整适配，不能用一张 43 方法映射关闭。",
+      "code": [
+        "foundation.py:146",
+        "coordinator.py:147"
+      ]
+    }
+  ]
+}

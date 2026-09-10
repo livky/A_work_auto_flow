@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "run_path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/run.json",
+  "before": {
+    "schema_version": 1,
+    "run_id": "RUN-20260909T155125Z-2961BDF175A8",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "检索与存储抽象能力讨论及前沿证据调研",
+    "keywords": [
+      "接口边界",
+      "检索",
+      "版本存储",
+      "自动整理",
+      "架构设计"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-09T15:51:25Z",
+    "started_at": "2026-09-09T15:54:01Z",
+    "ended_at": "2026-09-09T16:06:56.277165Z",
+    "owner": "assistant",
+    "question": "如何建立检索、版本存储、视图和自动整理的稳定抽象功能，并为讨论后的接口、数据结构与调用关系设计确定边界？",
+    "hypotheses": [
+      "范围、检索字段、返回粒度和执行预算应正交。",
+      "内容层级、知识角色、结果极性、复核和有效性应分别表达。",
+      "规范写入、可重建投影、检索编排及AI整理可以通过固定引用和显式水位分离。"
+    ],
+    "inputs": [
+      {
+        "path": "automation/scripts/retrieval_interfaces.py",
+        "sha256": "6d09f25f1d188a918a136f95e2ffb4fcf2a592e6a1f861c967b2412fb75e532e",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.675427Z"
+      },
+      {
+        "path": "automation/scripts/retrieval.py",
+        "sha256": "2e3ac39f719c7e73b96f53f91d159ee0afec50738515499e33655da870e926bf",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.676429Z"
+      },
+      {
+        "path": "automation/scripts/context_engine.py",
+        "sha256": "b5acbfcec9ca22e5ba4b4681e571b893af3ed035a27c6f46088b5f7560c4a829",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.678445Z"
+      },
+      {
+        "path": "automation/scripts/qdrant_backend.py",
+        "sha256": "08c26b1dfb12099b9afd66f2b0e00bebe079143ef2ba7be01e41489570ee612d",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.680501Z"
+      },
+      {
+        "path": "automation/scripts/memory/store.py",
+        "sha256": "8c7b4b8ae10966ef2b4a2e7bb2ac5b46e337aed87df80a35905c2ff4174dac9e",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.682806Z"
+      },
+      {
+        "path": "automation/scripts/memory/service.py",
+        "sha256": "39793b966c7401f2989097148247b286d0f7fb5d99a27f05aa5644d9a0a7199c",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.684878Z"
+      },
+      {
+        "path": "automation/scripts/memory/contracts.py",
+        "sha256": "0627273ba36a4572572c2885656166d34784e54d76d135ed730532deed92b178",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.687429Z"
+      },
+      {
+        "path": "automation/scripts/memory/index.py",
+        "sha256": "319d674596bf6a9394a87f7f0bb6d878937e2d8aa12917f6cdd3f6d34d1a4eb5",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.689698Z"
+      },
+      {
+        "path": "automation/scripts/memory/search.py",
+        "sha256": "b7aa1c364279c52eabd049df094caadd570aad6935cea382fba54b3c725543b6",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.690717Z"
+      },
+      {
+        "path": "automation/scripts/memory/packets.py",
+        "sha256": "2ebca3a045416f140d32ab418968ec23d08e098bde1da4f441af7b85c92c4d27",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.693161Z"
+      },
+      {
+        "path": "automation/scripts/memory/documents.py",
+        "sha256": "4642b398c416a9515b7864cdea7f7287fd76cc9e9e146814f038bca63ed690bd",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.695169Z"
+      },
+      {
+        "path": "automation/scripts/memory/document.py",
+        "sha256": "626d2f7975e06f4119537ade9be0ebb1bcfe2c00324f389a050027a5a4ec4b10",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.697181Z"
+      },
+      {
+        "path": "automation/scripts/memory/technical_units.py",
+        "sha256": "fe707cba7c75e6272b90f37734396d680960b5133d287c82abb3ef5cd75da287",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.699182Z"
+      },
+      {
+        "path": "automation/scripts/memory/associations.py",
+        "sha256": "5bfdc5e2c7ee0fd3e82128d7fc129f3628ee511f798cc3242553dea7b49ec9b2",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.701178Z"
+      },
+      {
+        "path": "automation/scripts/memory/summaries.py",
+        "sha256": "9d0557468a9ff923342fa3d394eb5e887a17d7effd4ee8e789cd35ea0ef7efa7",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.703179Z"
+      },
+      {
+        "path": "automation/scripts/memory/consolidation.py",
+        "sha256": "7d7874dc781659f64e091c3392677a2c97d213d386caeffc9af47c8f27f70f22",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.705167Z"
+      },
+      {
+        "path": "automation/scripts/memory/evidence_adapter.py",
+        "sha256": "e7f1b488ebfcbfe49afb14a1024018aea0e63d6635d20d9ce4c86f0b037b0356",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.707185Z"
+      },
+      {
+        "path": "automation/scripts/memory/raw_materials.py",
+        "sha256": "4f735783552288890caa21e9b1d5a02a46cfc438f37446ec1cb56d81fef876b5",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.709178Z"
+      },
+      {
+        "path": "automation/scripts/memory/owners.py",
+        "sha256": "a54bb703b1fd2101099dcdda74832882f443a7e64b76fff6593eed50f8bd10fe",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.711223Z"
+      },
+      {
+        "path": "automation/schemas/memory-v3.schema.json",
+        "sha256": "de7ce77443f6aefee4725187491315fa9c29fa7d529239b9ad891f24e46167c0",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.713179Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/baseline/ARCHITECTURE.md.snapshot",
+        "sha256": "6edfc0d5a5627009aa0c7307d232cbb8da44d5ad8bbd9e84e82ce519c9e0bf58",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.716169Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/baseline/MODULE_IMPACT-v1.md.snapshot",
+        "sha256": "e15674897788ae19ecec4f1892b4df3dce3ccfc4a2bf61c1a5899861870f4333",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.719178Z"
+      }
+    ],
+    "parameters": {
+      "scope": "research_and_function_boundary_discussion",
+      "material_selection": "abstraction_degree_and_extensible_representations",
+      "formal_knowledge_maintenance": "policy_authorized_revision_with_versions_review_and_recovery",
+      "interface_status": "candidate_design_only; formal_contracts_pending_discussion",
+      "product_code_changed": false,
+      "workbench": "retain_current_user_flows",
+      "local_benchmarks_executed": false
+    },
+    "code": {
+      "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+      "dirty": true
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "discussion_static_artifacts_and_code_boundaries",
+        "status": "passed",
+        "required": true,
+        "evidence": "discussion-checks.json",
+        "details": "8 Markdown files, 19 local links, 17 footnote definitions, 14 primary sources and 50 prior Run fingerprints checked; independent AI static review recorded."
+      },
+      {
+        "check": "workspace_structure",
+        "status": "passed",
+        "required": true,
+        "evidence": "validation.txt",
+        "details": "refresh-index executed; validate returned 0 errors and 0 warnings."
+      },
+      {
+        "check": "product_runtime_and_performance",
+        "status": "not-run",
+        "required": false,
+        "evidence": "README.md",
+        "details": "Research discussion only; no product, scale, setup migration, AI behavior or second physical machine tests."
+      },
+      {
+        "check": "human_review",
+        "status": "not-run",
+        "required": false,
+        "evidence": "README.md",
+        "details": "Discussion feedback and formal interface decisions pending."
+      }
+    ],
+    "metrics": {
+      "markdown_files": 8,
+      "local_links": 19,
+      "footnote_definitions": 17,
+      "primary_sources": 14,
+      "prior_run_fingerprints": 50
+    },
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/DISCUSSION.md",
+        "sha256": "1b5c116d79d83a31ddb0f6c2c4954f731bccbdbd1f30ff08f4ffd7cf5b529194",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.721488Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/README.md",
+        "sha256": "e9c9aad3a4726684ea984db3ef689518f8ef925ec63b07878da7c7c2b2efddb0",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.724510Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/retrieval-boundaries.md",
+        "sha256": "85ddd76c001c797ade6dffb67553c50c6475883915af24be7fa88221cce5f576",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.726968Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/storage-boundaries.md",
+        "sha256": "3b3ab8e3b253608be66c960038432cc0a4ca4c0f5c94742ebeecdeefcd982e0c",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.729977Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/graph-research.md",
+        "sha256": "76ea2f8c2c0ed88eb1a5f3164cbddf2ff8b43ea0fa1f3c1f5386e74085bb4413",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.731990Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/graph-sources.json",
+        "sha256": "9b6b439c9e8d9527110a8c61a76d3bb6c1e0d3f25200c9e8845bbcd383811b33",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.734439Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/retrieval-research.md",
+        "sha256": "25c3eca36eb7f2b00951291ddb1caea8dfee7e1dc0606a17b9490749d46f75d4",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.737441Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/sources.json",
+        "sha256": "d5f274b78049535d74cd2b9277fdfa80d472604832ccaff74e4fa7e4df385b1a",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.739441Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/discussion-checks.json",
+        "sha256": "c4ccf3d3f8e066b19fa445699e17adfd5613dc92ad92f56585e0d458f5942d8c",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.742798Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/validation.txt",
+        "sha256": "8010bf11c642fe652a2456440d50ef662a95451c685d7e53d067532dbe1c934a",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.745663Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/verify_discussion.py",
+        "sha256": "f678cf6ba989ff71273fa832b20fafea879ada8a0a9446eff8375ba5da1b5bfc",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.747663Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "完成检索、版本存储、表示、视图和策略整理的功能讨论稿，给出六种材料表示、十二组能力及候选结构和调用关系；正式接口定稿与产品实现待后续讨论。",
+    "limitations": [
+      "本 Run 的执行成功仅表示研究与讨论稿完成，不表示候选设计已实现或获得人工审查。",
+      "论文、官方示例和静态代码检查不构成本地性能或业务有效性证明。",
+      "动态官方文档及仓库按访问时点观察；未固定提交的来源在正式选型前需再核对。",
+      "保留现有单 owner 事务、固定引用和 Windows x64 离线升级约束；没有新增全局事务或任意模型兼容承诺。",
+      "本轮未运行产品功能、实际 AI 行为、并发恢复、检索规模、真实 setup 升级或第二台物理机测试。"
+    ],
+    "parent_run_ids": [],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "before_bytes": "ew0KICAic2NoZW1hX3ZlcnNpb24iOiAxLA0KICAicnVuX2lkIjogIlJVTi0yMDI2MDkwOVQxNTUxMjVaLTI5NjFCREYxNzVBOCIsDQogICJvd25lcl9pZCI6ICJQUkotQVJDSElURUNUVVJFLUVWT0xVVElPTiIsDQogICJwcm9qZWN0X2lkIjogIlBSSi1BUkNISVRFQ1RVUkUtRVZPTFVUSU9OIiwNCiAgInRpdGxlIjogIuajgOe0ouS4juWtmOWCqOaKveixoeiDveWKm+iuqOiuuuWPiuWJjeayv+ivgeaNruiwg+eglCIsDQogICJrZXl3b3JkcyI6IFsNCiAgICAi5o6l5Y+j6L6555WMIiwNCiAgICAi5qOA57SiIiwNCiAgICAi54mI5pys5a2Y5YKoIiwNCiAgICAi6Ieq5Yqo5pW055CGIiwNCiAgICAi5p625p6E6K6+6K6hIg0KICBdLA0KICAicmV2aWV3X2hpc3RvcnkiOiBbXSwNCiAgImNsYWltcyI6IFtdLA0KICAiZGVwZW5kZW5jaWVzIjogW10sDQogICJydW5fdHlwZSI6ICJhbmFseXNpcyIsDQogICJzdGF0dXMiOiAic3VjY2VlZGVkIiwNCiAgImNyZWF0ZWRfYXQiOiAiMjAyNi0wOS0wOVQxNTo1MToyNVoiLA0KICAic3RhcnRlZF9hdCI6ICIyMDI2LTA5LTA5VDE1OjU0OjAxWiIsDQogICJlbmRlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjI3NzE2NVoiLA0KICAib3duZXIiOiAiYXNzaXN0YW50IiwNCiAgInF1ZXN0aW9uIjogIuWmguS9leW7uueri+ajgOe0ouOAgeeJiOacrOWtmOWCqOOAgeinhuWbvuWSjOiHquWKqOaVtOeQhueahOeos+WumuaKveixoeWKn+iDve+8jOW5tuS4uuiuqOiuuuWQjueahOaOpeWPo+OAgeaVsOaNrue7k+aehOS4juiwg+eUqOWFs+ezu+iuvuiuoeehruWumui+ueeVjO+8nyIsDQogICJoeXBvdGhlc2VzIjogWw0KICAgICLojIPlm7TjgIHmo4DntKLlrZfmrrXjgIHov5Tlm57nspLluqblkozmiafooYzpooTnrpflupTmraPkuqTjgIIiLA0KICAgICLlhoXlrrnlsYLnuqfjgIHnn6Xor4bop5LoibLjgIHnu5PmnpzmnoHmgKfjgIHlpI3moLjlkozmnInmlYjmgKflupTliIbliKvooajovr7jgIIiLA0KICAgICLop4TojIPlhpnlhaXjgIHlj6/ph43lu7rmipXlvbHjgIHmo4DntKLnvJbmjpLlj4pBSeaVtOeQhuWPr+S7pemAmui/h+WbuuWumuW8leeUqOWSjOaYvuW8j+awtOS9jeWIhuemu+OAgiINCiAgXSwNCiAgImlucHV0cyI6IFsNCiAgICB7DQogICAgICAicGF0aCI6ICJhdXRvbWF0aW9uL3NjcmlwdHMvcmV0cmlldmFsX2ludGVyZmFjZXMucHkiLA0KICAgICAgInNoYTI1NiI6ICI2ZDA5ZjI1ZjFkMTg4YTkxOGExMzZmOTVlMmZmYjRmY2YyYTU5MmU2YTFmODYxYzk2N2IyNDEyZmI3NWU1MzJlIiwNCiAgICAgICJyb2xlIjogImlucHV0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNjc1NDI3WiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogImF1dG9tYXRpb24vc2NyaXB0cy9yZXRyaWV2YWwucHkiLA0KICAgICAgInNoYTI1NiI6ICIyZTNhYzM5ZjcxOWM3ZTczYjk2ZjUzZjkxZDE1OWVlMGFmZWM1MDczODUxNTQ5OWUzMzY1NWRhODcwZTkyNmJmIiwNCiAgICAgICJyb2xlIjogImlucHV0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNjc2NDI5WiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogImF1dG9tYXRpb24vc2NyaXB0cy9jb250ZXh0X2VuZ2luZS5weSIsDQogICAgICAic2hhMjU2IjogImI1YWNiZmNlYzljYTIyZTViYTRiNDY4MWU1NzFiODkzYWYzZWQwMzVhMjdjNmY0NjA4OGI1Zjc1NjBjNGE4MjkiLA0KICAgICAgInJvbGUiOiAiaW5wdXQiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni42Nzg0NDVaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAiYXV0b21hdGlvbi9zY3JpcHRzL3FkcmFudF9iYWNrZW5kLnB5IiwNCiAgICAgICJzaGEyNTYiOiAiMDhjMjZiMWRmYjEyMDk5YjlhZmQ2NmYyYjBlMDBiZWJlMDc5MTQzZWYyYmE3YmUwMWU0MTQ4OTU3MGVlNjEyZCIsDQogICAgICAicm9sZSI6ICJpbnB1dCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjY4MDUwMVoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJhdXRvbWF0aW9uL3NjcmlwdHMvbWVtb3J5L3N0b3JlLnB5IiwNCiAgICAgICJzaGEyNTYiOiAiOGM3YjRiOGFlMTA5NjZlZjJiNGEyZTdiYjJhYzViNDZlMzM3YWVkODdkZjgwYTM1OTA1YzJmZjQxNzRkYWM5ZSIsDQogICAgICAicm9sZSI6ICJpbnB1dCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjY4MjgwNloiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJhdXRvbWF0aW9uL3NjcmlwdHMvbWVtb3J5L3NlcnZpY2UucHkiLA0KICAgICAgInNoYTI1NiI6ICIzOTc5M2I5NjZjNzQwMWYyOTg5MDk3MTQ4MjQ3YjI4NmQwZjdmYjVkOTlhMjdmMDVhYTU2NDRkOWEwYTcxOTljIiwNCiAgICAgICJyb2xlIjogImlucHV0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNjg0ODc4WiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogImF1dG9tYXRpb24vc2NyaXB0cy9tZW1vcnkvY29udHJhY3RzLnB5IiwNCiAgICAgICJzaGEyNTYiOiAiMDYyNzI3M2JhMzZhNDU3MjU3MmMyODg1NjU2MTY2ZDM0Nzg0ZTU0ZDc2ZDEzNWVkNzMwNTMyZGVlZDkyYjE3OCIsDQogICAgICAicm9sZSI6ICJpbnB1dCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjY4NzQyOVoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJhdXRvbWF0aW9uL3NjcmlwdHMvbWVtb3J5L2luZGV4LnB5IiwNCiAgICAgICJzaGEyNTYiOiAiMzE5ZDY3NDU5NmJmNmE5Mzk0YTg3ZjdmMGJiNmQ4Nzg5MzdlMmQ4YWExMjkxN2Y2Y2RkM2Y2ZDM0ZDFhNGViNSIsDQogICAgICAicm9sZSI6ICJpbnB1dCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjY4OTY5OFoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJhdXRvbWF0aW9uL3NjcmlwdHMvbWVtb3J5L3NlYXJjaC5weSIsDQogICAgICAic2hhMjU2IjogImI3YWExYzM2NDI3OWM1MmVhYmQwNDlkZjA5NGNhYWRkNTcwYWFkNjkzNWNlYTM4MmZiYTU0YjNjNzI1NTQzYjYiLA0KICAgICAgInJvbGUiOiAiaW5wdXQiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni42OTA3MTdaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAiYXV0b21hdGlvbi9zY3JpcHRzL21lbW9yeS9wYWNrZXRzLnB5IiwNCiAgICAgICJzaGEyNTYiOiAiMmViY2EzYTA0NTQxNmYxNDBkMzJhYjQxODk2OGVjMjNkMDhlMDk4YmRlMWRhNGY0NDFhZjdiODVjOTJjNGQyNyIsDQogICAgICAicm9sZSI6ICJpbnB1dCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjY5MzE2MVoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJhdXRvbWF0aW9uL3NjcmlwdHMvbWVtb3J5L2RvY3VtZW50cy5weSIsDQogICAgICAic2hhMjU2IjogIjQ2NDJiMzk4YzQxNmE5NTE1Yjc4NjRjZGVhN2Y3Mjg3ZmQ3NmNjOWU5ZTE0NjgxNGYwMzhiY2E2M2VkNjkwYmQiLA0KICAgICAgInJvbGUiOiAiaW5wdXQiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni42OTUxNjlaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAiYXV0b21hdGlvbi9zY3JpcHRzL21lbW9yeS9kb2N1bWVudC5weSIsDQogICAgICAic2hhMjU2IjogIjYyNmQyZjc5NzVlMDZmNDExOTUzN2FkZTliZTBlYmIxYmNmZTJjMDAzMjRmMzg5YTA1MDAyN2E1YTRlYzRiMTAiLA0KICAgICAgInJvbGUiOiAiaW5wdXQiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni42OTcxODFaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAiYXV0b21hdGlvbi9zY3JpcHRzL21lbW9yeS90ZWNobmljYWxfdW5pdHMucHkiLA0KICAgICAgInNoYTI1NiI6ICJmZTcwN2NiYTdjNzVlNjI3MmI5MGYzNzczNDM5NmQ2ODA5NjBiNTEzM2QyODdjODJhYmIzZWY1Y2Q3NWRhMjg3IiwNCiAgICAgICJyb2xlIjogImlucHV0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNjk5MTgyWiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogImF1dG9tYXRpb24vc2NyaXB0cy9tZW1vcnkvYXNzb2NpYXRpb25zLnB5IiwNCiAgICAgICJzaGEyNTYiOiAiNWJmZGM1ZTJjN2VlMGZkM2U4MjEyOGQ3ZmMxMjlmMzYyOGVlNTExZjc5OGNjMzI0MjU1M2RlYTdiNDllYzliMiIsDQogICAgICAicm9sZSI6ICJpbnB1dCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjcwMTE3OFoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJhdXRvbWF0aW9uL3NjcmlwdHMvbWVtb3J5L3N1bW1hcmllcy5weSIsDQogICAgICAic2hhMjU2IjogIjlkMDU1NzQ2OGE5ZmY5MjMzNDJmYTNkMzk0ZWI1ZTg4N2ExN2Q3ZWZmZDRlZThlNzg5Y2QzNWVhMGVmN2VmYTciLA0KICAgICAgInJvbGUiOiAiaW5wdXQiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni43MDMxNzlaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAiYXV0b21hdGlvbi9zY3JpcHRzL21lbW9yeS9jb25zb2xpZGF0aW9uLnB5IiwNCiAgICAgICJzaGEyNTYiOiAiN2Q3ODc0ZGM3ODE2NTlmNjRlMDkxYzMzOTI2NzdhMmM5N2QyMTNkMzg2Y2FlZmZjOWFmNDdjOGYyN2Y3MGYyMiIsDQogICAgICAicm9sZSI6ICJpbnB1dCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjcwNTE2N1oiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJhdXRvbWF0aW9uL3NjcmlwdHMvbWVtb3J5L2V2aWRlbmNlX2FkYXB0ZXIucHkiLA0KICAgICAgInNoYTI1NiI6ICJlN2YxYjQ4OGViZmNiZmU0OWFmYjE0YTEwMjQwMThhZWEwZTYzZDY2MzVkMjBkOWNlNGM4NmYwYjAzN2IwMzU2IiwNCiAgICAgICJyb2xlIjogImlucHV0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNzA3MTg1WiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogImF1dG9tYXRpb24vc2NyaXB0cy9tZW1vcnkvcmF3X21hdGVyaWFscy5weSIsDQogICAgICAic2hhMjU2IjogIjRmNzM1NzgzNTUyMjg4ODkwY2FhMjFlOWIxZDVhMDJhNDZjZmM0MzhmMzc0NDZlYzFjYjU2ZDgxZmVmODc2YjUiLA0KICAgICAgInJvbGUiOiAiaW5wdXQiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni43MDkxNzhaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAiYXV0b21hdGlvbi9zY3JpcHRzL21lbW9yeS9vd25lcnMucHkiLA0KICAgICAgInNoYTI1NiI6ICJhNTRiYjcwM2IxZmQyMTAxMDk5ZGNkZGE3NDgzMjg4MmY0NDNhN2U2NGI3NmZmZjY1OTNlZWQ1MGY4YmQxMGZlIiwNCiAgICAgICJyb2xlIjogImlucHV0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNzExMjIzWiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogImF1dG9tYXRpb24vc2NoZW1hcy9tZW1vcnktdjMuc2NoZW1hLmpzb24iLA0KICAgICAgInNoYTI1NiI6ICJkZTdjZTc3NDQzZjZhZWZlZTQ3MjUxODc0OTEzMTVmYTljMjlmYTdkNTI5MjM5YjlhZDg5MWYyNGU0NjE2N2MwIiwNCiAgICAgICJyb2xlIjogImlucHV0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNzEzMTc5WiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MDl0MTU1MTI1ei0yOTYxYmRmMTc1YTgvYmFzZWxpbmUvQVJDSElURUNUVVJFLm1kLnNuYXBzaG90IiwNCiAgICAgICJzaGEyNTYiOiAiNmVkZmMwZDVhNTYyNzAwOWFhMGM3MzA3ZDIzMmNiYjhkYTQ0ZDVhZDhiYmQ5ZTg0ZTgyY2U1MTljOWUwYmY1OCIsDQogICAgICAicm9sZSI6ICJpbnB1dCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjcxNjE2OVoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJwcm9qZWN0cy9hcmNoaXRlY3R1cmUtZXZvbHV0aW9uL3J1bnMvcnVuLTIwMjYwOTA5dDE1NTEyNXotMjk2MWJkZjE3NWE4L2Jhc2VsaW5lL01PRFVMRV9JTVBBQ1QtdjEubWQuc25hcHNob3QiLA0KICAgICAgInNoYTI1NiI6ICJlMTU2NzQ4OTc3ODhhZTE5ZWNlYzRmMTg5MmI0ZGYzZGNlM2NjZmM0YTJiZjYxYzFhNTg5OTg2MTg3MGY0MzMzIiwNCiAgICAgICJyb2xlIjogImlucHV0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNzE5MTc4WiINCiAgICB9DQogIF0sDQogICJwYXJhbWV0ZXJzIjogew0KICAgICJzY29wZSI6ICJyZXNlYXJjaF9hbmRfZnVuY3Rpb25fYm91bmRhcnlfZGlzY3Vzc2lvbiIsDQogICAgIm1hdGVyaWFsX3NlbGVjdGlvbiI6ICJhYnN0cmFjdGlvbl9kZWdyZWVfYW5kX2V4dGVuc2libGVfcmVwcmVzZW50YXRpb25zIiwNCiAgICAiZm9ybWFsX2tub3dsZWRnZV9tYWludGVuYW5jZSI6ICJwb2xpY3lfYXV0aG9yaXplZF9yZXZpc2lvbl93aXRoX3ZlcnNpb25zX3Jldmlld19hbmRfcmVjb3ZlcnkiLA0KICAgICJpbnRlcmZhY2Vfc3RhdHVzIjogImNhbmRpZGF0ZV9kZXNpZ25fb25seTsgZm9ybWFsX2NvbnRyYWN0c19wZW5kaW5nX2Rpc2N1c3Npb24iLA0KICAgICJwcm9kdWN0X2NvZGVfY2hhbmdlZCI6IGZhbHNlLA0KICAgICJ3b3JrYmVuY2giOiAicmV0YWluX2N1cnJlbnRfdXNlcl9mbG93cyIsDQogICAgImxvY2FsX2JlbmNobWFya3NfZXhlY3V0ZWQiOiBmYWxzZQ0KICB9LA0KICAiY29kZSI6IHsNCiAgICAiY29tbWl0IjogIjY0N2Q3ODYyMzMxZTI4MzQzOWQwNmQ0MmVjMDFkMzg4MmEzMmQxNjMiLA0KICAgICJkaXJ0eSI6IHRydWUNCiAgfSwNCiAgImVudmlyb25tZW50Ijogew0KICAgICJweXRob24iOiAiMy4xMi4xMCIsDQogICAgInBsYXRmb3JtIjogIldpbmRvd3MtMTEtMTAuMC4yMjYzMS1TUDAiLA0KICAgICJsb2NrX29yX2ltYWdlX2RpZ2VzdCI6IG51bGwNCiAgfSwNCiAgInJhbmRvbV9zZWVkcyI6IFtdLA0KICAicXVhbGl0eV9yZXN1bHRzIjogWw0KICAgIHsNCiAgICAgICJjaGVjayI6ICJkaXNjdXNzaW9uX3N0YXRpY19hcnRpZmFjdHNfYW5kX2NvZGVfYm91bmRhcmllcyIsDQogICAgICAic3RhdHVzIjogInBhc3NlZCIsDQogICAgICAicmVxdWlyZWQiOiB0cnVlLA0KICAgICAgImV2aWRlbmNlIjogImRpc2N1c3Npb24tY2hlY2tzLmpzb24iLA0KICAgICAgImRldGFpbHMiOiAiOCBNYXJrZG93biBmaWxlcywgMTkgbG9jYWwgbGlua3MsIDE3IGZvb3Rub3RlIGRlZmluaXRpb25zLCAxNCBwcmltYXJ5IHNvdXJjZXMgYW5kIDUwIHByaW9yIFJ1biBmaW5nZXJwcmludHMgY2hlY2tlZDsgaW5kZXBlbmRlbnQgQUkgc3RhdGljIHJldmlldyByZWNvcmRlZC4iDQogICAgfSwNCiAgICB7DQogICAgICAiY2hlY2siOiAid29ya3NwYWNlX3N0cnVjdHVyZSIsDQogICAgICAic3RhdHVzIjogInBhc3NlZCIsDQogICAgICAicmVxdWlyZWQiOiB0cnVlLA0KICAgICAgImV2aWRlbmNlIjogInZhbGlkYXRpb24udHh0IiwNCiAgICAgICJkZXRhaWxzIjogInJlZnJlc2gtaW5kZXggZXhlY3V0ZWQ7IHZhbGlkYXRlIHJldHVybmVkIDAgZXJyb3JzIGFuZCAwIHdhcm5pbmdzLiINCiAgICB9LA0KICAgIHsNCiAgICAgICJjaGVjayI6ICJwcm9kdWN0X3J1bnRpbWVfYW5kX3BlcmZvcm1hbmNlIiwNCiAgICAgICJzdGF0dXMiOiAibm90LXJ1biIsDQogICAgICAicmVxdWlyZWQiOiBmYWxzZSwNCiAgICAgICJldmlkZW5jZSI6ICJSRUFETUUubWQiLA0KICAgICAgImRldGFpbHMiOiAiUmVzZWFyY2ggZGlzY3Vzc2lvbiBvbmx5OyBubyBwcm9kdWN0LCBzY2FsZSwgc2V0dXAgbWlncmF0aW9uLCBBSSBiZWhhdmlvciBvciBzZWNvbmQgcGh5c2ljYWwgbWFjaGluZSB0ZXN0cy4iDQogICAgfSwNCiAgICB7DQogICAgICAiY2hlY2siOiAiaHVtYW5fcmV2aWV3IiwNCiAgICAgICJzdGF0dXMiOiAibm90LXJ1biIsDQogICAgICAicmVxdWlyZWQiOiBmYWxzZSwNCiAgICAgICJldmlkZW5jZSI6ICJSRUFETUUubWQiLA0KICAgICAgImRldGFpbHMiOiAiRGlzY3Vzc2lvbiBmZWVkYmFjayBhbmQgZm9ybWFsIGludGVyZmFjZSBkZWNpc2lvbnMgcGVuZGluZy4iDQogICAgfQ0KICBdLA0KICAibWV0cmljcyI6IHsNCiAgICAibWFya2Rvd25fZmlsZXMiOiA4LA0KICAgICJsb2NhbF9saW5rcyI6IDE5LA0KICAgICJmb290bm90ZV9kZWZpbml0aW9ucyI6IDE3LA0KICAgICJwcmltYXJ5X3NvdXJjZXMiOiAxNCwNCiAgICAicHJpb3JfcnVuX2ZpbmdlcnByaW50cyI6IDUwDQogIH0sDQogICJhcnRpZmFjdHMiOiBbDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkwOXQxNTUxMjV6LTI5NjFiZGYxNzVhOC9ESVNDVVNTSU9OLm1kIiwNCiAgICAgICJzaGEyNTYiOiAiMWI1YzExNmQ3OWQ4M2EzMWRkYjBmNmMyYzQ5NTRmNzMxYmNjYmRiZDFmMzBmZjA4ZjRmZmQ3Y2Y1YjUyOTE5NCIsDQogICAgICAicm9sZSI6ICJhcnRpZmFjdCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjcyMTQ4OFoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJwcm9qZWN0cy9hcmNoaXRlY3R1cmUtZXZvbHV0aW9uL3J1bnMvcnVuLTIwMjYwOTA5dDE1NTEyNXotMjk2MWJkZjE3NWE4L1JFQURNRS5tZCIsDQogICAgICAic2hhMjU2IjogImU5YzlhYWQzYTQ3MjY2ODRlYTk4NGRiM2VmNjg5NTE4ZjhlZjkyNWVjNjNiMDc4NzhkYTdjN2MyYjJlZmRkYjAiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni43MjQ1MTBaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkwOXQxNTUxMjV6LTI5NjFiZGYxNzVhOC9yZXRyaWV2YWwtYm91bmRhcmllcy5tZCIsDQogICAgICAic2hhMjU2IjogIjg1ZGRkNzZjMDAxYzc5N2FkZTZkZmZiNjc1NTNjNTBjNjQ3NTg4MzkxNWFmMjRiZTdmYTg4MjIxY2NlNWY1NzYiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni43MjY5NjhaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkwOXQxNTUxMjV6LTI5NjFiZGYxNzVhOC9zdG9yYWdlLWJvdW5kYXJpZXMubWQiLA0KICAgICAgInNoYTI1NiI6ICIzYjNhYjhlM2IyNTM2MDhiZTY2Yzk2MDAzODQzMmNjMGE0Y2E0YzBmNWM5NDc0MmViZWVjZGVlZmNkOTgyZTBjIiwNCiAgICAgICJyb2xlIjogImFydGlmYWN0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNzI5OTc3WiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MDl0MTU1MTI1ei0yOTYxYmRmMTc1YTgvZ3JhcGgtcmVzZWFyY2gubWQiLA0KICAgICAgInNoYTI1NiI6ICI3NmVhMmY4YzJjMGVkODhlYjFhNWYzMTY0Y2JkZGYyZmY4YjQzZWEwZmExZjNjMWY1Mzg2ZTc0MDg1YmI0NDEzIiwNCiAgICAgICJyb2xlIjogImFydGlmYWN0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNzMxOTkwWiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MDl0MTU1MTI1ei0yOTYxYmRmMTc1YTgvZ3JhcGgtc291cmNlcy5qc29uIiwNCiAgICAgICJzaGEyNTYiOiAiOWI2YjQzOWM5ZThkOTUyNzExMGE4YzYxYTc2ZDNiYjZjMWUwZDNmMjUyMDBjOWU4ODQ1YmJjZDM4MzgxMWIzMyIsDQogICAgICAicm9sZSI6ICJhcnRpZmFjdCIsDQogICAgICAicmVnaXN0ZXJlZF9hdCI6ICIyMDI2LTA5LTA5VDE2OjA2OjU2LjczNDQzOVoiDQogICAgfSwNCiAgICB7DQogICAgICAicGF0aCI6ICJwcm9qZWN0cy9hcmNoaXRlY3R1cmUtZXZvbHV0aW9uL3J1bnMvcnVuLTIwMjYwOTA5dDE1NTEyNXotMjk2MWJkZjE3NWE4L3JldHJpZXZhbC1yZXNlYXJjaC5tZCIsDQogICAgICAic2hhMjU2IjogIjI1YzNlY2EzNmViN2YyYjAwOTUxMjkxZGRiMWNhZWE4ZGZlZTdlMWRjMDYwNmExN2I5NDkwNzQ5ZDQ2Zjc1ZDQiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni43Mzc0NDFaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkwOXQxNTUxMjV6LTI5NjFiZGYxNzVhOC9zb3VyY2VzLmpzb24iLA0KICAgICAgInNoYTI1NiI6ICJkNWYyNzRiNzgwNDk1MzVkNzRjZDJiOTI3N2ZkZmE4MGQ0NzI2MDQ4MzJjY2FmZjc0ZTRmYTdlNGRmMzg1YjFhIiwNCiAgICAgICJyb2xlIjogImFydGlmYWN0IiwNCiAgICAgICJyZWdpc3RlcmVkX2F0IjogIjIwMjYtMDktMDlUMTY6MDY6NTYuNzM5NDQxWiINCiAgICB9LA0KICAgIHsNCiAgICAgICJwYXRoIjogInByb2plY3RzL2FyY2hpdGVjdHVyZS1ldm9sdXRpb24vcnVucy9ydW4tMjAyNjA5MDl0MTU1MTI1ei0yOTYxYmRmMTc1YTgvZGlzY3Vzc2lvbi1jaGVja3MuanNvbiIsDQogICAgICAic2hhMjU2IjogImM0Y2NmM2QzZjhlMDY2YjE5ZmE0NDU2OTllMTdhZGZkNTYxM2RjOTJhZDkyZjU2NTg1ZTBkNDU4ZjU5NDJkOGMiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni43NDI3OThaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkwOXQxNTUxMjV6LTI5NjFiZGYxNzVhOC92YWxpZGF0aW9uLnR4dCIsDQogICAgICAic2hhMjU2IjogIjgwMTBiZjExYzY0MmZlNjUyYTI0NTY0NDBkNTBlZjY2MmE5NTQ1MWM2ODVkN2U1M2QwNjc1MzJkYmUxYzkzNGEiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni43NDU2NjNaIg0KICAgIH0sDQogICAgew0KICAgICAgInBhdGgiOiAicHJvamVjdHMvYXJjaGl0ZWN0dXJlLWV2b2x1dGlvbi9ydW5zL3J1bi0yMDI2MDkwOXQxNTUxMjV6LTI5NjFiZGYxNzVhOC92ZXJpZnlfZGlzY3Vzc2lvbi5weSIsDQogICAgICAic2hhMjU2IjogImY2NzhjZjZiYTk4OWZmNzEyNzNmYTgzMmIyMGZhZmVhODc5YWRhOGEwYTk0NDZlZmY4Mzc1YmE1ZGExYjViZmMiLA0KICAgICAgInJvbGUiOiAiYXJ0aWZhY3QiLA0KICAgICAgInJlZ2lzdGVyZWRfYXQiOiAiMjAyNi0wOS0wOVQxNjowNjo1Ni43NDc2NjNaIg0KICAgIH0NCiAgXSwNCiAgImxpbmVhZ2VfZXZlbnRzIjogImxpbmVhZ2UuanNvbmwiLA0KICAiY29uY2x1c2lvbiI6ICLlrozmiJDmo4DntKLjgIHniYjmnKzlrZjlgqjjgIHooajnpLrjgIHop4blm77lkoznrZbnlaXmlbTnkIbnmoTlip/og73orqjorrrnqL/vvIznu5nlh7rlha3np43mnZDmlpnooajnpLrjgIHljYHkuoznu4Tog73lipvlj4rlgJnpgInnu5PmnoTlkozosIPnlKjlhbPns7vvvJvmraPlvI/mjqXlj6PlrprnqL/kuI7kuqflk4Hlrp7njrDlvoXlkI7nu63orqjorrrjgIIiLA0KICAibGltaXRhdGlvbnMiOiBbDQogICAgIuacrCBSdW4g55qE5omn6KGM5oiQ5Yqf5LuF6KGo56S656CU56m25LiO6K6o6K6656i/5a6M5oiQ77yM5LiN6KGo56S65YCZ6YCJ6K6+6K6h5bey5a6e546w5oiW6I635b6X5Lq65bel5a6h5p+l44CCIiwNCiAgICAi6K665paH44CB5a6Y5pa556S65L6L5ZKM6Z2Z5oCB5Luj56CB5qOA5p+l5LiN5p6E5oiQ5pys5Zyw5oCn6IO95oiW5Lia5Yqh5pyJ5pWI5oCn6K+B5piO44CCIiwNCiAgICAi5Yqo5oCB5a6Y5pa55paH5qGj5Y+K5LuT5bqT5oyJ6K6/6Zeu5pe254K56KeC5a+f77yb5pyq5Zu65a6a5o+Q5Lqk55qE5p2l5rqQ5Zyo5q2j5byP6YCJ5Z6L5YmN6ZyA5YaN5qC45a+544CCIiwNCiAgICAi5L+d55WZ546w5pyJ5Y2VIG93bmVyIOS6i+WKoeOAgeWbuuWumuW8leeUqOWSjCBXaW5kb3dzIHg2NCDnprvnur/ljYfnuqfnuqbmnZ/vvJvmsqHmnInmlrDlop7lhajlsYDkuovliqHmiJbku7vmhI/mqKHlnovlhbzlrrnmib/or7rjgIIiLA0KICAgICLmnKzova7mnKrov5DooYzkuqflk4Hlip/og73jgIHlrp7pmYUgQUkg6KGM5Li644CB5bm25Y+R5oGi5aSN44CB5qOA57Si6KeE5qih44CB55yf5a6eIHNldHVwIOWNh+e6p+aIluesrOS6jOWPsOeJqeeQhuacuua1i+ivleOAgiINCiAgXSwNCiAgInBhcmVudF9ydW5faWRzIjogW10sDQogICJyZWxhdGVkX21vZHVsZV9pZHMiOiBbXSwNCiAgInJlbGF0ZWRfcmVzZWFyY2hfaWRzIjogW10sDQogICJyZWxhdGVkX2RhdGFzZXRfaWRzIjogW10sDQogICJyZXZpZXciOiB7DQogICAgInN0YXR1cyI6ICJub3QtcmV2aWV3ZWQiLA0KICAgICJyZXZpZXdlciI6IG51bGwsDQogICAgImRhdGUiOiBudWxsDQogIH0sDQogICJzZW5zaXRpdml0eSI6ICJpbnRlcm5hbCINCn0NCg==",
+  "after": {
+    "schema_version": 1,
+    "run_id": "RUN-20260909T155125Z-2961BDF175A8",
+    "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "检索与存储抽象能力讨论及前沿证据调研",
+    "keywords": [
+      "接口边界",
+      "检索",
+      "版本存储",
+      "自动整理",
+      "架构设计"
+    ],
+    "review_history": [],
+    "claims": [],
+    "dependencies": [],
+    "run_type": "analysis",
+    "status": "succeeded",
+    "created_at": "2026-09-09T15:51:25Z",
+    "started_at": "2026-09-09T15:54:01Z",
+    "ended_at": "2026-09-09T16:06:56.277165Z",
+    "owner": "assistant",
+    "question": "如何建立检索、版本存储、视图和自动整理的稳定抽象功能，并为讨论后的接口、数据结构与调用关系设计确定边界？",
+    "hypotheses": [
+      "范围、检索字段、返回粒度和执行预算应正交。",
+      "内容层级、知识角色、结果极性、复核和有效性应分别表达。",
+      "规范写入、可重建投影、检索编排及AI整理可以通过固定引用和显式水位分离。"
+    ],
+    "inputs": [
+      {
+        "path": "automation/scripts/retrieval_interfaces.py",
+        "sha256": "6d09f25f1d188a918a136f95e2ffb4fcf2a592e6a1f861c967b2412fb75e532e",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.675427Z"
+      },
+      {
+        "path": "automation/scripts/retrieval.py",
+        "sha256": "2e3ac39f719c7e73b96f53f91d159ee0afec50738515499e33655da870e926bf",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.676429Z"
+      },
+      {
+        "path": "automation/scripts/context_engine.py",
+        "sha256": "b5acbfcec9ca22e5ba4b4681e571b893af3ed035a27c6f46088b5f7560c4a829",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.678445Z"
+      },
+      {
+        "path": "automation/scripts/qdrant_backend.py",
+        "sha256": "08c26b1dfb12099b9afd66f2b0e00bebe079143ef2ba7be01e41489570ee612d",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.680501Z"
+      },
+      {
+        "path": "automation/scripts/memory/store.py",
+        "sha256": "8c7b4b8ae10966ef2b4a2e7bb2ac5b46e337aed87df80a35905c2ff4174dac9e",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.682806Z"
+      },
+      {
+        "path": "automation/scripts/memory/service.py",
+        "sha256": "39793b966c7401f2989097148247b286d0f7fb5d99a27f05aa5644d9a0a7199c",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.684878Z"
+      },
+      {
+        "path": "automation/scripts/memory/contracts.py",
+        "sha256": "0627273ba36a4572572c2885656166d34784e54d76d135ed730532deed92b178",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.687429Z"
+      },
+      {
+        "path": "automation/scripts/memory/index.py",
+        "sha256": "319d674596bf6a9394a87f7f0bb6d878937e2d8aa12917f6cdd3f6d34d1a4eb5",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.689698Z"
+      },
+      {
+        "path": "automation/scripts/memory/search.py",
+        "sha256": "b7aa1c364279c52eabd049df094caadd570aad6935cea382fba54b3c725543b6",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.690717Z"
+      },
+      {
+        "path": "automation/scripts/memory/packets.py",
+        "sha256": "2ebca3a045416f140d32ab418968ec23d08e098bde1da4f441af7b85c92c4d27",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.693161Z"
+      },
+      {
+        "path": "automation/scripts/memory/documents.py",
+        "sha256": "4642b398c416a9515b7864cdea7f7287fd76cc9e9e146814f038bca63ed690bd",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.695169Z"
+      },
+      {
+        "path": "automation/scripts/memory/document.py",
+        "sha256": "626d2f7975e06f4119537ade9be0ebb1bcfe2c00324f389a050027a5a4ec4b10",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.697181Z"
+      },
+      {
+        "path": "automation/scripts/memory/technical_units.py",
+        "sha256": "fe707cba7c75e6272b90f37734396d680960b5133d287c82abb3ef5cd75da287",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.699182Z"
+      },
+      {
+        "path": "automation/scripts/memory/associations.py",
+        "sha256": "5bfdc5e2c7ee0fd3e82128d7fc129f3628ee511f798cc3242553dea7b49ec9b2",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.701178Z"
+      },
+      {
+        "path": "automation/scripts/memory/summaries.py",
+        "sha256": "9d0557468a9ff923342fa3d394eb5e887a17d7effd4ee8e789cd35ea0ef7efa7",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.703179Z"
+      },
+      {
+        "path": "automation/scripts/memory/consolidation.py",
+        "sha256": "7d7874dc781659f64e091c3392677a2c97d213d386caeffc9af47c8f27f70f22",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.705167Z"
+      },
+      {
+        "path": "automation/scripts/memory/evidence_adapter.py",
+        "sha256": "e7f1b488ebfcbfe49afb14a1024018aea0e63d6635d20d9ce4c86f0b037b0356",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.707185Z"
+      },
+      {
+        "path": "automation/scripts/memory/raw_materials.py",
+        "sha256": "4f735783552288890caa21e9b1d5a02a46cfc438f37446ec1cb56d81fef876b5",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.709178Z"
+      },
+      {
+        "path": "automation/scripts/memory/owners.py",
+        "sha256": "a54bb703b1fd2101099dcdda74832882f443a7e64b76fff6593eed50f8bd10fe",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.711223Z"
+      },
+      {
+        "path": "automation/schemas/memory-v3.schema.json",
+        "sha256": "de7ce77443f6aefee4725187491315fa9c29fa7d529239b9ad891f24e46167c0",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.713179Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/baseline/ARCHITECTURE.md.snapshot",
+        "sha256": "6edfc0d5a5627009aa0c7307d232cbb8da44d5ad8bbd9e84e82ce519c9e0bf58",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.716169Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/baseline/MODULE_IMPACT-v1.md.snapshot",
+        "sha256": "e15674897788ae19ecec4f1892b4df3dce3ccfc4a2bf61c1a5899861870f4333",
+        "role": "input",
+        "registered_at": "2026-09-09T16:06:56.719178Z"
+      }
+    ],
+    "parameters": {
+      "scope": "research_and_function_boundary_discussion",
+      "material_selection": "abstraction_degree_and_extensible_representations",
+      "formal_knowledge_maintenance": "policy_authorized_revision_with_versions_review_and_recovery",
+      "interface_status": "candidate_design_only; formal_contracts_pending_discussion",
+      "product_code_changed": false,
+      "workbench": "retain_current_user_flows",
+      "local_benchmarks_executed": false
+    },
+    "code": {
+      "commit": "647d7862331e283439d06d42ec01d3882a32d163",
+      "dirty": true
+    },
+    "environment": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.22631-SP0",
+      "lock_or_image_digest": null
+    },
+    "random_seeds": [],
+    "quality_results": [
+      {
+        "check": "discussion_static_artifacts_and_code_boundaries",
+        "status": "passed",
+        "required": true,
+        "evidence": "discussion-checks.json",
+        "details": "8 Markdown files, 19 local links, 17 footnote definitions, 14 primary sources and 50 prior Run fingerprints checked; independent AI static review recorded."
+      },
+      {
+        "check": "workspace_structure",
+        "status": "passed",
+        "required": true,
+        "evidence": "validation.txt",
+        "details": "refresh-index executed; validate returned 0 errors and 0 warnings."
+      },
+      {
+        "check": "product_runtime_and_performance",
+        "status": "not-run",
+        "required": false,
+        "evidence": "README.md",
+        "details": "Research discussion only; no product, scale, setup migration, AI behavior or second physical machine tests."
+      },
+      {
+        "check": "human_review",
+        "status": "not-run",
+        "required": false,
+        "evidence": "README.md",
+        "details": "Discussion feedback and formal interface decisions pending."
+      }
+    ],
+    "metrics": {
+      "markdown_files": 8,
+      "local_links": 19,
+      "footnote_definitions": 17,
+      "primary_sources": 14,
+      "prior_run_fingerprints": 50
+    },
+    "artifacts": [
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/DISCUSSION.md",
+        "sha256": "1b5c116d79d83a31ddb0f6c2c4954f731bccbdbd1f30ff08f4ffd7cf5b529194",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.721488Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/README.md",
+        "sha256": "e9c9aad3a4726684ea984db3ef689518f8ef925ec63b07878da7c7c2b2efddb0",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.724510Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/retrieval-boundaries.md",
+        "sha256": "85ddd76c001c797ade6dffb67553c50c6475883915af24be7fa88221cce5f576",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.726968Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/storage-boundaries.md",
+        "sha256": "3b3ab8e3b253608be66c960038432cc0a4ca4c0f5c94742ebeecdeefcd982e0c",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.729977Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/graph-research.md",
+        "sha256": "76ea2f8c2c0ed88eb1a5f3164cbddf2ff8b43ea0fa1f3c1f5386e74085bb4413",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.731990Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/graph-sources.json",
+        "sha256": "9b6b439c9e8d9527110a8c61a76d3bb6c1e0d3f25200c9e8845bbcd383811b33",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.734439Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/retrieval-research.md",
+        "sha256": "25c3eca36eb7f2b00951291ddb1caea8dfee7e1dc0606a17b9490749d46f75d4",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.737441Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/sources.json",
+        "sha256": "d5f274b78049535d74cd2b9277fdfa80d472604832ccaff74e4fa7e4df385b1a",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.739441Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/discussion-checks.json",
+        "sha256": "c4ccf3d3f8e066b19fa445699e17adfd5613dc92ad92f56585e0d458f5942d8c",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.742798Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/validation.txt",
+        "sha256": "8010bf11c642fe652a2456440d50ef662a95451c685d7e53d067532dbe1c934a",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.745663Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/verify_discussion.py",
+        "sha256": "f678cf6ba989ff71273fa832b20fafea879ada8a0a9446eff8375ba5da1b5bfc",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:06:56.747663Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/run-query-readback.json",
+        "sha256": "a72d6b9c7cb433b6342cf71220a75009880f3f5ef95af50685a2ac4e48d47da6",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:08:25.156324Z"
+      },
+      {
+        "path": "projects/architecture-evolution/runs/run-20260909t155125z-2961bdf175a8/registration-checks.json",
+        "sha256": "1f0a5ab1bab53c80a3be78c9fb041ce20c2470759b5929008db44024bfc2520e",
+        "role": "artifact",
+        "registered_at": "2026-09-09T16:08:25.159481Z"
+      }
+    ],
+    "lineage_events": "lineage.jsonl",
+    "conclusion": "完成检索、版本存储、表示、视图和策略整理的功能讨论稿，给出六种材料表示、十二组能力及候选结构和调用关系；正式接口定稿与产品实现待后续讨论。",
+    "limitations": [
+      "本 Run 的执行成功仅表示研究与讨论稿完成，不表示候选设计已实现或获得人工审查。",
+      "论文、官方示例和静态代码检查不构成本地性能或业务有效性证明。",
+      "动态官方文档及仓库按访问时点观察；未固定提交的来源在正式选型前需再核对。",
+      "保留现有单 owner 事务、固定引用和 Windows x64 离线升级约束；没有新增全局事务或任意模型兼容承诺。",
+      "本轮未运行产品功能、实际 AI 行为、并发恢复、检索规模、真实 setup 升级或第二台物理机测试。"
+    ],
+    "parent_run_ids": [],
+    "related_module_ids": [],
+    "related_research_ids": [],
+    "related_dataset_ids": [],
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "sensitivity": "internal"
+  },
+  "created_at": "2026-09-09T16:08:25.163337Z"
+}

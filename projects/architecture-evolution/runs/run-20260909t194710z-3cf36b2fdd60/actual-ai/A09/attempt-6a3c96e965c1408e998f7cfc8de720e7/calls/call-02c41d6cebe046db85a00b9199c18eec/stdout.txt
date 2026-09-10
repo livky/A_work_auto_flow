@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "owner_id": "RES-F3-TANK",
+  "title": "SYNTHETIC F3 tank",
+  "document_source": "independent",
+  "document": {
+    "record_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+    "revision": 1,
+    "title": "SYNTHETIC F3 水箱完整过程（旧依据基线）",
+    "document_type": "research_process",
+    "purpose": "SYNTHETIC F3固定双文稿维护检查",
+    "audience": "合成检查执行者",
+    "scope": "旧r1依据基线；新饱和输入尚未融合，不据此认可新参数下的结论",
+    "common_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+        "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+        "target_kind": "record"
+      },
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+        "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+        "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "report": {
+    "version": 1,
+    "record_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+    "revision": 1,
+    "title": "SYNTHETIC F3 水箱完整过程（旧依据基线）",
+    "sections": [
+      {
+        "section_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+        "section_key": "tank",
+        "title": "SYNTHETIC F3 水箱完整模型：定义、推导与边界",
+        "role": "methods",
+        "ref": {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "d4833181c30ccefb61f91558678bd6ade4363312852a41b37b1d014e2de02b27",
+          "target_id": "MEM-59e96850-644f-5a1a-9817-000499466692",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [],
+            "markdown": "本章需要同时阅读变量定义与线性段推导；排除定义会留下解释缺口。",
+            "type": "prose",
+            "source_issues": []
+          },
+          {
+            "ref": {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+              "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": {
+              "id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+              "level": "L1",
+              "record": {
+                "body_markdown": "",
+                "change_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+                "content_hash": "cd5734f455619944ab212df1481de905501591758e356a19df38c11a1fcca75f",
+                "created_at": "2026-09-09T21:01:04.976462Z",
+                "created_by": {
+                  "id": "Codex actual-AI F3 setup",
+                  "kind": "ai"
+                },
+                "discovery": "workspace_summary",
+                "keywords": [
+                  "SYNTHETIC",
+                  "F3",
+                  "水箱必要变量定义"
+                ],
+                "kind": "detail",
+                "level": "L1",
+                "owner_id": "RES-F3-TANK",
+                "payload": {
+                  "blocks": [
+                    {
+                      "block_id": "definitions",
+                      "markdown": "## 必要变量与单位\n\n设水箱横截面积 $A=2\\,\\mathrm{m^2}$，液位 $h(t)$ 与常值目标 $h_r$ 的单位为 $\\mathrm{m}$，时间 $t$ 单位为 $\\mathrm{s}$。入流量 $q(t)$ 单位为 $\\mathrm{m^3/s}$；出流量采用线性假设 $q_{out}=c h$，其中 $c=0.1\\,\\mathrm{m^2/s}$。误差定义为 $e=h_r-h$。比例增益 $K\\geq0$ 的单位为 $\\mathrm{m^2/s}$，使 $K e$ 与流量同量纲。$q_c$ 是未限幅命令，$q_{max}>0$ 是泵的流量上限，二者单位均为 $\\mathrm{m^3/s}$。\n\n操作函数 $\\operatorname{clip}(x,0,q_{max})=\\min(q_{max},\\max(0,x))$。初值 $h(0)=h_0\\geq0$。传感器、泵在此材料中假设连续、无延迟；未加入噪声、泄漏变化或积分控制。\n",
+                      "requires_block_ids": [],
+                      "role": "definitions"
+                    }
+                  ],
+                  "evidence_refs": [
+                    {
+                      "locator": "完整合成输入",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+                      "target_id": "SRC-F3-TANK",
+                      "target_kind": "file"
+                    }
+                  ],
+                  "figures": [],
+                  "missing_refs": [],
+                  "retrieval_description": {
+                    "applicable": [
+                      "同一水箱合成前提"
+                    ],
+                    "key_findings": [
+                      "仅建立合成模型的变量字典"
+                    ],
+                    "limitations": [
+                      "没有现实参数辨识"
+                    ],
+                    "method": "固定变量符号、单位与理想化前提",
+                    "not_applicable": [
+                      "不同单位或物理机制"
+                    ],
+                    "question": "水箱模型采用哪些变量和单位"
+                  },
+                  "run_ref": null,
+                  "unit_type": "analysis"
+                },
+                "previous_revision": null,
+                "provenance_gap": null,
+                "record_hash": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                "record_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+                "revision": 1,
+                "schema_version": 3,
+                "sensitivity": "internal",
+                "sources": [
+                  {
+                    "locator": "完整合成输入",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+                    "target_id": "SRC-F3-TANK",
+                    "target_kind": "file"
+                  }
+                ],
+                "title": "SYNTHETIC F3 水箱必要变量定义",
+                "updated_at": "2026-09-09T21:01:04.976462Z",
+                "updated_by": {
+                  "id": "Codex actual-AI F3 setup",
+                  "kind": "ai"
+                }
+              },
+              "source_issues": [],
+              "formal_eligibility": "not_evaluated"
+            },
+            "resolved_blocks": [
+              {
+                "block_id": "definitions",
+                "markdown": "## 必要变量与单位\n\n设水箱横截面积 $A=2\\,\\mathrm{m^2}$，液位 $h(t)$ 与常值目标 $h_r$ 的单位为 $\\mathrm{m}$，时间 $t$ 单位为 $\\mathrm{s}$。入流量 $q(t)$ 单位为 $\\mathrm{m^3/s}$；出流量采用线性假设 $q_{out}=c h$，其中 $c=0.1\\,\\mathrm{m^2/s}$。误差定义为 $e=h_r-h$。比例增益 $K\\geq0$ 的单位为 $\\mathrm{m^2/s}$，使 $K e$ 与流量同量纲。$q_c$ 是未限幅命令，$q_{max}>0$ 是泵的流量上限，二者单位均为 $\\mathrm{m^3/s}$。\n\n操作函数 $\\operatorname{clip}(x,0,q_{max})=\\min(q_{max},\\max(0,x))$。初值 $h(0)=h_0\\geq0$。传感器、泵在此材料中假设连续、无延迟；未加入噪声、泄漏变化或积分控制。\n",
+                "requires_block_ids": [],
+                "role": "definitions"
+              }
+            ],
+            "required_block_ids": [],
+            "source_issues": []
+          },
+          {
+            "ref": {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+              "target_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": {
+              "id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+              "level": "L1",
+              "record": {
+                "body_markdown": "",
+                "change_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+                "content_hash": "4f786f9e28baf3ef293c833a34d2b666609bc63df05d2819dbaa706f2c44ae35",
+                "created_at": "2026-09-09T21:02:10.226996Z",
+                "created_by": {
+                  "id": "Codex actual-AI F3 setup",
+                  "kind": "ai"
+                },
+                "discovery": "workspace_summary",
+                "keywords": [
+                  "SYNTHETIC",
+                  "F3",
+                  "水箱线性段误差分析"
+                ],
+                "kind": "detail",
+                "level": "L1",
+                "owner_id": "RES-F3-TANK",
+                "payload": {
+                  "blocks": [
+                    {
+                      "block_id": "model",
+                      "markdown": "## 水箱负反馈的线性段\n\n质量守恒与控制律为\n\n$$\nA\\frac{dh}{dt}=q-ch,\\qquad q_c=c h_r+K(h_r-h),\\qquad q=\\operatorname{clip}(q_c,0,q_{max}).\n$$\n\n在整个讨论区间保持 $0<q_c<q_{max}$ 时，可代入 $q=q_c$；目标不变，故\n\n$$\n\\frac{de}{dt}=-\\frac{c+K}{A}e,\\qquad e(t)=e(0)\\exp\\left(-\\frac{c+K}{A}t\\right).\n$$\n\n这是给定合成连续线性模型的代数推导，未做现实实验。若 $A>0,c>0,K\\geq0$ 且不触发饱和，误差按该模型指数衰减。时间常数 $\\tau=A/(c+K)$，单位为秒。\n\n## 边界\n\n上述指数解只属于未饱和区间；更大目标或初始误差可能使泵触顶或关闭，此时必须返回带 clip 的分段动力学。材料未提供普遍“增益越大越好”的现实结论。尚未测量延迟、噪声与出流非线性，也未验证目标流量是否可达。\n",
+                      "requires_block_ids": [],
+                      "role": "methods"
+                    }
+                  ],
+                  "evidence_refs": [
+                    {
+                      "locator": "完整合成输入",
+                      "relation": "input",
+                      "revision": null,
+                      "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+                      "target_id": "SRC-F3-TANK",
+                      "target_kind": "file"
+                    },
+                    {
+                      "locator": "",
+                      "relation": "references",
+                      "revision": 1,
+                      "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                      "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                      "target_kind": "record"
+                    }
+                  ],
+                  "figures": [],
+                  "missing_refs": [],
+                  "retrieval_description": {
+                    "applicable": [
+                      "变量字典一致且全过程未饱和"
+                    ],
+                    "key_findings": [
+                      "给定无延迟合成模型中，误差在未饱和区间指数衰减"
+                    ],
+                    "limitations": [
+                      "尚未验证目标可达性；需要同组必要定义"
+                    ],
+                    "method": "代入质量守恒并在未饱和区间求解一阶误差方程",
+                    "not_applicable": [
+                      "执行器饱和、未知延迟或直接外推现实模型"
+                    ],
+                    "question": "未饱和水箱负反馈的误差怎样变化"
+                  },
+                  "run_ref": null,
+                  "unit_type": "analysis"
+                },
+                "previous_revision": null,
+                "provenance_gap": null,
+                "record_hash": "b959d433659b2f69f9cbd050a2f866e25c78ba655fd70aa4461d1dd8d246b4bc",
+                "record_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+                "record_reason": "独立合成前提输入；用于实际 AI 使用检查，非实际试验或科学复核",
+                "revision": 1,
+                "schema_version": 3,
+                "sensitivity": "internal",
+                "sources": [
+                  {
+                    "locator": "完整合成输入",
+                    "relation": "input",
+                    "revision": null,
+                    "sha256": "76ad0abf1493aa0879a8d85f48a21a62e62ab6be77ed833e7779645bad7630a7",
+                    "target_id": "SRC-F3-TANK",
+                    "target_kind": "file"
+                  },
+                  {
+                    "locator": "",
+                    "relation": "prerequisite",
+                    "revision": 1,
+                    "sha256": "9e9ce11f064bd7d031b3533790a362fa8410d7916e2412963cfa7d54f1c6563d",
+                    "target_id": "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a",
+                    "target_kind": "record"
+                  }
+                ],
+                "title": "SYNTHETIC F3 水箱线性段误差分析",
+                "updated_at": "2026-09-09T21:02:10.226996Z",
+                "updated_by": {
+                  "id": "Codex actual-AI F3 setup",
+                  "kind": "ai"
+                }
+              },
+              "source_issues": [],
+              "formal_eligibility": "not_evaluated"
+            },
+            "resolved_blocks": [
+              {
+                "block_id": "model",
+                "markdown": "## 水箱负反馈的线性段\n\n质量守恒与控制律为\n\n$$\nA\\frac{dh}{dt}=q-ch,\\qquad q_c=c h_r+K(h_r-h),\\qquad q=\\operatorname{clip}(q_c,0,q_{max}).\n$$\n\n在整个讨论区间保持 $0<q_c<q_{max}$ 时，可代入 $q=q_c$；目标不变，故\n\n$$\n\\frac{de}{dt}=-\\frac{c+K}{A}e,\\qquad e(t)=e(0)\\exp\\left(-\\frac{c+K}{A}t\\right).\n$$\n\n这是给定合成连续线性模型的代数推导，未做现实实验。若 $A>0,c>0,K\\geq0$ 且不触发饱和，误差按该模型指数衰减。时间常数 $\\tau=A/(c+K)$，单位为秒。\n\n## 边界\n\n上述指数解只属于未饱和区间；更大目标或初始误差可能使泵触顶或关闭，此时必须返回带 clip 的分段动力学。材料未提供普遍“增益越大越好”的现实结论。尚未测量延迟、噪声与出流非线性，也未验证目标流量是否可达。\n",
+                "requires_block_ids": [],
+                "role": "methods"
+              }
+            ],
+            "required_block_ids": [],
+            "source_issues": []
+          }
+        ]
+      }
+    ],
+    "complete": true
+  },
+  "items": [],
+  "missing": [],
+  "generated_at": "2026-09-09T21:22:02.691756Z",
+  "report_candidates": [
+    {
+      "record_id": "MEM-35305be1-6956-5547-8457-b07b06b3b29d",
+      "revision": 2,
+      "title": "SYNTHETIC F3 水箱精简报告",
+      "updated_at": "2026-09-09T21:22:01.474217Z",
+      "document_type": "research_report"
+    },
+    {
+      "record_id": "MEM-0e18d836-4370-5e10-88de-5a3c1da976ce",
+      "revision": 2,
+      "title": "SYNTHETIC F3 水箱完整过程",
+      "updated_at": "2026-09-09T21:22:00.086309Z",
+      "document_type": "research_process"
+    }
+  ],
+  "report_coverage": {
+    "included_detail_ids": [
+      "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+      "MEM-d8f598be-5b56-539f-ab3e-c53cfbb8d17a"
+    ],
+    "uncovered_detail_ids": []
+  },
+  "report_version_hints": [
+    {
+      "record_id": "MEM-2810407a-91e3-5114-b909-9a737b5e7885",
+      "revision": 1,
+      "current_revision": 2
+    }
+  ],
+  "basis_heads": {
+    "RES-F3-TANK": "COM-7d0a2539-e2b6-4c77-b04a-d22956f47baf"
+  },
+  "metrics": {
+    "elapsed_ms": 141.43,
+    "inventory_owners": 3,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 6,
+    "resolved_sections": 1
+  },
+  "writes": 0
+}
+

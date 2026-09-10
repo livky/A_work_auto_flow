@@ -1,0 +1,48 @@
+{
+  "call": "D:\\共享桌面\\A_work\\A_work_auto_flow\\projects\\architecture-evolution\\runs\\run-20260909t194710z-3cf36b2fdd60\\actual-ai\\A09\\attempt-6a3c96e965c1408e998f7cfc8de720e7\\calls\\call-cc8bfb96afd64dedac6408f68e5b6bfb",
+  "exit_code": 0,
+  "result": {
+    "index_status": "indexed",
+    "owners": [
+      {
+        "owner_id": "RES-F3-TANK",
+        "generation": 7,
+        "index_status": "indexed",
+        "fts": {
+          "status": "indexed",
+          "indexed_generation": 7,
+          "changed_entries": 1,
+          "removed_entries": 0,
+          "unchanged": false
+        },
+        "vector": {
+          "status": "disabled",
+          "indexed_generation": null,
+          "reason": "调用方显式关闭向量"
+        },
+        "state": {
+          "owner_id": "RES-F3-TANK",
+          "indexed_generation": 7,
+          "vector_generation": null,
+          "target_generation": 7,
+          "fts_status": "indexed",
+          "vector_status": "disabled",
+          "encoder_version": null,
+          "vector_collection": null,
+          "native_fingerprint": "52adfc2af72e6d3ec184ea08041a271b7d349a726eabebb839b8c8a833c9f200",
+          "dependency_signature": "63d6f09cd5058ba085cb9e7e366dfca10202c95da34455dbbd93f232b215c7d3",
+          "vector_signature": null,
+          "error": null,
+          "updated_at": "2026-09-09T21:19:35.146760Z",
+          "projection_version": "memory-v3-technical-description-documents"
+        },
+        "missing": [],
+        "error": null,
+        "elapsed_seconds": 0.018367600001511164
+      }
+    ],
+    "removed_owners": [],
+    "pending_removals": [],
+    "canonical_writes": 0
+  }
+}

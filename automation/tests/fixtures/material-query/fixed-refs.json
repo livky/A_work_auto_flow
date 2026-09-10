@@ -1,0 +1,52 @@
+[
+  {
+    "id": "fixed-record",
+    "input": {
+      "kind": "record",
+      "id": "MEM-P0-RECORD",
+      "revision": 1,
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "locator": null
+    }
+  },
+  {
+    "id": "fixed-file",
+    "input": {
+      "kind": "file",
+      "id": "SRC-P0-FILE",
+      "revision": null,
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "locator": "lines:1-2"
+    }
+  },
+  {
+    "id": "fixed-owner",
+    "input": {
+      "kind": "owner",
+      "id": "RES-P0-OWNER",
+      "revision": null,
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "locator": null
+    }
+  },
+  {
+    "id": "fixed-claim",
+    "input": {
+      "kind": "claim",
+      "id": "CLM-P0-CLAIM",
+      "revision": null,
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "locator": null
+    }
+  },
+  {
+    "id": "fixed-representation",
+    "input": {
+      "kind": "representation",
+      "id": "MEM-P0-REPRESENTATION",
+      "revision": 1,
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "locator": null
+    }
+  }
+]

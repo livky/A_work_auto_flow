@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260909T194710Z-3CF36B2FDD60",
+  "execution_owner": "frontier_review",
+  "recorded_at": "2026-09-09T22:20:38.332820+00:00",
+  "groups": [
+    {
+      "module": "test_material_deepening",
+      "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_deepening.py -v",
+      "total": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "elapsed_seconds": 81.543,
+      "observed_session_id": 84472,
+      "test_source_sha256": "2d2cf7fc136222d1ff039b40c60e5e8bcbc663f6d14d4bad9f72ef1bd00cf12e",
+      "tests": [
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_cancel_and_busy_query_reject_without_new_work",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_ceiling_filters_graph_content_and_basis",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_cycles_diamonds_and_cursor_share_unique_budget",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_decision_retries_are_idempotent_and_never_promote_review",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_discover_cannot_bypass_original_off_switch",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_excluded_node_is_not_a_bridge_or_a_basis_entry",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_existing_association_uses_explicit_supplement_scope_and_ceiling",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_formal_cached_deepening_rechecks_withdrawn_claim",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_legacy_relations_keep_parallel_edges_and_explicit_evidence_links",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_new_seed_does_not_reset_cumulative_hop_boundary",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_no_model_structural_discovery_has_explicit_skill_entry",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_node_budget_exhaustion_is_explicit_and_never_reset",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_relation_filter_and_direction_do_not_add_reverse_edge",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_reverse_prerequisite_is_verified_from_canonical_sources",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_same_title_fixed_entities_are_not_merged_by_navigation",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_source_mapping_preserves_document_revision_block_and_original",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_source_revocation_blocks_cached_cursor_and_hidden_details",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_stale_existing_edge_is_gap_and_not_reused",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_unknown_strategy_and_foreign_cursor_are_rejected",
+          "status": "passed"
+        },
+        {
+          "id": "test_material_deepening.MaterialDeepeningTests.test_unmapped_canonical_relation_is_a_gap_not_an_invented_dependency",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "module": "test_material_foundation",
+      "command": ".\\automation\\python.ps1 -m unittest discover -s automation/tests -p test_material_foundation.py -k test_rejected_wrong_connection_preserves_differences_without_becoming_a_path -v",
+      "total": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "elapsed_seconds": 35.792,
+      "observed_session_id": 89597,
+      "test_source_sha256": "7ff3da2837df3d0bf909be787b8cc81759386421d76fcd08209ba169692aed4b",
+      "tests": [
+        {
+          "id": "test_material_foundation.MaterialFoundationTests.test_rejected_wrong_connection_preserves_differences_without_becoming_a_path",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "failed_attempts_preserved": [
+    {
+      "module": "test_material_foundation",
+      "observed_session_id": 34399,
+      "total": 25,
+      "failures": 0,
+      "errors": 1,
+      "elapsed_seconds": 69.511,
+      "exit_code": 1,
+      "failed_test_id": "test_material_foundation.MaterialFoundationTests.test_rejected_wrong_connection_preserves_differences_without_becoming_a_path",
+      "test_source_sha256": null,
+      "cause": "验收断言直接下标 value；无权目标 fail-closed 返回 value=null，因此 TypeError。未报告为通过。"
+    },
+    {
+      "module": "test_material_foundation",
+      "observed_session_id": 87664,
+      "total": 25,
+      "failures": 0,
+      "errors": 1,
+      "elapsed_seconds": 71.898,
+      "exit_code": 1,
+      "failed_test_id": "test_material_foundation.MaterialFoundationTests.test_rejected_wrong_connection_preserves_differences_without_becoming_a_path",
+      "test_source_sha256": null,
+      "cause": "测试把记录标签 C 当作第三个 owner，owner_ids[\"C\"] 导致 KeyError；共享 fixture 只有 A/B。未报告为通过。"
+    },
+    {
+      "module": "test_material_deepening",
+      "observed_session_id": 19203,
+      "total": 20,
+      "failures": 1,
+      "errors": 0,
+      "elapsed_seconds": 81.219,
+      "exit_code": 1,
+      "failed_test_id": "test_material_deepening.MaterialDeepeningTests.test_unmapped_canonical_relation_is_a_gap_not_an_invented_dependency",
+      "test_source_sha256": null,
+      "cause": "新增诊断边使原断言过宽；修正为不捏造 accepted/verified 关系和 background 映射，并保留真实诊断。"
+    }
+  ],
+  "final_C17_fixture_correction": "只修改测试体：公开提交 owner A 的独立终点，桥为 owner B；检查 ceiling A/排除 B 时终点仍在授权内。生产/schema 无后续修改。",
+  "source_fingerprints": [
+    {
+      "path": "automation/tests/test_material_foundation.py",
+      "sha256": "7ff3da2837df3d0bf909be787b8cc81759386421d76fcd08209ba169692aed4b"
+    },
+    {
+      "path": "automation/tests/test_material_deepening.py",
+      "sha256": "2d2cf7fc136222d1ff039b40c60e5e8bcbc663f6d14d4bad9f72ef1bd00cf12e"
+    },
+    {
+      "path": "automation/scripts/material_query/contracts.py",
+      "sha256": "a0c7c28485bc88fea84a7df8b68efce23611c82f3318e086f974f91e0ba83046"
+    },
+    {
+      "path": "automation/scripts/material_query/deepening.py",
+      "sha256": "aa4673b9ab6bf09ca7137897eec3f9c2ffd6871b2e4649012e618001a4fa7203"
+    },
+    {
+      "path": "automation/scripts/material_query/foundation.py",
+      "sha256": "17628df6eaa3f4454aa8216f63da80e260233d9e7fece3aaad5703d9eb6c5616"
+    },
+    {
+      "path": "automation/scripts/material_query/associations.py",
+      "sha256": "4f0550057d88ef3e80a6f481f100fd424ef366485174d14ceaaa90f7cd3e5e3b"
+    },
+    {
+      "path": "automation/schemas/memory-v3.schema.json",
+      "sha256": "80dc0aa1ad3a9854f96434762566d6462bb3c509cdd87ecaad36b9d6d6021744"
+    }
+  ],
+  "limitations": [
+    "本机 Windows x64 合成固定 F1 的真实公开 API 和来源权限行为；不代表科学或人工验收。",
+    "Foundation 最后为1项补充回归，不把之前25项有错误的模块执行重写为全通过。",
+    "主任务 full 在测试修正前开始，若保留旧 fixture 错误须与本补充回执分别说明；本回执不替代完整测试结果。"
+  ]
+}

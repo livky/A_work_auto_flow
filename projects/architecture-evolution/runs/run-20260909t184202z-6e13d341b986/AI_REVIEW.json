@@ -1,0 +1,12 @@
+{
+  "actor": "assistant",
+  "observations": [
+    "已读新CORE和专项提案并核对v0.1类型及实际关系代码。",
+    "已读公开brief-read返回的新概念、组合、联想、AI和图维护说明。",
+    "字段回读相等；双文稿r3共同依据一致、无缺口，r2 report与上一Run一致。",
+    "新增定义注册/组合/联想/部分图字段明确为下一版提案，不以旧契约检查冒充已实现。"
+  ],
+  "human_review": "pending",
+  "scientific_review": "not-reviewed",
+  "runtime_and_visual_testing": "not-run"
+}

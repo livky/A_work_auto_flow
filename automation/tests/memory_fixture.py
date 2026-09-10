@@ -14,6 +14,7 @@ import shutil
 import sys
 import subprocess
 import platform
+import time
 import uuid
 from dataclasses import dataclass
 from datetime import datetime
@@ -25,6 +26,28 @@ FIXTURES = REPOSITORY / "docs/design/system-memory/fixtures"
 sys.path.insert(0, str(REPOSITORY / "automation/scripts"))
 import workspace_cli
 import evidence
+
+
+def _rename_generated(source, destination, root):
+    """Retry only transient Windows sharing/access errors on a new fixture.
+
+    Fixture generation closes its files before this operation. Antivirus/indexer
+    readers can still hold a freshly created directory briefly. Keep the same
+    rename and all protection assertions; never merge/replace another target.
+    """
+    source, destination, root = source.resolve(), destination.resolve(), root.resolve()
+    if source == root or destination == root or not source.is_relative_to(root) or not destination.is_relative_to(root):
+        raise ValueError("UNSAFE_PATH: rename must remain inside synthetic root")
+    for attempt in range(4):
+        if destination.exists():
+            raise FileExistsError(destination)
+        try:
+            source.rename(destination)
+            return
+        except PermissionError as exc:
+            if getattr(exc, "winerror", None) not in {5, 32} or attempt == 3:
+                raise
+            time.sleep((0.05, 0.15, 0.45)[attempt])
 
 
 def snapshot(root):
@@ -244,7 +267,7 @@ def materialize(target, *, isolation_root):
                       "core-algorithm": workspace_cli.create_module}[kind]
                 kwargs = {"source_document": seed["source_document"]} if kind == "core-algorithm" else {}
                 generated = fn(root, f"synthetic-{number}", title, **kwargs)
-                generated.rename(path.parent)
+                _rename_generated(generated, path.parent, root)
                 raw = json.loads(path.read_text(encoding="utf-8"))
                 raw[{"project": "project_id", "research": "research_id", "core-algorithm": "module_id"}[kind]] = oid
             elif kind == "run":
@@ -252,7 +275,7 @@ def materialize(target, *, isolation_root):
                 # 替换配方固定 Run ID，避免正文导航与 manifest 不一致。
                 with patch.object(workspace_cli.uuid, "uuid4", return_value=uuid.UUID(int=number + 1)):
                     generated = workspace_cli.create_run(root, None, title)
-                generated.rename(path.parent)
+                _rename_generated(generated, path.parent, root)
                 raw = json.loads(path.read_text(encoding="utf-8"))
                 old_id = raw["run_id"]
                 raw["run_id"] = oid
