@@ -1,9 +1,9 @@
 # 架构演进项目规则
 
-本项目管理框架变化，不将软件模块登记为核心算法。先读 `project.json`、`PLAN.md` 与 `context/MODULE_IMPACT.md`，再打开受影响代码和对应现行手册；历史顺序见 `docs/DOCUMENT_HISTORY.md`。
+本项目管理框架变化，不将软件模块登记为核心算法。当前任务从 `README.md`/`PLAN.md` 进入；开发按根 development-checks 阅读六份短文档，细节按影响展开。历史顺序见 `docs/DOCUMENT_HISTORY.md`。
 
-- 影响图只有 `context/MODULE_IMPACT.md` 一份现行来源；Run 快照固定旧时点，不随图更新。
-- 图中每条边说明变更需要检查的对象。检查结果写入当前 Run 的影响清单，说明需修改、无需修改或延期的理由；不得把候选改进写成现有能力。
+- 全局模块关系和影响只维护在根 `ARCHITECTURE.md`；`context/MODULE_IMPACT.md` 只保留迁移导航，Run 快照保持旧时点。
+- 检查结果可写入当前计划/摘要；有独立验证产物时用 Run。记录已修改、已核对无需修改或延期原因；不得把候选改进写成现有能力。
 - 用户规则和实际实现分别记录。实现与要求不一致时说明缺口，不以更新文档悄悄放宽要求。
 - 原始实现日期、合入日期、实际核对日期分开。未分发的历史 Run 保留原 ID 与缺失说明，不伪造验收附件。
 - 项目实例按既有发行规则排除公共源码包；通用维护约定放在 `docs/DOCUMENTATION_MAINTENANCE.md`，安装与升级继续使用根规则。

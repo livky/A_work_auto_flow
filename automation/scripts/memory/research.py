@@ -91,6 +91,10 @@ def _answer(ref, record_id, resolve_ref, path):
         return
     if kind == 'event' and (payload.get('claims') or _text(payload.get('decision')) or payload.get('decision_refs')):
         return
+    # 经过中的明确结果继续可作为探索答案；不因此变成正式科学证据。
+    if kind == 'narrative' and (payload.get('claims') or any(
+            _text(stage.get('outcome')) and stage.get('evidence_refs') for stage in payload.get('stages', []))):
+        return
     if kind == 'experience' and (_text(payload.get('recommendation')) or payload.get('claims') or payload.get('claim_refs')):
         return
     if kind == 'run' and (raw.get('claims') or _text(raw.get('conclusion')) or _text(raw.get('decision'))):

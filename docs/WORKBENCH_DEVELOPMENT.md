@@ -1,6 +1,6 @@
 # 工作台开发与扩展
 
-现行说明核对日期：2026-09-09。主要维护面已包含材料关系、原业务证据和版本记忆/研究文稿；全局数据流见 [架构说明](../ARCHITECTURE.md)，同步范围见 [文档维护手册](DOCUMENTATION_MAINTENANCE.md)。
+现行说明核对日期：2026-09-10。主要维护面包含材料关系、业务证据、版本记忆/研究文稿及材料查询 v0.2；全局数据流与模块影响见 [架构说明](../ARCHITECTURE.md)，其他细节从 [文档索引](README.md) 进入。本页按前端/API 影响阅读，不是每次开发的全量必读文件。
 
 使用者通过 `setup.cmd --register --open` 安装并打开；开发者才需要 Node。预构建资源随源码分发，Python 服务不调用 npm，不从 CDN 取脚本。
 
@@ -11,24 +11,27 @@
 | `automation/frontend/src/App.tsx` | 应用外壳、静态页面注册、导航与任务状态 |
 | `src/Relations.tsx`、`src/Evidence.tsx` | 材料关系、证据页面及交互状态 |
 | `src/Memory.tsx`、`src/memory-contract.ts` | 对象记忆、L0、研究文稿与固定请求的界面/契约检查 |
+| `src/MaterialQuery.tsx`、`MaterialStructure.tsx`、`MaterialPacket.tsx` | 材料查询、逻辑/存储范围、固定候选与材料包；表示选择不是规范层级迁移 |
 | `src/components.tsx`、`src/group-view.ts` | Canvas、详情对话框、只供展示的聚合 |
 | `src/graph-model.ts` | 选择、排除、局部 BFS、范围一致的摘要 |
 | `src/cluster.worker.ts`、`src/cluster.ts` | Louvain 与跨组候选的独立 Worker |
 | `contracts/graph.schema.json`、`src/generated/contracts.ts` | 图 API 契约与生成类型 |
 | `automation/schemas/memory-v3.schema.json`、`src/generated/memory-schema.ts` | 当前记忆契约与前端生成副本；旧 v1/v2 按版本兼容 |
+| `automation/scripts/material_query/contracts.py`、`automation/schemas/material-query.schema.json` | 查询运行字段真源与生成 schema；同一前端生成流程纳入查询契约 |
 | `automation/scripts/workbench_app/web.py` | `/api/v1/` 路由、资源清单校验 |
 | `service.py`、`cli.py` | 网页与命令行共享用例与输入边界 |
 | `projection.py`、`analysis.py` | 业务材料适配、关键词及只读向量分析 |
 | `automation/scripts/memory/api.py`、`service.py`、`store.py` | CLI/HTTP 固定动作、领域提交和对象不可变存储 |
 | `memory/index.py`、`search.py`、`packets.py` | 可重建索引、规范身份排序及有预算的材料包 |
 | `memory/technical_units.py`、`documents.py` | L1 技术块与独立双文稿/章节的读取、编排和影响检查 |
+| `automation/scripts/material_query/api.py`、`coordinator.py`、`state.py` | 查询应用动作、范围/预算和短期查询状态；复用原 memory 存储，维护计划独立持久保存 |
 | `jobs.py`、`storage.py` | 串行任务、进程锁、取消、原子本机存储 |
 | `automation/scripts/workbench.py`、`evidence_view.py` | 启动、兼容旧入口、并发 HTTP 与同源保护 |
 | `automation/ui/workbench-assets/` | 随发布包交付的 JS、CSS、Worker、许可和哈希清单 |
 
 物理目录不是业务图数据库。原材料仍为现有 JSON/Markdown 和受控原件，规范记忆由各对象的 HEAD/不可变提交维护；投影、分析、视图偏好和候选独立保存。新 Run 按唯一对象归属保存，旧位置不因工作台升级而搬移。聚合边不写回正式依赖；`supports`、`input` 与 `contradicts`、`background` 保持原义及方向。
 
-L1 v3 保存检索说明与稳定技术正文块；新完整过程和简版报告用独立 document/document_section 固定引用，L4 仍是地图，旧 map.report 只作兼容。界面不得直接修订规范 JSON、假设原始日志可常规搜索或以候选处理状态替代结论复核。材料关系页的两跳展示、memory 导航关联及评估用图扩展相互独立，默认 `memory context` 未自动执行整个关联遍历。详见 [检索](RETRIEVAL.md) 与 [材料关系](MATERIAL_RELATIONS.md)。
+L1 v3 保存检索说明与稳定技术正文块；新完整过程和简版报告用独立 document/document_section 固定引用。L2 统一为研究经过、L4 统一为整体概览，筛选/新建/总结只提供一个入口；旧记录的实际迁移经统一写服务保存完整新修订，不通过界面别名伪造新内容。旧固定引用仍可读。界面不得直接修订规范 JSON、假设原始日志可常规搜索或以候选处理状态替代结论复核。材料关系页的两跳展示、memory 导航关联及评估用图扩展相互独立，默认 `memory context` 未自动执行整个关联遍历。详见 [检索](RETRIEVAL.md) 与 [材料关系](MATERIAL_RELATIONS.md)。
 
 ## 开发命令
 
@@ -87,7 +90,7 @@ def compute(progress):
 
 ## 契约、资源与发布
 
-图 Schema 版本为 1；当前记忆记录契约为 v3，同时读取历史 v1/v2。版本含义不同，不把 HTTP `/api/v1/` 或向量集合 `memory_v1_*` 当作记忆记录版本。图 `contracts.py` 检查图输出，记忆由 `memory/contracts.py` 验证，前端生成副本来自各自 Schema。`npm run contracts` 同步图类型和记忆契约副本；后端声明类型由 `memory/generate_types.py` 生成。增加接口字段时同步真实调用方和边界测试，不复制一套不同的领域约束。
+图 Schema 版本为 1；记忆记录契约为 v3，兼容历史 v1/v2；材料查询应用契约为 v0.2。不要把 HTTP `/api/v1/` 或向量集合 `memory_v1_*` 当作记录版本。图、memory 和 material_query 由各自运行契约验证，前端副本来自各自 Schema；`npm run contracts` 同步前端生成项。后端生成工具在对应模块，改变字段时同步真实调用方与边界测试，不能编辑设计目录来代替修改运行真源。
 
 构建后 `asset-manifest.json` 包含资源 SHA-256、所有前端源码哈希和总体源码指纹，附生产依赖及传递依赖许可。启动和框架升级检查源码与构建一致，每次资源响应校验文件。前端源码、锁文件、预构建资源需要一起交付；`node_modules`、测试实例与浏览器报告均排除。
 

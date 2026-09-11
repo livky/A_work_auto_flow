@@ -21,6 +21,27 @@ from memory.impact import reverse_dependencies, question_resolution_validity
 
 
 class MemoryEvidenceTests(unittest.TestCase):
+    def test_v4_claim_containers_keep_review_and_source_boundaries(self):
+        """新层级保存 claim 后仍需独立复核，不能因类别变更绕过正式准入。"""
+        from memory.lineage import project
+        for kind in ("narrative", "overview"):
+            cid = "CLM-V4-" + kind.upper()
+            value = self.value([self.claim(cid)])
+            common = dict(question="合成范围", claims=value["payload"]["claims"], process_refs=[],
+                          technical_refs=[], experience_refs=[], limitations=["SYNTHETIC ONLY"])
+            payload = dict(common, **(
+                dict(stages=[dict(situation="合成情境", action="检查", reason="回归", outcome="记录", evidence_refs=[])])
+                if kind == "narrative" else dict(methods=["检查"], results=["仅合成"], current_stage="回归", open_questions=[])))
+            value.update(kind=kind, schema_version=4, payload=payload)
+            record = self.save(value)
+            adapter = EvidenceAdapter(self.service)
+            self.assertIn(cid, adapter.claims)
+            self.assertEqual(adapter.formal_projection([record["record_id"]], "synthetic:A")["claims"], [])
+            self.review(cid)
+            approved = EvidenceAdapter(self.service).formal_projection([record["record_id"]], "synthetic:A")
+            self.assertEqual([claim["claim_id"] for claim in approved["claims"]], [cid])
+            self.assertEqual(project(self.service, [record["record_id"]])["source_count"], 1)
+
     def setUp(self):
         self.fx = fixture.MemoryStoreTests()
         self.fx.setUp()

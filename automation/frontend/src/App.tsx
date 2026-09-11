@@ -127,10 +127,23 @@ export default function App() {
               </strong>
               <span className="badge">{j.status}</span>
             </div>
-            <progress max={j.total || 1} value={j.done} />
+            {/* Success is authoritative for completion. Progress callbacks are
+                optional and their zero counters must not imply pending work. */}
+            <progress
+              max={j.status === "succeeded" ? 1 : j.total || 1}
+              value={
+                j.status === "succeeded" ? 1 : j.total > 0 ? j.done : undefined
+              }
+            />
             <span className="muted">
               {" "}
-              {j.done} / {j.total || "待计算"}
+              {j.status === "succeeded"
+                ? "已完成"
+                : j.total > 0
+                  ? `${j.done} / ${j.total}`
+                  : ["queued", "running"].includes(j.status)
+                    ? "正在确定处理数量"
+                    : "未提供分项计数"}
             </span>
             {["queued", "running"].includes(j.status) && (
               <button onClick={() => api("cancel", { id: j.id }).then(refresh)}>

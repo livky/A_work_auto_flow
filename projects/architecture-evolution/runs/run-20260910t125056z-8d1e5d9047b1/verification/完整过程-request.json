@@ -1,0 +1,61 @@
+{
+  "schema_version": 3,
+  "request_id": "b6c51b02-b834-490a-8109-d4a7ba2e082e",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "expected_head": "COM-ad70de65-6925-404b-8970-f1c42b207306",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "完整过程",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+        "kind": "document",
+        "title": "内容来源查询实现：完整过程",
+        "body_markdown": "",
+        "keywords": [
+          "内容来源",
+          "固定展开",
+          "分层查询"
+        ],
+        "payload": {
+          "document_type": "research_process",
+          "purpose": "核对本轮实际开发与限制",
+          "audience": "工作区维护者",
+          "scope": "本轮内容来源实现",
+          "common_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+              "revision": 1,
+              "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "section_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-ea6548d9-e49d-59eb-89d1-7c93288b643f",
+              "revision": 1,
+              "sha256": "fca5be5607a38a06e315237e55dc1bb1f7091c3779a84b1ec7a1f293ea2f4c55",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        },
+        "sources": [],
+        "provenance_gap": "文稿直接来源已固定在 common_refs 与 section_refs；没有另列 sources",
+        "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

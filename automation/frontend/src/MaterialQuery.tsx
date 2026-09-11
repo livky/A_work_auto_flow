@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { api } from "./api";
-import { MaterialStructure } from "./MaterialStructure";
+import { MaterialStructure, ownerTypeNames } from "./MaterialStructure";
 import { MaterialMaintenance } from "./MaterialMaintenance";
 import {
   FixedReferences,
@@ -41,9 +41,9 @@ export const emptyScope = (): Scope => ({
   recorded_before: null,
 });
 export const defaultBudget: Budget = {
-  wall_ms: 10000,
-  read_bytes: 2097152,
-  output_chars: 12000,
+  wall_ms: 300000,
+  read_bytes: 16777216,
+  output_chars: 80000,
   candidates: 100,
   graph_nodes: 50,
   graph_edges: 100,
@@ -157,13 +157,11 @@ function ScopeList({
 }
 
 export function MaterialQuery() {
-  const [definitions, setDefinitions] = useState<RepresentationDefinition[]>(
-    [],
-  );
   const [capabilities, setCapabilities] = useState<MaterialCapabilities | null>(
     null,
   );
   const [scope, setScope] = useState<Scope>(emptyScope);
+  const [readDependencies, setReadDependencies] = useState(true);
   const [question, setQuestion] = useState("");
   const [keywords, setKeywords] = useState("");
   const [definition, setDefinition] = useState<QueryRequest["definition"]>({
@@ -173,10 +171,10 @@ export function MaterialQuery() {
   const [purpose, setPurpose] =
     useState<QueryRequest["purpose"]>("exploration");
   const [freshness, setFreshness] =
-    useState<QueryRequest["freshness"]>("fixed");
-  const [missing, setMissing] =
-    useState<QueryRequest["missing_policy"]>("reject");
-  const [fallback, setFallback] = useState("");
+    useState<QueryRequest["freshness"]>("current");
+  const [contentSource, setContentSource] = useState<
+    NonNullable<QueryRequest["content_source"]>
+  >("overview_experience");
   const [association, setAssociation] =
     useState<QueryRequest["association"]["mode"]>("off");
   const [associationCount, setAssociationCount] = useState(5);
@@ -192,6 +190,11 @@ export function MaterialQuery() {
   const [receipt, setReceipt] = useState<SearchReceipt | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
   const [packet, setPacket] = useState<Packet | null>(null);
+  const [outputResult, setOutputResult] = useState<Result<unknown> | null>(
+    null,
+  );
+  const [outputTitle, setOutputTitle] = useState("材料包");
+  const outputPanel = useRef<HTMLElement | null>(null);
   const [result, setResult] = useState<Result<unknown> | null>(null);
   const [proposals, setProposals] = useState<AssociationProposal[]>([]);
   const [deepening, setDeepening] = useState<DeepenReceipt | null>(null);
@@ -223,7 +226,6 @@ export function MaterialQuery() {
       .then(([caps, defs]) => {
         if (!alive) return;
         setCapabilities(caps);
-        setDefinitions(defs.value || []);
         // Do not overwrite a user who started configuring the form while the
         // capabilities request was in flight.
         if (!draftRevision.current) {
@@ -255,6 +257,7 @@ export function MaterialQuery() {
     setStale(Boolean(receipt));
     setSelected([]);
     setPacket(null);
+    setOutputResult(null);
     setProposals([]);
     setDeepening(null);
     const previous = runningId.current;
@@ -292,10 +295,21 @@ export function MaterialQuery() {
   function buildRequest(): QueryRequest {
     return {
       definition,
+      content_source: contentSource,
       question,
       keywords: list(keywords),
       scope,
-      scope_ceiling: scope,
+      // 筛选对象不是依赖授权边界：默认读取其已登记必要依据。排除项始终
+      // 传递，服务端仍核验来源授权；用户可显式收紧到当前所选对象。
+      scope_ceiling: readDependencies
+        ? {
+            ...emptyScope(),
+            owner_ids: null,
+            excluded_owner_ids: scope.excluded_owner_ids,
+            excluded_refs: scope.excluded_refs,
+            exclude_ids: scope.exclude_ids,
+          }
+        : scope,
       purpose,
       association: {
         mode: association,
@@ -308,10 +322,8 @@ export function MaterialQuery() {
       budget,
       freshness,
       result_limit: limit,
-      missing_policy: missing,
-      fallback_definitions: definitions
-        .filter((value) => list(fallback).includes(value.ref.key))
-        .map((value) => value.ref),
+      missing_policy: "reject",
+      fallback_definitions: [],
       applicability,
       channels,
       dialect,
@@ -385,18 +397,91 @@ export function MaterialQuery() {
     consume: (value: T) => void,
   ) {
     const token = sequence.current;
+    // 每次操作先撤下前一份输出，避免失败后仍把旧材料包留在右侧当作新结果。
+    setPacket(null);
+    setOutputResult(null);
+    setOutputTitle(
+      route === "materials/documents"
+        ? "完整文稿"
+        : route === "materials/deepen"
+          ? "深化关联结果"
+          : route === "materials/expand"
+            ? "展开结果"
+            : "材料包",
+    );
+    setDeepening(null);
     setBusy(true);
     setError("");
     try {
       const response = await materialRequest<T>(route, data);
       if (token !== sequence.current) return;
       setResult(response);
+      setOutputResult(response);
+      requestAnimationFrame(() =>
+        outputPanel.current?.scrollIntoView?.({
+          behavior: "smooth",
+          block: "nearest",
+        }),
+      );
       if (response.value) consume(response.value);
     } catch (cause) {
       if (token === sequence.current) setError(String(cause));
     } finally {
       if (token === sequence.current) setBusy(false);
     }
+  }
+  function showPacket(value: Packet | null | undefined, title = "材料包") {
+    setPacket(value || null);
+    setOutputTitle(title);
+    // 更新 DOM 后定位右侧结果标题。宽屏结果列固定在视口内；窄屏滚动到结果。
+    requestAnimationFrame(() =>
+      outputPanel.current?.scrollIntoView?.({
+        behavior: "smooth",
+        block: "nearest",
+      }),
+    );
+  }
+  function expandSelected(target: "process" | "technical") {
+    if (!receipt) return;
+    void act<DeepenReceipt>(
+      "materials/expand",
+      {
+        query_id: receipt.query_id,
+        candidate_ids: selected,
+        expected_request_digest: receipt.request_digest,
+        target,
+        include_packet: true,
+      },
+      (value) => {
+        mergeCandidates(value.candidates);
+        setDeepening(value);
+        showPacket(
+          value.packet,
+          target === "process" ? "展开研究经过" : "展开技术内容",
+        );
+      },
+    );
+  }
+  function deepenSelected() {
+    if (!receipt) return;
+    void act<DeepenReceipt>(
+      "materials/deepen",
+      {
+        query_id: receipt.query_id,
+        candidate_ids: selected,
+        mode: deepMode,
+        relation_kinds: list(relations),
+        direction,
+        strategy: capabilities?.deepening.strategy || "bounded-bfs",
+        strategy_version: capabilities?.deepening.version || "1",
+        cursor: deepening?.next_cursor || null,
+      },
+      (value) => {
+        mergeCandidates(value.candidates);
+        setDeepening(value);
+        setProposals(value.proposals);
+      },
+    );
   }
   function mergeCandidates(incoming: Candidate[]) {
     setReceipt((current) =>
@@ -430,9 +515,6 @@ export function MaterialQuery() {
     ).values(),
   ] as FixedRef[];
   const unavailable = !receipt || stale || busy || selected.length === 0;
-  const currentDefinition = definitions.find(
-    (value) => value.ref.key === definition.key,
-  );
 
   return (
     <div className="material-query">
@@ -448,6 +530,17 @@ export function MaterialQuery() {
           request={materialRequest}
           scope={scope}
           onChoose={choose}
+          onTypesChange={(owner_types) =>
+            changeScope({
+              owner_types,
+              owner_ids: null,
+              levels: null,
+              include_refs: [],
+            })
+          }
+          onClear={() =>
+            changeScope({ owner_ids: [], levels: null, include_refs: [] })
+          }
         />
         <main className="material-search">
           <form
@@ -465,6 +558,8 @@ export function MaterialQuery() {
                   ? scope.owner_ids.join("、")
                   : "空范围，请选择归属对象"}
               {scope.levels && ` · ${scope.levels.join("、") || "空层级"}`}
+              {scope.owner_types &&
+                ` · 类型：${scope.owner_types.map((kind) => ownerTypeNames[kind] || kind).join("、") || "空集合"}`}
               {scope.include_refs?.length
                 ? ` · 固定引用 ${scope.include_refs.length} 项`
                 : ""}
@@ -494,23 +589,21 @@ export function MaterialQuery() {
             </label>
             <div className="material-form-grid">
               <label>
-                表达形式
+                内容来源
                 <select
-                  aria-label="表达形式"
-                  value={definition.key}
+                  aria-label="内容来源"
+                  value={contentSource}
                   onChange={(event) => {
                     invalidate();
-                    const next = definitions.find(
-                      (value) => value.ref.key === event.target.value,
+                    setContentSource(
+                      event.target.value as typeof contentSource,
                     );
-                    if (next) setDefinition(next.ref);
                   }}
                 >
-                  {definitions.map((value) => (
-                    <option value={value.ref.key} key={value.ref.key}>
-                      {value.title}
-                    </option>
-                  ))}
+                  <option value="overview_experience">概览与经验</option>
+                  <option value="process">研究经过</option>
+                  <option value="technical">技术内容</option>
+                  <option value="all">所有来源</option>
                 </select>
               </label>
               <label>
@@ -529,9 +622,38 @@ export function MaterialQuery() {
                 </select>
               </label>
             </div>
-            {currentDefinition && (
-              <p className="muted">{currentDefinition.purpose_description}</p>
-            )}
+            <label>
+              记录版本
+              <select
+                aria-label="记录版本"
+                value={freshness}
+                onChange={(event) => {
+                  invalidate();
+                  setFreshness(event.target.value as typeof freshness);
+                }}
+              >
+                <option value="current">仅最新记录（默认）</option>
+                <option value="allow_stale">包含历史记录</option>
+                <option value="fixed">固定本次版本</option>
+              </select>
+            </label>
+            <p className="muted">
+              读取时间预算：{budget.wall_ms / 60000} 分钟；只计算实际处理时间。
+            </p>
+            <label>
+              <input
+                type="checkbox"
+                checked={readDependencies}
+                onChange={(event) => {
+                  invalidate();
+                  setReadDependencies(event.target.checked);
+                }}
+              />
+              读取所选材料引用的必要依据（可跨对象，遵守排除与来源授权）
+            </label>
+            <p className="muted">
+              直接读取已有正文；可从所选概览或经验沿已保存的关联展开研究经过、技术内容。
+            </p>
             <details>
               <summary>高级范围与查询约束</summary>
               <ScopeList
@@ -671,49 +793,6 @@ export function MaterialQuery() {
                 </select>
               </label>
               <label>
-                版本策略
-                <select
-                  aria-label="版本策略"
-                  value={freshness}
-                  onChange={(event) => {
-                    invalidate();
-                    setFreshness(event.target.value as typeof freshness);
-                  }}
-                >
-                  <option value="fixed">固定本次版本</option>
-                  <option value="current">要求当前版本</option>
-                  <option value="allow_stale">允许旧版本并标注</option>
-                </select>
-              </label>
-              <label>
-                形式缺失时
-                <select
-                  aria-label="形式缺失时"
-                  value={missing}
-                  onChange={(event) => {
-                    invalidate();
-                    setMissing(event.target.value as typeof missing);
-                  }}
-                >
-                  <option value="reject">拒绝缺失形式</option>
-                  <option value="skip">跳过缺失形式</option>
-                  <option value="fallback">使用指定备用形式</option>
-                </select>
-              </label>
-              {missing === "fallback" && (
-                <label>
-                  备用形式标识（逗号分隔）
-                  <input
-                    value={fallback}
-                    onChange={(event) => {
-                      invalidate();
-                      setFallback(event.target.value);
-                    }}
-                    placeholder="section, unit_digest"
-                  />
-                </label>
-              )}
-              <label>
                 返回候选数量
                 <input
                   type="number"
@@ -834,10 +913,7 @@ export function MaterialQuery() {
               </div>
             </details>
             <div className="material-actions">
-              <button
-                type="submit"
-                disabled={busy || !capabilities?.enabled || !definitions.length}
-              >
+              <button type="submit" disabled={busy || !capabilities?.enabled}>
                 开始查询
               </button>
               {busy && (
@@ -849,7 +925,7 @@ export function MaterialQuery() {
           </form>
           {error && <p role="alert">{error}</p>}
           {busy && <p role="status">正在处理查询…</p>}
-          <ResultStatus result={result} />
+          <ResultStatus result={outputResult ? null : result} />
           {receipt && (
             <section aria-label="查询候选">
               <h3>查询候选（{receipt.candidates.length}）</h3>
@@ -868,6 +944,87 @@ export function MaterialQuery() {
                   ))}
                 </ul>
               )}
+              <div
+                className="material-selection-actions"
+                aria-label="所选材料操作"
+              >
+                <strong>已选 {selected.length} 条</strong>
+                <button
+                  disabled={busy || stale}
+                  onClick={() => {
+                    setSelected(
+                      receipt.candidates.map((item) => item.candidate_id),
+                    );
+                    setPacket(null);
+                    setOutputResult(null);
+                  }}
+                >
+                  全选候选
+                </button>
+                <button
+                  disabled={busy || !selected.length}
+                  onClick={() => {
+                    setSelected([]);
+                    setPacket(null);
+                    setOutputResult(null);
+                  }}
+                >
+                  清空选择
+                </button>
+                <div className="material-actions">
+                  <button
+                    disabled={unavailable}
+                    onClick={() => expandSelected("process")}
+                  >
+                    展开研究经过
+                  </button>
+                  <button
+                    disabled={unavailable}
+                    onClick={() => expandSelected("technical")}
+                  >
+                    展开技术内容
+                  </button>
+                  <button
+                    disabled={unavailable}
+                    onClick={() =>
+                      void act<Packet>(
+                        "materials/assemble",
+                        {
+                          query_id: receipt.query_id,
+                          candidate_ids: selected,
+                          expected_request_digest: receipt.request_digest,
+                        },
+                        (value) => showPacket(value),
+                      )
+                    }
+                  >
+                    组装所选材料（{selected.length}）
+                  </button>
+                  <button
+                    disabled={unavailable}
+                    onClick={() =>
+                      void act<Packet>(
+                        "materials/documents",
+                        {
+                          query_id: receipt.query_id,
+                          candidate_ids: selected,
+                          expected_request_digest: receipt.request_digest,
+                          document_type: "research_process",
+                        },
+                        (value) => showPacket(value, "完整文稿"),
+                      )
+                    }
+                  >
+                    返回完整文稿
+                  </button>
+                  <button disabled={unavailable} onClick={deepenSelected}>
+                    {deepening?.next_cursor ? "继续深化" : "深化所选材料"}
+                  </button>
+                </div>
+                <p className="muted">
+                  展开同时读取正文、必要上下文和已启用的补充；完整文稿按命中所属对象查找，同一篇只返回一次。
+                </p>
+              </div>
               {(["direct", "required_context", "association"] as const).map(
                 (group) => (
                   <section key={group}>
@@ -897,19 +1054,42 @@ export function MaterialQuery() {
                                       ),
                                 );
                                 setPacket(null);
+                                setOutputResult(null);
                                 setDeepening(null);
                               }}
                             />
                             {candidate.title}
                           </label>
                           <p>{candidate.excerpt}</p>
+                          {candidate.is_latest !== undefined &&
+                            candidate.is_latest !== null && (
+                              <p className="candidate-state">
+                                {candidate.is_latest ? "最新记录" : "历史记录"}{" "}
+                                · 修订 {candidate.refs[0]?.revision}
+                              </p>
+                            )}
+                          {candidate.knowledge_type && (
+                            <p className="candidate-state">
+                              认识性质：
+                              {
+                                {
+                                  observation: "观察",
+                                  conclusion: "结论",
+                                  hypothesis: "原因假设",
+                                  recommendation: "建议",
+                                }[candidate.knowledge_type]
+                              }
+                            </p>
+                          )}
                           <p className="candidate-state">
                             {realizationNames[candidate.realization.state]} ·{" "}
                             {["not-reviewed", "unreviewed"].includes(
                               candidate.evidence_status,
                             )
                               ? "尚未复核"
-                              : candidate.evidence_status}
+                              : candidate.evidence_status === "not-assessed"
+                                ? "本次未评估复核"
+                                : candidate.evidence_status}
                           </p>
                           {candidate.realization.missing_selectors.length >
                             0 && (
@@ -964,24 +1144,6 @@ export function MaterialQuery() {
                   继续读取候选
                 </button>
               )}
-              <div className="material-actions">
-                <button
-                  disabled={unavailable}
-                  onClick={() =>
-                    void act<Packet>(
-                      "materials/assemble",
-                      {
-                        query_id: receipt.query_id,
-                        candidate_ids: selected,
-                        expected_request_digest: receipt.request_digest,
-                      },
-                      setPacket,
-                    )
-                  }
-                >
-                  组装所选材料（{selected.length}）
-                </button>
-              </div>
               <details>
                 <summary>沿所选材料深化</summary>
                 <label>
@@ -1030,33 +1192,6 @@ export function MaterialQuery() {
                     }}
                   />
                 </label>
-                <button
-                  disabled={unavailable}
-                  onClick={() =>
-                    void act<DeepenReceipt>(
-                      "materials/deepen",
-                      {
-                        query_id: receipt.query_id,
-                        candidate_ids: selected,
-                        mode: deepMode,
-                        relation_kinds: list(relations),
-                        direction,
-                        strategy:
-                          capabilities?.deepening.strategy || "bounded-bfs",
-                        strategy_version:
-                          capabilities?.deepening.version || "1",
-                        cursor: deepening?.next_cursor || null,
-                      },
-                      (value) => {
-                        mergeCandidates(value.candidates);
-                        setDeepening(value);
-                        setProposals(value.proposals);
-                      },
-                    )
-                  }
-                >
-                  {deepening?.next_cursor ? "继续深化" : "深化所选材料"}
-                </button>
                 {deepening && (
                   <>
                     <p>
@@ -1150,8 +1285,37 @@ export function MaterialQuery() {
             </section>
           )}
         </main>
-        <aside className="material-output">
+        <aside
+          className="material-output"
+          ref={outputPanel}
+          aria-label="查询返回结果"
+        >
+          <h2>{outputTitle}</h2>
+          <ResultStatus result={outputResult} />
+          {busy && <p role="status">正在读取所选结果…</p>}
           <MaterialPacket packet={packet} />
+          {!packet && deepening && (
+            <section aria-label="深化返回材料">
+              <p>
+                返回 {deepening.candidates.length} 条材料、
+                {deepening.edges.length} 条固定关联。
+              </p>
+              {deepening.candidates.map((item) => (
+                <article key={item.candidate_id}>
+                  <h3>{item.title}</h3>
+                  <p>{item.excerpt}</p>
+                  <FixedReferences refs={item.refs} />
+                </article>
+              ))}
+              {deepening.gaps.length > 0 && (
+                <ul>
+                  {deepening.gaps.map((gap, i) => (
+                    <li key={i}>{gap}</li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
           {capabilities?.maintenance.task_package && (
             <MaterialMaintenance
               request={materialRequest}

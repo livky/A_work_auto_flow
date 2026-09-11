@@ -1,0 +1,91 @@
+{
+  "schema_version": 3,
+  "request_id": "1b486660-5c6b-49f0-bcf2-ad20dd038198",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T183626Z-429304F92E99",
+  "expected_head": null,
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "技术实现",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T183626Z-429304F92E99",
+        "kind": "detail",
+        "title": "统一层级与实际迁移：技术实现",
+        "body_markdown": "",
+        "keywords": [
+          "内容来源",
+          "固定展开",
+          "分层查询"
+        ],
+        "payload": {
+          "unit_type": "analysis",
+          "run_ref": {
+            "target_kind": "owner",
+            "target_id": "RUN-20260910T183626Z-429304F92E99",
+            "revision": null,
+            "sha256": "4b59cfbb28f7c196e89dece8e786cbf083e618f5a51c04788e7728f86c33e774",
+            "locator": "",
+            "relation": "references"
+          },
+          "evidence_refs": [
+            {
+              "target_kind": "owner",
+              "target_id": "RUN-20260910T183626Z-429304F92E99",
+              "revision": null,
+              "sha256": "4b59cfbb28f7c196e89dece8e786cbf083e618f5a51c04788e7728f86c33e774",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "retrieval_description": {
+            "question": "如何统一层级并实际迁移既有内容",
+            "method": "固定前修订、完整正文与统一事务边界；逐项语义审查和真实回读",
+            "key_findings": [
+              "5条经过与1条概览迁移、1条经验补关系",
+              "历史7版保持一致、索引generation14"
+            ],
+            "applicable": [
+              "本机浮点研究与当前框架"
+            ],
+            "not_applicable": [
+              "其他研究的自动迁移",
+              "科学模型有效性证明"
+            ],
+            "limitations": [
+              "历史B01与10秒累计预算失败保留"
+            ]
+          },
+          "blocks": [
+            {
+              "block_id": "implementation",
+              "role": "methods",
+              "markdown": "# 统一层级入口与浮点研究内容迁移：实际结果\n\n## 用户可见结果\n\n工作台筛选、新建和总结只提供 L2 研究经过与 L4 整体概览。浮点求和研究已实际迁移5条经过和1条概览，并更新1条经验的固定关联；当前27条记录总数未增加，旧修订仍按原身份与指纹追溯。不是只改标签或隐藏数据。其他研究的旧数据没有擅自批量迁移。\n\n## 实现与语义审查\n\n统一写服务仅放行 event→narrative、map→overview，要求 v4、完整正文、变更原因与前修订固定引用，保留 CAS 与不可变历史。补齐证据复核、来源边界、查询失败分类、续接与维护调用方。v4 经过保留实际时间、失败与原关联。前端资源重新构建并更新指纹。\n\n实际阅读浮点研究5条旧事件、概览与经验及4份技术单元后编写新正文，保留失败、重试、适用范围和未知项。使用公开 validate-draft/commit 保存；7份旧记录回读与迁移前完全一致。公开维护计划的合成迁移另有测试；本次真实研究采用手动语义审查加公开提交，不声称完成未执行的自动维护计划。没有重跑科学实验或提升原科学结论的复核状态。\n\nFTS 与向量重建到 generation14，canonical_writes=0。真实内容查询读取2份概览/经验、5份经过和4份技术内容，展开并组装3份正文成功；默认10秒累计预算的两次尝试失败，显式60秒预算下完成，原范围、字节上限和权限未改变。组装累计 wall=26671ms、read=1983186bytes、output=6616chars，不能据此声称性能改善。\n\n## 验证\n\n| 范围 | 实际结果 |\n|---|---|\n| memory 回归 | 188项：187通过，历史 B01 冻结指纹失败保留 |\n| 内容查询 | 7项通过 |\n| 语义维护 | 20项通过，另新增公开 plan/review/apply 迁移1项通过 |\n| 前端 | 33项通过；契约测试188变体断言保留，冷启动超时改为明确20秒子进程/30秒用例上限 |\n| Windows 真实 setup 扩展旧工作区 | 18项通过，包含升级、重复升级、保护清单与恢复 |\n| 构建与实际浏览器 | 类型检查、预构建资源与清单通过；Edge 实际单一入口、5条经过及1条概览正文检查通过，页面无异常 |\n| 测试登记 | revision59，618项/31项基线，审计通过；未宣称618项全部执行 |\n\n## 文档与模块影响\n\n更新 README、ARCHITECTURE、CORE、记忆/记录/查询手册、根与 Research 规则、工作台说明、相关 Skill、Project/当前状态和 D11。保存本轮架构快照。写服务拥有迁移规则，外围查询/证据/界面消费统一契约，不建立第二套存储或迁移状态。\n\ndocs/README、DOCUMENTATION_MAINTENANCE、TESTING 已检查：现有索引、维护责任和分级测试规则仍适用，无需另建规则。依赖锁、模型、安装器未修改；因校验边界变化仍运行真实升级测试。历史设计和以前 Run 不改写。\n\n## 限制与续接\n\n这是本机软件验证及 Codex 实际语义检查，人工复验、第二物理机、真实业务检索质量和科学复核仍独立待审。旧 B01 未解决；默认10秒累计查询预算不足已如实保存。没有发布源码或依赖包。测试日志、迁移回执、查询预算失败与成功结果及浏览器截图位于 verification。\n",
+              "requires_block_ids": []
+            }
+          ],
+          "figures": [],
+          "missing_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "owner",
+            "target_id": "RUN-20260910T183626Z-429304F92E99",
+            "revision": null,
+            "sha256": "4b59cfbb28f7c196e89dece8e786cbf083e618f5a51c04788e7728f86c33e774",
+            "locator": "",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

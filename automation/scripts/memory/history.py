@@ -104,9 +104,9 @@ def resume(service, owner_id, budget=None, selection=None):
             record = records[pointer['record_id']]
             ordered.append(research.fixed_ref(record))
             preferred.append(record['record_id'])
-    for kind in ('map', 'detail', 'route', 'question', 'experience'):
+    for kind in ('overview', 'narrative', 'map', 'detail', 'route', 'question', 'experience'):
         choices = [record for record in records.values() if record['kind'] == kind and record['sensitivity'] != 'restricted']
-        if kind in {'map', 'detail'}:
+        if kind in {'overview', 'narrative', 'map', 'detail'}:
             # Resume uses the newest synthesis and detailed calculation before
             # older navigation. Explicit full selections still take precedence;
             # budget/permission failures remain visible in required_not_full.

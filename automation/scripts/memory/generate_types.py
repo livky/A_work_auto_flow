@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 
-SCHEMA_PATH = Path(__file__).resolve().parents[2] / "schemas" / "memory-v3.schema.json"
+SCHEMA_PATH = Path(__file__).resolve().parents[2] / "schemas" / "memory-v4.schema.json"
 
 
 def render_type(schema):

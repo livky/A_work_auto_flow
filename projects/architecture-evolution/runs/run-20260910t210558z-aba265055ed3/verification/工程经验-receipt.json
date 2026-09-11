@@ -1,0 +1,30 @@
+{
+  "request_id": "b38d88e1-5854-48c8-ba8b-2704873ba3dc",
+  "owner_id": "RUN-20260910T210558Z-ABA265055ED3",
+  "commit_id": "COM-a9fb1c9d-9750-4abc-bb4c-80fc05e7c871",
+  "generation": 3,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": "工程经验",
+      "record_id": "MEM-305b3318-3cea-5d50-ac3d-0263c7141488",
+      "revision": 1,
+      "content_hash": "f2099af27b39729651e9df34505c0de1a8c3b58e8f62f444e5f8161f8a2b0eb1",
+      "status": "created"
+    }
+  ],
+  "index_status": "indexed",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "indexed",
+    "indexed_generation": 3,
+    "vector_generation": 3,
+    "target_generation": 3,
+    "encoder_version": "memory-record-representation-v3-technical-description",
+    "collection": "memory_v1_662ca1e31184",
+    "error": null
+  },
+  "warnings": [],
+  "error": null,
+  "recovery_ref": null
+}

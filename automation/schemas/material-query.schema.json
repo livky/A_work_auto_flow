@@ -277,6 +277,19 @@
           "items": {
             "type": "string"
           }
+        },
+        "owner_types": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -852,6 +865,21 @@
               "type": "null"
             }
           ]
+        },
+        "content_source": {
+          "anyOf": [
+            {
+              "enum": [
+                "overview_experience",
+                "process",
+                "technical",
+                "all"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -868,6 +896,68 @@
         "missing_policy",
         "fallback_definitions",
         "applicability"
+      ],
+      "additionalProperties": false
+    },
+    "ContentExpandRequest": {
+      "type": "object",
+      "properties": {
+        "query_id": {
+          "type": "string"
+        },
+        "candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "target": {
+          "enum": [
+            "process",
+            "technical"
+          ]
+        },
+        "expected_request_digest": {
+          "type": "string"
+        },
+        "include_packet": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "query_id",
+        "candidate_ids",
+        "target",
+        "expected_request_digest"
+      ],
+      "additionalProperties": false
+    },
+    "FullDocumentsRequest": {
+      "type": "object",
+      "properties": {
+        "query_id": {
+          "type": "string"
+        },
+        "candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_request_digest": {
+          "type": "string"
+        },
+        "document_type": {
+          "enum": [
+            "research_process",
+            "research_report"
+          ]
+        }
+      },
+      "required": [
+        "query_id",
+        "candidate_ids",
+        "expected_request_digest"
       ],
       "additionalProperties": false
     },
@@ -990,6 +1080,51 @@
           "items": {
             "type": "string"
           }
+        },
+        "content_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "knowledge_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "observation",
+                "conclusion",
+                "hypothesis",
+                "recommendation"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "is_latest": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owner_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -1094,6 +1229,30 @@
       ],
       "additionalProperties": false
     },
+    "PacketFigure": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        },
+        "caption": {
+          "type": "string"
+        },
+        "ref": {
+          "$ref": "#/$defs/FixedRef"
+        },
+        "data_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "index",
+        "caption",
+        "ref",
+        "data_url"
+      ],
+      "additionalProperties": false
+    },
     "AssemblyPart": {
       "type": "object",
       "properties": {
@@ -1128,6 +1287,12 @@
           "items": {
             "type": "string"
           }
+        },
+        "figures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PacketFigure"
+          }
         }
       },
       "required": [
@@ -1137,6 +1302,39 @@
         "refs",
         "selectors",
         "omitted"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentMatch": {
+      "type": "object",
+      "properties": {
+        "ref": {
+          "$ref": "#/$defs/FixedRef"
+        },
+        "title": {
+          "type": "string"
+        },
+        "candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "part_indices": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "ref",
+        "title",
+        "candidate_ids",
+        "complete"
       ],
       "additionalProperties": false
     },
@@ -1169,6 +1367,12 @@
         },
         "canonical": {
           "type": "boolean"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentMatch"
+          }
         }
       },
       "required": [
@@ -1544,6 +1748,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "packet": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MaterialPacket"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -2184,6 +2398,9 @@
               "type": "null"
             }
           ]
+        },
+        "owner_query": {
+          "type": "string"
         }
       },
       "required": [
@@ -2249,6 +2466,16 @@
           ]
         },
         "registered_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owner_type": {
           "anyOf": [
             {
               "type": "string"

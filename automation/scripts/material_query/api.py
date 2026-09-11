@@ -43,6 +43,12 @@ def dispatch(coordinator, action, raw):
         if action == "deepen":
             from .deepening import deepen
             return deepen(coordinator, raw)
+        if action == "expand":
+            from .content import expand
+            return expand(coordinator, raw)
+        if action == "documents":
+            from .documents import full_documents
+            return full_documents(coordinator, raw)
         if action in {"associations", "association-decision"}:
             from .associations import discover, decide
             return (discover if action == "associations" else decide)(coordinator, raw)

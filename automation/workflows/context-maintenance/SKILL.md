@@ -15,9 +15,9 @@ description: 分批整理研发材料、关键词和核心算法入口，同步�
 
 按内容选记录：L0 是统一原始材料视图。已有 Run 的文件由 AI 用 run-register 指定输入/产物，自动保存当前指纹，不重复建 source，也不追认历史版本。新 Python 实验用 run-execute 自动登记输入与本次输出/失败日志；用法、预览与恢复见 [执行与登记手册](../../../docs/RUN_CAPTURE.md)。独立外部原文或受控摘录仍可用内部 source 类型，保持授权和真实取得方式。保存后用 memory raw-materials 回读，缺失/变更不静默补造。独立计算沿用一个原生 Run，保存到归属对象的 runs/。
 
-新 L1 detail 明确使用 v3 技术单元，unit_type 区分 experiment/method/derivation/analysis；检索说明写 retrieval_description，完整参数、公式、步骤、图表和限制只写稳定 blocks，body_markdown 留空。实验固定引用实际 Run；未执行的方法、推导和分析可令 run_ref=null，并保留依据或缺口。比较、决策和失败处理用 L2 event，有边界经验用 L3 experience，主题关系与未决事项用 L4 map。独立 document/document_section 编排研究过程与精简报告，与目标、路线、断点等一样 level=null；旧 map.payload.report 保留兼容。Research 与 Project 默认在每轮/阶段结束检查 L0–L4 覆盖：每轮 L0/L1/L2，阶段 L3/L4 与双文稿，不只留 Run 附件、经验与地图。没有可推广经验时明确缺口，不编造规律；简单查阅按必要内容保存，已有显式策略优先。字段和文稿局部更新见 [分层记录标准](../../../docs/RESEARCH_RECORDING.md)。
+新 L1 detail 明确使用 v3 技术单元，unit_type 区分 experiment/method/derivation/analysis；检索说明写 retrieval_description，完整参数、公式、步骤、图表和限制只写稳定 blocks，body_markdown 留空。实验固定引用实际 Run；未执行的方法、推导和分析可令 run_ref=null，并保留依据或缺口。比较、决策和失败处理用 L2 narrative（v4），有边界经验用 L3 experience，主题关系与未决事项用 L4 overview（v4）。独立 document/document_section 编排研究过程与精简报告，与目标、路线、断点等一样 level=null；旧 map.payload.report 保留兼容。Research 与 Project 默认在每轮/阶段结束检查 L0–L4 覆盖：每轮 L0/L1/L2，阶段 L3/L4 与双文稿，不只留 Run 附件、经验与概览。没有可推广经验时明确缺口，不编造规律；简单查阅按必要内容保存，已有显式策略优先。字段和文稿局部更新见 [分层记录标准](../../../docs/RESEARCH_RECORDING.md)。
 
-记录本次选择时，把理由写入 event.payload.decision，并固定参与 Run/经验引用；记录失败经过时填写 event.payload.failure 的类别、范围、结果、不能推出什么与重试前提。新事件表达对既有结果作出的判断，不能冒充又一次实验。experience.failure_modes 只是经验风险提示，不代替结构化失败；跨研究可见也不是选择 L3 experience 的理由。
+记录本次选择时，使用 v4 narrative 的 body_markdown 和 payload.stages 保存情境、行动、理由、结果及固定 evidence_refs；有失败时按当前契约填写可选 payload.failure，并在正文说明范围、不能推出什么与重试前提。新经过表达对既有结果作出的判断，不能冒充又一次实验。experience.failure_modes 只是经验风险提示，不代替结构化失败；跨研究可见也不是选择 L3 experience 的理由。旧 event 字段仅按原版本兼容读取。
 
 默认 knowledge 模式发现 L1 及更高层知识；文稿/章节使用 documents 模式，L0 原始材料显式追溯，记忆事务不进入正文召回。来源保持启用以便固定引用追溯。旧 v1 记录按有效层级投影，v2 detail 和 map 编排保留原形状；不能直接编辑旧 level、重算旧哈希或把兼容读取写成历史已迁移。新增说明/纠错生成新记录或修订，保留真实补写时间及原引用。
 
@@ -56,3 +56,5 @@ description: 分批整理研发材料、关键词和核心算法入口，同步�
 8. 输出变更摘要、被晋升/归档内容、仍需人审核的候选项和下一维护日期。
 
 若需要定期自动维护，只有在用户明确要求时才创建调度；保持无变化时静默，只在重要漂移、失败或需人行动时通知。
+
+新 L2/L3/L4 的正文、分类和固定关联按[现行记录标准](../../../docs/RESEARCH_RECORDING.md)保存；旧 event/map 保留原义，不直接改标签或继承复核。查询优先使用 content_source，默认概览与经验，需要时沿固定关联展开经过或技术依据，不以同 Owner 猜测关联。

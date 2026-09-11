@@ -1,0 +1,661 @@
+{
+  "note": "实际研究内容回读；不重跑实验，不登记人工科学认可。",
+  "overview_experience": {
+    "request": {
+      "definition": {
+        "key": "full",
+        "version": "1"
+      },
+      "question": "浮点求和",
+      "keywords": [],
+      "scope": {
+        "owner_ids": [
+          "RES-FLOATING-POINT-SUMMATION"
+        ],
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null,
+        "source_ids": null,
+        "include_refs": [],
+        "exclude_ids": [],
+        "confidence_levels": null,
+        "time_window": null,
+        "applicability_conditions": [],
+        "applicability_exclusions": []
+      },
+      "scope_ceiling": {
+        "owner_ids": [
+          "RES-FLOATING-POINT-SUMMATION",
+          "RUN-20260908T201214Z-D0AB308F66AD",
+          "RUN-20260908T201228Z-A0980824DC18",
+          "RUN-20260908T201240Z-90107A617CF8",
+          "RUN-20260908T214955Z-2273015D2CEF",
+          "RUN-20260908T215458Z-04C7D84D40D8"
+        ],
+        "levels": null,
+        "kinds": null,
+        "roles": null,
+        "outcomes": null,
+        "review_states": null,
+        "validities": null,
+        "include_unknown": false,
+        "excluded_refs": [],
+        "excluded_owner_ids": [],
+        "recorded_from": null,
+        "recorded_before": null,
+        "source_ids": null,
+        "include_refs": [],
+        "exclude_ids": [],
+        "confidence_levels": null,
+        "time_window": null,
+        "applicability_conditions": [],
+        "applicability_exclusions": []
+      },
+      "purpose": "exploration",
+      "association": {
+        "mode": "off",
+        "strategy": "existing-relations",
+        "strategy_version": "1",
+        "max_items": 0,
+        "output_share": 0,
+        "supplement_scope": null
+      },
+      "budget": {
+        "wall_ms": 10000,
+        "read_bytes": 2097152,
+        "output_chars": 12000,
+        "candidates": 100,
+        "graph_nodes": 50,
+        "graph_edges": 100,
+        "graph_hops": 2,
+        "model_tokens": 0,
+        "model_calls": 0,
+        "model_input_tokens": 0,
+        "model_output_tokens": 0,
+        "rerank_items": 0
+      },
+      "freshness": "fixed",
+      "result_limit": 20,
+      "missing_policy": "reject",
+      "fallback_definitions": [],
+      "applicability": "",
+      "channels": [
+        "identity",
+        "lexical"
+      ],
+      "dialect": "plain",
+      "ranking_strategy": "topic-evidence-v2",
+      "ranking_version": "1",
+      "allow_index_repair": false,
+      "max_staleness_seconds": null,
+      "content_source": "overview_experience"
+    },
+    "response": {
+      "status": "ok",
+      "value": {
+        "query_id": "MQ-1fea2d81-3c54-410b-8844-4ab5bf2553a4",
+        "request_digest": "8bf281eebb3a2e1739819a952adf3b5b7926ce27d1cd6131815e20c3664f4cd0",
+        "candidates": [
+          {
+            "candidate_id": "C-1c1db9d6ca495276a07c0a80",
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+                "revision": 5,
+                "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+                "locator": null
+              }
+            ],
+            "title": "浮点求和数值稳定性：整体概览",
+            "excerpt": "## 研究要回答什么\n浮点求和中，输入顺序与补偿方法怎样影响大数抵消后的结果？\n\n## 研究怎么推进\n先比较顺序造成的小量损失，再用三项输入逐步分析补偿，最后扩大到三十项的三十种固定排列。精确基准针对程序实际收到的 binary64 输入，不混入十进制转换误差。\n\n## 已得到的结果\n- 第一轮：逐项累加精确 1/3，最大绝对误差 1000；math.fsum 精确 3/3。\n- 第二轮六种排列：逐项累加与 Kahan 各精确 2/6；Neumaier 与 math.fsum 各精确 6/6。\n- 第三轮三十种排列：逐项累加精确 0/30、Kahan 5/30，最大绝对误差均为 10；Neumaier 与 math.fsum 各精确 30/30。\n\n## 复核经过\n首次逐步复核留下绘图依赖导入失败；后续独立复试核对了 150 个最终结果和精确误差、111 组算法轨迹及 30 组采样配方。保",
+            "content_kind": "overview",
+            "knowledge_type": null,
+            "channels": [
+              "lexical"
+            ],
+            "score": 0.01639344262295082,
+            "realization": {
+              "definition": {
+                "key": "full",
+                "version": "1"
+              },
+              "refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+                  "revision": 5,
+                  "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+                  "locator": null
+                }
+              ],
+              "state": "direct",
+              "missing_selectors": [],
+              "generator_version": null
+            },
+            "evidence_status": "not-assessed",
+            "group": "direct",
+            "hits": [
+              {
+                "channel": "lexical",
+                "provider": "memory-fts",
+                "provider_version": "memory-v3-technical-description-documents",
+                "rank": 1,
+                "raw_score": -2.800383692850031,
+                "score_meaning": "FTS bm25（越低越相关）",
+                "representation_refs": [
+                  {
+                    "kind": "record",
+                    "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+                    "revision": 5,
+                    "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+                    "locator": null
+                  }
+                ],
+                "matched_text": "浮点求和数值稳定性：整体概览\n## 研究要回答什么\n浮点求和中，输入顺序与补偿方法怎样影响大数抵消后的结果？\n\n## 研究怎么推进\n先比较顺序造成的小量损失，再用三项输入逐步分析补偿，最后扩大到三十项的三十种固定排列。精确基准针对程序实际收到的 binary64 输入，不混入十进制转换误差。\n\n## 已得到的结果\n- 第一轮：逐项累加精确 1/3，最大绝对误差 1000；math.fsum 精确 3/3。\n- 第二轮六种排列：逐项累加与 Kahan 各精确 2/6；Neuma"
+              }
+            ],
+            "evaluated_claim_refs": [],
+            "unresolved_claim_refs": [],
+            "unknown_facets": []
+          },
+          {
+            "candidate_id": "C-2094b4325f179743d2f0f59f",
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-58fd845a-05a5-516c-8bbe-c88d887cbb91",
+                "revision": 4,
+                "sha256": "2319ac0118a505f1a42d3f4f723b80d2585c4f0f064b1cf21c1d54a63f664f41",
+                "locator": null
+              }
+            ],
+            "title": "大数抵消场景的求和方法局部比较",
+            "excerpt": "三轮实际计算表明：本研究的显式逐项累加对顺序敏感；Kahan实现未消除所选抵消结构的全部误差；Neumaier与math.fsum在第二轮6种排列和第三轮30种排列中均与精确基准一致。该观察只适用于已保存输入与脚本，不能推出任意浮点输入都准确，也未比较运行时间。\n\n## 新增过程依据\n本次逐步复核150个结果全部一致，三篇L1补齐了中间数值、公式、图表和参数。Kahan的补偿在所选三项抵消中再次舍入，不能只凭采用补偿保证精确。先固定输入与精确参考，再观察逐步状态；环境失败应与数值反例分别记录。\n\n## 适用与禁用范围\n仅限已保存有限整数binary64样本与本机环境。其他分布、极端指数、平台和性能须新建Run验证；本次没有人工认可。",
+            "content_kind": "experience",
+            "knowledge_type": "recommendation",
+            "channels": [
+              "lexical"
+            ],
+            "score": 0.016129032258064516,
+            "realization": {
+              "definition": {
+                "key": "full",
+                "version": "1"
+              },
+              "refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-58fd845a-05a5-516c-8bbe-c88d887cbb91",
+                  "revision": 4,
+                  "sha256": "2319ac0118a505f1a42d3f4f723b80d2585c4f0f064b1cf21c1d54a63f664f41",
+                  "locator": null
+                }
+              ],
+              "state": "direct",
+              "missing_selectors": [],
+              "generator_version": null
+            },
+            "evidence_status": "not-assessed",
+            "group": "direct",
+            "hits": [
+              {
+                "channel": "lexical",
+                "provider": "memory-fts",
+                "provider_version": "memory-v3-technical-description-documents",
+                "rank": 2,
+                "raw_score": -2.1863192142790515,
+                "score_meaning": "FTS bm25（越低越相关）",
+                "representation_refs": [
+                  {
+                    "kind": "record",
+                    "id": "MEM-58fd845a-05a5-516c-8bbe-c88d887cbb91",
+                    "revision": 4,
+                    "sha256": "2319ac0118a505f1a42d3f4f723b80d2585c4f0f064b1cf21c1d54a63f664f41",
+                    "locator": null
+                  }
+                ],
+                "matched_text": "大数抵消场景的求和方法局部比较\n三轮实际计算表明：本研究的显式逐项累加对顺序敏感；Kahan实现未消除所选抵消结构的全部误差；Neumaier与math.fsum在第二轮6种排列和第三轮30种排列中均与精确基准一致。该观察只适用于已保存输入与脚本，不能推出任意浮点输入都准确，也未比较运行时间。\n\n## 新增过程依据\n本次逐步复核150个结果全部一致，三篇L1补齐了中间数值、公式、图表和参数。Kahan的补偿在所选三项抵消中再次舍入，不能只凭采用补偿保证精确。先固定输入与精确参"
+              }
+            ],
+            "evaluated_claim_refs": [],
+            "unresolved_claim_refs": [],
+            "unknown_facets": []
+          }
+        ],
+        "next_cursor": null,
+        "expires_at": "2026-09-10T19:18:03.057352Z",
+        "gaps": []
+      },
+      "code": null,
+      "warnings": [],
+      "issues": [],
+      "consumed": {
+        "wall_ms": 4015,
+        "read_bytes": 465804,
+        "output_chars": 1200,
+        "candidates": 2,
+        "graph_nodes": 0,
+        "graph_edges": 0,
+        "graph_hops": 0,
+        "model_tokens": 0,
+        "model_calls": 0,
+        "model_input_tokens": 0,
+        "model_output_tokens": 0,
+        "rerank_items": 0
+      },
+      "stop_reason": "exhausted",
+      "basis": {
+        "refs": [
+          {
+            "kind": "record",
+            "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+            "revision": 5,
+            "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+            "locator": null
+          },
+          {
+            "kind": "record",
+            "id": "MEM-58fd845a-05a5-516c-8bbe-c88d887cbb91",
+            "revision": 4,
+            "sha256": "2319ac0118a505f1a42d3f4f723b80d2585c4f0f064b1cf21c1d54a63f664f41",
+            "locator": null
+          }
+        ],
+        "owner_heads": [
+          [
+            "RES-FLOATING-POINT-SUMMATION",
+            "COM-1ded0a16-df08-4c51-b3ee-ee9988569d9c"
+          ]
+        ],
+        "index_watermarks": [
+          [
+            "RES-FLOATING-POINT-SUMMATION",
+            "14"
+          ]
+        ],
+        "consistency": "fixed_refs",
+        "observed_at": "2026-09-10T19:03:07.062136Z",
+        "basis_id": "BASIS-8f7b5cd9597765d792e880598478df739ee9e740b9271ec083139d13459e41a4"
+      }
+    }
+  },
+  "process_expanded": {
+    "status": "partial",
+    "value": {
+      "candidates": [
+        {
+          "candidate_id": "C-fbe924540a811528f469e22a",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-eae11b05-09a7-5f4e-a2fd-65fc1ec6000e",
+              "revision": 2,
+              "sha256": "b50b8b21c347c1e52191d37d2dbde380348662fe27209443b61e8e5ebed72ba5",
+              "locator": "完整正文与固定依据"
+            }
+          ],
+          "title": "第1轮观察与决策",
+          "excerpt": "## 研究情境\n输入顺序改变了小量是否保留，需要先确定误差从哪一步出现。\n\n## 做了什么，为什么\n比较大数先加、小量先加及随后抵消的三种固定输入。\n\n先检查顺序敏感性，再缩小输入以分析补偿机制。\n\n## 结果与下一步\n逐项累加精确1/3，最大绝对误差1000；math.fsum精确3/3。 下一步决定：把问题缩小到三项抵消并比较补偿方法。\n\n## 发生时间\n2026-09-08T20:12:14.631582Z\n\n## 限制\n- 仅整理已保存的有限整数 binary64 输入与本机结果，未重跑实验。\n- 非整数、极端指数、跨平台和性能尚未验证；研究仍未经过人工科学复核。",
+          "content_kind": "narrative",
+          "knowledge_type": null,
+          "channels": [
+            "graph"
+          ],
+          "score": 0.0,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-eae11b05-09a7-5f4e-a2fd-65fc1ec6000e",
+                "revision": 2,
+                "sha256": "b50b8b21c347c1e52191d37d2dbde380348662fe27209443b61e8e5ebed72ba5",
+                "locator": "完整正文与固定依据"
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "required_context",
+          "hits": [
+            {
+              "channel": "graph",
+              "provider": "graph",
+              "provider_version": "1",
+              "rank": 1,
+              "raw_score": null,
+              "score_meaning": "既有固定关系导航；不是知识置信度",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-eae11b05-09a7-5f4e-a2fd-65fc1ec6000e",
+                  "revision": 2,
+                  "sha256": "b50b8b21c347c1e52191d37d2dbde380348662fe27209443b61e8e5ebed72ba5",
+                  "locator": "完整正文与固定依据"
+                }
+              ],
+              "matched_text": null
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": [],
+          "unknown_facets": []
+        },
+        {
+          "candidate_id": "C-9124cd42cbb59e57bef733ac",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-f1b731ce-9e87-502b-a9cf-a93c3f47c5f6",
+              "revision": 2,
+              "sha256": "a942f1da2177c0891dc763954370584341392a0175f17291f982fbc50d7412ea",
+              "locator": "完整正文与固定依据"
+            }
+          ],
+          "title": "第2轮观察与决策",
+          "excerpt": "## 研究情境\n第一轮观察到逐次舍入损失，下一步检验采用补偿是否足以消除误差。\n\n## 做了什么，为什么\n枚举三个数 [10^16, 1, -10^16] 的全部六种排列，比较四种方法并检查中间补偿。\n\n三项输入可逐步核对；Kahan 已产生补偿，但补偿在下一步仍可能舍入。\n\n## 结果与下一步\n6种排列中逐项与Kahan均精确2/6；Neumaier与math.fsum均精确6/6，最大误差0。 下一步决定：增加重复项与固定排列数，复验反例结构。\n\n## 发生时间\n2026-09-08T20:12:29.365739Z\n\n## 限制\n- 仅整理已保存的有限整数 binary64 输入与本机结果，未重跑实验。\n- 非整数、极端指数、跨平台和性能尚未验证；研究仍未经过人工科学复核。\n- 不能推出Kahan总是失败，也不能推出其他方法对任意输入精确。",
+          "content_kind": "narrative",
+          "knowledge_type": null,
+          "channels": [
+            "graph"
+          ],
+          "score": 0.0,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-f1b731ce-9e87-502b-a9cf-a93c3f47c5f6",
+                "revision": 2,
+                "sha256": "a942f1da2177c0891dc763954370584341392a0175f17291f982fbc50d7412ea",
+                "locator": "完整正文与固定依据"
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "required_context",
+          "hits": [
+            {
+              "channel": "graph",
+              "provider": "graph",
+              "provider_version": "1",
+              "rank": 1,
+              "raw_score": null,
+              "score_meaning": "既有固定关系导航；不是知识置信度",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-f1b731ce-9e87-502b-a9cf-a93c3f47c5f6",
+                  "revision": 2,
+                  "sha256": "a942f1da2177c0891dc763954370584341392a0175f17291f982fbc50d7412ea",
+                  "locator": "完整正文与固定依据"
+                }
+              ],
+              "matched_text": null
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": [],
+          "unknown_facets": []
+        },
+        {
+          "candidate_id": "C-386f2bf0df7cbd73264238c6",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-77b35d77-f6c1-5d05-80a1-7c3b9d5e9d09",
+              "revision": 2,
+              "sha256": "1b61f018e96f5470d965e544db1825c90019eeec5645a8262059653a4005932a",
+              "locator": "完整正文与固定依据"
+            }
+          ],
+          "title": "第3轮观察与决策",
+          "excerpt": "## 研究情境\n三项抵消已有反例，需要检查同类结构在更多项与不同排列中是否仍出现。\n\n## 做了什么，为什么\n将三项重复十次，比较保存的三十种三十项排列。\n\n扩大已知抵消结构的有限样本；这些排列不能估计真实业务失败概率。\n\n## 结果与下一步\n30组固定排列中逐项0/30精确、Kahan5/30，最大误差均10；Neumaier与math.fsum均30/30精确。 下一步决定：停止本组三轮计算；后续再单独验证非整数、极端指数、跨平台与性能。\n\n## 发生时间\n2026-09-08T20:12:40.497595Z\n\n## 限制\n- 仅整理已保存的有限整数 binary64 输入与本机结果，未重跑实验。\n- 非整数、极端指数、跨平台和性能尚未验证；研究仍未经过人工科学复核。\n- 不能推出Kahan总是失败，也不能推出其他方法对任意输入精确。",
+          "content_kind": "narrative",
+          "knowledge_type": null,
+          "channels": [
+            "graph"
+          ],
+          "score": 0.0,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-77b35d77-f6c1-5d05-80a1-7c3b9d5e9d09",
+                "revision": 2,
+                "sha256": "1b61f018e96f5470d965e544db1825c90019eeec5645a8262059653a4005932a",
+                "locator": "完整正文与固定依据"
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "required_context",
+          "hits": [
+            {
+              "channel": "graph",
+              "provider": "graph",
+              "provider_version": "1",
+              "rank": 1,
+              "raw_score": null,
+              "score_meaning": "既有固定关系导航；不是知识置信度",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-77b35d77-f6c1-5d05-80a1-7c3b9d5e9d09",
+                  "revision": 2,
+                  "sha256": "1b61f018e96f5470d965e544db1825c90019eeec5645a8262059653a4005932a",
+                  "locator": "完整正文与固定依据"
+                }
+              ],
+              "matched_text": null
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": [],
+          "unknown_facets": []
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "GE-38fbcafdea63a40e6f06df95",
+          "source": {
+            "kind": "record",
+            "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+            "revision": 5,
+            "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+            "locator": null
+          },
+          "target": {
+            "kind": "record",
+            "id": "MEM-eae11b05-09a7-5f4e-a2fd-65fc1ec6000e",
+            "revision": 2,
+            "sha256": "b50b8b21c347c1e52191d37d2dbde380348662fe27209443b61e8e5ebed72ba5",
+            "locator": "完整正文与固定依据"
+          },
+          "kind": "references",
+          "evidence": [
+            {
+              "kind": "record",
+              "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+              "revision": 5,
+              "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+              "locator": null
+            }
+          ],
+          "state": "accepted_navigation",
+          "conditions": [],
+          "differences": [],
+          "proposer": "canonical:content:process",
+          "generator_version": "existing-relations/1",
+          "evidence_relations": [
+            "references"
+          ],
+          "legacy_relation": "content:process"
+        },
+        {
+          "edge_id": "GE-9743727fcbc38c55314bb743",
+          "source": {
+            "kind": "record",
+            "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+            "revision": 5,
+            "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+            "locator": null
+          },
+          "target": {
+            "kind": "record",
+            "id": "MEM-f1b731ce-9e87-502b-a9cf-a93c3f47c5f6",
+            "revision": 2,
+            "sha256": "a942f1da2177c0891dc763954370584341392a0175f17291f982fbc50d7412ea",
+            "locator": "完整正文与固定依据"
+          },
+          "kind": "references",
+          "evidence": [
+            {
+              "kind": "record",
+              "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+              "revision": 5,
+              "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+              "locator": null
+            }
+          ],
+          "state": "accepted_navigation",
+          "conditions": [],
+          "differences": [],
+          "proposer": "canonical:content:process",
+          "generator_version": "existing-relations/1",
+          "evidence_relations": [
+            "references"
+          ],
+          "legacy_relation": "content:process"
+        },
+        {
+          "edge_id": "GE-373c6d1e02654afeb67f6669",
+          "source": {
+            "kind": "record",
+            "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+            "revision": 5,
+            "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+            "locator": null
+          },
+          "target": {
+            "kind": "record",
+            "id": "MEM-77b35d77-f6c1-5d05-80a1-7c3b9d5e9d09",
+            "revision": 2,
+            "sha256": "1b61f018e96f5470d965e544db1825c90019eeec5645a8262059653a4005932a",
+            "locator": "完整正文与固定依据"
+          },
+          "kind": "references",
+          "evidence": [
+            {
+              "kind": "record",
+              "id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+              "revision": 5,
+              "sha256": "2b0286f3433de3c68c14e0e055ca733452781adba9e62ec3beb2bb60a673e00f",
+              "locator": null
+            }
+          ],
+          "state": "accepted_navigation",
+          "conditions": [],
+          "differences": [],
+          "proposer": "canonical:content:process",
+          "generator_version": "existing-relations/1",
+          "evidence_relations": [
+            "references"
+          ],
+          "legacy_relation": "content:process"
+        }
+      ],
+      "proposals": [],
+      "next_cursor": null,
+      "gaps": []
+    },
+    "code": "BUDGET",
+    "warnings": [
+      "执行时间预算已用完"
+    ],
+    "issues": [
+      {
+        "code": "BUDGET",
+        "message": "执行时间预算已用完",
+        "affected_refs": [],
+        "retry": "replan"
+      }
+    ],
+    "consumed": {
+      "wall_ms": 10000,
+      "read_bytes": 1001513,
+      "output_chars": 2242,
+      "candidates": 5,
+      "graph_nodes": 5,
+      "graph_edges": 4,
+      "graph_hops": 1,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "budget",
+    "basis": null
+  },
+  "technical_expanded": {
+    "status": "rejected",
+    "value": null,
+    "code": "BUDGET",
+    "warnings": [
+      "执行时间预算已用完"
+    ],
+    "issues": [
+      {
+        "code": "BUDGET",
+        "message": "执行时间预算已用完",
+        "affected_refs": [],
+        "retry": "replan"
+      }
+    ],
+    "consumed": {
+      "wall_ms": 10000,
+      "read_bytes": 1001513,
+      "output_chars": 2242,
+      "candidates": 5,
+      "graph_nodes": 5,
+      "graph_edges": 4,
+      "graph_hops": 1,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "budget",
+    "basis": null
+  },
+  "elapsed_seconds": 9.991586099989945
+}

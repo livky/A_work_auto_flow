@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "title": "分层内容来源查询与固定关联展开实现",
+  "document_source": "independent",
+  "document": {
+    "record_id": "MEM-5165255e-4ed7-51db-ba85-cd13fcad587d",
+    "revision": 1,
+    "title": "内容来源查询实现：精简报告",
+    "document_type": "research_report",
+    "purpose": "核对本轮实际开发与限制",
+    "audience": "工作区维护者",
+    "scope": "本轮内容来源实现",
+    "common_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+        "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "f7243366679a1c6beb3f7dc321612ad8bd4031981448375dd7f6f483d191e141",
+        "target_id": "MEM-4bd18b02-490e-59f8-85bb-dca01abe0989",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "report": {
+    "version": 1,
+    "record_id": "MEM-5165255e-4ed7-51db-ba85-cd13fcad587d",
+    "revision": 1,
+    "title": "内容来源查询实现：精简报告",
+    "sections": [
+      {
+        "section_id": "MEM-4bd18b02-490e-59f8-85bb-dca01abe0989",
+        "section_key": "content-query-summary",
+        "title": "精简报告章节",
+        "role": "conclusion",
+        "ref": {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "f7243366679a1c6beb3f7dc321612ad8bd4031981448375dd7f6f483d191e141",
+          "target_id": "MEM-4bd18b02-490e-59f8-85bb-dca01abe0989",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+                "target_id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "本轮已实现概览与经验、研究经过、技术内容三种来源查询，支持沿固定引用展开。L0/L1 和旧固定版本保留。软件回归通过，新旧内容不会自动互换；旧B01失败、用户复验、真实检索质量和第二机器仍有明确缺口。",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      }
+    ],
+    "complete": true
+  },
+  "items": [],
+  "missing": [],
+  "generated_at": "2026-09-10T13:48:52.309219Z",
+  "report_candidates": [
+    {
+      "record_id": "MEM-5165255e-4ed7-51db-ba85-cd13fcad587d",
+      "revision": 1,
+      "title": "内容来源查询实现：精简报告",
+      "updated_at": "2026-09-10T13:48:37.410275Z",
+      "document_type": "research_report"
+    },
+    {
+      "record_id": "MEM-a11314aa-26c5-5dc7-85f8-fed98024bcee",
+      "revision": 1,
+      "title": "内容来源查询实现：完整过程",
+      "updated_at": "2026-09-10T13:48:04.221994Z",
+      "document_type": "research_process"
+    }
+  ],
+  "report_coverage": {
+    "included_detail_ids": [
+      "MEM-ccd8156b-2d97-55d7-835e-d8644c658674"
+    ],
+    "uncovered_detail_ids": []
+  },
+  "report_version_hints": [],
+  "basis_heads": {
+    "RUN-20260910T125056Z-8D1E5D9047B1": "COM-482eda9a-fc47-4d9c-857f-a674a9699c55"
+  },
+  "metrics": {
+    "elapsed_ms": 818.0,
+    "inventory_owners": 21,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 8,
+    "resolved_sections": 1
+  },
+  "writes": 0
+}

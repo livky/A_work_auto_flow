@@ -20,7 +20,7 @@
 | L11 | 当前 49 项测试，42 通过、7 跳过；索引缺 qdrant_client | tests.txt（历史记录已从 main 移除，原路径：`../../runs/run-20260906t130218z-252152e16bc5/tests.txt`）、index-attempt.txt（历史记录已从 main 移除，原路径：`../../runs/run-20260906t130218z-252152e16bc5/index-attempt.txt`） | 高；当前副本结果，不能撤销别处历史通过记录 |
 | L12 | 原校验 0 错误、4 警告：历史证据路径缺失 | validate-before.txt（历史记录已从 main 移除，原路径：`../../runs/run-20260906t130218z-252152e16bc5/validate-before.txt`） | 高；不把历史本机产物当作已看到 |
 | L13 | 本地 Qdrant 单写使用；协议接口未成为插件加载器 | [qdrant_backend.py](../../automation/scripts/qdrant_backend.py)、[retrieval_interfaces.py](../../automation/scripts/retrieval_interfaces.py) | 高；未做压力测试 |
-| L14 | 自动备份、跨对象报告更正、日志捕获多属约定 | [MEMORY](../../context/MEMORY.md)、[RETENTION](../../governance/RETENTION_POLICY.md)、[报告工作流](../../automation/workflows/report-production/SKILL.md) | 高；Git 已存在，MEMORY 中“未配置 Git”文字滞后于当前 NOW |
+| L14 | 自动备份、跨对象报告更正、日志捕获多属约定 | [MEMORY](../../context/MEMORY.md)、[RETENTION](../../governance/RETENTION_POLICY.md)、[报告工作流历史原文](../../projects/architecture-evolution/runs/run-20260910t210558z-aba265055ed3/verification/retired-skills/report-production.txt) | 高；Git 已存在，MEMORY 中“未配置 Git”文字滞后于当前 NOW；2026-09-11 仅调整已退休工作流的原文存放链接，原判断不变 |
 | L15 | 一次上下文创建多次扫描索引；同模块/研究关系组构造全连接 | [retrieval.py](../../automation/scripts/retrieval.py)：search/assemble/relations | 高代码事实；规模影响是推断，尚无测量，不能虚构延迟 |
 
 ## 外部一手资料

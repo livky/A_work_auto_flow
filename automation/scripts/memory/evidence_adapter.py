@@ -111,7 +111,7 @@ class EvidenceAdapter:
                 if rid in self.records or rid in self.legacy.nodes:
                     raise MemoryError("INTEGRITY_ERROR", "Duplicate memory evidence identity", {"target_id": rid})
                 self.records[rid] = record
-                if record["kind"] in {"event", "experience"}:
+                if record["kind"] in {"event", "narrative", "experience", "overview"}:
                     for claim in record["payload"].get("claims", []):
                         cid = claim["claim_id"]
                         if cid in self.claims or cid in self.legacy.nodes:
@@ -241,7 +241,7 @@ class EvidenceAdapter:
                 refs = list(record["sources"])
                 if record["kind"] == "source":
                     refs.append(dict(record["payload"]["source_ref"], relation="input"))
-                elif record["kind"] in {"event", "experience"}:
+                elif record["kind"] in {"event", "narrative", "experience", "overview"}:
                     deps[current].update(claim["claim_id"] for claim in record["payload"]["claims"])
                     if not record["payload"]["claims"] and not (allow_decision and current == target):
                         local[current].append(issue("EVIDENCE_INELIGIBLE", current, "Narrative record contains no independently reviewable claims"))
@@ -357,7 +357,7 @@ class EvidenceAdapter:
         if key in cache:
             return cache[key]
         candidates = [latest[1]] if latest else [record for record in self.records.values()
-                                               if record["kind"] in {"event", "experience"}]
+                                               if record["kind"] in {"event", "narrative", "experience", "overview"}]
         for current in candidates:
             for revision in range(current["revision"] - 1, 0, -1):
                 record = self.access_record(current["record_id"], revision)
@@ -561,7 +561,7 @@ class EvidenceAdapter:
                 selected.add(target)
             elif target in self.records:
                 record = self.records[target]
-                if record["kind"] in {"event", "experience"}:
+                if record["kind"] in {"event", "narrative", "experience", "overview"}:
                     selected.update(claim["claim_id"] for claim in record["payload"]["claims"])
                 elif record["kind"] == "association":
                     # Accepting a navigation link does not make its endpoints

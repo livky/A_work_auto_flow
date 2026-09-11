@@ -1,0 +1,97 @@
+{
+  "body_markdown": "研究目标是按内容职责阅读已有材料。先确认 L0/L1 不变，将经过、分类经验与概览独立保存，保留旧 event/map。随后将来源筛选置于召回窗口之前，固定展开沿原查询账本进行。\n\n最初单元检查通过，但真实浏览器组包暴露旧 Run claim 无法定位。核对后增加有界原生来源适配，并用指纹变化、撤权和范围上限回归验证拒绝行为。前端首次并行契约测试超时，保持断言顺序重跑通过。最终发现 CLI 展开失败仍可能组装原候选，补明确失败返回及真实回归。\n\n新链路的软件验证完成；旧 B01 冻结指纹失败保留。没有自动迁移旧研究，也没有完成用户复验或证明真实检索质量提升。",
+  "change_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+  "content_hash": "c1bc4d9a24c6e000645821f60f3fa13cf9926e6a113f1dd54b4dc98beb142d19",
+  "created_at": "2026-09-10T13:43:18.779403Z",
+  "created_by": {
+    "id": "Codex",
+    "kind": "ai"
+  },
+  "discovery": "workspace_summary",
+  "keywords": [
+    "内容来源",
+    "固定展开",
+    "分层查询"
+  ],
+  "kind": "narrative",
+  "level": "L2",
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "payload": {
+    "claims": [],
+    "experience_refs": [],
+    "limitations": [
+      "实际用户验收未完成"
+    ],
+    "missing_refs": [],
+    "process_refs": [],
+    "question": "怎样实现内容查询而不把表示拼接误当总结",
+    "stages": [
+      {
+        "action": "新增内容种类与来源筛选",
+        "evidence_refs": [
+          {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+            "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+            "target_kind": "record"
+          }
+        ],
+        "outcome": "来源与硬上限分开，旧版保留",
+        "reason": "保证默认召回概览和经验",
+        "situation": "表示方式与来源职责混用"
+      },
+      {
+        "action": "有界定位Run并逐项核验，补拒绝回归",
+        "evidence_refs": [
+          {
+            "locator": "",
+            "relation": "references",
+            "revision": 1,
+            "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+            "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+            "target_kind": "record"
+          }
+        ],
+        "outcome": "新链路验证通过，历史失败单列",
+        "reason": "内部成功不能代表用户组包成功",
+        "situation": "浏览器发现旧claim回源缺口"
+      }
+    ],
+    "technical_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+        "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "previous_revision": null,
+  "provenance_gap": null,
+  "record_hash": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+  "record_id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+  "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+  "revision": 1,
+  "schema_version": 4,
+  "sensitivity": "internal",
+  "sources": [
+    {
+      "locator": "",
+      "relation": "references",
+      "revision": null,
+      "sha256": "a7169044c5d2189ab9b2dfcae51355e6c461283b561160a5574904f2840084f7",
+      "target_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+      "target_kind": "owner"
+    }
+  ],
+  "title": "内容来源查询实现：研究经过",
+  "updated_at": "2026-09-10T13:43:18.779403Z",
+  "updated_by": {
+    "id": "Codex",
+    "kind": "ai"
+  }
+}

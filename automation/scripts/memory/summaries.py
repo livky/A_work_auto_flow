@@ -24,10 +24,10 @@ def prepare(service, query, owners, budget=None, selection=None):
             continue
         _owner, state = snapshot.owner(oid)
         for record in state['records'].values():
-            if record['kind'] in {'detail', 'event', 'experience', 'map', 'question', 'goal', 'route'} or record['record_id'] in explicit:
+            if record['kind'] in {'detail', 'event', 'narrative', 'experience', 'overview', 'map', 'question', 'goal', 'route'} or record['record_id'] in explicit:
                 refs.append({'target_kind': 'record', 'target_id': record['record_id'], 'revision': record['revision'],
                              'sha256': None, 'locator': '规范总结材料', 'relation': 'references'})
-                if record['kind'] in {'detail', 'event', 'experience'}:
+                if record['kind'] in {'detail', 'event', 'narrative', 'experience', 'overview'}:
                     substantive.add(record['record_id'])
     # 准备可在关键词索引尚未建好时使用已选择的固定记录；跨项目选择
     # 已明确，不能因索引空或降级而遗漏该对象的全部局部结果。
@@ -86,8 +86,8 @@ def save(service, request):
         raise MemoryError('INVALID_ARGUMENT', '总结保存需要至少一条经验或地图')
     for operation in operations:
         draft = operation.get('draft', {})
-        if draft.get('kind') not in {'experience', 'map'} or draft.get('owner_id') != public.get('owner_id'):
-            raise MemoryError('INVALID_ARGUMENT', '总结只能保存为单一归属的 L3 experience 或 L4 map')
+        if draft.get('kind') not in {'experience', 'overview', 'map'} or draft.get('owner_id') != public.get('owner_id'):
+            raise MemoryError('INVALID_ARGUMENT', '总结只能保存为单一归属的 experience、overview 或兼容 map')
         if operation.get('record_id') and not str(draft.get('change_reason', '')).strip():
             raise MemoryError('INVALID_ARGUMENT', '新的解释或边界修订必须说明 change_reason')
     digest = contracts.canonical_hash({key: value for key, value in request.items() if key not in {'request_id', 'dry_run'}})

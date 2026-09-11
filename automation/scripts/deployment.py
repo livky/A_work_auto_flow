@@ -38,6 +38,7 @@ def framework_files(source):
              'automation/schemas/memory-v1.schema.json', 'automation/schemas/memory-v1.d.ts',
              'automation/schemas/memory-v2.schema.json', 'automation/schemas/memory-v2.d.ts',
              'automation/schemas/memory-v3.schema.json', 'automation/schemas/memory-v3.d.ts',
+             'automation/schemas/memory-v4.schema.json', 'automation/schemas/memory-v4.d.ts',
              'automation/schemas/material-query.schema.json',
              'automation/testing/catalog.json',
              'automation/schemas/memory-detail-v2.example.json']

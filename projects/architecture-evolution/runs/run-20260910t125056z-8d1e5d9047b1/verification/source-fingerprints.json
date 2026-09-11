@@ -1,0 +1,12 @@
+{
+  "automation/scripts/material_query/content.py": "d700e3ffd1599cd4871243448e3378c72d534a3914d7774ba9d257fad9433faf",
+  "automation/scripts/material_query/native_sources.py": "cec00d15ace627e65158353c50725fcdd5ac78ee5bc0493ed14308bd9fc29d89",
+  "automation/scripts/material_query/coordinator.py": "3ff0ef23e58e9e95901a597b21d5ede3d187c4f8998875d71a3c9b18d37064c6",
+  "automation/scripts/material_query/reader.py": "37ba317c69550d8549946867cc259d531c5f258302c2c5b6c8fb3cfe79277436",
+  "automation/scripts/material_query/cli.py": "6cdf3e246875d04e9187359246d15dc0317f56b92cf506fa76fc2ec25ff1614a",
+  "automation/scripts/memory/contracts.py": "e34727c79518893fb7a0e58ad0a1ad76c96bf91a64c8f662c660d08788e66588",
+  "automation/schemas/memory-v4.schema.json": "3fddd0514c65a92a85c426c49f3e66c8a9fec1980cbfd1522e636834da6bfa60",
+  "automation/tests/test_content_query.py": "6169173bb82a828cac94a1256f6a3428846216d9cf3a0604973a037a6c3d7bb1",
+  "automation/ui/workbench-assets/asset-manifest.json": "6606df9749f19fbca48cbb92b1ad16f1e0d216f8ebb7e57ee94b762f547a03f7",
+  "automation/testing/catalog.json": "3af745dd672b588245df01fa211a74bce7f8added58c8b221dc71c0a5d3880e3"
+}

@@ -151,7 +151,7 @@ def prepare(service, owner_id, since_commit=None, trigger="manual"):
             basis_heads[record["owner_id"]] = head["commit_id"] if head else "none"
     remaining = deepcopy(latest["payload"]["remaining_refs"]) if latest else []
     candidates = []
-    rows = [r for r in snapshot["records"].values() if r["kind"] in {"experience", "event"}]
+    rows = [r for r in snapshot["records"].values() if r["kind"] in {"experience", "event", "narrative", "overview"}]
     for position, a in enumerate(rows):
         for b in rows[position+1:]:
             overlap = keyword_candidates(a["keywords"], b["keywords"])

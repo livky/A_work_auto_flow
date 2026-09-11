@@ -1,0 +1,93 @@
+{
+  "schema_version": 3,
+  "request_id": "8842e2e7-08a5-4c8c-82a6-529f694a921f",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "expected_head": "COM-17f03cf0-1b29-439f-8529-64d8a044bfd7",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "整体概览",
+      "draft": {
+        "schema_version": 4,
+        "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+        "kind": "overview",
+        "title": "内容来源查询实现：整体概览",
+        "body_markdown": "本轮已实现概览与经验、研究经过、技术内容三种来源查询，支持沿固定引用展开。L0/L1 和旧固定版本保留。软件回归通过，新旧内容不会自动互换；旧B01失败、用户复验、真实检索质量和第二机器仍有明确缺口。",
+        "keywords": [
+          "内容来源",
+          "固定展开",
+          "分层查询"
+        ],
+        "payload": {
+          "claims": [],
+          "question": "分层查询主入口与固定展开是否落地",
+          "methods": [
+            "新增v4内容契约",
+            "固定展开共享原账本",
+            "前后端和真实setup回归"
+          ],
+          "results": [
+            "7项新回归、32项前端、5项浏览器、18项升级通过"
+          ],
+          "current_stage": "实现与定向软件验证完成，待用户复验",
+          "limitations": [
+            "旧B01冻结指纹失败保留",
+            "未验证真实业务质量、第二机器或万条规模"
+          ],
+          "open_questions": [
+            "用户复验H02/H03/H16",
+            "旧event/map按实际依据整理"
+          ],
+          "process_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+              "revision": 1,
+              "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "technical_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+              "revision": 1,
+              "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "experience_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-03c17631-0ffb-55b1-a571-cb275f2818ea",
+              "revision": 1,
+              "sha256": "1c6e3eb791ddd1fbb6f5049e51aa8592702acd6de3460c78f92194d4ed87fe42",
+              "locator": "",
+              "relation": "references"
+            }
+          ]
+        },
+        "sources": [
+          {
+            "target_kind": "owner",
+            "target_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+            "revision": null,
+            "sha256": "a7169044c5d2189ab9b2dfcae51355e6c461283b561160a5574904f2840084f7",
+            "locator": "",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "request_id": "c4ac3e4d-0610-4d95-a750-7866aceea580",
+  "owner_id": "RUN-20260910T183626Z-429304F92E99",
+  "commit_id": "COM-e8c8a3cd-0c78-4f53-9929-c036f1efbc64",
+  "generation": 2,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": "研究经过",
+      "record_id": "MEM-939af40e-bc3e-5534-8e2c-a711a9bfa5de",
+      "revision": 1,
+      "content_hash": "2a67dda13654448e90e6c4b9034b8c62f2078ed2cbed43e4224ded6bafcb5077",
+      "status": "created"
+    }
+  ],
+  "index_status": "indexed",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "indexed",
+    "indexed_generation": 2,
+    "vector_generation": 2,
+    "target_generation": 2,
+    "encoder_version": "memory-record-representation-v3-technical-description",
+    "collection": "memory_v1_662ca1e31184",
+    "error": null
+  },
+  "warnings": [],
+  "error": null,
+  "recovery_ref": null
+}

@@ -38,7 +38,7 @@ classifier to reinterpret the surrounding prose or legacy observation labels.
     # A structured failure record is an actual unsuccessful attempt. A list of
     # possible failure_modes, a Run's execution success, or the word "success"
     # in observation does not establish a scientific attempt outcome.
-    outcomes = ("failure",) if record.get("kind") == "event" and payload.get("failure") else ()
+    outcomes = ("failure",) if record.get("kind") in {"event", "narrative"} and payload.get("failure") else ()
     applicability = None
     if record.get("kind") == "experience":
         applicability = {"conditions": payload.get("applicable", []), "exclusions": payload.get("prohibited", [])}

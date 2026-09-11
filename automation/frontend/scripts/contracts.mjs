@@ -8,7 +8,7 @@ await writeFile(
 );
 // Regenerate the offline frontend contract from the authoritative Python schema.
 const memorySchema = JSON.parse(
-  await readFile("../schemas/memory-v3.schema.json", "utf8"),
+  await readFile("../schemas/memory-v4.schema.json", "utf8"),
 );
 await writeFile(
   "src/generated/memory-schema.ts",

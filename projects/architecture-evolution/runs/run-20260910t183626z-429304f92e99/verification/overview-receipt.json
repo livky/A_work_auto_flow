@@ -1,0 +1,30 @@
+{
+  "request_id": "9887204e-9cea-5a27-a866-9cb5002a7dd2",
+  "owner_id": "RES-FLOATING-POINT-SUMMATION",
+  "commit_id": "COM-1ded0a16-df08-4c51-b3ee-ee9988569d9c",
+  "generation": 14,
+  "save_status": "committed",
+  "record_results": [
+    {
+      "client_key": null,
+      "record_id": "MEM-a8226b54-a4cd-545a-8f22-422c2f513bfc",
+      "revision": 5,
+      "content_hash": "77f02cad0500dcfdff02364d8b3f23d6a02a33a2d1416bdffee6377b2febaf68",
+      "status": "updated"
+    }
+  ],
+  "index_status": "indexed",
+  "index_details": {
+    "fts": "indexed",
+    "vector": "indexed",
+    "indexed_generation": 14,
+    "vector_generation": 14,
+    "target_generation": 14,
+    "encoder_version": "memory-record-representation-v3-technical-description",
+    "collection": "memory_v1_662ca1e31184",
+    "error": null
+  },
+  "warnings": [],
+  "error": null,
+  "recovery_ref": null
+}

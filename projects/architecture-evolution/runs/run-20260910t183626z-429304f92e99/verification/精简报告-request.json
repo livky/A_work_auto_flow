@@ -1,0 +1,61 @@
+{
+  "schema_version": 3,
+  "request_id": "5d62faaa-bbc8-4247-a8ed-b02b8e8e40d8",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T183626Z-429304F92E99",
+  "expected_head": "COM-a23edf45-2582-4cea-ab9d-307b30e242ab",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "精简报告",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T183626Z-429304F92E99",
+        "kind": "document",
+        "title": "统一层级与实际迁移：精简报告",
+        "body_markdown": "",
+        "keywords": [
+          "内容来源",
+          "固定展开",
+          "分层查询"
+        ],
+        "payload": {
+          "document_type": "research_report",
+          "purpose": "查看实际迁移、验证与限制",
+          "audience": "工作区维护者",
+          "scope": "统一层级与浮点研究迁移",
+          "common_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-15cd98ca-90c9-5e79-a40e-a7e1d0649b62",
+              "revision": 1,
+              "sha256": "a6b8fb3bc110c68770cf66acd6e9fbf4eb00b55b1381692e5b472e3e662376af",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "section_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-7a550f76-011b-5619-ae4b-92d99cb1b182",
+              "revision": 1,
+              "sha256": "0ee0271ba9df8fb04e01bf3f9d148be95419eb0cbe288b0a0c5b0a3f77b75abc",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        },
+        "sources": [],
+        "provenance_gap": "文稿直接来源已固定在 common_refs 与 section_refs；没有另列 sources",
+        "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

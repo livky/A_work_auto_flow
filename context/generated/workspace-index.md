@@ -1,6 +1,6 @@
 # 工作区派生索引
 
-生成时间：2026-09-10T07:04:15Z
+生成时间：2026-09-10T22:41:55Z
 
 > 本文件由 `workspace_cli.py refresh-index` 生成，只用于导航；对象附近的元数据和正式文档才是事实源。
 
@@ -46,10 +46,13 @@ _暂无已登记对象。_
 
 ## Run（最近 20 项）
 
-共 15 项；使用 search-runs 按关键词检索源记录。
+共 18 项；使用 search-runs 按关键词检索源记录。
 
 | ID | 标题 | 状态 | 入口 |
 |---|---|---|---|
+| `RUN-20260910T210558Z-ABA265055ED3` | 材料查询范围筛选、完整文稿与交互优化 | `completed / not-reviewed` | [projects/architecture-evolution/runs/run-20260910t210558z-aba265055ed3/run.json](../../projects/architecture-evolution/runs/run-20260910t210558z-aba265055ed3/run.json) |
+| `RUN-20260910T183626Z-429304F92E99` | 统一记忆层级入口与浮点研究内容迁移 | `completed / not-reviewed` | [projects/architecture-evolution/runs/run-20260910t183626z-429304f92e99/run.json](../../projects/architecture-evolution/runs/run-20260910t183626z-429304f92e99/run.json) |
+| `RUN-20260910T125056Z-8D1E5D9047B1` | 分层内容来源查询与固定关联展开实现 | `completed / not-reviewed` | [projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/run.json](../../projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/run.json) |
 | `RUN-20260910T063103Z-902DA8123205` | 本地登记与索引覆盖全面审计及工作台人工验收安排 | `succeeded / not-reviewed` | [projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/run.json](../../projects/architecture-evolution/runs/run-20260910t063103z-902da8123205/run.json) |
 | `RUN-20260910T050158Z-028371C48C3A` | 修复浮点研究章节读取与全局检索索引覆盖 | `succeeded / not-reviewed` | [projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/run.json](../../projects/architecture-evolution/runs/run-20260910t050158z-028371c48c3a/run.json) |
 | `RUN-20260909T194710Z-3CF36B2FDD60` | 表示查询与语义维护首期正式开发 | `completed / not-reviewed` | [projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/run.json](../../projects/architecture-evolution/runs/run-20260909t194710z-3cf36b2fdd60/run.json) |

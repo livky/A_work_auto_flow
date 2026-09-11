@@ -1,0 +1,95 @@
+{
+  "body_markdown": "本轮已实现概览与经验、研究经过、技术内容三种来源查询，支持沿固定引用展开。L0/L1 和旧固定版本保留。软件回归通过，新旧内容不会自动互换；旧B01失败、用户复验、真实检索质量和第二机器仍有明确缺口。",
+  "change_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+  "content_hash": "bf120a7e7c3937e8c92d4bf2e23b5826bd25de1e19c6d11ef351db1525c8ede1",
+  "created_at": "2026-09-10T13:44:33.739920Z",
+  "created_by": {
+    "id": "Codex",
+    "kind": "ai"
+  },
+  "discovery": "workspace_summary",
+  "keywords": [
+    "内容来源",
+    "固定展开",
+    "分层查询"
+  ],
+  "kind": "overview",
+  "level": "L4",
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "payload": {
+    "claims": [],
+    "current_stage": "实现与定向软件验证完成，待用户复验",
+    "experience_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "1c6e3eb791ddd1fbb6f5049e51aa8592702acd6de3460c78f92194d4ed87fe42",
+        "target_id": "MEM-03c17631-0ffb-55b1-a571-cb275f2818ea",
+        "target_kind": "record"
+      }
+    ],
+    "limitations": [
+      "旧B01冻结指纹失败保留",
+      "未验证真实业务质量、第二机器或万条规模"
+    ],
+    "methods": [
+      "新增v4内容契约",
+      "固定展开共享原账本",
+      "前后端和真实setup回归"
+    ],
+    "missing_refs": [],
+    "open_questions": [
+      "用户复验H02/H03/H16",
+      "旧event/map按实际依据整理"
+    ],
+    "process_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+        "target_id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+        "target_kind": "record"
+      }
+    ],
+    "question": "分层查询主入口与固定展开是否落地",
+    "results": [
+      "7项新回归、32项前端、5项浏览器、18项升级通过"
+    ],
+    "technical_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+        "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "previous_revision": null,
+  "provenance_gap": null,
+  "record_hash": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+  "record_id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+  "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+  "revision": 1,
+  "schema_version": 4,
+  "sensitivity": "internal",
+  "sources": [
+    {
+      "locator": "",
+      "relation": "references",
+      "revision": null,
+      "sha256": "a7169044c5d2189ab9b2dfcae51355e6c461283b561160a5574904f2840084f7",
+      "target_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+      "target_kind": "owner"
+    }
+  ],
+  "title": "内容来源查询实现：整体概览",
+  "updated_at": "2026-09-10T13:44:33.739920Z",
+  "updated_by": {
+    "id": "Codex",
+    "kind": "ai"
+  }
+}

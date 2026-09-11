@@ -5,7 +5,7 @@
 ## 固定顺序
 
 1. 读 [NOW.md](NOW.md)，确认当前重点、阻塞和最近变更。
-2. 读派生的 [generated/workspace-index.md](generated/workspace-index.md)；若不存在，运行 `refresh-index`。
+2. 需要定位业务对象时，读派生的 [generated/workspace-index.md](generated/workspace-index.md)；若不存在，运行 `refresh-index`。框架开发直接进入下表的开发 Skill，不必通读对象清单。
 3. 根据任务路由：
 
 | 用户意图          | 首选位置                                     | 关键产物                          |
@@ -17,7 +17,7 @@
 | 维护分析工具      | `tools/`                                   | 工具卡、CLI、测试、适配器         |
 | 查历史经验        | `knowledge/`                               | ADR、复盘、模式、周期回顾         |
 | 理解研究过程/文稿 | 目标对象的 memory document / outline / section-context | 技术单元、固定章节、完整/精简文稿 |
-| 维护框架与文档 | `ARCHITECTURE.md`、`docs/DOCUMENTATION_MAINTENANCE.md` | 本轮 Project 影响清单、文档更新与验证 Run |
+| 维护框架与文档 | [development-checks](../automation/workflows/development-checks/SKILL.md) | 六份短文档的前后完整阅读/维护、按风险验证及任务记录 |
 | 做 PPT/文档/报告  | `reports/`                                 | brief、引用 Run、报告源、manifest |
 | 接入外部平台      | `governance/` + `tools/external/`        | 授权记录、数据流、适配器、审计    |
 
@@ -30,8 +30,8 @@
 - 日常统一入口为 `workbench.cmd`（注册后 `rdwork`）；安装/升级使用 `setup.cmd`，合成测试用 `workbench.cmd workbench --demo`。见 [一键部署与工作台](../docs/SETUP_WORKBENCH.md)。
 
 - 记录、确认和纠错先看 [MEMORY.md](MEMORY.md)。简单任务不必创建完整项目或套工作流。
-- 当前 L1 是技术单元，章节和完整/精简文稿独立保存，L4 仍是地图；定义只从[研究记录标准](../docs/RESEARCH_RECORDING.md)展开，不按历史计划猜测。查局部经验先用 memory search，理解完整研究先读文稿目录/章节；原始证据再按固定引用追溯。
-- 框架开发检查模块影响、现行手册、README/AGENTS、Skill、测试和迁移入口。通用约定见[文档与模块影响维护](../docs/DOCUMENTATION_MAINTENANCE.md)；本完整工作区的演进记录在 `projects/architecture-evolution/`，公共发行包不含项目实例。
+- 当前 L1 是完整技术单元，L2 研究经过、L3 经验、L4 整体概览；章节和完整/精简文稿独立保存。定义只从[研究记录标准](../docs/RESEARCH_RECORDING.md)展开，不按历史计划猜测。查局部经验先用 memory search，理解完整研究先读文稿目录/章节；原始证据再按固定引用追溯。
+- 框架开发按 Skill 的六份短文档理解现状；模块影响只在 [ARCHITECTURE](../ARCHITECTURE.md) 维护，细节与历史分类从 [docs/README](../docs/README.md) 展开。本工作区的演进记录在 `projects/architecture-evolution/`，公共发行包不依赖项目实例。
 - 当前组件能力用 `doctor` 检查；正式结论、封存和跨文档失效使用 [证据准入手册](../docs/EVIDENCE_CONTROLS.md)。探索记录不自动成为正式依据。
 - 查看证据依据、复核、失效时间与报告影响，使用 evidence-inspection Skill 或 `evidence-view --serve`；变化观察用 `evidence-monitor`，只写本机观察记录和候选。见 [查看与监测手册](../docs/EVIDENCE_VIEW_MONITOR.md)。
 - 接入已有算法/文档/仓库时，按 [已有材料接入指南](../docs/EXISTING_MATERIALS.md) 从用户给的路径和用途开始；助手负责归组与登记，不要求用户预先建项目或填完整核心算法模板。

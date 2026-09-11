@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "owner_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+  "title": "分层内容来源查询与固定关联展开实现",
+  "keywords": [
+    "分层",
+    "内容查询"
+  ],
+  "review_history": [],
+  "claims": [],
+  "dependencies": [],
+  "run_type": "analysis",
+  "status": "completed",
+  "created_at": "2026-09-10T12:50:56Z",
+  "started_at": "2026-09-10T12:50:56Z",
+  "ended_at": "2026-09-10T13:41:00.440567+00:00",
+  "owner": null,
+  "question": "怎样按内容职责直接查询并沿固定引用深入，同时保持旧版与范围预算边界？",
+  "hypotheses": [],
+  "inputs": [],
+  "parameters": {},
+  "code": {
+    "commit": "8a57e4dd318d0c252ba8fd7b2676b3042c6fc557",
+    "dirty": true
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "lock_or_image_digest": null
+  },
+  "random_seeds": [],
+  "quality_results": [],
+  "metrics": {},
+  "artifacts": [
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/RESULTS.md",
+      "sha256": "929ee46730addc911287b2bc4bfb81602e3a62ed08d71314289e98f83ee10437",
+      "role": "artifact",
+      "registered_at": "2026-09-10T13:41:03.131817Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/verification/source-fingerprints.json",
+      "sha256": "4a01b8f6ffb3411274a7a3ae5f22da09610b573b772212c28c4096c1e92a8502",
+      "role": "artifact",
+      "registered_at": "2026-09-10T13:41:03.141828Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/verification/content-tests-final.log",
+      "sha256": "8ff2eb73f329ecd204afc3d0b751c0ca2f43739c644314de3f1006b7be815259",
+      "role": "artifact",
+      "registered_at": "2026-09-10T13:41:03.152904Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/verification/upgrade-final.log",
+      "sha256": "c34e3e3095541e444b5e418cc3db7036a70535ae482627f8a21f0db6fbd03036",
+      "role": "artifact",
+      "registered_at": "2026-09-10T13:41:03.163030Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/verification/frontend-tests-final.log",
+      "sha256": "9e5318119658356b30920d7786c5b44ba8f077d24bf7221fdbef243cb51e57e5",
+      "role": "artifact",
+      "registered_at": "2026-09-10T13:41:03.175021Z"
+    },
+    {
+      "path": "projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/verification/browser-tests-final.log",
+      "sha256": "41ad20c5c0b2c6837cd57e6285b9d36d73cdc9458c96f2053de27f589a150c86",
+      "role": "artifact",
+      "registered_at": "2026-09-10T13:41:03.185029Z"
+    }
+  ],
+  "lineage_events": "lineage.jsonl",
+  "conclusion": "实现及定向软件验证完成；历史B01失败和人工/第二物理机待审单列。",
+  "limitations": [
+    "未自动迁移旧event/map",
+    "未验证真实业务检索质量收益",
+    "人工与第二物理机待审",
+    "冻结B01仍失败"
+  ],
+  "parent_run_ids": [],
+  "related_module_ids": [],
+  "related_research_ids": [],
+  "related_dataset_ids": [],
+  "review": {
+    "status": "not-reviewed",
+    "reviewer": null,
+    "date": null
+  },
+  "sensitivity": "internal"
+}

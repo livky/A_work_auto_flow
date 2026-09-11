@@ -229,7 +229,13 @@ def add_existing(coordinator, state, reader, found):
                 continue
             try:
                 depth = charge_node(state, seed, 0)
-                for edge, _ in navigation_edges(state, reader, seed):
+                # 一条旧关系不能阻断同一来源后面的有效补充。诊断边只用于
+                # 说明缺口，仍仅把当前 accepted_navigation 的端点交付正文。
+                for edge, _ in navigation_edges(state, reader, seed, include_diagnostics=True):
+                    if edge["state"] != "accepted_navigation":
+                        if edge["state"] == "stale":
+                            gaps.append("已有关系引用旧修订，须重新判断后才可导航")
+                        continue
                     target = parse(edge["target"] if edge["source"]["id"] == seed.id else edge["source"], FixedRef)
                     if identity(target) in seen:
                         continue

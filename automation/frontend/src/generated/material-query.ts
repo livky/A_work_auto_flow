@@ -33,6 +33,7 @@ export interface Scope {
   time_window?: TimeWindow | null;
   applicability_conditions?: Array<string>;
   applicability_exclusions?: Array<string>;
+  owner_types?: Array<string> | null;
 }
 
 export interface Budget {
@@ -141,6 +142,22 @@ export interface QueryRequest {
   ranking_version?: string;
   allow_index_repair?: boolean;
   max_staleness_seconds?: number | null;
+  content_source?: "overview_experience" | "process" | "technical" | "all" | null;
+}
+
+export interface ContentExpandRequest {
+  query_id: string;
+  candidate_ids: Array<string>;
+  target: "process" | "technical";
+  expected_request_digest: string;
+  include_packet?: boolean;
+}
+
+export interface FullDocumentsRequest {
+  query_id: string;
+  candidate_ids: Array<string>;
+  expected_request_digest: string;
+  document_type?: "research_process" | "research_report";
 }
 
 export interface ChannelHit {
@@ -168,6 +185,10 @@ export interface Candidate {
   evaluated_claim_refs?: Array<FixedRef>;
   unresolved_claim_refs?: Array<FixedRef>;
   unknown_facets?: Array<string>;
+  content_kind?: string | null;
+  knowledge_type?: "observation" | "conclusion" | "hypothesis" | "recommendation" | null;
+  is_latest?: boolean | null;
+  owner_type?: string | null;
 }
 
 export interface SearchReceipt {
@@ -190,6 +211,13 @@ export interface AssembleRequest {
   expected_request_digest: string;
 }
 
+export interface PacketFigure {
+  index: number;
+  caption: string;
+  ref: FixedRef;
+  data_url: string;
+}
+
 export interface AssemblyPart {
   group: "direct" | "required_context" | "association" | "gaps";
   heading: string;
@@ -197,6 +225,15 @@ export interface AssemblyPart {
   refs: Array<FixedRef>;
   selectors: Array<string>;
   omitted: Array<string>;
+  figures?: Array<PacketFigure>;
+}
+
+export interface DocumentMatch {
+  ref: FixedRef;
+  title: string;
+  candidate_ids: Array<string>;
+  complete: boolean;
+  part_indices?: Array<number>;
 }
 
 export interface MaterialPacket {
@@ -207,6 +244,7 @@ export interface MaterialPacket {
   contributors: Array<FixedRef>;
   complete: boolean;
   canonical: boolean;
+  documents?: Array<DocumentMatch>;
 }
 
 export interface StructuralProfile {
@@ -271,6 +309,7 @@ export interface DeepenReceipt {
   proposals: Array<AssociationProposal>;
   next_cursor: string | null;
   gaps: Array<string>;
+  packet?: MaterialPacket | null;
 }
 
 export interface MaintenanceRequest {
@@ -389,6 +428,7 @@ export interface TreeRequest {
   limit: number;
   view: "logical" | "storage";
   parent_node_id?: string | null;
+  owner_query?: string;
 }
 
 export interface TreeNode {
@@ -401,6 +441,7 @@ export interface TreeNode {
   has_children: boolean;
   storage_role: "canonical" | "source_reference" | "projection" | "temporary";
   registered_path: string | null;
+  owner_type?: string | null;
 }
 
 export interface TreePage {

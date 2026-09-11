@@ -96,7 +96,10 @@ test("材料查询真实HTTP组装四区、固定依据与来源映射", async (
       (node: { registered_path: string | null }) => node.registered_path,
     ),
   ).toBe(true);
-  await page.locator(".material-structure .tree-toggle").first().click();
+  await page
+    .locator(".material-structure .tree-toggle:visible")
+    .first()
+    .click();
   await page.getByRole("button", { name: /^归属原始登记/ }).click();
   await expect(page.locator(".material-structure details code")).toBeVisible();
   await page.evaluate(() => window.scrollTo(0, 0));
@@ -214,7 +217,7 @@ test("真实预算耗尽显示停止原因并保留查询范围", async ({ page 
     .locator(".material-search")
     .getByRole("status", { name: "执行回执" });
   await expect(status).toContainText("BUDGET");
-  await expect(status).toContainText("停止原因");
+  await expect(status).toContainText("已达到本次预算");
   await expect(page.locator(".scope-summary")).toContainText("全局获准范围");
 });
 
@@ -320,6 +323,7 @@ test("有效 partial 审查与真实提交保留索引待办，关闭已完成�
     .getByLabel("归属对象（逗号分隔，留空表示空集合）", { exact: true })
     .fill(owner);
   await page.getByLabel("问题", { exact: true }).fill(recordId);
+  await page.getByLabel("内容来源", { exact: true }).selectOption("technical");
   await page.getByRole("button", { name: "开始查询", exact: true }).click();
   const candidate = page
     .getByTestId("material-candidate")
@@ -414,4 +418,159 @@ test("有效 partial 审查与真实提交保留索引待办，关闭已完成�
     path: testInfo.outputPath("material-maintenance-partial.png"),
     fullPage: false,
   });
+});
+
+test("概览正文通过固定引用展开经过与技术内容，来源切换和取消选择明确", async ({
+  page,
+  request,
+}, testInfo) => {
+  const owner = "RES-SYN-THERMAL";
+  const marker = "SYNTHETIC-CONTENT-SOURCES";
+  const memory = async (action: string, data: unknown) =>
+    (
+      await request.post(base + "api/v1/memory/" + action, {
+        data,
+        headers: { Origin: new URL(base).origin },
+      })
+    ).json();
+  const initial = await memory("inspect", { owner_id: owner });
+  const unit = Object.values(initial.records).find(
+    (r: any) => r.kind === "detail",
+  ) as any;
+  const fixed = (r: any) => ({
+    target_kind: "record",
+    target_id: r.record_id,
+    revision: r.revision,
+    sha256: r.record_hash,
+    locator: "",
+    relation: "references",
+  });
+  const put = async (kind: string, body: string, payload: unknown) => {
+    const current = await memory("inspect", { owner_id: owner });
+    const saved = await memory("commit", {
+      schema_version: 1,
+      request_id: crypto.randomUUID(),
+      owner_id: owner,
+      expected_head: current.head.commit_id,
+      actor: { kind: "workflow", id: "SYNTHETIC content browser test" },
+      operations: [
+        {
+          op: "put_record",
+          client_key: kind,
+          draft: {
+            schema_version: 4,
+            owner_id: owner,
+            kind,
+            title: marker + " " + kind,
+            keywords: [marker],
+            body_markdown: body,
+            payload,
+            sources: [],
+            provenance_gap: "合成软件验证，未评估现实结论",
+            record_reason: "验证内容查询与固定展开",
+            discovery: "workspace_summary",
+            sensitivity: "internal",
+          },
+        },
+      ],
+    });
+    expect(saved.save_status, JSON.stringify(saved)).toBe("committed");
+    return (
+      await memory("inspect", {
+        owner_id: owner,
+        record_id: saved.record_results[0].record_id,
+      })
+    ).record;
+  };
+  const common = {
+    claims: [],
+    technical_refs: [fixed(unit)],
+    process_refs: [],
+    experience_refs: [],
+    limitations: ["仅合成验证"],
+  };
+  const processRecord = await put(
+    "narrative",
+    "先检查条件，保留失败，再确定下一步；这是已保存的研究经过。",
+    {
+      ...common,
+      question: marker,
+      stages: [
+        {
+          situation: "条件不足",
+          action: "检查来源",
+          reason: "确认依据",
+          outcome: "保留限制",
+          evidence_refs: [fixed(unit)],
+        },
+      ],
+    },
+  );
+  await put("overview", "整体概览正文：工作尚未完成，仍有未解决的问题。", {
+    ...common,
+    process_refs: [fixed(processRecord)],
+    question: marker,
+    methods: ["检查固定依据"],
+    results: ["仅验证软件"],
+    current_stage: "验证中",
+    open_questions: ["真实模型未验证"],
+  });
+  await page.goto(base + "#/materials");
+  await expect(page.getByLabel("内容来源")).toHaveValue("overview_experience");
+  await page.getByRole("button", { name: "全局获准范围", exact: true }).click();
+  await page.getByLabel("问题", { exact: true }).fill(marker);
+  await page.getByRole("button", { name: "开始查询", exact: true }).click();
+  const overview = page
+    .getByTestId("material-candidate")
+    .filter({ hasText: marker + " overview" });
+  await expect(overview).toBeVisible();
+  await expect(
+    page
+      .getByTestId("material-candidate")
+      .filter({ hasText: marker + " narrative" }),
+  ).toHaveCount(0);
+  await overview.getByRole("checkbox").check();
+  for (const target of ["研究经过", "技术内容"]) {
+    const response = page.waitForResponse((r) =>
+      r.url().endsWith("/materials/expand"),
+    );
+    await page
+      .getByRole("button", { name: "展开" + target, exact: true })
+      .click();
+    const result = await (await response).json();
+    expect(result.status, JSON.stringify(result)).toBe("ok");
+    expect(result.value.candidates).toHaveLength(1);
+    expect(result.value.candidates[0].refs[0].sha256).toMatch(/^[0-9a-f]{64}$/);
+  }
+  await page
+    .getByRole("button", { name: "组装所选材料（1）", exact: true })
+    .click();
+  await expect(
+    page.getByRole("region", { name: "材料包", exact: true }),
+  ).toContainText("整体概览正文");
+  await expect(
+    page.getByRole("region", { name: "材料包", exact: true }),
+  ).not.toContainText("technical_refs");
+  await page.screenshot({
+    path: testInfo.outputPath("content-source-expansion.png"),
+    fullPage: true,
+  });
+  await page.getByLabel("内容来源").selectOption("process");
+  await expect(
+    page.getByRole("button", { name: "展开技术内容", exact: true }),
+  ).toBeDisabled();
+  await page.getByRole("button", { name: "开始查询", exact: true }).click();
+  await expect(
+    page
+      .getByTestId("material-candidate")
+      .filter({ hasText: marker + " narrative" }),
+  ).toBeVisible();
+  const treeItem = page.locator(".material-structure .tree-label:visible").first();
+  await treeItem.click();
+  await expect(treeItem).toHaveAttribute("aria-pressed", "true");
+  await treeItem.click();
+  await expect(treeItem).toHaveAttribute("aria-pressed", "false");
+  await expect(page.locator(".scope-summary")).toContainText(
+    "空范围，请选择归属对象",
+  );
 });

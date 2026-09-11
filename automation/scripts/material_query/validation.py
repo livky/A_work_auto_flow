@@ -102,7 +102,7 @@ def semantic(value, path="$"):
                 require(False, "时间格式不合法")
         require(not all(dates) or dates[0] < dates[1], "时间区间必须左端早于右端")
     elif isinstance(value, c.Scope):
-        for key in ("owner_ids", "levels", "kinds", "roles", "outcomes", "review_states", "validities", "excluded_owner_ids"):
+        for key in ("owner_ids", "owner_types", "levels", "kinds", "roles", "outcomes", "review_states", "validities", "excluded_owner_ids"):
             items = getattr(value, key)
             require(items is None or all(item.strip() for item in items), "范围不能包含空白身份")
         require(value.levels is None or set(value.levels) <= {"L0", "L1", "L2", "L3", "L4", "unlayered"}, "层级不受支持")
@@ -123,6 +123,8 @@ def semantic(value, path="$"):
         require(value.max_items >= 0 and 0 <= value.output_share <= 1, "联想数量/篇幅比例不合法")
         require(bool(value.strategy.strip()) and bool(value.strategy_version.strip()), "策略及版本不能为空")
     elif isinstance(value, c.QueryRequest):
+        require(value.content_source is None or (value.definition.key == "full" and value.missing_policy == "reject" and not value.fallback_definitions),
+                "内容来源查询直接读取已有正文，须使用full且不回退或生成")
         require(bool(value.question.strip()) or any(item.strip() for item in value.keywords), "请填写问题或关键词")
         require(0 < value.result_limit <= 100, "结果数量须为1到100")
         require(value.purpose != "formal" or bool(value.applicability.strip()), "正式用途必须说明适用范围")
@@ -132,7 +134,7 @@ def semantic(value, path="$"):
         require(value.max_staleness_seconds is None or value.max_staleness_seconds >= 0, "索引过期容忍时间不能为负")
     elif isinstance(value, c.TreeRequest):
         require(0 < value.limit <= 100, "分页数量须为1到100")
-    elif isinstance(value, c.AssembleRequest):
+    elif isinstance(value, (c.AssembleRequest, c.ContentExpandRequest, c.FullDocumentsRequest)):
         require(bool(value.candidate_ids), "请选择实际材料")
         require(len(set(value.candidate_ids)) == len(value.candidate_ids), "候选不能重复")
 

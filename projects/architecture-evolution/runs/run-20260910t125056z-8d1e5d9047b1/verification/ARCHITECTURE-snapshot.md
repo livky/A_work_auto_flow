@@ -1,0 +1,73 @@
+# 当前技术架构
+
+本页维护实际模块、依赖和状态所有权；用户概念与用法见 [README](../../../../../README.md)，功能输入输出见 [CORE](../../../../../docs/CORE.md)，细节见[文档索引](../../../../../docs/README.md)。核对日期：2026-09-10；代码基线 `8a57e4d`，当前工作树增加分层内容来源与固定关联展开，兼容既有材料查询 v0.2 和固定来源读取。历史设计不替代运行代码。
+
+## 技术栈与运行入口
+
+Windows x64 本地应用：`workbench.cmd` / `workspace_cli.py` 启动 Python CLI 或本机 HTTP 服务；工作台使用 React/TypeScript，构建后的 JS/CSS/Worker 随源码交付。使用端无需 Node，开发依赖由前端锁文件管理。
+
+原始业务卡使用 JSON/Markdown；规范记忆使用对象内不可变文件提交。SQLite FTS 和 Qdrant local 提供可重建检索投影；本地嵌入/OCR 由匹配的离线依赖包提供。材料查询新应用目前只启用身份/词法通道，不等同于旧检索已有向量功能。
+
+```mermaid
+flowchart TD
+    UI[React 工作台 / CLI] --> HTTP[固定动作 API 与工作台服务]
+    AI[AI Skills / 人的语义判断] --> HTTP
+    HTTP --> MQ[材料查询应用 material_query]
+    HTTP --> MEM[规范记忆 memory]
+    HTTP --> OLD[旧材料检索与材料关系]
+    MQ --> MEM
+    MQ --> IDX[SQLite 投影与既有关联]
+    MEM --> STORE[对象身份 / 不可变提交 / HEAD]
+    MEM --> IDX
+    MEM --> VECTOR[Qdrant local]
+    OLD --> IDX
+    OLD --> VECTOR
+    STORE --> SRC[获准原件与 Run 登记]
+```
+
+图表示主要调用/读取关系，不表示每次请求都会经过全部节点。权限、证据核验和计量横跨相关路径；AI 不直接写规范存储文件。
+
+## 模块与变化影响
+
+代码路径除显式 `automation/` 外均相对 `automation/scripts/`；同一单元格中省略目录的文件沿用前一文件的目录。下表是全局模块影响的唯一现行入口；Project 只保存本次处置与历史快照。
+
+| 模块 | 实际职责与代码入口 | 变化时检查的关联 |
+|---|---|---|
+| OBJ 对象与来源 | `manifest_discovery.py`、`run_capture.py`、`memory/owners.py`、`raw_materials.py`（后者在 memory 内）：稳定身份、唯一 Run 归属、L0 追溯 | MEM 身份/兼容、EVD 授权、RET 索引、MQ 原件回读、APP 树、QA 升级保护 |
+| MEM 规范版本 | `memory/contracts.py`、`service.py`、`store.py`、`recovery.py`：验证、CAS、幂等和恢复；schema 在 `automation/schemas/` | DOC/EVD/RET/MQ 的全部读取者、生成类型与旧版迁移 |
+| DOC 技术内容 | `memory/technical_units.py`、`documents.py`、`history.py`、`research.py`：完整块、章节/双文稿与续接 | MEM 字段、RET 表示、MQ 组包/定位、EVD 影响检查、APP 与研究 Skill |
+| EVD 来源与证据 | `evidence.py`、`memory/evidence_adapter.py`、`impact.py`、`lineage.py`：复核、权限和已登记依赖影响 | 所有正文返回、正式筛选、文稿、关联、监测与导出 |
+| RET 投影与基础检索 | `retrieval.py`、`context_engine.py`、`qdrant_backend.py`、`memory/index.py`、`search.py`、`packets.py`、`associations.py` | MQ 召回/覆盖、旧 API、来源撤权、模型隔离、相关性和读取成本 |
+| MQ 材料查询应用 | `material_query/`：Coordinator 编排；Reader/Writer 适配；定义、组包、加深、维护；`content.py` 选择来源并沿固定引用展开，`native_sources.py` 有界核验旧 Run claim；StateStore/Ledger 管请求状态和预算；Foundation 接旧功能分组 | MEM 事务、RET 水位、DOC 固定块、EVD 准入、APP 生成契约与三个专项 Skill |
+| APP 产品入口 | `workspace_cli.py`、`memory/api.py`、`material_query/api.py`、`workbench_app/`、`automation/frontend/src/` | 同一动作的 CLI/HTTP/UI 请求与错误、任务进度、契约、构建资源、操作文档 |
+| GUIDE 规则与说明 | `automation/workflows/` 方法源、`.agents/skills/` 发现入口及六份必读文档 | 所描述能力的代码/契约、用户入口、测试选择；不复制一套业务状态 |
+| QA 测试与交付 | `automation/testing/`、`automation/tests/`、`deployment.py` 及依赖分发 | catalog 与实际回执、前端指纹、旧业务/自定义 Skill 保留、离线包与恢复 |
+
+表中一行变化时检查其实际调用者、数据消费者和对应细节文档；不是要求每次全模块重测。文档路由与维护方式见 [DOCUMENTATION_MAINTENANCE](../../../../../docs/DOCUMENTATION_MAINTENANCE.md)。
+
+## 状态由谁负责
+
+| 状态 | 权威来源 | 独立边界 |
+|---|---|---|
+| 对象、Run、来源授权 | 原生 manifest、`run.json`、`retrieval/sources.json` 及获准原件 | 文件存在不等于登记；登记不保证固定原件仍可读 |
+| 规范内容与历史 | Owner 的 `memory_home` 中 owner/commits/HEAD 与事务回执，MemoryStore 管理 | 单 Owner 提交可见；旧修订不改写，没有跨 Owner 全局事务 |
+| 保存与索引 | 保存回执；SQLite `memory_*` 表及 FTS/向量水位 | HEAD 发布后索引失败仍是已保存，reconcile 补偿，不重建同一业务记录 |
+| 查询候选、选择与预算 | MQ 进程内 QueryState、StateStore、Ledger | 默认 900 秒 TTL；游标绑定原请求/会话，重启或到期失效；不是持久知识 |
+| 语义维护计划 | `.local/material-query/plans/` 不可覆盖计划版本 | 与规范提交分开；重启后用新查询重新授权旧计划，可能逐 Owner 部分完成 |
+| 复核与关联采纳 | 原生/记忆 claim、review；association 的采纳状态 | 保存、索引、复核和导航采纳不能合成“成功” |
+| 视图和观察 | `.local/workbench/` 视图/候选、`context/monitor/` 观察记录 | 不改规范证据；工作台后台任务状态不代替实际扫描/索引结果 |
+| 历史查询及反馈 | 旧 Q/CTX/CF、记忆 QMEM/PKT 及各自回执 | 各自入口使用自己的身份和预算语义，不可互换 |
+
+新 Run 默认属于开展工作的 Owner；无归属轻任务可落根 runs，旧布局兼容。来源搬迁通过显式旧路径/固定 SHA 映射回读，不重写旧 Run。
+
+## 数据流与当前限制
+
+规范保存经 schema/领域规则校验，以 expected_head/expected_revision 拒绝覆盖新修改，以 request_id 识别重试；单对象锁内准备不可变提交，再发布 HEAD，之后更新投影。文稿固定跨对象引用并复查依据，是显式版本核验，不是全库数据库快照。
+
+旧 `search-knowledge/retrieve-context` 与 `memory search/context` 并存，共用 SQLite 文件但分表、回执和策略。memory 普通知识检索主要索引说明/知识字段；L1 完整块、文稿和 L0 经相应入口展开。材料查询复用这些存储和部分投影，未新建第二套规范正文。
+
+依赖尚未完全倒置：MemoryService 与具体索引有互调，Reader/MeteredStore 复用既有存储，Foundation 是受限适配层。不能由接口名字推断后端可以任意替换；部分枚举、来源闭包和历史查询仍可能扫描较大范围，最终 Top-K 不等于固定底层成本。
+
+默认 memory context、评估用完整图扩展、材料图展示和 MQ 的有界加深分别存在。当前 MQ 没有注册生成式模型/分词提供器或自动维护代理；实际 AI/人的语义工作由 Skill 和公开入口完成。主入口以 content_source 在 LIMIT 前限定内容种类，读取已有完整正文；expand 在原 QueryState/Ledger 内按固定关联展开。来源模式不修改 scope_ceiling。新 narrative/overview 及分类 experience 由 v4 schema 管理，旧 event/map 保留原义；旧表示查询继续兼容。
+
+安装/升级统一 `setup.cmd`，前端资源及指纹配套交付；依赖与模型离线核验后切换，旧环境保留可恢复回执。标准模型迁移仍限约定名称/路径和兼容 384 维。软件、检索质量、性能、实际 AI、人工及第二物理机验收各自记录；历史质量缺口和万条规模暂缓保持显式。

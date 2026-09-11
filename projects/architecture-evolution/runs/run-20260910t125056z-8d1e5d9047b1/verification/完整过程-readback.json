@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "title": "分层内容来源查询与固定关联展开实现",
+  "document_source": "independent",
+  "document": {
+    "record_id": "MEM-a11314aa-26c5-5dc7-85f8-fed98024bcee",
+    "revision": 1,
+    "title": "内容来源查询实现：完整过程",
+    "document_type": "research_process",
+    "purpose": "核对本轮实际开发与限制",
+    "audience": "工作区维护者",
+    "scope": "本轮内容来源实现",
+    "common_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+        "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "fca5be5607a38a06e315237e55dc1bb1f7091c3779a84b1ec7a1f293ea2f4c55",
+        "target_id": "MEM-ea6548d9-e49d-59eb-89d1-7c93288b643f",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "report": {
+    "version": 1,
+    "record_id": "MEM-a11314aa-26c5-5dc7-85f8-fed98024bcee",
+    "revision": 1,
+    "title": "内容来源查询实现：完整过程",
+    "sections": [
+      {
+        "section_id": "MEM-ea6548d9-e49d-59eb-89d1-7c93288b643f",
+        "section_key": "content-query-implementation",
+        "title": "完整过程章节",
+        "role": "methods",
+        "ref": {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "fca5be5607a38a06e315237e55dc1bb1f7091c3779a84b1ec7a1f293ea2f4c55",
+          "target_id": "MEM-ea6548d9-e49d-59eb-89d1-7c93288b643f",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "ref": {
+              "locator": "",
+              "relation": "references",
+              "revision": 1,
+              "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+              "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+              "target_kind": "record"
+            },
+            "type": "unit",
+            "item": {
+              "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+              "level": "L1",
+              "record": {
+                "body_markdown": "",
+                "change_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+                "content_hash": "cd2025348f24d7f72afb51bc2c6fdb6889c4abd81ca97967d2e7906e62121742",
+                "created_at": "2026-09-10T13:42:45.463457Z",
+                "created_by": {
+                  "id": "Codex",
+                  "kind": "ai"
+                },
+                "discovery": "workspace_summary",
+                "keywords": [
+                  "内容来源",
+                  "固定展开",
+                  "分层查询"
+                ],
+                "kind": "detail",
+                "level": "L1",
+                "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+                "payload": {
+                  "blocks": [
+                    {
+                      "block_id": "implementation",
+                      "markdown": "# 分层内容来源与固定展开：实施结果\n\n本轮按用户确认方案实现：L0/L1 不变；新增 v4 narrative/L2、分类 experience/L3、overview/L4。主入口默认概览与经验，另选经过或技术内容，直接读取已有正文；展开只沿保存的固定关联，沿用范围、排除与累计预算。旧 event/map 与固定字节保留；没有自动整理旧业务内容。\n\n## 方法和关键边界\n\n召回在 SQL LIMIT 前按内容种类筛选，读取后再次核验。来源模式独立于 scope_ceiling，不能通过切换模式扩大依赖读取。技术块关联保留 locator，组包补齐必需定义。v4 三类要求正文和固定分类引用，旧版本仍由聚合契约解释。旧表示入口继续兼容。\n\n真实浏览器组包暴露旧 Run claim 定位缺口，增加有界原生来源适配：定位已知 Owner，再核验 claim 指纹和逐项登记来源。来源撤销、固定版本变化、越界仍拒绝。CLI 展开失败不再回退组装原候选并伪报成功。\n\n## 实际验证\n\n- 内容来源、固定块与经过展开、范围/排除/预算/摘要一致性、v4 必填项、小预算筛选、CLI失败及旧 claim 撤权回归：7/7 通过，38.306 秒。\n- 既有材料查询回归：19/19 通过（前阶段定向执行）；记忆相关回归 186 项中 185 通过、B01 冻结 fixture 指纹不一致仍失败，与本轮前已知失败一致，未改冻结材料。\n- 前端组件最终顺序执行：32/32 通过，14.35 秒；旧188项与新24项结构契约均覆盖。首次并行运行有1项子进程超时，保留原失败记录，顺序重跑未弱化断言。\n- 浏览器真实HTTP：5/5 通过，已查看截图，正文与展开候选可读；人工复验仍待用户。H16完成进度按 succeeded 显示已完成，实际用户场景仍待复验。\n- Windows x64：18/18 通过，161.040 秒，含真实 setup 扩展旧工作区预览、升级、重复升级和恢复。源码新增 v4 契约在发行清单内，前端预构建及指纹已更新。Python/模型/依赖未改，不重新打包运行环境；未做第二物理机验收或发布。\n\n## 文档与影响处置\n\n已完整重读并维护 README、ARCHITECTURE、CORE、docs/README、DEVELOPMENT_HISTORY；DOCUMENTATION_MAINTENANCE、TESTING 已核对无需规则变化。记录标准、记忆手册/示例、查询手册、context/MEMORY、根规则与相关研究/整理/查询/语义维护 Skill 已同步。OBJ/EVD 旧来源适配受影响，固定回源防线保留；存储事务、索引引擎、依赖/模型、文稿块组织无职责变更。架构快照见 verification/ARCHITECTURE-snapshot.md。\n\n测试目录新增10项、合计613项；5项进入基线，基线29项，revision53。旧24项保留，相关契约、来源、存储、前端防线已检查仍适用；其他新增测试按影响执行，避免重复加重固定集。\n\n## 限制及待确认\n\n这是合成软件与本地开发记录验证，不证明真实研究结论、整体检索质量提升、万条规模性能或人工认可。旧资料转换需要实际阅读与新内容编写；不批量改层号。真实质量题集历史失败、冻结 B01、第二机器和用户人工复验分别保持待处理。无新的科学性可推广结论；工程建议仅适用于本次查询架构。\n",
+                      "requires_block_ids": [],
+                      "role": "methods"
+                    }
+                  ],
+                  "evidence_refs": [
+                    {
+                      "locator": "",
+                      "relation": "references",
+                      "revision": null,
+                      "sha256": "a7169044c5d2189ab9b2dfcae51355e6c461283b561160a5574904f2840084f7",
+                      "target_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+                      "target_kind": "owner"
+                    }
+                  ],
+                  "figures": [],
+                  "missing_refs": [],
+                  "retrieval_description": {
+                    "applicable": [
+                      "当前Windows本地框架"
+                    ],
+                    "key_findings": [
+                      "7项新回归、32项前端、5项浏览器和18项升级验证通过",
+                      "历史B01仍失败"
+                    ],
+                    "limitations": [
+                      "人工、第二机器与大规模性能未验证"
+                    ],
+                    "method": "新内容契约、LIMIT前筛选、原账本固定关联展开与真实回归",
+                    "not_applicable": [
+                      "未经验证的真实业务质量和其他模型"
+                    ],
+                    "question": "如何按内容职责查找已有正文并固定展开"
+                  },
+                  "run_ref": {
+                    "locator": "",
+                    "relation": "references",
+                    "revision": null,
+                    "sha256": "a7169044c5d2189ab9b2dfcae51355e6c461283b561160a5574904f2840084f7",
+                    "target_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+                    "target_kind": "owner"
+                  },
+                  "unit_type": "analysis"
+                },
+                "previous_revision": null,
+                "provenance_gap": null,
+                "record_hash": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+                "record_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+                "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+                "revision": 1,
+                "schema_version": 3,
+                "sensitivity": "internal",
+                "sources": [
+                  {
+                    "locator": "",
+                    "relation": "references",
+                    "revision": null,
+                    "sha256": "a7169044c5d2189ab9b2dfcae51355e6c461283b561160a5574904f2840084f7",
+                    "target_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+                    "target_kind": "owner"
+                  }
+                ],
+                "title": "内容来源查询实现：技术实现",
+                "updated_at": "2026-09-10T13:42:45.463457Z",
+                "updated_by": {
+                  "id": "Codex",
+                  "kind": "ai"
+                }
+              },
+              "source_issues": [],
+              "formal_eligibility": "not_evaluated"
+            },
+            "resolved_blocks": [
+              {
+                "block_id": "implementation",
+                "markdown": "# 分层内容来源与固定展开：实施结果\n\n本轮按用户确认方案实现：L0/L1 不变；新增 v4 narrative/L2、分类 experience/L3、overview/L4。主入口默认概览与经验，另选经过或技术内容，直接读取已有正文；展开只沿保存的固定关联，沿用范围、排除与累计预算。旧 event/map 与固定字节保留；没有自动整理旧业务内容。\n\n## 方法和关键边界\n\n召回在 SQL LIMIT 前按内容种类筛选，读取后再次核验。来源模式独立于 scope_ceiling，不能通过切换模式扩大依赖读取。技术块关联保留 locator，组包补齐必需定义。v4 三类要求正文和固定分类引用，旧版本仍由聚合契约解释。旧表示入口继续兼容。\n\n真实浏览器组包暴露旧 Run claim 定位缺口，增加有界原生来源适配：定位已知 Owner，再核验 claim 指纹和逐项登记来源。来源撤销、固定版本变化、越界仍拒绝。CLI 展开失败不再回退组装原候选并伪报成功。\n\n## 实际验证\n\n- 内容来源、固定块与经过展开、范围/排除/预算/摘要一致性、v4 必填项、小预算筛选、CLI失败及旧 claim 撤权回归：7/7 通过，38.306 秒。\n- 既有材料查询回归：19/19 通过（前阶段定向执行）；记忆相关回归 186 项中 185 通过、B01 冻结 fixture 指纹不一致仍失败，与本轮前已知失败一致，未改冻结材料。\n- 前端组件最终顺序执行：32/32 通过，14.35 秒；旧188项与新24项结构契约均覆盖。首次并行运行有1项子进程超时，保留原失败记录，顺序重跑未弱化断言。\n- 浏览器真实HTTP：5/5 通过，已查看截图，正文与展开候选可读；人工复验仍待用户。H16完成进度按 succeeded 显示已完成，实际用户场景仍待复验。\n- Windows x64：18/18 通过，161.040 秒，含真实 setup 扩展旧工作区预览、升级、重复升级和恢复。源码新增 v4 契约在发行清单内，前端预构建及指纹已更新。Python/模型/依赖未改，不重新打包运行环境；未做第二物理机验收或发布。\n\n## 文档与影响处置\n\n已完整重读并维护 README、ARCHITECTURE、CORE、docs/README、DEVELOPMENT_HISTORY；DOCUMENTATION_MAINTENANCE、TESTING 已核对无需规则变化。记录标准、记忆手册/示例、查询手册、context/MEMORY、根规则与相关研究/整理/查询/语义维护 Skill 已同步。OBJ/EVD 旧来源适配受影响，固定回源防线保留；存储事务、索引引擎、依赖/模型、文稿块组织无职责变更。架构快照见 verification/ARCHITECTURE-snapshot.md。\n\n测试目录新增10项、合计613项；5项进入基线，基线29项，revision53。旧24项保留，相关契约、来源、存储、前端防线已检查仍适用；其他新增测试按影响执行，避免重复加重固定集。\n\n## 限制及待确认\n\n这是合成软件与本地开发记录验证，不证明真实研究结论、整体检索质量提升、万条规模性能或人工认可。旧资料转换需要实际阅读与新内容编写；不批量改层号。真实质量题集历史失败、冻结 B01、第二机器和用户人工复验分别保持待处理。无新的科学性可推广结论；工程建议仅适用于本次查询架构。\n",
+                "requires_block_ids": [],
+                "role": "methods"
+              }
+            ],
+            "required_block_ids": [],
+            "source_issues": []
+          }
+        ]
+      }
+    ],
+    "complete": true
+  },
+  "items": [],
+  "missing": [],
+  "generated_at": "2026-09-10T13:48:20.110363Z",
+  "report_candidates": [
+    {
+      "record_id": "MEM-a11314aa-26c5-5dc7-85f8-fed98024bcee",
+      "revision": 1,
+      "title": "内容来源查询实现：完整过程",
+      "updated_at": "2026-09-10T13:48:04.221994Z",
+      "document_type": "research_process"
+    }
+  ],
+  "report_coverage": {
+    "included_detail_ids": [
+      "MEM-ccd8156b-2d97-55d7-835e-d8644c658674"
+    ],
+    "uncovered_detail_ids": []
+  },
+  "report_version_hints": [],
+  "basis_heads": {
+    "RUN-20260910T125056Z-8D1E5D9047B1": "COM-35679651-ccaf-45c6-98a5-6e92d996e675"
+  },
+  "metrics": {
+    "elapsed_ms": 711.85,
+    "inventory_owners": 21,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 7,
+    "resolved_sections": 1
+  },
+  "writes": 0
+}

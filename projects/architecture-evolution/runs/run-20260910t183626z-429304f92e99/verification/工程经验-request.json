@@ -1,0 +1,84 @@
+{
+  "schema_version": 3,
+  "request_id": "c5a9a756-9f97-4e7f-983e-2ec708c411ca",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T183626Z-429304F92E99",
+  "expected_head": "COM-e8c8a3cd-0c78-4f53-9929-c036f1efbc64",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "工程经验",
+      "draft": {
+        "schema_version": 4,
+        "owner_id": "RUN-20260910T183626Z-429304F92E99",
+        "kind": "experience",
+        "title": "统一层级与实际迁移：工程经验",
+        "body_markdown": "本轮工程建议：类型演进需一起核对用户入口、实际内容、下游证据规则和索引；保留同一身份的前版固定依据，以完整新修订表达迁移。此建议依据本次故障与验证，不声称适用于所有存储系统。",
+        "keywords": [
+          "内容来源",
+          "固定展开",
+          "分层查询"
+        ],
+        "payload": {
+          "claims": [],
+          "problem_structure": "新增类型后，界面、历史内容和读取调用方容易处于不同阶段",
+          "recommendation": "将入口统一、实际正文迁移、下游读取与索引回读作为同一次交付核对",
+          "applicable": [
+            "既有不可变记录的类型演进"
+          ],
+          "prohibited": [
+            "仅改标签冒充语义整理",
+            "覆盖旧固定版本"
+          ],
+          "failure_modes": [
+            "新类型可创建但既有查询为空",
+            "证据门槛遗漏新类型"
+          ],
+          "retry_conditions": [
+            "已有前版固定依据并完成实际审查"
+          ],
+          "claim_refs": [],
+          "missing_refs": [],
+          "knowledge_type": "recommendation",
+          "process_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-939af40e-bc3e-5534-8e2c-a711a9bfa5de",
+              "revision": 1,
+              "sha256": "608730e98a005518c086f0fc1aa2deb92ccf59cb815a927fe58d6d4f9b66b20b",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "technical_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-15cd98ca-90c9-5e79-a40e-a7e1d0649b62",
+              "revision": 1,
+              "sha256": "a6b8fb3bc110c68770cf66acd6e9fbf4eb00b55b1381692e5b472e3e662376af",
+              "locator": "",
+              "relation": "references"
+            }
+          ]
+        },
+        "sources": [
+          {
+            "target_kind": "owner",
+            "target_id": "RUN-20260910T183626Z-429304F92E99",
+            "revision": null,
+            "sha256": "4b59cfbb28f7c196e89dece8e786cbf083e618f5a51c04788e7728f86c33e774",
+            "locator": "",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

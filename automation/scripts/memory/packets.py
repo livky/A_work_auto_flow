@@ -165,7 +165,7 @@ def role(record):
         return 'direct_source'
     if kind == 'experience':
         return 'unreviewed_experience'
-    if kind == 'event' and payload.get('failure'):
+    if kind in {'event', 'narrative'} and payload.get('failure'):
         return 'counterevidence' if payload['failure']['category'] == 'counterexample' else 'failure'
     if kind == 'association' and payload.get('relation') == 'analogous_to':
         return 'analogy_' + payload.get('status', 'candidate')
@@ -250,7 +250,7 @@ def summary_fair_order(snapshot, candidates, request, effective):
                 if short is not None:
                     variants.append((len(short), order, {**item, 'text': short, 'content_mode': 'short'}))
         fitting = [entry for entry in variants if entry[0] <= quota]
-        substantive = [entry for entry in fitting if (entry[2].get('record') or {}).get('kind') in {'detail', 'experience', 'event'}]
+        substantive = [entry for entry in fitting if (entry[2].get('record') or {}).get('kind') in {'detail', 'experience', 'event', 'narrative', 'overview'}]
         fitting = substantive or fitting
         if fitting:
             _length, _order, item = min(fitting, key=lambda entry: (entry[0], entry[1]))
@@ -560,7 +560,7 @@ def _formal_refs(snapshot, items, request):
             record = snapshot.record(tid, ref['revision'])
             if not _visible(record, request) or record['kind'] == 'association':
                 continue
-            if record['kind'] in {'event', 'experience'}:
+            if record['kind'] in {'event', 'narrative', 'experience', 'overview'}:
                 for claim in record['payload']['claims']:
                     value = snapshot.adapter.resolve_claim(claim['claim_id'])
                     queue.append({'target_kind': 'claim', 'target_id': claim['claim_id'], 'revision': None,

@@ -12,7 +12,7 @@ import {
   parseIds,
   type Packet,
 } from "./MemorySearch";
-import type { MemoryRecord, Ref, Actor, Claim } from "../../schemas/memory-v3";
+import type { MemoryRecord, Ref, Actor, Claim } from "../../schemas/memory-v4";
 
 type Owner = {
   owner_id: string;
@@ -72,9 +72,9 @@ const names: Record<string, string> = {
   detail: "L1 技术单元",
   document: "研究文稿",
   document_section: "独立章节",
-  event: "L2 经过",
+  narrative: "L2 研究经过",
   experience: "L3 经验",
-  map: "L4 主题地图",
+  overview: "L4 整体概览",
   question: "问题",
   goal: "目标",
   route: "路线",
@@ -86,7 +86,14 @@ const names: Record<string, string> = {
   feedback: "使用反馈",
   policy: "积累策略",
 };
+// 只提供一个层级入口。其他对象尚未整理的旧记录仍可在相应层级找到，
+// 不因移除按钮而隐藏用户内容；实际类型更新须经服务器显式修订。
+const visibleKind = (kind: string) =>
+  kind === "event" ? "narrative" : kind === "map" ? "overview" : kind;
 const labels: Record<string, string> = {
+  current_stage: "当前阶段",
+  methods: "关键方法",
+  open_questions: "未解决问题",
   problem_structure: "共同问题结构",
   method: "方法与假设",
   steps: "计算与推导步骤",
@@ -174,6 +181,9 @@ function fresh(kind: string, owner: string): Editable {
       missing_refs: [],
     },
     experience: {
+      knowledge_type: "observation",
+      process_refs: [],
+      technical_refs: [],
       problem_structure: "",
       recommendation: "",
       applicable: [""],
@@ -182,6 +192,35 @@ function fresh(kind: string, owner: string): Editable {
       retry_conditions: [],
       claim_refs: [],
       claims: [],
+    },
+    narrative: {
+      question: "",
+      stages: [
+        {
+          situation: "",
+          action: "",
+          reason: "",
+          outcome: "",
+          evidence_refs: [],
+        },
+      ],
+      claims: [],
+      process_refs: [],
+      technical_refs: [],
+      experience_refs: [],
+      limitations: [],
+    },
+    overview: {
+      question: "",
+      methods: [],
+      results: [],
+      current_stage: "",
+      limitations: [],
+      open_questions: [],
+      claims: [],
+      process_refs: [],
+      technical_refs: [],
+      experience_refs: [],
     },
     event: {
       occurred_at: null,
@@ -224,7 +263,11 @@ function fresh(kind: string, owner: string): Editable {
     },
   };
   return {
-    schema_version: kind === "detail" ? 3 : 2,
+    schema_version: ["narrative", "overview", "experience"].includes(kind)
+      ? 4
+      : kind === "detail"
+        ? 3
+        : 2,
     owner_id: owner,
     kind,
     title: "",
@@ -261,9 +304,32 @@ function PayloadFields({
   }, [value.payload]);
   return (
     <div className="memory-fields">
-      {value.schema_version === 3 && (
+      {value.kind === "experience" && value.schema_version === 4 && (
         <label>
-          技术单元或文稿结构
+          认识性质
+          <select
+            aria-label="认识性质"
+            value={String(value.payload.knowledge_type)}
+            onChange={(event) =>
+              change({
+                ...value,
+                payload: {
+                  ...value.payload,
+                  knowledge_type: event.target.value,
+                },
+              })
+            }
+          >
+            <option value="observation">观察</option>
+            <option value="conclusion">结论</option>
+            <option value="hypothesis">原因假设</option>
+            <option value="recommendation">建议</option>
+          </select>
+        </label>
+      )}
+      {(value.schema_version === 3 || value.schema_version === 4) && (
+        <label>
+          结构化内容与固定关联
           <textarea
             aria-label="结构化内容"
             rows={18}
@@ -506,7 +572,8 @@ export function Memory() {
   const records = Object.values(snapshot?.records || {});
   // 展示与导出共用集合，防止清空筛选后意外导出全部对象记录。
   const filteredRecords = records.filter(
-    (record) => record.kind !== "source" && kinds.includes(record.kind),
+    (record) =>
+      record.kind !== "source" && kinds.includes(visibleKind(record.kind)),
   );
   const includesRaw = kinds.includes("source");
   const tabs = [
@@ -521,7 +588,7 @@ export function Memory() {
     <>
       <div className="page-heading">
         <div>
-          <p className="eyebrow">来源 · 经过 · 经验 · 地图</p>
+          <p className="eyebrow">来源 · 技术 · 经过 · 经验 · 概览</p>
           <h1>系统记忆</h1>
           <p className="muted">记录依据、失败与边界，在固定版本上继续研究。</p>
         </div>
@@ -671,17 +738,22 @@ export function Memory() {
               </div>
             </fieldset>
             <div className="row">
-              {["detail", "experience", "event", "map", "question", "goal"].map(
-                (type) => (
-                  <button
-                    key={type}
-                    disabled={!ownerId || busy}
-                    onClick={() => begin(undefined, type)}
-                  >
-                    新增{names[type]}
-                  </button>
-                ),
-              )}
+              {[
+                "detail",
+                "narrative",
+                "experience",
+                "overview",
+                "question",
+                "goal",
+              ].map((type) => (
+                <button
+                  key={type}
+                  disabled={!ownerId || busy}
+                  onClick={() => begin(undefined, type)}
+                >
+                  新增{names[type]}
+                </button>
+              ))}
             </div>
             {!records.length && !includesRaw && (
               <p className="muted">
@@ -696,7 +768,9 @@ export function Memory() {
                 <article className="proposal" key={record.record_id}>
                   <div className="row spread">
                     <h3>{record.title}</h3>
-                    <span className="badge">{names[record.kind]}</span>
+                    <span className="badge">
+                      {names[visibleKind(record.kind)]}
+                    </span>
                   </div>
                   <p className="id">
                     {record.record_id} · r{record.revision}
@@ -745,7 +819,10 @@ export function Memory() {
                       <button onClick={() => begin(record)}>编辑记录</button>
                     )}
                   </div>
-                  {(record.kind === "event" || record.kind === "experience") &&
+                  {(record.kind === "event" ||
+                    record.kind === "narrative" ||
+                    record.kind === "overview" ||
+                    record.kind === "experience") &&
                     record.payload.claims.map((claim) => (
                       <div className="memory-claim" key={claim.claim_id}>
                         <p>{claim.statement}</p>
@@ -846,7 +923,8 @@ export function Memory() {
       {draft && (
         <section className="card memory-editor">
           <h2>
-            {selected ? "编辑记录" : "新记录"} · {names[draft.kind]}
+            {selected ? "编辑记录" : "新记录"} ·{" "}
+            {names[visibleKind(draft.kind)]}
           </h2>
           <label>
             标题
@@ -1076,7 +1154,8 @@ export function Memory() {
                   <article className="proposal" key={item.id}>
                     <h3>{item.title}</h3>
                     <p>
-                      {names[item.kind] || "既有 Run"} · {item.occurred_label}
+                      {names[visibleKind(item.kind)] || "既有 Run"} ·{" "}
+                      {item.occurred_label}
                     </p>
                     <p className="id">
                       {item.id} · 保存于 {item.created_at || "未知"}
@@ -1225,7 +1304,7 @@ export function Memory() {
             </button>
             {packet && (
               <div className="row">
-                {["experience", "map"].map((type) => (
+                {["experience", "overview"].map((type) => (
                   <button
                     key={type}
                     onClick={() => {
@@ -1238,15 +1317,6 @@ export function Memory() {
                       value.provenance_gap = value.sources.length
                         ? null
                         : "材料包尚缺固定来源";
-                      if (type === "map") {
-                        value.payload.topic = summaryQuery;
-                        value.payload.result_refs = value.sources;
-                        value.payload.coverage = {
-                          owner_ids: summaryOwners,
-                          source_versions: value.sources,
-                          missing: [],
-                        };
-                      }
                       setDraft(value);
                       setSelected(null);
                       setEditingHead(snapshot?.head?.commit_id || null);

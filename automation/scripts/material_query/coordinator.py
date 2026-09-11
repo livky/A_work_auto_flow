@@ -5,7 +5,7 @@
 """
 from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import datetime
 import json
 from pathlib import Path
@@ -142,6 +142,15 @@ def evidence_summary(states):
 
 
 def current_scope_allows(reader, record, request):
+    owner = reader.owner(record["owner_id"])
+    if not owner_allowed(owner, request):
+        return False
+    # 当前策略在搜索、展开、组装和缓存重取时都核对，不能仅在初次召回执行。
+    if getattr(request, "freshness", "fixed") == "current":
+        _, manifest = reader.store.head_manifest(owner)
+        latest = (manifest or {}).get("record_heads", {}).get(record["record_id"])
+        if latest is None or latest["record_hash"] != record["record_hash"]:
+            raise QueryError("STALE", "固定材料已有新修订，请重新查询；没有自动替换正文")
     evidence = None
     if any(scope.review_states is not None or scope.validities is not None or scope.confidence_levels is not None for scope in (request.scope, request.scope_ceiling)):
         states = filtered_claim_states(reader, record, request)
@@ -149,6 +158,22 @@ def current_scope_allows(reader, record, request):
             return False
         evidence = evidence_summary(states)
     return all(record_allowed(record, scope, evidence=evidence) for scope in (request.scope, request.scope_ceiling))
+
+
+def owner_allowed(owner, request):
+    """标准对象类型与具体身份相交，不依赖标题前缀或存储路径猜测类别。"""
+    return all((scope.owner_ids is None or owner["owner_id"] in scope.owner_ids)
+               and (scope.owner_types is None or owner["owner_type"] in scope.owner_types)
+               for scope in (request.scope, request.scope_ceiling))
+
+
+def required_scope_allows(reader, record, request):
+    """显式依赖按读取上限核验，主输出的分类不剥离必需定义。
+
+    Reader 仍持有两个范围的排除合集与可信 ACL。只有已经声明为必需的
+    固定引用使用此路径；它不能把未命中材料插入直接召回或放宽版本策略。
+    """
+    return current_scope_allows(reader, record, replace(request, scope=request.scope_ceiling))
 
 
 class Coordinator:
@@ -164,6 +189,11 @@ class Coordinator:
 
     def capabilities(self):
         return {"enabled": True, "api_version": "0.2", "definitions_version": definitions.VERSION,
+                "content_sources": ["overview_experience", "process", "technical", "all"],
+                "content_expansion": ["process", "technical"],
+                "full_documents": True,
+                "owner_types": ["research", "project", "knowledge", "run", "core-algorithm", "report", "data", "tool"],
+                "default_freshness": "current",
                 "association": {"modes": ["off", "existing_only"], "strategy": "existing-relations", "version": "1", "structural_requires_review": True},
                 "deepening": {"modes": ["source_mapping", "bounded_graph"], "strategy": "bounded-bfs", "version": "1"},
                 "maintenance": {"strategy": "dependency-review", "version": "1", "automatic_agent": False, "task_package": True},
@@ -261,12 +291,26 @@ class Coordinator:
         from .evidence import Evidence
         evidence = Evidence(reader)
         for candidate in candidates:
+            from .associations import scope_state
+            request = scope_state(state, supplement=candidate.get("group") == "association").request
             for raw in candidate["refs"]:
                 ref = parse(raw, FixedRef)
                 if ref.kind in {"record", "representation"}:
-                    record = reader.record(ref)
-                    if not current_scope_allows(reader, record, state.request):
+                    old_exclusions = set(reader.excluded_ids)
+                    reader.excluded_ids.update(excluded(request))
+                    try:
+                        record = reader.record(ref)
+                    finally:
+                        reader.excluded_ids = old_exclusions
+                    allowed = required_scope_allows if candidate.get("group") == "required_context" else current_scope_allows
+                    if not allowed(reader, record, request):
                         raise QueryError("STALE", "材料当前不再满足原筛选，请重新查询")
+                elif ref.kind == "file":
+                    reader.file_bytes(ref)
+                elif ref.kind == "owner":
+                    from .catalog_search import native_candidate
+                    if native_candidate(self, state, reader, ref) is None:
+                        raise QueryError("DENIED", "原始登记不满足当前范围")
             # Diagnostics expose fixed representation identities too. A cached
             # candidate cannot retain those identities after their own source
             # closure/ACL is revoked while the canonical target stays readable.
@@ -369,10 +413,10 @@ class Coordinator:
             allowed_owners = []
             for oid in reader.views:
                 try:
-                    reader.owner(oid)
+                    owner = reader.owner(oid)
                 except QueryError:
                     continue
-                if all(s.owner_ids is None or oid in s.owner_ids for s in (request.scope, request.scope_ceiling)):
+                if owner_allowed(owner, request):
                     allowed_owners.append(oid)
             if not allowed_owners:
                 return [], gaps, reader.basis()
@@ -383,6 +427,11 @@ class Coordinator:
             text = " ".join([request.question, *request.keywords]).strip()
             job["text"] = text
             columns = "r.canonical_id,r.record_id,r.owner_id,r.entity_kind,r.revision,r.content_hash,r.keywords"
+            # Filter before the bounded recall window: technical records must
+            # not consume the slots reserved for the user's chosen source.
+            from .content import SOURCE_KINDS
+            source_kinds = SOURCE_KINDS.get(request.content_source, ())
+            source_sql = " AND r.kind IN (" + ",".join("?" for _ in source_kinds) + ")" if source_kinds else ""
             # Independent providers must not share one exception boundary. Exact
             # identity is evaluated first and survives a broken FTS table/reader.
             if "identity" in request.channels:
@@ -391,8 +440,8 @@ class Coordinator:
                 try:
                     for target in ids[:remaining]:
                         state.ledger.checkpoint()
-                        row = db.execute(f"SELECT {columns} FROM memory_records r WHERE r.canonical_id=? AND r.owner_id IN ({placeholders}) AND r.sensitivity!='restricted' AND r.entity_kind IN ('record','claim')",
-                                         [target, *allowed_owners]).fetchone()
+                        row = db.execute(f"SELECT {columns} FROM memory_records r WHERE r.canonical_id=? AND r.owner_id IN ({placeholders}) AND r.sensitivity!='restricted' AND r.entity_kind IN ('record','claim')" + source_sql,
+                                         [target, *allowed_owners, *source_kinds]).fetchone()
                         if row:
                             identity.append(dict(row))
                     if len(ids) > remaining:
@@ -415,10 +464,10 @@ class Coordinator:
                             WHERE memory_fts MATCH ? AND r.owner_id IN ({placeholders})
                             AND e.owner_id IN ({placeholders}) AND r.sensitivity!='restricted'
                             AND e.sensitivity!='restricted' AND r.entity_kind IN ('record','claim')
-                            ORDER BY raw_score,r.canonical_id,e.entry_id LIMIT ?"""
+                            {source_sql} ORDER BY raw_score,r.canonical_id,e.entry_id LIMIT ?"""
                         # Append each completed row so a provider's iterator
                         # failure cannot erase the already returned prefix.
-                        for row in db.execute(sql, [expression, *allowed_owners, *allowed_owners, remaining]):
+                        for row in db.execute(sql, [expression, *allowed_owners, *allowed_owners, *source_kinds, remaining]):
                             state.ledger.checkpoint()
                             lexical.append(dict(row))
                     if len(lexical) >= remaining:
@@ -488,6 +537,10 @@ class Coordinator:
                 group = groups.setdefault(key, {"record_id": key, "matches": []})
                 group["matches"].append(({**hit, "channel_rows": matching}, row))
             job["groups"] = list(groups.values())
+            from .catalog_search import append_catalog
+            append_catalog(state, reader, db, manifests)
+            from .history_search import append_history
+            append_history(state, reader, manifests)
         finally:
             db.close()
         self._read_search(state, reader, request.result_limit)
@@ -501,14 +554,24 @@ class Coordinator:
             candidate = None
             try:
                 state.ledger.checkpoint()
-                ref = job["pins"].get(group["record_id"])
+                if group.get("native_ref"):
+                    from .catalog_search import native_candidate
+                    state.ledger.charge("candidates", 1)
+                    candidate = native_candidate(self, state, reader, group["native_ref"])
+                    job["position"] += 1
+                    if candidate:
+                        state.ordered.append(candidate)
+                        state.candidates[candidate["candidate_id"]] = candidate
+                    continue
+                ref = group.get("ref") or job["pins"].get(group["record_id"])
                 requested = [r for s in (request.scope, request.scope_ceiling) for r in s.include_refs if r.id == group["record_id"]]
                 if requested and request.freshness == "fixed":
                     ref = requested[0]
                 if ref is None:
                     raise QueryError("SOURCE_MISSING", "索引候选缺少固定规范修订")
                 # Charge unique canonical candidates, not duplicate representations.
-                state.ledger.charge("candidates", len(group["matches"]))
+                if not group.get("charged"):
+                    state.ledger.charge("candidates", len(group["matches"]))
                 record = reader.record(ref)
                 if record.get("discovery") == "owner_only" and not any(
                         s.owner_ids is not None and record["owner_id"] in s.owner_ids for s in (request.scope, request.scope_ceiling)):
@@ -572,6 +635,9 @@ class Coordinator:
     def make_candidate(self, state, reader, record, hit, row, text, *, group="direct"):
         evidence = None
         request = state.request
+        from .content import SOURCE_KINDS
+        if group == "direct" and request.content_source not in {None, "all"} and record["kind"] not in SOURCE_KINDS[request.content_source]:
+            return None
         if request.purpose == "formal" or any(s.review_states is not None or s.validities is not None or s.confidence_levels is not None for s in (request.scope, request.scope_ceiling)):
             # An exact claim hit must not borrow a different accepted claim in
             # its container. This keeps final K evidence eligibility meaningful.
@@ -584,7 +650,7 @@ class Coordinator:
             evidence = evidence_summary(states)
             if request.purpose == "formal" and not good:
                 return None
-        if not all(record_allowed(record, scope, evidence=evidence) for scope in (request.scope, request.scope_ceiling)):
+        if not owner_allowed(reader.owner(record["owner_id"]), request) or not all(record_allowed(record, scope, evidence=evidence) for scope in (request.scope, request.scope_ceiling)):
             return None
         requested = [item for scope in (request.scope, request.scope_ceiling) for item in scope.include_refs
                      if item.id == record["record_id"] and item.revision == record["revision"] and item.sha256 == record["record_hash"]]
@@ -618,8 +684,15 @@ class Coordinator:
         from .facets import unknown_facets
         claim_refs = [(c["claim_id"], canonical_hash(c)) for c in record["payload"].get("claims", ())
                       if c["claim_id"] == row.get("canonical_id")] if row.get("entity_kind") == "claim" else None
+        _, manifest = reader.store.head_manifest(reader.owner(record["owner_id"]))
+        latest = (manifest or {}).get("record_heads", {}).get(record["record_id"])
+        if request.freshness == "current" and (not latest or latest["record_hash"] != ref.sha256):
+            raise QueryError("STALE", "固定材料已有新修订，未替换正文")
         return {"candidate_id": "C-" + canonical_hash({"query": state.query_id, "ref": asdict(ref), "group": group})[:24],
                 "refs": [asdict(ref)], "title": record["title"], "excerpt": excerpt[:400],
+                "content_kind": record["kind"], "knowledge_type": record["payload"].get("knowledge_type"),
+                "is_latest": bool(latest and latest["record_hash"] == ref.sha256),
+                "owner_type": reader.owner(record["owner_id"])["owner_type"],
                 "channels": list(dict.fromkeys(item["channel"] for item in hits)), "score": hit.get("score", 0.0), "realization": realization,
                 "evidence_status": (evidence["state"][0] if len(evidence["state"]) == 1 else "mixed") if evidence else "not-assessed", "group": group, "hits": hits,
                 "evaluated_claim_refs": [asdict(FixedRef("claim", item["claim_id"], None, item["sha256"], None)) for item in states if item["effective_validity"]] if evidence else [],
@@ -696,10 +769,10 @@ class Coordinator:
                             matched_text = source_text[start:start + 240]
                     if matched_text is None:
                         state.recall["gaps"].append("部分词法命中没有可按当前用途展示的固定原文片段；matched_text 为 null")
-                output.append({"channel": channel, "provider": "memory-fts" if channel == "lexical" else channel,
+                output.append({"channel": channel, "provider": "canonical-history" if row.get("_history") else "memory-fts" if channel == "lexical" else channel,
                     "provider_version": index.PROJECTION_VERSION if channel == "lexical" else "1", "rank": entry.get("_entry_rank", 1),
                     "raw_score": entry.get("raw_score") if channel == "lexical" else None,
-                    "score_meaning": "FTS bm25（越低越相关）" if channel == "lexical" else "精确身份匹配" if channel == "identity" else "既有固定关系导航",
+                    "score_meaning": "获准登记目录匹配；非FTS排名" if channel == "catalog" else "固定历史版本的词项匹配；非FTS排名" if row.get("_history") else "FTS bm25（越低越相关）" if channel == "lexical" else "精确身份匹配" if channel == "identity" else "既有固定关系导航",
                     "representation_refs": [asdict(source)], "matched_text": matched_text})
         return output
 
@@ -771,11 +844,16 @@ class Coordinator:
             if cache_key in state.responses:
                 self.reauthorize(state, [state.candidates[cid] for cid in request.candidate_ids])
                 result = deepcopy(state.responses[cache_key])
+                # 缓存材料包还含必要依赖。重取必须核验全部已输出贡献者，
+                # 否则根候选未变、依赖更新时仍会返回过期正文。
+                contributors = result.get("value", {}).get("contributors", [])
+                self.reauthorize(state, [{"refs": contributors, "group": "required_context"}])
                 result["consumed"] = state.ledger.snapshot()
                 return result
             with state.ledger.active():
                 reader = self.reader(state)
                 selected = [state.candidates[cid] for cid in request.candidate_ids]
+                self._reauthorize(state, selected, reader=reader)
                 formal_texts = {}
                 if state.request.purpose == "formal":
                     from .evidence import Evidence
@@ -786,14 +864,24 @@ class Coordinator:
                     for claim in result["claims"]:
                         rid = claim.get("record_id")
                         formal_texts[rid] = formal_texts.get(rid, "") + "\n" + claim.get("text", "")
+                from .associations import scope_state
+                supplement_request = scope_state(state, supplement=True).request
                 assembler = Assembler(reader, state.ledger, lambda record: current_scope_allows(reader, record, state.request),
+                                      required_allowed=lambda record: required_scope_allows(reader, record, state.request),
+                                      association_allowed=lambda record: current_scope_allows(reader, record, supplement_request),
                                       purpose=state.request.purpose, formal_texts=formal_texts, association_share=state.request.association.output_share)
                 for candidate in sorted(selected, key=lambda row: row["group"] == "association"):
                     for raw in candidate["refs"]:
                         from .contracts import DefinitionRef
                         definition = parse(candidate["realization"]["definition"], DefinitionRef)
-                        assembler.add_record(parse(raw, FixedRef), definition, state.request.question,
-                                             group="association" if candidate["group"] == "association" else None)
+                        previous_exclusions = set(reader.excluded_ids)
+                        if candidate["group"] == "association":
+                            reader.excluded_ids.update(excluded(supplement_request))
+                        try:
+                            assembler.add_record(parse(raw, FixedRef), definition, state.request.question,
+                                                 group="association" if candidate["group"] == "association" else None)
+                        finally:
+                            reader.excluded_ids = previous_exclusions
                 packet = self._packet(state, assembler)
                 basis = reader.basis()
             result = envelope(packet, state=state, status="partial" if assembler.gaps or state.result["warnings"] else "ok",

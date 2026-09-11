@@ -24,6 +24,67 @@ from memory.store import MemoryStore
 
 
 class MaterialMaintenanceTests(unittest.TestCase):
+    def test_map_migration_through_public_plan_review_apply(self):
+        """同一地图身份经公开维护迁为概览，前版来源与下一次维护均可读。"""
+        from test_memory_contracts import draft as old_draft
+        from test_memory_store import request
+        from material_query.legacy_adapter import fixed_record
+        service = MemoryService(self.root)
+        original = old_draft("map")
+        original["owner_id"] = self.fx.owner_ids["B"]
+        head = self.head()["commit_id"]
+        receipt = service.commit(request(original, head=head))
+        rid = receipt["record_results"][0]["record_id"]
+        old = service.inspect(original["owner_id"], record_id=rid)["record"]
+        scope = replace(self.scope, kinds=None)
+        result = maintenance.plan(self.coordinator, json_value(MaintenanceRequest(
+            (fixed_record(old),), scope, "dependency-review", "1")))
+        value = result["value"]
+        self.assertIsNotNone(value, result)
+        proposed = deepcopy(value)
+        proposed.update(semantic_reviewer="SYNTHETIC explicit AI reviewer", reviewer_kind="ai",
+                        review_note="软件回归：实际按配方整理完整概览，不能冒充科学认可",
+                        reviewed_refs=[ref for part in value["context_items"] for ref in part["refs"]])
+        draft = {**original, "schema_version": 4, "kind": "overview", "change_reason": "合成地图迁为概览",
+                 "sources": [{"target_kind": "record", "target_id": rid, "revision": old["revision"],
+                              "sha256": old["record_hash"], "locator": "", "relation": "references"}],
+                 "payload": dict(question="合成问题", methods=["合成方法"], results=["软件结果"],
+                    current_stage="软件回归", open_questions=[], limitations=["没有业务含义"],
+                    claims=[], process_refs=[], technical_refs=[], experience_refs=[])}
+        item = next(item for item in proposed["items"] if item["ref"]["id"] == rid)
+        item.update(action="resynthesize", reasons=["已整理正文并固定前版"], draft_json=json.dumps(draft))
+        reviewed = maintenance.review(self.coordinator, {"plan": proposed, "expected_digest": value["plan_digest"]})
+        self.assertIsNotNone(reviewed["value"], reviewed)
+        applied = self.apply(reviewed["value"])
+        self.assertIsNotNone(applied.get("value"), applied)
+        current = service.inspect(original["owner_id"], record_id=rid)["record"]
+        self.assertEqual((current["kind"], current["revision"]), ("overview", 2))
+        self.assertEqual(service.inspect(original["owner_id"], 1, record_id=rid)["record"], old)
+        followup = maintenance.plan(self.coordinator, json_value(MaintenanceRequest(
+            (fixed_record(current),), scope, "dependency-review", "1")))
+        self.assertIsNotNone(followup["value"], followup)
+
+    def test_v4_experience_review_apply_and_next_plan(self):
+        """维护入口必须接受当前经验契约，保存后仍能继续形成维护计划。"""
+        value = self.plan()
+        proposed = self.proposed(value)
+        item = next(item for item in proposed["items"] if item["ref"]["id"] == self.fx.record_ids["B.experience"])
+        draft = json.loads(item["draft_json"])
+        draft["schema_version"] = 4
+        draft["payload"].update(knowledge_type="recommendation", process_refs=[], technical_refs=[])
+        item["draft_json"] = json.dumps(draft, ensure_ascii=False)
+        reviewed = maintenance.review(self.coordinator, {"plan": proposed, "expected_digest": value["plan_digest"]})
+        self.assertIsNotNone(reviewed["value"], reviewed)
+        applied = self.apply(reviewed["value"])
+        self.assertIsNotNone(applied.get("value"), applied)
+        current = MemoryService(self.root).inspect(self.fx.owner_ids["B"], record_id=self.fx.record_ids["B.experience"])["record"]
+        self.assertEqual(current["schema_version"], 4)
+        self.assertEqual(current["payload"]["knowledge_type"], "recommendation")
+        from material_query.legacy_adapter import fixed_record
+        next_plan = maintenance.plan(self.coordinator, json_value(MaintenanceRequest(
+            (fixed_record(current),), self.scope, "dependency-review", "1")))
+        self.assertIsNotNone(next_plan["value"], next_plan)
+
     @classmethod
     def setUpClass(cls):
         cls.boundary = tempfile.TemporaryDirectory()

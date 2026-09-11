@@ -1,0 +1,651 @@
+{
+  "search": {
+    "status": "ok",
+    "value": {
+      "query_id": "MQ-c07f921f-ccf1-49a6-8a16-c33d6ce83549",
+      "request_digest": "51273a444c352409b84c0df459d30eec20ff0843e5868def1358a6daf697aa11",
+      "candidates": [
+        {
+          "candidate_id": "C-0f2f13ee657ee87e8f19a00b",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-03c17631-0ffb-55b1-a571-cb275f2818ea",
+              "revision": 1,
+              "sha256": "1c6e3eb791ddd1fbb6f5049e51aa8592702acd6de3460c78f92194d4ed87fe42",
+              "locator": null
+            }
+          ],
+          "title": "内容来源查询实现：工程建议",
+          "excerpt": "建议把内容来源与阅读展开分开：前者决定直接召回，后者沿固定引用读取。依据是本轮实现和合成验证；不是未经检验的通用检索质量结论。真实浏览器链路需要同时验证旧引用及撤权。",
+          "content_kind": "experience",
+          "knowledge_type": "recommendation",
+          "channels": [
+            "lexical"
+          ],
+          "score": 0.01639344262295082,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-03c17631-0ffb-55b1-a571-cb275f2818ea",
+                "revision": 1,
+                "sha256": "1c6e3eb791ddd1fbb6f5049e51aa8592702acd6de3460c78f92194d4ed87fe42",
+                "locator": null
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "direct",
+          "hits": [
+            {
+              "channel": "lexical",
+              "provider": "memory-fts",
+              "provider_version": "memory-v3-technical-description-documents",
+              "rank": 1,
+              "raw_score": -8.335726901258173,
+              "score_meaning": "FTS bm25（越低越相关）",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-03c17631-0ffb-55b1-a571-cb275f2818ea",
+                  "revision": 1,
+                  "sha256": "1c6e3eb791ddd1fbb6f5049e51aa8592702acd6de3460c78f92194d4ed87fe42",
+                  "locator": null
+                }
+              ],
+              "matched_text": "内容来源查询实现：工程建议\n建议把内容来源与阅读展开分开：前者决定直接召回，后者沿固定引用读取。依据是本轮实现和合成验证；不是未经检验的通用检索质量结论。真实浏览器链路需要同时验证旧引用及撤权。\n具有稳定内容种类和固定引用的本地研究库\n只验证内部服务会遗漏真实浏览器旧引用兼容\n内容来源筛选与表示组装混合使候选碎片化\n缺少原依据时把旧地图或事件直接改标签\n以内容职责约束召回，并在原账本沿固定关系读取已有正文\n来源可读、范围获准且剩余预算充足\n内容来源 固定展开 分层查询"
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": [],
+          "unknown_facets": []
+        },
+        {
+          "candidate_id": "C-7109eeb535bc4c72a2ebbbd1",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+              "revision": 1,
+              "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+              "locator": null
+            }
+          ],
+          "title": "内容来源查询实现：整体概览",
+          "excerpt": "本轮已实现概览与经验、研究经过、技术内容三种来源查询，支持沿固定引用展开。L0/L1 和旧固定版本保留。软件回归通过，新旧内容不会自动互换；旧B01失败、用户复验、真实检索质量和第二机器仍有明确缺口。",
+          "content_kind": "overview",
+          "knowledge_type": null,
+          "channels": [
+            "lexical"
+          ],
+          "score": 0.016129032258064516,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+                "revision": 1,
+                "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+                "locator": null
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "direct",
+          "hits": [
+            {
+              "channel": "lexical",
+              "provider": "memory-fts",
+              "provider_version": "memory-v3-technical-description-documents",
+              "rank": 2,
+              "raw_score": -7.77088593519611,
+              "score_meaning": "FTS bm25（越低越相关）",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+                  "revision": 1,
+                  "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+                  "locator": null
+                }
+              ],
+              "matched_text": "内容来源查询实现：整体概览\n本轮已实现概览与经验、研究经过、技术内容三种来源查询，支持沿固定引用展开。L0/L1 和旧固定版本保留。软件回归通过，新旧内容不会自动互换；旧B01失败、用户复验、真实检索质量和第二机器仍有明确缺口。\n分层查询主入口与固定展开是否落地\n7项新回归、32项前端、5项浏览器、18项升级通过\n内容来源 固定展开 分层查询"
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": [],
+          "unknown_facets": []
+        }
+      ],
+      "next_cursor": null,
+      "expires_at": "2026-09-10T14:01:39.635473Z",
+      "gaps": []
+    },
+    "code": null,
+    "warnings": [],
+    "issues": [],
+    "consumed": {
+      "wall_ms": 1062,
+      "read_bytes": 23597,
+      "output_chars": 591,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "exhausted",
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-03c17631-0ffb-55b1-a571-cb275f2818ea",
+          "revision": 1,
+          "sha256": "1c6e3eb791ddd1fbb6f5049e51aa8592702acd6de3460c78f92194d4ed87fe42",
+          "locator": null
+        },
+        {
+          "kind": "record",
+          "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+          "revision": 1,
+          "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+          "locator": null
+        }
+      ],
+      "owner_heads": [
+        [
+          "RUN-20260910T125056Z-8D1E5D9047B1",
+          "COM-ad70de65-6925-404b-8970-f1c42b207306"
+        ]
+      ],
+      "index_watermarks": [
+        [
+          "RUN-20260910T125056Z-8D1E5D9047B1",
+          "6"
+        ]
+      ],
+      "consistency": "fixed_refs",
+      "observed_at": "2026-09-10T13:46:40.699116Z",
+      "basis_id": "BASIS-b5d0652e2f4b71a057103637cafa6dfea4f413a8d3acbafc4d752b49f6d83e2f"
+    }
+  },
+  "process": {
+    "status": "ok",
+    "value": {
+      "candidates": [
+        {
+          "candidate_id": "C-a58154c6743c03e0c5fa53cb",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+              "revision": 1,
+              "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+              "locator": ""
+            }
+          ],
+          "title": "内容来源查询实现：研究经过",
+          "excerpt": "研究目标是按内容职责阅读已有材料。先确认 L0/L1 不变，将经过、分类经验与概览独立保存，保留旧 event/map。随后将来源筛选置于召回窗口之前，固定展开沿原查询账本进行。\n\n最初单元检查通过，但真实浏览器组包暴露旧 Run claim 无法定位。核对后增加有界原生来源适配，并用指纹变化、撤权和范围上限回归验证拒绝行为。前端首次并行契约测试超时，保持断言顺序重跑通过。最终发现 CLI 展开失败仍可能组装原候选，补明确失败返回及真实回归。\n\n新链路的软件验证完成；旧 B01 冻结指纹失败保留。没有自动迁移旧研究，也没有完成用户复验或证明真实检索质量提升。",
+          "content_kind": "narrative",
+          "knowledge_type": null,
+          "channels": [
+            "graph"
+          ],
+          "score": 0.0,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+                "revision": 1,
+                "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+                "locator": ""
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "required_context",
+          "hits": [
+            {
+              "channel": "graph",
+              "provider": "graph",
+              "provider_version": "1",
+              "rank": 1,
+              "raw_score": null,
+              "score_meaning": "既有固定关系导航；不是知识置信度",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+                  "revision": 1,
+                  "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+                  "locator": ""
+                }
+              ],
+              "matched_text": null
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": [],
+          "unknown_facets": []
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "GE-25eb7bc1afc2fd38150a96bf",
+          "source": {
+            "kind": "record",
+            "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+            "revision": 1,
+            "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+            "locator": null
+          },
+          "target": {
+            "kind": "record",
+            "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+            "revision": 1,
+            "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+            "locator": ""
+          },
+          "kind": "references",
+          "evidence": [
+            {
+              "kind": "record",
+              "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+              "revision": 1,
+              "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+              "locator": null
+            }
+          ],
+          "state": "accepted_navigation",
+          "conditions": [],
+          "differences": [],
+          "proposer": "canonical:content:process",
+          "generator_version": "existing-relations/1",
+          "evidence_relations": [
+            "references"
+          ],
+          "legacy_relation": "content:process"
+        }
+      ],
+      "proposals": [],
+      "next_cursor": null,
+      "gaps": []
+    },
+    "code": null,
+    "warnings": [],
+    "issues": [],
+    "consumed": {
+      "wall_ms": 2187,
+      "read_bytes": 50428,
+      "output_chars": 873,
+      "candidates": 3,
+      "graph_nodes": 2,
+      "graph_edges": 1,
+      "graph_hops": 1,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "exhausted",
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+          "revision": 1,
+          "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+          "locator": null
+        },
+        {
+          "kind": "record",
+          "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+          "revision": 1,
+          "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+          "locator": ""
+        }
+      ],
+      "owner_heads": [
+        [
+          "RUN-20260910T125056Z-8D1E5D9047B1",
+          "COM-ad70de65-6925-404b-8970-f1c42b207306"
+        ]
+      ],
+      "index_watermarks": [],
+      "consistency": "fixed_refs",
+      "observed_at": "2026-09-10T13:46:41.825715Z",
+      "basis_id": "BASIS-8240db524c712051357eb5133f89365739f88e0c052e021106d3084fe15928f8"
+    }
+  },
+  "technical": {
+    "status": "ok",
+    "value": {
+      "candidates": [
+        {
+          "candidate_id": "C-aea0dd4d82f5a82ae86e3ea7",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+              "revision": 1,
+              "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+              "locator": ""
+            }
+          ],
+          "title": "内容来源查询实现：技术实现",
+          "excerpt": "问题：\n如何按内容职责查找已有正文并固定展开\n\n方法：\n新内容契约、LIMIT前筛选、原账本固定关联展开与真实回归\n\n主要发现：\n- 7项新回归、32项前端、5项浏览器和18项升级验证通过\n- 历史B01仍失败\n\n适用条件：\n- 当前Windows本地框架\n\n不适用条件：\n- 未经验证的真实业务质量和其他模型\n\n限制：\n- 人工、第二机器与大规模性能未验证",
+          "content_kind": "detail",
+          "knowledge_type": null,
+          "channels": [
+            "graph"
+          ],
+          "score": 0.0,
+          "realization": {
+            "definition": {
+              "key": "full",
+              "version": "1"
+            },
+            "refs": [
+              {
+                "kind": "record",
+                "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+                "revision": 1,
+                "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+                "locator": ""
+              }
+            ],
+            "state": "direct",
+            "missing_selectors": [],
+            "generator_version": null
+          },
+          "evidence_status": "not-assessed",
+          "group": "required_context",
+          "hits": [
+            {
+              "channel": "graph",
+              "provider": "graph",
+              "provider_version": "1",
+              "rank": 1,
+              "raw_score": null,
+              "score_meaning": "既有固定关系导航；不是知识置信度",
+              "representation_refs": [
+                {
+                  "kind": "record",
+                  "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+                  "revision": 1,
+                  "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+                  "locator": ""
+                }
+              ],
+              "matched_text": null
+            }
+          ],
+          "evaluated_claim_refs": [],
+          "unresolved_claim_refs": [],
+          "unknown_facets": []
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "GE-43e83af31dc8aa02df2cb429",
+          "source": {
+            "kind": "record",
+            "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+            "revision": 1,
+            "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+            "locator": null
+          },
+          "target": {
+            "kind": "record",
+            "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+            "revision": 1,
+            "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+            "locator": ""
+          },
+          "kind": "references",
+          "evidence": [
+            {
+              "kind": "record",
+              "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+              "revision": 1,
+              "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+              "locator": null
+            }
+          ],
+          "state": "accepted_navigation",
+          "conditions": [],
+          "differences": [],
+          "proposer": "canonical:content:technical",
+          "generator_version": "existing-relations/1",
+          "evidence_relations": [
+            "references"
+          ],
+          "legacy_relation": "content:technical"
+        }
+      ],
+      "proposals": [],
+      "next_cursor": null,
+      "gaps": []
+    },
+    "code": null,
+    "warnings": [],
+    "issues": [],
+    "consumed": {
+      "wall_ms": 3233,
+      "read_bytes": 75411,
+      "output_chars": 1052,
+      "candidates": 4,
+      "graph_nodes": 3,
+      "graph_edges": 2,
+      "graph_hops": 1,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": "exhausted",
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+          "revision": 1,
+          "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+          "locator": null
+        },
+        {
+          "kind": "record",
+          "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+          "revision": 1,
+          "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+          "locator": ""
+        }
+      ],
+      "owner_heads": [
+        [
+          "RUN-20260910T125056Z-8D1E5D9047B1",
+          "COM-ad70de65-6925-404b-8970-f1c42b207306"
+        ]
+      ],
+      "index_watermarks": [],
+      "consistency": "fixed_refs",
+      "observed_at": "2026-09-10T13:46:42.863393Z",
+      "basis_id": "BASIS-f6c8762d23ff6cdd982665d596fa4421e62a781e603b422e4edeca63bd182c85"
+    }
+  },
+  "assembly": {
+    "status": "ok",
+    "value": {
+      "packet_id": "PKT-4714a217-c4ab-466e-8495-c3692c4ac9cc",
+      "query_id": "MQ-c07f921f-ccf1-49a6-8a16-c33d6ce83549",
+      "definition": {
+        "key": "full",
+        "version": "1"
+      },
+      "parts": [
+        {
+          "group": "direct",
+          "heading": "内容来源查询实现：整体概览",
+          "markdown": "本轮已实现概览与经验、研究经过、技术内容三种来源查询，支持沿固定引用展开。L0/L1 和旧固定版本保留。软件回归通过，新旧内容不会自动互换；旧B01失败、用户复验、真实检索质量和第二机器仍有明确缺口。",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+              "revision": 1,
+              "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+              "locator": null
+            }
+          ],
+          "selectors": [
+            "body_markdown"
+          ],
+          "omitted": []
+        },
+        {
+          "group": "direct",
+          "heading": "内容来源查询实现：研究经过",
+          "markdown": "研究目标是按内容职责阅读已有材料。先确认 L0/L1 不变，将经过、分类经验与概览独立保存，保留旧 event/map。随后将来源筛选置于召回窗口之前，固定展开沿原查询账本进行。\n\n最初单元检查通过，但真实浏览器组包暴露旧 Run claim 无法定位。核对后增加有界原生来源适配，并用指纹变化、撤权和范围上限回归验证拒绝行为。前端首次并行契约测试超时，保持断言顺序重跑通过。最终发现 CLI 展开失败仍可能组装原候选，补明确失败返回及真实回归。\n\n新链路的软件验证完成；旧 B01 冻结指纹失败保留。没有自动迁移旧研究，也没有完成用户复验或证明真实检索质量提升。",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+              "revision": 1,
+              "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+              "locator": ""
+            }
+          ],
+          "selectors": [
+            "body_markdown"
+          ],
+          "omitted": []
+        },
+        {
+          "group": "direct",
+          "heading": "内容来源查询实现：技术实现",
+          "markdown": "# 分层内容来源与固定展开：实施结果\n\n本轮按用户确认方案实现：L0/L1 不变；新增 v4 narrative/L2、分类 experience/L3、overview/L4。主入口默认概览与经验，另选经过或技术内容，直接读取已有正文；展开只沿保存的固定关联，沿用范围、排除与累计预算。旧 event/map 与固定字节保留；没有自动整理旧业务内容。\n\n## 方法和关键边界\n\n召回在 SQL LIMIT 前按内容种类筛选，读取后再次核验。来源模式独立于 scope_ceiling，不能通过切换模式扩大依赖读取。技术块关联保留 locator，组包补齐必需定义。v4 三类要求正文和固定分类引用，旧版本仍由聚合契约解释。旧表示入口继续兼容。\n\n真实浏览器组包暴露旧 Run claim 定位缺口，增加有界原生来源适配：定位已知 Owner，再核验 claim 指纹和逐项登记来源。来源撤销、固定版本变化、越界仍拒绝。CLI 展开失败不再回退组装原候选并伪报成功。\n\n## 实际验证\n\n- 内容来源、固定块与经过展开、范围/排除/预算/摘要一致性、v4 必填项、小预算筛选、CLI失败及旧 claim 撤权回归：7/7 通过，38.306 秒。\n- 既有材料查询回归：19/19 通过（前阶段定向执行）；记忆相关回归 186 项中 185 通过、B01 冻结 fixture 指纹不一致仍失败，与本轮前已知失败一致，未改冻结材料。\n- 前端组件最终顺序执行：32/32 通过，14.35 秒；旧188项与新24项结构契约均覆盖。首次并行运行有1项子进程超时，保留原失败记录，顺序重跑未弱化断言。\n- 浏览器真实HTTP：5/5 通过，已查看截图，正文与展开候选可读；人工复验仍待用户。H16完成进度按 succeeded 显示已完成，实际用户场景仍待复验。\n- Windows x64：18/18 通过，161.040 秒，含真实 setup 扩展旧工作区预览、升级、重复升级和恢复。源码新增 v4 契约在发行清单内，前端预构建及指纹已更新。Python/模型/依赖未改，不重新打包运行环境；未做第二物理机验收或发布。\n\n## 文档与影响处置\n\n已完整重读并维护 README、ARCHITECTURE、CORE、docs/README、DEVELOPMENT_HISTORY；DOCUMENTATION_MAINTENANCE、TESTING 已核对无需规则变化。记录标准、记忆手册/示例、查询手册、context/MEMORY、根规则与相关研究/整理/查询/语义维护 Skill 已同步。OBJ/EVD 旧来源适配受影响，固定回源防线保留；存储事务、索引引擎、依赖/模型、文稿块组织无职责变更。架构快照见 verification/ARCHITECTURE-snapshot.md。\n\n测试目录新增10项、合计613项；5项进入基线，基线29项，revision53。旧24项保留，相关契约、来源、存储、前端防线已检查仍适用；其他新增测试按影响执行，避免重复加重固定集。\n\n## 限制及待确认\n\n这是合成软件与本地开发记录验证，不证明真实研究结论、整体检索质量提升、万条规模性能或人工认可。旧资料转换需要实际阅读与新内容编写；不批量改层号。真实质量题集历史失败、冻结 B01、第二机器和用户人工复验分别保持待处理。无新的科学性可推广结论；工程建议仅适用于本次查询架构。\n",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+              "revision": 1,
+              "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+              "locator": ""
+            }
+          ],
+          "selectors": [
+            "detail.blocks"
+          ],
+          "omitted": []
+        }
+      ],
+      "contributors": [
+        {
+          "kind": "record",
+          "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+          "revision": 1,
+          "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+          "locator": null
+        },
+        {
+          "kind": "record",
+          "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+          "revision": 1,
+          "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+          "locator": ""
+        },
+        {
+          "kind": "record",
+          "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+          "revision": 1,
+          "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+          "locator": ""
+        }
+      ],
+      "complete": true,
+      "canonical": false
+    },
+    "code": null,
+    "warnings": [],
+    "issues": [],
+    "consumed": {
+      "wall_ms": 4187,
+      "read_bytes": 98392,
+      "output_chars": 2872,
+      "candidates": 4,
+      "graph_nodes": 3,
+      "graph_edges": 2,
+      "graph_hops": 1,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "stop_reason": null,
+    "basis": {
+      "refs": [
+        {
+          "kind": "record",
+          "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+          "revision": 1,
+          "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+          "locator": null
+        },
+        {
+          "kind": "record",
+          "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+          "revision": 1,
+          "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+          "locator": ""
+        },
+        {
+          "kind": "record",
+          "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+          "revision": 1,
+          "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+          "locator": ""
+        }
+      ],
+      "owner_heads": [
+        [
+          "RUN-20260910T125056Z-8D1E5D9047B1",
+          "COM-ad70de65-6925-404b-8970-f1c42b207306"
+        ]
+      ],
+      "index_watermarks": [],
+      "consistency": "fixed_refs",
+      "observed_at": "2026-09-10T13:46:43.825269Z",
+      "basis_id": "BASIS-7821071c58c2bc2a6ea8abd9c75bcea838357bb348dc3ed48ff68fc9d1634d76"
+    }
+  },
+  "elapsed_seconds": 4.191428699996322
+}

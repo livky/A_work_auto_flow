@@ -1,9 +1,31 @@
 import { ResearchMarkdown } from "./ResearchDocument";
 import type {
+  AssemblyPart,
   FixedRef,
   MaterialPacket as Packet,
   Result,
 } from "./generated/material-query";
+
+function PacketPart({ part }: { part: AssemblyPart }) {
+  return (
+    <article>
+      <h5>{part.heading}</h5>
+      <ResearchMarkdown
+        text={part.markdown}
+        images={part.figures}
+        appendUnplacedFigures={false}
+      />
+      {part.omitted.length > 0 && (
+        <p className="risk">未纳入：{part.omitted.join("；")}</p>
+      )}
+      <details>
+        <summary>来源与字段</summary>
+        <FixedReferences refs={part.refs} />
+        <p>{part.selectors.join("、") || "未提供字段选择器"}</p>
+      </details>
+    </article>
+  );
+}
 
 /** Every endpoint preserves its envelope, including HTTP error responses. A
  * partial value is useful evidence, but must never be rendered as full success. */
@@ -56,7 +78,16 @@ export function ResultStatus({ result }: { result: Result<unknown> | null }) {
     >
       <strong>{names[result.status]}</strong>
       {result.code && <span> · {result.code}</span>}
-      {result.stop_reason && <p>停止原因：{result.stop_reason}</p>}
+      {result.stop_reason && (
+        <p>
+          {{
+            exhausted: "本次候选已读取完毕",
+            page: "本页已完成，可继续读取",
+            budget: "已达到本次预算",
+            cancelled: "查询已取消",
+          }[result.stop_reason] || `停止原因：${result.stop_reason}`}
+        </p>
+      )}
       {result.warnings.length > 0 && (
         <ul>
           {result.warnings.map((warning, i) => (
@@ -121,35 +152,66 @@ export function MaterialPacket({ packet }: { packet: Packet | null }) {
         {packet.complete ? "结构完整" : "存在缺口"} ·{" "}
         {packet.canonical ? "正式材料" : "查询组装视图"}
       </p>
-      {Object.entries(groupTitles).map(([group, title]) => (
-        <section
-          className={`packet-zone zone-${group}`}
-          key={group}
-          aria-label={title}
-        >
-          <h4>{title}</h4>
-          {packet.parts.filter((part) => part.group === group).length === 0 ? (
-            <p className="muted">本区没有内容。</p>
-          ) : (
-            packet.parts
-              .filter((part) => part.group === group)
-              .map((part, i) => (
-                <article key={i}>
-                  <h5>{part.heading}</h5>
-                  <ResearchMarkdown text={part.markdown} />
-                  {part.omitted.length > 0 && (
-                    <p className="risk">未纳入：{part.omitted.join("；")}</p>
-                  )}
-                  <details>
-                    <summary>来源与字段</summary>
-                    <FixedReferences refs={part.refs} />
-                    <p>{part.selectors.join("、") || "未提供字段选择器"}</p>
-                  </details>
-                </article>
-              ))
-          )}
-        </section>
-      ))}
+      {packet.documents?.length ? (
+        <div className="packet-documents">
+          {packet.documents.map((document) => (
+            <article key={`${document.ref.id}:${document.ref.revision}`}>
+              <h3>{document.title}</h3>
+              <p>
+                {document.candidate_ids.length} 条命中归并为此篇 ·{" "}
+                {document.complete ? "完整文稿" : "文稿存在缺口"}
+              </p>
+              {(document.part_indices || []).map((index) => (
+                <PacketPart key={index} part={packet.parts[index]} />
+              ))}
+              <details>
+                <summary>文稿固定版本</summary>
+                <FixedReferences refs={[document.ref]} />
+              </details>
+            </article>
+          ))}
+          {packet.parts
+            .filter((part) => part.group === "gaps")
+            .map((part, index) => (
+              <PacketPart key={index} part={part} />
+            ))}
+        </div>
+      ) : (
+        Object.entries(groupTitles).map(([group, title]) => (
+          <section
+            className={`packet-zone zone-${group}`}
+            key={group}
+            aria-label={title}
+          >
+            <h4>{title}</h4>
+            {packet.parts.filter((part) => part.group === group).length ===
+            0 ? (
+              <p className="muted">本区没有内容。</p>
+            ) : (
+              packet.parts
+                .filter((part) => part.group === group)
+                .map((part, i) => (
+                  <article key={i}>
+                    <h5>{part.heading}</h5>
+                    <ResearchMarkdown
+                      text={part.markdown}
+                      images={part.figures}
+                      appendUnplacedFigures={false}
+                    />
+                    {part.omitted.length > 0 && (
+                      <p className="risk">未纳入：{part.omitted.join("；")}</p>
+                    )}
+                    <details>
+                      <summary>来源与字段</summary>
+                      <FixedReferences refs={part.refs} />
+                      <p>{part.selectors.join("、") || "未提供字段选择器"}</p>
+                    </details>
+                  </article>
+                ))
+            )}
+          </section>
+        ))
+      )}
       <details>
         <summary>材料包标识</summary>
         <p>{packet.packet_id}</p>

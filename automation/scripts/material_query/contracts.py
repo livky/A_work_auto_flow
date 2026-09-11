@@ -55,6 +55,8 @@ class Scope:
     time_window: TimeWindow | None = None
     applicability_conditions: tuple[str, ...] = ()
     applicability_exclusions: tuple[str, ...] = ()
+    # Owner 类别与记录 kind 是两个独立维度；None 不限，空集合不匹配。
+    owner_types: tuple[str, ...] | None = None
 
 
 @dataclass(frozen=True)
@@ -183,6 +185,28 @@ class QueryRequest:
     ranking_version: str = "1"
     allow_index_repair: bool = False
     max_staleness_seconds: float | None = None
+    # None 保留旧表示查询；主入口按规范内容种类召回，与访问范围分开。
+    content_source: Literal['overview_experience', 'process', 'technical', 'all'] | None = None
+
+
+@dataclass(frozen=True)
+class ContentExpandRequest:
+    """只展开服务器已经交付的候选，不接受客户端构造任意引用。"""
+    query_id: str
+    candidate_ids: tuple[str, ...]
+    target: Literal['process', 'technical']
+    expected_request_digest: str
+    # 显式请求一并读取展开正文、必要依赖和已启用的补充；旧调用仍只返候选。
+    include_packet: bool = False
+
+
+@dataclass(frozen=True)
+class FullDocumentsRequest:
+    """从已选命中定位既有文稿，禁止客户端指定任意未召回记录。"""
+    query_id: str
+    candidate_ids: tuple[str, ...]
+    expected_request_digest: str
+    document_type: Literal['research_process', 'research_report'] = 'research_process'
 
 
 @dataclass(frozen=True)
@@ -215,6 +239,10 @@ class Candidate:
     unresolved_claim_refs: tuple[FixedRef, ...] = ()
     # 明示缺少的分类维度；include_unknown 只改变准入，不把未知改成已分类。
     unknown_facets: tuple[str, ...] = ()
+    content_kind: str | None = None
+    knowledge_type: Literal["observation", "conclusion", "hypothesis", "recommendation"] | None = None
+    is_latest: bool | None = None
+    owner_type: str | None = None
 
 
 @dataclass(frozen=True)
@@ -242,6 +270,14 @@ class AssembleRequest:
 
 
 @dataclass(frozen=True)
+class PacketFigure:
+    index: int
+    caption: str
+    ref: FixedRef
+    data_url: str
+
+
+@dataclass(frozen=True)
 class AssemblyPart:
     group: Literal["direct", "required_context", "association", "gaps"]
     heading: str
@@ -249,6 +285,16 @@ class AssemblyPart:
     refs: tuple[FixedRef, ...]
     selectors: tuple[str, ...]
     omitted: tuple[str, ...]
+    figures: tuple[PacketFigure, ...] = ()
+
+
+@dataclass(frozen=True)
+class DocumentMatch:
+    ref: FixedRef
+    title: str
+    candidate_ids: tuple[str, ...]
+    complete: bool
+    part_indices: tuple[int, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -260,6 +306,7 @@ class MaterialPacket:
     contributors: tuple[FixedRef, ...]
     complete: bool
     canonical: bool
+    documents: tuple[DocumentMatch, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -332,6 +379,7 @@ class DeepenReceipt:
     proposals: tuple[AssociationProposal, ...]
     next_cursor: str | None
     gaps: tuple[str, ...]
+    packet: MaterialPacket | None = None
 
 
 @dataclass(frozen=True)
@@ -466,6 +514,7 @@ class TreeRequest:
     limit: int
     view: Literal["logical", "storage"]
     parent_node_id: str | None = None  # 逻辑owner/层级无内容Ref，用服务端结构节点身份分页。
+    owner_query: str = ""  # 只筛选获准对象的标题/身份；不是任意路径搜索。
 
 
 @dataclass(frozen=True)
@@ -479,6 +528,7 @@ class TreeNode:
     has_children: bool
     storage_role: Literal["canonical", "source_reference", "projection", "temporary"]
     registered_path: str | None
+    owner_type: str | None = None
 
 
 @dataclass(frozen=True)

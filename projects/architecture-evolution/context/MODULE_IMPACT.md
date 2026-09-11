@@ -1,75 +1,12 @@
-# 模块关系与变更影响图
+# 模块影响入口（兼容导航）
 
-图版本：`3`。核对日期：2026-09-10。Git基线：main `647d786`；表示查询实现记录：`RUN-20260909T194710Z-3CF36B2FDD60`；固定来源搬迁修复：`RUN-20260910T050158Z-028371C48C3A`，均未提交。原版本1依据为 `RUN-20260909T151004Z-A68FBA9F176D`。本图是当前 Project 中唯一维护的影响图，历史快照只保存在各轮 Run。
+2026-09-10 起，全局技术栈、模块职责、依赖和状态所有权统一维护在根 [ARCHITECTURE](../../../ARCHITECTURE.md)。本文件不再保存另一份现行图；开发规则见 [development-checks](../../../automation/workflows/development-checks/SKILL.md)。
 
-## 简单影响图
+原图版本 1–3 的依据仍保留在各自固定 Run 和 Git 历史：
+- 首次核对：`RUN-20260909T151004Z-A68FBA9F176D`。
+- 表示查询整合：`RUN-20260909T194710Z-3CF36B2FDD60`。
+- 固定来源位置兼容：`RUN-20260910T050158Z-028371C48C3A`。
+- `8a57e4d` 保存此次归并前的文档基线。
 
-箭头表示“左侧变化时，必须重新检查右侧”，不是执行顺序、全部 import 关系或自动化任务。跨模块影响可能双向，表中补充入口和检查理由。图中的模块是框架功能分组，不是公司核心算法。
-
-```mermaid
-flowchart LR
-    OBJ[对象与原始材料<br/>Run 归属和 L0] --> MEM[版本记忆<br/>契约、提交、固定引用]
-    MEM --> DOC[研究内容<br/>技术单元、章节、双文稿]
-    MEM --> EVD[证据与权限<br/>复核、失效、来源]
-    MEM --> RET[检索与关联<br/>投影、排序、上下文]
-    DOC --> RET
-    EVD --> RET
-    EVD --> DOC
-    DOC --> APP[CLI、API、工作台]
-    EVD --> APP
-    RET --> APP
-    DOC --> GUIDE[AI 工作流与文档<br/>Skill、README、规则]
-    APP --> GUIDE
-    MEM --> QA[验证与交付<br/>测试、升级、发行]
-    RET --> QA
-    APP --> QA
-    GUIDE --> QA
-```
-
-## 模块职责与影响入口
-
-表中的 Python 路径以 `automation/scripts/` 为基准；明确写出 `automation/` 的路径以工作区根目录为基准。首次改动先从列出的入口和对应现行手册阅读，不展开所有历史。职责详细说明见[工作区架构](../../../ARCHITECTURE.md)。
-
-| 模块 | 实际职责与代码入口 | 变化时至少检查 | 主要同步文档与验证 |
-|---|---|---|---|
-| OBJ 对象与原始材料 | `memory/owners.py`、`manifest_discovery.py`、`run_capture.py`、`memory/raw_materials.py`（均从 scripts 起）；对象身份、Run 归属、输入/产物登记与 L0 视图 | 原路径与 ID、来源授权、Run 索引、旧布局、记忆 Owner 及 UI 材料入口 | OBJECT_RUN_STORAGE、RUN_CAPTURE、目录 README/AGENTS；对象 Run、L0 与真实扩展旧工作区测试 |
-| MEM 版本记忆 | `automation/schemas/memory-v3.schema.json`、`memory/contracts.py`、`memory/service.py`、`memory/store.py`、`memory/recovery.py`；记录校验、修订、HEAD、幂等与恢复 | 读写兼容、固定 Ref、生成类型、所有读取者、索引投影代次、迁移与恢复 | MEMORY_USAGE/REQUESTS、RESEARCH_RECORDING、context/MEMORY；版本、权限、故障恢复与升级测试 |
-| DOC 研究内容 | `memory/technical_units.py`、`memory/documents.py`、`memory/history.py`、`memory/research.py`；技术单元、完整块依赖、章节/双文稿、目标和续接 | L1 检索说明与正文、章节固定引用、简版和完整版范围、来源影响提示、研究工作流 | RESEARCH_RECORDING、研究 README、research-loop；documents_v3、固定版本、缺定义和预算场景 |
-| EVD 证据与权限 | `evidence.py`、`memory/evidence_adapter.py`、`memory/impact.py`、`memory/lineage.py`；复核、沿袭和已登记依赖失效 | 历史授权、正式准入、claim 指纹、文稿引用、检索返回、监测与导出 | EVIDENCE_CONTROLS、EVIDENCE_VIEW_MONITOR、evidence-inspection；撤回、版本变化、排除与 scope 测试 |
-| RET 检索与关联 | `retrieval.py`、`qdrant_backend.py`、`context_engine.py`、`memory/index.py`、`memory/search.py`、`memory/packets.py`、`memory/associations.py`；材料与记忆两条检索路径 | 候选身份、表示版本、模型集合、水位、权限、L0/文稿模式、预算、关联过期、评测口径 | RETRIEVAL、MATERIAL_RELATIONS、workspace-context；软件边界与独立检索质量分别记录 |
-| APP 产品入口 | `workspace_cli.py`、`memory/api.py`、`memory/cli.py`、`workbench_app/`、`automation/frontend/src/`；CLI/HTTP 动作与界面 | 同一动作的请求/错误码、生成类型、预构建资源、文稿切换、用户可见说明 | WORKBENCH_DEVELOPMENT、MEMORY_REQUESTS、README；组件/类型/浏览器及资源指纹 |
-| GUIDE AI 工作流与文档 | `automation/workflows/` 为 Skill 方法源，`.agents/skills/` 为发现入口；README、AGENTS、context 和现行手册 | 定义是否集中、指令能否按公开入口执行、历史方案是否误作当前能力、目录和链接 | DOCUMENTATION_MAINTENANCE、START_HERE/NOW、GLOSSARY；命令核对、真实 AI 使用和人工待审入口 |
-| QA 验证与交付 | `automation/testing/`、`automation/tests/`、setup/依赖分发及发行清单；测试选择、实际回执和数据保护 | catalog 覆盖、失败与跳过、既有业务目录/自定义 Skill、模型边界和离线包 | TESTING、UPGRADE_TESTING、SETUP_WORKBENCH、DEPENDENCY_RELEASE；按根规则触发真实 setup/离线回归 |
-
-`memory/` 的代码入口均相对于 `automation/scripts/`；实际测试 ID 从 `workbench.cmd testing catalog` 获取，表中测试名称是能力提示，不是声称已执行的命令。
-
-## 每轮开发留下什么
-
-1. 在上述表格定位本次变化的节点；检查出边和读取该接口的入边。
-2. 在当前 Run 保存影响处置：模块/文件、变化原因、处理结果、证据或延期理由。结果只有“需修改”“已检查无需修改”“延期”，不能把未查看写成无影响。
-3. 如果模块职责、接口、状态所有权或影响关系变化，修改本图并递增图版本；为新边说明理由。普通文案更正只在 Run 记账，不强行增加图版本。
-4. 将本轮图版本复制到 Run 的 `artifacts/` 固定保存，并用 `run-register` 记录实际哈希。旧图保留；同名当前图继续供下一轮阅读。
-5. 根规则和 Skill 通过[通用维护手册](../../../docs/DOCUMENTATION_MAINTENANCE.md)引导检查；本图不代替测试、权限控制或领域复核。
-
-本轮处置记录见[影响清单](../runs/run-20260909t151004z-a68fba9f176d/IMPACT_REVIEW.md)。
-
-## 当前需保留的实现边界
-
-- MEM 与 RET 在事实权威上分离，但 `MemoryService` 同步索引、索引又调用服务引用解析，依赖尚未完全倒置；本轮未重构。
-- 材料检索与规范记忆检索共用 SQLite 文件但分表、分入口；查询回执和上下文回执不能混用。
-- 新记忆关联可提议/采纳/判断过期；完整邻接扩展见评估链路，默认 `memory context` 不会自动运行该完整方案。
-- 保存、索引、业务复核与关联采纳分别有权威状态；不得合并成一个“成功”。
-- 图不自动发现所有代码影响，不运行后台同步；全库扫描、候选范围、图联想质量和性能仍是后续待评估事项。
-
-## 修订历史
-
-| 图版本 | 日期 | 变化与依据 |
-|---|---|---|
-| 1 | 2026-09-09 | 首次按实际代码建立八个功能分组、跨模块影响和维护方法；依据本轮文档核对 Run；人工审查待完成 |
-| 3 | 2026-09-10 | EVD 的来源位置兼容接口增加逐文件 relocated_from＋固定 SHA；明确 EVD→DOC 影响，迁移后同时验证文稿、检索和升级保留；依据 RUN-20260910T050158Z-028371C48C3A |
-
-来源搬迁兼容仍由 EVD 的 `evidence.reference_path` 和 `retrieval/sources.json` 登记负责，DOC/RET 复用原读取入口；不复制规范正文，不增加另一套授权或索引权威。登记字段变化需同步 EXISTING_MATERIALS、示例说明和共享升级 fixture。本次未改前端、Skill 公共调用、依赖或模型。
-
-## 表示查询v0.2实施影响补充（已接入，图版本2）
-
-RET的`material_query/`类型/候选/组包→APP查询界面与HTTP/CLI→GUIDE三个专项Skill；EVD局部固定依据/反证→GUIDE实际语义审查→MEM原事务Writer→RET投影补偿；临时联想→明确导航采纳→既有图投影。这些路径已接入；自动代理、模型提供器及范围外读取不由接入状态推定。MEM增加可替换计量读取/证据钩子而保留原默认行为，QA增加查询schema/公共继承文件/Skill的明确分发清单。每项验证见实施Run RUN-20260909T194710Z-3CF36B2FDD60；真实AI、软件回归、人工和物理机状态分别保存。
+本次文档归并不改运行模块或依赖，只纠正说明缺漏。每轮影响处置留在当次计划/摘要或 Run，职责变化时保留必要的架构快照。当前任务见[人工反馈改进计划](../plans/human-acceptance-improvements-20260910.md)。
+内容来源本轮影响 MEM/MQ/APP/GUIDE/QA 与旧原生来源适配；[实际处置及固定架构快照](../runs/run-20260910t125056z-8d1e5d9047b1/RESULTS.md)已保存。

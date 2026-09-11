@@ -1,0 +1,92 @@
+{
+  "definition": {
+    "key": "full",
+    "version": "1"
+  },
+  "question": "内容来源",
+  "keywords": [],
+  "scope": {
+    "owner_ids": [
+      "RUN-20260910T125056Z-8D1E5D9047B1"
+    ],
+    "levels": null,
+    "kinds": null,
+    "roles": null,
+    "outcomes": null,
+    "review_states": null,
+    "validities": null,
+    "include_unknown": false,
+    "excluded_refs": [],
+    "excluded_owner_ids": [],
+    "recorded_from": null,
+    "recorded_before": null,
+    "source_ids": null,
+    "include_refs": [],
+    "exclude_ids": [],
+    "confidence_levels": null,
+    "time_window": null,
+    "applicability_conditions": [],
+    "applicability_exclusions": []
+  },
+  "scope_ceiling": {
+    "owner_ids": [
+      "RUN-20260910T125056Z-8D1E5D9047B1"
+    ],
+    "levels": null,
+    "kinds": null,
+    "roles": null,
+    "outcomes": null,
+    "review_states": null,
+    "validities": null,
+    "include_unknown": false,
+    "excluded_refs": [],
+    "excluded_owner_ids": [],
+    "recorded_from": null,
+    "recorded_before": null,
+    "source_ids": null,
+    "include_refs": [],
+    "exclude_ids": [],
+    "confidence_levels": null,
+    "time_window": null,
+    "applicability_conditions": [],
+    "applicability_exclusions": []
+  },
+  "purpose": "exploration",
+  "association": {
+    "mode": "off",
+    "strategy": "existing-relations",
+    "strategy_version": "1",
+    "max_items": 0,
+    "output_share": 0,
+    "supplement_scope": null
+  },
+  "budget": {
+    "wall_ms": 10000,
+    "read_bytes": 2097152,
+    "output_chars": 12000,
+    "candidates": 100,
+    "graph_nodes": 50,
+    "graph_edges": 100,
+    "graph_hops": 2,
+    "model_tokens": 0,
+    "model_calls": 0,
+    "model_input_tokens": 0,
+    "model_output_tokens": 0,
+    "rerank_items": 0
+  },
+  "freshness": "fixed",
+  "result_limit": 20,
+  "missing_policy": "reject",
+  "fallback_definitions": [],
+  "applicability": "",
+  "channels": [
+    "identity",
+    "lexical"
+  ],
+  "dialect": "plain",
+  "ranking_strategy": "topic-evidence-v2",
+  "ranking_version": "1",
+  "allow_index_repair": false,
+  "max_staleness_seconds": null,
+  "content_source": "overview_experience"
+}

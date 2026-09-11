@@ -34,7 +34,7 @@ BASE = ".local/material-query/plans"
 PLAN_ID = re.compile(r"MP-[0-9a-f-]{36}")
 HASH = re.compile(r"[0-9a-f]{64}")
 WRITE_ACTIONS = {"revise", "resynthesize", "retract"}
-EDITABLE_KINDS = {"detail", "event", "experience", "map", "document", "document_section", "representation"}
+EDITABLE_KINDS = {"detail", "event", "narrative", "experience", "map", "overview", "document", "document_section", "representation"}
 
 
 def _result(value=None, *, state=None, warnings=(), basis=None, status=None):
@@ -277,7 +277,7 @@ def plan(coordinator, raw):
                         parameters.append(state.ledger.remaining("candidates"))
                         rows = db.execute(f"""SELECT record_id,keywords FROM memory_records
                             WHERE owner_id IN ({slots}) AND entity_kind='record'
-                            AND kind IN ('detail','event','experience','map','document','document_section','feedback')
+                            AND kind IN ('detail','event','narrative','experience','map','overview','document','document_section','feedback')
                             {''.join(clauses)} ORDER BY record_id LIMIT ?""", parameters).fetchall()
                         changed_ids = {ref.id for ref in request.changed_refs}
                         for row in rows:
@@ -357,10 +357,13 @@ def _draft(item, original, delivered):
                 claim["claim_id"] for claim in original["payload"].get("claims", [])}:
             raise QueryError("VALIDATION", "撤回必须明确该记录内的claim与原因")
         return draft
-    if original["kind"] not in EDITABLE_KINDS or draft.get("owner_id") != original["owner_id"] or draft.get("kind") != original["kind"]:
+    # 仅放行统一层级的两条迁移路径；完整正文和前版固定引用由统一写入门检查。
+    migration = (original["kind"], draft.get("kind")) in {("event", "narrative"), ("map", "overview")}
+    if original["kind"] not in EDITABLE_KINDS or draft.get("owner_id") != original["owner_id"] or (draft.get("kind") != original["kind"] and not migration):
         raise QueryError("DENIED", "维护草案不能改变归属/类型或写入复核与控制记录")
-    if draft.get("schema_version") != 3:
-        raise QueryError("VALIDATION", "维护修订必须符合memory-v3草案")
+    expected_version = 4 if draft.get("kind") in {"narrative", "overview"} or (draft.get("kind") == "experience" and draft.get("schema_version") == 4) else 3
+    if draft.get("schema_version") != expected_version:
+        raise QueryError("VALIDATION", "维护修订必须符合该类型的当前草案版本")
     for legacy in iter_refs({"sources": draft.get("sources", []), "payload": draft.get("payload", {})}):
         ref, _ = from_legacy(legacy)
         if _key(ref) not in delivered:
@@ -408,7 +411,9 @@ def review(coordinator, raw):
         proposed = json_value(parse(raw["plan"], MaintenancePlan))
         saved = _load(coordinator.root, proposed["plan_id"], raw["expected_digest"])
         with _locked(coordinator.root, proposed["plan_id"]):
-            original = saved["plan"]
+            # 两端按同一契约补齐可选默认字段。旧回执没有 figures 时，
+            # JSON 回填解析会补 []；这不是篡改。实际正文、图像和引用仍逐值核对。
+            original = json_value(parse(saved["plan"], MaintenancePlan))
             protected = ("plan_id", "plan_digest", "basis", "context_items", "read_receipt", "unchecked_regions")
             if any(proposed[key] != original[key] for key in protected):
                 raise QueryError("CONFLICT", "审查不得篡改已交付依据、上下文、读取回执或原版本")
@@ -559,7 +564,11 @@ def _status_read_fixed(state, reader, ref, scope):
             for selected in (state.request.scope, state.request.scope_ceiling)):
         raise QueryError("DENIED", "维护来源不在当前允许范围")
     value = _read_fixed(reader, ref, scope)
-    if ref.kind in {"record", "representation"} and not current_scope_allows(reader, value, state.request):
+    # 状态读取用于审计已执行事务，必须能回读计划原版；当前授权与筛选
+    # 仍复核。是否可继续应用由 basis_stale / HEAD 校验独立表达。
+    from dataclasses import replace
+    audit_request = replace(state.request, freshness="fixed")
+    if ref.kind in {"record", "representation"} and not current_scope_allows(reader, value, audit_request):
         raise QueryError("DENIED", "维护材料不满足当前查询范围")
     return value
 

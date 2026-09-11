@@ -1,0 +1,23 @@
+[
+  {
+    "old_path": "automation/workflows/analysis-diagnosis/SKILL.md",
+    "preserved_path": "projects/architecture-evolution/runs/run-20260910t210558z-aba265055ed3/verification/retired-skills/analysis-diagnosis.txt",
+    "sha256": "bcf51d9e4afb3dbd6d584b513c8459f430221cef9f540dad8bd27c7b2cf243b0",
+    "replacement": "automation/workflows/research-loop/SKILL.md",
+    "registered": false
+  },
+  {
+    "old_path": "automation/workflows/core-algorithm-design/SKILL.md",
+    "preserved_path": "projects/architecture-evolution/runs/run-20260910t210558z-aba265055ed3/verification/retired-skills/core-algorithm-design.txt",
+    "sha256": "3b39298dbf55e5d695aa3f19f9ed1581a998b9fb1e88ee51ac6650d345d405c3",
+    "replacement": "automation/workflows/research-loop/SKILL.md",
+    "registered": false
+  },
+  {
+    "old_path": "automation/workflows/report-production/SKILL.md",
+    "preserved_path": "projects/architecture-evolution/runs/run-20260910t210558z-aba265055ed3/verification/retired-skills/report-production.txt",
+    "sha256": "a8ab4e40e1aa440518ea871226f6e40f137573ddbfd570265c4be3fe66b4462d",
+    "replacement": "automation/workflows/research-loop/SKILL.md",
+    "registered": false
+  }
+]

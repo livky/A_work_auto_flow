@@ -1,0 +1,83 @@
+{
+  "body_markdown": "建议把内容来源与阅读展开分开：前者决定直接召回，后者沿固定引用读取。依据是本轮实现和合成验证；不是未经检验的通用检索质量结论。真实浏览器链路需要同时验证旧引用及撤权。",
+  "change_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+  "content_hash": "9fa83f7f6d8814f48a6fff63547b13bab3197cad13752dd50619e47153ad0b2d",
+  "created_at": "2026-09-10T13:43:54.917913Z",
+  "created_by": {
+    "id": "Codex",
+    "kind": "ai"
+  },
+  "discovery": "workspace_summary",
+  "keywords": [
+    "内容来源",
+    "固定展开",
+    "分层查询"
+  ],
+  "kind": "experience",
+  "level": "L3",
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "payload": {
+    "applicable": [
+      "具有稳定内容种类和固定引用的本地研究库"
+    ],
+    "claim_refs": [],
+    "claims": [],
+    "failure_modes": [
+      "只验证内部服务会遗漏真实浏览器旧引用兼容"
+    ],
+    "knowledge_type": "recommendation",
+    "missing_refs": [],
+    "problem_structure": "内容来源筛选与表示组装混合使候选碎片化",
+    "process_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f",
+        "target_id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+        "target_kind": "record"
+      }
+    ],
+    "prohibited": [
+      "缺少原依据时把旧地图或事件直接改标签"
+    ],
+    "recommendation": "以内容职责约束召回，并在原账本沿固定关系读取已有正文",
+    "retry_conditions": [
+      "来源可读、范围获准且剩余预算充足"
+    ],
+    "technical_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+        "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "previous_revision": null,
+  "provenance_gap": null,
+  "record_hash": "1c6e3eb791ddd1fbb6f5049e51aa8592702acd6de3460c78f92194d4ed87fe42",
+  "record_id": "MEM-03c17631-0ffb-55b1-a571-cb275f2818ea",
+  "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+  "revision": 1,
+  "schema_version": 4,
+  "sensitivity": "internal",
+  "sources": [
+    {
+      "locator": "",
+      "relation": "references",
+      "revision": null,
+      "sha256": "a7169044c5d2189ab9b2dfcae51355e6c461283b561160a5574904f2840084f7",
+      "target_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+      "target_kind": "owner"
+    }
+  ],
+  "title": "内容来源查询实现：工程建议",
+  "updated_at": "2026-09-10T13:43:54.917913Z",
+  "updated_by": {
+    "id": "Codex",
+    "kind": "ai"
+  }
+}

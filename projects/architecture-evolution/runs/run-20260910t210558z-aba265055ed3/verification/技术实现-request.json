@@ -1,0 +1,93 @@
+{
+  "schema_version": 3,
+  "request_id": "b7430960-ceef-431c-b304-ab344a036e96",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T210558Z-ABA265055ED3",
+  "expected_head": null,
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "技术实现",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T210558Z-ABA265055ED3",
+        "kind": "detail",
+        "title": "材料查询七项优化：技术实现",
+        "body_markdown": "",
+        "keywords": [
+          "材料查询",
+          "完整文稿",
+          "固定版本",
+          "Skill维护"
+        ],
+        "sources": [
+          {
+            "target_kind": "owner",
+            "target_id": "RUN-20260910T210558Z-ABA265055ED3",
+            "revision": null,
+            "sha256": "fb65dfde3d74f3f4451faf47e099436c8ae2de1dfed9d5e7547f16bbf54fffa2",
+            "locator": "",
+            "relation": "references"
+          }
+        ],
+        "payload": {
+          "unit_type": "analysis",
+          "run_ref": {
+            "target_kind": "owner",
+            "target_id": "RUN-20260910T210558Z-ABA265055ED3",
+            "revision": null,
+            "sha256": "fb65dfde3d74f3f4451faf47e099436c8ae2de1dfed9d5e7547f16bbf54fffa2",
+            "locator": "",
+            "relation": "references"
+          },
+          "evidence_refs": [
+            {
+              "target_kind": "owner",
+              "target_id": "RUN-20260910T210558Z-ABA265055ED3",
+              "revision": null,
+              "sha256": "fb65dfde3d74f3f4451faf47e099436c8ae2de1dfed9d5e7547f16bbf54fffa2",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "retrieval_description": {
+            "question": "怎样完成材料查询七项优化且保持原权限、版本和累计预算",
+            "method": "复用规范存储，分离直接筛选和必要依据；固定文稿编排；真实交互、权限及升级回归",
+            "key_findings": [
+              "所有来源与显式历史查询",
+              "完整文稿按身份去重并逐块绑定图示",
+              "8个Skill逐项审查及3个旧方法退休"
+            ],
+            "applicable": [
+              "当前Windows本地框架"
+            ],
+            "not_applicable": [
+              "自动科学复核",
+              "无限历史和全图覆盖"
+            ],
+            "limitations": [
+              "未做独立质量与性能对照，人工和第二物理机未验收"
+            ]
+          },
+          "blocks": [
+            {
+              "block_id": "implementation",
+              "role": "methods",
+              "markdown": "# 材料查询七项优化：实际结果\n\n## 已实现\n\n1. 结构按8类标准 Owner 单选/多选，支持对象名称查找；类型与具体身份相交，空集合与显式排除保留。\n2. 所有来源覆盖获准已登记内容、文稿、章节、来源和原生 Run；默认仍查概览与经验。\n3. 默认活动执行预算5分钟；真实连续组装暴露2 MiB读取不足，因此默认读取16 MiB、输出8万字符。保持服务端上限、累计计量与取消，不清零重试。\n4. 默认 current 只取当前修订，缓存回读再核验；allow_stale 才扫描有界历史，旧版本标记及固定引用保留。\n5. documents 按同一文稿身份合并多个命中，按既有章节与技术块顺序返回正文和图示；展开可带正文、必要上下文与已启用的有效补充。\n6. 常用动作位于候选上方并保持可见；右侧显示本次输出，后续失败清除旧正文并显示对应回执。\n7. 逐项审查8个工作区 Skill，更新3项；3个过时未注册方法保留原文后退休，独特指导并入 research-loop。详见 SKILL_AUDIT.md。\n\n## 关键实现与真实故障\n\nMQ 复用原规范存储和索引。catalog_search 负责全来源目录候选，history_search 有界检查历史，documents 定位文稿并去重；Coordinator/Reader 统一核验与计量。没有引入新数据库、模型或后台任务。\n\n真实浮点研究最初无结果，原因是界面把直接 Research 范围同时作为必要依据上限，引用的 Run 被拦。现在直接筛选与必要依据读取分开；工作台明确显示跨对象依据开关，关闭即可收紧，排除项与服务端授权始终优先。来源/层级筛选不误拦文稿或必要技术定义。\n\n重复组装此前耗尽2 MiB累计预算；保持逐次权限/版本核验，依据完整文稿与连续动作的实际读取需求调整默认额度，没有把缓存读取当免费或用新查询冒充原查询续接。新增图表保留每个技术单元自己的 figure:N，Reader 校验受控文件、SHA及读取预算，避免合并文稿后的图号错配。\n\n维护历史状态审计使用固定依据，不因提交后旧版本不再是当前而丢失历史回执；再次应用仍查当前HEAD。新增可选 figures 字段造成旧计划回填默认值不一致，已两端按同一契约规范化；正文、图像、引用和回执的实际改动仍拒绝。\n\n## 实际验证\n\n| 范围 | 最终结果与日志 |\n|---|---|\n| 查询选项 | 8项通过，options-delivery.log |\n| 内容与固定展开 | 8项通过，content-delivery.log |\n| 维护状态 | 11项通过，maintenance-delivery.log |\n| 范围/组装/查询/深化/Skill安装 | 50项通过，related-final.log |\n| 运行契约 | 21项通过，contracts.log |\n| 前端组件与跨语言契约 | 35项通过，frontend-delivery.log |\n| 真实HTTP浏览器 | 5项通过，e2e-delivery.log |\n| Windows真实setup扩展旧工作区 | 18项通过，upgrade-final.log；预览、升级、重复升级、完整保护清单、恢复和真实损坏拒绝 |\n| 类型/构建 | 成功，build-delivery.log；使用端预构建资源及指纹更新，依赖/模型未变 |\n| 登记审计 | revision63，共629项，33项基线；审计通过，不等于全629项执行 |\n\n开发中曾跑材料套件179项，173通过、5项维护状态失败、1项混合源码版本导入失败。后续分别修复并在稳定源码上完成上述相关回归，不把分批结果冒称单次179项全通过。初次升级也受前端源码在执行中变更影响，保留失败日志，最终18项重新运行通过。初次浏览器2项失败分别为回执可选字段与折叠树选择器，修复后5项通过。一次无提权浏览器因已有输出文件访问失败、一次手动模块运行因隔离Python不读PYTHONPATH导入失败，均保留原日志，不记为行为测试通过。\n\n## 真实页面检查\n\nCodex 实际使用本地浮点研究：2条候选在同一查询连续组装两次、读取完整文稿、展开经过、展开技术内容均完成；完整文稿去重为1篇、显示4张图。已查看图文截图，表格、公式、图注和正文可见。深化如实返回partial：反向依赖只核验有界目录窗口，不能保证全量覆盖；不是组装失败或无成本重搜。实际响应、累计预算及截图保存于 verification。此次是AI操作与检查，不是用户人工验收，也不修改该研究科学结论。\n\n## 文档与模块影响闭环\n\nREADME、ARCHITECTURE、CORE、docs/README、DOCUMENTATION_MAINTENANCE、DEVELOPMENT_HISTORY 已完整重读并维护；保留G01–G12功能边界表、架构稳定约束及唯一影响表。MATERIAL_QUERY、根AGENTS、START_HERE/NOW与工作流入口同步。TESTING 已完整核对，既有按风险选择、基线准入与结果分离规则适用，无需改规则；本轮实际更新catalog。8项Skill逐条结论另表，不用名称扫描替代阅读。\n\nMQ、APP、GUIDE、QA有实际修改；MEM规范事务与DOC原编排服务复用，EVD授权/正式准入接口保持，RET无新增投影。依赖锁、模型、安装器核对无需改；仍按发行/Skill边界运行真实升级。保留架构及代码固定快照；没有改写冻结设计和历史失败，也没有扩大业务数据迁移范围。\n\n## 验证限制\n\n本轮完成当前软件与本机页面验证；用户人工复验、第二物理机、独立检索质量和科学复核仍待各自执行。历史B01、独立题集质量失败和万条规模暂缓未在本轮解决。未声称任意模型可升级，未发布源码或依赖包；未测量新旧策略的准确率/召回/时延对照，因此不宣称性能提升。\n",
+              "requires_block_ids": []
+            }
+          ],
+          "figures": [],
+          "missing_refs": []
+        },
+        "provenance_gap": null,
+        "record_reason": "保存实际开发、故障、验证与边界；不替代人工、科学或第二机验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

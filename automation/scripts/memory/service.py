@@ -242,7 +242,23 @@ class MemoryService:
                 raise MemoryError("INVALID_SCHEMA", "单批只允许一个规范归属", errors=[{"path": "/owner_id", "message": "归属不匹配"}])
             old = snapshot["records"].get(rid)
             if old and draft.get("kind") != old["kind"]:
-                raise MemoryError("INVALID_SCHEMA", "修订不能改变记录类别")
+                # 层级收敛只允许作者提交完整的新正文，并固定引用上一修订。
+                # 保持身份不变让当前索引替换旧类型；不可变旧修订仍供历史引用。
+                # 不能将这个入口扩大成任意类型改名，也不能在读取时自动迁移。
+                transition = (old["kind"], draft.get("kind"))
+                predecessor = any(
+                    ref.get("target_kind") == "record"
+                    and ref.get("target_id") == rid
+                    and ref.get("revision") == old["revision"]
+                    and ref.get("sha256") == old["record_hash"]
+                    and ref.get("relation") == "references"
+                    for ref in draft.get("sources", []) if isinstance(ref, dict)
+                )
+                if (transition not in {("event", "narrative"), ("map", "overview")}
+                        or draft.get("schema_version") != 4 or not predecessor
+                        or not str(draft.get("body_markdown", "")).strip()
+                        or not str(draft.get("change_reason", "")).strip()):
+                    raise MemoryError("INVALID_SCHEMA", "类别迁移仅允许事件→研究经过、地图→整体概览；须提交 v4 正文、变更原因及上一修订的固定来源")
             pending[rid] = {**draft, "record_id": rid, "revision": old["revision"] + 1 if old else 1}
             resolved_operations.append((operation, rid, draft, old))
 

@@ -1,0 +1,42 @@
+{
+  "技术实现": {
+    "id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+    "revision": 1,
+    "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf"
+  },
+  "研究经过": {
+    "id": "MEM-a0ef6011-aa6b-5df4-8728-7806dff38e4e",
+    "revision": 1,
+    "sha256": "4b9a0cddb6145c7db8e813872eb2f710915be5e5bc29811dabb74a3ba960da9f"
+  },
+  "工程建议": {
+    "id": "MEM-03c17631-0ffb-55b1-a571-cb275f2818ea",
+    "revision": 1,
+    "sha256": "1c6e3eb791ddd1fbb6f5049e51aa8592702acd6de3460c78f92194d4ed87fe42"
+  },
+  "整体概览": {
+    "id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+    "revision": 1,
+    "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5"
+  },
+  "完整过程章节": {
+    "id": "MEM-ea6548d9-e49d-59eb-89d1-7c93288b643f",
+    "revision": 1,
+    "sha256": "fca5be5607a38a06e315237e55dc1bb1f7091c3779a84b1ec7a1f293ea2f4c55"
+  },
+  "精简报告章节": {
+    "id": "MEM-4bd18b02-490e-59f8-85bb-dca01abe0989",
+    "revision": 1,
+    "sha256": "f7243366679a1c6beb3f7dc321612ad8bd4031981448375dd7f6f483d191e141"
+  },
+  "完整过程": {
+    "id": "MEM-a11314aa-26c5-5dc7-85f8-fed98024bcee",
+    "revision": 1,
+    "sha256": "f542880d2d794f63a635d5602a78dd2a53ccaf6ce9cb6eba3c386533a11864e3"
+  },
+  "精简报告": {
+    "id": "MEM-5165255e-4ed7-51db-ba85-cd13fcad587d",
+    "revision": 1,
+    "sha256": "33b5cd28cc5e48aad1124345c671c7a775cb497bf39aca298f03c91dbacadd19"
+  }
+}

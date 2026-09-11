@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "owner_id": "RUN-20260910T183626Z-429304F92E99",
+  "title": "统一记忆层级入口与浮点研究内容迁移",
+  "document_source": "independent",
+  "document": {
+    "record_id": "MEM-e29547a2-823f-5ec9-aaf0-d8fa77b64440",
+    "revision": 1,
+    "title": "统一层级与实际迁移：精简报告",
+    "document_type": "research_report",
+    "purpose": "查看实际迁移、验证与限制",
+    "audience": "工作区维护者",
+    "scope": "统一层级与浮点研究迁移",
+    "common_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "a6b8fb3bc110c68770cf66acd6e9fbf4eb00b55b1381692e5b472e3e662376af",
+        "target_id": "MEM-15cd98ca-90c9-5e79-a40e-a7e1d0649b62",
+        "target_kind": "record"
+      }
+    ],
+    "section_refs": [
+      {
+        "locator": "",
+        "relation": "references",
+        "revision": 1,
+        "sha256": "0ee0271ba9df8fb04e01bf3f9d148be95419eb0cbe288b0a0c5b0a3f77b75abc",
+        "target_id": "MEM-7a550f76-011b-5619-ae4b-92d99cb1b182",
+        "target_kind": "record"
+      }
+    ]
+  },
+  "report": {
+    "version": 1,
+    "record_id": "MEM-e29547a2-823f-5ec9-aaf0-d8fa77b64440",
+    "revision": 1,
+    "title": "统一层级与实际迁移：精简报告",
+    "sections": [
+      {
+        "section_id": "MEM-7a550f76-011b-5619-ae4b-92d99cb1b182",
+        "section_key": "unified-layers-summary",
+        "title": "精简报告章节",
+        "role": "conclusion",
+        "ref": {
+          "locator": "",
+          "relation": "references",
+          "revision": 1,
+          "sha256": "0ee0271ba9df8fb04e01bf3f9d148be95419eb0cbe288b0a0c5b0a3f77b75abc",
+          "target_id": "MEM-7a550f76-011b-5619-ae4b-92d99cb1b182",
+          "target_kind": "record"
+        },
+        "source_issues": [],
+        "blocks": [
+          {
+            "evidence_refs": [
+              {
+                "locator": "",
+                "relation": "references",
+                "revision": 1,
+                "sha256": "96f2d38f0be128573d56c56d382f18a9f2964aff32817e6ce8f3dca2d95c064e",
+                "target_id": "MEM-5b82ae94-f94d-5667-8dde-05a54806d7dd",
+                "target_kind": "record"
+              }
+            ],
+            "markdown": "工作台每层已统一为单一入口，浮点研究完成实际迁移并可查询。旧修订保持可追溯，索引重建完成。软件和实际AI检查完成；历史B01、默认10秒预算不足及人工/第二机边界单独记录。",
+            "type": "prose",
+            "source_issues": []
+          }
+        ]
+      }
+    ],
+    "complete": true
+  },
+  "items": [],
+  "missing": [],
+  "generated_at": "2026-09-10T19:31:14.488978Z",
+  "report_candidates": [
+    {
+      "record_id": "MEM-e29547a2-823f-5ec9-aaf0-d8fa77b64440",
+      "revision": 1,
+      "title": "统一层级与实际迁移：精简报告",
+      "updated_at": "2026-09-10T19:30:48.762432Z",
+      "document_type": "research_report"
+    },
+    {
+      "record_id": "MEM-85ce10f5-d227-57eb-b6bb-13c6baf1861f",
+      "revision": 1,
+      "title": "统一层级与实际迁移：完整过程",
+      "updated_at": "2026-09-10T19:29:53.179537Z",
+      "document_type": "research_process"
+    }
+  ],
+  "report_coverage": {
+    "included_detail_ids": [
+      "MEM-15cd98ca-90c9-5e79-a40e-a7e1d0649b62"
+    ],
+    "uncovered_detail_ids": []
+  },
+  "report_version_hints": [],
+  "basis_heads": {
+    "RUN-20260910T183626Z-429304F92E99": "COM-964f972e-9d9f-4bcd-b926-c34fcabd9e79"
+  },
+  "metrics": {
+    "elapsed_ms": 1838.1,
+    "inventory_owners": 22,
+    "read_memory_owners": 1,
+    "parsed_owner_records": 8,
+    "resolved_sections": 1
+  },
+  "writes": 0
+}

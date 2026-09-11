@@ -1,0 +1,571 @@
+[
+  {
+    "action": "v1/materials/structure",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 0,
+      "read_bytes": 0,
+      "output_chars": 373,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/structure",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 0,
+      "read_bytes": 0,
+      "output_chars": 0,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/structure",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 0,
+      "read_bytes": 0,
+      "output_chars": 19,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/structure",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 0,
+      "read_bytes": 0,
+      "output_chars": 19,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/start",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 0,
+      "read_bytes": 0,
+      "output_chars": 0,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 0,
+      "read_bytes": 0,
+      "output_chars": 0,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 407,
+      "read_bytes": 0,
+      "output_chars": 0,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 812,
+      "read_bytes": 0,
+      "output_chars": 0,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 1219,
+      "read_bytes": 0,
+      "output_chars": 0,
+      "candidates": 0,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 1625,
+      "read_bytes": 212481,
+      "output_chars": 0,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 2032,
+      "read_bytes": 272237,
+      "output_chars": 0,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 2437,
+      "read_bytes": 315095,
+      "output_chars": 0,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 2844,
+      "read_bytes": 319280,
+      "output_chars": 0,
+      "candidates": 1,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 3250,
+      "read_bytes": 357409,
+      "output_chars": 0,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 3657,
+      "read_bytes": 365004,
+      "output_chars": 0,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 4062,
+      "read_bytes": 420544,
+      "output_chars": 0,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 4469,
+      "read_bytes": 427519,
+      "output_chars": 0,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 4875,
+      "read_bytes": 436819,
+      "output_chars": 0,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 5282,
+      "read_bytes": 443639,
+      "output_chars": 0,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "partial",
+    "code": "RUNNING",
+    "consumed": {
+      "wall_ms": 5687,
+      "read_bytes": 454954,
+      "output_chars": 0,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/poll",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 11235,
+      "read_bytes": 931608,
+      "output_chars": 1200,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": "exhausted"
+  },
+  {
+    "action": "v1/materials/assemble",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 20360,
+      "read_bytes": 1483747,
+      "output_chars": 2170,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/assemble",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 30578,
+      "read_bytes": 2414735,
+      "output_chars": 2170,
+      "candidates": 2,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": null
+  },
+  {
+    "action": "v1/materials/documents",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 43171,
+      "read_bytes": 3472176,
+      "output_chars": 10605,
+      "candidates": 4,
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "graph_hops": 0,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": "exhausted"
+  },
+  {
+    "action": "v1/materials/expand",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 60077,
+      "read_bytes": 4426083,
+      "output_chars": 14023,
+      "candidates": 9,
+      "graph_nodes": 7,
+      "graph_edges": 5,
+      "graph_hops": 1,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": "exhausted"
+  },
+  {
+    "action": "v1/materials/expand",
+    "status": "ok",
+    "code": null,
+    "consumed": {
+      "wall_ms": 71108,
+      "read_bytes": 5481786,
+      "output_chars": 21042,
+      "candidates": 13,
+      "graph_nodes": 11,
+      "graph_edges": 9,
+      "graph_hops": 1,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [],
+    "stop_reason": "exhausted"
+  },
+  {
+    "action": "v1/materials/deepen",
+    "status": "partial",
+    "code": null,
+    "consumed": {
+      "wall_ms": 120641,
+      "read_bytes": 6898677,
+      "output_chars": 21042,
+      "candidates": 55,
+      "graph_nodes": 11,
+      "graph_edges": 9,
+      "graph_hops": 1,
+      "model_tokens": 0,
+      "model_calls": 0,
+      "model_input_tokens": 0,
+      "model_output_tokens": 0,
+      "rerank_items": 0
+    },
+    "warnings": [
+      "反向引用仅核验有界目录窗口，尚不能保证全量覆盖"
+    ],
+    "stop_reason": "exhausted"
+  }
+]

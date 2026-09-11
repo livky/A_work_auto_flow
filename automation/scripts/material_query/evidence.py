@@ -186,7 +186,7 @@ class Evidence:
             else:
                 record = self._record(target)
                 refs = list(record["sources"])
-                if record["kind"] in {"event", "experience"}:
+                if record["kind"] in {"event", "narrative", "experience", "overview"}:
                     children = record["payload"].get("claims", [])
                     if not children:
                         failures.append(self._failure("EVIDENCE_INELIGIBLE", target, "叙述记录没有可独立复核的结论"))
@@ -276,7 +276,7 @@ class Evidence:
                 continue
             seen.add(rid)
             self._depth(depth)
-            if record["kind"] in {"event", "experience"}:
+            if record["kind"] in {"event", "narrative", "experience", "overview"}:
                 selected.update((claim["claim_id"], record) for claim in record["payload"].get("claims", []))
             elif record["kind"] == "association":
                 rejected.append({"canonical_id": rid, "errors": [self._failure("EVIDENCE_INELIGIBLE", rid, "导航关系不能供给正式支持")]})

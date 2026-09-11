@@ -92,7 +92,7 @@ Skill 由 AI 按本轮任务选择，不由对象目录自动触发。多项工�
 | 读取对象、核对实现、理解历史 | workspace-context | 定位目标、按证据缺口展开；查字段不新建 Run |
 | 导入材料、修订与整理知识 | context-maintenance | 采用身份、登记材料、保存修订、核对引用和索引 |
 | 研究问题、仿真、反证与多轮探索 | research-loop | 读取目标/检查点；建立独立 Run；按 L0–L4 保存，编排文稿并回读 |
-| 开发/修复/工具回归 | development-checks | 固定测试计划、执行分级回归、登记实际回执与人工检查入口 |
+| 开发/修复/工具回归 | development-checks | 阅读并维护六份短文档，按风险选择验证；轻量任务记计划/摘要，独立验证产物用 Run |
 | 查看依据、复核、失效和下游影响 | evidence-inspection | 只读追溯；按授权维护复核；监测仅写观察记录，不启动实验 |
 | 生成具体交付格式 | documents、pdf、presentations、spreadsheets 等对应 Skill | 按实际格式生成与校验成品；涉及计算依据仍使用固定 Run |
 

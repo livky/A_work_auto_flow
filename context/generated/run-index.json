@@ -253,6 +253,74 @@
     "blocking_run_ids": []
   },
   {
+    "run_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "分层内容来源查询与固定关联展开实现",
+    "created_at": "2026-09-10T12:50:56Z",
+    "status": "completed",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "分层",
+      "内容查询"
+    ],
+    "question": "怎样按内容职责直接查询并沿固定引用深入，同时保持旧版与范围预算边界？",
+    "conclusion": "实现及定向软件验证完成；历史B01失败和人工/第二物理机待审单列。",
+    "parent_run_ids": [],
+    "path": "projects/architecture-evolution/runs/run-20260910t125056z-8d1e5d9047b1/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260910T183626Z-429304F92E99",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "统一记忆层级入口与浮点研究内容迁移",
+    "created_at": "2026-09-10T18:36:26Z",
+    "status": "completed",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "记忆迁移",
+      "分层"
+    ],
+    "question": "如何统一层级并实际迁移浮点研究，同时保留历史与证据边界？",
+    "conclusion": "入口与实际内容迁移完成，软件回归和AI回读完成；历史B01、默认10秒预算不足及人工/第二机边界单列。",
+    "parent_run_ids": [],
+    "path": "projects/architecture-evolution/runs/run-20260910t183626z-429304f92e99/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
+    "run_id": "RUN-20260910T210558Z-ABA265055ED3",
+    "project_id": "PRJ-ARCHITECTURE-EVOLUTION",
+    "title": "材料查询范围筛选、完整文稿与交互优化",
+    "created_at": "2026-09-10T21:05:58Z",
+    "status": "completed",
+    "review": {
+      "status": "not-reviewed",
+      "reviewer": null,
+      "date": null
+    },
+    "keywords": [
+      "材料查询",
+      "完整文稿",
+      "版本",
+      "Skill维护"
+    ],
+    "question": "如何完成材料查询七项优化并保持范围、固定版本与累计预算？",
+    "conclusion": "七项功能实现，定向软件、真实页面和Windows升级验证完成；保留partial覆盖与独立待审边界。",
+    "parent_run_ids": [],
+    "path": "projects/architecture-evolution/runs/run-20260910t210558z-aba265055ed3/run.json",
+    "needs_revalidation": false,
+    "blocking_run_ids": []
+  },
+  {
     "run_id": "RUN-20260908T201214Z-D0AB308F66AD",
     "project_id": null,
     "title": "求和探索01：大数与小增量的顺序影响",

@@ -1,0 +1,62 @@
+{
+  "schema_version": 3,
+  "request_id": "9ca7a299-7118-4921-a8ce-e35ca074629c",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "expected_head": "COM-25262a1c-090e-4ecc-8cc6-111c4073d28a",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "完整过程章节",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+        "kind": "document_section",
+        "title": "内容来源查询实现：完整过程章节",
+        "body_markdown": "",
+        "keywords": [
+          "内容来源",
+          "固定展开",
+          "分层查询"
+        ],
+        "payload": {
+          "section_key": "content-query-implementation",
+          "role": "methods",
+          "blocks": [
+            {
+              "type": "unit",
+              "ref": {
+                "target_kind": "record",
+                "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+                "revision": 1,
+                "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+                "locator": "",
+                "relation": "references"
+              }
+            }
+          ],
+          "missing_refs": [],
+          "title": "完整过程章节",
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-ccd8156b-2d97-55d7-835e-d8644c658674",
+            "revision": 1,
+            "sha256": "1bc09cc949204c44daab500274731fb3ce2a03aeb5bcbc1443323db9e6682ebf",
+            "locator": "",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

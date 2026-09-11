@@ -1,0 +1,65 @@
+{
+  "schema_version": 3,
+  "request_id": "33737fe5-d79d-44bf-8150-771848d97d39",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T183626Z-429304F92E99",
+  "expected_head": "COM-69893990-d2e9-4292-8328-b73391511357",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "精简报告章节",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T183626Z-429304F92E99",
+        "kind": "document_section",
+        "title": "统一层级与实际迁移：精简报告章节",
+        "body_markdown": "",
+        "keywords": [
+          "内容来源",
+          "固定展开",
+          "分层查询"
+        ],
+        "payload": {
+          "section_key": "unified-layers-summary",
+          "role": "conclusion",
+          "blocks": [
+            {
+              "type": "prose",
+              "markdown": "工作台每层已统一为单一入口，浮点研究完成实际迁移并可查询。旧修订保持可追溯，索引重建完成。软件和实际AI检查完成；历史B01、默认10秒预算不足及人工/第二机边界单独记录。",
+              "evidence_refs": [
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-5b82ae94-f94d-5667-8dde-05a54806d7dd",
+                  "revision": 1,
+                  "sha256": "96f2d38f0be128573d56c56d382f18a9f2964aff32817e6ce8f3dca2d95c064e",
+                  "locator": "",
+                  "relation": "references"
+                }
+              ]
+            }
+          ],
+          "missing_refs": [],
+          "title": "精简报告章节",
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-5b82ae94-f94d-5667-8dde-05a54806d7dd",
+            "revision": 1,
+            "sha256": "96f2d38f0be128573d56c56d382f18a9f2964aff32817e6ce8f3dca2d95c064e",
+            "locator": "",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

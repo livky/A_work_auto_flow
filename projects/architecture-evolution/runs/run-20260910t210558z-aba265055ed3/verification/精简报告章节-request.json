@@ -1,0 +1,66 @@
+{
+  "schema_version": 3,
+  "request_id": "084212c5-ff99-4e77-a898-e5d2b72a8599",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T210558Z-ABA265055ED3",
+  "expected_head": "COM-8e9ebcbe-36b1-4816-ac04-015cc993f54a",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "精简报告章节",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T210558Z-ABA265055ED3",
+        "kind": "document_section",
+        "title": "材料查询七项优化：精简报告章节",
+        "body_markdown": "",
+        "keywords": [
+          "材料查询",
+          "完整文稿",
+          "固定版本",
+          "Skill维护"
+        ],
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-57f688c0-16d9-59ce-a33e-79efc30e9370",
+            "revision": 1,
+            "sha256": "4bda1986f1ab4fdbdb9187ea720c1d26857861af337ee54cec462655d2ef58d4",
+            "locator": "",
+            "relation": "references"
+          }
+        ],
+        "payload": {
+          "section_key": "material-query-options-summary",
+          "role": "conclusion",
+          "blocks": [
+            {
+              "type": "prose",
+              "markdown": "七项材料查询优化已实施：标准类型、所有来源、5分钟默认预算、当前修订默认和显式历史、去重完整文稿、操作/结果区及逐项Skill维护。8/8/11/50/21项相关后端与契约、35项组件、5项浏览器和18项升级测试通过。真实浮点同查询连续正文动作完成，完整文稿1篇4图；深化保留反向目录覆盖partial。人工、第二物理机、独立检索质量与性能对照尚未执行。",
+              "evidence_refs": [
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-57f688c0-16d9-59ce-a33e-79efc30e9370",
+                  "revision": 1,
+                  "sha256": "4bda1986f1ab4fdbdb9187ea720c1d26857861af337ee54cec462655d2ef58d4",
+                  "locator": "",
+                  "relation": "references"
+                }
+              ]
+            }
+          ],
+          "missing_refs": [],
+          "title": "精简报告章节",
+          "watch_refs": []
+        },
+        "provenance_gap": null,
+        "record_reason": "保存实际开发、故障、验证与边界；不替代人工、科学或第二机验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

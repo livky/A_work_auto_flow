@@ -135,8 +135,155 @@ async function start() {
 }
 
 describe("材料查询固定范围与回执", () => {
+  it("标准类型可单选多选，所有来源与旧版显式选择，默认预算五分钟", async () => {
+    render(<MaterialQuery />);
+    await screen.findByRole("button", { name: /合成研究/ });
+    expect(screen.getByLabelText("记录版本")).toHaveValue("current");
+    expect(screen.getByText(/读取时间预算：5 分钟/)).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "清空类型" }));
+    fireEvent.click(screen.getByLabelText("类型：Research 研究"));
+    fireEvent.click(screen.getByLabelText("类型：Project 项目"));
+    fireEvent.change(screen.getByLabelText("内容来源"), {
+      target: { value: "all" },
+    });
+    fireEvent.change(screen.getByLabelText("记录版本"), {
+      target: { value: "allow_stale" },
+    });
+    fireEvent.change(screen.getByLabelText("问题"), {
+      target: { value: "压力" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "开始查询" }));
+    await screen.findByText("合成压力材料");
+    const request = mockApi.mock.calls.find(
+      ([route]) => route === "materials/start",
+    )![1] as any;
+    expect(request.scope.owner_types).toEqual(["research", "project"]);
+    expect(request.scope.owner_ids).toBeNull();
+    expect(request.content_source).toBe("all");
+    expect(request.freshness).toBe("allow_stale");
+    expect(request.budget.wall_ms).toBe(300000);
+  });
+
+  it("完整文稿按钮位于候选上方，后续失败清除旧正文并在右侧说明", async () => {
+    mockApi.mockImplementation(async (route) => {
+      if (route === "materials/documents")
+        return ok({
+          packet_id: "P-DOC",
+          query_id: "Q-1",
+          definition: { key: "full", version: "1" },
+          parts: [
+            {
+              group: "direct",
+              heading: "章节正文",
+              markdown: "作者编排的完整正文\n\n![图示](figure:0)",
+              refs: [ref],
+              selectors: [],
+              omitted: [],
+              figures: [
+                {
+                  index: 0,
+                  caption: "固定图示",
+                  ref,
+                  data_url: "data:image/png;base64,AAAA",
+                },
+              ],
+            },
+          ],
+          contributors: [ref],
+          complete: true,
+          canonical: false,
+          documents: [
+            {
+              ref,
+              title: "完整合成文稿",
+              candidate_ids: ["C-1"],
+              complete: true,
+              part_indices: [0],
+            },
+          ],
+        }) as never;
+      if (route === "materials/assemble")
+        return {
+          ...ok(null),
+          status: "rejected",
+          code: "STALE",
+          warnings: ["固定记录已更新"],
+        } as never;
+      return defaultResponse(route) as never;
+    });
+    render(<MaterialQuery />);
+    await start();
+    const candidateControl = screen.getByRole("checkbox", {
+      name: "合成压力材料",
+    });
+    fireEvent.click(candidateControl);
+    const action = screen.getByRole("button", { name: "返回完整文稿" });
+    expect(
+      action.compareDocumentPosition(candidateControl) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    fireEvent.click(action);
+    const output = screen.getByRole("complementary", { name: "查询返回结果" });
+    await within(output).findByText("作者编排的完整正文");
+    expect(
+      within(output).getByRole("img", { name: "固定图示" }),
+    ).toHaveAttribute("src", "data:image/png;base64,AAAA");
+    expect(mockApi).toHaveBeenCalledWith("materials/documents", {
+      query_id: "Q-1",
+      candidate_ids: ["C-1"],
+      expected_request_digest: "digest-1",
+      document_type: "research_process",
+    });
+    fireEvent.click(screen.getByRole("button", { name: "组装所选材料（1）" }));
+    await within(output).findByText("固定记录已更新");
+    expect(
+      within(output).queryByText("作者编排的完整正文"),
+    ).not.toBeInTheDocument();
+  });
+
+  it("默认查概览与经验，展开沿用固定查询；取消树选择不扩大范围", async () => {
+    mockApi.mockImplementation(async (route) =>
+      route === "materials/expand"
+        ? (ok({
+            candidates: [],
+            edges: [],
+            proposals: [],
+            next_cursor: null,
+            gaps: ["无固定关联"],
+          }) as never)
+        : (defaultResponse(route) as never),
+    );
+    render(<MaterialQuery />);
+    expect(screen.getByLabelText("内容来源")).toHaveValue(
+      "overview_experience",
+    );
+    expect(screen.queryByLabelText("表达形式")).not.toBeInTheDocument();
+    await start();
+    const request = mockApi.mock.calls.find(
+      ([route]) => route === "materials/start",
+    )![1] as any;
+    expect(request.content_source).toBe("overview_experience");
+    expect(request.scope.levels).toBeNull();
+    expect(request.definition.key).toBe("full");
+    fireEvent.click(screen.getByRole("checkbox", { name: "合成压力材料" }));
+    fireEvent.click(screen.getByRole("button", { name: "展开技术内容" }));
+    await waitFor(() =>
+      expect(mockApi).toHaveBeenCalledWith("materials/expand", {
+        query_id: "Q-1",
+        candidate_ids: ["C-1"],
+        expected_request_digest: "digest-1",
+        target: "technical",
+        include_packet: true,
+      }),
+    );
+    fireEvent.click(screen.getByRole("button", { name: /合成研究/ }));
+    expect(screen.getByText(/空范围，请选择归属对象/)).toBeVisible();
+    expect(screen.getByRole("button", { name: "展开技术内容" })).toBeDisabled();
+  });
   it("显式区分空范围、全局范围和树中所选归属，不隐式扩大查询", async () => {
     render(<MaterialQuery />);
+    // 用户可把依赖读取显式收紧到所选范围；默认跨对象依赖由分类用例覆盖。
+    fireEvent.click(screen.getByLabelText(/读取所选材料引用的必要依据/));
     expect(screen.getByLabelText("结构视图")).toHaveValue("logical");
     expect(screen.getByText(/空范围，请选择归属对象/)).toBeVisible();
     await waitFor(() =>

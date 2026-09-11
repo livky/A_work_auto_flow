@@ -11,7 +11,7 @@ import uuid
 from memory.errors import MemoryError
 from .budget import DEFAULT_BUDGET, Ledger
 from .contracts import TreeRequest
-from .coordinator import envelope, failure, current_scope_allows
+from .coordinator import envelope, failure, current_scope_allows, owner_allowed
 from .legacy_adapter import fixed_record
 from .reader import Reader
 from .validation import QueryError, parse
@@ -69,15 +69,17 @@ def list_page(coordinator, raw):
                         owner = reader.owner(oid)
                     except QueryError:
                         continue
-                    if scope.owner_ids is not None and oid not in scope.owner_ids:
+                    if not owner_allowed(owner, scoped_request):
+                        continue
+                    if request.owner_query.strip().casefold() not in (owner.get("title", "") + " " + oid).casefold():
                         continue
                     nodes.append(dict(ref=None, node_id=oid, parent_id=None, title=owner.get("title", oid), kind="owner",
-                                      layer=None, has_children=True, storage_role="canonical",
+                                      layer=None, has_children=True, storage_role="canonical", owner_type=owner["owner_type"],
                                       registered_path=owner["memory_home"] if request.view == "storage" else None))
             else:
                 oid, separator, layer = parent.partition("::")
                 owner = reader.owner(oid)
-                if scope.owner_ids is not None and oid not in scope.owner_ids:
+                if not owner_allowed(owner, scoped_request):
                     raise QueryError("DENIED", "父节点不在选定范围")
                 if not separator and request.view == "storage":
                     for key, title, role, path, children in (

@@ -12,13 +12,15 @@ import re
 from datetime import datetime
 from pathlib import Path
 
-SCHEMA_PATH = Path(__file__).resolve().parents[2] / "schemas" / "memory-v3.schema.json"
+SCHEMA_PATH = Path(__file__).resolve().parents[2] / "schemas" / "memory-v4.schema.json"
 SCHEMA = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
 LEGACY_LEVELS = {"source": "L0", "event": "L1", "experience": "L2", "map": "L3",
           **dict.fromkeys(("question", "goal", "route", "checkpoint", "association",
                            "representation", "policy", "consolidation", "feedback", "review"))}
 V2_LEVELS = {**LEGACY_LEVELS, "detail": "L1", "event": "L2", "experience": "L3", "map": "L4"}
-LEVELS = {**V2_LEVELS, 'document': None, 'document_section': None}
+V3_LEVELS = {**V2_LEVELS, 'document': None, 'document_section': None}
+V4_LEVELS = {'narrative': 'L2', 'experience': 'L3', 'overview': 'L4'}
+LEVELS = {**V3_LEVELS, **V4_LEVELS}
 RECORD_SCHEMA_VERSION = 3
 TAXONOMY_VERSION = 2
 CONTENT_FIELDS = ("owner_id", "kind", "level", "title", "keywords", "body_markdown",
@@ -35,8 +37,8 @@ def project_memory_level(record):
     Unknown versions/kinds fail explicitly instead of inventing a layer.
     """
     version, kind = record.get("schema_version", 1), record.get("kind")
-    allowed = LEGACY_LEVELS if version == 1 else V2_LEVELS if version == 2 else LEVELS
-    if type(version) is not int or version not in (1, 2, 3) or kind not in allowed:
+    allowed = {1: LEGACY_LEVELS, 2: V2_LEVELS, 3: V3_LEVELS, 4: V4_LEVELS}.get(version, {}) if type(version) is int else {}
+    if type(version) is not int or kind not in allowed:
         raise ValueError("Unsupported memory record version or kind")
     return LEVELS[kind]
 
@@ -236,6 +238,20 @@ def validate_references(record, context):
                         resolved = resolver(value)
                         if resolved is None or resolved is False:
                             raise LookupError("Reference target is missing")
+                        # Authored expansion fields declare a content role as
+                        # well as an immutable identity. Validate both at save
+                        # time, so a process link cannot point to an old event
+                        # merely because its displayed level is also L2.
+                        if record.get("schema_version") == 4:
+                            match = re.fullmatch(r"/payload/(process_refs|technical_refs|experience_refs)/\d+", path)
+                            if match:
+                                expected = {"process_refs": "narrative", "technical_refs": "detail", "experience_refs": "experience"}[match[1]]
+                                if not isinstance(resolved, dict) or resolved.get("kind") != expected:
+                                    errors.append(_error(path, "Content link resolves to the wrong content role"))
+                                elif str(value.get("locator") or "").startswith("block:"):
+                                    block_id = value["locator"][6:]
+                                    if expected != "detail" or not any(b.get("block_id") == block_id for b in resolved.get("payload", {}).get("blocks", [])):
+                                        errors.append(_error(path + "/locator", "Content link names a missing technical block"))
                     except (LookupError, ValueError):
                         # Callback exceptions may contain source excerpts or
                         # private filesystem paths. Domain MemoryError codes
@@ -349,10 +365,10 @@ def validate_record(draft, context=None):
     legacy_shape = isinstance(payload, dict) and (
         kind == 'detail' and 'unit_type' not in payload and 'blocks' not in payload
         or kind == 'map' and 'report' in payload)
-    record.setdefault('schema_version', 2 if legacy_shape else RECORD_SCHEMA_VERSION)
+    record.setdefault('schema_version', 4 if kind in {'narrative', 'overview'} else 2 if legacy_shape else RECORD_SCHEMA_VERSION)
     version = record["schema_version"]
-    levels = LEGACY_LEVELS if version == 1 else V2_LEVELS if version == 2 else LEVELS
-    if type(version) is not int or version not in (1, 2, 3) or kind not in levels:
+    levels = {1: LEGACY_LEVELS, 2: V2_LEVELS, 3: V3_LEVELS, 4: V4_LEVELS}.get(version, {}) if type(version) is int else {}
+    if kind not in levels:
         return {"valid": False, "errors": [_error("/schema_version", "Unsupported record version for this kind")], "record": record}
     record.setdefault("level", levels[kind])
     record.setdefault("keywords", [])
@@ -366,6 +382,13 @@ def validate_record(draft, context=None):
     if errors:
         return {"valid": False, "errors": errors, "record": record}
     p = record["payload"]
+    if version == 4:
+        # 展开关系是作者明确保存的固定边，不能在读取时改到最新修订，
+        # 或因为同属一个研究就猜测某条经验的过程/技术依据。
+        for name in ('process_refs', 'technical_refs', 'experience_refs'):
+            for position, ref in enumerate(p.get(name, [])):
+                if ref['target_kind'] != 'record' or type(ref.get('revision')) is not int or ref['revision'] < 1 or not re.fullmatch(r'[0-9a-f]{64}', ref.get('sha256') or ''):
+                    errors.append(_error(f'/payload/{name}/{position}', 'Content links require fixed record revision and SHA-256'))
     # Optional v3 knowledge classifications are canonical payload content. Keep
     # validation separate from scientific review and never add defaults to old
     # records: their original payload and content fingerprints remain unchanged.

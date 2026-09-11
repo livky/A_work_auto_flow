@@ -9,7 +9,7 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import "./research-document.css";
 import { api } from "./api";
-import type { MemoryRecord, Ref } from "../../schemas/memory-v3";
+import type { MemoryRecord, Ref } from "../../schemas/memory-v4";
 
 type SourceIssue = {
   target_id?: string;
@@ -177,6 +177,7 @@ export const ResearchMarkdown = memo(
     normalize = false,
     figureStart = 1,
     appendUnplacedFigures = true,
+    images,
   }: {
     text: string;
     record?: MemoryRecord;
@@ -184,6 +185,7 @@ export const ResearchMarkdown = memo(
     normalize?: boolean;
     figureStart?: number;
     appendUnplacedFigures?: boolean;
+    images?: readonly { index: number; caption: string; data_url: string }[];
   }) {
     const figures =
       record?.kind === "detail"
@@ -246,6 +248,23 @@ export const ResearchMarkdown = memo(
               const index = /^figure:\d+$/.test(src || "")
                 ? Number(src!.slice(7))
                 : -1;
+              const embedded = images?.find((image) => image.index === index);
+              if (
+                embedded &&
+                /^data:image\/(png|jpeg|webp);base64,/.test(embedded.data_url)
+              )
+                return (
+                  <figure className="research-figure">
+                    <img
+                      src={embedded.data_url}
+                      alt={embedded.caption}
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      图 {index + 1}　{embedded.caption}
+                    </figcaption>
+                  </figure>
+                );
               return record && figures[index] ? (
                 <FixedFigure
                   record={record}
@@ -285,6 +304,7 @@ export const ResearchMarkdown = memo(
     // Compare title values: callers naturally construct a new array per render.
     previous.text === next.text &&
     previous.record === next.record &&
+    previous.images === next.images &&
     previous.normalize === next.normalize &&
     previous.figureStart === next.figureStart &&
     previous.appendUnplacedFigures === next.appendUnplacedFigures &&

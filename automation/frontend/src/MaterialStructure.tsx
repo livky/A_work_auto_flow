@@ -18,8 +18,10 @@ const nodeKinds: Record<string, string> = {
   source: "原始材料",
   detail: "技术内容",
   event: "过程记录",
+  narrative: "研究经过",
   experience: "复用经验",
   map: "知识地图",
+  overview: "整体概览",
   document: "研究文稿",
   document_section: "章节",
 };
@@ -30,14 +32,29 @@ const storageRoles = {
   temporary: "临时结果",
 };
 
+export const ownerTypeNames: Record<string, string> = {
+  research: "Research 研究",
+  project: "Project 项目",
+  knowledge: "Knowledge 知识",
+  run: "Run 分析与执行",
+  "core-algorithm": "核心算法",
+  report: "Report 报告",
+  data: "Data 数据",
+  tool: "Tool 工具",
+};
+
 export function MaterialStructure({
   request,
   scope,
   onChoose,
+  onClear,
+  onTypesChange,
 }: {
   request: MaterialRequest;
   scope: Scope;
   onChoose: (node: TreeNode | null, ownerId?: string) => void;
+  onClear: () => void;
+  onTypesChange?: (types: string[] | null) => void;
 }) {
   const [view, setView] = useState<"logical" | "storage">("logical");
   const [pages, setPages] = useState<Record<string, TreePage>>({});
@@ -46,7 +63,13 @@ export function MaterialStructure({
   const [result, setResult] = useState<Result<TreePage> | null>(null);
   const [error, setError] = useState("");
   const [selected, setSelected] = useState<TreeNode | null>(null);
+  const [ownerQuery, setOwnerQuery] = useState("");
+  const [searchText, setSearchText] = useState("");
   const generation = useRef(0);
+  useEffect(() => {
+    const timer = setTimeout(() => setOwnerQuery(searchText.trim()), 250);
+    return () => clearTimeout(timer);
+  }, [searchText]);
   // Navigation lists only server-authorized owners. Its root must remain usable
   // while the query itself has an explicit empty or narrower owner selection.
   const scopeKey = JSON.stringify({
@@ -71,6 +94,7 @@ export function MaterialStructure({
         cursor,
         limit: 40,
         view,
+        owner_query: ownerQuery,
       });
       if (generation.current !== token) return;
       setResult(response);
@@ -105,60 +129,97 @@ export function MaterialStructure({
     };
     // scopeKey is the canonical serialized navigation request.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scopeKey, view, request]);
+  }, [scopeKey, view, request, ownerQuery]);
   function renderBranch(parent: TreeNode | null, ownerId?: string) {
     const key = parent?.node_id || "$root";
     const page = pages[key];
-    return (
-      <>
-        <ul className="material-tree">
-          {page?.nodes.map((node) => (
-            <li key={node.node_id}>
-              <div className="tree-row">
-                {node.has_children && (
-                  <button
-                    className="tree-toggle"
-                    aria-label={`${expanded.includes(node.node_id) ? "收起" : "展开"}${node.title}`}
-                    aria-expanded={expanded.includes(node.node_id)}
-                    onClick={() => {
-                      if (expanded.includes(node.node_id))
-                        setExpanded((values) =>
-                          values.filter((value) => value !== node.node_id),
-                        );
-                      else {
-                        setExpanded((values) => [...values, node.node_id]);
-                        if (!pages[node.node_id]) void load(node);
-                      }
-                    }}
-                  >
-                    {expanded.includes(node.node_id) ? "−" : "+"}
-                  </button>
-                )}
+    // Root owners are grouped by their registered type. Only the common
+    // knowledge containers start open; execution/data/tool inventories stay
+    // folded until requested instead of flooding the navigation column.
+    const groups = parent
+      ? [["", page?.nodes || []] as const]
+      : Object.entries(
+          (page?.nodes || []).reduce<Record<string, TreeNode[]>>(
+            (all, node) => {
+              (all[node.owner_type || "other"] ||= []).push(node);
+              return all;
+            },
+            {},
+          ),
+        );
+    const nodeList = (nodes: readonly TreeNode[]) => (
+      <ul className="material-tree">
+        {nodes.map((node) => (
+          <li key={node.node_id}>
+            <div className="tree-row">
+              {node.has_children && (
                 <button
-                  className="tree-label"
-                  aria-pressed={selected?.node_id === node.node_id}
+                  className="tree-toggle"
+                  aria-label={`${expanded.includes(node.node_id) ? "收起" : "展开"}${node.title}`}
+                  aria-expanded={expanded.includes(node.node_id)}
                   onClick={() => {
-                    setSelected(node);
-                    onChoose(
-                      node,
-                      node.kind === "owner" ? node.node_id : ownerId,
-                    );
+                    if (expanded.includes(node.node_id))
+                      setExpanded((values) =>
+                        values.filter((value) => value !== node.node_id),
+                      );
+                    else {
+                      setExpanded((values) => [...values, node.node_id]);
+                      if (!pages[node.node_id]) void load(node);
+                    }
                   }}
                 >
-                  {node.title}
-                  <small>
-                    {node.layer || nodeKinds[node.kind] || node.kind}
-                  </small>
+                  {expanded.includes(node.node_id) ? "−" : "+"}
                 </button>
-              </div>
-              {expanded.includes(node.node_id) &&
-                renderBranch(
-                  node,
-                  node.kind === "owner" ? node.node_id : ownerId,
-                )}
-            </li>
-          ))}
-        </ul>
+              )}
+              <button
+                className="tree-label"
+                aria-pressed={selected?.node_id === node.node_id}
+                onClick={() => {
+                  if (selected?.node_id === node.node_id) {
+                    setSelected(null);
+                    onClear();
+                    return;
+                  }
+                  setSelected(node);
+                  onChoose(
+                    node,
+                    node.kind === "owner" ? node.node_id : ownerId,
+                  );
+                }}
+              >
+                {node.title}
+                <small>{node.layer || nodeKinds[node.kind] || node.kind}</small>
+              </button>
+            </div>
+            {expanded.includes(node.node_id) &&
+              renderBranch(
+                node,
+                node.kind === "owner" ? node.node_id : ownerId,
+              )}
+          </li>
+        ))}
+      </ul>
+    );
+    return (
+      <>
+        {groups.map(([kind, nodes]) =>
+          kind ? (
+            <details
+              key={kind}
+              className="owner-category"
+              open={["research", "project", "knowledge", "other"].includes(
+                kind,
+              )}
+            >
+              <summary>
+                {ownerTypeNames[kind] || "其他登记对象"} · 本页 {nodes.length}
+              </summary>
+              {nodeList(nodes)}
+            </details>
+          ) : (
+            nodeList(nodes)
+          ),
+        )}
         {busy.includes(key) ? (
           <p role="status">正在读取结构…</p>
         ) : (
@@ -174,6 +235,47 @@ export function MaterialStructure({
   return (
     <aside className="material-structure" aria-label="材料结构">
       <h2>材料结构</h2>
+      {onTypesChange && (
+        <fieldset className="owner-type-filter">
+          <legend>按标准类型筛选（可多选）</legend>
+          {Object.entries(ownerTypeNames).map(([kind, title]) => (
+            <label key={kind}>
+              <input
+                type="checkbox"
+                aria-label={`类型：${title}`}
+                checked={
+                  scope.owner_types == null || scope.owner_types.includes(kind)
+                }
+                onChange={(event) => {
+                  const current =
+                    scope.owner_types ?? Object.keys(ownerTypeNames);
+                  onTypesChange(
+                    event.target.checked
+                      ? [...current, kind]
+                      : current.filter((value) => value !== kind),
+                  );
+                }}
+              />
+              {title}
+            </label>
+          ))}
+          <button type="button" onClick={() => onTypesChange(null)}>
+            全部类型
+          </button>
+          <button type="button" onClick={() => onTypesChange([])}>
+            清空类型
+          </button>
+        </fieldset>
+      )}
+      <label>
+        查找归属对象
+        <input
+          aria-label="查找归属对象"
+          value={searchText}
+          placeholder="输入名称或 ID"
+          onChange={(event) => setSearchText(event.target.value)}
+        />
+      </label>
       <label>
         结构视图
         <select

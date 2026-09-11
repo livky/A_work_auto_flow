@@ -1,10 +1,10 @@
 # 研究分层记录与阅读标准
 
-本页按现行 v3 实现定义 L0–L4 与文稿保存方式；2026-09-10 起 Project 默认与 Research 使用同一记录标准。其他对象的实质分析也可采用；简单查字段不强制建立研究或五层记录。层级表达内容职责，不表达可信程度。模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)，后续修改按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、操作文档和 Skill。
+本页按现行 v4 聚合契约（兼容 v1–v3）定义 L0–L4 与文稿保存方式；Project 默认与 Research 使用同一记录标准。其他对象的实质分析也可采用；简单查字段不强制建立研究或五层记录。纯开发文档、规范整理或任务排期可用计划/摘要，不为它们补造技术经验和双文稿。层级表达内容职责，不表达可信程度。模块职责见 [ARCHITECTURE.md](../ARCHITECTURE.md)，后续修改按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、操作文档和 Skill。
 
 ## Research 与 Project 的共同默认
 
-两类对象的类型策略均为 `mode=explore`、`granularity=fine`、`retain=[L0,L1,L2,L3,L4]`、`auto_summary=true`。每轮实质设计、分析、开发或研究先保存 L0 依据、L1 技术单元与 L2 实际事件/决策；阶段结束检查 L3 经验、L4 地图及完整/精简文稿。已有内容可更新修订或固定引用复用，不能只留附件和总评。
+两类对象的类型策略均为 `mode=explore`、`granularity=fine`、`retain=[L0,L1,L2,L3,L4]`、`auto_summary=true`。每轮实质设计、分析、开发或研究先保存 L0 依据、L1 技术单元与 L2 有依据的研究经过；阶段结束检查 L3 经验、L4 概览及完整/精简文稿。已有内容可更新修订或固定引用复用，不能只留附件和总评。
 
 所有新项目及没有显式覆盖的既有项目都使用该默认；已有对象策略保留，公共 inspect 返回各字段来源。策略是 AI 记录建议，不会后台生成正文或自动升级复核。没有可推广经验时在阶段记录中说明缺口；纯聚合项目可引用已有研究单元，不复制整套知识。历史补写标注当前整理时间，不改写旧 Run 或冒充新的实验。
 
@@ -14,11 +14,23 @@
 | -- | ---------------- | ---------------------------------------------------------------------------- | ---------------------------- |
 | L0 | 原始材料统一视图 | 已登记的输入、完整结果、日志、脚本及固定文件引用；Run 元数据另标当前登记快照 | 先浏览清单，再核验并查看原件 |
 | L1 | detail           | 完整技术单元：实验、方法、推导或分析；检索说明与稳定正文块                   | 研究文稿与默认知识检索       |
-| L2 | event            | 尝试、观察、失败分类、选择及依据、后续行动                                   | 研究经过；关系可选           |
-| L3 | experience       | 适用条件、可复用做法、失败模式与不可迁移范围                                 | 经验阅读与检索；关系可选     |
-| L4 | map              | 研究问题、证据结构、阶段结论、未决事项与下一步导航                           | 总览与检索；关系可选         |
+| L2 | narrative（v4）  | 连贯说明路线、尝试、失败、选择理由、转折与实际结果                                   | 研究经过；关系可选           |
+| L3 | experience（新写作 v4） | 条目化观察/结论/假设/建议，适用条件、证据、失败与迁移边界                                 | 经验阅读与检索；关系可选     |
+| L4 | overview（v4）   | 项目/研究整体问题、方法、结果、当前阶段、限制和未决事项                           | 总览与检索；关系可选         |
 
 目标、路线、问题、检查点、复核，以及独立 `document` / `document_section` 保留自己的契约，level 为 null。默认材料关系显示 L1；更高层可按需选入。默认知识召回使用 L1 及以上；查独立文稿/章节用 `retrieval_mode:"documents"`，L0 用显式追溯入口，不因存在原始摘录或日志就进入常规全文/向量排名。明确选中固定来源时仍执行权限、版本与预算检查。
+
+## 新经过、经验与概览的写作及展开
+
+v4 的 narrative、experience、overview 均要求非空 `body_markdown`，它是实际阅读正文，不能只放标题或附件路径。结构化字段帮助检查完整性与定位，不在组包时重复拼出一份 JSON 正文。
+
+- narrative：`question`、`stages`（每阶段 situation/action/reason/outcome/evidence_refs）、`limitations`；解释路线为何变化，操作日志仍留 Run。可选 `occurred_at`、`failure`、目标/路线/问题/Run 引用保留实际发生时间、失败分类与研究关联；不把迁移时间当发生时间。
+- experience：沿用适用域、做法、证据与失败边界，新增 `knowledge_type`：observation / conclusion / hypothesis / recommendation。分类不是复核状态，假设不能因此变为结论。
+- overview：`question`、`methods`、`results`、`current_stage`、`limitations`、`open_questions`；包含范围和未解决问题，不能省略负面结果。
+
+新三类 payload 均明确 `process_refs`、`technical_refs`；经过/概览另有 `experience_refs`，无关联可为空数组。引用必须固定 record ID、正整数 revision、SHA-256；分别指向 narrative、detail、experience。技术块可加 `locator:"block:块ID"`，读取时补必需定义。主入口展开仅沿这些固定关系；旧经验可复用原 sources/evidence_refs 中的固定技术引用，不扫描同 Owner 全文猜关联。
+
+旧 v1–v3 event/map 原字节、层投影和来源继续保留，但不自动充当新经过/概览。语义整理时实际阅读依据，创建新 narrative/overview 并保留旧记录引用；未知处说明缺口，不自动继承 accepted。L0、L1 及独立长短文稿职责不变。
 
 ## 文件归属
 
@@ -58,7 +70,9 @@ e_{\mathrm{abs}}=\left|\operatorname{Fraction}(\widehat S)-S_{\mathrm{ref}}\righ
 
 ## 保存、回读与完整性检查
 
-需要执行的实验先完成原生 Run 与受控来源登记，再按 [请求示例](MEMORY_REQUESTS.md) 生成实际 JSON；方法、推导和分析按真实依据保存，不为字段完整虚构 Run。新记录默认 v3，建议显式设置 `draft.schema_version:3`。未标版本的旧 detail 形状及包含 `map.payload.report` 的地图按 v2 兼容；显式 v1 仍按原契约解释，不能把旧 L1 事件当成新 L1 技术单元。提交封套和记录的 `schema_version` 是不同字段。
+当前工作台只展示统一的 L2/L4 层级入口。旧事件和地图迁移须实际阅读、提交完整 v4 新修订，并固定引用其上一修订，不能直接改规范 JSON；流程见 [旧内容整理](MEMORY_USAGE.md#整理旧事件和地图)。保存新经过后回读 revision/SHA，再修订经验与概览的展开关系，并重建对应对象索引。历史研究事实、失败执行和结论复核不随迁移升级。
+
+需要执行的实验先完成原生 Run 与受控来源登记，再按 [请求示例](MEMORY_REQUESTS.md) 生成实际 JSON；方法、推导和分析按真实依据保存，不为字段完整虚构 Run。新 narrative/overview 默认 v4，新分类 experience 显式设置 `schema_version:4`；L1 与独立文稿继续 v3。其他旧种类默认 v3。未标版本的旧 detail 形状及包含 `map.payload.report` 的地图按 v2 兼容；显式 v1 仍按原契约解释，不能把旧 L1 事件当成新 L1 技术单元。提交封套和记录的 `schema_version` 是不同字段。
 
 ```powershell
 .\workbench.cmd memory inspect RES-实际研究ID
@@ -67,15 +81,15 @@ e_{\mathrm{abs}}=\left|\operatorname{Fraction}(\widehat S)-S_{\mathrm{ref}}\righ
 .\workbench.cmd memory inspect RES-实际研究ID
 ```
 
-每轮至少核对L0证据引用、L1实际过程与L2实际事件。阶段结束维护L3经验、L4地图；已有记录可新增修订，不重复制造内容。若证据不足以提炼经验，明确“尚无可推广结论”及后续验证条件。所有来源未知项应明确缺口，不靠虚构字段通过校验。
+每轮至少核对L0证据引用、L1实际过程与L2研究经过。阶段结束维护L3经验、L4概览；已有记录可新增修订，不重复制造内容。若证据不足以提炼经验，明确“尚无可推广结论”及后续验证条件。所有来源未知项应明确缺口，不靠虚构字段通过校验。
 
 保存回执成功后，还需检查逐条记录的正文、payload、固定来源以及索引状态。索引pending时按回执补偿，不重复提交同一逻辑请求。工作台研究文稿应能直接读到参数、公式、结果与限制；历史修订、L0原始附件按需展开。仅CLI成功或页面有标题不能算内容验收。
 
 ## 连贯报告的编排
 
-L0–L4规定内容如何保存，不规定报告按什么目录阅读。工作台的“研究经过”默认是一份由 AI 编排的技术报告：问题与范围、共同方法、详细实验、讨论、结论与下一步。先展开实验事实，随后综合经验；不要把五层各加一个标题直接拼接。
+L0–L4规定内容如何保存，不规定报告按什么目录阅读。工作台的“研究经过”页还提供独立文稿阅读：问题与范围、共同方法、详细实验、讨论、结论与下一步。L2 narrative 则是其中有依据的过程内容。先展开实验事实，随后综合经验；不要把五层各加一个标题直接拼接。
 
-新文稿使用独立的 `document` 与 `document_section` 记录，两者 level 为 null。文稿保存目的、读者、范围、公共固定依据和有序 `section_refs`；章节保存标题、稳定 section_key、角色及有序 blocks。完整过程的 `document_type` 为 `research_process`，精简报告为 `research_report`，两者共享固定依据、独立组织正文。L4继续组织知识地图。旧 `map.payload.report` 作为兼容阅读入口保留，不用于新文稿。
+新文稿使用独立的 `document` 与 `document_section` 记录，两者 level 为 null。文稿保存目的、读者、范围、公共固定依据和有序 `section_refs`；章节保存标题、稳定 section_key、角色及有序 blocks。完整过程的 `document_type` 为 `research_process`，精简报告为 `research_report`，两者共享固定依据、独立组织正文。L4 overview 保存整体概览；旧地图经实际整理后用新修订迁入 overview，旧 `map.payload.report` 仅供历史固定阅读，不用于新文稿。
 
 | 正文块            | 必填内容                        | 用途                                                                     |
 | ----------------- | ------------------------------- | ------------------------------------------------------------------------ |
@@ -93,7 +107,7 @@ v3 L1 的正文块完整呈现问题、输入、算法步骤、关键中间量�
 ### 修改与回读
 
 1. 先决定每轮回答的问题和共同方法，保存 L1/L2，回读固定版本。
-2. 维护已有 L3 经验和 L4 地图；单独保存章节，再用其固定引用保存文稿。环境重试等过程可在附录交代。
+2. 维护已有 L3 经验和 L4 概览（旧地图保留，整理为概览需另存新内容）；单独保存章节，再用其固定引用保存文稿。环境重试等过程可在附录交代。
 3. 通过公共 `memory document` 回读整篇报告，再从开头到结尾审核衔接、重复、顺序、参数公式和图文一致性。没有编排的旧对象明确显示“尚未编排”，可以先查看原记录。
 4. 先读取 `memory outline`，再用返回的章节记录 ID（不是 section_key）调用 `memory section-context`，获取目标章节、固定技术块与必要定义，按预算和选择清单局部修改。该动作的预算是 `budget:{"max_chars":20000}`，区别于普通材料包的整数 budget；预算约束返回给 AI 的正文，不代表底层只读取了一章。章节有变化时新增其修订，再修订文稿的章节引用；未变章节沿用原引用。
 5. `memory document-impact` 比较固定引用和 `watch_refs` 基线，报告来源修订、失效和新增技术单元及受影响路径。变化关注不属于证据，不让新来源自动进入正文；AI 复核后才更新对应章节。无变化不制造新修订。
@@ -105,6 +119,6 @@ v3 L1 的正文块完整呈现问题、输入、算法步骤、关键中间量�
 
 v1 source/event/experience/map的存储层仍是L0/L1/L2/L3，展示与索引分别映射为L0/L2/L3/L4。原记录、哈希和固定引用保持不变；新L1只能从真实证据补写，旧Run缺说明时显示缺口。补写不自动继承原证据的accepted状态。
 
-v2 detail 的原 `body_markdown` 和旧 map 编排继续读取；新写作采用 v3 技术单元与独立文稿，不把读时兼容误当成已迁移历史。当前契约见 [memory-v3.schema.json](../automation/schemas/memory-v3.schema.json)；技术块规则见 [technical_units.py](../automation/scripts/memory/technical_units.py)，文稿选择、组装和影响检查见 [documents.py](../automation/scripts/memory/documents.py)。
+v2 detail 的原 `body_markdown` 和旧 map 编排继续读取；新写作采用 v3 技术单元与独立文稿，不把读时兼容误当成已迁移历史。当前聚合契约见 [memory-v4.schema.json](../automation/schemas/memory-v4.schema.json)；技术块规则见 [technical_units.py](../automation/scripts/memory/technical_units.py)，文稿选择、组装和影响检查见 [documents.py](../automation/scripts/memory/documents.py)。
 
 正文与图表随所属对象保存。规范记忆由公共 CLI 维护；阅读目录、全文/向量和材料关系是可重建派生数据，不成为新的事实来源。用户修改的旧 Skill 升级时须按新版标准合并；框架安装器不能静默覆盖自定义指令。[重构计划](design/system-memory/L0-L4-REFACTOR.md) 保留历史范围与验证记录，现行行为以本页、当前契约和代码为准。

@@ -1,0 +1,65 @@
+{
+  "schema_version": 3,
+  "request_id": "a42d81ed-bd5d-4c2f-9b4b-0ff365cbda7e",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+  "expected_head": "COM-25c72d91-9e55-4f4a-808f-248ac05ee228",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "精简报告章节",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T125056Z-8D1E5D9047B1",
+        "kind": "document_section",
+        "title": "内容来源查询实现：精简报告章节",
+        "body_markdown": "",
+        "keywords": [
+          "内容来源",
+          "固定展开",
+          "分层查询"
+        ],
+        "payload": {
+          "section_key": "content-query-summary",
+          "role": "conclusion",
+          "blocks": [
+            {
+              "type": "prose",
+              "markdown": "本轮已实现概览与经验、研究经过、技术内容三种来源查询，支持沿固定引用展开。L0/L1 和旧固定版本保留。软件回归通过，新旧内容不会自动互换；旧B01失败、用户复验、真实检索质量和第二机器仍有明确缺口。",
+              "evidence_refs": [
+                {
+                  "target_kind": "record",
+                  "target_id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+                  "revision": 1,
+                  "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+                  "locator": "",
+                  "relation": "references"
+                }
+              ]
+            }
+          ],
+          "missing_refs": [],
+          "title": "精简报告章节",
+          "watch_refs": []
+        },
+        "sources": [
+          {
+            "target_kind": "record",
+            "target_id": "MEM-63a8e494-0cf9-50c3-af93-e572e55e8548",
+            "revision": 1,
+            "sha256": "e110b60eef682f64f97c15bc9dc254e6bda99a46968a611ea63d1c9a48010bf5",
+            "locator": "",
+            "relation": "references"
+          }
+        ],
+        "provenance_gap": null,
+        "record_reason": "保存本轮实际实现、失败边界与软件验证，不代替人工或业务验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

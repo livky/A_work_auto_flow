@@ -1,6 +1,6 @@
 # 记忆请求示例：按任务读取
 
-本页是 [版本记忆使用指南](MEMORY_USAGE.md) 的字段补充，按 2026-09-09 的 main 实现核对。只读当前任务需要的小节：保存记录看 1–3，研究续接看 4，材料包与总结看 5，复核纠错看 6，阶段巩固与使用反馈看 7–8，独立文稿与局部修改看 9。示例没有业务结论，也不是用户验收答案。修改请求字段时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、使用指南与 Skill。
+本页是 [版本记忆使用指南](MEMORY_USAGE.md) 的字段补充，按 2026-09-10 当前实现核对（保留旧版本示例）。只读当前任务需要的小节：保存记录看 1–3，研究续接看 4，材料包与总结看 5，复核纠错看 6，阶段巩固与使用反馈看 7–8，独立文稿与局部修改看 9。示例没有业务结论，也不是用户验收答案。修改请求字段时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步契约、使用指南与 Skill。
 
 所有“替换为…”、示例修订号和 UUID 都是占位值，不能照抄提交。ID、HEAD、来源版本和指纹必须来自当前工作区的真实回执；新逻辑请求生成新 UUID，重试原请求保留原 UUID 与内容。正文公式使用 LaTeX 并定义变量与单位。
 
@@ -8,7 +8,9 @@
 
 ## 1. 公共入口与 CommitRequest
 
-从工作区根目录使用 UTF-8 JSON 请求文件。动作签名以 [api.py](../automation/scripts/memory/api.py)、[cli.py](../automation/scripts/memory/cli.py) 为准；当前字段见 [v3 schema](../automation/schemas/memory-v3.schema.json) 和 [contracts.py](../automation/scripts/memory/contracts.py)。新 draft 默认 v3；未显式指定版本的旧 detail 形状、含 `report` 的旧 map 按 v2 兼容。新记录建议显式指定 `draft.schema_version:3`；v1/v2 历史保持原字节，不靠改 level 或重新计算哈希迁移。
+从工作区根目录使用 UTF-8 JSON 请求文件。动作签名以 [api.py](../automation/scripts/memory/api.py)、[cli.py](../automation/scripts/memory/cli.py) 为准；当前字段见 [v4 聚合 schema](../automation/schemas/memory-v4.schema.json) 和 [contracts.py](../automation/scripts/memory/contracts.py)。新 narrative/overview 默认 v4，分类 experience 显式用 v4，L1/独立文稿仍 v3；新记录按类型明确 `draft.schema_version`。未指定版本的旧 detail 形状、含 `report` 的旧 map 按 v2 解释；历史保持原字节，不靠改 level 或重新计算旧哈希迁移。
+
+同一 ID 的类型迁移只允许 `event→narrative`、`map→overview`：`put_record` 保留 `record_id` 与实际 `expected_revision`，draft 必须是完整 v4 正文，有 `change_reason`，且 `sources` 含指向上一修订的 `target_kind:"record"`、ID、revision、`sha256:上一修订record_hash`、`relation:"references"`。HEAD 与来源检查照常生效；既有普通草案不会自动迁移。新经过的可选 `occurred_at`、`failure` 及研究关联用于保留实际时间与失败边界。
 
 提交封套的 `schema_version` 当前接受 1/2/3，与每条 draft 的记录版本分别校验。下面封套使用 3；旧封套可兼容，不会因此把旧正文改成 v3 技术块。
 
@@ -69,7 +71,6 @@
         "record_reason": "保留后续选择方法所需的依据与边界",
         "discovery": "owner_only",
         "sensitivity": "internal",
-        "schema_version": 1,
         "level": "L3"
       }
     }
@@ -78,6 +79,14 @@
 ```
 
 更新时将 operation 的 `client_key` 换成 `record_id` 和 `expected_revision`，保留完整草案并填写 `change_reason`；不要提交旧记录中的服务字段（如 record_hash、created_at）。一个批次只写一个 owner。可先分次提交目标、路线，再用回执固定引用建立检查点；不要猜测尚未生成的 MEM ID。
+
+### 新 L2–L4 草案
+
+沿用上述公共 metadata 和提交封套；draft 指定 `schema_version:4`，kind/level 分别为 narrative/L2、experience/L3、overview/L4。三类都要求非空完整 `body_markdown`，结构字段与正文一致。具体字段与写作职责见 [记录标准](RESEARCH_RECORDING.md#新经过经验与概览的写作及展开)。
+
+narrative payload 至少含 claims、question、stages、limitations、process_refs、technical_refs、experience_refs；stages 每项含 situation/action/reason/outcome/evidence_refs。overview payload 至少含 claims、question、methods、results、current_stage、limitations、open_questions 及上述三类 refs。experience 沿用原 payload 并增加 knowledge_type、process_refs、technical_refs。无已保存关联时用空数组；有引用时必须实际回读正整数 revision 和 SHA-256，不能使用下方旧通用引用示例的 null 指纹。
+
+旧 event/map 不直接改 kind 或 level；先实际整理正文，另存 narrative/overview 并固定引用旧依据。保存成功不继承来源的复核状态。
 
 ## 2. 固定引用与来源指纹
 
@@ -208,7 +217,7 @@ next_refs = packet["manifest"]["navigation_refs"]
 
 ### event：决策、事件与失败
 
-以下 payload 配合当前 `kind="event"`、`level="L2"`，v2 历史形状也兼容。跨 Run 决策将比较观察写入 observation、选择与理由写入 decision，并在 run_refs/sources 固定参与 Run 或经验；无失败时 failure=null。它记录本次决策，不复制原 Run 的完整输入输出，也不表示再次执行原实验。
+以下是保留的旧事件示例，payload 配合 `kind="event"`、`level="L2"`，v2 历史形状也兼容。跨 Run 决策将比较观察写入 observation、选择与理由写入 decision，并在 run_refs/sources 固定参与 Run 或经验；无失败时 failure=null。它记录本次决策，不复制原 Run 的完整输入输出，也不表示再次执行原实验。
 
 ```json
 {
@@ -606,7 +615,7 @@ label 为 missing/irrelevant/invalid_analogy/lost_boundary/stale/adopted/outcome
 
 ## 9. 独立文稿、章节与局部修改
 
-新文稿用 `document` 和 `document_section`，两者 `schema_version:3`、`level:null`、`body_markdown:""`。L4 map 保持知识地图；`map.payload.report` 只保留旧编排兼容，不用于新文稿。完整过程为 `research_process`，精简报告为 `research_report`，分别维护目的、读者、范围与有序章节，共用固定证据。
+新文稿用 `document` 和 `document_section`，两者 `schema_version:3`、`level:null`、`body_markdown:""`。新 L4 用 overview 保存概览，旧 map 保留知识地图；`map.payload.report` 只保留旧编排兼容，不用于新文稿。完整过程为 `research_process`，精简报告为 `research_report`，分别维护目的、读者、范围与有序章节，共用固定证据。
 
 ### 先保存单元，再保存章节和文稿
 

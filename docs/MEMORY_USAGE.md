@@ -1,6 +1,6 @@
 # 版本记忆使用指南
 
-本指南按 2026-09-09 的 main 实现核对，对应 `automation/scripts/memory/api.py` 和 `memory/cli.py` 的实际入口。示例中的对象 ID、文件路径、请求 ID 和修订号需要替换为当前工作区的值；示例不是业务结论或验收记录。模块职责以 [ARCHITECTURE.md](../ARCHITECTURE.md) 为入口；修改功能时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 检查本指南、请求示例与 Skill 的同步范围。
+本指南按当前工作树实现核对（2026-09-11），对应 `automation/scripts/memory/api.py` 和 `memory/cli.py` 的实际入口。示例中的对象 ID、文件路径、请求 ID 和修订号需要替换为当前工作区的值；示例不是业务结论或验收记录。模块职责以 [ARCHITECTURE.md](../ARCHITECTURE.md) 为入口；修改功能时按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 检查本指南、请求示例与 Skill 的同步范围。
 
 ## 1. 先理解保存的对象
 
@@ -16,9 +16,9 @@
 | --- | --- |
 | `source` | L0 的内部来源记录：独立来源或受控摘录；Run 输入/产物由统一 L0 视图汇总，无需再复制一条 source |
 | `detail` | L1：实验、方法、推导或分析技术单元；检索说明用于发现，稳定正文块保存完整解释，实验绑定原生 Run |
-| `event` | L2：一次观察、跨 Run 决策或失败处理经过；未知时间保留未知 |
+| `narrative`（v4） | L2：有依据的研究路线、尝试、失败、选择理由与转折，保存完整正文 |
 | `experience` | L3：局部经验、适用与禁止迁移条件、失败模式 |
-| `map` | L4：对象和问题之间的结构说明 |
+| `overview`（v4） | L4：项目/研究整体问题、方法、结果、当前阶段、限制和未决事项 |
 | `document_section` | 独立章节，level=null；用衔接文字和固定技术块组织阅读 |
 | `document` | 完整研究过程或精简研究报告，level=null；固定有序章节、目的、读者与范围 |
 | `question` | 问题、尝试、剩余缺口与解决依据 |
@@ -32,9 +32,15 @@
 | `feedback` | 纠错、无关、撤回或其他使用反馈 |
 | `review` | 某个 CLM 的独立复核历史；通过专用 `review` 入口保存 |
 
-当前字段以 [v3 JSON 契约](../automation/schemas/memory-v3.schema.json) 和服务校验为准；[v2](../automation/schemas/memory-v2.schema.json)、[v1](../automation/schemas/memory-v1.schema.json) 保留兼容。新草稿默认 v3；只有未指定记录版本的旧 detail 形状，以及仍含 `map.payload.report` 的旧地图，会按 v2 解释。建议新记录明确写 `draft.schema_version: 3`，不要依赖兼容形状猜版本。CommitRequest 封套版本与记录版本相互独立，不能靠修改封套迁移正文。旧 v1 存储 L1/L2/L3 分别投影为新 L2/L3/L4，历史字节与哈希不变；v2 detail 仍读取原 `body_markdown`。正文公式用可读 LaTeX，并说明符号、单位与适用条件。研究默认覆盖与写作标准见 [分层记录标准](RESEARCH_RECORDING.md)。
+当前字段以 [v4 聚合契约](../automation/schemas/memory-v4.schema.json) 和服务校验为准；[v2](../automation/schemas/memory-v2.schema.json)、[v1](../automation/schemas/memory-v1.schema.json) 保留历史读取。新 narrative/overview 默认 v4，分类 experience 显式用 v4，其他种类默认 v3；新草案按类型明确版本，不靠兼容形状猜版本。CommitRequest 封套版本与记录版本相互独立，不能靠修改封套迁移正文。旧 event/map 不再提供单独的工作台筛选或新建入口；尚未整理的对象记录仍在相应层级可见，但不会冒充新内容查询的 narrative/overview。旧 v1 存储 L1/L2/L3 分别投影为新 L2/L3/L4，历史字节与哈希不变；v2 detail 仍读取原正文。公式说明符号、单位与适用条件。研究默认覆盖见 [分层记录标准](RESEARCH_RECORDING.md)。
 
-每轮实质研究先保存 L1 `detail`：`unit_type` 区分 experiment/method/derivation/analysis，`retrieval_description` 说明问题、方法、发现与适用边界，完整技术正文只写入 `blocks`，`body_markdown` 留空。实验必须固定引用实际 Run；未执行的方法、推导或分析可以令 `run_ref=null`，并交代依据或缺口。再用 L2 `event` 记录“这次为何作出选择”，将选择写入 `payload.decision`，固定参与 Run 及来源；可复用条件写 L3 `experience`，阶段结构写 L4 `map`。跨研究不自动意味着经验。L2 的 `payload.failure` 记录失败类别、实际范围、结果、不能推出的判断和重试条件；经验的 `failure_modes` 文本不能代替失败经过。说明和事件引用原 Run，不重复登记实验。
+每轮实质研究先保存 L1 `detail`：`unit_type` 区分 experiment/method/derivation/analysis，`retrieval_description` 说明问题、方法、发现与适用边界，完整技术正文只写入 `blocks`，`body_markdown` 留空。实验必须固定引用实际 Run；未执行的方法、推导或分析可以令 `run_ref=null`，并交代依据或缺口。再用 v4 L2 `narrative` 的 stages 和正文记录“为何作出选择”及实际转折，固定技术依据；L3 `experience` 明确 knowledge_type 与边界，L4 `overview` 保存整体概览。跨研究不自动意味着经验。研究经过可保存 `occurred_at`、`failure` 和目标/路线/Run 引用；失败字段记录类别、范围、结果、不能推出的判断和重试条件。经验的 `failure_modes` 不能代替实际失败经过，也不重复登记实验。
+
+### 整理旧事件和地图
+
+先读旧正文、实际依据、失败与适用边界，再编写新内容。通过 `put_record` 修订同一个 ID：只允许 event→narrative、map→overview，记录版本为 4，必须有完整 `body_markdown`、`change_reason`，并在 `sources` 中用 `relation: references` 固定上一修订的 ID、revision 和 record_hash。仍需通过正常 schema、来源授权和 HEAD/修订冲突检查；服务不会自动推导正文或展开关联。
+
+新修订成为当前记录，索引按相同身份更新，不同时留下两条当前记录；旧修订、旧引用及审查历史保持不变。将经过和技术单元保存回读后，再用实际 revision/SHA 写入经验、概览的展开关系。完成后执行 `memory rebuild --scope 对象ID`，分别核对保存、全文索引与向量索引状态。数据整理不重跑实验，也不提升科学复核状态。
 
 Research 与 Project 默认都按上述标准记录实质工作：类型策略 explore/fine、保留 L0–L4、建议阶段总结。已有显式对象策略仍优先；这不等于后台自动生成。Project 的设计/开发正文应保存为技术单元和双文稿，只有 Run 附件时仍缺知识正文。
 

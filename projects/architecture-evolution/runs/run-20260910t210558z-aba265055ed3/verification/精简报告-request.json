@@ -1,0 +1,62 @@
+{
+  "schema_version": 3,
+  "request_id": "31e13eef-131f-4404-97c7-f27c73775bf8",
+  "actor": {
+    "kind": "ai",
+    "id": "Codex"
+  },
+  "owner_id": "RUN-20260910T210558Z-ABA265055ED3",
+  "expected_head": "COM-8a417beb-4f5f-4672-acd0-9e3c64ebe5aa",
+  "operations": [
+    {
+      "op": "put_record",
+      "client_key": "精简报告",
+      "draft": {
+        "schema_version": 3,
+        "owner_id": "RUN-20260910T210558Z-ABA265055ED3",
+        "kind": "document",
+        "title": "材料查询七项优化：精简报告",
+        "body_markdown": "",
+        "keywords": [
+          "材料查询",
+          "完整文稿",
+          "固定版本",
+          "Skill维护"
+        ],
+        "sources": [],
+        "payload": {
+          "document_type": "research_report",
+          "purpose": "理解实际优化、故障修正、验证及限制",
+          "audience": "工作区使用者与维护者",
+          "scope": "本轮七项材料查询优化",
+          "common_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-6de8c7a1-217f-5075-8517-99eeafe54e77",
+              "revision": 1,
+              "sha256": "54143aba39787d3ff9c6fa484333063085cd610647d6c4c457ee68a93967084a",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "section_refs": [
+            {
+              "target_kind": "record",
+              "target_id": "MEM-74a35066-f202-5c86-8a44-8d71927c12a9",
+              "revision": 1,
+              "sha256": "3bf5aef4c4823586fc782ec68837842ab5dc21c0813f9c461760818629ca2865",
+              "locator": "",
+              "relation": "references"
+            }
+          ],
+          "watch_refs": [],
+          "missing_refs": []
+        },
+        "provenance_gap": "文稿来源固定于common_refs和section_refs",
+        "record_reason": "保存实际开发、故障、验证与边界；不替代人工、科学或第二机验收",
+        "discovery": "workspace_summary",
+        "sensitivity": "internal"
+      }
+    }
+  ]
+}

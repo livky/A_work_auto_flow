@@ -33,7 +33,7 @@ def project(service, target_ids):
             refs.extend(record["sources"])
             if record["kind"] == "source":
                 refs.append(record["payload"]["source_ref"])
-            elif record["kind"] in {"experience", "event"}:
+            elif record["kind"] in {"experience", "event", "narrative", "overview"}:
                 for claim in record["payload"]["claims"]:
                     refs.extend(claim["evidence_refs"])
             elif record["kind"] == "association" and record["payload"]["relation"] == "derived_from":

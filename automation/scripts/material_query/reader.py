@@ -102,6 +102,35 @@ class Reader:
             raise QueryError("DENIED", "对象不在当前可读范围")
         return owner
 
+    def native(self, ref):
+        """按登记身份读取 L0 卡片；原件未版本化时不假装能恢复旧字节。"""
+        owner = self.owner(ref.id)
+        if ref.kind != "owner" or ref.sha256 != owner["fingerprint"]:
+            raise QueryError("STALE", "原始登记已有变化，无法按该固定指纹返回")
+        path = owners.safe_path(self.root, owner["native_ref"]["path"])
+        size = path.stat().st_size
+        self.ledger.charge("read_bytes", size)
+        with path.open("rb") as stream:
+            raw = stream.read(size)
+        if len(raw) != size or hashlib.sha256(raw).hexdigest() != ref.sha256:
+            raise QueryError("STALE", "原始登记读取期间发生变化")
+        text = raw.decode("utf-8-sig")
+        native = json.loads(text) if path.suffix.lower() == ".json" else text
+        if isinstance(native, dict):
+            if native.get("sensitivity") == "restricted" or any(c.get("sensitivity") == "restricted" for c in native.get("claims", [])):
+                raise QueryError("DENIED", "原始登记或其中结论限制读取")
+            refs = list(iter_refs(native))
+            if owner["owner_type"] == "run":
+                from .native_sources import claim_sources
+                import evidence
+                for claim in native.get("claims", []):
+                    refs.extend(claim_sources(self, {"target_id": claim["claim_id"], "sha256": evidence.fingerprint(claim)}, ref.id))
+            self.authorize_sources({"record_id": ref.id, "revision": ref.sha256, "sources": refs, "payload": {}})
+            text = "```json\n" + text.rstrip() + "\n```"
+        self.ledger.checkpoint()
+        self.fixed[(ref.id, None, ref.sha256)] = ref
+        return text, native
+
     def locate(self, record_id):
         if record_id in self.excluded_ids:
             raise QueryError("DENIED", "材料被排除")
@@ -201,9 +230,17 @@ class Reader:
                     row = None
                     if db is not None:
                         try:
-                            row = db.execute("SELECT record_id FROM memory_records WHERE canonical_id=? AND entity_kind='claim'", (tid,)).fetchone()
+                            row = db.execute("SELECT record_id,entity_kind,owner_id FROM memory_records WHERE canonical_id=? AND entity_kind IN ('claim','legacy-claim')", (tid,)).fetchone()
                         finally:
                             db.close()
+                    if row and row[1] == "legacy-claim":
+                        from .native_sources import claim_sources
+                        refs = claim_sources(self, legacy, row[2])
+                        # Internal closure envelope only: it is never published
+                        # as a memory record, candidate or invented revision.
+                        queue.append({"record_id": "native-claim:" + tid, "revision": legacy["sha256"],
+                                      "sources": refs, "payload": {}})
+                        continue
                     if row:
                         container = self.store.read_record(self.locate(row[0]), row[0])
                     elif self.claim_locator:

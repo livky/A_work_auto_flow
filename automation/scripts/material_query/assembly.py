@@ -4,13 +4,15 @@
 新领域解释不在这里生成，更不会由一次查询隐式提交规范记录。
 """
 from dataclasses import asdict
+import base64
 import json
 import re
 
 from memory.technical_units import description_text, is_unit, render_full
+from memory.errors import MemoryError
 
 from .contracts import FixedRef
-from .legacy_adapter import fixed_record
+from .legacy_adapter import fixed_record, to_legacy, memory_error
 from .validation import QueryError, parse
 
 
@@ -70,6 +72,13 @@ def required_block_ids(record, selected):
 def content_parts(record, ref, definition, question=""):
     """返回(group,title,text,selector,ref)列表，外层负责预算与来源权限。"""
     key, payload = definition.key, record["payload"]
+    if record["kind"] == "representation" and key == "full":
+        return [("direct", record["title"], payload.get("text", ""), "representation.text", ref)]
+    if record.get("schema_version") == 4 and key in {"full", "section"}:
+        # Narrative/overview/experience v4 require an authored complete body.
+        # Structured navigation metadata stays inspectable on the record; it
+        # must not be appended as a second prose source or exposed as raw JSON.
+        return [("direct", record["title"], record["body_markdown"], "body_markdown", ref)]
     if key == "unit_digest":
         text = description_text(record) if is_unit(record) else readable_payload(payload)
         return [("direct", record["title"], text, "detail.retrieval_description" if is_unit(record) else "experience", ref)]
@@ -96,8 +105,10 @@ def content_parts(record, ref, definition, question=""):
 
 
 class Assembler:
-    def __init__(self, reader, ledger, allowed, *, purpose="exploration", formal_texts=None, association_share=1.0):
+    def __init__(self, reader, ledger, allowed, *, required_allowed=None, association_allowed=None, purpose="exploration", formal_texts=None, association_share=1.0):
         self.reader, self.ledger, self.allowed = reader, ledger, allowed
+        self.required_allowed = required_allowed or allowed
+        self.association_allowed = association_allowed or allowed
         self.purpose = purpose
         self.formal_texts = formal_texts or {}
         self.parts, self.gaps, self.contributors = [], [], {}
@@ -115,7 +126,7 @@ class Assembler:
         self.issues.append({"code": code, "message": message,
                             "affected_refs": [asdict(ref)] if known and code != "DENIED" else [], "retry": retry_hint(code)})
 
-    def add(self, group, title, text, selector, ref):
+    def add(self, group, title, text, selector, ref, *, figures=()):
         if not text:
             self.gap("选定材料没有可组合正文", ref=ref)
             return
@@ -128,9 +139,44 @@ class Assembler:
         self.ledger.charge("output_chars", len(text))
         if group == "association":
             self.association_used += len(text)
-        self.parts.append({"group": group, "heading": title, "markdown": text,
-                           "refs": [asdict(ref)], "selectors": [selector], "omitted": []})
+        part = {"group": group, "heading": title, "markdown": text,
+                "refs": [asdict(ref)], "selectors": [selector], "omitted": []}
+        self.parts.append(part)
         self.contributors[(ref.id, ref.revision, ref.sha256)] = ref
+        # 图片随本次已授权材料包返回，避免浏览器另开不带原范围/预算的读取。
+        # 二进制按 read_bytes 计量；output_chars 计正文及图注，不计传输编码。
+        for number, figure in enumerate(figures):
+            if selector.startswith("detail.blocks.") and f"](figure:{number})" not in text:
+                continue
+            legacy = figure["ref"]
+            image_ref = FixedRef(legacy["target_kind"], legacy["target_id"], legacy["revision"], legacy["sha256"], legacy["locator"])
+            try:
+                if image_ref.kind != "file":
+                    raise QueryError("SOURCE_MISSING", "图示没有已登记文件引用")
+                path, _ = self.reader.service._file(to_legacy(image_ref))
+                if not path.is_relative_to(self.reader.root) or path.stat().st_size > 8 * 1024 * 1024:
+                    raise QueryError("DENIED", "图示不属于工作区受控附件或超过8 MiB展示上限")
+                raw = self.reader.file_bytes(image_ref)
+                mime = ("image/png" if raw.startswith(b"\x89PNG\r\n\x1a\n") else
+                        "image/jpeg" if raw.startswith(b"\xff\xd8\xff") else
+                        "image/webp" if raw[:4] == b"RIFF" and raw[8:12] == b"WEBP" else None)
+                if mime is None:
+                    raise QueryError("SOURCE_MISSING", "图示不是可展示的固定栅格图片")
+                self.ledger.charge("output_chars", len(figure["caption"]))
+                part.setdefault("figures", []).append({"index": number, "caption": figure["caption"], "ref": asdict(image_ref),
+                    "data_url": "data:" + mime + ";base64," + base64.b64encode(raw).decode("ascii")})
+                if selector == "detail.blocks" and f"](figure:{number})" not in part["markdown"]:
+                    # 完整单元中尚未安置的已登记图，按原图序追加；局部块不
+                    # 追加其他图，避免把块外材料混入显式片段选择。
+                    marker = f"\n\n![图{number + 1}](figure:{number})"
+                    self.ledger.charge("output_chars", len(marker))
+                    part["markdown"] += marker
+                self.contributors[(image_ref.id, image_ref.revision, image_ref.sha256)] = image_ref
+            except (QueryError, MemoryError) as exc:
+                exc = memory_error(exc) if isinstance(exc, MemoryError) else exc
+                if exc.code in {"BUDGET", "CANCELLED"}:
+                    raise
+                self.gap(exc.message, code=exc.code, ref=image_ref)
 
     def add_record(self, ref, definition, question, *, group=None):
         identity = (ref.id, ref.revision, ref.sha256, ref.locator, definition.key)
@@ -141,8 +187,15 @@ class Assembler:
         if ref.kind == "file":
             self.add(group or "direct", "原始材料", self.reader.file(ref), "source.content", ref)
             return
+        if ref.kind == "owner":
+            # Owner 原件由候选准入和缓存回读核验范围；它仍是 L0，不提升为结论。
+            text, _native = self.reader.native(ref)
+            self.add(group or "direct", "原始登记", text, "owner.native", ref)
+            return
         record = self.reader.record(ref)
-        if not self.allowed(record):
+        payload = record["payload"]
+        check = self.required_allowed if group == "required_context" else self.association_allowed if group == "association" else self.allowed
+        if not check(record):
             self.gap("必要内容被当前范围排除", code="DENIED")
             return
         from .representations import availability
@@ -166,14 +219,34 @@ class Assembler:
                 target = FixedRef("file", item["target_id"], item["revision"], item["sha256"], item["locator"])
                 self.add(group or "direct", record["title"] + "：原始材料", self.reader.file(target), "source.content", target)
             return
-        for part_group, title, text, selector, part_ref in content_parts(record, ref, definition, question):
-            self.add(group or part_group, title, text, selector, part_ref)
+        # 独立文稿只返回编排正文，不把 section_refs 等内部 JSON 拼成正文。
+        # 章节的 prose/unit 必须保持作者顺序，不能先收集全部 prose 再接技术块。
+        if record["kind"] not in {"document", "document_section"}:
+            for part_group, title, text, selector, part_ref in content_parts(record, ref, definition, question):
+                self.add(group or part_group, title, text, selector, part_ref,
+                         figures=payload.get("figures", ()) if record["kind"] == "detail" else ())
+        elif record["kind"] == "document_section":
+            from .contracts import DefinitionRef
+            from dataclasses import replace
+            for position, block in enumerate(record["payload"].get("blocks", [])):
+                if block["type"] == "prose":
+                    self.add(group or "direct", record["payload"].get("title", record["title"]),
+                             block["markdown"], "document_section.blocks." + str(position), ref)
+                else:
+                    target = block["ref"]
+                    child = FixedRef("record", target["target_id"], target["revision"], target["sha256"], target["locator"])
+                    try:
+                        for bid in block.get("block_ids", []) or [None]:
+                            self.add_record(replace(child, locator="block:" + bid) if bid else child,
+                                            DefinitionRef("section" if bid else "full", "1"), question, group=group)
+                    except QueryError as exc:
+                        if exc.code in {"BUDGET", "CANCELLED"}:
+                            raise
+                        self.gap(exc.message, code=exc.code, ref=child)
         payload = record["payload"]
         references = []
         if record["kind"] == "document":
             references = payload.get("section_refs", [])
-        elif record["kind"] == "document_section":
-            references = [{**b["ref"], "_block_ids": b.get("block_ids", [])} for b in payload.get("blocks", []) if b["type"] == "unit"]
         elif record["kind"] == "map" and definition.key in {"topic", "domain"}:
             references = payload.get("result_refs", [])
         # Prerequisite records are required reading, not optional association
@@ -198,7 +271,8 @@ class Assembler:
                     for block_id in target["_block_ids"]:
                         self.add_record(replace(child, locator="block:" + block_id), DefinitionRef("section", "1"), question, group="required_context")
                 else:
-                    self.add_record(child, child_def, question, group="required_context")
+                    self.add_record(child, child_def, question,
+                                    group=(group or "direct") if record["kind"] == "document" and target in payload.get("section_refs", []) else "required_context")
             except QueryError as exc:
                 if exc.code in {"BUDGET", "CANCELLED"}:
                     raise

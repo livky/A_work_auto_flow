@@ -69,11 +69,17 @@ class MaterialScopeTests(unittest.TestCase):
         result = self.search(self.request)
         packet = self.assemble(result)
         self.assertTrue(any(owner == self.b for owner, _ in self.reads))
-        self.assertFalse(packet["value"]["complete"], packet)
-        self.assertIn("必要内容被当前范围排除", packet["warnings"])
-        self.assertNotIn(self.fx.record_ids["B.unit"],
+        self.assertTrue(packet["value"]["complete"], packet)
+        self.assertNotIn("必要内容被当前范围排除", packet["warnings"])
+        self.assertIn(self.fx.record_ids["B.unit"],
             {ref["id"] for ref in packet["value"]["contributors"]})
-        self.assertNotIn("MQ_B_DEFINITION", str(packet["value"]["parts"]))
+        direct = [p for p in packet["value"]["parts"] if p["group"] == "direct"]
+        required = [p for p in packet["value"]["parts"] if p["group"] == "required_context"]
+        self.assertNotIn("MQ_B_DEFINITION", str(direct))
+        self.assertIn("MQ_B_DEFINITION", str(required))
+        # 缓存回取按原权限和依赖上限复核，不把必要上下文当成直接召回。
+        cached = self.assemble(result)
+        self.assertEqual(cached["status"], "ok", cached)
 
     def test_owner_ceiling_rejects_parent_before_outside_dependency_body_read(self):
         result = self.search(replace(self.request, scope_ceiling=self.scope))
