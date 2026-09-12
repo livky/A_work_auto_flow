@@ -343,7 +343,14 @@ def _history_rows(catalog, request):
                 record = catalog.store._record(owner, rid, entry)
                 if record["kind"] == "representation":
                     continue
-                rows.append(index._row(record, owner))
+                row = index._row(record, owner)
+                from .technical_units import is_unit, render_full
+                # Only the ephemeral historical search text is enlarged. The
+                # candidate's authored description and all canonical bytes stay
+                # unchanged, and _live still checks current source permissions.
+                if is_unit(record):
+                    row['_history_search_text'] = row['body'] + '\n' + render_full(record)
+                rows.append(row)
                 for claim in record.get("payload", {}).get("claims", []):
                     rows.append(index._row(record, owner, canonical_id=claim["claim_id"], entity_kind="claim", claim=claim))
             parent = manifest["parent_commit_id"]
@@ -358,7 +365,7 @@ def _history_channel(rows, expression):
     with closing(sqlite3.connect(":memory:")) as db:
         db.execute("CREATE VIRTUAL TABLE h USING fts5(idx UNINDEXED,title,text)")
         for number, row in enumerate(rows):
-            db.execute("INSERT INTO h VALUES(?,?,?)", (number, " ".join(retrieval.tokens(row["title"])), " ".join(retrieval.tokens(row["body"]))))
+            db.execute("INSERT INTO h VALUES(?,?,?)", (number, " ".join(retrieval.tokens(row["title"])), " ".join(retrieval.tokens(row.get('_history_search_text', row["body"])))))
         results = db.execute("SELECT idx,bm25(h,0.0,4.0,1.0) AS score FROM h WHERE h MATCH ? ORDER BY score,idx", (expression,)).fetchall()
         return [{**rows[number], "fts_score": score} for number, score in results]
 

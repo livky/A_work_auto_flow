@@ -58,7 +58,7 @@ ZIP 内 `dependency-manifest.json` 记录版本、平台和逐文件 SHA-256，`
 
 ## GitHub Release 分发
 
-Release 可附加二进制文件，每个附件须小于 2 GiB，见 [GitHub 官方说明](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)。上传独立依赖 ZIP 及 `.sha256`，源码使用该 Release 对应提交通过 `git archive` 生成的 ZIP，作为独立源码附件上传；`.gitattributes` 的 `export-ignore` 排除研究、项目、核心算法和 Run 实例，仅保留规则与模板。不要用整个 checkout 压缩代替发行打包。发布说明应写明兼容 Windows x64、依赖包 ID、检查记录和已知限制。
+Release 可附加二进制文件，每个附件须小于 2 GiB，见 [GitHub 官方说明](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)。上传独立依赖 ZIP 及 `.sha256`，源码使用该 Release 对应提交通过 `git archive` 生成的 ZIP，作为独立源码附件上传；`.gitattributes` 的 `export-ignore` 排除研究、项目、核心算法和 Run 实例，仅保留规则与模板。不要用整个 checkout 压缩代替发行打包。本地retrieval/sources.json、context/NOW.md、工作清单和工具记忆/运行目录也排除；setup仅在缺失时补空来源登记和初始状态，升级不覆盖已有数据。发布说明应写明兼容 Windows x64、依赖包 ID、检查记录和已知限制。
 
 源码应同时包含当前 v1/v2/v3 兼容契约、记忆服务、技术文稿读取、测试程序和 [通用文档维护约定](DOCUMENTATION_MAINTENANCE.md)。Project 实例内的开发计划与影响图只在完整 checkout 或获批私人副本中保留，公共手册及 Skill 的必需入口不能依赖它们。源码中的受控合成 fixture 是可复用测试输入；运行产生的业务记忆、验收 Run、本机日志和真实来源登记不是依赖附件，也不应随实例排除规则外泄。
 

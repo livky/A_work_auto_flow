@@ -1,24 +1,17 @@
-# AI 工作流目录
+# AI 工作流入口
 
-这些工作流按任务使用；框架开发、修复和开发规范调整由根规则要求使用 development-checks，其余只在任务需要时读取。用户要求和根规则优先。历史记录与纠错以 `context/MEMORY.md` 为准，不重复实现一套记忆规则。
+默认由[work-loop](work-loop/SKILL.md)完成归属、工作记录和交接，方法由AI按任务判断。各Owner共用按内容组合的L0–L4，不强制每轮补层或双文稿。
 
-| 用户意图 | 工作流入口 |
+| 活跃Skill | 何时使用 |
 |---|---|
-| 算法问答、文档/代码核对与证据不足扩展（已安装） | `workspace-context/SKILL.md` |
-| 深入调研、论文、技术路线、仿真研究 | `research-loop/SKILL.md` |
-| 数据异常、模型设计与验证 | `workspace-context/SKILL.md` 定位依据，`research-loop/SKILL.md` 执行与记录 |
-| PPT、Word、PDF、周报和正式汇报 | `research-loop/SKILL.md` 固定依据与报告登记，按文件格式使用可用的文档技能 |
-| 分批导入材料、关键词索引、算法/代码映射更新、整理与交接 | `context-maintenance/SKILL.md` |
-| 查看结论依据、复核和报告影响；只读监测变化、维护候选 | `evidence-inspection/SKILL.md` |
-| 开发或修复框架、必读文档维护与按风险选择验证 | `development-checks/SKILL.md` |
-| 按内容来源查找、选择和展开固定材料，兼容旧表示 | `material-query/SKILL.md` |
-| 跨领域结构比较、适用与不可迁移边界 | `association-exploration/SKILL.md` |
-| 来源变化与反证的实际语义审查和维护 | `semantic-maintenance/SKILL.md` |
+| [work-loop](work-loop/SKILL.md) | 有产物、结论或复用价值的工作；极小操作可不新增记录 |
+| [material-query](material-query/SKILL.md) | 查本地材料、完整阅读和维护阅读记录 |
+| [context-maintenance](context-maintenance/SKILL.md) | 批量接入、来源整理与文档代码映射 |
+| [development-checks](development-checks/SKILL.md) | 开发验证及受影响文档/接口维护 |
+| [association-exploration](association-exploration/SKILL.md) | 专门跨领域结构分析 |
+| [evidence-inspection](evidence-inspection/SKILL.md) | 复核/依据追溯和显式监测 |
+| [semantic-maintenance](semantic-maintenance/SKILL.md) | 新依据对下游内容的实际语义修订 |
 
-当前保留且登记八个轻量 Skill 入口：workspace-context、context-maintenance、evidence-inspection、research-loop、development-checks、material-query、association-exploration、semantic-maintenance。`.agents/skills` 入口只链接本目录方法源，避免两份规则漂移；新会话未发现时可直接让 AI 读源文件。诊断、算法设计、报告生产三个旧独立流程已合并到上述入口；历史原文和指纹见本次开发 Run 的退休清单。
+默认发现/安装7项。research-loop和workspace-context已退休并删除方法目录，统一使用work-loop；不再提供旧名安装。旧CTX/CF/MQ/QMEM/PKT各自兼容，不能改名混用。主Skill不复制参数手册；公共动作见[参考](../../docs/WORKFLOW_ACTIONS.md)。
 
-安装器默认预览，`--apply` 才新建缺失入口，`--name` 可选择登记项；已有不同内容会保留并输出合并差异，不静默覆盖用户规则。框架升级使用根 `setup.cmd --target`，不要以单独安装一个 Skill 代替整套升级。
-
-方法中的“记录”须区分对象内 Run、不可变记忆与检索投影；文件 Q/CTX 与记忆 QMEM/PKT 分别使用对应入口。L1 技术单元、L2 研究经过、L3 分类经验、L4 概览和独立双文稿的最新格式见 [分层记录标准](../../docs/RESEARCH_RECORDING.md)，框架文档同步见 [维护手册](../../docs/DOCUMENTATION_MAINTENANCE.md)。
-
-工作流负责方法，`AGENTS.md` 负责稳定规则，确定性脚本负责机械动作，外部系统适配器负责权限受控的数据与工具访问。不要在三处复制同一长篇说明。
+单独安装器只补缺失入口，冲突输出差异；setup升级只对精确匹配已登记旧指纹的受控入口更新/退休，进入同一可恢复备份。用户修改/未知版本继续保留，需按差异合并。旧受控发现入口退休需验证指纹并保留备份；不能按旧名称批量删除自定义Skill。升级仍用setup.cmd，不以单装Skill替代升级。开发全局整合时核对全部活跃入口与退休迁移与实际工具调用。

@@ -282,6 +282,12 @@ class DeploymentWorkbenchTests(unittest.TestCase):
     @unittest.skipUnless(os.name == 'nt', 'Windows cmd/PowerShell integration')
     def test_windows_zip_upgrade_entry_and_rollback_preserve_data(self):
         protected = upgrade_fixture.populate(self.root)
+        # 受控旧入口迁移，用户同名改写和附属文件应保留；纳入真实setup链路。
+        legacy = '.agents/skills/research-loop/SKILL.md'
+        # write_text在Windows会使用CRLF；恢复必须逐字节匹配实际落盘旧文件。
+        legacy_bytes = self.write(self.root, legacy, upgrade_fixture.legacy_skill('research-loop')).read_bytes()
+        self.write(self.root, '.agents/skills/research-loop/user-note.txt', 'keep companion')
+        custom = self.write(self.root, '.agents/skills/workspace-context/SKILL.md', 'CUSTOM KEEP')
         self.assertEqual(cli.validate_workspace(self.root)[0], [])
         # Build a small GitHub-like source tree and invoke the actual .cmd entry in PS 5.1.
         source = self.base / '源码 ZIP'
@@ -302,6 +308,9 @@ class DeploymentWorkbenchTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual((self.root / 'runs/synthetic-base/run.json').read_bytes(), keep)
         upgrade_fixture.assert_preserved(self.root, protected)
+        self.assertFalse((self.root / legacy).exists())
+        self.assertEqual(custom.read_text(encoding='utf-8'), 'CUSTOM KEEP')
+        self.assertEqual((self.root / '.agents/skills/research-loop/user-note.txt').read_text(), 'keep companion')
         # 二次升级不能改变业务/登记或产生新的框架替换计划。
         self.assertEqual(deploy.plan(source, self.root), [])
         repeated = subprocess.run(['cmd.exe', '/d', '/c', 'setup.cmd', '--target', str(self.root), '--profile', 'core'],
@@ -428,6 +437,8 @@ class DeploymentWorkbenchTests(unittest.TestCase):
                                 cwd=source, env=env, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual((self.root / 'runs/synthetic-base/run.json').read_bytes(), keep)
+        self.assertEqual((self.root / legacy).read_bytes(), legacy_bytes)
+        self.assertEqual(custom.read_text(encoding='utf-8'), 'CUSTOM KEEP')
 
         upgrade_fixture.assert_preserved(self.root, protected)
 

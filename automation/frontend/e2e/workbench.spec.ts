@@ -5,12 +5,14 @@ import { readFile } from "node:fs/promises";
 const root = resolve("../..");
 async function server(
   scale = false,
+  reading = false,
 ): Promise<{ process: ChildProcess; url: string }> {
   const process = spawn(
     resolve(root, "services/qdrant/runtime/python.exe"),
     [
       resolve(root, "automation/tests/serve_workbench_test.py"),
       ...(scale ? ["--scale"] : []),
+      ...(reading ? ["--reading"] : []),
     ],
     { cwd: root, windowsHide: true, stdio: ["ignore", "pipe", "pipe"] },
   );
@@ -285,6 +287,38 @@ test("一万节点十万关系下局部图和轻量状态响应", async ({ page,
       path: resolve(root, "tmp/workbench-scale.png"),
       fullPage: true,
     });
+  } finally {
+    app.process.kill();
+  }
+});
+
+test("对象阅读清单、完整原文和版本导出真实接口", async ({ page }) => {
+  const app = await server(false, true);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  try {
+    await page.goto(app.url + "#/memory");
+    await page.getByLabel("记忆归属对象").selectOption("RES-SYNTHETIC");
+    await page.getByRole("button", { name: "阅读记录", exact: true }).click();
+    await page
+      .getByRole("button", { name: "合成阅读会话", exact: true })
+      .click();
+    await expect(
+      page.getByText("合成阅读理解：保留前提", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByText("必要细节：绝对温度偏置273.15", { exact: true }),
+    ).toBeVisible();
+    const event = page.waitForEvent("download");
+    await page.getByRole("button", { name: "导出此版本笔记" }).click();
+    expect((await event).suggestedFilename()).toMatch(/RS-.*-r4.md/);
+    await page.getByRole("button", { name: "面板固定方法 · 读取原文" }).click();
+    await expect(page.getByText(/panelreading 前提：绝对温度/)).toBeVisible();
+    await page.screenshot({
+      path: resolve(root, ".local/unified-reading-panel.png"),
+      fullPage: true,
+    });
+    expect(errors).toEqual([]);
   } finally {
     app.process.kill();
   }

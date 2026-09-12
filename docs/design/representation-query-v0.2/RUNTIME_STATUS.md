@@ -4,6 +4,10 @@
 
 **43 个方法已对应受约束的实际运行入口，完整旧协议验收与入口存在是两件事。** 最初缺少的重排、持久化维护状态、执行预约和执行结算现已分别补入真实确定性策略、规范回执状态读取及共享账本。所需模型/后端未配置时仍须 `UNSUPPORTED`，不能用能力拒绝计作模型执行。INH01–INH12 与 C01–C26 的完整验收仍由主集成流程逐项关闭。
 
+2026-09-12基础召回更新：Coordinator的dense通道接入既有本地标准编码器，技术块正文进入可重建投影，词法/向量按记录限制窗口并固定命中来源。内置查询编码计入Ledger；Foundation通用ModelProvider/Tokenizer注册与任意IndexKey仍未开放，不能把新增dense解释为旧协议全覆盖。具体操作和升级见[材料查询手册](../../MATERIAL_QUERY.md)，本页原P0/P3回执保持历史时点。
+
+2026-09-13阅读层补充：reading-list/view/bind/archive为RS工作状态公开动作，支持Owner/固定检查点与工作台查看；不计入旧43项Foundation协议，不修改冻结inheritance-map。当前流程由work-loop和material-query指导，具体边界见[AI阅读](../../AI_READING.md)。
+
 ## 1. 实际入口与共同边界
 
 Python 入口位于 `automation/scripts/material_query/foundation.py`：`Foundation(coordinator).dispatch(action, raw)`。公共 API 使用 `foundation/<action>`；CLI 的 `material-query foundation-capabilities` 查看能力，`material-query foundation --request` 在同一进程内建立查询并执行一个底层动作。需要多步 read→rerank、分页→index-plan→index-execute 的工作使用保有 query 的应用 API。`capabilities` 只接受空对象；`definition-resolve` 是不读业务材料的纯版本别名映射；其余动作必须携带现有 `query_id`，复用原请求、可信 owner 权限、scope 上限、排除、累计账本、活动锁和 TTL。未知字段及不支持的硬语义明确拒绝。

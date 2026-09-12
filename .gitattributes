@@ -29,3 +29,54 @@ research/floating-point-summation/** -text
 /runs/*.md -export-ignore
 /runs/_template -export-ignore
 /context/generated export-ignore
+
+# Local working state and registered sources never travel in release archives.
+/retrieval/sources.json export-ignore
+/context/NOW.md export-ignore
+/context/handoffs/* export-ignore
+/context/handoffs/TEMPLATE.md -export-ignore
+/AI检索思路 export-ignore
+/tools/memory export-ignore
+/tools/runtime export-ignore
+/knowledge/* export-ignore
+/knowledge/README.md -export-ignore
+/knowledge/decisions -export-ignore
+/knowledge/decisions/* export-ignore
+/knowledge/decisions/ADR_TEMPLATE.md -export-ignore
+/knowledge/incidents -export-ignore
+/knowledge/incidents/* export-ignore
+/knowledge/incidents/POSTMORTEM_TEMPLATE.md -export-ignore
+/knowledge/patterns -export-ignore
+/knowledge/patterns/* export-ignore
+/knowledge/patterns/PATTERN_TEMPLATE.md -export-ignore
+/knowledge/reviews -export-ignore
+/knowledge/reviews/* export-ignore
+/knowledge/reviews/REVIEW_TEMPLATE.md -export-ignore
+
+/reports/* export-ignore
+/reports/README.md -export-ignore
+/reports/briefs -export-ignore
+/reports/briefs/* export-ignore
+/reports/briefs/REPORT_BRIEF_TEMPLATE.md -export-ignore
+/reports/manifests -export-ignore
+/reports/manifests/* export-ignore
+/reports/manifests/report_manifest.example.json -export-ignore
+/reports/templates -export-ignore
+/reports/templates/README.md -export-ignore
+/reports/sources -export-ignore
+/reports/sources/README.md -export-ignore
+/data/catalog/* export-ignore
+/data/catalog/example.dataset.json -export-ignore
+/data/contracts/* export-ignore
+/data/contracts/example.contract.json -export-ignore
+/data/lineage/* export-ignore
+/data/lineage/README.md -export-ignore
+/data/samples/* export-ignore
+/data/samples/README.md -export-ignore
+/inbox/* export-ignore
+/inbox/README.md -export-ignore
+/archive/* export-ignore
+/archive/README.md -export-ignore
+
+/PLAN.md export-ignore
+/待开发计划.md export-ignore

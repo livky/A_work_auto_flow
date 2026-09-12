@@ -1,6 +1,6 @@
 # 核心功能与实现逻辑
 
-本页面向使用者和开发 AI，用伪代码与必要说明解释核心功能，保留影响理解的选项、算法和边界。核对日期：2026-09-11，依据当前工作树。细节按各节实现文件读取；完整字段见[文档索引](README.md)，模块关系见 [ARCHITECTURE](../ARCHITECTURE.md)。
+本页面向使用者和开发 AI，用伪代码与必要说明解释核心功能，保留影响理解的选项、算法和边界。核对日期：2026-09-13，依据当前工作树。细节按各节实现文件读取；完整字段见[文档索引](README.md)，模块关系见 [ARCHITECTURE](../ARCHITECTURE.md)。
 
 相关实现变化时同步维护本页；不在这里展开字段清单、接口参数、存储目录和算法常数，也不加入使用示例。当前没有自动同步文档的后台服务。开发方案还须遵守 [ARCHITECTURE 的稳定设计约束](../ARCHITECTURE.md#稳定设计约束)，不能只凭下列流程决定模块拆分或新增状态。
 
@@ -14,7 +14,7 @@ G01–G12 保留原有功能分组身份，描述职责而非十二个独立服�
 | G02 内容和修订     | 草案、预期版本 → 新修订或冲突、保存回执               | 校验、幂等提交与历史恢复；单归属对象事务，保存不等于索引或复核成功     | MEM            |
 | G03 表示读取与组合 | 固定材料、阅读形式 → 可读内容或缺失原因               | 选择已有正文、摘要或章节形式；模板组合不产生新的语义判断               | MQ、DOC        |
 | G04 索引维护       | 已登记内容及变化 → 可搜索投影与覆盖状态               | 重建全文、向量和关系查找辅助；索引不是事实来源，不补造失踪原件         | RET            |
-| G05 候选召回       | 问题、范围、用途、来源类型 → 候选与命中依据           | 当前材料查询使用精确标识/词法；旧入口向量能力不自动进入此处            | MQ、RET        |
+| G05 候选召回       | 问题、范围、用途、来源类型 → 候选与命中依据           | 精确标识、词法及可选本地向量；技术正文块可发现，模型与水位缺口单列     | MQ、RET        |
 | G06 去重与排序     | 各通道候选 → 稳定顺序与命中解释                       | 按规范身份去重、RRF 与主题优先排序；排名不代表科学可信度               | RET、MQ        |
 | G07 回源和关系导航 | 固定种子、方向与预算 → 关联候选、依据和缺口           | 沿明确内容引用或已采纳关系展开；导航不构成科学支持，不自动发现结构类比 | MQ、RET、EVD   |
 | G08 渐进查询       | 查询请求或原游标 → 进度、候选页与停止原因             | 管搜索、续页和取消；保留原范围与累计预算，不把续查当成新查询清零       | MQ、APP        |
@@ -56,32 +56,36 @@ Skill 指导 AI 读什么、如何解释和组织内容；程序负责校验与�
 ```text
 AI 根据任务读取相应 Skill
     材料导入与整理 → context-maintenance
-    研究、实验与文稿 → research-loop
+    各类工作、记录与续接 → work-loop
     新证据引起内容修订 → semantic-maintenance
 
+比较已有对象的目标、概览、成果和未解问题，判断沿用或另建
+持续工作维护一份用户可打开的Markdown计划/上下文清单
 读取已有对象、当前目标、记录策略和固定证据
     → 核对输入、方法、实际结果、失败与缺口
     → 区分事实、计算、假设和建议
     → 按研究问题组织记录
 
-每轮实质研究：
+有用内容按需组合，缺层正常：
     L0：登记原始依据和实际 Run
     L1：写完整技术内容，以及用于检索的简短说明
     L2：写研究经过、选择理由、转折和结果
 
-阶段整理：
+阶段变化需要整理时：
     L3：提炼有适用条件的经验，区分观察、结论、假设和建议
     L4：更新研究整体概览、限制和未决问题
-    文稿：组织独立章节、完整研究过程和精简报告
+    文稿：按阅读和交付需要组织章节/文稿，不要求双份
 
 先保存并回读被引用内容，再保存引用它的记录或文稿
 ```
 
 技术正文按“问题与范围 → 输入与方法 → 公式与计算 → 结果 → 讨论与限制 → 证据与复算”组织，保留变量、单位和固定来源。L1 的检索说明与完整正文块分开；L2–L4 保存可直接阅读的正文和结构化信息。章节与文稿独立于五层记录。已有内容优先复用；简单查阅、纯文档工作不机械补齐全部层级。
 
-方法源：[context-maintenance/SKILL.md](../automation/workflows/context-maintenance/SKILL.md)、[research-loop/SKILL.md](../automation/workflows/research-loop/SKILL.md)、[semantic-maintenance/SKILL.md](../automation/workflows/semantic-maintenance/SKILL.md)。文本要求与校验：[RESEARCH_RECORDING.md](RESEARCH_RECORDING.md)、[memory/contracts.py](../automation/scripts/memory/contracts.py)。
+方法源：[context-maintenance/SKILL.md](../automation/workflows/context-maintenance/SKILL.md)、[work-loop/SKILL.md](../automation/workflows/work-loop/SKILL.md)、[semantic-maintenance/SKILL.md](../automation/workflows/semantic-maintenance/SKILL.md)。文本要求与校验：[RESEARCH_RECORDING.md](RESEARCH_RECORDING.md)、[memory/contracts.py](../automation/scripts/memory/contracts.py)。
 
 ## 2. 结果怎样保存到本地
+
+按需补充：[记录、Run 与索引的实体说明](MEMORY_STORAGE_EXPLAINED.md)——用浮点求和研究解释关键文件、字段、AI与程序分工及可靠性边界；相关接口和功能变更时同次主动维护。
 
 规范记录使用带版本的 JSON，正文使用其中的 Markdown 文本；技术正文可拆成有顺序和依赖关系的块。原始文件保持独立，以固定引用连接。引用包含“对象身份＋版本＋内容指纹”，不会悄悄改指向新版。
 
@@ -108,7 +112,23 @@ AI 将正文、结构化信息、来源和关联组成 JSON 草案
 
 实现：[memory/service.py](../automation/scripts/memory/service.py)、[memory/store.py](../automation/scripts/memory/store.py)、[memory/contracts.py](../automation/scripts/memory/contracts.py)、[memory/index.py](../automation/scripts/memory/index.py)。
 
-## 3. 关键词查询怎样运行
+## 3. 基础检索与召回怎样运行
+
+AI围绕当前问题使用阅读工作流时，在下述基础检索外组织以下过程：
+
+```text
+接续目标、条件、已读理解与尝试结果（已有上下文够用就不重复读取）
+需要新依据 → 各层独立多路召回 → 短正文/技术命中块和必要定义，逐条带链接
+AI判断直接用途或有具体连接理由的间接启发 → 对保留候选读完整记录
+AI实际理解 → 保存压缩理解、连接链、必要细节和待验证处
+综合已读材料相关性、缺口与下一步对本地经验的依赖
+    → 读深已有依据 / 改写或扩大召回 / 实验或先推进，并更新工作清单与阅读决定
+再次扩大召回 → AI按当前失败/方向/成本判断；需要用户取舍才ask_user，已询问须等真实意见
+```
+
+此流程复用 G01/G03/G05/G08/G09，由独立阅读工作记录保存状态，不增加知识层。RS显式绑定Owner及可选固定检查点；list/view供对象入口查看最新候选、理解与出处，归档保留历史，导出是标明版本的快照。完整交付只证明程序返回了正文，不保证 AI 理解正确；相似或长链连接仍是待验证启发。手动来源查询维持原默认。调用、持久化与限制见[AI 阅读手册](AI_READING.md)，实现为 [reading.py](../automation/scripts/material_query/reading.py) 与 material-query Skill。
+
+按需补充：[三张索引表如何配合一次查询](MEMORY_STORAGE_EXPLAINED.md#3-索引到底存什么)——包括记录与条目的区别、词项漏检边界和语义查询。
 
 当前“材料查询”通过索引找候选，再回读原记录筛选；不会现场生成答案，也不会临时扫描全部原件。
 
@@ -126,6 +146,15 @@ AI 将正文、结构化信息、来源和关联组成 JSON 草案
     → 按“任一查询词命中”查全文索引
     → 用 BM25 排序
 
+如果启用本地向量：
+    核对本机模型，计量查询输入和调用预算
+    → 在所选类型与获准范围内按语义相似度召回
+    → 核对每个向量命中的当前条目指纹
+    → 模型或索引不可用时报告缺口，保留其他通道
+
+词法和向量均按不同记录截取窗口，避免多个表示挤掉其他材料
+技术内容同时索引检索说明和正文块；命中正文携带固定块引用
+
 如果选择所有来源 → 补查已登记文稿、章节、表示与原始登记目录
 如果允许旧版 → 有界遍历获准对象的不可变历史，保留版本与未覆盖提示
 
@@ -140,25 +169,25 @@ AI 将正文、结构化信息、来源和关联组成 JSON 草案
 用户选择候选后，可继续翻页、展开或组装正文
 ```
 
-BM25 衡量文本匹配，RRF 根据各通道排名合并结果；重复命中不会重复抬高排名。分词使用中文双字滑窗和英文标识符拆分，不是大模型语义理解。相关性排名不代表结论可信度。
+BM25 衡量文本匹配，RRF 根据各通道排名合并结果；重复命中不会重复抬高排名。词法分词使用中文双字滑窗和英文标识符拆分；可选向量使用已有离线多语言模型。默认仍启用身份/词法，可在高级选项同时开启向量形成混合召回。相关性排名不代表结论可信度；候选预览不是完整技术内容，判断前按任务展开。
 
-| 选项                           | 实际区别                                                                                           |
-| ------------------------------ | -------------------------------------------------------------------------------------------------- |
-| 概览与经验／研究经过／技术内容／所有来源 | 分别查 L4/L3、L2、L1 或全部已登记内容种类；不把任意文件当作已登记材料 |
-| 范围与属性筛选                 | 不同维度同时满足，同一维度可匹配多个值之一；“不限”与“没有选择”不同，未知属性是否纳入由选项控制 |
-| 探索／审计                     | 可提供未复核候选；审计标签当前不额外触发全面审计                                                   |
-| 正式使用                       | 按填写的适用条件逐条核对结论及证据，只输出符合要求的结论                                           |
-| 精确标识／词法                 | 前者匹配完整 ID，后者匹配索引文本；可共同使用                                                      |
-| 向量／稀疏／关系召回           | 当前材料查询入口未开放；旧检索入口的向量能力不等于这里已开放                                       |
-| 普通文本／短语／布尔语法       | 当前只开放普通文本；多个关键词不是“必须全部满足”                                                 |
-| 仅最新／包含历史／固定本次版本 | 默认只取当前修订，后续更新要求重查；包含历史时显式检索旧修订；固定模式保留本次依据。均不自动换引用 |
-| 标准对象类型／具体对象 | 类型可单选、多选，与对象身份相交；名称或 ID 可进一步缩小结构导航 |
-| 必要依据读取 | 工作台默认允许沿已登记依赖跨对象读取，用户可收紧；直接命中仍受筛选限制，排除和来源授权始终有效 |
-| 返回数量／预算                 | 前者限制候选页大小，后者限制整个查询的累计处理量；被过滤的内容也可能已产生消耗                     |
+| 选项                                     | 实际区别                                                                                           |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| 概览与经验／研究经过／技术内容／所有来源 | 分别查 L4/L3、L2、L1 或全部已登记内容种类；不把任意文件当作已登记材料                              |
+| 范围与属性筛选                           | 不同维度同时满足，同一维度可匹配多个值之一；“不限”与“没有选择”不同，未知属性是否纳入由选项控制 |
+| 探索／审计                               | 可提供未复核候选；审计标签当前不额外触发全面审计                                                   |
+| 正式使用                                 | 按填写的适用条件逐条核对结论及证据，只输出符合要求的结论                                           |
+| 精确标识／词法                           | 前者匹配完整 ID，后者匹配索引文本；可共同使用                                                      |
+| 向量／稀疏／关系召回                     | 向量复用本机标准模型并独立报告水位；稀疏及独立关系召回通道未开放，既有关联导航另走深化入口         |
+| 普通文本／短语／布尔语法                 | 当前只开放普通文本；多个关键词不是“必须全部满足”                                                 |
+| 仅最新／包含历史／固定本次版本           | 默认只取当前修订，后续更新要求重查；包含历史时显式检索旧修订；固定模式保留本次依据。均不自动换引用 |
+| 标准对象类型／具体对象                   | 类型可单选、多选，与对象身份相交；名称或 ID 可进一步缩小结构导航                                   |
+| 必要依据读取                             | 工作台默认允许沿已登记依赖跨对象读取，用户可收紧；直接命中仍受筛选限制，排除和来源授权始终有效     |
+| 返回数量／预算                           | 前者限制候选页大小，后者限制整个查询的累计处理量；被过滤的内容也可能已产生消耗                     |
 
 翻页、展开和组装沿用同一查询的范围、排除及预算。改变条件须重新查询；取消不清零旧账本。结果只覆盖本次候选窗口，不能由空结果推断全库没有答案。
 
-实现：[MaterialQuery.tsx](../automation/frontend/src/MaterialQuery.tsx)、[material_query/coordinator.py](../automation/scripts/material_query/coordinator.py)、[catalog_search.py](../automation/scripts/material_query/catalog_search.py)、[history_search.py](../automation/scripts/material_query/history_search.py)、[retrieval.py](../automation/scripts/retrieval.py)、[memory/search.py](../automation/scripts/memory/search.py)、[material_query/evidence.py](../automation/scripts/material_query/evidence.py)。
+实现：[MaterialQuery.tsx](../automation/frontend/src/MaterialQuery.tsx)、[material_query/coordinator.py](../automation/scripts/material_query/coordinator.py)、[recall.py](../automation/scripts/material_query/recall.py)、[catalog_search.py](../automation/scripts/material_query/catalog_search.py)、[history_search.py](../automation/scripts/material_query/history_search.py)、[retrieval.py](../automation/scripts/retrieval.py)、[memory/search.py](../automation/scripts/memory/search.py)、[material_query/evidence.py](../automation/scripts/material_query/evidence.py)。
 
 ## 4. 关联怎样保存和查找
 
@@ -237,7 +266,7 @@ BM25 衡量文本匹配，RRF 根据各通道排名合并结果；重复命中�
 
 L2 是过程内容，完整过程与精简报告是独立编排的文稿；保存 L2 不会自动生成整篇报告。来源更新不自动改写旧文稿；缺少精简报告时不会拿完整报告冒充。
 
-实现：[material_query/documents.py](../automation/scripts/material_query/documents.py)、[memory/documents.py](../automation/scripts/memory/documents.py)、[ResearchDocument.tsx](../automation/frontend/src/ResearchDocument.tsx)、[research-loop/SKILL.md](../automation/workflows/research-loop/SKILL.md)。
+实现：[material_query/documents.py](../automation/scripts/material_query/documents.py)、[memory/documents.py](../automation/scripts/memory/documents.py)、[ResearchDocument.tsx](../automation/frontend/src/ResearchDocument.tsx)、[work-loop/SKILL.md](../automation/workflows/work-loop/SKILL.md)。
 
 ## 7. 来源变化后怎样维护
 

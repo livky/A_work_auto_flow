@@ -51,11 +51,10 @@ class OwnerServiceTests(unittest.TestCase):
                     self.assertIsNone(state["head"])
                     research_like = kind in {"research", "project"}
                     self.assertEqual(state["policy"]["values"]["mode"], "explore" if research_like else "basic")
-                    if research_like:
-                        # Public inspection exposes the full recording default,
-                        # but a read must not create records or directories.
-                        self.assertEqual(state["policy"]["values"]["retain"], ["L0", "L1", "L2", "L3", "L4"])
-                        self.assertTrue(state["policy"]["values"]["auto_summary"])
+                    # 八类对象都允许按内容分层，默认不自动总结；只读仍不得创建任何档案。
+                    self.assertEqual(state["policy"]["values"]["retain"], ["L0", "L1", "L2", "L3", "L4"])
+                    self.assertEqual(state["policy"]["values"]["granularity"], "normal")
+                    self.assertFalse(state["policy"]["values"]["auto_summary"])
             self.assertEqual(fixture.snapshot_files(root), original)
             self.assertEqual(sorted(str(path.relative_to(root)) for path in root.rglob("*") if path.is_dir()), directories)
             file_ref = {"target_kind": "file", "target_id": "SRC-EIGHT", "revision": None,

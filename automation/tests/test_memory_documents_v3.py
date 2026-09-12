@@ -174,6 +174,58 @@ class DocumentV3Tests(unittest.TestCase):
         self.assertIn('ONLY_FULL_RESULT', full['context_text'])
         self.assertNotIn('requires_block_ids', full['context_text'])
 
+    def test_n06_body_only_clue_recalls_unit_without_expanding_short_context(self):
+        unit, section, process, _other, _brief = self.pair()
+        payload = deepcopy(unit['payload'])
+        payload['blocks'][1]['markdown'] += ' zqxbodyonlyneedle'
+        unit = self.revise(unit, payload=payload)
+        result = search.search(self.root, {'query': 'zqxbodyonlyneedle', 'purpose': 'exploration',
+                                          'vector': 'off'}, record=False)
+        ids = {item['canonical_id'] for item in result['candidates']}
+        self.assertIn(unit['record_id'], ids)
+        self.assertNotIn(section['record_id'], ids)
+        self.assertNotIn(process['record_id'], ids)
+        # Discovery coverage changes; the caller still chooses how much body to read.
+        context = packets.build_context(self.service, {'owner_id': 'RES-R',
+            'refs': [documents.fixed_ref(unit)], 'budget': 10000})
+        self.assertNotIn('ONLY_FULL_RESULT', context['context_text'])
+
+        from material_query.budget import DEFAULT_BUDGET
+        from material_query.contracts import AssociationOptions, DefinitionRef, QueryRequest, Scope
+        from material_query.coordinator import Coordinator
+        from material_query.wire import json_value
+        scope = Scope(('RES-R',), None, None, None, None, None, None, False, (), (), None, None)
+        app = Coordinator(self.root)
+        self.addCleanup(app.executor.shutdown)
+        query = QueryRequest(DefinitionRef('full', '1'), 'zqxbodyonlyneedle', (), scope, scope,
+            'exploration', AssociationOptions('off', 'existing-relations', '1', 2, .15, None),
+            DEFAULT_BUDGET, 'current', 5, 'reject', (), '', channels=('lexical',), content_source='technical')
+        result = app.search(json_value(query))
+        self.assertEqual(result['status'], 'ok', result)
+        candidate = next(c for c in result['value']['candidates'] if c['refs'][0]['id'] == unit['record_id'])
+        hit = candidate['hits'][0]
+        self.assertEqual(hit['representation_refs'][0]['locator'], 'block:result')
+        self.assertEqual(hit['representation_refs'][0]['sha256'], unit['record_hash'])
+        self.assertIn('zqxbodyonlyneedle', hit['matched_text'])
+        # Search returns the full unit identity, so assembly closes definitions.
+        receipt = result['value']
+        packet = app.assemble({'query_id': receipt['query_id'], 'candidate_ids': [candidate['candidate_id']],
+                               'expected_request_digest': receipt['request_digest']})
+        self.assertIn('ONLY_DEFINITION', str(packet))
+        self.assertIn('zqxbodyonlyneedle', str(packet))
+        # A later edit removes the clue. Explicit historical lookup still binds
+        # the old block, while the default current lookup no longer finds it.
+        from dataclasses import replace
+        payload['blocks'][1]['markdown'] = '新版本已移除测试词'
+        self.revise(unit, payload=payload)
+        current = app.search(json_value(query))
+        self.assertFalse(current['value']['candidates'], current)
+        past = app.search(json_value(replace(query, freshness='allow_stale')))
+        old = next(c for c in past['value']['candidates'] if c['refs'][0]['id'] == unit['record_id'])
+        self.assertEqual(old['refs'][0]['sha256'], unit['record_hash'])
+        self.assertEqual(old['hits'][0]['representation_refs'][0]['locator'], 'block:result')
+        self.assertIn('zqxbodyonlyneedle', old['hits'][0]['matched_text'])
+
     def test_n05_current_restriction_hides_old_unit_and_wrong_hash_is_rejected(self):
         unit, section, process, _other, _brief = self.pair()
         bad = section_payload({**documents.fixed_ref(unit), 'sha256': '0' * 64})

@@ -130,8 +130,8 @@ class OwnerTests(unittest.TestCase):
                 research_policy = policy.resolve({'owner_type': kind})
                 self.assertEqual(research_policy['values']['mode'], 'explore')
                 self.assertEqual(research_policy['values']['retain'], ['L0', 'L1', 'L2', 'L3', 'L4'])
-                self.assertEqual(research_policy['values']['granularity'], 'fine')
-                self.assertTrue(research_policy['values']['auto_summary'])
+                self.assertEqual(research_policy['values']['granularity'], 'normal')
+                self.assertFalse(research_policy['values']['auto_summary'])
                 self.assertEqual(research_policy['sources']['retain'], 'type')
                 # A new default must not override an owner's deliberate policy,
                 # including false and an empty retain list; requests still win.
@@ -151,10 +151,10 @@ class OwnerTests(unittest.TestCase):
             with self.subTest(override=override), self.assertRaises(MemoryError):
                 policy.resolve(owner, override)
         defaults = policy.resolve({'owner_type': 'run'})['values']
-        self.assertEqual(defaults['retain'], [])
+        self.assertEqual(defaults['retain'], ['L0', 'L1', 'L2', 'L3', 'L4'])
         self.assertEqual(defaults['granularity'], 'normal')
         defaults['retain'].append('不应污染下次解析')
-        self.assertEqual(policy.resolve({'owner_type': 'run'})['values']['retain'], [])
+        self.assertEqual(policy.resolve({'owner_type': 'run'})['values']['retain'], ['L0', 'L1', 'L2', 'L3', 'L4'])
 
     def test_saved_frozen_policy_resolves_retain_and_false_via_inspect(self):
         from copy import deepcopy
@@ -177,7 +177,8 @@ class OwnerTests(unittest.TestCase):
         self.assertFalse(actual['values']['auto_summary'])
         self.assertEqual(actual['sources']['retain'], 'owner')
         self.assertEqual(actual['sources']['auto_summary'], 'owner')
-        self.assertEqual(actual['values']['granularity'], 'fine')
+        # 此固定草案未显式设置granularity，因此沿用当前类型默认；其显式retain/false仍不变。
+        self.assertEqual(actual['values']['granularity'], 'normal')
         self.assertEqual(actual['sources']['granularity'], 'type')
         saved = next(iter(inspected['records'].values()))
         self.assertIn('missing_refs', saved['payload'])

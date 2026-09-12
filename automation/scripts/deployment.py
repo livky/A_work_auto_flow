@@ -119,8 +119,16 @@ def seed_files(source):
 
 def plan(source, target):
     source, target = Path(source).resolve(), Path(target).resolve()
+    # Public archives omit local source registrations and task state. Seed only
+    # missing files, including on first install; upgrades never replace user data.
+    defaults = {'retrieval/sources.json': '{"schema_version": 1, "sources": []}\n',
+                'context/NOW.md': '# 当前状态\n\n新工作区尚无工作记录；从 START_HERE.md 开始。\n'}
+    missing = [{'path': name, 'before': None,
+                'after': hashlib.sha256(content.encode()).hexdigest(), 'content': content}
+               for name, content in defaults.items() if not safe(target, name).exists()
+               and not safe(source, name).exists()]
     if source == target:
-        return []
+        return missing
     if source.is_relative_to(target) or target.is_relative_to(source):
         raise ValueError('新旧工作区不能互相嵌套')
     if not (target / 'workspace.json').is_file():
@@ -144,7 +152,12 @@ def plan(source, target):
         content = existing + suffix
         entries = [i for i in entries if i['path'] != '.gitignore']
         entries.append({'path': '.gitignore', 'before': digest(ignored), 'after': hashlib.sha256(content.encode()).hexdigest(), 'content': content})
-    return entries
+    # 只识别旧版未被用户修改的受控 Skill 入口，迁移与其他文件共用备份/恢复。
+    # 自定义同名入口仍受 seed 保留规则保护，不会被名称推断覆盖。
+    from install_workspace_skills import managed_updates
+    managed = managed_updates(source, target)
+    replaced = {item['path'] for item in managed}
+    return [item for item in entries if item['path'] not in replaced] + managed + missing
 
 
 def apply_upgrade(source, target, entries):
@@ -152,6 +165,10 @@ def apply_upgrade(source, target, entries):
     if not entries:
         return None
     for item in entries:
+        if item['after'] is None:
+            if digest(safe(target, item['path'])) != item['before']:
+                raise ValueError('退役入口发生变化，请重新预览')
+            continue
         raw = item['content'].encode() if 'content' in item else safe(source, item['path']).read_bytes()
         if hashlib.sha256(raw).hexdigest() != item['after']:
             raise ValueError('新版源文件发生变化，请重新预览')
@@ -175,6 +192,12 @@ def apply_upgrade(source, target, entries):
         dst = safe(target, item['path'])
         if digest(dst) != item['before']:
             raise ValueError(f"写入前文件发生变化：{item['path']}")
+        if item['after'] is None:
+            # 这里只删除已固定指纹并备份的单个发现文件；目录及自定义附属文件保留。
+            receipt['applied'].append(item['path'])
+            save()
+            dst.unlink()
+            continue
         content = item.get('content')
         raw = content.encode() if content is not None else safe(source, item['path']).read_bytes()
         if hashlib.sha256(raw).hexdigest() != item['after']:
@@ -262,8 +285,17 @@ def main(argv=None):
         import command_registration
         print(json.dumps(command_registration.register(root, remove=True, preview=args.preview), ensure_ascii=False)); return
     entries = plan(ROOT, root)
+    replaced = {entry['path'] for entry in entries}
+    # 原规则可能包含用户选择：不替换未知字节，但明确给出需要按新版审阅的路径。
+    rule_merges = [name for name in seed_files(ROOT)
+                   if (name.endswith('AGENTS.md') or name.startswith('.agents/skills/'))
+                   and name not in replaced and safe(root, name).exists()
+                   and digest(safe(root, name)) != digest(safe(ROOT, name))]
     print(json.dumps({'target': str(root), 'profile': args.profile, 'replacements': [e['path'] for e in entries],
-                      'preserve': 'business records, existing configs/rules/skills/runtime', 'preview': args.preview}, ensure_ascii=False), flush=True)
+                      'retired_managed_skills': [e['path'] for e in entries if e['after'] is None],
+                      'preserved_rules_to_review': rule_merges,
+                      'rules_note': '保留用户或未知版本规则；请按新版合并所列规则，不要覆盖原内容',
+                      'preserve': 'business records, existing configs, user rules/skills and runtime', 'preview': args.preview}, ensure_ascii=False), flush=True)
     if args.preview:
         return
     import evidence

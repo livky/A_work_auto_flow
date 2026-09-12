@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 63,
+  "revision": 72,
   "capabilities": [
     {
       "id": "workspace",
@@ -1067,9 +1067,9 @@
           "安装/恢复与发行清单",
           "目录扫描/工具登记/缓存边界"
         ],
-        "reviewed_at": "2026-09-10T12:16:44.588514+00:00",
+        "reviewed_at": "2026-09-13",
         "reviewed_by": "Codex",
-        "review_basis": "2026-09-10 当前登记及测试定义静态核对；保留现有成员并补录维护理由，不追认历史选入原因，不代表本轮执行通过。"
+        "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
       }
     },
     {
@@ -2555,9 +2555,9 @@
           "来源撤权/缺失",
           "缓存正文清理"
         ],
-        "reviewed_at": "2026-09-10T12:16:44.588514+00:00",
+        "reviewed_at": "2026-09-12T02:48:35.093419Z",
         "reviewed_by": "Codex",
-        "review_basis": "2026-09-10 当前登记及测试定义静态核对；保留现有成员并补录维护理由，不追认历史选入原因，不代表本轮执行通过。"
+        "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3：保留原风险和理由；最终81项通过，正文/向量不得绕过来源、版本和索引补偿。"
       }
     },
     {
@@ -2632,9 +2632,9 @@
           "FTS/向量失败处理",
           "reconcile 与保存回执"
         ],
-        "reviewed_at": "2026-09-10T12:16:44.588514+00:00",
+        "reviewed_at": "2026-09-12T02:48:35.093419Z",
         "reviewed_by": "Codex",
-        "review_basis": "2026-09-10 当前登记及测试定义静态核对；保留现有成员并补录维护理由，不追认历史选入原因，不代表本轮执行通过。"
+        "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3：保留原风险和理由；最终81项通过，正文/向量不得绕过来源、版本和索引补偿。"
       }
     },
     {
@@ -7494,9 +7494,9 @@
           "查询当前版本与缓存回读",
           "结果显示与文稿动作"
         ],
-        "reviewed_at": "2026-09-10T22:28:56.721365+00:00",
+        "reviewed_at": "2026-09-12T02:48:35.093419Z",
         "reviewed_by": "Codex",
-        "review_basis": "RUN-20260910T210558Z-ABA265055ED3：8项查询选项与35项组件测试通过"
+        "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3：保留原风险和理由；最终81项通过，正文/向量不得绕过来源、版本和索引补偿。"
       }
     },
     {
@@ -7568,6 +7568,398 @@
         "reviewed_by": "Codex",
         "review_basis": "RUN-20260910T210558Z-ABA265055ED3：8项查询选项与35项组件测试通过"
       }
+    },
+    {
+      "id": "python:test_material_dense_real.MaterialDenseRealTests.test_real_hybrid_body_recall_metering_filter_and_stale_vectors",
+      "kind": "python",
+      "selector": "test_material_dense_real.MaterialDenseRealTests.test_real_hybrid_body_recall_metering_filter_and_stale_vectors",
+      "path": "automation/tests/test_material_dense_real.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "vector"
+      ],
+      "authorization": [
+        "vector"
+      ]
+    },
+    {
+      "id": "python:test_material_recall.MaterialRecallTests.test_missing_dense_model_keeps_lexical_and_reports_degradation",
+      "kind": "python",
+      "selector": "test_material_recall.MaterialRecallTests.test_missing_dense_model_keeps_lexical_and_reports_degradation",
+      "path": "automation/tests/test_material_recall.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_material_recall.MaterialRecallTests.test_old_projection_watermark_is_reported_until_rebuild",
+      "kind": "python",
+      "selector": "test_material_recall.MaterialRecallTests.test_old_projection_watermark_is_reported_until_rebuild",
+      "path": "automation/tests/test_material_recall.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_material_recall.MaterialRecallTests.test_representations_do_not_starve_distinct_record_window",
+      "kind": "python",
+      "selector": "test_material_recall.MaterialRecallTests.test_representations_do_not_starve_distinct_record_window",
+      "path": "automation/tests/test_material_recall.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": [],
+      "baseline": {
+        "risk": "技术正文已保存却永远进不了候选；重复表示可能挤掉独立材料。",
+        "reason": "真实漏检和候选窗口故障；保留固定正文、展开及身份去重的端到端防线。",
+        "review_triggers": [
+          "正文投影/历史回源",
+          "候选窗口/融合/预算"
+        ],
+        "reviewed_at": "2026-09-12T02:40:42.714545+00:00",
+        "reviewed_by": "Codex",
+        "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3；本次行为回归"
+      }
+    },
+    {
+      "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n06_body_only_clue_recalls_unit_without_expanding_short_context",
+      "kind": "python",
+      "selector": "test_memory_documents_v3.DocumentV3Tests.test_n06_body_only_clue_recalls_unit_without_expanding_short_context",
+      "path": "automation/tests/test_memory_documents_v3.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": [],
+      "baseline": {
+        "risk": "技术正文已保存却永远进不了候选；重复表示可能挤掉独立材料。",
+        "reason": "真实漏检和候选窗口故障；保留固定正文、展开及身份去重的端到端防线。",
+        "review_triggers": [
+          "正文投影/历史回源",
+          "候选窗口/融合/预算"
+        ],
+        "reviewed_at": "2026-09-12T02:40:42.714545+00:00",
+        "reviewed_by": "Codex",
+        "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3；本次行为回归"
+      }
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_independent_lanes_short_full_and_technical_required_blocks",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_independent_lanes_short_full_and_technical_required_blocks",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": [],
+      "baseline": {
+        "risk": "片段被误当全文、跨进程丢失理解",
+        "reason": "保护完整交付后记笔记及续接的核心链路",
+        "review_triggers": [
+          "阅读会话存储、固定来源或预算行为变化"
+        ],
+        "reviewed_at": "2026-09-13",
+        "reviewed_by": "Codex",
+        "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+      }
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_expansion_is_judgment_based_and_explicit_question_is_preserved",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_expansion_is_judgment_based_and_explicit_question_is_preserved",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_paging_keeps_scope_and_delivers_unread_short_records",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_paging_keeps_scope_and_delivers_unread_short_records",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": [],
+      "baseline": {
+        "risk": "重启进程绕过累计预算",
+        "reason": "读取会话跨进程持久化新增的费用边界",
+        "review_triggers": [
+          "阅读会话存储、固定来源或预算行为变化"
+        ],
+        "reviewed_at": "2026-09-13",
+        "reviewed_by": "Codex",
+        "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+      }
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_replay_conflict_and_unrecognized_candidate",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_replay_conflict_and_unrecognized_candidate",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": [],
+      "baseline": {
+        "risk": "来源撤权后缓存笔记泄露",
+        "reason": "持久AI笔记也必须受当前来源授权约束",
+        "review_triggers": [
+          "阅读会话存储、固定来源或预算行为变化"
+        ],
+        "reviewed_at": "2026-09-13",
+        "reviewed_by": "Codex",
+        "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+      }
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_scope_ceiling_and_access_identity_survive_restart",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_scope_ceiling_and_access_identity_survive_restart",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_shared_definition_is_delivered_once_across_multiple_hits",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_shared_definition_is_delivered_once_across_multiple_hits",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_new_revision_marks_old_understanding_stale_without_rewriting_it",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_new_revision_marks_old_understanding_stale_without_rewriting_it",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+      "kind": "python",
+      "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+      "path": "automation/tests/test_install_workspace_skills.py",
+      "capability": "upgrade",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": [],
+      "baseline": {
+        "risk": "迁移误删或覆盖用户Skill，无法恢复旧入口。",
+        "reason": "精确字节识别、先备份、单文件退休及恢复保护用户修改和附属文件。",
+        "review_triggers": [
+          "受控Skill模板指纹、安装/升级/恢复变化"
+        ],
+        "reviewed_at": "2026-09-13",
+        "reviewed_by": "Codex",
+        "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+      }
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_owner_binding_listing_and_latest_view_survive_restart",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_owner_binding_listing_and_latest_view_survive_restart",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_archive_preserves_files_blocks_work_and_can_restore",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_archive_preserves_files_blocks_work_and_can_restore",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": true,
+      "full": true,
+      "requires": [],
+      "authorization": [],
+      "baseline": {
+        "risk": "列出/查看接口泄漏已撤权来源的阅读笔记或会话身份。",
+        "reason": "新增阅读发现和查看入口必须持续复查权限，并在拒绝后不返回旧内容。",
+        "review_triggers": [
+          "RS列出/查看、授权及来源闭包变化"
+        ],
+        "reviewed_at": "2026-09-13",
+        "reviewed_by": "Codex",
+        "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+      }
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_binding_requires_real_owner_and_correct_checkpoint",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_binding_requires_real_owner_and_correct_checkpoint",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_reading_workflow.ReadingWorkflowTests.test_fixed_checkpoint_binding_and_view_budget_do_not_rewrite_history",
+      "kind": "python",
+      "selector": "test_reading_workflow.ReadingWorkflowTests.test_fixed_checkpoint_binding_and_view_budget_do_not_rewrite_history",
+      "path": "automation/tests/test_reading_workflow.py",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_unified_workflow.UnifiedOwnerWorkflowTests.test_eight_owner_types_find_body_and_return_direct_source_without_empty_layers",
+      "kind": "python",
+      "selector": "test_unified_workflow.UnifiedOwnerWorkflowTests.test_eight_owner_types_find_body_and_return_direct_source_without_empty_layers",
+      "path": "automation/tests/test_unified_workflow.py",
+      "capability": "owned-runs",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ReadingSessions.test.tsx::按对象读最新记录，打开原文后导出仍使用实际笔记快照版本",
+      "kind": "component",
+      "selector": "按对象读最新记录，打开原文后导出仍使用实际笔记快照版本",
+      "path": "automation/frontend/src/ReadingSessions.test.tsx",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ReadingSessions.test.tsx::换对象或来源撤权时清除之前显示的笔记",
+      "kind": "component",
+      "selector": "换对象或来源撤权时清除之前显示的笔记",
+      "path": "automation/frontend/src/ReadingSessions.test.tsx",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "component:src/ReadingSessions.test.tsx::筛选后的空目录窗口仍能翻页，不报告全库无会话",
+      "kind": "component",
+      "selector": "筛选后的空目录窗口仍能翻页，不报告全库无会话",
+      "path": "automation/frontend/src/ReadingSessions.test.tsx",
+      "capability": "retrieval",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "browser:e2e/workbench.spec.ts::对象阅读清单、完整原文和版本导出真实接口",
+      "kind": "browser",
+      "selector": "对象阅读清单、完整原文和版本导出真实接口",
+      "path": "automation/frontend/e2e/workbench.spec.ts",
+      "capability": "workbench",
+      "quick": false,
+      "full": true,
+      "requires": [
+        "frontend-dev"
+      ],
+      "authorization": []
+    },
+    {
+      "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_retired_names_cannot_be_installed",
+      "kind": "python",
+      "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_retired_names_cannot_be_installed",
+      "path": "automation/tests/test_install_workspace_skills.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
+    },
+    {
+      "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_public_archive_missing_local_state_is_seeded_without_overwrite",
+      "kind": "python",
+      "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_public_archive_missing_local_state_is_seeded_without_overwrite",
+      "path": "automation/tests/test_install_workspace_skills.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
     }
   ],
   "deferred": [
@@ -8953,6 +9345,968 @@
         }
       ],
       "basis": "RUN-20260910T210558Z-ABA265055ED3"
+    },
+    {
+      "at": "2026-09-12T02:40:42.714545+00:00",
+      "actor": "Codex",
+      "reason": "基础正文与混合召回补齐；两个核心漏检防线加入基线，真实模型按影响执行。",
+      "added": [
+        "python:test_material_recall.MaterialRecallTests.test_old_projection_watermark_is_reported_until_rebuild",
+        "python:test_material_recall.MaterialRecallTests.test_representations_do_not_starve_distinct_record_window",
+        "python:test_material_dense_real.MaterialDenseRealTests.test_real_hybrid_body_recall_metering_filter_and_stale_vectors",
+        "python:test_memory_documents_v3.DocumentV3Tests.test_n06_body_only_clue_recalls_unit_without_expanding_short_context",
+        "python:test_material_recall.MaterialRecallTests.test_missing_dense_model_keeps_lexical_and_reports_degradation"
+      ],
+      "changes": [
+        {
+          "id": "python:test_material_recall.MaterialRecallTests.test_old_projection_watermark_is_reported_until_rebuild",
+          "before": null,
+          "after": {
+            "id": "python:test_material_recall.MaterialRecallTests.test_old_projection_watermark_is_reported_until_rebuild",
+            "kind": "python",
+            "selector": "test_material_recall.MaterialRecallTests.test_old_projection_watermark_is_reported_until_rebuild",
+            "path": "automation/tests/test_material_recall.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          }
+        },
+        {
+          "id": "python:test_material_recall.MaterialRecallTests.test_representations_do_not_starve_distinct_record_window",
+          "before": null,
+          "after": {
+            "id": "python:test_material_recall.MaterialRecallTests.test_representations_do_not_starve_distinct_record_window",
+            "kind": "python",
+            "selector": "test_material_recall.MaterialRecallTests.test_representations_do_not_starve_distinct_record_window",
+            "path": "automation/tests/test_material_recall.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "技术正文已保存却永远进不了候选；重复表示可能挤掉独立材料。",
+              "reason": "真实漏检和候选窗口故障；保留固定正文、展开及身份去重的端到端防线。",
+              "review_triggers": [
+                "正文投影/历史回源",
+                "候选窗口/融合/预算"
+              ],
+              "reviewed_at": "2026-09-12T02:40:42.714545+00:00",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3；本次行为回归"
+            }
+          }
+        },
+        {
+          "id": "python:test_material_dense_real.MaterialDenseRealTests.test_real_hybrid_body_recall_metering_filter_and_stale_vectors",
+          "before": null,
+          "after": {
+            "id": "python:test_material_dense_real.MaterialDenseRealTests.test_real_hybrid_body_recall_metering_filter_and_stale_vectors",
+            "kind": "python",
+            "selector": "test_material_dense_real.MaterialDenseRealTests.test_real_hybrid_body_recall_metering_filter_and_stale_vectors",
+            "path": "automation/tests/test_material_dense_real.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [
+              "vector"
+            ],
+            "authorization": [
+              "vector"
+            ]
+          }
+        },
+        {
+          "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n06_body_only_clue_recalls_unit_without_expanding_short_context",
+          "before": null,
+          "after": {
+            "id": "python:test_memory_documents_v3.DocumentV3Tests.test_n06_body_only_clue_recalls_unit_without_expanding_short_context",
+            "kind": "python",
+            "selector": "test_memory_documents_v3.DocumentV3Tests.test_n06_body_only_clue_recalls_unit_without_expanding_short_context",
+            "path": "automation/tests/test_memory_documents_v3.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "技术正文已保存却永远进不了候选；重复表示可能挤掉独立材料。",
+              "reason": "真实漏检和候选窗口故障；保留固定正文、展开及身份去重的端到端防线。",
+              "review_triggers": [
+                "正文投影/历史回源",
+                "候选窗口/融合/预算"
+              ],
+              "reviewed_at": "2026-09-12T02:40:42.714545+00:00",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3；本次行为回归"
+            }
+          }
+        },
+        {
+          "id": "python:test_material_recall.MaterialRecallTests.test_missing_dense_model_keeps_lexical_and_reports_degradation",
+          "before": null,
+          "after": {
+            "id": "python:test_material_recall.MaterialRecallTests.test_missing_dense_model_keeps_lexical_and_reports_degradation",
+            "kind": "python",
+            "selector": "test_material_recall.MaterialRecallTests.test_missing_dense_model_keeps_lexical_and_reports_degradation",
+            "path": "automation/tests/test_material_recall.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          }
+        }
+      ],
+      "basis": "RUN-20260912T021858Z-B6E2DA1386D3"
+    },
+    {
+      "at": "2026-09-12T02:48:35.093419Z",
+      "actor": "Codex",
+      "reason": "复审基础检索变更触发的三项既有基线；成员不变。",
+      "changes": [
+        {
+          "id": "python:test_memory_index.MemoryIndexTests.test_I05_I07_source_revocation_and_missing_original_remove_cached_text",
+          "before": {
+            "id": "python:test_memory_index.MemoryIndexTests.test_I05_I07_source_revocation_and_missing_original_remove_cached_text",
+            "kind": "python",
+            "selector": "test_memory_index.MemoryIndexTests.test_I05_I07_source_revocation_and_missing_original_remove_cached_text",
+            "path": "automation/tests/test_memory_index.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "撤权或原件缺失后缓存正文仍可检索。",
+              "reason": "检索投影必须响应来源访问变化，避免旧缓存绕过边界。",
+              "review_triggers": [
+                "来源撤权/缺失",
+                "缓存正文清理"
+              ],
+              "reviewed_at": "2026-09-10T12:16:44.588514+00:00",
+              "reviewed_by": "Codex",
+              "review_basis": "2026-09-10 当前登记及测试定义静态核对；保留现有成员并补录维护理由，不追认历史选入原因，不代表本轮执行通过。"
+            }
+          },
+          "after": {
+            "id": "python:test_memory_index.MemoryIndexTests.test_I05_I07_source_revocation_and_missing_original_remove_cached_text",
+            "kind": "python",
+            "selector": "test_memory_index.MemoryIndexTests.test_I05_I07_source_revocation_and_missing_original_remove_cached_text",
+            "path": "automation/tests/test_memory_index.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "撤权或原件缺失后缓存正文仍可检索。",
+              "reason": "检索投影必须响应来源访问变化，避免旧缓存绕过边界。",
+              "review_triggers": [
+                "来源撤权/缺失",
+                "缓存正文清理"
+              ],
+              "reviewed_at": "2026-09-12T02:48:35.093419Z",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3：保留原风险和理由；最终81项通过，正文/向量不得绕过来源、版本和索引补偿。"
+            }
+          }
+        },
+        {
+          "id": "python:test_memory_index.MemoryIndexTests.test_S09_fts_and_vector_failures_reconcile_without_business_revision",
+          "before": {
+            "id": "python:test_memory_index.MemoryIndexTests.test_S09_fts_and_vector_failures_reconcile_without_business_revision",
+            "kind": "python",
+            "selector": "test_memory_index.MemoryIndexTests.test_S09_fts_and_vector_failures_reconcile_without_business_revision",
+            "path": "automation/tests/test_memory_index.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "索引失败重试制造额外业务修订或无法补偿。",
+              "reason": "保护已保存状态与可重建投影之间的独立性。",
+              "review_triggers": [
+                "FTS/向量失败处理",
+                "reconcile 与保存回执"
+              ],
+              "reviewed_at": "2026-09-10T12:16:44.588514+00:00",
+              "reviewed_by": "Codex",
+              "review_basis": "2026-09-10 当前登记及测试定义静态核对；保留现有成员并补录维护理由，不追认历史选入原因，不代表本轮执行通过。"
+            }
+          },
+          "after": {
+            "id": "python:test_memory_index.MemoryIndexTests.test_S09_fts_and_vector_failures_reconcile_without_business_revision",
+            "kind": "python",
+            "selector": "test_memory_index.MemoryIndexTests.test_S09_fts_and_vector_failures_reconcile_without_business_revision",
+            "path": "automation/tests/test_memory_index.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "索引失败重试制造额外业务修订或无法补偿。",
+              "reason": "保护已保存状态与可重建投影之间的独立性。",
+              "review_triggers": [
+                "FTS/向量失败处理",
+                "reconcile 与保存回执"
+              ],
+              "reviewed_at": "2026-09-12T02:48:35.093419Z",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3：保留原风险和理由；最终81项通过，正文/向量不得绕过来源、版本和索引补偿。"
+            }
+          }
+        },
+        {
+          "id": "python:test_material_query_options.MaterialQueryOptionTests.test_latest_policy_rejects_cached_body_after_record_changes",
+          "before": {
+            "id": "python:test_material_query_options.MaterialQueryOptionTests.test_latest_policy_rejects_cached_body_after_record_changes",
+            "kind": "python",
+            "selector": "test_material_query_options.MaterialQueryOptionTests.test_latest_policy_rejects_cached_body_after_record_changes",
+            "path": "automation/tests/test_material_query_options.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "材料改变后可能通过缓存继续返回已过期正文。",
+              "reason": "保护默认当前修订语义，真实提交后再次组装必须拒绝旧缓存。",
+              "review_triggers": [
+                "查询当前版本与缓存回读",
+                "结果显示与文稿动作"
+              ],
+              "reviewed_at": "2026-09-10T22:28:56.721365+00:00",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260910T210558Z-ABA265055ED3：8项查询选项与35项组件测试通过"
+            }
+          },
+          "after": {
+            "id": "python:test_material_query_options.MaterialQueryOptionTests.test_latest_policy_rejects_cached_body_after_record_changes",
+            "kind": "python",
+            "selector": "test_material_query_options.MaterialQueryOptionTests.test_latest_policy_rejects_cached_body_after_record_changes",
+            "path": "automation/tests/test_material_query_options.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "材料改变后可能通过缓存继续返回已过期正文。",
+              "reason": "保护默认当前修订语义，真实提交后再次组装必须拒绝旧缓存。",
+              "review_triggers": [
+                "查询当前版本与缓存回读",
+                "结果显示与文稿动作"
+              ],
+              "reviewed_at": "2026-09-12T02:48:35.093419Z",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T021858Z-B6E2DA1386D3：保留原风险和理由；最终81项通过，正文/向量不得绕过来源、版本和索引补偿。"
+            }
+          }
+        }
+      ],
+      "basis": "RUN-20260912T021858Z-B6E2DA1386D3"
+    },
+    {
+      "at": "2026-09-12T19:56:50.552325+00:00",
+      "reason": "AI阅读会话的分层候选、固定读取、持久预算与补查控制",
+      "added": [
+        "python:test_reading_workflow.ReadingWorkflowTests.test_independent_lanes_short_full_and_technical_required_blocks",
+        "python:test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+        "python:test_reading_workflow.ReadingWorkflowTests.test_second_expansion_requests_human_and_proceed_stops_recall",
+        "python:test_reading_workflow.ReadingWorkflowTests.test_paging_keeps_scope_and_delivers_unread_short_records",
+        "python:test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+        "python:test_reading_workflow.ReadingWorkflowTests.test_replay_conflict_and_unrecognized_candidate",
+        "python:test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+        "python:test_reading_workflow.ReadingWorkflowTests.test_scope_ceiling_and_access_identity_survive_restart"
+      ]
+    },
+    {
+      "at": "2026-09-12T20:00:42.950345+00:00",
+      "reason": "多命中共享定义去重回归",
+      "added": [
+        "python:test_reading_workflow.ReadingWorkflowTests.test_shared_definition_is_delivered_once_across_multiple_hits"
+      ]
+    },
+    {
+      "at": "2026-09-12T20:02:38.770346+00:00",
+      "reason": "来源新修订后旧笔记标记与拒绝续写",
+      "added": [
+        "python:test_reading_workflow.ReadingWorkflowTests.test_new_revision_marks_old_understanding_stale_without_rewriting_it"
+      ]
+    },
+    {
+      "at": "2026-09-12T20:03:29.390157+00:00",
+      "reason": "阅读会话三项长期安全边界进入基线，其余按影响执行",
+      "changes": [
+        {
+          "id": "python:test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "片段被误当全文、跨进程丢失理解",
+              "reason": "保护完整交付后记笔记及续接的核心链路",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T195347Z-39FFE0EE7711"
+            }
+          }
+        },
+        {
+          "id": "python:test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "重启进程绕过累计预算",
+              "reason": "读取会话跨进程持久化新增的费用边界",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T195347Z-39FFE0EE7711"
+            }
+          }
+        },
+        {
+          "id": "python:test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "来源撤权后缓存笔记泄露",
+              "reason": "持久AI笔记也必须受当前来源授权约束",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T195347Z-39FFE0EE7711"
+            }
+          }
+        }
+      ],
+      "basis": "RUN-20260912T195347Z-39FFE0EE7711"
+    },
+    {
+      "at": "2026-09-12T21:48:02.200469+00:00",
+      "reason": "统一工作入口、跨Owner回源、阅读可见性与受控入口迁移；软件结果见实施Run",
+      "changes": [
+        {
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_second_expansion_requests_human_and_proceed_stops_recall",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_second_expansion_requests_human_and_proceed_stops_recall",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_expansion_is_judgment_based_and_explicit_question_is_preserved",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_expansion_is_judgment_based_and_explicit_question_is_preserved",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "reason": "取消固定次数门槛，保留已询问等待语义；实际测试替代旧名"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "kind": "python",
+            "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "path": "automation/tests/test_install_workspace_skills.py",
+            "capability": "upgrade",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_owner_binding_listing_and_latest_view_survive_restart",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_owner_binding_listing_and_latest_view_survive_restart",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_archive_preserves_files_blocks_work_and_can_restore",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_archive_preserves_files_blocks_work_and_can_restore",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_binding_requires_real_owner_and_correct_checkpoint",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_binding_requires_real_owner_and_correct_checkpoint",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_fixed_checkpoint_binding_and_view_budget_do_not_rewrite_history",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_fixed_checkpoint_binding_and_view_budget_do_not_rewrite_history",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "python:test_unified_workflow.UnifiedOwnerWorkflowTests.test_eight_owner_types_find_body_and_return_direct_source_without_empty_layers",
+            "kind": "python",
+            "selector": "test_unified_workflow.UnifiedOwnerWorkflowTests.test_eight_owner_types_find_body_and_return_direct_source_without_empty_layers",
+            "path": "automation/tests/test_unified_workflow.py",
+            "capability": "owned-runs",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "component:src/ReadingSessions.test.tsx::按对象读最新记录，打开原文后导出仍使用实际笔记快照版本",
+            "kind": "component",
+            "selector": "按对象读最新记录，打开原文后导出仍使用实际笔记快照版本",
+            "path": "automation/frontend/src/ReadingSessions.test.tsx",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [
+              "frontend-dev"
+            ],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "component:src/ReadingSessions.test.tsx::换对象或来源撤权时清除之前显示的笔记",
+            "kind": "component",
+            "selector": "换对象或来源撤权时清除之前显示的笔记",
+            "path": "automation/frontend/src/ReadingSessions.test.tsx",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [
+              "frontend-dev"
+            ],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "component:src/ReadingSessions.test.tsx::筛选后的空目录窗口仍能翻页，不报告全库无会话",
+            "kind": "component",
+            "selector": "筛选后的空目录窗口仍能翻页，不报告全库无会话",
+            "path": "automation/frontend/src/ReadingSessions.test.tsx",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [
+              "frontend-dev"
+            ],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": null,
+          "after": {
+            "id": "browser:e2e/workbench.spec.ts::对象阅读清单、完整原文和版本导出真实接口",
+            "kind": "browser",
+            "selector": "对象阅读清单、完整原文和版本导出真实接口",
+            "path": "automation/frontend/e2e/workbench.spec.ts",
+            "capability": "workbench",
+            "quick": false,
+            "full": true,
+            "requires": [
+              "frontend-dev"
+            ],
+            "authorization": []
+          },
+          "reason": "统一工作流新增可观察行为"
+        },
+        {
+          "before": {
+            "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "kind": "python",
+            "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "path": "automation/tests/test_install_workspace_skills.py",
+            "capability": "upgrade",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "after": {
+            "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "kind": "python",
+            "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "path": "automation/tests/test_install_workspace_skills.py",
+            "capability": "upgrade",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "撤权笔记泄漏或用户入口被错误退休",
+              "reason": "新入口和迁移必须保留权限及可恢复边界",
+              "review_triggers": [
+                "RS列出/查看与受控Skill迁移变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162"
+            }
+          }
+        },
+        {
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": false,
+            "full": true,
+            "requires": [],
+            "authorization": []
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "撤权笔记泄漏或用户入口被错误退休",
+              "reason": "新入口和迁移必须保留权限及可恢复边界",
+              "review_triggers": [
+                "RS列出/查看与受控Skill迁移变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162"
+            }
+          }
+        }
+      ],
+      "basis": "RUN-20260912T211413Z-6272D2E02162"
+    },
+    {
+      "at": "2026-09-12T22:17:36.466145+00:00",
+      "reason": "统一工作流最终一致性审查：复审6项受影响基线，成员不变；修正八Owner公开默认值旧断言，真实升级恢复通过。",
+      "changes": [
+        {
+          "before": {
+            "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_windows_zip_upgrade_entry_and_rollback_preserve_data",
+            "kind": "python",
+            "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_windows_zip_upgrade_entry_and_rollback_preserve_data",
+            "path": "automation/tests/test_deployment_workbench.py",
+            "capability": "upgrade",
+            "quick": true,
+            "full": true,
+            "requires": [
+              "windows"
+            ],
+            "authorization": [],
+            "baseline": {
+              "risk": "Windows 升级或恢复损坏用户扩展目录和旧数据。",
+              "reason": "真实 setup 的旧工作区保护不可由简单单元用例替代；即使较慢仍保留。",
+              "review_triggers": [
+                "安装/恢复与发行清单",
+                "目录扫描/工具登记/缓存边界"
+              ],
+              "reviewed_at": "2026-09-10T12:16:44.588514+00:00",
+              "reviewed_by": "Codex",
+              "review_basis": "2026-09-10 当前登记及测试定义静态核对；保留现有成员并补录维护理由，不追认历史选入原因，不代表本轮执行通过。"
+            }
+          },
+          "after": {
+            "id": "python:test_deployment_workbench.DeploymentWorkbenchTests.test_windows_zip_upgrade_entry_and_rollback_preserve_data",
+            "kind": "python",
+            "selector": "test_deployment_workbench.DeploymentWorkbenchTests.test_windows_zip_upgrade_entry_and_rollback_preserve_data",
+            "path": "automation/tests/test_deployment_workbench.py",
+            "capability": "upgrade",
+            "quick": true,
+            "full": true,
+            "requires": [
+              "windows"
+            ],
+            "authorization": [],
+            "baseline": {
+              "risk": "Windows 升级或恢复损坏用户扩展目录和旧数据。",
+              "reason": "真实 setup 的旧工作区保护不可由简单单元用例替代；即使较慢仍保留。",
+              "review_triggers": [
+                "安装/恢复与发行清单",
+                "目录扫描/工具登记/缓存边界"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+            }
+          }
+        },
+        {
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "片段被误当全文、跨进程丢失理解",
+              "reason": "保护完整交付后记笔记及续接的核心链路",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T195347Z-39FFE0EE7711"
+            }
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_full_read_then_note_and_cross_process_resume",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "片段被误当全文、跨进程丢失理解",
+              "reason": "保护完整交付后记笔记及续接的核心链路",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+            }
+          }
+        },
+        {
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "重启进程绕过累计预算",
+              "reason": "读取会话跨进程持久化新增的费用边界",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T195347Z-39FFE0EE7711"
+            }
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_budget_consumption_persists_after_exhaustion_and_restart",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "重启进程绕过累计预算",
+              "reason": "读取会话跨进程持久化新增的费用边界",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+            }
+          }
+        },
+        {
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "来源撤权后缓存笔记泄露",
+              "reason": "持久AI笔记也必须受当前来源授权约束",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T195347Z-39FFE0EE7711"
+            }
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_source_revocation_blocks_saved_notes_and_retry",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "来源撤权后缓存笔记泄露",
+              "reason": "持久AI笔记也必须受当前来源授权约束",
+              "review_triggers": [
+                "阅读会话存储、固定来源或预算行为变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+            }
+          }
+        },
+        {
+          "before": {
+            "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "kind": "python",
+            "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "path": "automation/tests/test_install_workspace_skills.py",
+            "capability": "upgrade",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "撤权笔记泄漏或用户入口被错误退休",
+              "reason": "新入口和迁移必须保留权限及可恢复边界",
+              "review_triggers": [
+                "RS列出/查看与受控Skill迁移变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162"
+            }
+          },
+          "after": {
+            "id": "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "kind": "python",
+            "selector": "test_install_workspace_skills.WorkspaceSkillInstallerTests.test_managed_migration_is_fingerprinted_backed_up_and_reversible",
+            "path": "automation/tests/test_install_workspace_skills.py",
+            "capability": "upgrade",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "迁移误删或覆盖用户Skill，无法恢复旧入口。",
+              "reason": "精确字节识别、先备份、单文件退休及恢复保护用户修改和附属文件。",
+              "review_triggers": [
+                "受控Skill模板指纹、安装/升级/恢复变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+            }
+          }
+        },
+        {
+          "before": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "撤权笔记泄漏或用户入口被错误退休",
+              "reason": "新入口和迁移必须保留权限及可恢复边界",
+              "review_triggers": [
+                "RS列出/查看与受控Skill迁移变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162"
+            }
+          },
+          "after": {
+            "id": "python:test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "kind": "python",
+            "selector": "test_reading_workflow.ReadingWorkflowTests.test_listing_and_view_hide_revoked_sources",
+            "path": "automation/tests/test_reading_workflow.py",
+            "capability": "retrieval",
+            "quick": true,
+            "full": true,
+            "requires": [],
+            "authorization": [],
+            "baseline": {
+              "risk": "列出/查看接口泄漏已撤权来源的阅读笔记或会话身份。",
+              "reason": "新增阅读发现和查看入口必须持续复查权限，并在拒绝后不返回旧内容。",
+              "review_triggers": [
+                "RS列出/查看、授权及来源闭包变化"
+              ],
+              "reviewed_at": "2026-09-13",
+              "reviewed_by": "Codex",
+              "review_basis": "RUN-20260912T211413Z-6272D2E02162：实际阅读/重启/撤权及setup升级恢复回执；保留原断言并扩展覆盖"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "at": "2026-09-12T22:46:05.781774+00:00",
+      "reason": "退役名称拒绝安装及纯源码缺失本地状态时的补缺/恢复",
+      "added": [
+        "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_retired_names_cannot_be_installed",
+        "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_public_archive_missing_local_state_is_seeded_without_overwrite"
+      ]
     }
   ]
 }

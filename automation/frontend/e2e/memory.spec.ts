@@ -37,11 +37,9 @@ test("L0统一材料、无来源条目的Run、固定原件预览与清单导出
   await page.getByLabel("记忆归属对象").selectOption(owner);
   await filterTypes(page, ["source"]);
   await expect(page.locator(".memory-list article")).toHaveCount(0);
-  const card = page
-    .getByTestId("raw-material")
-    .filter({
-      has: page.getByRole("heading", { name: "run.json", exact: true }),
-    });
+  const card = page.getByTestId("raw-material").filter({
+    has: page.getByRole("heading", { name: "run.json", exact: true }),
+  });
   await card.getByRole("button", { name: "核验并查看原件" }).click();
   await expect(card.locator(".raw-preview pre")).toContainText(owner);
   const exported = page.waitForResponse((response) =>
@@ -145,8 +143,12 @@ async function filterTypes(
 ) {
   await page.getByRole("button", { name: "清空类型", exact: true }).click();
   const group = page.getByRole("group", { name: "按层级或类型筛选" });
-  for (const type of types)
-    await group.locator(`input[value="${type}"]`).check();
+  for (const type of types) {
+    // 历史fixture仍保存map/event；界面只显示现行统一层级入口。
+    const visible =
+      type === "map" ? "overview" : type === "event" ? "narrative" : type;
+    await group.locator(`input[value="${visible}"]`).check();
+  }
 }
 
 test("四层记录、真实编辑冲突、索引待补偿与安全导出", async ({
@@ -730,7 +732,7 @@ test("跨研究材料回填L3与L4，并采纳有边界的导航关联", async (
   request,
 }) => {
   await open(page);
-  for (const level of ["L3 经验", "L4 主题地图"]) {
+  for (const level of ["L3 经验", "L4 整体概览"]) {
     await page.getByRole("button", { name: "跨项目总结", exact: true }).click();
     await page
       .getByRole("textbox", { name: "总结问题", exact: true })
@@ -764,6 +766,14 @@ test("跨研究材料回填L3与L4，并采纳有边界的导航关联", async (
       await page
         .getByLabel("禁止迁移条件", { exact: true })
         .fill("不交换预热时间与预载次数");
+    } else {
+      // 新概览使用真实问题和当前阶段；旧map的空topic草案不能冒充完整v4输入。
+      await page
+        .getByLabel("问题内容", { exact: true })
+        .fill("共同前置条件与不可迁移参数是什么");
+      await page
+        .getByLabel("当前阶段", { exact: true })
+        .fill("已比较两份合成材料，尚未验证迁移");
     }
     await page
       .getByLabel("记忆保存原因")
@@ -772,7 +782,8 @@ test("跨研究材料回填L3与L4，并采纳有边界的导航关联", async (
       r.url().endsWith("/memory/summaries-save"),
     );
     await page.getByRole("button", { name: "保存记忆", exact: true }).click();
-    expect((await (await saved).json()).save_status).toBe("committed");
+    const receipt = await (await saved).json();
+    expect(receipt.save_status, JSON.stringify(receipt)).toBe("committed");
     await expect(page.getByRole("status")).toContainText("记录已保存", {
       timeout: 60000,
     });

@@ -21,8 +21,8 @@ from . import owners
 from .store import MemoryStore, utc_now
 
 SCHEMA_VERSION = 1
-PROJECTION_VERSION = "memory-v3-technical-description-documents"
-ENCODER_VERSION = "memory-record-representation-v3-technical-description"
+PROJECTION_VERSION = "memory-v4-technical-blocks"
+ENCODER_VERSION = "memory-record-representation-v4-technical-blocks"
 SENSITIVITY = {"public": 0, "internal": 1, "confidential": 2, "restricted": 3}
 DEFAULT_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
@@ -100,6 +100,9 @@ def connect(root, *, create=True):
             columns = {row[1] for row in db.execute("PRAGMA table_info(memory_index_state)")}
             if "projection_version" not in columns:
                 db.execute("ALTER TABLE memory_index_state ADD COLUMN projection_version TEXT")
+            entry_columns = {row[1] for row in db.execute("PRAGMA table_info(memory_entries)")}
+            if "block_id" not in entry_columns:
+                db.execute("ALTER TABLE memory_entries ADD COLUMN block_id TEXT")
             db.commit()
         return db
     except sqlite3.Error as exc:
@@ -354,6 +357,21 @@ def _entry(row, *, representation=None):
     return entry
 
 
+def block_entry(row, block):
+    """Index authored detail without creating another canonical record.
+
+    The unit title supplies deterministic local context. The body is the exact
+    block text, never an inferred summary; its identity and revision permit fixed
+    readback. Discovery previews remain the unit's authored short description.
+    """
+    entry = _entry(row)
+    entry.update(entry_id='BLOCK:' + row['canonical_id'] + ':' + block['block_id'],
+                 block_id=block['block_id'], text=block['markdown'])
+    entry['signature'] = canonical_hash({'projection_version': PROJECTION_VERSION,
+                                        'entry': {k: v for k, v in entry.items() if k != 'signature'}})
+    return entry
+
+
 def project_owner(catalog, owner_id):
     """当前规范快照→派生行；丢失/过期表示只保存风险元数据、不保存可检索正文。"""
     owner = catalog.owners[owner_id]
@@ -386,6 +404,13 @@ def project_owner(catalog, owner_id):
     rows = visible_rows
     by_id = {row["canonical_id"]: row for row in rows}
     entries.extend(_entry(row) for row in rows if row["level"] != "L0" and row['kind'] not in {'document', 'document_section'})
+    from .technical_units import is_unit
+    for record in snapshot['records'].values():
+        row = by_id.get(record['record_id'])
+        # Only rows that passed the same current source/permission gate may
+        # contribute body blocks. A restricted source cannot survive in FTS.
+        if row is not None and is_unit(record):
+            entries.extend(block_entry(row, block) for block in record['payload']['blocks'])
     for record in snapshot["records"].values():
         if record["kind"] != "representation":
             continue
@@ -657,6 +682,37 @@ class MemoryVectorBackend:
         result = self.backend.client.query_points(self.collection, query=vector, limit=count,
             query_filter=query_filter, with_payload=True, with_vectors=False)
         return [{**(point.payload or {}), "vector_score": float(point.score), "vector_id": str(point.id)} for point in result.points]
+
+    def search_bounded(self, query, allowed_ids, *, owner_ids, limit, ledger):
+        """Return at most limit record groups, four diagnostic windows each.
+
+        Qdrant local still computes similarity over eligible points internally;
+        this bounds returned metadata, not an ANN/constant-time guarantee. Input
+        is checked using the installed model tokenizer before any embedding call.
+        Local inference cannot be interrupted midway, so checkpoint immediately
+        after it and after the query; an expired operation cannot report success.
+        """
+        if not allowed_ids or limit <= 0:
+            return []
+        count = len(self.backend.tokenizer.encode(query, add_special_tokens=True).ids)
+        if count > 512:
+            raise MemoryError('CAPABILITY_UNAVAILABLE', '语义查询超过 512 token；请缩短查询，未静默截断')
+        costs = {'model_calls': 1, 'model_input_tokens': count, 'model_tokens': count}
+        if any(ledger.remaining(key) < amount for key, amount in costs.items()):
+            raise MemoryError('CAPABILITY_UNAVAILABLE', '语义查询模型预算不足；未调用编码器')
+        for key, amount in costs.items():
+            ledger.charge(key, amount)
+        vector = next(self.backend.model.query_embed(query)).tolist()
+        ledger.checkpoint()
+        if len(vector) != 384:
+            raise MemoryError('CAPABILITY_UNAVAILABLE', '查询向量维度不是 384')
+        result = self.backend.client.query_points_groups(self.collection, group_by='record_id',
+            query=vector, limit=limit, group_size=4,
+            query_filter=self._filter(canonical_id=sorted(allowed_ids), owner_id=list(owner_ids)),
+            with_payload=True, with_vectors=False)
+        ledger.checkpoint()
+        return [{**(point.payload or {}), 'raw_score': float(point.score), 'vector_id': str(point.id)}
+                for group in result.groups for point in group.hits]
 
 
 def vector_error(exc):

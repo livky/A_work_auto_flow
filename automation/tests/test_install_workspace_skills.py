@@ -24,7 +24,7 @@ class WorkspaceSkillInstallerTests(unittest.TestCase):
         self.script = self.root / "automation/scripts/install_workspace_skills.py"
         self.script.parent.mkdir(parents=True)
         shutil.copyfile(ROOT / "automation/scripts/install_workspace_skills.py", self.script)
-        for name in installer.NAMES:
+        for name in installer.NAMES + installer.COMPAT_NAMES:
             target = self.root / "automation/workflows" / name / "SKILL.md"
             target.parent.mkdir(parents=True)
             shutil.copyfile(ROOT / "automation/workflows" / name / "SKILL.md", target)
@@ -47,7 +47,7 @@ class WorkspaceSkillInstallerTests(unittest.TestCase):
         return target
 
     def test_default_preview_four_entries_install_and_repeat_preserve_extra_skill(self):
-        self.assertEqual(installer.NAMES, ("workspace-context", "context-maintenance", "evidence-inspection", "research-loop", "development-checks",
+        self.assertEqual(installer.NAMES, ("work-loop", "context-maintenance", "evidence-inspection", "development-checks",
                                          "material-query", "association-exploration", "semantic-maintenance"))
         custom = self.custom("用户 自定义", b"private custom skill\r\n")
         before = self.snapshot()
@@ -65,31 +65,68 @@ class WorkspaceSkillInstallerTests(unittest.TestCase):
 
     def test_last_entry_conflict_rejects_whole_batch_before_any_write(self):
         # 批次中一项发生冲突：其他项也不得创建文件或目录。
-        self.custom("research-loop", b"user-owned research skill\r\n")
+        self.custom("work-loop", b"user-owned research skill\r\n")
         self.custom("用户 自定义", b"unrelated local tool")
         before = self.snapshot()
         preview = self.run_install(expected=2)
         self.assertIn("-user-owned research skill", preview.stderr)
-        self.assertIn("+name: research-loop", preview.stderr)
+        self.assertIn("+name: work-loop", preview.stderr)
         self.assertIn("(current, preserved)", preview.stderr)
         self.assertIn("(generated proposal)", preview.stderr)
         self.assertEqual(self.snapshot(), before)
         applied = self.run_install("--apply", expected=2)
         self.assertIn("-user-owned research skill", applied.stderr)
-        self.assertIn("+name: research-loop", applied.stderr)
+        self.assertIn("+name: work-loop", applied.stderr)
         self.assertEqual(self.snapshot(), before)
 
     def test_name_selection_preserves_other_modified_skills_and_is_idempotent(self):
         custom = self.custom("workspace-context", b"modified existing default")
         extra = self.custom("用户 自定义", b"keep this extra skill")
-        self.run_install("--name", "research-loop", "--name", "research-loop", "--apply")
+        self.run_install("--name", "work-loop", "--name", "work-loop", "--apply")
         self.assertEqual(custom.read_bytes(), b"modified existing default")
         self.assertEqual(extra.read_bytes(), b"keep this extra skill")
         self.assertFalse((self.root / ".agents/skills/context-maintenance").exists())
         self.assertFalse((self.root / ".agents/skills/evidence-inspection").exists())
         before = self.snapshot()
-        self.run_install("--name", "research-loop", "--apply")
+        self.run_install("--name", "work-loop", "--apply")
         self.assertEqual(self.snapshot(), before)
+
+    def test_managed_migration_is_fingerprinted_backed_up_and_reversible(self):
+        import upgrade_fixture
+        legacy = self.custom('research-loop', upgrade_fixture.legacy_skill('research-loop').encode())
+        old = legacy.read_bytes()
+        changed = self.custom('material-query', (upgrade_fixture.legacy_skill('material-query') + '用户附加约束').encode())
+        original = changed.read_bytes()
+        entries = installer.managed_updates(self.root, self.root)
+        self.assertEqual([item['path'] for item in entries], ['.agents/skills/research-loop/SKILL.md'])
+        self.assertEqual(legacy.read_bytes(), old)
+        backup = deployment.apply_upgrade(self.root, self.root, entries)
+        self.assertFalse(legacy.exists())
+        self.assertEqual(changed.read_bytes(), original)
+        deployment.rollback(backup)
+        self.assertEqual(legacy.read_bytes(), old)
+        self.assertEqual(changed.read_bytes(), original)
+
+    def test_retired_names_cannot_be_installed(self):
+        before = self.snapshot()
+        self.run_install("--name", "research-loop", "--apply", expected=2)
+        self.assertEqual(self.snapshot(), before)
+
+    def test_public_archive_missing_local_state_is_seeded_without_overwrite(self):
+        # First-install defaults use the same recoverable write transaction;
+        # repeated setup and upgrades must retain subsequently entered user state.
+        entries = deployment.plan(self.root, self.root)
+        self.assertEqual({e['path'] for e in entries},
+                         {'retrieval/sources.json', 'context/NOW.md'})
+        backup = deployment.apply_upgrade(self.root, self.root, entries)
+        source = self.root / 'retrieval/sources.json'
+        self.assertIn('"sources": []', source.read_text())
+        source.write_text('{"schema_version":1,"sources":[{"path":"user"}]}')
+        self.assertEqual(deployment.plan(self.root, self.root), [])
+        # Restore only after reverting the simulated user edit to expected bytes.
+        source.write_bytes(b'{"schema_version": 1, "sources": []}\n')
+        deployment.rollback(backup)
+        self.assertFalse(source.exists())
 
     def test_release_framework_inventory_includes_each_workflow_and_installer(self):
         # 调用真实发布清单函数，证明目录扫描包含新 workflow；用户入口

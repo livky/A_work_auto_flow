@@ -2,6 +2,8 @@
 
 知识分类回答材料属于哪些角色、哪些实际尝试得到什么结果，以及谁基于什么证据评估了具体目标的置信程度。它与 claim 的复核状态、当前有效性分别保存和筛选；高置信度、成功尝试或分类依据不会创建 accepted review。
 
+v4 narrative/overview及分类experience也沿用可选knowledge_facets；experience还需要knowledge_type（observation/conclusion/hypothesis/recommendation）。knowledge_type描述认识性质，roles可含method等用途，二者不是同一枚举。步骤性方法通常保存为L1，外来主张应在正文明确，分类不会自动授予复核。
+
 ## 保存位置与兼容性
 
 v3 的 `event`、`experience`、`detail`、`map`、`document`、`document_section` 可在 `payload.knowledge_facets` 保存下列可选对象。使用原 `memory validate-draft` / `memory commit` / `memory inspect` 流程，修订遵守原 CAS 和幂等要求。

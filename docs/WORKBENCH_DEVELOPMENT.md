@@ -1,6 +1,6 @@
 # 工作台开发与扩展
 
-现行说明核对日期：2026-09-10。主要维护面包含材料关系、业务证据、版本记忆/研究文稿及材料查询 v0.2；全局数据流与模块影响见 [架构说明](../ARCHITECTURE.md)，其他细节从 [文档索引](README.md) 进入。本页按前端/API 影响阅读，不是每次开发的全量必读文件。
+现行说明核对日期：2026-09-13。主要维护面包含材料关系、业务证据、版本记忆/研究文稿及材料查询 v0.2；全局数据流与模块影响见 [架构说明](../ARCHITECTURE.md)，其他细节从 [文档索引](README.md) 进入。本页按前端/API 影响阅读，不是每次开发的全量必读文件。
 
 使用者通过 `setup.cmd --register --open` 安装并打开；开发者才需要 Node。预构建资源随源码分发，Python 服务不调用 npm，不从 CDN 取脚本。
 
@@ -10,13 +10,13 @@
 |---|---|
 | `automation/frontend/src/App.tsx` | 应用外壳、静态页面注册、导航与任务状态 |
 | `src/Relations.tsx`、`src/Evidence.tsx` | 材料关系、证据页面及交互状态 |
-| `src/Memory.tsx`、`src/memory-contract.ts` | 对象记忆、L0、研究文稿与固定请求的界面/契约检查 |
+| `src/Memory.tsx`、`src/ReadingSessions.tsx`、`src/memory-contract.ts` | 对象记忆、L0、研究文稿、按Owner的实时阅读记录与固定请求的界面/契约检查 |
 | `src/MaterialQuery.tsx`、`MaterialStructure.tsx`、`MaterialPacket.tsx` | 材料查询、逻辑/存储范围、固定候选与材料包；表示选择不是规范层级迁移 |
 | `src/components.tsx`、`src/group-view.ts` | Canvas、详情对话框、只供展示的聚合 |
 | `src/graph-model.ts` | 选择、排除、局部 BFS、范围一致的摘要 |
 | `src/cluster.worker.ts`、`src/cluster.ts` | Louvain 与跨组候选的独立 Worker |
 | `contracts/graph.schema.json`、`src/generated/contracts.ts` | 图 API 契约与生成类型 |
-| `automation/schemas/memory-v3.schema.json`、`src/generated/memory-schema.ts` | 当前记忆契约与前端生成副本；旧 v1/v2 按版本兼容 |
+| `automation/schemas/memory-v4.schema.json`、`src/generated/memory-schema.ts` | 当前记忆契约与前端生成副本；旧v1–v3按版本兼容；新L1/文稿仍用v3 |
 | `automation/scripts/material_query/contracts.py`、`automation/schemas/material-query.schema.json` | 查询运行字段真源与生成 schema；同一前端生成流程纳入查询契约 |
 | `automation/scripts/workbench_app/web.py` | `/api/v1/` 路由、资源清单校验 |
 | `service.py`、`cli.py` | 网页与命令行共享用例与输入边界 |

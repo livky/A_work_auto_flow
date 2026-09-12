@@ -9,6 +9,6 @@ description: 对用户选定的研发材料做跨领域结构关联分析，比�
 
 逐份识别问题、变量角色、机制、约束、干预及结果条件。比较共同结构与关键差异，说明每个迁移条件、反例及可验证下一步；术语相同不能直接证明机制相同。引用明确fixed refs，未知字段留空说明。
 
-输出供复核的关联草案与理由。已授权保存导航时，通过现有 `memory associations` 公开入口按其实际schema预检、提交、回读；没有阅读目标材料就不写“已语义审查”。采纳导航不提升claim复核状态，不写入supports作为替代。发现原材料已变化，更新依据后重新分析。
+输出供复核的关联草案与理由。已授权保存导航时，通过现有 `memory associations-propose` / `associations-decide` 公开入口按其实际schema预检、提交、回读；没有阅读目标材料就不写“已语义审查”。采纳导航不提升claim复核状态，不写入supports作为替代。发现原材料已变化，更新依据后重新分析。
 
-详见[材料查询手册](../../../docs/MATERIAL_QUERY.md)；需要反证或实验时使用[研究闭环](../research-loop/SKILL.md)。
+详见[材料查询手册](../../../docs/MATERIAL_QUERY.md)；需要反证或实验时使用[工作与记录](../work-loop/SKILL.md)。

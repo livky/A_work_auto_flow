@@ -61,10 +61,16 @@ def append_history(state, reader, manifests):
                         if not all(record_allowed(record, scope) for scope in (request.scope, request.scope_ceiling)):
                             continue
                         projected = index._row(record, owner)
-                        searchable = projected["title"] + "\n" + index._entry(projected)["text"]
+                        entries = [index._entry(projected)]
+                        from memory.technical_units import is_unit
+                        if is_unit(record):
+                            entries.extend(index.block_entry(projected, block) for block in record['payload']['blocks'])
+                        # Reuse authored block projections, but never insert old
+                        # text into the current index or claim historical BM25.
+                        matching = [entry for entry in entries if any(term.casefold() in (
+                            entry['title'] + '\n' + entry['text']).casefold() for term in terms)]
                         exact = "identity" in request.channels and (rid == text or rid in targets)
-                        matched = [term for term in terms if term.casefold() in searchable.casefold()]
-                        lexical = "lexical" in request.channels and bool(matched)
+                        lexical = "lexical" in request.channels and bool(matching)
                         if not exact and not lexical:
                             continue
                         channel = "identity" if exact else "lexical"
@@ -73,7 +79,9 @@ def append_history(state, reader, manifests):
                                "entity_kind": "record", "revision": record["revision"],
                                "content_hash": record["record_hash"], "_history": True}
                         hit = {"rank_channels": {channel: len(groups) + 1},
-                               "score": float(len(matched)) if lexical else 1.0}
+                               "score": float(len(matching)) if lexical else 1.0,
+                               "channel_rows": {channel: [{**row, **entry, '_entry_rank': rank}
+                                   for rank, entry in enumerate(matching[:4] if lexical and not exact else [{}], 1)]}}
                         groups.append({"record_id": rid, "ref": ref, "charged": True,
                                        "matches": [(hit, row)]})
                     except (QueryError, MemoryError) as exc:

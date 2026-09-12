@@ -35,7 +35,7 @@
 
 ID 和文件名是示例，不代表已存在业务对象。不确定核心算法时省略 --module，由候选关联推断有限数量的目标核心算法，再由 AI 核对。核心算法不要求属于项目；--project 仅在确需限制可选项目时使用。
 
-读取返回的 Markdown 和 manifest。算法问答可用 `$workspace-context`；普通创建操作不必每次调用技能。`search-runs` 是 Run 元数据 AND 检索，`build-context` 是规则/导航快照，两者不替代材料检索。
+读取返回的 Markdown 和 manifest。算法问答使用 `$work-loop` 并按需查其核心算法参考；普通创建操作不必每次调用技能。`search-runs` 是 Run 元数据 AND 检索，`build-context` 是规则/导航快照，两者不替代材料检索。
 
 ## 文件证据包的分阶段装载
 

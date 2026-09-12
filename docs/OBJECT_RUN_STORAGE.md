@@ -1,6 +1,6 @@
 # 对象、Run 与执行回执：当前默认保存逻辑
 
-核对日期：2026-09-10。本文描述当前实现，区分程序自动行为、AI 工作方法和未实现的自动化；对象已有策略或本次明确要求可以改变默认行为。
+核对日期：2026-09-13。本文描述当前实现，区分程序自动行为、AI 工作方法和未实现的自动化；对象已有策略或本次明确要求可以改变默认行为。
 
 当前模块职责以 [ARCHITECTURE.md](../ARCHITECTURE.md) 为入口；保存/归属规则变化时，按 [文档维护约定](DOCUMENTATION_MAINTENANCE.md) 同步本页、执行手册与对应 Skill。
 
@@ -62,13 +62,13 @@
 |---|---|---|
 | L0 | 原始输入、脚本、输出、日志和固定文件引用的统一视图 | 执行/登记命令写材料登记，L0 自动投影 |
 | L1 detail | v3 实验、方法、推导或分析技术单元；检索说明与稳定完整正文块 | AI 阅读真实证据后写入，不由日志自动生成 |
-| L2 event | 实际观察、失败、决定及依据、后续行动 | AI 按重要事件保存 |
+| L2 narrative | 有依据的研究/工作经过、选择与转折 | AI按实际价值保存，注明本次经过或来源叙述 |
 | L3 experience | 有适用边界的经验和不可迁移范围 | AI 在证据支持时提炼，不为凑层数制造结论 |
-| L4 map | 问题、证据结构、未决事项和导航 | AI 随研究阶段维护 |
+| L4 overview | 用途、适用条件、现状、未决事项和导航 | AI按内容维护 |
 
-独立 `document_section` 章节、`document` 研究过程文稿/精简报告、目标、路线、检查点等是辅助类型，level 为 null。两类文稿分别使用 `research_process` / `research_report`，通过固定章节引用组织同一批技术单元，L4 仍是知识地图。L1 的实验说明固定引用 Run；方法、推导和分析可以没有实际执行的 Run，须明确依据或缺口。说明文档不会再算一次实验。每条记忆只有一个 owner_id，存入该 owner 的 memory_home，通过公共记忆提交保存历史修订，不在父子对象两边复制正文。
+独立 `document_section` 章节、`document` 研究过程文稿/精简报告、目标、路线、检查点等是辅助类型，level 为 null。两类文稿分别使用 `research_process` / `research_report`，通过固定章节引用组织同一批技术单元，L4 是整体概览。L1 的实验说明固定引用 Run；方法、推导和分析可以没有实际执行的 Run，须明确依据或缺口。说明文档不会再算一次实验。每条记忆只有一个 owner_id，存入该 owner 的 memory_home，通过公共记忆提交保存历史修订，不在父子对象两边复制正文。
 
-新记录默认 v3；v1 层级按现行语义投影，v2 detail 和旧 map 编排保留兼容，不改旧字节与固定引用。当前记录与检索模式见 [记忆使用指南](MEMORY_USAGE.md)，不要从文件夹名称或旧模板推断记录版本。
+新L1/章节/文稿使用v3，narrative/overview及分类experience使用v4；旧字节与固定引用保留。旧event/map实际整理后才提交新修订，不做原地替换。完整字段见[记录标准](RESEARCH_RECORDING.md)。
 
 跨对象引用可复用同一 Run 或技术单元。程序不替 AI 决定所有 L1 应写父研究还是子 Run；按内容归属显式指定 owner_id。研究整体文稿、研究目标和阶段综合通常归研究，某次运行独有的记录可归 Run，以固定引用组织。
 
@@ -77,26 +77,21 @@
 - 非 Run 对象的 L0 会汇总 owner_id 或相关研究/项目/算法/数据关联字段命中的 Run，以及记忆固定引用和显式依赖。
 - Run 对象的 L0 首先读取自身登记及显式引用；仅因子 Run 的 owner_id 指向该 Run，不会自动递归汇总子 Run。
 - 项目关联某个研究，不等于研究的每个 Run 自动获得该 project_id；L0 不按整棵目录树推导归属。
-- 更高层说明、事件、经验和地图不自动从子对象复制到父对象。文件保存、索引成功、结论复核是三个不同状态。
+- 更高层技术说明、经过、经验和概览不自动从子对象复制到父对象。文件保存、索引成功、结论复核是三个不同状态。
 
-## 默认策略与 Skill
+## 默认策略与工作入口
 
-程序基础策略为 basic、normal 粒度、owner_only 发现范围、auto_summary=false、auto_deepen=false、checkpoint=true。Research 与 Project 类型均为 explore、fine、retain=L0–L4、auto_summary=true；其他六类沿用基础默认，其中 Run 显式设 basic。该 Project 默认自 2026-09-10 起采用，已有显式对象策略保持原意。
+各类Owner默认使用work-loop，按有用内容保存L0依据、L1方法/分析、L2有依据的经过、L3可复用认识及L4概览。允许缺层，文稿按阅读和交付需要编排；不为每轮凑记录或强制双文稿。固定引用复用原件，来源主张、AI推断与本次验证明确区分。已有显式对象策略保留。
 
-这些是记录/整理策略，不是后台 AI 调度开关。Research/Project 的 auto_summary=true 不表示保存文件后系统就自行调用模型写报告；仍需 AI 执行准备、编写、提交和回读。当前公共服务读取内置工作区/类型默认值和对象 HEAD 指向的 policy；保存对象策略后通过 inspect 查看有效值及逐字段来源。纯 Python `policy.resolve` 支持“工作区 → 类型 → 对象 → 请求”的覆盖顺序，但当前 CommitRequest 没有自由的 request_overrides 字段，不能把解析器能力当作已接入的 CLI 配置。子 Run 不因目录在研究或项目下就自动继承父对象的 explore 策略。
+基础默认basic、normal、retain=L0–L4、owner_only、auto_summary=false、auto_deepen=false、checkpoint=true；Research/Project保留explore兼容值，粒度也是normal。retain表示可保留的内容，不是必填层；auto_summary不是后台调度。有效策略由memory inspect回读，已有显式配置优先，子Run不因目录继承父策略。CommitRequest没有任意request_overrides字段。
 
-Skill 由 AI 按本轮任务选择，不由对象目录自动触发。多项工作可以组合 Skill，不要求每次全套执行。
+work-loop负责各类工作归属/记录/交接；material-query负责材料与阅读记录；开发、批量整理、结构迁移、复核追溯、下游语义维护按需使用对应专项Skill。run-execute/run-register是工具，不是另一主Skill。极小无复用价值操作不另建档。
 
-| 任务 | 通常使用的 Skill | 行为与保存结果 |
-|---|---|---|
-| 读取对象、核对实现、理解历史 | workspace-context | 定位目标、按证据缺口展开；查字段不新建 Run |
-| 导入材料、修订与整理知识 | context-maintenance | 采用身份、登记材料、保存修订、核对引用和索引 |
-| 研究问题、仿真、反证与多轮探索 | research-loop | 读取目标/检查点；建立独立 Run；按 L0–L4 保存，编排文稿并回读 |
-| 开发/修复/工具回归 | development-checks | 阅读并维护六份短文档，按风险选择验证；轻量任务记计划/摘要，独立验证产物用 Run |
-| 查看依据、复核、失效和下游影响 | evidence-inspection | 只读追溯；按授权维护复核；监测仅写观察记录，不启动实验 |
-| 生成具体交付格式 | documents、pdf、presentations、spreadsheets 等对应 Skill | 按实际格式生成与校验成品；涉及计算依据仍使用固定 Run |
+## 运行中的阅读记录在哪里
 
-按对象看：研究通常由 research-loop 主导；算法/数据/Run 先 workspace-context，再按研究、开发或整理任务组合；工具开发主要 development-checks；知识维护主要 context-maintenance；报告按文件格式 Skill 加证据检查；项目按所属工作组合并维护目标、里程碑与引用。对象名称本身不决定需要进行研究或运行程序。
+工作台“系统记忆→选择对象→阅读记录”按owner_id列出RS，打开时从`.local/reading-sessions/RS-ID/HEAD.json`读取最新状态。CLI可用`material-query reading-list --owner ID`及`reading-view --session RS-ID --markdown`。未绑定旧会话在全局列表发现后显式bind；可关联固定检查点，关联保存在RS内。检查点是整体工作交接，RS下一步只指阅读子任务。
+
+RS保存已交付候选、AI理解、必要细节、出处、尝试及预算；不复制原正文、不进入知识索引。Markdown导出标明版本，是快照；JSON由服务维护。归档只改状态并保留历史，不能删除原件或撤销知识结论。授权和来源变化需重新检查，旧导出不作为绕过撤权的入口。字段/容量/预算边界见[AI阅读](AI_READING.md)。
 
 ## 已核对的实现入口
 

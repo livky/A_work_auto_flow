@@ -5,6 +5,7 @@ import sys
 import tempfile
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'automation/scripts'))
+sys.path.insert(0, str(ROOT / 'automation/tests'))
 import local_test_data
 import workbench
 from workbench_app.service import Service
@@ -15,9 +16,13 @@ import retrieval as r
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--scale', action='store_true')
+    parser.add_argument('--reading', action='store_true')
     args = parser.parse_args()
     with tempfile.TemporaryDirectory(prefix='wb-e2e-', dir=ROOT / '.local') as directory:
         root = local_test_data.build(Path(directory) / '中文 沙盒')
+        if args.reading:
+            from reading_panel_fixture import populate
+            populate(root)
         service = Service(root, enable_jobs=False)
         service.rebuild()
         if args.scale:

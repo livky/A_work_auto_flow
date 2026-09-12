@@ -5,6 +5,7 @@ MeteredStore._record；SQLite 故障仅注入查询连接，未用假返回候�
 每个测试复制已验证的合成工作区，避免损坏水位或改版影响其他测试。
 """
 from copy import copy, deepcopy
+from contextlib import closing
 from dataclasses import replace
 from pathlib import Path
 import shutil
@@ -296,6 +297,31 @@ class MaterialRecallTests(unittest.TestCase):
         # Two representations remain one lexical vote in RRF, while identity is
         # an independent vote. Diagnostics must never inflate the fused score.
         self.assertAlmostEqual(candidate["score"], 2 / 61)
+
+    def test_representations_do_not_starve_distinct_record_window(self):
+        # Both existing representations match this clue. Add the same clue to
+        # another canonical record and restrict the window to two records.
+        self.fx.revise('lazy.revised', 'lazy.1', body_markdown='zqxjrepresentationunique')
+        result = self.search(replace(self.request, question='zqxjrepresentationunique', result_limit=2,
+                                     budget=replace(DEFAULT_BUDGET, candidates=2)))
+        self.assertEqual({c['refs'][0]['id'] for c in result['value']['candidates']},
+                         {self.fx.record_ids['lazy.0'], self.fx.record_ids['lazy.1']})
+
+    def test_missing_dense_model_keeps_lexical_and_reports_degradation(self):
+        with patch('socket.create_connection', side_effect=AssertionError('unexpected network')):
+            result = self.search(replace(self.request, channels=('lexical', 'dense')))
+        self.assertEqual(result['status'], 'partial', result)
+        self.assertEqual(self.first(result)['channels'], ['lexical'])
+        self.assertTrue(any('dense' in warning for warning in result['warnings']))
+        self.assertEqual(result['consumed']['model_calls'], 0)
+
+    def test_old_projection_watermark_is_reported_until_rebuild(self):
+        with closing(index.connect(self.root)) as db:
+            db.execute("UPDATE memory_index_state SET projection_version='old-projection'")
+            db.commit()
+        result = self.search()
+        self.assertEqual(result['status'], 'partial', result)
+        self.assertTrue(any('水位' in w for w in result['warnings']))
 
     def test_formal_representation_fragment_is_null_without_claim_approval(self):
         record = self.fx.records["A.event"]

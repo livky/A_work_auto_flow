@@ -34,17 +34,17 @@
 
 当前字段以 [v4 聚合契约](../automation/schemas/memory-v4.schema.json) 和服务校验为准；[v2](../automation/schemas/memory-v2.schema.json)、[v1](../automation/schemas/memory-v1.schema.json) 保留历史读取。新 narrative/overview 默认 v4，分类 experience 显式用 v4，其他种类默认 v3；新草案按类型明确版本，不靠兼容形状猜版本。CommitRequest 封套版本与记录版本相互独立，不能靠修改封套迁移正文。旧 event/map 不再提供单独的工作台筛选或新建入口；尚未整理的对象记录仍在相应层级可见，但不会冒充新内容查询的 narrative/overview。旧 v1 存储 L1/L2/L3 分别投影为新 L2/L3/L4，历史字节与哈希不变；v2 detail 仍读取原正文。公式说明符号、单位与适用条件。研究默认覆盖见 [分层记录标准](RESEARCH_RECORDING.md)。
 
-每轮实质研究先保存 L1 `detail`：`unit_type` 区分 experiment/method/derivation/analysis，`retrieval_description` 说明问题、方法、发现与适用边界，完整技术正文只写入 `blocks`，`body_markdown` 留空。实验必须固定引用实际 Run；未执行的方法、推导或分析可以令 `run_ref=null`，并交代依据或缺口。再用 v4 L2 `narrative` 的 stages 和正文记录“为何作出选择”及实际转折，固定技术依据；L3 `experience` 明确 knowledge_type 与边界，L4 `overview` 保存整体概览。跨研究不自动意味着经验。研究经过可保存 `occurred_at`、`failure` 和目标/路线/Run 引用；失败字段记录类别、范围、结果、不能推出的判断和重试条件。经验的 `failure_modes` 不能代替实际失败经过，也不重复登记实验。
+需要完整方法/分析时保存 L1 `detail`：`unit_type` 区分 experiment/method/derivation/analysis，`retrieval_description` 说明问题、方法、发现与适用边界，完整技术正文只写入 `blocks`，`body_markdown` 留空。实验必须固定引用实际 Run；未执行的方法、推导或分析可以令 `run_ref=null`，并交代依据或缺口。再用 v4 L2 `narrative` 的 stages 和正文记录“为何作出选择”及实际转折，固定技术依据；L3 `experience` 明确 knowledge_type 与边界，L4 `overview` 保存整体概览。跨研究不自动意味着经验。研究经过可保存 `occurred_at`、`failure` 和目标/路线/Run 引用；失败字段记录类别、范围、结果、不能推出的判断和重试条件。经验的 `failure_modes` 不能代替实际失败经过，也不重复登记实验。
 
 ### 整理旧事件和地图
 
 先读旧正文、实际依据、失败与适用边界，再编写新内容。通过 `put_record` 修订同一个 ID：只允许 event→narrative、map→overview，记录版本为 4，必须有完整 `body_markdown`、`change_reason`，并在 `sources` 中用 `relation: references` 固定上一修订的 ID、revision 和 record_hash。仍需通过正常 schema、来源授权和 HEAD/修订冲突检查；服务不会自动推导正文或展开关联。
 
-新修订成为当前记录，索引按相同身份更新，不同时留下两条当前记录；旧修订、旧引用及审查历史保持不变。将经过和技术单元保存回读后，再用实际 revision/SHA 写入经验、概览的展开关系。完成后执行 `memory rebuild --scope 对象ID`，分别核对保存、全文索引与向量索引状态。数据整理不重跑实验，也不提升科学复核状态。
+新修订成为当前记录，索引按相同身份更新，不同时留下两条当前记录；旧修订、旧引用及审查历史保持不变。将经过和技术单元保存回读后，再用实际 revision/SHA 写入经验、概览的展开关系。完成后以 `memory rebuild --request 请求.json` 提交 `{"scope":["对象ID"],"vector":"auto"}`，分别核对保存、全文索引与向量索引状态。数据整理不重跑实验，也不提升科学复核状态。
 
-Research 与 Project 默认都按上述标准记录实质工作：类型策略 explore/fine、保留 L0–L4、建议阶段总结。已有显式对象策略仍优先；这不等于后台自动生成。Project 的设计/开发正文应保存为技术单元和双文稿，只有 Run 附件时仍缺知识正文。
+各类Owner默认使用work-loop，按有用内容保存L0依据、L1方法/分析、L2有依据的经过、L3可复用认识及L4概览。允许缺层，文稿按阅读和交付需要编排；不为每轮凑记录或强制双文稿。固定引用复用原件，来源主张、AI推断与本次验证明确区分。已有显式对象策略保留。
 
-需要构造请求时，只读 [请求示例](MEMORY_REQUESTS.md) 中当前动作的小节。常用任务可用 workspace-context 查字段与经验、context-maintenance 保存或整理、evidence-inspection 查看依据与纠错、research-loop 维护目标/路线/断点与研究总结；安装入口由 `install_workspace_skills.py` 维护，保留用户自定义 Skill。
+需要构造请求时，只读[请求示例](MEMORY_REQUESTS.md)的当前动作。work-loop统一归属/记录/续接，material-query负责查阅与阅读记录，其他专项按需使用。所有Owner可按内容组合L0–L4，缺层正常，文稿按需；默认normal与auto_summary=false不改写已有显式策略。旧research-loop/workspace-context保留兼容跳转，安装器默认登记7项。
 
 ## 2. 日常操作
 
@@ -102,7 +102,7 @@ Research 与 Project 默认都按上述标准记录实质工作：类型策略 e
 
 正式查询将 `purpose` 改为 `formal` 并补充实际 `scope`。`vector: "off"` 可显式只使用非向量通道；可选能力缺失或索引待更新会出现在返回状态中。
 
-`retrieval_mode` 默认为 `knowledge`：发现 L1 技术说明及更高层知识，v3 技术单元主要按检索说明召回，完整正文在固定引用展开时读取。查文稿或章节使用 `documents`，该模式使用全文通道并关闭向量，不能同时要求 `vector:"required"`。L0 追溯用 `trace` 并显式选择实际 ID，或用 `raw-materials` / `raw-material` 查看已登记材料。独立文稿不默认混入知识排名；三种模式都保留权限、排除和版本检查。
+`retrieval_mode` 默认为 `knowledge`：发现 L1 技术说明及更高层知识，v3 技术单元的检索说明与稳定正文块均可召回，候选预览仍用说明，完整正文在固定引用展开时读取。technical-blocks v4派生投影需要重建，旧水位不会因HEAD未变就算覆盖。查文稿或章节使用 `documents`，该模式使用全文通道并关闭向量，不能同时要求 `vector:"required"`。L0 追溯用 `trace` 并显式选择实际 ID，或用 `raw-materials` / `raw-material` 查看已登记材料。独立文稿不默认混入知识排名；三种模式都保留权限、排除和版本检查。
 
 探索查询明确提到已有主题关键词时，优先列出该主题的具体记录；匹配结论和其完整 Run 同时出现时，先展示结论，Run 仍可按 ID 或引用读取。缺少关键词的记录和其他向量结果保留为后备；没有明确主题时仍使用原多通道排序。显式选择与排除保持优先，检索位置不代表结论已经复核。当前质量评价与已知限制以[执行状态](design/system-memory/STATUS.md)为准。
 

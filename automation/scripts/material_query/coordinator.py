@@ -1,6 +1,6 @@
 """查询、选择与组包的应用编排；不更换既有规范存储或生成业务结论。
 
-仅对已有FTS索引做有界候选读取，随后逐项固定来源核验；结果数量限制不能
+对已有FTS/本地向量索引做有界候选读取，随后逐项固定来源核验；结果数量限制不能
 变成全库正文读取。结构筛选和正式证据准入在最终K之前执行，预算不足明示。
 """
 from concurrent.futures import ThreadPoolExecutor
@@ -192,15 +192,19 @@ class Coordinator:
                 "content_sources": ["overview_experience", "process", "technical", "all"],
                 "content_expansion": ["process", "technical"],
                 "full_documents": True,
+                "reading_workflow": {"version": "2", "actions": ["template", "start", "recall", "page", "read", "note", "decide", "resume", "list", "view", "bind", "archive"],
+                                     "persistent": True, "automatic_semantic_judgment": False},
                 "owner_types": ["research", "project", "knowledge", "run", "core-algorithm", "report", "data", "tool"],
                 "default_freshness": "current",
                 "association": {"modes": ["off", "existing_only"], "strategy": "existing-relations", "version": "1", "structural_requires_review": True},
                 "deepening": {"modes": ["source_mapping", "bounded_graph"], "strategy": "bounded-bfs", "version": "1"},
                 "maintenance": {"strategy": "dependency-review", "version": "1", "automatic_agent": False, "task_package": True},
                 "limits": asdict(SERVER_LIMITS), "default_budget": asdict(DEFAULT_BUDGET), "query_ttl_seconds": self.store.ttl,
-                "channels": ["identity", "lexical"], "ranking_strategies": sorted(self.ranking_strategies),
+                "channels": ["identity", "lexical", "dense"], "ranking_strategies": sorted(self.ranking_strategies),
                 "model_providers": [], "tokenizers": [],
-                "model_metering": "无已注册模型/分词计量策略；模型预算字段不是已配置模型的证明",
+                "dense_provider": {"key": "local-memory-embedding", "encoder_version": index.ENCODER_VERSION,
+                                   "max_query_tokens": 512, "diagnostic_windows_per_record": 4},
+                "model_metering": "dense 内置本机标准编码器，查询前计量 token/调用次数；通用模型/分词策略尚未注册；缺模型或水位明确降级，不联网补齐",
                 "definition_alias_resolution": "foundation/definition-resolve"}
 
     def reader(self, state):
@@ -457,27 +461,41 @@ class Coordinator:
                     job["terms"] = terms
                     expression = " OR ".join('"' + term.replace('"', '""') + '"' for term in terms)
                     if expression:
-                        sql = f"""SELECT {columns},e.entry_id,e.representation_id,
+                        sql = f"""WITH scored AS MATERIALIZED (SELECT {columns},e.entry_id,e.representation_id,e.block_id,
                             bm25(memory_fts) AS raw_score
                             FROM memory_fts JOIN memory_entries e ON e.entry_id=memory_fts.entry_id
                             JOIN memory_records r ON r.canonical_id=e.canonical_id
                             WHERE memory_fts MATCH ? AND r.owner_id IN ({placeholders})
                             AND e.owner_id IN ({placeholders}) AND r.sensitivity!='restricted'
                             AND e.sensitivity!='restricted' AND r.entity_kind IN ('record','claim')
-                            {source_sql} ORDER BY raw_score,r.canonical_id,e.entry_id LIMIT ?"""
+                            {source_sql}), selected AS (
+                            SELECT record_id,MIN(raw_score) AS best FROM scored
+                            GROUP BY record_id ORDER BY best,record_id LIMIT ?), diagnostics AS (
+                            SELECT scored.*,selected.best,ROW_NUMBER() OVER (
+                            PARTITION BY scored.record_id ORDER BY raw_score,canonical_id,entry_id) AS diagnostic_rank
+                            FROM scored JOIN selected USING(record_id))
+                            SELECT * FROM diagnostics WHERE diagnostic_rank<=4
+                            ORDER BY best,record_id,raw_score,canonical_id,entry_id"""
+                        # The limit applies to distinct records, not windows or
+                        # representations. Keep up to four actual scored sources
+                        # per record so diagnostics cannot grow with its length.
                         # Append each completed row so a provider's iterator
                         # failure cannot erase the already returned prefix.
                         for row in db.execute(sql, [expression, *allowed_owners, *allowed_owners, *source_kinds, remaining]):
                             state.ledger.checkpoint()
                             lexical.append(dict(row))
-                    if len(lexical) >= remaining:
+                    if len({row['record_id'] for row in lexical}) >= remaining:
                         gaps.append("候选窗口已达预算上限，不能保证全量覆盖")
                 except (sqlite3.Error, OSError, MemoryError):
                     gaps.append("召回通道 lexical 执行失败；保留其他已完成通道")
-            missing = set(request.channels) - {"identity", "lexical"}
+            if 'dense' in request.channels:
+                from .recall import dense
+                channels['dense'], dense_gaps = dense(self.root, db, state, allowed_owners, source_kinds, remaining)
+                gaps.extend(dense_gaps)
+            missing = set(request.channels) - {"identity", "lexical", "dense"}
             if missing:
                 gaps.append("未执行通道：" + ", ".join(sorted(missing)) + "；首期有界提供器不调用无硬预算的全窗口查询")
-                if not set(request.channels) & {"identity", "lexical"}:
+                if not set(request.channels) & {"identity", "lexical", "dense"}:
                     raise QueryError("UNSUPPORTED", "当前选定召回通道不支持有界执行")
 
             # Missing rows are checked against the complete authorized owner set,
@@ -485,7 +503,7 @@ class Coordinator:
             states = {}
             try:
                 states = {row["owner_id"]: dict(row) for row in db.execute(
-                    f"SELECT owner_id,indexed_generation,target_generation,fts_status FROM memory_index_state WHERE owner_id IN ({placeholders})",
+                    f"SELECT owner_id,indexed_generation,target_generation,fts_status,projection_version FROM memory_index_state WHERE owner_id IN ({placeholders})",
                     allowed_owners)}
             except (sqlite3.Error, OSError, MemoryError):
                 gaps.append("索引水位不可读，不能确认当前覆盖")
@@ -501,7 +519,7 @@ class Coordinator:
                     gaps.append("索引水位缺少 owner 记录，不能确认当前覆盖")
                 else:
                     job["watermarks"].append((oid, str(watermark["indexed_generation"])))
-                    if watermark["fts_status"] != "indexed" or watermark["indexed_generation"] != watermark["target_generation"] or watermark["indexed_generation"] != generation:
+                    if watermark["fts_status"] != "indexed" or watermark["indexed_generation"] != watermark["target_generation"] or watermark["indexed_generation"] != generation or watermark['projection_version'] != index.PROJECTION_VERSION:
                         gaps.append("索引水位未完整覆盖当前内容")
 
             rows_by_id, metadata = {}, {}
@@ -750,12 +768,21 @@ class Coordinator:
                     source = FixedRef("claim", claims[0]["claim_id"], None, canonical_hash(claims[0]), "statement")
                     if approved_ids is None or claims[0]["claim_id"] in approved_ids:
                         source_text = claims[0]["statement"]
-                elif approved_ids is None and channel == "lexical":
+                elif entry.get('block_id'):
+                    blocks = [block for block in record.get('payload', {}).get('blocks', ())
+                              if block.get('block_id') == entry['block_id']]
+                    if len(blocks) != 1:
+                        state.recall['gaps'].append('部分命中技术块在固定版本中不存在，已省略')
+                        continue
+                    source = fixed_record(record, 'block:' + entry['block_id'])
+                    if approved_ids is None:
+                        source_text = blocks[0]['markdown']
+                elif approved_ids is None and channel in {"lexical", "dense"}:
                     # Recreate the existing deterministic entry from the exact
                     # authorized canonical revision, rather than trusting cached
                     # SQLite prose or substituting the candidate's display text.
                     projected = index._row(record, reader.owner(record["owner_id"]))
-                    source_text = projected["title"] + "\n" + index._entry(projected)["text"]
+                    source_text = (projected["title"] + "\n" if channel == 'lexical' else '') + index._entry(projected)["text"]
                 matched_text = None
                 if channel == "identity":
                     # This provider matched the persisted identity field itself.
@@ -769,10 +796,16 @@ class Coordinator:
                             matched_text = source_text[start:start + 240]
                     if matched_text is None:
                         state.recall["gaps"].append("部分词法命中没有可按当前用途展示的固定原文片段；matched_text 为 null")
+                elif channel == 'dense' and source_text is not None:
+                    # This is source context, not a claim that a query substring
+                    # occurred verbatim. Cosine score retains its own meaning.
+                    matched_text = source_text[entry.get('start', 0):entry.get('end', len(source_text))][:240]
+                    if not matched_text:
+                        matched_text = record['title'][:240]
                 output.append({"channel": channel, "provider": "canonical-history" if row.get("_history") else "memory-fts" if channel == "lexical" else channel,
-                    "provider_version": index.PROJECTION_VERSION if channel == "lexical" else "1", "rank": entry.get("_entry_rank", 1),
-                    "raw_score": entry.get("raw_score") if channel == "lexical" else None,
-                    "score_meaning": "获准登记目录匹配；非FTS排名" if channel == "catalog" else "固定历史版本的词项匹配；非FTS排名" if row.get("_history") else "FTS bm25（越低越相关）" if channel == "lexical" else "精确身份匹配" if channel == "identity" else "既有固定关系导航",
+                    "provider_version": index.ENCODER_VERSION if channel == 'dense' else index.PROJECTION_VERSION if channel == "lexical" else "1", "rank": entry.get("_entry_rank", 1),
+                    "raw_score": entry.get("raw_score") if channel in {"lexical", "dense"} else None,
+                    "score_meaning": "本地向量余弦相似度（越高越相关）；非结论可信度" if channel == 'dense' else "获准登记目录匹配；非FTS排名" if channel == "catalog" else "固定历史版本的词项匹配；非FTS排名" if row.get("_history") else "FTS bm25（越低越相关）" if channel == "lexical" else "精确身份匹配" if channel == "identity" else "既有固定关系导航",
                     "representation_refs": [asdict(source)], "matched_text": matched_text})
         return output
 

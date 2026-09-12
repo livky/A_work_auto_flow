@@ -1,6 +1,8 @@
 # 文档索引
 
-现行说明由六份短文档组成：[用户入口](../README.md)、[架构](../ARCHITECTURE.md)、[核心功能](CORE.md)、本索引、[维护约定](DOCUMENTATION_MAINTENANCE.md)、[测试选择](TESTING.md)。它们在开发前和结束后完整阅读；另有 [开发决策与演进记录](DEVELOPMENT_HISTORY.md)，每次讨论方案前读取、开发后维护，解释为什么采用当前方案及历史错误。下列细节按本次影响打开。
+[统一工作公共动作](WORKFLOW_ACTIONS.md)：Owner选择、用户可见工作上下文清单的存放/维护，以及执行、保存、续接的真实命令；主入口work-loop。
+
+现行说明由六份短文档组成：[用户入口](../README.md)、[架构](../ARCHITECTURE.md)、[核心功能](CORE.md)、本索引、[维护约定](DOCUMENTATION_MAINTENANCE.md)、[测试选择](TESTING.md)。按影响读取维护，全局整合、发布或用户要求全面审查时前后完整阅读；另有 [开发决策与演进记录](DEVELOPMENT_HISTORY.md)，全局方案前完整读取、局部方案定位相关决定，开发后维护，解释为什么采用当前方案及历史错误。下列细节按本次影响打开。
 
 本页位于 `docs/README.md`，链接相对该目录书写：例如 `MEMORY_USAGE.md` 实际是工作区的 `docs/MEMORY_USAGE.md`，`../README.md` 才是根 README。下表是已有功能手册的按需导航，不是全部必读文件。`context/NOW.md` 给当前任务入口，计划和 Run 保存详细进度与证据。
 
@@ -11,9 +13,11 @@
 | 开发方案须守住哪些架构边界 | [ARCHITECTURE](../ARCHITECTURE.md#稳定设计约束)：依赖、状态、性能、身份、权威与语义分工；同页维护实际模块影响及未完成项 |
 | 快速理解查询、关联、上下文、AI 记录与本地保存 | [CORE](CORE.md) 用伪代码和必要解释说明核心流程，提供实现文件索引；细节按需读取 |
 | 记录定义、技术块、章节和双文稿 | [RESEARCH_RECORDING](RESEARCH_RECORDING.md)；[MEMORY_USAGE](MEMORY_USAGE.md)、[MEMORY_REQUESTS](MEMORY_REQUESTS.md) 给操作/请求 |
+| 用实体文件理解记录、Run、索引与AI填写可靠性 | [MEMORY_STORAGE_EXPLAINED](MEMORY_STORAGE_EXPLAINED.md)：关键字段、三表查询示例与维护触发；作为CORE按需补充 |
 | 对象、Run 归属和原始材料登记 | [OBJECT_RUN_STORAGE](OBJECT_RUN_STORAGE.md)、[RUN_CAPTURE](RUN_CAPTURE.md) |
 | 导入已有资料、来源变化与历史位置 | [EXISTING_MATERIALS](EXISTING_MATERIALS.md) |
-| 材料内容来源、固定展开、兼容表示、联想与维护 | [MATERIAL_QUERY](MATERIAL_QUERY.md)；[KNOWLEDGE_FACETS](KNOWLEDGE_FACETS.md) 定义可选知识分类 |
+| 材料内容来源、正文块/混合召回、固定展开、兼容表示、联想与维护 | [MATERIAL_QUERY](MATERIAL_QUERY.md)；[KNOWLEDGE_FACETS](KNOWLEDGE_FACETS.md) 定义可选知识分类 |
+| AI多路检索、阅读理解、必要细节与问题续接 | [AI_READING](AI_READING.md)：reading CLI/HTTP、工作记录存储、范围预算与补查控制 |
 | 旧材料检索与规范记忆检索 | [RETRIEVAL](RETRIEVAL.md)、[MEMORY_USAGE](MEMORY_USAGE.md) |
 | 材料图、正式证据与观察 | [MATERIAL_RELATIONS](MATERIAL_RELATIONS.md)、[EVIDENCE_CONTROLS](EVIDENCE_CONTROLS.md)、[EVIDENCE_VIEW_MONITOR](EVIDENCE_VIEW_MONITOR.md) |
 | 工作台技术栈、扩展、生成类型和资源 | [WORKBENCH_DEVELOPMENT](WORKBENCH_DEVELOPMENT.md) |
@@ -30,7 +34,7 @@
 | 生成产物 | `automation/schemas/` 与 `automation/frontend/src/generated/`；从真源生成，不分别改定义 |
 | 材料查询旧接口继承与适配限制 | [RUNTIME_STATUS](design/representation-query-v0.2/RUNTIME_STATUS.md) 是持续核对的映射；旧设计的“应当”不等于当前完整实现 |
 | 图 API 契约 | [graph.schema.json](../automation/frontend/contracts/graph.schema.json)；图版本与记忆记录版本、查询 v0.2 各自独立 |
-| Skill | [automation/workflows](../automation/workflows/README.md) 的8个方法源与 `.agents/skills/` 发现入口一一对应；开发用 [development-checks](../automation/workflows/development-checks/SKILL.md)，结束逐项核对适用性、命令和登记，处置规则见 [文档维护](DOCUMENTATION_MAINTENANCE.md) |
+| Skill | [automation/workflows](../automation/workflows/README.md) 的7个活跃方法源；默认发现7项，旧名已退休；开发用 [development-checks](../automation/workflows/development-checks/SKILL.md)，按影响核对适用性、命令和登记；全局整合/发布全面审查，处置规则见 [文档维护](DOCUMENTATION_MAINTENANCE.md) |
 
 ## 历史与固定资料：按类原地保留
 

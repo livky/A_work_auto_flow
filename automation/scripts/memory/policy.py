@@ -4,15 +4,15 @@ from .contracts import SCHEMA, validate_schema
 from .errors import MemoryError
 
 
-WORKSPACE_DEFAULTS = {'mode': 'basic', 'retain': [], 'granularity': 'normal',
+WORKSPACE_DEFAULTS = {'mode': 'basic', 'retain': ['L0', 'L1', 'L2', 'L3', 'L4'], 'granularity': 'normal',
                       'auto_summary': False, 'discovery': 'owner_only',
                       'auto_deepen': False, 'checkpoint': True}
-# Project 自身的设计、分析和开发也是实质研究，默认保存同样的分层内容。
-# 这只是给调用方的记录建议：auto_summary 不启动后台模型，也不自动复核。
-# 两个类型分别持有副本，避免后续局部扩展配置时串改另一类型的保留列表。
-RESEARCH_RECORDING_DEFAULTS = {'mode': 'explore', 'granularity': 'fine',
+# 所有Owner都允许保留有用的分层内容；retain不是要求创建五个条目。
+# 默认关闭自动巩固建议，由AI按有用内容与交接需要选择，避免反复补空层。
+# 保留Research/Project的explore兼容标记；不迁移已有显式Owner策略。
+RESEARCH_RECORDING_DEFAULTS = {'mode': 'explore', 'granularity': 'normal',
                               'retain': ['L0', 'L1', 'L2', 'L3', 'L4'],
-                              'auto_summary': True}
+                              'auto_summary': False}
 TYPE_DEFAULTS = {'research': deepcopy(RESEARCH_RECORDING_DEFAULTS),
                  'project': deepcopy(RESEARCH_RECORDING_DEFAULTS),
                  'run': {'mode': 'basic'}}

@@ -127,6 +127,14 @@ class Assembler:
                             "affected_refs": [asdict(ref)] if known and code != "DENIED" else [], "retry": retry_hint(code)})
 
     def add(self, group, title, text, selector, ref, *, figures=()):
+        # 多个命中块可能共享同一定义。按固定引用与选择器去重，避免重复
+        # 输出/计费；若该定义本身也是命中，将其从必要上下文提升为直接项。
+        fixed = asdict(ref)
+        for existing in self.parts:
+            if existing['refs'] == [fixed] and existing['selectors'] == [selector] and existing['markdown'] == text:
+                if group == 'direct':
+                    existing['group'] = 'direct'
+                return
         if not text:
             self.gap("选定材料没有可组合正文", ref=ref)
             return

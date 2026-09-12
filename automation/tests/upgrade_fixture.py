@@ -144,6 +144,14 @@ def snapshot(root, names, directories):
             'directories': sorted(directories)}
 
 
+
+def legacy_skill(name):
+    descriptions = {
+        'research-loop': '规划并执行专题研究、数据诊断、模型设计验证和证据报告的闭环；适用于论文阅读、仿真、反证和可复现综合，不用于简单事实问答。',
+        'material-query': '按内容来源、标准类型和版本查询已有研发材料，选择候选后展开正文或读取完整文稿，核对来源、预算和缺口；不自动生成新结论。',
+    }
+    return f"---\nname: {name}\ndescription: {descriptions[name]}\n---\n\n# 工作区技能入口\n\n在含 workspace.json 的当前研发工作区使用。读取 [完整工作流](../../../automation/workflows/{name}/SKILL.md)，按本轮任务执行；根 AGENTS 与用户明确要求优先。本文件只用于技能发现，方法和命令在工作流源维护。\n"
+
 def populate(root, branches=8):
     """在各业务区添加多层目录、中文空格名称、单文件和目录工具以及用户扩展。
 
@@ -365,10 +373,30 @@ def populate(root, branches=8):
         request = MaintenanceRequest((from_legacy(unit_ref)[0],), material_scope, "dependency-review", "1")
         planned = material_dispatch(material_app, "maintenance-plan", json_value(request))
         assert planned.get('value') and planned['value']['plan_id'], planned
+        # Reading sessions are durable user work too. Exercise the public
+        # creation/decision API, then protect HEAD and immutable history bytes.
+        template = material_dispatch(material_app, 'reading-template', {})['value']
+        template.update(goal='SYNTHETIC ONLY 升级后接续阅读', conditions=['合成条件保留'], owner_id=v3_owner)
+        template['query']['scope'] = json_value(material_scope)
+        template['query']['scope_ceiling'] = json_value(material_scope)
+        started = material_dispatch(material_app, 'reading-start', template)
+        assert started['status'] == 'ok', started
+        decided = material_dispatch(material_app, 'reading-decide', {
+            'session_id': template['session_id'], 'expected_revision': 1, 'request_id': 'upgrade-decision',
+            'direction': 'proceed', 'reason': '合成上下文足够', 'next_step': '升级后继续验证',
+            'outcome': '', 'human_decision': ''})
+        assert decided['status'] == 'ok', decided
     finally:
         material_app.close()
     plan_home = root / '.local/material-query/plans'
     for path in [plan_home, *plan_home.rglob('*')]:
+        relative = path.relative_to(root).as_posix()
+        if path.is_dir():
+            directories.add(relative)
+        elif path.is_file():
+            names.append(relative)
+    reading_home = root / '.local/reading-sessions'
+    for path in [reading_home, *reading_home.rglob('*')]:
         relative = path.relative_to(root).as_posix()
         if path.is_dir():
             directories.add(relative)

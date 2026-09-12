@@ -1146,7 +1146,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command == "material-query":
             from material_query import cli as material_cli
             result, exit_code = material_cli.execute(root, args)
-            print(dump_json(result))
+            if getattr(args, 'markdown', False) and result.get('value', {}).get('context_markdown'):
+                print(result['value']['context_markdown'])
+            else:
+                print(dump_json(result))
             return exit_code
 
         if args.command == 'relations':

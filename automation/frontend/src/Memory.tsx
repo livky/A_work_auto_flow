@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { api, download } from "./api";
 import { RawMaterials } from "./RawMaterials";
+import { ReadingSessions } from "./ReadingSessions";
 import {
   ResearchDocument,
   ResearchMarkdown,
@@ -583,6 +584,7 @@ export function Memory() {
     ["summary", "跨项目总结"],
     ["relations", "导航关联"],
     ["resume", "暂停与续接"],
+    ["reading", "阅读记录"],
   ];
   return (
     <>
@@ -687,6 +689,7 @@ export function Memory() {
           </div>
         )}
       </section>
+      {tab === "reading" && <ReadingSessions key={ownerId} ownerId={ownerId} />}
       {message && (
         <div className="alert" role="status">
           {message}

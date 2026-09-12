@@ -8,6 +8,8 @@
 - `scripts/` 适合单文件/小型 CLI；`packages/` 适合可测试库；`external/` 只放适配器和接入说明。
 - 算法核心、数据 IO、编排与展示分层，避免第三方平台锁定核心逻辑。
 
+工作与记录统一使用work-loop：源码留scripts/packages，通用方法和经验在tools/memory/TOOL-ID，工具自身验证在tools/runtime/TOOL-ID/runs。处理业务数据的Run归业务Owner，以固定引用复用工具经验；不重复同一次执行。
+
 ## 工具质量门
 
 - 有清晰 CLI 与 `--help`；输入输出、单位、默认值和失败语义明确。

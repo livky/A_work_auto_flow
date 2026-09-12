@@ -24,6 +24,9 @@ def dispatch(coordinator, action, raw):
             return coordinator.capabilities()
         if action == "definitions" and not raw:
             return envelope(definitions.listing())
+        if action.startswith("reading-"):
+            from .reading import dispatch as reading_dispatch
+            return reading_dispatch(coordinator, action.removeprefix("reading-"), raw)
         if action.startswith("foundation/"):
             from .foundation import Foundation
             return Foundation(coordinator).dispatch(action.removeprefix("foundation/"), raw)
