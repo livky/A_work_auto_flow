@@ -17,6 +17,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 import uuid
 import zipfile
 
@@ -29,6 +30,24 @@ MANIFEST = 'dependency-manifest.json'
 DISTRIBUTION = BASE + 'dependency-distribution.json'
 COMPONENTS = [BASE + 'runtime', BASE + 'models/multilingual-minilm', BASE + 'model-manifest.json', DISTRIBUTION]
 PTH = b'python312.zip\n.\nLib/site-packages\n../../..\nimport site\n'
+
+
+def rename_component(source, destination):
+    """Retry brief Windows sharing/access failures without weakening rollback.
+
+    Copies of DLL-heavy components can be temporarily held by local scanners.
+    Never remove the destination or retry unrelated errors; after a bounded wait
+    the original error reaches the existing transaction recovery path.
+    """
+    delays = (0.25, 0.5, 1, 2, 4, 4)
+    for attempt in range(len(delays) + 1):
+        try:
+            source.rename(destination)
+            return
+        except PermissionError as error:
+            if getattr(error, 'winerror', None) not in {5, 32, 33} or attempt == len(delays):
+                raise
+            time.sleep(delays[attempt])
 
 
 def sha(path):
@@ -331,11 +350,11 @@ def restore(backup, preview=False):
             if live.exists():
                 moved = safe(backup, 'removed-' + uuid.uuid4().hex + '/' + item['path'])
                 moved.parent.mkdir(parents=True, exist_ok=True)
-                live.rename(moved)
+                rename_component(live, moved)
             old = safe(backup, 'previous/' + item['path'])
             if old.exists():
                 live.parent.mkdir(parents=True, exist_ok=True)
-                old.rename(live)
+                rename_component(old, live)
     return {'restored_dependencies': not preview, 'preview': preview, 'target': str(target)}
 
 
@@ -388,9 +407,9 @@ def install(bundle, target, source):
             if live.exists():
                 old = safe(backup, 'previous/' + item['path'])
                 old.parent.mkdir(parents=True, exist_ok=True)
-                live.rename(old)
+                rename_component(live, old)
             live.parent.mkdir(parents=True, exist_ok=True)
-            safe(backup, 'incoming/' + item['path']).rename(live)
+            rename_component(safe(backup, 'incoming/' + item['path']), live)
     except Exception:
         restore(backup)
         raise

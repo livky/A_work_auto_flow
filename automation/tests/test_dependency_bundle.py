@@ -20,6 +20,27 @@ import deployment
 
 
 class DependencyBundleTests(unittest.TestCase):
+    def test_component_switch_retries_transient_windows_lock_but_remains_bounded(self):
+        error = PermissionError('synthetic Windows sharing lock')
+        error.winerror = 5
+        source, destination = Path('synthetic-source'), Path('synthetic-target')
+        with patch.object(Path, 'rename', side_effect=[error, None]) as rename, \
+                patch.object(bundle.time, 'sleep') as sleep:
+            bundle.rename_component(source, destination)
+            self.assertEqual(rename.call_count, 2)
+            sleep.assert_called_once_with(0.25)
+        with patch.object(Path, 'rename', side_effect=error) as rename, \
+                patch.object(bundle.time, 'sleep') as sleep:
+            with self.assertRaises(PermissionError):
+                bundle.rename_component(source, destination)
+            self.assertEqual(rename.call_count, 7)
+            self.assertEqual(sleep.call_count, 6)
+        with patch.object(Path, 'rename', side_effect=FileNotFoundError('missing')), \
+                patch.object(bundle.time, 'sleep') as sleep:
+            with self.assertRaises(FileNotFoundError):
+                bundle.rename_component(source, destination)
+            sleep.assert_not_called()
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

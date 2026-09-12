@@ -295,7 +295,7 @@ class WorkspaceCliTests(unittest.TestCase):
 
         workflow_root = REPOSITORY_ROOT / "automation" / "workflows"
         skill_paths = sorted(workflow_root.glob("*/SKILL.md"))
-        self.assertTrue({"workspace-context", "context-maintenance"}.issubset({p.parent.name for p in skill_paths}))
+        self.assertTrue({"work-loop", "context-maintenance"}.issubset({p.parent.name for p in skill_paths}))
 
         for path in skill_paths:
             text = path.read_text(encoding="utf-8")

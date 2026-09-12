@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 72,
+  "revision": 73,
   "capabilities": [
     {
       "id": "workspace",
@@ -7960,6 +7960,17 @@
       "full": true,
       "requires": [],
       "authorization": []
+    },
+    {
+      "id": "python:test_dependency_bundle.DependencyBundleTests.test_component_switch_retries_transient_windows_lock_but_remains_bounded",
+      "kind": "python",
+      "selector": "test_dependency_bundle.DependencyBundleTests.test_component_switch_retries_transient_windows_lock_but_remains_bounded",
+      "path": "automation/tests/test_dependency_bundle.py",
+      "capability": "workspace",
+      "quick": false,
+      "full": true,
+      "requires": [],
+      "authorization": []
     }
   ],
   "deferred": [
@@ -10306,6 +10317,13 @@
       "added": [
         "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_retired_names_cannot_be_installed",
         "python:test_install_workspace_skills.WorkspaceSkillInstallerTests.test_public_archive_missing_local_state_is_seeded_without_overwrite"
+      ]
+    },
+    {
+      "at": "2026-09-12T23:05:29.168946+00:00",
+      "reason": "真实离线安装短暂目录占用的有限重试，持续失败仍拒绝并恢复",
+      "added": [
+        "python:test_dependency_bundle.DependencyBundleTests.test_component_switch_retries_transient_windows_lock_but_remains_bounded"
       ]
     }
   ]
