@@ -80,3 +80,4 @@ research/floating-point-summation/** -text
 
 /PLAN.md export-ignore
 /待开发计划.md export-ignore
+automation/schemas/material-query.schema.json text eol=lf

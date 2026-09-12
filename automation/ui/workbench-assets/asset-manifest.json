@@ -35,7 +35,7 @@
     "src/components.test.tsx": "a5f670bd2fe0a0d24c962e5967d88d0dfaa0255c11d350b068e01ea8a383ca39",
     "src/components.tsx": "50a5335160b86e47facd083911c431dee36c461bc76f3b32168d66fcc86798c3",
     "src/generated/contracts.ts": "66042490afd1ecc97ff079ceebbe31236ea121d379f2ea97884603e504bf7e0a",
-    "src/generated/material-query.ts": "02e9e50a0db3ed7f32a6e5f9591088de59c438bbd709e5cebb3bfe36b83b5850",
+    "src/generated/material-query.ts": "56f99c8f4773ce7ffda9fde5c12d55a018fa33cb9888d8546abef6d3a55e8a69",
     "src/generated/memory-schema.ts": "70cd61becafdd31edec602d96a4dd3f071f82e3c1eef0943c44b7c6c70f65556",
     "src/graph-model.test.ts": "c1861099d72a8cf907c208051e3591213a70d25b9c2cac615dbf6497841f03f3",
     "src/graph-model.ts": "d6b20d333c4d1141139eb4f6c7695e26c596aa516dcd9c90fbe9f4cb3ab53627",
@@ -50,7 +50,7 @@
     "tsconfig.json": "9a23607a14cc691d7cbbf58972d93673b4010eb96d213019c9b18057dee8b0c4",
     "vite.config.ts": "f4e03effb23b11be0ea13db59d1a26da887449292724c6dfeb43fa37d96c7eb0"
   },
-  "source_fingerprint": "18c0c4e1f938d7f8659af8ca61817c3a69a0202e2e0f82ab783d7cd7214875c6",
+  "source_fingerprint": "1f523243e4991e8369698193036efd6e8a19f36c20f4c579ebb10cc9df3e1471",
   "files": {
     "THIRD_PARTY.txt": "9f9df4ac110e3c2d338e5a7bddf8d51505fbdfff67687a27be0bcbf35d44098e",
     "assets/KaTeX_AMS-Regular-BQhdFMY1.woff2": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",

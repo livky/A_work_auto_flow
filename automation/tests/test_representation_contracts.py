@@ -360,7 +360,7 @@ class GeneratedRepresentationContractTests(unittest.TestCase):
             outputs = (automation / "schemas/material-query.schema.json", automation / "frontend/src/generated/material-query.ts")
             for path, text in zip(outputs, rendered):
                 path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(text, encoding="utf-8")
+                path.write_bytes(text.encode("utf-8"))
             # 只将生成器的输出根导向本测试新建的目录；真实受控文件保持只读。
             with patch.object(generate_types, "SCRIPTS", automation / "scripts"), \
                     patch.object(sys, "argv", ["generate_types.py", "--check"]):
@@ -373,6 +373,15 @@ class GeneratedRepresentationContractTests(unittest.TestCase):
                     self.assertEqual(generate_types.main(), 1)
                 self.assertEqual(json.loads(stream.getvalue())["status"], "drift")
                 self.assertEqual([path.read_bytes() for path in outputs], before)
+            # A real regeneration repairs CRLF drift and emits stable LF bytes.
+            outputs[0].write_bytes(rendered[0].replace("\n", "\r\n").encode("utf-8"))
+            with patch.object(generate_types, "SCRIPTS", automation / "scripts"), \
+                    patch.object(sys, "argv", ["generate_types.py"]):
+                with redirect_stdout(io.StringIO()):
+                    self.assertEqual(generate_types.main(), 0)
+            self.assertEqual([path.read_bytes() for path in outputs],
+                             [text.encode("utf-8") for text in rendered])
+
 
 
 if __name__ == "__main__":

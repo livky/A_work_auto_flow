@@ -88,11 +88,12 @@ def main():
     outputs = (automation / "schemas/material-query.schema.json", automation / "frontend/src/generated/material-query.ts")
     different = []
     for path, text in zip(outputs, rendered()):
-        if not path.exists() or path.read_text(encoding="utf-8") != text:
+        # Compare bytes so Windows CRLF drift cannot invalidate archive fingerprints.
+        if not path.exists() or path.read_bytes() != text.encode("utf-8"):
             different.append(str(path))
             if not args.check:
                 path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(text, encoding="utf-8")
+                path.write_bytes(text.encode("utf-8"))
     print(json.dumps({"status": "drift" if args.check and different else "passed", "changed": different}, ensure_ascii=False))
     return int(args.check and bool(different))
 
