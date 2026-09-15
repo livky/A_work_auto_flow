@@ -20,6 +20,8 @@ Run 自动登记场景还包括 `.run-captures/` 内的登记回执、失败日�
 
 阅读会话场景通过公开 reading-template/start/decide 创建真实 RS 目标、条件、下一步与修订历史，将 `.local/reading-sessions/` 的 HEAD/历史文件纳入同一保护清单；预览、升级、重复升级及恢复须逐项保留字节。它不是可重建索引缓存。会话含真实owner_id绑定。
 
+术语库场景将用户修改的`retrieval/query-terms.json`纳入完整保护清单；真实setup升级/重复升级/恢复保留字节。另验证缺失时由`automation/templates/query-terms.default.json`补种、回滚恢复原不存在状态。发行源不复制开发工作区的私人词库，公共包仅含受控模板；模板用LF保持Windows/Git指纹一致。
+
 受控Skill退休场景核对旧入口精确LF/CRLF指纹：默认research-loop/workspace-context只移除发现文件，保留用户附属文件；新版不再分发旧方法源；新版活跃入口更新进入同一备份回执。用户修改的同名入口保持字节，未知版本不自动处理。真实setup预览不写入、升级退休、重复无变动、rollback恢复原字节；新增work-loop随受控源码发现入口补缺。
 
 | 变更 | 必须关注的回归 |

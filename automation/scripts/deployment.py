@@ -40,6 +40,9 @@ def framework_files(source):
              'automation/schemas/memory-v3.schema.json', 'automation/schemas/memory-v3.d.ts',
              'automation/schemas/memory-v4.schema.json', 'automation/schemas/memory-v4.d.ts',
              'automation/schemas/material-query.schema.json',
+             # 查询术语的发行默认值与用户工作区中的实际词库分离。模板是
+             # 受控程序输入，实际词库是可修改的本地状态，不能随源码覆盖。
+             'automation/templates/query-terms.default.json',
              'automation/testing/catalog.json',
              'automation/schemas/memory-detail-v2.example.json']
     patterns = ['docs/templates/**/*', 'docs/design/*.md', 'docs/*.md',
@@ -113,8 +116,10 @@ def seed_files(source):
     for pattern in ['retrieval/*.json', '*/AGENTS.md', 'context/*.md', 'governance/*.md',
                     '.agents/skills/*/SKILL.md', 'services/qdrant/*.json', 'services/qdrant/*.txt']:
         names.extend(p.relative_to(source).as_posix() for p in source.glob(pattern) if p.is_file())
-    return sorted(set(n for n in names if (source / n).is_file()
-                      and n != 'services/qdrant/dependency-distribution.json'))
+    # `query-terms.json` 是用户维护的术语库。它只能由下面的明确默认
+    # 模板在缺失时建立，绝不能把开发者工作区中的个人词条当作种子复制。
+    excluded = {'services/qdrant/dependency-distribution.json', 'retrieval/query-terms.json'}
+    return sorted(set(n for n in names if (source / n).is_file() and n not in excluded))
 
 
 def plan(source, target):
@@ -123,10 +128,19 @@ def plan(source, target):
     # missing files, including on first install; upgrades never replace user data.
     defaults = {'retrieval/sources.json': '{"schema_version": 1, "sources": []}\n',
                 'context/NOW.md': '# 当前状态\n\n新工作区尚无工作记录；从 START_HERE.md 开始。\n'}
+    # 默认模板没有业务词条；只在目标从未建立词库时写入，并将创建操作
+    # 记录进升级回执，使 rollback 能精确恢复“原本不存在”的状态。
+    terms_template = safe(source, 'automation/templates/query-terms.default.json')
+    if terms_template.is_file():
+        defaults['retrieval/query-terms.json'] = terms_template.read_text(encoding='utf-8')
     missing = [{'path': name, 'before': None,
                 'after': hashlib.sha256(content.encode()).hexdigest(), 'content': content}
                for name, content in defaults.items() if not safe(target, name).exists()
-               and not safe(source, name).exists()]
+               # sources/NOW use their hard-coded fallback only when a public
+               # archive omitted local state. query-terms deliberately uses
+               # its controlled template even if this developer checkout has
+               # a private local copy beside that template.
+               and (name == 'retrieval/query-terms.json' or not safe(source, name).exists())]
     if source == target:
         return missing
     if source.is_relative_to(target) or target.is_relative_to(source):

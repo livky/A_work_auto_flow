@@ -7,6 +7,7 @@
 | 当前需要 | 入口 |
 |---|---|
 | 查本地材料/经验、完整阅读与阅读记录 | [material-query](../automation/workflows/material-query/SKILL.md)；已有RS按Owner列出/查看 |
+| 整理更新或记录当前成果、阶段交接 | [consolidate-results](../automation/workflows/consolidate-results/SKILL.md)：完整文稿、记录变化及上下文一致性 |
 | 查对象目录 | [派生索引](generated/workspace-index.md)，或memory list-owners |
 | 批量接入资料与来源映射 | [context-maintenance](../automation/workflows/context-maintenance/SKILL.md) |
 | 公司核心算法原文与实现核对 | [按需参考](../automation/workflows/work-loop/references/core-algorithms.md)，遵守算法准入 |

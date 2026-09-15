@@ -13,11 +13,13 @@
 | 开发方案须守住哪些架构边界 | [ARCHITECTURE](../ARCHITECTURE.md#稳定设计约束)：依赖、状态、性能、身份、权威与语义分工；同页维护实际模块影响及未完成项 |
 | 快速理解查询、关联、上下文、AI 记录与本地保存 | [CORE](CORE.md) 用伪代码和必要解释说明核心流程，提供实现文件索引；细节按需读取 |
 | 记录定义、技术块、章节和双文稿 | [RESEARCH_RECORDING](RESEARCH_RECORDING.md)；[MEMORY_USAGE](MEMORY_USAGE.md)、[MEMORY_REQUESTS](MEMORY_REQUESTS.md) 给操作/请求 |
-| 用实体文件理解记录、Run、索引与AI填写可靠性 | [MEMORY_STORAGE_EXPLAINED](MEMORY_STORAGE_EXPLAINED.md)：关键字段、三表查询示例与维护触发；作为CORE按需补充 |
+| 整理更新当前成果、核对文稿以来的变化和上下文 | [consolidate-results](../automation/workflows/consolidate-results/SKILL.md)：中间记录与阶段同步的区分、全文回读及收口条件 |
+| 持续记录如何累积、版本如何迭代、最新知识与完整成果如何维护 | [MEMORY_STORAGE_EXPLAINED](MEMORY_STORAGE_EXPLAINED.md)：实体结构、三表查询、浮点研究提交实例、概览/文稿关系及成果整理选择；作为CORE按需完整叙述 |
 | 对象、Run 归属和原始材料登记 | [OBJECT_RUN_STORAGE](OBJECT_RUN_STORAGE.md)、[RUN_CAPTURE](RUN_CAPTURE.md) |
 | 导入已有资料、来源变化与历史位置 | [EXISTING_MATERIALS](EXISTING_MATERIALS.md) |
 | 材料内容来源、正文块/混合召回、固定展开、兼容表示、联想与维护 | [MATERIAL_QUERY](MATERIAL_QUERY.md)；[KNOWLEDGE_FACETS](KNOWLEDGE_FACETS.md) 定义可选知识分类 |
 | AI多路检索、阅读理解、必要细节与问题续接 | [AI_READING](AI_READING.md)：reading CLI/HTTP、工作记录存储、范围预算与补查控制 |
+| 中英等义查询、领域术语/关联扩展和词库维护 | [QUERY_TERMS](QUERY_TERMS.md)：用户词库、公共种子、出处、单跳扩展与升级补缺；请求字段见AI_READING |
 | 旧材料检索与规范记忆检索 | [RETRIEVAL](RETRIEVAL.md)、[MEMORY_USAGE](MEMORY_USAGE.md) |
 | 材料图、正式证据与观察 | [MATERIAL_RELATIONS](MATERIAL_RELATIONS.md)、[EVIDENCE_CONTROLS](EVIDENCE_CONTROLS.md)、[EVIDENCE_VIEW_MONITOR](EVIDENCE_VIEW_MONITOR.md) |
 | 工作台技术栈、扩展、生成类型和资源 | [WORKBENCH_DEVELOPMENT](WORKBENCH_DEVELOPMENT.md) |
@@ -34,7 +36,7 @@
 | 生成产物 | `automation/schemas/` 与 `automation/frontend/src/generated/`；从真源生成，不分别改定义 |
 | 材料查询旧接口继承与适配限制 | [RUNTIME_STATUS](design/representation-query-v0.2/RUNTIME_STATUS.md) 是持续核对的映射；旧设计的“应当”不等于当前完整实现 |
 | 图 API 契约 | [graph.schema.json](../automation/frontend/contracts/graph.schema.json)；图版本与记忆记录版本、查询 v0.2 各自独立 |
-| Skill | [automation/workflows](../automation/workflows/README.md) 的7个活跃方法源；默认发现7项，旧名已退休；开发用 [development-checks](../automation/workflows/development-checks/SKILL.md)，按影响核对适用性、命令和登记；全局整合/发布全面审查，处置规则见 [文档维护](DOCUMENTATION_MAINTENANCE.md) |
+| Skill | [automation/workflows](../automation/workflows/README.md) 的8个活跃方法源；默认发现8项，旧名已退休；开发用 [development-checks](../automation/workflows/development-checks/SKILL.md)，按影响核对适用性、命令和登记；全局整合/发布全面审查，处置规则见 [文档维护](DOCUMENTATION_MAINTENANCE.md) |
 
 ## 历史与固定资料：按类原地保留
 

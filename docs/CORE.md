@@ -1,6 +1,6 @@
 # 核心功能与实现逻辑
 
-本页面向使用者和开发 AI，用伪代码与必要说明解释核心功能，保留影响理解的选项、算法和边界。核对日期：2026-09-13，依据当前工作树。细节按各节实现文件读取；完整字段见[文档索引](README.md)，模块关系见 [ARCHITECTURE](../ARCHITECTURE.md)。
+本页面向使用者和开发 AI，用伪代码与必要说明解释核心功能，保留影响理解的选项、算法和边界。核对日期：2026-09-16（本轮记录版本、文稿及成果整理影响范围），依据当前工作树。细节按各节实现文件读取；完整字段见[文档索引](README.md)，模块关系见 [ARCHITECTURE](../ARCHITECTURE.md)。
 
 相关实现变化时同步维护本页；不在这里展开字段清单、接口参数、存储目录和算法常数，也不加入使用示例。当前没有自动同步文档的后台服务。开发方案还须遵守 [ARCHITECTURE 的稳定设计约束](../ARCHITECTURE.md#稳定设计约束)，不能只凭下列流程决定模块拆分或新增状态。
 
@@ -57,6 +57,7 @@ Skill 指导 AI 读什么、如何解释和组织内容；程序负责校验与�
 AI 根据任务读取相应 Skill
     材料导入与整理 → context-maintenance
     各类工作、记录与续接 → work-loop
+    重要成果保存、阶段总结/交接或实质变化 → consolidate-results
     新证据引起内容修订 → semantic-maintenance
 
 比较已有对象的目标、概览、成果和未解问题，判断沿用或另建
@@ -79,13 +80,19 @@ AI 根据任务读取相应 Skill
 先保存并回读被引用内容，再保存引用它的记录或文稿
 ```
 
+2026-09-16成果整理流程核对：AI 在对话中可自主提交有用中间记录，无需逐条请用户指定。阶段收口使用 [consolidate-results](../automation/workflows/consolidate-results/SKILL.md)：完整读取概览与选定完整文稿 → 盘点其固定依据至当前的修订及未引用新增内容 → 完整阅读受影响正文与依据 → 判断并保存必要内容、概览、章节 → 更新文稿根 → 全文与上下文一致性检查。同步声明绑定范围/版本和实际检查，不是程序新状态，普通提交或空影响列表不能代替。
+
+完整叙述见[从中间记录到完整成果的维护闭环](MEMORY_STORAGE_EXPLAINED.md#10-从中间记录到完整成果的维护闭环)：包括此次问答形成的选择、工具分工、保留文稿树的利弊和实际验证边界。重要成果记录不必等用户另说“更新文档”；明确只暂存时遵从，保存、全文同步、索引就绪和科学复核分别表达。
+
 技术正文按“问题与范围 → 输入与方法 → 公式与计算 → 结果 → 讨论与限制 → 证据与复算”组织，保留变量、单位和固定来源。L1 的检索说明与完整正文块分开；L2–L4 保存可直接阅读的正文和结构化信息。章节与文稿独立于五层记录。已有内容优先复用；简单查阅、纯文档工作不机械补齐全部层级。
 
 方法源：[context-maintenance/SKILL.md](../automation/workflows/context-maintenance/SKILL.md)、[work-loop/SKILL.md](../automation/workflows/work-loop/SKILL.md)、[semantic-maintenance/SKILL.md](../automation/workflows/semantic-maintenance/SKILL.md)。文本要求与校验：[RESEARCH_RECORDING.md](RESEARCH_RECORDING.md)、[memory/contracts.py](../automation/scripts/memory/contracts.py)。
 
 ## 2. 结果怎样保存到本地
 
-按需补充：[记录、Run 与索引的实体说明](MEMORY_STORAGE_EXPLAINED.md)——用浮点求和研究解释关键文件、字段、AI与程序分工及可靠性边界；相关接口和功能变更时同次主动维护。
+按需补充：[持续工作中的记录、版本、检索与完整成果](MEMORY_STORAGE_EXPLAINED.md)——按本次问答串起目录、数据结构、真实提交演进、文稿读取和AI维护职责；相关接口和功能变更时同次主动维护。
+
+record ID保持内容身份，revision表示单条记录修订，commit把一个Owner的多条变化一起发布。每次commit只写变化后的完整记录，manifest保留全部当前版本指针；旧修订留在原文件和父提交链中。当前快照完整不代表文稿已同步，见[版本链与浮点研究C10–C14实例](MEMORY_STORAGE_EXPLAINED.md#7-记录版本与提交链如何演进)。
 
 规范记录使用带版本的 JSON，正文使用其中的 Markdown 文本；技术正文可拆成有顺序和依赖关系的块。原始文件保持独立，以固定引用连接。引用包含“对象身份＋版本＋内容指纹”，不会悄悄改指向新版。
 
@@ -131,6 +138,10 @@ AI实际理解 → 保存压缩理解、连接链、必要细节和待验证处
 按需补充：[三张索引表如何配合一次查询](MEMORY_STORAGE_EXPLAINED.md#3-索引到底存什么)——包括记录与条目的区别、词项漏检边界和语义查询。
 
 当前“材料查询”通过索引找候选，再回读原记录筛选；不会现场生成答案，也不会临时扫描全部原件。
+
+记录“最新版本”由当前指针及回源核对确定；不同记录的替代关系、结论当前有效性和文稿同步仍需分别检查，排名主要按相关性而非日期。详见[最新与有效的区别](MEMORY_STORAGE_EXPLAINED.md#9-检索怎样区分最新与有效)。
+
+AI阅读调用在基础查询外增加语言计划：按获准语料选语言，技术/文献问题补英文，保护型号/数值/条件，生成少量等义句；按领域词库每轮尝试同义和单跳关联。词法用紧凑词项、向量用完整语句，各层内按排名融合并保留固定块与查询来源；AI再按正文核对条件。词库关联不是等义或证据，程序保护文本不证明译文正确。实现见[query_plan.py](../automation/scripts/material_query/query_plan.py)，操作见[AI_READING](AI_READING.md)、[QUERY_TERMS](QUERY_TERMS.md)；后面的流程仍说明通用单次材料查询，手动入口不会后台调用AI翻译。
 
 ```text
 接收问题、关键词、范围和选项
@@ -258,13 +269,17 @@ BM25 衡量文本匹配，RRF 根据各通道排名合并结果；重复命中�
     → 缺文稿或固定依据不满足时报告缺口，不临时综合
 
 需要新写或更新文稿：
-    读已有目录、相关正文和来源变化
+    阶段整理先完整读取当前概览与文稿（可分章）
+    → 比较固定依据与当前记录，补查未引用新增内容
+    → 完整阅读受影响正文及必要依据
     → AI/人实际综合，修改必要章节
     → 保存章节，再更新文稿的固定引用
     → 全文回读，检查衔接、重复、公式、结果和覆盖缺口
 ```
 
 L2 是过程内容，完整过程与精简报告是独立编排的文稿；保存 L2 不会自动生成整篇报告。来源更新不自动改写旧文稿；缺少精简报告时不会拿完整报告冒充。
+
+overview的经过/经验/技术关系在自身payload，document的章节关系在自身section_refs，manifest只定位记录版本。默认文稿读取从当前记录集合选指定类型的最近更新document，也可明确ID/修订；随后沿固定章节与技术块组装，不自动更新引用。概览不是文稿根，二者须分别维护，详见[概览、文稿及完整读取机制](MEMORY_STORAGE_EXPLAINED.md#8-概览与完整文稿是两种独立结构)。
 
 实现：[material_query/documents.py](../automation/scripts/material_query/documents.py)、[memory/documents.py](../automation/scripts/memory/documents.py)、[ResearchDocument.tsx](../automation/frontend/src/ResearchDocument.tsx)、[work-loop/SKILL.md](../automation/workflows/work-loop/SKILL.md)。
 

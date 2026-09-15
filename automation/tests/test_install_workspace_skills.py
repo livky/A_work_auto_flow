@@ -48,7 +48,7 @@ class WorkspaceSkillInstallerTests(unittest.TestCase):
 
     def test_default_preview_four_entries_install_and_repeat_preserve_extra_skill(self):
         self.assertEqual(installer.NAMES, ("work-loop", "context-maintenance", "evidence-inspection", "development-checks",
-                                         "material-query", "association-exploration", "semantic-maintenance"))
+                                         "material-query", "association-exploration", "semantic-maintenance", "consolidate-results"))
         custom = self.custom("用户 自定义", b"private custom skill\r\n")
         before = self.snapshot()
         self.run_install()

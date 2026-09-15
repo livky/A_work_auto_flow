@@ -10,6 +10,7 @@
 - 统一 `$work-loop` 负责归属、记录与续接；持续工作维护可打开的Markdown上下文清单，集中展示目标、材料、必要细节和下一步，位置与维护见[公共动作](docs/WORKFLOW_ACTIONS.md#用户可见的工作上下文清单)。极小无复用价值操作可不建档。需要本地依据时调用 `$material-query`。
 - AI 可围绕同一问题建立阅读会话：多路跨层发现、保留后完整阅读、保存理解和必要细节，带来源链接续接工作。工作台“系统记忆→阅读记录”按对象查看最新笔记与固定原文，亦可导出版本快照。见 [AI 阅读](docs/AI_READING.md)。
 - 用技术单元和独立章节组织完整研究过程、精简研究报告；查看来源变化及待维护内容。
+- AI 可自主保存有用中间记录；记录重要成果、阶段总结/交接或实质变化时，用 `$consolidate-results`（整理更新当前成果）完整阅读概览与文稿，盘点上次文稿以来的变化，维护全文与上下文一致性。只有实际检查完成才声明本范围已同步，无后台自动写作。
 - 查看材料关系、结论复核与报告影响；显式开启监测后产生观察和维护候选。
 - 用新版源码及配套依赖包升级旧工作区，保留业务资料、用户配置与恢复依据。
 
@@ -70,6 +71,8 @@
 
 旧事件和地图须实际整理正文、保存新修订并更新索引，才进入新经过/概览；迁移方法见[记忆使用指南](docs/MEMORY_USAGE.md)。材料查询支持身份、词法、可选本地向量及既有关联导航，自动结构发现与生成式模型代理尚未注册。
 
+AI阅读入口支持按语料生成少量中英等义查询，技术/文献问题补英文，紧凑词法与完整向量分路召回并融合。日常在 [retrieval/query-terms.json](retrieval/query-terms.json) 维护中英术语、别名与单跳关联词；每轮按领域使用并记录词库指纹。程序不自动翻译或认定候选满足型号/数值条件，AI按固定正文核对。用法见[AI阅读](docs/AI_READING.md)与[词库维护](docs/QUERY_TERMS.md)。
+
 保存返回 `INDEX_PENDING` 时可能正文已保存，应固定回读并用 `memory reconcile` 补偿，避免重复创建。索引重建不能补回失踪原件；原件搬迁需要明确来源映射。新知识先以来源和适用边界保存，经适用复核再复用，不静默删除冲突或旧结论。
 
 操作详情从[文档索引](docs/README.md)查材料导入、Run、记忆、检索、证据和查询手册。所有 CLI 命令可用 `--help`：
@@ -107,7 +110,7 @@
 
 开发按Skill列出的影响范围维护六份核心文档；全局整合、发布或明确要求全审时前后完整阅读。当前技术框架/影响表只维护在 [ARCHITECTURE](ARCHITECTURE.md)，功能定义在 [CORE](docs/CORE.md)。任务计划、历史决定和实际验证留在所属 Project/Run，规则见 [文档维护](docs/DOCUMENTATION_MAINTENANCE.md)与[测试选择](docs/TESTING.md)。
 
-开发按development-checks选择受影响文档、Skill和验证；全局工作流整合、发布或明确要求全审时完整核对六文档与所有入口。默认7项活跃Skill，旧research-loop/workspace-context已退休，改用work-loop；工作、记录和续接统一由work-loop负责，格式质量按成品技能处理。见[工作流入口](automation/workflows/README.md)。
+开发按development-checks选择受影响文档、Skill和验证；全局工作流整合、发布或明确要求全审时完整核对六文档与所有入口。默认8项活跃Skill，旧research-loop/workspace-context已退休，改用work-loop；工作、记录和续接统一由work-loop负责，阶段成果一致性用consolidate-results，格式质量按成品技能处理。见[工作流入口](automation/workflows/README.md)。
 
 当前由 memory-v4 聚合契约兼容 v1–v3 固定版本；新经过/概览及分类经验使用 v4，L0/L1 与独立文稿不变；材料查询接口另为 v0.2。旧材料检索、规范记忆检索与新材料查询应用并存，Qdrant local 有进程排他限制。软件回归不证明检索质量、实际 AI/人工认可或科学结论。当前任务与已知缺口见 [NOW](context/NOW.md)，历史质量未通过、万条规模暂缓和第二物理机待验收分别保留。
 

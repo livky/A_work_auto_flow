@@ -1,8 +1,19 @@
-# 记录、Run 与检索索引：用浮点求和研究理解
+# 持续工作中的记录、版本、检索与完整成果
 
 2026-09-13补充：各Owner按有用内容组合层级，默认normal、auto_summary=false；阅读清单在工作台系统记忆内，RS以owner_id/可选checkpoint_ref关联，HEAD保存状态，Markdown是版本快照。路径与生命周期见[对象/Run/阅读记录](OBJECT_RUN_STORAGE.md)。
 
-核对日期：2026-09-13，依据当前工作树。本页是 [CORE](CORE.md) 的按需补充：只讲关键概念、字段和对应实体，不列完整契约。**记录保存内容与依据，Run 保存一次运行，索引帮助找到内容。**
+核对日期：2026-09-16（记录版本、文稿与成果整理流程），依据当前工作树。本页是 [CORE](CORE.md) 的按需补充，汇总持续工作记录机制的问答、真实提交例子，以及由此次讨论形成的维护要求；不替代完整运行契约。**记录保存内容与依据，Run 保存一次运行，索引帮助找到内容，文稿组织可连贯阅读的成果。**
+
+问题从“持续工作后材料如何累积、如何找到最新知识”，逐步深入到“record与commit如何迭代、概览和完整文稿如何关联、AI何时检查并同步成果”。最终决定保留独立技术记录和文稿编排，通过成果整理Skill加强阶段一致性，而不将所有内容合并成一篇大文件。本文先解释实体与检索，再串起版本演进、文稿读取和实际工作流程。
+
+| 要理解的问题 | 阅读位置 |
+|---|---|
+| 数据结构、Run、正文块和索引 | 第1–5节 |
+| 对话中何时保存，目录如何累积 | [第6节](#6-持续工作如何累积记录) |
+| 同一record修订、commit批次、manifest和旧版 | [第7节](#7-记录版本与提交链如何演进) |
+| overview与document存在哪里，如何生成全文 | [第8节](#8-概览与完整文稿是两种独立结构) |
+| 最新版本、当前有效知识和检索排名 | [第9节](#9-检索怎样区分最新与有效) |
+| AI是否遍历历史、完整阅读和阶段同步如何执行 | [第10节](#10-从中间记录到完整成果的维护闭环) |
 
 实例来自完整工作区的 [floating-point-summation](../research/floating-point-summation/README.md)。公共源码发行包不包含该研究或本机数据库；缺少实例时可读本文解释和实现链接，不代表程序缺少功能。示例用于说明存储，不重新确认实验结论。
 
@@ -54,6 +65,10 @@
 
 同目录 README 是阅读说明，stdout/stderr 是输出与错误日志，lineage.jsonl 用于血缘记录；部分 Run 另有图表、验证报告和来源指纹清单。历史文件中的旧路径可能通过来源迁移映射解析，不能为了链接方便改写冻结文件。
 
+### 提交快照与完整成果的区别（2026-09-16核对）
+
+manifest 能定位某一提交时的全部当前记录，但不保证这些记录已经被整理进完整文稿。记录与提交的版本关系详见[第7节](#7-记录版本与提交链如何演进)，文稿独立编排详见[第8节](#8-概览与完整文稿是两种独立结构)；阶段同步需执行[第10节](#10-从中间记录到完整成果的维护闭环)的实际维护。
+
 ## 3. 索引到底存什么
 
 关键词库是 [retrieval/generated/search.sqlite3](../retrieval/generated/search.sqlite3)，它不止三张表。以下三张负责普通记录召回，都是可重建投影：
@@ -83,6 +98,8 @@
 
 预建词项索引相当于“词 → 出现在哪些条目”的目录，避免每次逐行读取全部文本；它与直接字符串匹配的语义不同。拆分见 [retrieval.py](../automation/scripts/retrieval.py)，连表与合并见 [coordinator.py](../automation/scripts/material_query/coordinator.py)。
 
+2026-09-15增加的AI双语阅读计划位于这三表之外：AI填写中英等义句，reading-recall按领域读取[术语库](QUERY_TERMS.md)，词法使用紧凑同义词/别名，关联词单跳另查，向量使用完整语句。结果按固定记录融合并保留块/query来源；本轮词库指纹和计划保存在RS，续页不跟随词库改动。它不重写原记录或向三表灌入生成答案；型号、数值条件仍需回读正文判断。
+
 显式启用语义查询时，本地模型将问题转成向量，与已索引文本窗口比较相似度，再核对条目版本和指纹；混合查询融合两路排名。它可补充不同措辞的候选，但不保证全召回或结论正确。实现见 [recall.py](../automation/scripts/material_query/recall.py)，原文读取见 [reader.py](../automation/scripts/material_query/reader.py)。
 
 ## 5. AI 怎样生成这么多字段，可靠吗
@@ -98,6 +115,156 @@
 正常入口为 `memory validate-draft → commit --dry-run → commit → inspect`，预演按需使用；commit 本身也执行校验，不能靠跳过预检绕过。程序检查必填与类型、类型/层级关系、实验Run绑定、引用解析及适用的版本/指纹检查，并拒绝覆盖已更新版本。保存后还要回读正文和引用，另查索引状态；索引失败应补偿，不重复创建记录。实现见 [service.py](../automation/scripts/memory/service.py)、[store.py](../automation/scripts/memory/store.py)。
 
 这些检查能约束结构和追溯关系，**不能判断关键词是否充分、限制是否全面、引用是否真正支持推论**。有模板且校验通过，不等于研究正确；复核走专用入口，普通提交不能伪造复核。AI应使用公共入口，直接手改规范文件会绕开正常提交流程。保存、索引和科学复核始终分别表达。
+
+## 6. 持续工作如何累积记录
+
+Project和Research采用同一套记录机制。AI先比较目标、已有成果和未解问题；同一目标的继续沿用原Owner，独立交付目标才另建。目录提供归属，稳定ID用于引用，不能因为主题相似就把两个对象合并。
+
+“自动保存”在这里指AI按work-loop主动写回：对话中出现有复用价值的观察、方法、反例、失败或实际执行结果，就可以形成中间记录并提交，不必等待用户说“记下来”。当前没有后台捕获器保证每句话都落盘；默认auto_summary=false，也不自动将尚未验证的观察变为已确认结论。简单查阅可以只更新任务摘要，正式独立执行保存Run；缺少某层内容正常，不为每轮凑齐L0–L4。
+
+目录通常按需要形成如下结构，不要求全部存在：
+
+```text
+research/<研究名>/                 projects/<项目名>/
+├─ research.json                 ├─ project.json
+├─ README.md、PLAN.md等           ├─ README.md、plans/等
+├─ runs/<run-slug>/               ├─ runs/<run-slug>/
+│  ├─ run.json                   │  └─ 输入、程序、输出、日志及结果
+│  └─ 输入、程序、输出、日志及结果
+└─ memory/                       └─ memory/
+   ├─ owner.json
+   ├─ HEAD.json
+   └─ commits/COM-<提交ID>/
+      ├─ manifest.json
+      ├─ receipt.json
+      └─ records/MEM-<记录ID>.json
+```
+
+Run记录实际执行，memory记录完整方法、解释、经过、经验、概览和文稿；工作清单维护当前目标与下一步。阅读会话RS另在`.local/reading-sessions/`保存候选、实际理解和阅读进度，绑定Owner，但笔记不会自动成为可检索规范知识。值得复用的阅读成果仍须经memory提交。文件只是放进目录、或只出现在聊天中，不等于已经登记或进入知识索引。
+
+## 7. 记录版本与提交链如何演进
+
+一条内容用`record_id`保持身份，用`revision`表达其修订；`COM-…`表示一次记忆提交批次，与Git commit不是同一套身份。对象的提交代次generation、单条记录的revision、契约schema_version分别表示不同事情，不能混用。
+
+同一条概览从revision 4更新为5时，AI提交原ID、expected_revision=4及完整新版草案。服务生成revision 5、previous_revision=4、新updated_at和指纹，保留原created_at。内容未变化返回no_change，不制造新修订；如果对象HEAD或记录版本已被其他任务修改，拒绝覆盖，需回读差异。正常更新保存完整内容，不是让程序根据一段修改意图自动补齐旧正文。
+
+### 一个提交怎样包含多条记录
+
+每个commit的`records/`只写本次新增或变化后的完整记录；manifest中的`record_heads`则保存该提交后Owner全部记录的当前版本映射。假设C11只更新A：
+
+```text
+C10 manifest.record_heads       C11 manifest.record_heads
+  A → revision 2，位于C8          A → revision 3，位于C11
+  B → revision 1，位于C6          B → revision 1，仍位于C6
+
+C11 records/：只存 A revision 3
+C11 changed_ids：只列 A
+C11 parent_commit_id：C10
+```
+
+新record_heads对A只记录revision 3，不同时列A@2。A@2的原文件、以前manifest的指针仍保留；A@3的previous_revision说明前一修订号。正文也可以显式引用前版作为依据，但这不是每次普通更新都必填的自引用规则。
+
+创建新提交时，程序复制前一manifest的版本映射，替换变化项，写入parent_commit_id及parent_manifest_hash，校验暂存内容后原子切换HEAD。旧提交不回写“下一代”字段。一个Owner的批次一起发布可见；多个Owner没有全局原子提交保证。批次中有多条records只代表一起保存，不代表它们互为证据；语义关系仍由记录中的固定引用表达。
+
+### 浮点求和研究的真实演进
+
+下表是本次核对的固定历史片段。C10–C14是generation的简写，UUID没有这种顺序语义；这几次主要整理既有内容和关系，没有据此宣称新增实验或科学复核。
+
+| 提交代次 | COM ID前缀 | 本次变化 | 当前记录版本变化 |
+|---|---|---|---|
+| C10 | COM-d62b636d | 新建完整过程与简版报告两条document | 各revision 1 |
+| C11 | COM-abddae26 | 求和稳定性三轮探索地图 | 同一MEM-a822…：3→4 |
+| C12 | COM-873422d2 | 三轮观察决策、首次复核失败、独立复试成功，共五条经过 | 各1→2，整理为narrative |
+| C13 | COM-3a8bbf38 | 大数抵消场景的求和方法局部比较 | MEM-58fd…：3→4 |
+| C14 | COM-1ded0a16 | 浮点求和数值稳定性：整体概览 | 同一MEM-a822…：4→5，map整理为overview |
+
+C12的records目录有五条新版经过；C13的经验@4引用这五条经过@2及固定技术说明；C14的概览@5再引用经验@4、经过@2和方法/实验说明，同时保留自身@4的固定来源。概览的revision从4到5，中间两个commit不修改它，所以不会使它自动升到6或7。
+
+本次核对的C14 manifest包含27条当前记录，但C14的records目录只有一条变化后的概览。两篇document仍是C10创建的revision 1：完整过程引用8章，简版引用4章，章节均固定revision 1。这证明新版概览并不自动产生新版完整文稿；也不能只凭document未升版就断言内容错误，仍须判断该轮整理是否影响实际表述。
+
+完整工作区可查看[固定C12清单](../research/floating-point-summation/memory/commits/COM-873422d2-0aa6-48e6-9a70-7da2aef1f75d/manifest.json)、[固定C14清单](../research/floating-point-summation/memory/commits/COM-1ded0a16-df08-4c51-b3ee-ee9988569d9c/manifest.json)。历史定位和当前快照读取见[store.py](../automation/scripts/memory/store.py)，修订生成与冲突处理见[service.py](../automation/scripts/memory/service.py)。
+
+## 8. 概览与完整文稿是两种独立结构
+
+manifest回答“该对象有哪些记录，各自当前是什么版本”。overview和document都属于这些记录，但它们的内容关系保存在自身payload中，而非manifest中。
+
+```text
+当前manifest.record_heads
+├─ 概览记录 → overview @5
+│  └─ 自身payload
+│     ├─ experience_refs → 经验 @4
+│     ├─ process_refs    → 五条经过 @2
+│     └─ technical_refs  → 方法与实验说明的固定版本
+└─ 文稿记录 → document @1
+   └─ 自身payload.section_refs（有序）
+      ├─ 章节一 @1 → prose文字及其证据、unit技术块引用
+      ├─ 章节二 @1 → 固定版本技术单元与必要定义
+      └─ 后续章节 → 讨论、结论和下一步
+```
+
+overview帮助了解对象范围、主要结果和关联；document决定连贯文章的章节顺序。两者可以共享依据，却没有“先展开overview才能生成document”的强制依赖。保存L2经过、L4概览或技术单元，不会自动修改章节连接文字、文稿根或另一篇报告。
+
+### 完整文稿如何被找到和组装
+
+`memory document`读取当前HEAD的manifest，再读取record_heads指向的当前记录，筛选kind=document。默认在指定document_type中按updated_at、revision、record_id降序选一份；默认类型research_process，简版为research_report。可以指定document_id，并用revision固定历史。多个同类型文稿并存时，修改前必须核对目标、受众和范围，不能把“最近更新”当作唯一权威文稿。
+
+这里有两个“最新”：同一ID的当前revision由manifest确定，不同document ID之间的默认选择由排序确定。普通当前选择无需遍历全部旧commit；查询指定旧版时，底层可能沿父提交链定位。程序读取Owner快照可能解析全部当前记录，但这不意味着它们全部进入AI上下文或被AI读懂。
+
+选定文稿后，程序按section_refs读取固定章节，再展开prose和unit技术引用，选定正文块并补必要定义，检查来源可读性、覆盖和版本提示。它执行确定性组装，不现场调用模型综合所有研究内容，不将引用偷偷切换成最新版。已有独立完整过程文稿优先；没有时可能回退兼容的旧map编排，没有可用编排则报缺。简版缺失不能拿长文稿改标签冒充。实现见[documents.py](../automation/scripts/memory/documents.py)。
+
+因此，每个已保存commit都能描述当时的记录版本集合，却不保证有一篇覆盖全部最新成果的文章。文稿report.complete仅说明本次固定组装没有相应来源缺口；report_coverage和report_version_hints帮助核对遗漏与版本，不能证明语义一致性或全部知识已纳入。
+
+## 9. 检索怎样区分最新与有效
+
+“最新”至少分为记录版本、知识有效性和成果同步三件事。默认知识检索使用当前记录，候选返回前回源核对版本与指纹；发现旧投影不能当作当前内容返回，可能报告index_stale。新记录已保存但索引尚未完成时，召回可能暂缺，需reconcile补偿。显式历史读取保留旧版标记，不等于认定旧版当前有效。
+
+检索排名主要由相关性、词法/向量通道与排名融合决定，并非按时间倒序。同一record的最新revision有明确身份；不同record之间是否替代则需显式维护。若新建结论B，却不修订结论A或登记冲突/替代，程序不能只因B较新就判断A已作废，两条都可能被发现。
+
+复用还要检查证据、输入版本、适用域及not-reviewed、accepted、disputed、retracted、superseded等实际复核状态。探索可以返回候选和风险；正式用途按具体claim及scope核验，不能把整篇经验借用为已确认事实。最新版可能仍未复核，已复核内容也可能因新证据失效。基础实现见[search.py](../automation/scripts/memory/search.py)，知识分类与复核职责分别见[KNOWLEDGE_FACETS](KNOWLEDGE_FACETS.md)和[EVIDENCE_CONTROLS](EVIDENCE_CONTROLS.md)。
+
+最后，文稿采用固定引用：技术记录已是@3，文稿仍可有意引用@1作为历史比较；也可能只是尚未同步。判断是哪一种需要读正文及变化理由，不能简单自动换新或把所有旧引用都判错。
+
+## 10. 从中间记录到完整成果的维护闭环
+
+此次讨论确认：现有独立技术记录与文稿树结构应保留，薄弱处在于阶段完成时没有保证AI实际把相关变化同步成完整成果。因此新增 [consolidate-results：整理更新当前成果](../automation/workflows/consolidate-results/SKILL.md)，已接入work-loop、根规则、记录标准、semantic-maintenance、安装和发现入口。它约束AI的工作行为，不改变memory契约，不新增后台写作或同步状态数据库。
+
+### 为什么保留独立文稿编排
+
+| 组织方式 | 好处 | 代价与失效方式 |
+|---|---|---|
+| 一篇大文稿承载全部正文 | 当前入口直观，通读与人工比较容易 | 长期累积后阅读全文成本高；多报告共享方法容易复制，执行事实/假设/正式结论不易分别维护 |
+| 独立记录＋document→章节→技术块（采用） | 技术内容复用、局部修订、固定历史和独立报告范围清楚 | 更新下层后要显式检查上层；多批保存有中间不同步状态，概览与文稿可能漂移 |
+
+与Git类似之处是固定版本和提交快照；Git本身也不能判断文章是否漏写新反例。当前方案已有完整文稿关系，所加强的是“何时完整阅读、盘点变化并确认同步”，不是再增加一份平行文稿真源。
+
+### AI实际执行的顺序与工具
+
+| 步骤 | AI需要完成的工作 | 现有入口 |
+|---|---|---|
+| 固定基线 | 读取工作清单、当前概览和完整文稿，明确所选ID/版本与范围 | inspect、outline、document |
+| 盘点此前累积变化 | 比较文稿固定依据与当前记录，补查未引用新增内容、Run、待同步问题 | document-impact、当前Owner记录清单、工作清单/检查点 |
+| 实际理解与处置 | 完整阅读受影响内容、新旧依据及必要定义，决定保留/新增/修订/撤回/暂缓 | inspect指定revision、section-context；必要时material-query或semantic-maintenance |
+| 保存内容和结构 | 先固定技术内容/经过/经验，再维护概览与章节，最后更新文稿根 | validate-draft、commit、固定回读；必要时reconcile |
+| 全文核对 | 检查衔接、重复、公式数字、结论限制、反例与遗漏，解释有意保留旧引用 | document、coverage/版本提示＋AI阅读全文 |
+| 上下文和交接 | 核对概览、文稿、工作清单及检查点；结束前复查相关版本 | inspect、任务清单、必要检查点 |
+
+这是阶段整理流程，不意味着每条聊天或每个中间commit都必须阅读全文。中间记录允许及时保存；用户要求记录重要成果、阶段总结/交接，或者AI发现结果、反例、适用范围和方向实质变化时主动触发，不必等用户明确说“更新文档”。用户限定只暂存、不动报告时遵从，并列明待同步影响。
+
+触发阶段整理后，应完整读取当前概览与选定全文。长文可分章读完，已经实际读过且版本未变的正文可复用；不是只看目录、摘要或工具成功回执。没有文稿的实质成果按需编排一份；纯规范/计划任务可维护已有完整Markdown成果，不伪造实验或强制双文稿。
+
+AI不需要每次遍历全部commit。通常从当前版本、文稿实际引用和任务清单定位差异；必要时回读相关历史。比较也不是简单筛选“晚于文稿日期”的全部记录：需判断记录身份、版本、内容与本篇范围。特别是未引用的新反例，可能不会出现在已有引用的影响路径中；因此完整Owner候选盘点和明确排除理由不可被空impact替代。无可靠历史基线时说明覆盖限制，不假称找到所有未登记变化。
+
+保存时维持expected_head/expected_revision冲突检查和request_id幂等；各批提交分别回读。未变内容沿用原版本，不能只为了“同步一次”让全部记录升版。跨对象未完成项、必要依据不可读、正文未读完或并发变化未处理时，只报告实际已保存部分和待办，不声明整个成果同步。
+
+### 同步声明与此次验证结果
+
+“本阶段完整成果已同步”是写在现有工作清单/摘要中的范围与版本声明，应附实际文稿或成果版本、变化处置和AI一致性自查依据。它不是新的机器字段，也不自动接受科学结论。索引状态独立报告：明确要求的检索通道须完成补偿；未要求的可选向量不阻止正文一致性声明，也不能因此声称向量已就绪。
+
+本次实施完成8项活跃Skill的发现/安装登记；7项安装器检查、18项部署检查通过，后者包含真实setup扩展旧工作区的预览、升级、重复升级与恢复。独立合成Owner还通过公开MemoryService与memory.api实际保存、组装和全文阅读：新版技术内容及未编排反例被纳入章节和概览，旧文稿固定不变，相同内容再提交返回no_change。
+
+实际验证发现，没有new_unit关注基线时impact可能未列未编排新单元；Owner清单补查发现了该反例。因此“检查所有相关新增内容”是必要的AI步骤。初版Skill把所有索引完成作为同步条件过严，已改为正文一致性与索引状态分别表达；原判定和修正复核均保留。合成环境FTS已就绪，向量后端未配置，没有伪装为向量通过。
+
+这只验证本机Windows、有限合成文稿及安装升级边界，不证明真实研究质量、大文稿规模、多文稿并发或第二物理机验收。工作区最终校验0错误、19个历史/固定快照链接警告，当前方法入口可用。完整工作区中的实施证据为RUN-20260915T204918Z-4AF8AF30E4E8，见[结果](../projects/architecture-evolution/runs/run-20260915t204918z-4af8af30e4e8/RESULTS.md)、[最终回读](../projects/architecture-evolution/runs/run-20260915t204918z-4af8af30e4e8/FINAL_REVIEW.md)及[任务清单](../projects/architecture-evolution/plans/consolidate-results-skill-20260916.md)。公共发行不包含这些本机实例，方法及运行代码链接仍可独立使用。
 
 ## 维护要求
 

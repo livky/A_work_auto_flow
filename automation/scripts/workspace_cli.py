@@ -1146,7 +1146,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command == "material-query":
             from material_query import cli as material_cli
             result, exit_code = material_cli.execute(root, args)
-            if getattr(args, 'markdown', False) and result.get('value', {}).get('context_markdown'):
+            # Error envelopes deliberately carry value=null. Keep their JSON
+            # diagnostics and nonzero exit code when Markdown cannot be produced.
+            if getattr(args, 'markdown', False) and (result.get('value') or {}).get('context_markdown'):
                 print(result['value']['context_markdown'])
             else:
                 print(dump_json(result))

@@ -188,6 +188,17 @@ def populate(root, branches=8):
                            'entrypoint': entry, 'status': 'active'} for i, entry in enumerate(entries))
     registry.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding='utf-8')
     names.extend(['tools/registry.json', 'retrieval/config.json', 'retrieval/sources.json', 'AGENTS.md'])
+    # 用不同于发行默认模板的条目模拟用户维护内容。完整保护清单必须把
+    # 它作为业务字节保留，防止升级把开发者词条或默认值写回旧工作区。
+    write('retrieval/query-terms.json', json.dumps({
+        'schema_version': 1,
+        'entries': [{
+            'id': 'user-upgrade-term', 'domain': 'synthetic-upgrade',
+            'zh': ['用户升级术语'], 'en': ['user upgrade term'],
+            'aliases': ['UUT'], 'related': [], 'sources': ['SYNTHETIC ONLY'],
+            'status': 'active',
+        }],
+    }, ensure_ascii=False, indent=2) + '\n')
     memory_files, memory_directories = populate_memory(root)
     names.extend(memory_files)
     directories.update(memory_directories)

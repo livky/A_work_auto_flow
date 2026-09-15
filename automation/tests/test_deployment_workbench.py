@@ -252,6 +252,7 @@ class DeploymentWorkbenchTests(unittest.TestCase):
         names = set(deploy.framework_files(ROOT))
         self.assertTrue({
             'automation/schemas/material-query.schema.json',
+            'automation/templates/query-terms.default.json',
             'docs/design/representation-query-v0.2/RUNTIME_STATUS.md',
             'docs/design/representation-query-v0.2/inheritance-map.json',
             'automation/workflows/material-query/SKILL.md',
@@ -293,6 +294,9 @@ class DeploymentWorkbenchTests(unittest.TestCase):
         source = self.base / '源码 ZIP'
         source.mkdir()
         files = set(deploy.framework_files(ROOT)) | set(deploy.seed_files(ROOT))
+        # 发布源只含受控默认模板，不可携带当前开发工作区的用户词库。
+        self.assertIn('automation/templates/query-terms.default.json', files)
+        self.assertNotIn('retrieval/query-terms.json', files)
         for name in files:
             dst = source / name
             dst.parent.mkdir(parents=True, exist_ok=True)
@@ -441,6 +445,27 @@ class DeploymentWorkbenchTests(unittest.TestCase):
         self.assertEqual(custom.read_text(encoding='utf-8'), 'CUSTOM KEEP')
 
         upgrade_fixture.assert_preserved(self.root, protected)
+        # 缺失词库才允许默认模板补种。先完成既有用户词库的保留/恢复验收，
+        # 再用同一真实 setup.cmd 验证补种与 rollback 都具有可逆边界。
+        user_terms = self.root / 'retrieval/query-terms.json'
+        self.assertTrue(user_terms.unlink() is None)
+        protected_without_terms = {
+            'files': {name: fingerprint for name, fingerprint in protected['files'].items()
+                      if name != 'retrieval/query-terms.json'},
+            'directories': protected['directories'],
+        }
+        seeded = subprocess.run(['cmd.exe', '/d', '/c', 'setup.cmd', '--target', str(self.root), '--profile', 'core'],
+                                cwd=source, env=env, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60)
+        self.assertEqual(seeded.returncode, 0, seeded.stdout + seeded.stderr)
+        self.assertEqual(user_terms.read_bytes(), (source / 'automation/templates/query-terms.default.json').read_bytes())
+        upgrade_fixture.assert_preserved(self.root, protected_without_terms)
+        receipts = sorted((self.root / '.local/upgrades').glob('*/receipt.json'))
+        seeded_receipt = receipts[-1]
+        restored_missing = subprocess.run(['cmd.exe', '/d', '/c', 'setup.cmd', '--rollback', str(seeded_receipt.parent)],
+                                          cwd=source, env=env, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60)
+        self.assertEqual(restored_missing.returncode, 0, restored_missing.stdout + restored_missing.stderr)
+        self.assertFalse(user_terms.exists())
+        upgrade_fixture.assert_preserved(self.root, protected_without_terms)
 
     def test_expanded_workspace_still_rejects_missing_tools_and_bad_business_metadata(self):
         protected = upgrade_fixture.populate(self.root)

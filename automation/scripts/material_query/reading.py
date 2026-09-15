@@ -20,6 +20,7 @@ from .contracts import AssociationOptions, Budget, DefinitionRef, FixedRef, Quer
 from .coordinator import current_scope_allows, required_scope_allows, envelope, failure
 from .validation import QueryError, object_fields, parse
 from .wire import digest, json_value
+from . import query_plan
 
 
 BASE = '.local/reading-sessions'
@@ -128,7 +129,8 @@ class Reading:
                   'decide': {'direction', 'reason', 'next_step', 'outcome', 'human_decision'}, 'resume': set(), 'page': set(),
                   'view': set(), 'bind': {'owner_id', 'checkpoint_ref'}, 'archive': {'archived', 'reason'}}
         require(action in extras, '未知阅读动作')
-        object_fields(raw, {'session_id'} if viewing else common | extras[action])
+        object_fields(raw, {'session_id'} if viewing else common | extras[action],
+                      query_plan.PLAN_FIELDS if action == 'recall' else ())
         file = path(self.root, raw['session_id'], 'HEAD.json')
         if not viewing:
             text(raw['request_id'], 'request_id')
@@ -292,7 +294,7 @@ class Reading:
             links = {ref.id: self.link(reader, ref) for ref in refs}
         return packet, links
 
-    def recall(self, session, raw, state, *, continuation=False):
+    def recall(self, session, raw, state, *, continuation=False, frozen_plan=None):
         text(raw['question'], 'question')
         text(raw['reason'], 'reason')
         strings(raw['keywords'], 'keywords')
@@ -304,31 +306,51 @@ class Reading:
         scope = replace(scope, excluded_refs=tuple(set(scope.excluded_refs + base.scope.excluded_refs)),
                         excluded_owner_ids=tuple(set(scope.excluded_owner_ids + base.scope.excluded_owner_ids)),
                         exclude_ids=tuple(set(scope.exclude_ids + base.scope.exclude_ids)))
-        round_info = dict(question=raw['question'], keywords=raw['keywords'], reason=raw['reason'], scope=asdict(scope), lanes=[])
+        plan = deepcopy(frozen_plan) if frozen_plan is not None else query_plan.build(self.root, self.ledger, raw)
+        query_plan.charge_diagnostics(self.ledger, plan)
+        round_info = dict(question=raw['question'], keywords=raw['keywords'], reason=raw['reason'],
+                          scope=asdict(scope), lanes=[], query_plan=plan)
         output, gaps = [], []
         # 分层独立候选窗；共享同一累计账本，顺序执行避免 Qdrant local 进程锁争用。
         for lane in LANES:
-            query = replace(base, scope=scope, question=raw['question'], keywords=tuple(raw['keywords']), content_source=lane)
-            lane_state = self.state(session, query=asdict(query))
-            self.app._run_search(lane_state)
-            result = lane_state.result
-            if continuation:
-                # 重建当前固定范围的候选页；已交付记录不是权限排除项，否则
-                # 它们作为新命中的必要依赖时也会被错误拒绝。
-                known = {row['ref']['id'] for row in session['candidates'].values()}
-                while result.get('value') and result['value'].get('next_cursor') and all(
-                        item['refs'][0]['id'] in known for item in result['value']['candidates']):
-                    result = self.app.resume(lane_state.query_id, result['value']['next_cursor'])
-            info = {'source': lane, 'status': result['status'], 'warnings': result['warnings'],
-                    'has_more': bool((result.get('value') or {}).get('next_cursor'))}
+            batches, route_info = [], []
+            known = {digest(row['ref']) for row in session['candidates'].values()} if continuation else set()
+            for route in query_plan.routes(plan):
+                query = replace(base, scope=scope, question=route['question'], keywords=tuple(route['keywords']),
+                                content_source=lane, channels=(route['channel'],),
+                                ranking_strategy='rrf', ranking_version='1')
+                route_state = self.state(session, query=asdict(query))
+                self.app._run_search(route_state)
+                result = route_state.result
+                # 已交付固定版本只用于分页跳过，绝不变成权限排除；依赖仍可读取。
+                if continuation:
+                    while result.get('value') and result['value'].get('next_cursor') and all(
+                            digest(item['refs'][0]) in known for item in result['value']['candidates']):
+                        result = self.app.resume(route_state.query_id, result['value']['next_cursor'])
+                batches.append((route, [item for item in (result.get('value') or {}).get('candidates', [])
+                                        if digest(item['refs'][0]) not in known]))
+                warnings = list(result['warnings'])
+                if result.get('code') and result['status'] not in {'ok', 'partial'}:
+                    warnings.append(route['id'] + '未完成：' + result['code'])
+                route_info.append({'query_source': route['id'], 'status': result['status'],
+                                   'warnings': warnings,
+                                   'has_more': bool((result.get('value') or {}).get('next_cursor'))})
+            candidates = query_plan.fuse(batches)
+            lane_warnings = list(dict.fromkeys(w for info in route_info for w in info['warnings']))
+            info = {'source': lane, 'status': 'partial' if lane_warnings else 'ok', 'warnings': lane_warnings,
+                    'has_more': any(info['has_more'] for info in route_info) or len(candidates) > base.result_limit,
+                    'routes': route_info}
+            query_plan.charge_diagnostics(self.ledger, route_info)
+            # Packet selection uses the original natural question, not a keyword
+            # route's empty question. Source authorization is still Coordinator's.
+            lane_state = self.state(session, query=asdict(replace(base, scope=scope,
+                question=raw['question'], keywords=tuple(raw['keywords']), content_source=lane)))
             round_info['lanes'].append(info)
-            gaps.extend(result['warnings'])
+            gaps.extend(lane_warnings)
             if info['has_more']:
                 gaps.append(lane + '候选窗口仍有未交付材料；使用reading-page继续，预算累计，不代表全库已读')
-            for candidate in (result.get('value') or {}).get('candidates', []):
+            for candidate in candidates[:base.result_limit]:
                 ref = parse(candidate['refs'][0], FixedRef)
-                if continuation and ref.id in known:
-                    continue
                 key = 'RC-' + digest(asdict(ref))[:24]
                 selected = []
                 if lane == 'technical':
@@ -341,13 +363,27 @@ class Reading:
                 # 仅说明命中时不猜测技术块；交付摘要并明确待完整阅读。
                 definition = DefinitionRef('section' if selected else 'unit_digest' if lane == 'technical' else 'full', '1')
                 try:
+                    query_plan.charge_diagnostics(self.ledger, {
+                        'hits': candidate['hits'], 'query_sources': candidate['query_sources'],
+                        'fusion_score': candidate['fusion_score'], 'condition_check': 'pending',
+                        'protected_terms': plan['protected_terms']})
                     packet, links = self.packet(lane_state, selected or [ref], definition)
                     row = session['candidates'].setdefault(key, {'ref': asdict(ref), 'title': candidate['title'],
                         'full_delivered': False, 'contributors': []})
-                    row.update(link=links[ref.id], lane=lane, scope=asdict(scope))
+                    # A later round can rediscover this fixed record; retain its
+                    # earlier hit origins, with plan fingerprints distinguishing
+                    # reused route names such as original:lexical.
+                    hits = list({digest(item): item for item in row.get('hits', []) + candidate['hits']}.values())
+                    sources = list({digest(item): item for item in row.get('query_sources', []) + candidate['query_sources']}.values())
+                    row.update(link=links[ref.id], lane=lane, scope=asdict(scope), hits=hits,
+                               query_sources=sources, condition_check='pending',
+                               protected_terms=plan['protected_terms'])
                     row['contributors'] = list({digest(item): item for item in row['contributors'] + packet['contributors']}.values())
                     output.append({'candidate_id': key, 'title': row['title'], 'ref': row['ref'], 'link': row['link'],
-                        'source': lane, 'reading_form': definition.key, 'packet': packet, 'channels': candidate['channels']})
+                        'source': lane, 'reading_form': definition.key, 'packet': packet, 'channels': candidate['channels'],
+                        'hits': candidate['hits'], 'query_sources': candidate['query_sources'],
+                        'fusion_score': candidate['fusion_score'], 'condition_check': 'pending',
+                        'protected_terms': plan['protected_terms']})
                     if not packet['complete']:
                         gaps.append(key + '正文未完整交付，请检查packet缺口')
                 except (QueryError, MemoryError) as exc:
@@ -369,7 +405,8 @@ class Reading:
         scope = parse(json_value(previous['scope']), Scope)
         session['phase'] = 'ready'
         return self.recall(session, {'question': previous['question'], 'keywords': previous['keywords'],
-                                    'scope': json_value(scope), 'reason': '同一查询继续未交付候选'}, state, continuation=True)
+                                    'scope': json_value(scope), 'reason': '同一查询继续未交付候选'}, state,
+                           continuation=True, frozen_plan=previous.get('query_plan'))
 
     def read(self, session, raw, state):
         ids = strings(raw['candidate_ids'], 'candidate_ids')
@@ -451,9 +488,17 @@ class Reading:
         for key, row in session['candidates'].items():
             status = '已记录理解' if key in session['notes'] else '已交付全文，待记录理解' if row['full_delivered'] else '候选，待完整阅读'
             candidates.append({'candidate_id': key, 'title': row['title'], 'link': row['link'], 'ref': row['ref'],
-                               'status': status, 'stale': row.get('stale', False)})
+                               'status': status, 'stale': row.get('stale', False), 'hits': row.get('hits', []),
+                               'query_sources': row.get('query_sources', []),
+                               'condition_check': row.get('condition_check', 'pending'),
+                               'protected_terms': row.get('protected_terms', [])})
             lines.append(f"- [{row['title']}](<{row['link']}>) · {status}" + (' · 来源已变' if row.get('stale') else ''))
         markdown = '\n\n'.join(lines)
+        query_plan.charge_diagnostics(self.ledger, {
+            'plans': [round_info['query_plan'] for round_info in session['rounds'] if 'query_plan' in round_info],
+            'routes': [lane['routes'] for round_info in session['rounds'] for lane in round_info['lanes'] if 'routes' in lane],
+            'candidate_diagnostics': [{key: row[key] for key in ('hits', 'query_sources', 'condition_check', 'protected_terms')}
+                                      for row in candidates]})
         self.ledger.charge('output_chars', len(markdown))
         return {'context_markdown': markdown, 'phase': session['phase'], 'round_count': len(session['rounds']),
                 'owner_id': session.get('owner_id'), 'checkpoint_ref': session.get('checkpoint_ref'),

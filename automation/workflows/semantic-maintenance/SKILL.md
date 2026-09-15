@@ -14,3 +14,5 @@ description: 根据已变更材料的固定依据实际审查下游内容，形�
 实际AI审查后填写reviewer_kind=ai、真实semantic_reviewer及review_note；只列本次读过且服务器交付的reviewed_refs。不把自己的审查标为human。将计划传入maintenance-review预检；基准HEAD或digest冲突时先重新读差异，不能强制覆盖。
 
 在用户任务已有授权范围内用maintenance-apply提交；固定request_id使重试幂等。分别核对commits、pending_items、index_status与recovery_receipt，并回读保存版本。提交成功、复核有效、索引成功是不同状态。详见[材料查询手册](../../../docs/MATERIAL_QUERY.md)。
+
+重要结果或适用边界变化、用户要求记录当前成果或阶段交接时，继续按 [整理更新当前成果](../consolidate-results/SKILL.md) 检查概览、完整文稿及上下文；保留本次已读固定依据，合并同一变化清单，不递归重复维护。语义维护提交成功不表示所有文稿已同步；跨对象未完成项按实际范围列明。

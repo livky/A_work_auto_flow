@@ -32,6 +32,7 @@ research/floating-point-summation/** -text
 
 # Local working state and registered sources never travel in release archives.
 /retrieval/sources.json export-ignore
+/retrieval/query-terms.json export-ignore
 /context/NOW.md export-ignore
 /context/handoffs/* export-ignore
 /context/handoffs/TEMPLATE.md -export-ignore
@@ -81,3 +82,4 @@ research/floating-point-summation/** -text
 /PLAN.md export-ignore
 /待开发计划.md export-ignore
 automation/schemas/material-query.schema.json text eol=lf
+automation/templates/query-terms.default.json text eol=lf

@@ -57,6 +57,8 @@ execution.json示意：`{"script":"实际脚本.py","inputs":["实际输入.csv"
 
 ## 保存有用内容
 
+有用中间记录可由 AI 自主提交，不等逐次指令；重要成果保存、阶段总结/交接或实质变化由 [consolidate-results](../automation/workflows/consolidate-results/SKILL.md) 负责完整阅读、差异盘点和文稿/上下文同步。下面的保存动作不自动完成该流程。
+
 ```powershell
 .\workbench.cmd memory validate-draft --request commit.json
 .\workbench.cmd memory commit --request commit.json

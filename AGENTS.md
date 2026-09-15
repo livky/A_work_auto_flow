@@ -5,6 +5,7 @@
 ## 入口与自主执行
 
 - 默认使用 [work-loop](automation/workflows/work-loop/SKILL.md)统一工作与记录；查本地材料使用material-query。目录类型只表示归属，不决定另一套流程。极小且无复用价值的操作可不新增记录。
+- 有用中间记录由AI在对话工作中自主提交，不等待用户逐条指定。重要结论/当前成果保存、阶段总结/交接或实质变化时，使用 [整理更新当前成果](automation/workflows/consolidate-results/SKILL.md)，完整阅读概览与文稿，核对上次文稿以来的记录变化并维护全文、固定关系和上下文；仅完成实际检查后标明本范围成果已同步。用户明确只暂存或限定范围时遵从。
 - 核心算法只收录公司算法/模块文档定义的关键模型算法，准入见 `core-algorithms/AGENTS.md`。普通脚本功能、软件模块和通用工具不得据“模块化实现”建核心算法卡；缺文档依据的候选留 `inbox/` 或 `research/`。
 - 先读 `context/START_HERE.md`、`context/NOW.md`，再按任务读目标对象与最近的 `AGENTS.md`。
 - 从索引和显式引用检索，不把全部历史、共享盘目录树或日志加入上下文。算法问答使用分阶段证据包：目标算法说明优先，其他材料按角色/必要性装载；读取 manifest 的缺失/排除项。旧CTX任务证据不足时调用 context-feedback 扩展（最多两级）；新问题使用material-query阅读工作流，保持用户选择与预算；达到上限后说明具体缺口。
